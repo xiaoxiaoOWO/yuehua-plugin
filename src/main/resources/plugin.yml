@@ -1,0 +1,82 @@
+name: yuehua
+version: '1.0.0'
+main: com.xiaoxiaoowo.yuehua.Yuehua
+api-version: '1.20'
+depend: [NBTAPI]
+commands:
+  blocktp:
+    description: blocktp
+  duanzao:
+    description: duanzao
+  intogame:
+    description: intogame
+  markrelife:
+    description: markrelife
+  mybossspawn:
+    description: mybossspawn
+  myspawn:
+    description: myspawn
+  relife:
+    description: relife
+  renou:
+    description: renou
+  renou2:
+    description: renou2
+  select:
+    description: select
+  storerelifestone:
+    description: storerelifestone
+  datacountget:
+    description: datacountget
+  dataget:
+    description: dataget
+  dataset:
+    description: dataget
+  itemdataget:
+    description: itemdata
+  clearup:
+    description: clearup
+  gi:
+    description: gi
+    aliases:
+      - GI
+      - gI
+      - Gi
+  mytp:
+    description: mytp
+  perget:
+    description: perget
+  setsign:
+    description: setsign
+  mysummon:
+    description: mysummon
+  arrow:
+    description: arrow
+  buy:
+    description: buy
+  ki:
+    description: ki
+  money:
+    description: money
+  sell:
+    description: sell
+  sale:
+    description: sale
+  yh:
+    description: yh
+    aliases:
+      - YH
+      - yH
+      - Yh
+  yhteam:
+    description: yhteam
+  ys:
+    description: ys
+    aliases:
+      - YS
+      - yS
+      - Ys
+  test:
+    description: test
+  huancheng:
+    description: huancheng

@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.xiaoxiaoowo'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://repo.minebench.de/"
+    }
+
+    maven {
+        url "https://repo.purpurmc.org/snapshots"
+    }
+
+    maven {
+        name = "CodeMC"
+        url = uri("https://repo.codemc.io/repository/maven-public/")
+    }
+}
+
+dependencies {
+    implementation 'org.xerial:sqlite-jdbc:3.46.0.0'
+    compileOnly("org.purpurmc.purpur:purpur-api:1.21-R0.1-SNAPSHOT")
+    compileOnly("de.tr7zw:item-nbt-api-plugin:2.13.1")
+}
+
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Jar).configureEach {
+    destinationDirectory = file("D:\\panling\\server\\plugins")
+}
