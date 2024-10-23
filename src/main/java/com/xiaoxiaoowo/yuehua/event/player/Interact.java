@@ -10,11 +10,10 @@ import com.xiaoxiaoowo.yuehua.data.slot.SlotWithTwoActiveSkill;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.system.DoJiNeng;
 import com.xiaoxiaoowo.yuehua.system.handleObsevers.DoJiNengObservers;
-import com.xiaoxiaoowo.yuehua.utils.GetEntity;
-import com.xiaoxiaoowo.yuehua.utils.MoveEntity;
-import com.xiaoxiaoowo.yuehua.utils.PlaySound;
+import com.xiaoxiaoowo.yuehua.utils.*;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -43,9 +42,12 @@ public final class Interact implements Listener {
                                 if (player.getInventory().getHeldItemSlot() == 0) {
                                     GongData gongData = (GongData) data;
                                     gongData.time_pulling = GetEntity.world.getGameTime();
+                                    Location location = player.getLocation();
+                                    gongData.startPitch = location.getPitch();
+                                    gongData.startYaw = location.getYaw();
                                 } else {
                                     e.setCancelled(true);
-                                    Yuehua.async(() -> player.sendMessage(
+                                    Scheduler.async(() -> player.sendMessage(
                                             Component.text("§e[游戏机制]§4只能用一号位使用弓哦").color(NamedTextColor.DARK_RED)
                                     ));
                                 }
@@ -64,7 +66,7 @@ public final class Interact implements Listener {
                                     }
                                 } else {
                                     e.setCancelled(true);
-                                    Yuehua.async(() -> player.sendMessage(
+                                    Scheduler.async(() -> player.sendMessage(
                                             Component.text("§e[游戏机制]§4只能用一号位使用弩哦").color(NamedTextColor.DARK_RED)
                                     ));
                                 }
@@ -152,6 +154,20 @@ public final class Interact implements Listener {
                             }
                         }
 
+                        case WOODEN_PICKAXE -> {
+
+                        }
+
+                        case FISHING_ROD -> {
+                            Player player = e.getPlayer();
+                            if (player.getPersistentDataContainer().get(DataContainer.fuben, PersistentDataType.INTEGER) != 0) {
+                                player.setHealth(0);
+                                player.sendMessage(
+                                        Component.text("§e[游戏机制]§4试图逃离副本机制，你已被惩罚")
+                                );
+                            }
+                        }
+
 //                        case DIAMOND_SWORD -> {
 //                            Player player = e.getPlayer();
 //                            Damage.damage(player,10,0,GetEntity.getRayMonster(player, 10));
@@ -165,6 +181,16 @@ public final class Interact implements Listener {
                     }
                 } else {
                     switch (type) {
+                        case FISHING_ROD -> {
+                            Player player = e.getPlayer();
+                            if (player.getPersistentDataContainer().get(DataContainer.fuben, PersistentDataType.INTEGER) != 0) {
+                                player.setHealth(0);
+                                player.sendMessage(
+                                        Component.text("§e[游戏机制]§4试图逃离副本机制，你已被惩罚")
+                                );
+                            }
+                        }
+
                         case SHIELD -> {
                             Player player = e.getPlayer();
                             Data data = Yuehua.playerData.get(player.getUniqueId());
@@ -179,7 +205,7 @@ public final class Interact implements Listener {
                             Data data = Yuehua.playerData.get(player.getUniqueId());
                             if (data.job == 2) {
                                 e.setCancelled(true);
-                                Yuehua.async(() -> player.sendMessage(
+                                Scheduler.async(() -> player.sendMessage(
                                         Component.text("§e[游戏机制]§4只能用一号位使用弓哦").color(NamedTextColor.DARK_RED)
                                 ));
                             } else {
@@ -191,7 +217,7 @@ public final class Interact implements Listener {
                             Data data = Yuehua.playerData.get(player.getUniqueId());
                             if (data.job == 2) {
                                 e.setCancelled(true);
-                                Yuehua.async(() -> player.sendMessage(
+                                Scheduler.async(() -> player.sendMessage(
                                         Component.text("§e[游戏机制]§4只能用一号位使用弩哦").color(NamedTextColor.DARK_RED)
                                 ));
                             } else {
@@ -214,7 +240,13 @@ public final class Interact implements Listener {
         };
         if (slotWithOneActiveSkill == null) {
             PlaySound.fail(player);
-            Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4只有在激活位才能释放技能"));
+            SendInformation.sendActionBar(player,Component.text("§e[游戏机制]§4只有在激活位才能释放技能"));
+            return;
+        }
+
+        if (!zhanData.canJiNeng) {
+            PlaySound.fail(player);
+            SendInformation.sendActionBar(player,Component.text("§e[游戏机制]§4你被禁魔了，无法使用技能"));
             return;
         }
 
@@ -223,18 +255,10 @@ public final class Interact implements Listener {
                 long cd = slotWithTwoActiveSkill.cd_active2 - GetEntity.world.getGameTime();
                 if (cd > 0) {
                     PlaySound.fail(player);
-                    Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4技能冷却中,剩余§b"+cd+"§4秒"));
-                    return;
-                }
-                if (!zhanData.canJiNeng) {
-                    PlaySound.fail(player);
-                    Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4你被禁魔了，无法使用技能"));
+                    SendInformation.sendActionBar(player,Component.text("§e[游戏机制]§4技能冷却中,剩余§b"+cd+"§4秒"));
                     return;
                 }
                 DoJiNeng.doJiNengZhan2(slotWithTwoActiveSkill.id, zhanData);
-                for (String observer : zhanData.jiNengObservers) {
-                    DoJiNengObservers.doJiNeng(observer, zhanData);
-                }
                 return;
             }
         }
@@ -242,19 +266,10 @@ public final class Interact implements Listener {
         long cd = slotWithOneActiveSkill.cd_active - GetEntity.world.getGameTime();
         if (cd > 0) {
             PlaySound.fail(player);
-            Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4技能冷却中,剩余§b"+cd+"§4秒"));
-            return;
-        }
-        if (!zhanData.canJiNeng) {
-            PlaySound.fail(player);
-            Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4你被禁魔了，无法使用技能"));
+            SendInformation.sendActionBar(player,Component.text("§e[游戏机制]§4技能冷却中,剩余§b"+cd+"§4秒"));
             return;
         }
         DoJiNeng.doJiNengZhan(slotWithOneActiveSkill.id, zhanData);
-        for (String observer : zhanData.jiNengObservers) {
-            DoJiNengObservers.doJiNeng(observer, zhanData);
-        }
-
 
     }
 
@@ -270,27 +285,24 @@ public final class Interact implements Listener {
         };
         if (slotWithOneActiveSkill == null) {
             PlaySound.fail(player);
-            Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4只有在激活位才能释放技能"));
+            SendInformation.sendActionBar(player,Component.text("§e[游戏机制]§4只有在激活位才能释放技能"));
             return;
         }
 
+        if (!danData.canJiNeng) {
+            PlaySound.fail(player);
+            SendInformation.sendActionBar(player,Component.text("§e[游戏机制]§4你被禁魔了，无法使用技能"));
+            return;
+        }
         if (player.isSneaking()) {
             if (slotWithOneActiveSkill instanceof SlotWithTwoActiveSkill slotWithTwoActiveSkill) {
                 long cd = slotWithTwoActiveSkill.cd_active2 - GetEntity.world.getGameTime();
                 if (cd > 0) {
                     PlaySound.fail(player);
-                    Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4技能冷却中,剩余§b"+cd+"§4秒"));
-                    return;
-                }
-                if (!danData.canJiNeng) {
-                    PlaySound.fail(player);
-                    Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4你被禁魔了，无法使用技能"));
+                    SendInformation.sendActionBar(player,Component.text("§e[游戏机制]§4技能冷却中,剩余§b"+cd+"§4秒"));
                     return;
                 }
                 DoJiNeng.doJiNengDan2(slotWithTwoActiveSkill.id, danData);
-                for (String observer : danData.jiNengObservers) {
-                    DoJiNengObservers.doJiNeng(observer, danData);
-                }
                 return;
             }
         }
@@ -298,18 +310,10 @@ public final class Interact implements Listener {
         long cd = slotWithOneActiveSkill.cd_active - GetEntity.world.getGameTime();
         if (cd > 0) {
             PlaySound.fail(player);
-          Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4技能冷却中,剩余§b"+cd+"§4秒"));
-            return;
-        }
-        if (!danData.canJiNeng) {
-            PlaySound.fail(player);
-            Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4你被禁魔了，无法使用技能"));
+          SendInformation.sendActionBar(player,Component.text("§e[游戏机制]§4技能冷却中,剩余§b"+cd+"§4秒"));
             return;
         }
         DoJiNeng.doJiNengDan(slotWithOneActiveSkill.id, danData);
-        for (String observer : danData.jiNengObservers) {
-            DoJiNengObservers.doJiNeng(observer, danData);
-        }
 
     }
 
@@ -322,7 +326,13 @@ public final class Interact implements Listener {
         };
         if (slotWithOneActiveSkill == null) {
             PlaySound.fail(player);
-            Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4只有在激活位才能释放技能"));
+            SendInformation.sendActionBar(player,Component.text("§e[游戏机制]§4只有在激活位才能释放技能"));
+            return;
+        }
+
+        if (!gongData.canJiNeng) {
+            PlaySound.fail(player);
+            SendInformation.sendActionBar(player,Component.text("§e[游戏机制]§4你被禁魔了，无法使用技能"));
             return;
         }
 
@@ -331,18 +341,10 @@ public final class Interact implements Listener {
                 long cd = slotWithTwoActiveSkill.cd_active2 - GetEntity.world.getGameTime();
                 if (cd > 0) {
                     PlaySound.fail(player);
-                  Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4技能冷却中,剩余§b"+cd+"§4秒"));
-                    return;
-                }
-                if (!gongData.canJiNeng) {
-                    PlaySound.fail(player);
-                    Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4你被禁魔了，无法使用技能"));
+                  SendInformation.sendActionBar(player,Component.text("§e[游戏机制]§4技能冷却中,剩余§b"+cd+"§4秒"));
                     return;
                 }
                 DoJiNeng.doJiNengGong2(slotWithTwoActiveSkill.id, gongData);
-                for (String observer : gongData.jiNengObservers) {
-                    DoJiNengObservers.doJiNeng(observer, gongData);
-                }
                 return;
             }
         }
@@ -350,18 +352,10 @@ public final class Interact implements Listener {
         long cd = slotWithOneActiveSkill.cd_active - GetEntity.world.getGameTime();
         if (cd > 0) {
             PlaySound.fail(player);
-          Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4技能冷却中,剩余§b"+cd+"§4秒"));
-            return;
-        }
-        if (!gongData.canJiNeng) {
-            PlaySound.fail(player);
-            Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4你被禁魔了，无法使用技能"));
+          SendInformation.sendActionBar(player,Component.text("§e[游戏机制]§4技能冷却中,剩余§b"+cd+"§4秒"));
             return;
         }
         DoJiNeng.doJiNengGong(slotWithOneActiveSkill.id, gongData);
-        for (String observer : gongData.jiNengObservers) {
-            DoJiNengObservers.doJiNeng(observer, gongData);
-        }
 
     }
 
@@ -369,24 +363,21 @@ public final class Interact implements Listener {
         Player player = data.player;
         SlotWithOneActiveSkill slotWithOneActiveSkill = data.slot8;
 
+        if (!data.canJiNeng) {
+            PlaySound.fail(player);
+            SendInformation.sendActionBar(player,Component.text("§e[游戏机制]§4你被禁魔了，无法使用技能"));
+            return;
+        }
+
         if (player.isSneaking()) {
             if (slotWithOneActiveSkill instanceof SlotWithTwoActiveSkill slotWithTwoActiveSkill) {
                 long cd = slotWithTwoActiveSkill.cd_active2 - GetEntity.world.getGameTime();
                 if (cd > 0) {
                     PlaySound.fail(player);
-                  Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4技能冷却中,剩余§b"+cd+"§4秒"));
-                    return;
-                }
-                if (!data.canJiNeng) {
-                    PlaySound.fail(player);
-                    Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4你被禁魔了，无法使用技能"));
+                  SendInformation.sendActionBar(player,Component.text("§e[游戏机制]§4技能冷却中,剩余§b"+cd+"§4秒"));
                     return;
                 }
                 DoJiNeng.doJiNeng2(slotWithTwoActiveSkill.id, data);
-                for (String observer : data.jiNengObservers) {
-                    PlaySound.fail(player);
-                    DoJiNengObservers.doJiNeng(observer, data);
-                }
                 return;
             }
         }
@@ -394,18 +385,10 @@ public final class Interact implements Listener {
         long cd = slotWithOneActiveSkill.cd_active - GetEntity.world.getGameTime();
         if (cd > 0) {
             PlaySound.fail(player);
-          Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4技能冷却中,剩余§b"+cd+"§4秒"));
-            return;
-        }
-        if (!data.canJiNeng) {
-            PlaySound.fail(player);
-            Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4你被禁魔了，无法使用技能"));
+          SendInformation.sendActionBar(player,Component.text("§e[游戏机制]§4技能冷却中,剩余§b"+cd+"§4秒"));
             return;
         }
         DoJiNeng.doJiNeng(slotWithOneActiveSkill.id,data);
-        for (String observer : data.jiNengObservers) {
-            DoJiNengObservers.doJiNeng(observer, data);
-        }
     }
 
 
@@ -413,7 +396,7 @@ public final class Interact implements Listener {
         Player player = danData.player;
         if (!danData.canJiNeng) {
             PlaySound.fail(player);
-            Yuehua.sendActionBar(player,Component.text("§e[游戏机制]§4你被禁魔了，无法使用技能"));
+            SendInformation.sendActionBar(player,Component.text("§e[游戏机制]§4你被禁魔了，无法使用技能"));
             return;
         }
 

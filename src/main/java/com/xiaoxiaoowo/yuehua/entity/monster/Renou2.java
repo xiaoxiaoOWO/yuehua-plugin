@@ -46,7 +46,7 @@ public final class Renou2 {
 
                     //通用实体属性
                     //名称
-                    it.customName(Component.text("潇潇[150护甲150法抗]").color(NamedTextColor.RED));
+                    it.customName(Component.text("潇潇[300护甲300法抗]").color(NamedTextColor.RED));
                     it.setCustomNameVisible(true);
 
                     //怪物实体属性

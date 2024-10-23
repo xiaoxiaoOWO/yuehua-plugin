@@ -12,10 +12,7 @@ import com.xiaoxiaoowo.yuehua.event.player.Death;
 import com.xiaoxiaoowo.yuehua.itemstack.other.Food;
 import com.xiaoxiaoowo.yuehua.itemstack.other.Other;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
-import com.xiaoxiaoowo.yuehua.utils.GetEntity;
-import com.xiaoxiaoowo.yuehua.utils.MoveEntity;
-import com.xiaoxiaoowo.yuehua.utils.PlaySound;
-import com.xiaoxiaoowo.yuehua.utils.SQL;
+import com.xiaoxiaoowo.yuehua.utils.*;
 import net.kyori.adventure.text.Component;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
@@ -145,8 +142,35 @@ public final class Test implements CommandExecutor {
 
         switch (args[0]) {
 
+            case "invcheck" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                if(player.isInvisible()){
+                    SendInformation.broadcastMes(Component.text("§e[游戏机制]§4玩家不可见"));
+                }
+            }
+
+            case "invset1" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                player.setInvisible(true);
+            }
+
+            case "invset0" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                player.setInvisible(false);
+            }
+
+            case "yezi1" ->{
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Yuehua.playerData.get(player.getUniqueId()).yezi = 1;
+            }
+
+            case "yezi0" ->{
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Yuehua.playerData.get(player.getUniqueId()).yezi = 0;
+            }
+
             case "getv" -> {
-                Yuehua.syncTimer(
+                Scheduler.syncTimer(
                         () -> {
                             Player player = Bukkit.getPlayer("xiaoxiaoOWO");
                             Vector vector = player.getVelocity();
@@ -178,7 +202,7 @@ public final class Test implements CommandExecutor {
 
             case "actionbar" -> {
                 player = Bukkit.getPlayer("xiaoxiaoOWO");
-                Yuehua.sendActionBar(player, Component.text("§e[游戏机制]§4技能冷却中"));
+                SendInformation.sendActionBar(player, Component.text("§e[游戏机制]§4技能冷却中"));
             }
 
             case "give" -> {
@@ -229,7 +253,7 @@ public final class Test implements CommandExecutor {
                             }
                         }
                     }
-                    Yuehua.sendMes(Component.text("已设置为雪原"), player);
+                    SendInformation.sendMes(Component.text("已设置为雪原"), player);
                 }, 0, 20L * 5L);
 
             }
@@ -1787,7 +1811,7 @@ public final class Test implements CommandExecutor {
     }
 
     private static void testSendTitleAysnc() {
-        Yuehua.async(() -> {
+        Scheduler.async(() -> {
             player.showTitle(Death.title);
         });
     }
@@ -1847,7 +1871,7 @@ public final class Test implements CommandExecutor {
 
     private static void testYinYong() {
         entity = GetEntity.getNearestMonster(player.getLocation(), 4, 4, 4);
-        Yuehua.syncTimer(() -> {
+        Scheduler.syncTimer(() -> {
             Bukkit.broadcast(
                     Component.text(entity.isDead())
             );

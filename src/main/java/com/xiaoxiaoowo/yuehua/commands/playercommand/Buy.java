@@ -3,6 +3,7 @@ package com.xiaoxiaoowo.yuehua.commands.playercommand;
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -19,7 +20,7 @@ public final class Buy implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        Yuehua.async(() -> {
+        Scheduler.async(() -> {
                     Player player = (Player) sender;
                     if (Sale.saler == null) {
                         player.sendMessage(Component.text("§6[命令系统]§4没有人正在拍卖！"));

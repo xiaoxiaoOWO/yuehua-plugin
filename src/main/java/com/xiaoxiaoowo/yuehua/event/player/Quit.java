@@ -82,6 +82,33 @@ public final class Quit implements org.bukkit.event.Listener {
             if (data.inventory9 != null) {
                 SQL.storePlayerInventory9(name, data.inventory9);
             }
+            if (data.inventory10 != null) {
+                SQL.storePlayerInventory10(name, data.inventory10);
+            }
+            if (data.inventory11 != null) {
+                SQL.storePlayerInventory11(name, data.inventory11);
+            }
+            if (data.inventory12 != null) {
+                SQL.storePlayerInventory12(name, data.inventory12);
+            }
+            if (data.inventory13 != null) {
+                SQL.storePlayerInventory13(name, data.inventory13);
+            }
+            if (data.inventory14 != null) {
+                SQL.storePlayerInventory14(name, data.inventory14);
+            }
+            if (data.inventory15 != null) {
+                SQL.storePlayerInventory15(name, data.inventory15);
+            }
+            if (data.inventory16 != null) {
+                SQL.storePlayerInventory16(name, data.inventory16);
+            }
+            if (data.inventory17 != null) {
+                SQL.storePlayerInventory17(name, data.inventory17);
+            }
+            if (data.inventory18 != null) {
+                SQL.storePlayerInventory18(name, data.inventory18);
+            }
             if (data.shipinBar != null){
                 SQL.storeShiPin(uuid.toString(), data.shipinBar);
             }

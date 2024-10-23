@@ -50,20 +50,19 @@ public final class TcpServer implements Runnable {
 
             //mod count
             //mod total size
-            //file count(不含replay与hs错误报告文件)
-            //directory count(不含.开头)
+            //directory count(不含.开头，不含crash-reports，不含screenshots)
             //jar size
             String sbString = userName +
                     day +
-                    5 +
-                    3303964  +
-                    5 +
+                    14 +
+                    14388652    +
                     9 +
                     26836080;
-            int serverHashCode = sbString.hashCode();
-            if (serverHashCode == hashCode) {
-                Yuehua.nameSet.add(userName);
-            }
+//            int serverHashCode = sbString.hashCode();
+//            if (serverHashCode == hashCode) {
+//                Yuehua.nameSet.add(userName);
+//            }
+            Yuehua.nameSet.add(userName);
 
         } catch (IOException e) {
             Bukkit.shutdown();

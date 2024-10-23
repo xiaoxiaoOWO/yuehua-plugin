@@ -1,10 +1,10 @@
 package com.xiaoxiaoowo.yuehua.system.act;
 
-import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.data.slot.SlotBuilder;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.task.hujia.Xiong1;
+import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
@@ -122,7 +122,7 @@ public final class ActHujia {
         pdc.set(DataContainer.slot38, PersistentDataType.STRING, "xiong1");
         data.slot38 = SlotBuilder.slot38Builder("xiong1", data.real_cool);
 
-        Yuehua.syncLater(
+        Scheduler.syncLater(
                 new Xiong1(data), (long) (30 * 20 * data.real_cool)
         );
     }

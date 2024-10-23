@@ -4,6 +4,8 @@ import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.system.Act;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import com.xiaoxiaoowo.yuehua.utils.SQL;
+import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -143,6 +145,12 @@ public final class Close implements Listener {
                     }
                 }
             }
+
+            Scheduler.async(
+                    () ->{
+                        SQL.storeShiPin(player.getName(), inventory);
+                    }
+            );
         }
     }
 }

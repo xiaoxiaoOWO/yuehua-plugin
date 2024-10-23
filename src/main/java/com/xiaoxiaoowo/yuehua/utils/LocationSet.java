@@ -16,7 +16,6 @@ public final class LocationSet {
     public static final Location SHA_MO_KE_ZHAN = new Location(GetEntity.world, -328, 58, 594);
     public static final Location BAI_HU_RU_KOU = new Location(GetEntity.world, -418, 112, 164);
     public static final Location SHUI_CUN = new Location(GetEntity.world, -331, 24, -697);
-    public static final Location SHENG_SHAN = new Location(GetEntity.world, 316, 51, -683);
     public static final Location WEN_QUAN = new Location(GetEntity.world, -459, 103, 332);
     public static final Location SEN_LIN_RU_KOU = new Location(GetEntity.world, 413, 51, 6);
     public static final Location LONG_XU_ZHEN = new Location(GetEntity.world, 552, 34, 42);
@@ -71,6 +70,7 @@ public final class LocationSet {
     public static final Location HUO_MO = new Location(GetEntity.world, 1296, 17, 870);
     public static final Location ZHEN_YAO_TA = new Location(GetEntity.world, 2716, 69, -982);
     public static final Location KU_GU = new Location(GetEntity.world, 1199, 72, 1447);
+    public static final Location SHENG_SHAN = new Location(GetEntity.world, 3175 ,132, -1839, 90, -60);
     public static final Location QING_LONG_JI_TAN = new Location(GetEntity.world, 1696, 116, 726);
     public static final Location ZHU_QUE_JI_TAN = new Location(GetEntity.world, 3267, 151, -799);
     public static final Location BAI_HU_JI_TAN = new Location(GetEntity.world, 2206, 93, -821);

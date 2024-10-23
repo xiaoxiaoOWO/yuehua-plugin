@@ -1,7 +1,6 @@
 package com.xiaoxiaoowo.yuehua.utils;
 
 
-import com.xiaoxiaoowo.yuehua.Yuehua;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -17,56 +16,56 @@ public final class LocationCheck {
 
     public static void check(Player player, Location location) {
         if (LocationCheck.checkMiddle(location)) {
-            Yuehua.sync(
+            Scheduler.sync(
                     () -> {
                         player.stopAllSounds();
                         PlaySound.middle(player);
                     }
             );
         } else if (LocationCheck.checkXian(location)) {
-            Yuehua.sync(
+            Scheduler.sync(
                     () -> {
                         player.stopAllSounds();
                         PlaySound.xian(player);
                     }
             );
         } else if (LocationCheck.checkRen(location)) {
-            Yuehua.sync(
+            Scheduler.sync(
                     () -> {
                         player.stopAllSounds();
                         PlaySound.ren(player);
                     }
             );
         } else if (LocationCheck.checkYao(location)) {
-            Yuehua.sync(
+            Scheduler.sync(
                     () -> {
                         player.stopAllSounds();
                         PlaySound.yao(player);
                     }
             );
         } else if (LocationCheck.checkZhan(location)) {
-            Yuehua.sync(
+            Scheduler.sync(
                     () -> {
                         player.stopAllSounds();
                         PlaySound.zhan(player);
                     }
             );
         } else if (LocationCheck.checkShen(location)) {
-            Yuehua.sync(
+            Scheduler.sync(
                     () -> {
                         player.stopAllSounds();
                         PlaySound.shen(player);
                     }
             );
         } else if (LocationCheck.checkPenglai(location)) {
-            Yuehua.sync(
+            Scheduler.sync(
                     () -> {
                         player.stopAllSounds();
                         PlaySound.penglai(player);
                     }
             );
         } else {
-            Yuehua.sync(
+            Scheduler.sync(
                     player::stopAllSounds
             );
         }
@@ -75,56 +74,56 @@ public final class LocationCheck {
     public static void check(Player player) {
         Location location = player.getLocation();
         if (LocationCheck.checkMiddle(location)) {
-            Yuehua.sync(
+            Scheduler.sync(
                     () -> {
                         player.stopAllSounds();
                         PlaySound.middle(player);
                     }
             );
         } else if (LocationCheck.checkXian(location)) {
-            Yuehua.sync(
+            Scheduler.sync(
                     () -> {
                         player.stopAllSounds();
                         PlaySound.xian(player);
                     }
             );
         } else if (LocationCheck.checkRen(location)) {
-            Yuehua.sync(
+            Scheduler.sync(
                     () -> {
                         player.stopAllSounds();
                         PlaySound.ren(player);
                     }
             );
         } else if (LocationCheck.checkYao(location)) {
-            Yuehua.sync(
+            Scheduler.sync(
                     () -> {
                         player.stopAllSounds();
                         PlaySound.yao(player);
                     }
             );
         } else if (LocationCheck.checkZhan(location)) {
-            Yuehua.sync(
+            Scheduler.sync(
                     () -> {
                         player.stopAllSounds();
                         PlaySound.zhan(player);
                     }
             );
         } else if (LocationCheck.checkShen(location)) {
-            Yuehua.sync(
+            Scheduler.sync(
                     () -> {
                         player.stopAllSounds();
                         PlaySound.shen(player);
                     }
             );
         } else if (LocationCheck.checkPenglai(location)) {
-            Yuehua.sync(
+            Scheduler.sync(
                     () -> {
                         player.stopAllSounds();
                         PlaySound.penglai(player);
                     }
             );
         } else {
-            Yuehua.sync(
+            Scheduler.sync(
                     player::stopAllSounds
             );
         }

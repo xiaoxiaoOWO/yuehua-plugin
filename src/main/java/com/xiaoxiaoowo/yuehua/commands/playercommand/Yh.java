@@ -643,7 +643,7 @@ public final class Yh implements CommandExecutor {
                         Component.text("全球市场是一个全服性的交易市场,使用规则如下：").color(NamedTextColor.GRAY).decorate(TextDecoration.ITALIC),
                         Component.text("主手手持要出售的物品，输入sell指令即可出售物品").color(NamedTextColor.GRAY).decorate(TextDecoration.ITALIC),
                         Component.text("指令格式：/sell <金额> <数量>").color(NamedTextColor.GRAY).decorate(TextDecoration.ITALIC),
-                        Component.text("上架商品扣取5%的税费，至少收取2铜钱").color(NamedTextColor.GRAY).decorate(TextDecoration.ITALIC),
+                        Component.text("上架商品扣取2%的税费，至少收取2铜钱").color(NamedTextColor.GRAY).decorate(TextDecoration.ITALIC),
                         Component.text("上架大量垃圾或价格过高的商品占用市场空间将被管理员惩罚").color(NamedTextColor.GRAY).decorate(TextDecoration.ITALIC),
                         Component.text("对他人上架的商品点击即可购买").color(NamedTextColor.GRAY).decorate(TextDecoration.ITALIC)
                 )

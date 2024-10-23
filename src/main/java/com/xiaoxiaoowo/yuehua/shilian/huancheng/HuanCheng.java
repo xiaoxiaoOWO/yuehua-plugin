@@ -4,6 +4,7 @@ import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.itemstack.other.Feather;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
+import com.xiaoxiaoowo.yuehua.utils.SendInformation;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Location;
 import org.bukkit.command.BlockCommandSender;
@@ -47,7 +48,7 @@ public final class HuanCheng implements CommandExecutor {
                 pdc.set(DataContainer.huanChengTime, PersistentDataType.LONG, GetEntity.world.getGameTime());
                 player.removePotionEffect(PotionEffectType.JUMP_BOOST);
 
-                Yuehua.sendMes(Component.text("§6[环城跑酷]§a开始环城跑酷！"), player);
+                SendInformation.sendMes(Component.text("§6[环城跑酷]§a开始环城跑酷！"), player);
 
                 player.teleportAsync(in);
 
@@ -56,13 +57,13 @@ public final class HuanCheng implements CommandExecutor {
             case "finish" -> {
                 long time = GetEntity.world.getGameTime() - pdc.get(DataContainer.huanChengTime, PersistentDataType.LONG);
                 //全服公共XXX玩家完成环城跑酷，用时XXX秒
-                Yuehua.broadcastMes(
+                SendInformation.broadcastMes(
                         Component.text("§6[环城跑酷]§b" + player.getName() + "§a完成环城跑酷，用时§b" + time / 20 + "§a秒")
                 );
                 player.teleportAsync(out);
 
                 if (time < 20 * 300) {
-                    Yuehua.sendMes(
+                    SendInformation.sendMes(
                             Component.text("§6[环城跑酷]§a用时小于§b5§a分钟，获得奖励：§a彤鹤之羽碎片 × §b4")
                             , player);
                     ItemStack itemStack1 = Feather.TONG_HE_ZHI_YU_SUI_PIAN.clone();
@@ -71,7 +72,7 @@ public final class HuanCheng implements CommandExecutor {
                     player.getInventory().addItem(itemStack1);
 
                 } else if (time < 20 * 600) {
-                    Yuehua.sendMes(
+                    SendInformation.sendMes(
                             Component.text("§6[环城跑酷]§a用时小于§b10§a分钟，获得奖励：§a青鸾之羽碎片 × §b4")
                             , player);
                     ItemStack itemStack1 = Feather.QING_LUAN_ZHI_YU_SUI_PIAN.clone();
@@ -79,7 +80,7 @@ public final class HuanCheng implements CommandExecutor {
                     player.getInventory().addItem(itemStack1);
 
                 } else {
-                    Yuehua.sendMes(
+                    SendInformation.sendMes(
                             Component.text("§6[环城跑酷]§a用时大于§b10§a分钟，获得奖励：§a金鹏之羽碎片 ✖ §b4")
                             , player);
 

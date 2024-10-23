@@ -1,8 +1,7 @@
 package com.xiaoxiaoowo.yuehua.display.test;
 
-import com.destroystokyo.paper.ParticleBuilder;
-import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
+import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.World;
@@ -13,7 +12,7 @@ public final class TestRay {
 
 
     public static void run(Player player) {
-        Yuehua.async(() -> {
+        Scheduler.async(() -> {
             Location location = player.getEyeLocation();
             Location location2 = location.clone();
             Location location3 = location.clone();

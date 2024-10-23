@@ -3,9 +3,9 @@ package com.xiaoxiaoowo.yuehua.event.entity;
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.GongData;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
+import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import io.papermc.paper.event.entity.EntityLoadCrossbowEvent;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -32,7 +32,7 @@ public final class LoadCrossBow implements Listener {
                 gongData.readyCrossBow = false;
             } else {
                 e.setCancelled(true);
-                Yuehua.async(() -> player.sendMessage(
+                Scheduler.async(() -> player.sendMessage(
                         Component.text("§e[游戏机制]§4只能用一号位使用弩哦")
                 ));
             }

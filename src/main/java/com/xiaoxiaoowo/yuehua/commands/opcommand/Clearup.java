@@ -1,16 +1,13 @@
 package com.xiaoxiaoowo.yuehua.commands.opcommand;
 
-import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
+import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import net.kyori.adventure.text.Component;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.World;
-import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
@@ -57,28 +54,16 @@ public final class Clearup implements CommandExecutor {
                 );
                 return true;
             }
-            Yuehua.syncTimer(
+            Scheduler.syncTimer(
                     () -> {
-                        World world = GetEntity.world;
-                        Location location = player.getLocation();
-                        int x = location.blockX();
-                        int z = location.blockZ();
-                        for (int dx = x - 100; dx < x + 100; dx++) {
-                            for (int dy = -64; dy < 256; dy++) {
-                                for (int dz = z - 100; dz < z + 100; dz++) {
-                                    Block block = world.getBlockAt(dx, dy, dz);
-                                    if (materials.contains(block.getType())) {
-                                        block.setType(Material.AIR);
-                                        count++;
-                                        Bukkit.broadcastMessage("§b清理了" + count + "个容器");
-                                    }
-
-                                }
+                        for(Entity entity : GetEntity.world.getEntities()){
+                            if(entity instanceof Player){
+                                continue;
                             }
+                            entity.remove();
                         }
-                        Bukkit.broadcastMessage("§6完成一次清理");
                     }
-                    , 0, 40);
+                    , 0, 1);
         }
 
         return true;

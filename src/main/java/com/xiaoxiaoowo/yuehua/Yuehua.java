@@ -1,6 +1,5 @@
 package com.xiaoxiaoowo.yuehua;
 
-import com.destroystokyo.paper.ParticleBuilder;
 import com.xiaoxiaoowo.yuehua.commands.Test;
 import com.xiaoxiaoowo.yuehua.commands.blockcommand.*;
 import com.xiaoxiaoowo.yuehua.commands.opcommand.*;
@@ -11,12 +10,14 @@ import com.xiaoxiaoowo.yuehua.commands.opcommand.data.ItemDataGet;
 import com.xiaoxiaoowo.yuehua.commands.playercommand.Yhteam;
 import com.xiaoxiaoowo.yuehua.commands.playercommand.*;
 import com.xiaoxiaoowo.yuehua.commands.playercommand.completer.*;
-import com.xiaoxiaoowo.yuehua.data.*;
+import com.xiaoxiaoowo.yuehua.data.Data;
+import com.xiaoxiaoowo.yuehua.data.GongData;
+import com.xiaoxiaoowo.yuehua.data.MonsterData;
+import com.xiaoxiaoowo.yuehua.data.TransferData;
 import com.xiaoxiaoowo.yuehua.event.Inventory.Click;
 import com.xiaoxiaoowo.yuehua.event.Inventory.Close;
 import com.xiaoxiaoowo.yuehua.event.Inventory.Open;
 import com.xiaoxiaoowo.yuehua.event.Projectile.Hit;
-import com.xiaoxiaoowo.yuehua.event.Projectile.Launch;
 import com.xiaoxiaoowo.yuehua.event.entity.Damage;
 import com.xiaoxiaoowo.yuehua.event.entity.Death;
 import com.xiaoxiaoowo.yuehua.event.entity.*;
@@ -27,12 +28,11 @@ import com.xiaoxiaoowo.yuehua.system.Team;
 import com.xiaoxiaoowo.yuehua.utils.*;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.PluginManager;
@@ -46,8 +46,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
 
-public final class
-Yuehua extends JavaPlugin {
+public final class Yuehua extends JavaPlugin {
     public static JavaPlugin instance;
     public static BukkitScheduler scheduler;
     public static CommandSender console;
@@ -56,9 +55,9 @@ Yuehua extends JavaPlugin {
     public static ServerSocket mySocket;
     public static Map<UUID, Data> playerData;
     public static Map<UUID, MonsterData> monsterData;
-    public static Map<UUID, DisPlayData> disPlayData;
     public static Set<String> nameSet;
     public static List<Inventory> shichang = new ArrayList<>(100);
+    public static Map<UUID, Long> timeLastIn;
 
     @Override
     public void onEnable() {
@@ -71,8 +70,8 @@ Yuehua extends JavaPlugin {
         //playerData size = player count * 100
         playerData = new HashMap<>(500);
         monsterData = new HashMap<>(20000);
-        disPlayData = new HashMap<>(1000);
         nameSet = new HashSet<>(200);
+        timeLastIn = new HashMap<>(1600);
         //数据库
         SQL.connect();
 
@@ -89,136 +88,6 @@ Yuehua extends JavaPlugin {
 
         //注册命令
         registerCommand();
-    }
-
-    public static void broadcastMes(Component mes) {
-        scheduler.runTaskAsynchronously(instance, () -> Bukkit.broadcast(mes));
-    }
-
-    public static void broadcastMes(Collection<Component> mess) {
-        scheduler.runTaskAsynchronously(instance, () -> mess.forEach(Bukkit::broadcast));
-    }
-
-    public static void sendMes(Component mes, Player player) {
-        scheduler.runTaskAsynchronously(instance, () -> player.sendMessage(mes));
-    }
-
-    public static void sendMes(Component mes, Collection<Player> players) {
-        scheduler.runTaskAsynchronously(instance, () -> players.forEach(it -> it.sendMessage(mes)));
-    }
-
-    public static void sendMes(Collection<Component> mess, Player player) {
-        scheduler.runTaskAsynchronously(instance, () -> mess.forEach(player::sendMessage));
-    }
-
-    public static void sendMes(Collection<Component> mess, Collection<Player> players) {
-        scheduler.runTaskAsynchronously(instance, () -> players.forEach(it -> mess.forEach(it::sendMessage)));
-    }
-
-    public static void sendActionBar(Player player, Component mes) {
-        scheduler.runTaskAsynchronously(instance, () -> player.sendActionBar(mes));
-    }
-
-    public static void sendActionBar(Collection<Player> players, Component mes) {
-        scheduler.runTaskAsynchronously(instance, () -> players.forEach(it -> it.sendActionBar(mes)));
-    }
-
-    public static void sendSoundAtLoc(Location location, Sound sound) {
-        GetEntity.world.playSound(location, sound, 1, 1);
-    }
-
-    public static void sendSoundAtEntity(Entity entity, Sound sound) {
-        GetEntity.world.playSound(entity, sound, 1, 1);
-    }
-
-    public static void sendSoundAtEntities(Collection<Entity> entities, Sound sound) {
-        entities.forEach(it -> GetEntity.world.playSound(it, sound, 1, 1));
-    }
-
-    public static void sendSoundAtLoc(Location location, Sound sound, float volume) {
-        GetEntity.world.playSound(location, sound, volume, 1);
-    }
-
-    public static void sendSountAtEntity(Entity entity, Sound sound, float volume) {
-        GetEntity.world.playSound(entity, sound, volume, 1);
-    }
-
-    public static void sendSountAtEntities(Collection<Entity> entities, Sound sound, float volume) {
-        entities.forEach(it -> GetEntity.world.playSound(it, sound, volume, 1));
-    }
-
-    public static void sendSoundAtLoc(Location location, String sound) {
-        GetEntity.world.playSound(location, sound, 1, 1);
-    }
-
-    public static void sendSoundAtEntity(Entity entity, String sound) {
-        GetEntity.world.playSound(entity, sound, 1, 1);
-    }
-
-    public static void sendSoundAtEntities(Collection<Entity> entities, String sound) {
-        entities.forEach(it -> GetEntity.world.playSound(it, sound, 1, 1));
-    }
-
-    public static void sendSoundAtLoc(Location location, String sound, float volume) {
-        GetEntity.world.playSound(location, sound, volume, 1);
-    }
-
-    public static void sendSoundAtEntity(Entity entity, String sound, float volume) {
-        GetEntity.world.playSound(entity, sound, volume, 1);
-    }
-
-    public static void sendSoundAtEntities(Collection<Entity> entities, String sound, float volume) {
-        entities.forEach(it -> GetEntity.world.playSound(it, sound, volume, 1));
-    }
-
-    //只可用于Runnable,不可用于BukkitRunnable
-    public static void async(Runnable runnable) {
-        scheduler.runTaskAsynchronously(instance, runnable);
-    }
-
-    public static int asyncWithId(Runnable runnable) {
-        return scheduler.runTaskAsynchronously(instance, runnable).getTaskId();
-    }
-
-    public static void asyncLater(Runnable runnable, long delay) {
-        scheduler.runTaskLaterAsynchronously(instance, runnable, delay);
-    }
-
-    public static int asyncLaterWithId(Runnable runnable, long delay) {
-        return scheduler.runTaskLaterAsynchronously(instance, runnable, delay).getTaskId();
-    }
-
-    public static void asyncTimer(Runnable runnable, long delay, long period) {
-        scheduler.runTaskTimerAsynchronously(instance, runnable, delay, period);
-    }
-
-
-    public static int asyncTimerWithId(Runnable runnable, long delay, long period) {
-        return scheduler.runTaskTimerAsynchronously(instance, runnable, delay, period).getTaskId();
-    }
-
-    public static void sync(Runnable runnable) {
-        scheduler.runTask(instance, runnable);
-    }
-
-    public static int syncWithId(Runnable runnable) {
-        return scheduler.runTask(instance, runnable).getTaskId();
-    }
-
-    public static void syncLater(Runnable runnable, long delay) {
-        scheduler.runTaskLater(instance, runnable, delay);
-    }
-
-    public static int syncLaterWithId(Runnable runnable, long delay) {
-        return scheduler.runTaskLater(instance, runnable, delay).getTaskId();
-    }
-
-    public static void syncTimer(Runnable runnable, long delay, long period) {
-        scheduler.runTaskTimer(instance, runnable, delay, period);
-    }
-
-    public static int syncTimerWithId(Runnable runnable, long delay, long period) {
-        return scheduler.runTaskTimer(instance, runnable, delay, period).getTaskId();
     }
 
 
@@ -287,6 +156,33 @@ Yuehua extends JavaPlugin {
             if (data.inventory9 != null) {
                 SQL.storePlayerInventory9(name, data.inventory9);
             }
+            if (data.inventory10 != null) {
+                SQL.storePlayerInventory10(name, data.inventory10);
+            }
+            if (data.inventory11 != null) {
+                SQL.storePlayerInventory11(name, data.inventory11);
+            }
+            if (data.inventory12 != null) {
+                SQL.storePlayerInventory12(name, data.inventory12);
+            }
+            if (data.inventory13 != null) {
+                SQL.storePlayerInventory13(name, data.inventory13);
+            }
+            if (data.inventory14 != null) {
+                SQL.storePlayerInventory14(name, data.inventory14);
+            }
+            if (data.inventory15 != null) {
+                SQL.storePlayerInventory15(name, data.inventory15);
+            }
+            if (data.inventory16 != null) {
+                SQL.storePlayerInventory16(name, data.inventory16);
+            }
+            if (data.inventory17 != null) {
+                SQL.storePlayerInventory17(name, data.inventory17);
+            }
+            if (data.inventory18 != null) {
+                SQL.storePlayerInventory18(name, data.inventory18);
+            }
             if (data.shipinBar != null) {
                 SQL.storeShiPin(uuid.toString(), data.shipinBar);
             }
@@ -315,7 +211,7 @@ Yuehua extends JavaPlugin {
         //队伍
         Team.init();
         //BGM
-        Yuehua.asyncTimer(
+        Scheduler.asyncTimer(
                 () -> {
                     for (Player player : players) {
                         LocationCheck.check(player);
@@ -323,7 +219,7 @@ Yuehua extends JavaPlugin {
                 }
                 , 0, 20 * 60 * 3);
 
-        Yuehua.asyncTimer(
+        Scheduler.asyncTimer(
                 () -> {
                     for (Data data : playerData.values()) {
                         Player player = data.player;
@@ -337,14 +233,13 @@ Yuehua extends JavaPlugin {
                             out.write(string.getBytes());
                             out.flush();
                         } catch (Exception e) {
-                            Yuehua.sync(
-                                    () ->player.kick(Component.text("§c疑似使用非官方客户端，多次违规将永久BAN！"))
+                            Scheduler.sync(
+                                    () -> player.kick(Component.text("§c网络异常!"))
                             );
-                            SQL.addCount(player.getName());
                         }
                     }
                 }
-        ,0,10);
+                , 0, 10);
 
 
         //开tcpserver
@@ -402,13 +297,14 @@ Yuehua extends JavaPlugin {
         pluginManager.registerEvents(new InventorySlotChange(), this);
         pluginManager.registerEvents(new Join(), this);
         pluginManager.registerEvents(new LevelChange(), this);
+        pluginManager.registerEvents(new Login(), this);
         pluginManager.registerEvents(new Quit(), this);
         pluginManager.registerEvents(new Swap(), this);
         pluginManager.registerEvents(new Teleport(), this);
 
         //projectile
         pluginManager.registerEvents(new Hit(), this);
-        pluginManager.registerEvents(new Launch(), this);
+        //pluginManager.registerEvents(new Launch(), this);
 
 
         //Spawner
@@ -418,7 +314,7 @@ Yuehua extends JavaPlugin {
 
     private void registerCommand() {
         //blockcommand
-//Objects.requireNonNull(Bukkit.getPluginCommand("blocktp")).setExecutor(new BlockTp());
+        Objects.requireNonNull(Bukkit.getPluginCommand("blocktp")).setExecutor(new BlockTp());
         Objects.requireNonNull(Bukkit.getPluginCommand("duanzao")).setExecutor(new DuanZao());
         Objects.requireNonNull(Bukkit.getPluginCommand("intogame")).setExecutor(new IntoGame());
         Objects.requireNonNull(Bukkit.getPluginCommand("markrelife")).setExecutor(new MarkRelife());
@@ -470,5 +366,16 @@ Yuehua extends JavaPlugin {
         Objects.requireNonNull(Bukkit.getPluginCommand("huancheng")).setExecutor(new HuanCheng());
     }
 
+    public static boolean ItemCompare(ItemStack itemStack1, ItemStack itemStack2) {
+        if (itemStack1.getType() != itemStack2.getType()) {
+            return false;
+        }
+        if (itemStack1.getAmount() != itemStack2.getAmount()) {
+            return false;
+        }
+        ItemMeta itemMeta1 = itemStack1.getItemMeta();
+        ItemMeta itemMeta2 = itemStack2.getItemMeta();
+        return Objects.equals(itemMeta1.getPersistentDataContainer().get(DataContainer.id, PersistentDataType.STRING), itemMeta2.getPersistentDataContainer().get(DataContainer.id, PersistentDataType.STRING));
+    }
 
 }

@@ -47,7 +47,7 @@ public final class DuanZao implements CommandExecutor {
         );
         itemMeta.lore(
                 List.of(
-                        Component.text("一号位核心，后续按核心配方顺序").color(NamedTextColor.GRAY).decorate(TextDecoration.ITALIC),
+                        Component.text("一号位核心，后续按配方顺序").color(NamedTextColor.GRAY).decorate(TextDecoration.ITALIC),
                         Component.text("放置完成后左键我！").color(NamedTextColor.GRAY).decorate(TextDecoration.ITALIC)
                 )
         );

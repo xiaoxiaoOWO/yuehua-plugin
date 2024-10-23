@@ -5,8 +5,8 @@ import com.xiaoxiaoowo.yuehua.data.DanData;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.data.GongData;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import com.xiaoxiaoowo.yuehua.utils.SendInformation;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
@@ -187,7 +187,7 @@ public final class LevelChange implements Listener {
             }
         }
 
-        Yuehua.sendMes(components, player);
+        SendInformation.sendMes(components, player);
     }
 
 }

@@ -23,8 +23,12 @@ public final class Hit implements Listener {
             return;
         }
         Projectile projectile = e.getEntity();
-        Set<String> tags = projectile.getScoreboardTags();
         Entity entity = (Entity) projectile.getShooter();
+        if (entity == null) {
+            return;
+        }
+        Set<String> tags = projectile.getScoreboardTags();
+
         if (entity.getType() == EntityType.PLAYER) {
             GongData gongData = (GongData) Yuehua.playerData.get(entity.getUniqueId());
             for (String tag : tags) {
@@ -32,7 +36,7 @@ public final class Hit implements Listener {
             }
         } else {
             for (String tag : tags) {
-                DoMonsterAttack.doMonsterAttack(tag, block.getLocation());
+                DoMonsterAttack.doMonsterAttack(tag, block.getLocation(), Yuehua.monsterData.get(entity.getUniqueId()));
             }
         }
 

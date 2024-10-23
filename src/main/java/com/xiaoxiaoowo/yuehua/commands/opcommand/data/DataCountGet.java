@@ -1,6 +1,7 @@
 package com.xiaoxiaoowo.yuehua.commands.opcommand.data;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
+import com.xiaoxiaoowo.yuehua.utils.SendInformation;
 import net.kyori.adventure.text.Component;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -21,11 +22,10 @@ public final class DataCountGet implements CommandExecutor {
                 return true;
             }
 
-            Yuehua.sendMes(
+            SendInformation.sendMes(
                     List.of(
                             Component.text("§6[命令系统]§a玩家数据量: " + "§b" + Yuehua.playerData.size()),
-                            Component.text("§6[命令系统]§a怪物数据量: " + "§b" + Yuehua.monsterData.size()),
-                            Component.text("§6[命令系统]§a展示数据量: " + "§b" + Yuehua.disPlayData.size())
+                            Component.text("§6[命令系统]§a怪物数据量: " + "§b" + Yuehua.monsterData.size())
                     ), player);
         }
         return true;

@@ -1,7 +1,7 @@
 package com.xiaoxiaoowo.yuehua.commands.playercommand;
 
-import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.utils.SQL;
+import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -17,7 +17,7 @@ public final class Yhteam implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         Player player = (Player) sender;
         String playerName = player.getName();
-        Yuehua.async(
+        Scheduler.async(
                 () -> {
                     switch (args[0]) {
                         case "create" -> {

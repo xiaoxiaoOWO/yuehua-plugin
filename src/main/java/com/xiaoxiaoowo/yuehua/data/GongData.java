@@ -29,7 +29,11 @@ public final class GongData extends Data {
     public long time_pulling;
     public long time_charging;
 
-    //弓弩ready
+    //角度
+    public double startPitch;
+
+    public double startYaw;
+
     public boolean isBow;
     public boolean canShoot;
 
@@ -55,6 +59,10 @@ public final class GongData extends Data {
         time_pulling = GetEntity.world.getGameTime();
         time_charging = pck.get(DataContainer.time_charging, PersistentDataType.LONG);
         isBow = pck.get(DataContainer.is_bow, PersistentDataType.BOOLEAN);
+
+        startPitch = 0.0;
+
+        startYaw = 0.0;
 
         canShoot = true;
         readyBow = true;

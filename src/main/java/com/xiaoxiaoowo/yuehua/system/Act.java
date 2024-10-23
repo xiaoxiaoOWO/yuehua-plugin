@@ -1,7 +1,6 @@
 package com.xiaoxiaoowo.yuehua.system;
 
 
-import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.DanData;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.data.GongData;
@@ -10,12 +9,22 @@ import com.xiaoxiaoowo.yuehua.system.act.ActFuling;
 import com.xiaoxiaoowo.yuehua.system.act.ActHujia;
 import com.xiaoxiaoowo.yuehua.system.act.ActYuShi;
 import com.xiaoxiaoowo.yuehua.task.hujia.Xiong1;
+import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 
 //不要忘了神器绑身体
 public final class Act {
 
+    public static void actHelp(Data data, String id){
+
+    }
+
+
+    public static void deActHelp(Data data, String id){
+
+    }
 
     public static void actZhan(ZhanData data, String id) {
+        actHelp(data, id);
         switch (id) {
             case "tou1" -> ActHujia.actTou1(data);
 
@@ -26,6 +35,7 @@ public final class Act {
     }
 
     public static void deActZhan(ZhanData data, String id) {
+        deActHelp(data, id);
         switch (id) {
             case "tou1" -> ActHujia.deActTou1(data);
         }
@@ -33,12 +43,14 @@ public final class Act {
     }
 
     public static void actGong(GongData data, String id) {
+        actHelp(data, id);
         switch (id) {
             case "tou1" -> ActHujia.actTou1(data);
         }
     }
 
     public static void deActGong(GongData data, String id) {
+        deActHelp(data, id);
         switch (id) {
             case "tou1" -> ActHujia.deActTou1(data);
         }
@@ -46,12 +58,14 @@ public final class Act {
     }
 
     public static void actDan(DanData data, String id) {
+        actHelp(data, id);
         switch (id) {
             case "tou1" -> ActHujia.actTou1(data);
         }
     }
 
     public static void deActDan(DanData data, String id) {
+        deActHelp(data, id);
         switch (id) {
             case "tou1" -> ActHujia.deActTou1(data);
         }
@@ -60,6 +74,7 @@ public final class Act {
 
 
     public static void actAll(Data data, String id) {
+        actHelp(data, id);
         switch (id) {
 
         }
@@ -67,12 +82,14 @@ public final class Act {
     }
 
     public static void deActAll(Data data, String id) {
+        deActHelp(data, id);
         switch (id) {
         }
 
     }
 
     public static void actAllEnderChest(Data data, String id) {
+        actHelp(data, id);
         switch (id) {
         }
 
@@ -80,6 +97,7 @@ public final class Act {
 
 
     public static void deActAllEnderChest(Data data, String id) {
+        deActHelp(data, id);
         switch (id) {
         }
 
@@ -88,7 +106,7 @@ public final class Act {
     public static void initZhan(ZhanData data, String id) {
         switch (id) {
             case "tou1" -> data.attackedObservers.add("tou1");
-            case "xiong1" -> Yuehua.syncLater(new Xiong1(data), (long) (30 * 20 * data.real_cool));
+            case "xiong1" -> Scheduler.syncLater(new Xiong1(data), (long) (30 * 20 * data.real_cool));
             case "tui1" -> data.curedObservers.add("tui1");
 
         }
@@ -98,7 +116,7 @@ public final class Act {
     public static void initGong(GongData data, String id) {
         switch (id) {
             case "tou1" -> data.attackedObservers.add("tou1");
-            case "xiong1" -> Yuehua.syncLater(new Xiong1(data), (long) (30 * 20 * data.real_cool));
+            case "xiong1" -> Scheduler.syncLater(new Xiong1(data), (long) (30 * 20 * data.real_cool));
             case "tui1" -> data.curedObservers.add("tui1");
         }
 
@@ -107,7 +125,7 @@ public final class Act {
     public static void initDan(DanData data, String id) {
         switch (id) {
             case "tou1" -> data.attackedObservers.add("tou1");
-            case "xiong1" -> Yuehua.syncLater(new Xiong1(data), (long) (30 * 20 * data.real_cool));
+            case "xiong1" -> Scheduler.syncLater(new Xiong1(data), (long) (30 * 20 * data.real_cool));
             case "tui1" -> data.curedObservers.add("tui1");
         }
 

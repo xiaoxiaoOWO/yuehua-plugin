@@ -10,11 +10,13 @@ import com.xiaoxiaoowo.yuehua.itemstack.Book;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import com.xiaoxiaoowo.yuehua.utils.SQL;
+import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -33,16 +35,16 @@ public final class Join implements Listener {
     public static final PotionEffect effect = new PotionEffect(PotionEffectType.NIGHT_VISION, -1, 10, false, false, true);
     private static final Location WAITING = new Location(GetEntity.world, 218.5, 50, -1779.5);
 
-
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
+        UUID uuid = player.getUniqueId();
         Location location = player.getLocation();
         player.teleport(WAITING);
         Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance, () -> {
             InetSocketAddress inetSocketAddress = player.getAddress();
             if (inetSocketAddress == null) {
-                Yuehua.sync(
+                Scheduler.sync(
                         () -> {
                             player.kick(Component.text("§4网络出现了故障"));
                         }
@@ -54,7 +56,7 @@ public final class Join implements Listener {
             for (Player p : Yuehua.players) {
                 InetSocketAddress address = p.getAddress();
                 if (address == null) {
-                    Yuehua.sync(
+                    Scheduler.sync(
                             () -> {
                                 player.teleportAsync(location);
                                 player.kick(Component.text("§4网络出现了故障"));
@@ -65,7 +67,7 @@ public final class Join implements Listener {
                 if (address.getAddress().getHostAddress().equals(ip)) {
                     {
                         if (p != player) {
-                            Yuehua.sync(
+                            Scheduler.sync(
                                     () -> {
                                         player.teleportAsync(location);
                                         player.banPlayer("§4禁止多开,如有特殊情况请联系管理员");
@@ -201,8 +203,6 @@ public final class Join implements Listener {
                 default -> new Data(player);
             };
 
-            UUID uuid = player.getUniqueId();
-
 
             int count = SQL.retrieveShiChangMoney(name);
             if (count != 0) {
@@ -211,10 +211,11 @@ public final class Join implements Listener {
                 player.sendMessage(Component.text("§6[全球市场]§a你的商品被购买了，总共获得了§b" + count + "§a元"));
             }
 
-            Yuehua.sync(
+
+            Scheduler.sync(
                     () -> {
-                        player.setHealthScale(20);
                         Yuehua.playerData.put(uuid, data);
+                        Yuehua.timeLastIn.put(uuid,System.currentTimeMillis());
                         if (player.isOp()) {
                             player.teleportAsync(location);
                             player.addScoreboardTag("op");
@@ -233,17 +234,17 @@ public final class Join implements Listener {
             );
 
 
-            Yuehua.asyncLater(() -> {
+            Scheduler.asyncLater(() -> {
                 if (!Yuehua.nameSet.remove(name)) {
                     if (player.isOnline()) {
                         SQL.addCount(name);
 
-                        Yuehua.sync(
-                                () ->player.kick(Component.text("§c疑似使用非官方客户端，多次违规将永久BAN！"))
+                        Scheduler.sync(
+                                () -> player.kick(Component.text("§c疑似使用非官方客户端，多次违规将永久BAN！"))
                         );
                     }
                 }
-            }, 20 * 10);
+            }, 20 * 20);
 
 
         });

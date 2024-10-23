@@ -3,9 +3,8 @@ package com.xiaoxiaoowo.yuehua.commands.blockcommand;
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import com.xiaoxiaoowo.yuehua.utils.LocationSet;
-import com.xiaoxiaoowo.yuehua.utils.PlaySound;
+import com.xiaoxiaoowo.yuehua.utils.SendInformation;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Location;
 import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.Command;
@@ -38,7 +37,7 @@ public final class BlockTp implements CommandExecutor {
                 if(player.getScoreboardTags().contains("xuanwu")){
                     player.teleportAsync(LocationSet.BLOCK_TP_XUAN_WU);
                 }else {
-                    Yuehua.sendMes(Component.text("§6[玄武准许]§4你还没有获得玄武的准许"),player);
+                    SendInformation.sendMes(Component.text("§6[玄武准许]§4你还没有获得玄武的准许"),player);
                 }
             }
         }

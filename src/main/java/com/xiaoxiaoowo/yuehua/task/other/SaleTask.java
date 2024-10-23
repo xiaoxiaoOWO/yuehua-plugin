@@ -5,6 +5,7 @@ import com.xiaoxiaoowo.yuehua.commands.playercommand.Buy;
 import com.xiaoxiaoowo.yuehua.commands.playercommand.Sale;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import com.xiaoxiaoowo.yuehua.utils.SendInformation;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -33,7 +34,7 @@ public final class SaleTask extends BukkitRunnable {
             Player saler = Sale.saler;
             Player buyer = Buy.buyerNow;
             if (buyer == null) {
-                Yuehua.broadcastMes(
+                SendInformation.broadcastMes(
                         Component.text("§6[拍卖系统]§4本次拍卖没有人出价，拍卖失败")
                 );
             } else {
@@ -42,7 +43,7 @@ public final class SaleTask extends BukkitRunnable {
                     Data buyerData = Yuehua.playerData.get(buyer.getUniqueId());
 
                     if (buyerData.money < Buy.priceNow) {
-                        Yuehua.broadcastMes(
+                        SendInformation.broadcastMes(
                                 Component.text("§6[拍卖系统]§4购买者余额不足，拍卖失败")
                         );
                     } else {
@@ -52,7 +53,7 @@ public final class SaleTask extends BukkitRunnable {
                         int iniCount = Sale.iniCount;
                         ItemStack itemStack = playerInventory.getItem(slot);
                         if (itemStack == null) {
-                            Yuehua.broadcastMes(
+                            SendInformation.broadcastMes(
                                     Component.text("§6[拍卖系统]§4拍卖者破坏规则，拍卖失败")
                             );
                         } else {
@@ -73,13 +74,13 @@ public final class SaleTask extends BukkitRunnable {
                                 buyerData.money -= Buy.priceNow;
 
 
-                                Yuehua.broadcastMes(
+                                SendInformation.broadcastMes(
                                         Component.text("§6[拍卖系统]§a玩家§b" + name + "的物品：§b" + itemName).append(Component.text("§b*" + count)).appendNewline()
                                                 .append(Component.text("§6[拍卖系统]§a最终购买者为：§b" + Buy.buyerNow.getName())).appendNewline()
                                                 .append(Component.text("§6[拍卖系统]§a最终出价为：§b" + Buy.priceNow))
                                 );
                             } else {
-                                Yuehua.broadcastMes(
+                                SendInformation.broadcastMes(
                                         Component.text("§6[拍卖系统]§4拍卖者破坏规则，拍卖失败")
                                 );
 
@@ -88,7 +89,7 @@ public final class SaleTask extends BukkitRunnable {
                     }
 
                 } else {
-                    Yuehua.broadcastMes(
+                    SendInformation.broadcastMes(
                             Component.text("§6[拍卖系统]§4拍卖双方有人不在线，拍卖失败")
                     );
                 }
@@ -101,14 +102,14 @@ public final class SaleTask extends BukkitRunnable {
             this.cancel();
         } else {
             if (Buy.buyerNow == null) {
-                Yuehua.broadcastMes(
+                SendInformation.broadcastMes(
                         Component.text("§6[拍卖系统]§a玩家§b" + name + "§a的物品：§b" + itemName).append(Component.text("§b*" + count)).appendNewline()
                                 .append(Component.text("§6[拍卖系统]§a当前购买者为：§b无")).appendNewline()
                                 .append(Component.text("§6[拍卖系统]§a当前出价为：§b无§a(起拍价:§b" + Sale.price + "§a)")).appendNewline()
                                 .append(Component.text("§6[拍卖系统]§a剩余时间为：§b" + (num * 10) + "s"))
                 );
             } else {
-                Yuehua.broadcastMes(
+                SendInformation.broadcastMes(
                         Component.text("§6[拍卖系统]§a玩家§b" + name + "§a的物品：§b" + itemName).append(Component.text("§b*" + count)).appendNewline()
                                 .append(Component.text("§6[拍卖系统]§a当前购买者为：§b" + Buy.buyerNow.getName())).appendNewline()
                                 .append(Component.text("§6[拍卖系统]§a当前出价为：§b" + Buy.priceNow)).appendNewline()

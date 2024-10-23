@@ -7,14 +7,15 @@ import com.xiaoxiaoowo.yuehua.data.slot.SlotBuilder;
 import com.xiaoxiaoowo.yuehua.data.slot.SlotWithOneActiveSkill;
 import com.xiaoxiaoowo.yuehua.system.Act;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -23,24 +24,34 @@ public class Data {
 
     public Set<Integer> taskIds;
 
+    public Set<String> deathObservers;
     public Set<String> jiNengObservers;
-
     public Set<String> attackObservers;
-
     public Set<String> baoJiObservers;
 
+    public Set<String> wuliAttackedObservers;
+    public Set<String> fashuAttackedObservers;
     public Set<String> attackedObservers;
 
     public Set<String> curedObservers;
-
     public Set<String> getHuDunObservers;
+
+    public Map<String, Object> extraData;
+
+    public Mob lastAttacker;
+
     //打开容器时设置为true
     public boolean open = false;
 
     public boolean canAttack = true;
     public boolean canJiNeng = true;
 
+    public int snowBlind = 0;
+    public int yezi = 0;
+    public int zhusi = 0;
+    public int soul = 0;
 
+    public int mustBaoji = 0;
 
     //时效性的属性存储于这里，玩家退出后将会消失，为了避免对正常游戏造成影响，尽量少使用长时效的BUFF
     public double attack;
@@ -136,6 +147,7 @@ public class Data {
     public int concentratedHuoCount;
     public int concentratedTuCount;
 
+
     public SlotWithOneActiveSkill slot0;
     public SlotWithOneActiveSkill slot1;
     public SlotWithOneActiveSkill slot2;
@@ -181,7 +193,7 @@ public class Data {
     //饰品槽
     public Inventory shipinBar;
 
-    public Data(){
+    public Data() {
     }
 
 
@@ -189,19 +201,25 @@ public class Data {
 
         this.player = player;
 
-        taskIds = new HashSet<>(15);
+        taskIds = new HashSet<>(20);
 
-        jiNengObservers = new HashSet<>(5);
+        deathObservers = new HashSet<>(4);
+
+        jiNengObservers = new HashSet<>(10);
 
         baoJiObservers = new HashSet<>(5);
 
         attackObservers = new HashSet<>(10);
 
-        attackedObservers = new HashSet<>(10);
+        wuliAttackedObservers = new HashSet<>(10);
+        fashuAttackedObservers = new HashSet<>(10);
+        attackedObservers = new HashSet<>(20);
 
         curedObservers = new HashSet<>(5);
 
         getHuDunObservers = new HashSet<>(5);
+
+        extraData = new HashMap<>(20);
 
 
         PersistentDataContainer pdc = player.getPersistentDataContainer();
@@ -356,56 +374,56 @@ public class Data {
 
     public String toString() {
         return "§6[命令系统]§aattack: §b" + attack
-               + "  §abaoji: §b" + baoji
-               + "  §abaojixiaoguo: §b" + baojixiaoguo + "\n"
-               + "§6[命令系统]§ahujia: §b" + hujia
-               + "  §apojia: §b" + pojia
-               + "  §afakang: §b" + fakang + "\n"
-               + "§6[命令系统]§apofa: §b" + pofa
-               + "  §agedang: §b" + gedang
-               + "  §ashouhu: §b" + shouhu + "\n"
-               + "§6[命令系统]§arenxing: §b" + renxing
-               + "  §ashengji: §b" + shengji
-               + "  §acool_reduce: §b" + cool_reduce + "\n"
-               + "§6[命令系统]§adumian: §b" + dumian
-               + "  §ahuomian: §b" + huomian
-               + "  §abingmian: §b" + bingmian + "\n"
-               + "§6[命令系统]§ajianmian: §b" + jianmian
-               + "  §ashuailuomian: §b" + shuailuomian
-               + "  §asanchajimian: §b" + sanchajimian + "\n"
-               + "§6[命令系统]§amoney: §b" + money
-               + "  §ajinCount: §b" + jinCount
-               + "  §amuCount: §b" + muCount + "\n"
-               + "§6[命令系统]§ashuiCount: §b" + shuiCount
-               + "  §ahuoCount: §b" + huoCount
-               + "  §atuCount: §b" + tuCount + "\n"
-               + "§6[命令系统]§arefinedJinCount: §b" + refinedJinCount
-               + "  §arefinedMuCount: §b" + refinedMuCount
-               + "  §arefinedShuiCount: §b" + refinedShuiCount + "\n"
-               + "§6[命令系统]§arefinedHuoCount: §b" + refinedHuoCount
-               + "  §arefinedTuCount: §b" + refinedTuCount
-               + "  §aconcentratedJinCount: §b" + concentratedJinCount + "\n"
-               + "§6[命令系统]§aconcentratedMuCount: §b" + concentratedMuCount
-               + "  §aconcentratedShuiCount: §b" + concentratedShuiCount
-               + "  §aconcentratedHuoCount: §b" + concentratedHuoCount + "\n"
-               + "§6[命令系统]§aconcentratedTuCount: §b" + concentratedTuCount
-               + "  §aslot0: §b" + slot0.id
-               + "  §aslot1: §b" + slot1.id + "\n"
-               + "§6[命令系统]§aslot2: §b" + slot2.id
-               + "  §aslot36: §b" + slot36.id
-               + "  §aslot37: §b" + slot37.id + "\n"
-               + "§6[命令系统]§aslot38: §b" + slot38.id
-               + "  §aslot39: §b" + slot39.id
-               + "  §aslot40: §b" + slot40.id + "\n"
-               + "§6[命令系统]§aslot8: §b" + slot8.id
-               + "  §aeSlot0: §b" + eSlot0.id
-               + "  §aeSlot1: §b" + eSlot1.id + "\n"
-               + "§6[命令系统]§aeSlot2: §b" + eSlot2.id
-               + "  §aeSlot3: §b" + eSlot3.id
-               + "  §aeSlot4: §b" + eSlot4.id + "\n"
-               + "§6[命令系统]§aeSlot5: §b" + eSlot5.id
-               + "  §aeSlot6: §b" + eSlot6.id
-               + "  §aeSlot7: §b" + eSlot7.id + "\n";
+                + "  §abaoji: §b" + baoji
+                + "  §abaojixiaoguo: §b" + baojixiaoguo + "\n"
+                + "§6[命令系统]§ahujia: §b" + hujia
+                + "  §apojia: §b" + pojia
+                + "  §afakang: §b" + fakang + "\n"
+                + "§6[命令系统]§apofa: §b" + pofa
+                + "  §agedang: §b" + gedang
+                + "  §ashouhu: §b" + shouhu + "\n"
+                + "§6[命令系统]§arenxing: §b" + renxing
+                + "  §ashengji: §b" + shengji
+                + "  §acool_reduce: §b" + cool_reduce + "\n"
+                + "§6[命令系统]§adumian: §b" + dumian
+                + "  §ahuomian: §b" + huomian
+                + "  §abingmian: §b" + bingmian + "\n"
+                + "§6[命令系统]§ajianmian: §b" + jianmian
+                + "  §ashuailuomian: §b" + shuailuomian
+                + "  §asanchajimian: §b" + sanchajimian + "\n"
+                + "§6[命令系统]§amoney: §b" + money
+                + "  §ajinCount: §b" + jinCount
+                + "  §amuCount: §b" + muCount + "\n"
+                + "§6[命令系统]§ashuiCount: §b" + shuiCount
+                + "  §ahuoCount: §b" + huoCount
+                + "  §atuCount: §b" + tuCount + "\n"
+                + "§6[命令系统]§arefinedJinCount: §b" + refinedJinCount
+                + "  §arefinedMuCount: §b" + refinedMuCount
+                + "  §arefinedShuiCount: §b" + refinedShuiCount + "\n"
+                + "§6[命令系统]§arefinedHuoCount: §b" + refinedHuoCount
+                + "  §arefinedTuCount: §b" + refinedTuCount
+                + "  §aconcentratedJinCount: §b" + concentratedJinCount + "\n"
+                + "§6[命令系统]§aconcentratedMuCount: §b" + concentratedMuCount
+                + "  §aconcentratedShuiCount: §b" + concentratedShuiCount
+                + "  §aconcentratedHuoCount: §b" + concentratedHuoCount + "\n"
+                + "§6[命令系统]§aconcentratedTuCount: §b" + concentratedTuCount
+                + "  §aslot0: §b" + slot0.id
+                + "  §aslot1: §b" + slot1.id + "\n"
+                + "§6[命令系统]§aslot2: §b" + slot2.id
+                + "  §aslot36: §b" + slot36.id
+                + "  §aslot37: §b" + slot37.id + "\n"
+                + "§6[命令系统]§aslot38: §b" + slot38.id
+                + "  §aslot39: §b" + slot39.id
+                + "  §aslot40: §b" + slot40.id + "\n"
+                + "§6[命令系统]§aslot8: §b" + slot8.id
+                + "  §aeSlot0: §b" + eSlot0.id
+                + "  §aeSlot1: §b" + eSlot1.id + "\n"
+                + "§6[命令系统]§aeSlot2: §b" + eSlot2.id
+                + "  §aeSlot3: §b" + eSlot3.id
+                + "  §aeSlot4: §b" + eSlot4.id + "\n"
+                + "§6[命令系统]§aeSlot5: §b" + eSlot5.id
+                + "  §aeSlot6: §b" + eSlot6.id
+                + "  §aeSlot7: §b" + eSlot7.id + "\n";
 
 
     }
@@ -424,12 +442,10 @@ public class Data {
 
     public void updateHujia() {
         hujia = Math.max(0.0, hujia_score + hujia_add);
-        hujia = Math.min(0.8, hujia);
     }
 
     public void updateFakang() {
         fakang = Math.max(0.0, fakang_score + fakang_add);
-        fakang = Math.min(0.8, fakang);
     }
 
     public void updateShouhu() {
@@ -645,8 +661,6 @@ public class Data {
         cool_reduce_unlimited = value;
         updateCoolReduce();
     }
-
-
 
 
 }

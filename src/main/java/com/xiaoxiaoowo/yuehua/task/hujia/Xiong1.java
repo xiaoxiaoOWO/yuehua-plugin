@@ -1,8 +1,9 @@
 package com.xiaoxiaoowo.yuehua.task.hujia;
 
-import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.utils.PlaySound;
+import com.xiaoxiaoowo.yuehua.utils.Scheduler;
+import com.xiaoxiaoowo.yuehua.utils.SendInformation;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 
@@ -23,10 +24,10 @@ public final class Xiong1 implements Runnable {
         }
         data.updateHujiaAdd(0.05);
         data.updateFakangAdd(0.05);
-        Yuehua.sendMes(Component.text("§e[被动技]§6[坚韧]§a触发"), player);
+        SendInformation.sendMes(Component.text("§e[被动技]§6[坚韧]§a触发"), player);
         PlaySound.SmithingTableUse(player);
 
-        Yuehua.syncLater(() -> {
+        Scheduler.syncLater(() -> {
             if ((!player.isConnected())) {
                 return;
             }
@@ -34,7 +35,7 @@ public final class Xiong1 implements Runnable {
             data.updateFakangAdd(-0.05);
         }, 5 * 20);
 
-        Yuehua.syncLater(
+        Scheduler.syncLater(
                 new Xiong1(data)
                 , (long) (30 * 20 * data.real_cool));
     }

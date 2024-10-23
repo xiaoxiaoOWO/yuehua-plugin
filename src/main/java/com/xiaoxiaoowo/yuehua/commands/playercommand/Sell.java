@@ -3,6 +3,7 @@ package com.xiaoxiaoowo.yuehua.commands.playercommand;
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -42,7 +43,7 @@ public final class Sell implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        Yuehua.async(() -> {
+        Scheduler.async(() -> {
             Player player = (Player) sender;
             if (args.length != 2) {
                 player.sendMessage(
@@ -73,7 +74,7 @@ public final class Sell implements CommandExecutor {
                 return;
             }
             Data data = Yuehua.playerData.get(player.getUniqueId());
-            int cost = (int) (amount * 0.05);
+            int cost = (int) (amount * 0.02);
             int finalCost = Math.max(2, cost);
             if (data.money < finalCost) {
                 player.sendMessage(

@@ -114,6 +114,7 @@ public final class Weapon {
     public static final ItemStack JIANCHANGULIN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
     public static final ItemStack MODUOHUNFAN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
 
+    //炉子
     public static final ItemStack HEI_TIE_GUO = new ItemStack(Material.GOLDEN_PICKAXE);
     public static final ItemStack QIN_TONG_GUO = new ItemStack(Material.GOLDEN_PICKAXE);
     public static final ItemStack LIAN_DAN_LU = new ItemStack(Material.GOLDEN_PICKAXE);
@@ -138,6 +139,7 @@ public final class Weapon {
     public static final ItemStack ZHANGQICUIZHU = new ItemStack(Material.NETHERITE_PICKAXE);
     public static final ItemStack MINGHONG = new ItemStack(Material.NETHERITE_PICKAXE);
 
+    //通用法宝
     public static final ItemStack ZHAOYAOJIN = new ItemStack(Material.IRON_PICKAXE, 1);
     public static final ItemStack YUFUCHEN = new ItemStack(Material.IRON_PICKAXE, 1);
     public static final ItemStack WUSEBUTIANSHI = new ItemStack(Material.IRON_PICKAXE, 1);
@@ -154,6 +156,7 @@ public final class Weapon {
     public static final ItemStack TAIJIBAGUA = new ItemStack(Material.IRON_PICKAXE, 1);
 
 
+    //盾牌
     public static final ItemStack LAOZHANSHIDUNPAI = new ItemStack(Material.SHIELD);
     public static final ItemStack XINBINDUNPAI = new ItemStack(Material.SHIELD);
     public static final ItemStack JINRUIDUNPAI = new ItemStack(Material.SHIELD);

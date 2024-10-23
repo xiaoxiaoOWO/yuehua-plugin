@@ -3,8 +3,8 @@ package com.xiaoxiaoowo.yuehua.commands.playercommand;
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.task.other.SaleTask;
+import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -27,7 +27,7 @@ public final class Sale implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        Yuehua.async(() -> {
+        Scheduler.async(() -> {
             Player player = (Player) sender;
             if (saler != null) {
                 player.sendMessage(Component.text("§6[命令系统]§4有人正在拍卖！"));

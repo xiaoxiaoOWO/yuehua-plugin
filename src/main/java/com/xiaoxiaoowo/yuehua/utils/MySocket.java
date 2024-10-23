@@ -1,6 +1,5 @@
 package com.xiaoxiaoowo.yuehua.utils;
 
-import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.commands.playercommand.Yh;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
@@ -49,7 +48,7 @@ public final class MySocket implements Runnable {
                         return;
                     }
 
-                    Yuehua.sync(
+                    Scheduler.sync(
                             () -> {
                                 player.openInventory(Yh.MAIN_MENU);
                                 PlaySound.openInventory(player);
@@ -63,7 +62,7 @@ public final class MySocket implements Runnable {
                     if(player == null){
                         return;
                     }
-                    Yuehua.sendMes(Component.text("§e[游戏机制]§4此功能仍未完善"),player);
+                    SendInformation.sendMes(Component.text("§e[游戏机制]§4此功能仍未完善"),player);
                 }
 
                 case "skill2" -> {
@@ -71,7 +70,7 @@ public final class MySocket implements Runnable {
                     if(player == null){
                         return;
                     }
-                    Yuehua.sendMes(Component.text("§e[游戏机制]§4此功能仍未完善"),player);
+                    SendInformation.sendMes(Component.text("§e[游戏机制]§4此功能仍未完善"),player);
                 }
 
                 case "skill3" -> {
@@ -79,7 +78,7 @@ public final class MySocket implements Runnable {
                     if(player == null){
                         return;
                     }
-                    Yuehua.sendMes(Component.text("§e[游戏机制]§4此功能仍未完善"),player);
+                    SendInformation.sendMes(Component.text("§e[游戏机制]§4此功能仍未完善"),player);
                 }
 
                 case "skill4" -> {
@@ -87,7 +86,7 @@ public final class MySocket implements Runnable {
                     if(player == null){
                         return;
                     }
-                    Yuehua.sendMes(Component.text("§e[游戏机制]§4此功能仍未完善"),player);
+                    SendInformation.sendMes(Component.text("§e[游戏机制]§4此功能仍未完善"),player);
                 }
 
                 case "skill5" -> {
@@ -95,7 +94,21 @@ public final class MySocket implements Runnable {
                     if(player == null){
                         return;
                     }
-                    Yuehua.sendMes(Component.text("§e[游戏机制]§4此功能仍未完善"),player);
+                    SendInformation.sendMes(Component.text("§e[游戏机制]§4此功能仍未完善"),player);
+                }
+
+                case  "ld" ->{
+                    Player player = Bukkit.getPlayer(value);
+                    if(player == null){
+                        return;
+                    }
+                }
+
+                case  "ys" ->{
+                    Player player = Bukkit.getPlayer(value);
+                    if(player == null){
+                        return;
+                    }
                 }
             }
 

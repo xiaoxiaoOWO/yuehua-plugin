@@ -17,11 +17,13 @@ public final class RegainHealth implements Listener {
         if (entity instanceof Player) {
             Data data = Yuehua.playerData.get(entity.getUniqueId());
             double shengji = data.shengji;
-            e.setAmount(e.getAmount() * shengji);
+            double amount = e.getAmount();
 
             for (String observer : data.curedObservers) {
-                DoCuredObserver.doCured(observer, data);
+                amount = amount * DoCuredObserver.doCured(observer, data);
             }
+
+            e.setAmount(amount * shengji);
         } else {
             if (!entity.getScoreboardTags().contains("m")) {
                 return;

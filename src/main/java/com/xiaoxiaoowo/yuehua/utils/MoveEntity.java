@@ -1,8 +1,6 @@
 package com.xiaoxiaoowo.yuehua.utils;
 
-import com.xiaoxiaoowo.yuehua.Yuehua;
 import org.bukkit.entity.Entity;
-import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.util.Vector;
 
 public final class MoveEntity {
@@ -52,7 +50,7 @@ public final class MoveEntity {
 
         entity.setVelocity(change);
 
-        Yuehua.syncLater(() -> entity.setVelocity(new Vector(0, 0, 0)), 2);
+        Scheduler.syncLater(() -> entity.setVelocity(new Vector(0, 0, 0)), 2);
     }
 
     public static void continueForce(Entity entity, double x, double y, double z){

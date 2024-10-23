@@ -63,7 +63,7 @@ public final class Click implements Listener {
                             PlaySound.openInventory(whoClicked);
                             whoClicked.openInventory(Yh.QIAN_KUN_BAG);
                         } else {
-                            Yuehua.async(() -> whoClicked.sendMessage(Component.text("§6[菜单系统]§4禁止在副本/试炼中使用乾坤盒")));
+                            Scheduler.async(() -> whoClicked.sendMessage(Component.text("§6[菜单系统]§4禁止在副本/试炼中使用乾坤盒")));
                             whoClicked.closeInventory();
                         }
                     });
@@ -74,7 +74,7 @@ public final class Click implements Listener {
                         Yuehua.scheduler.runTaskAsynchronously(
                                 Yuehua.instance, () -> {
                                     if (whoClicked.getPersistentDataContainer().get(DataContainer.fuben, PersistentDataType.INTEGER) != 0) {
-                                        Yuehua.sendMes(Component.text("§6[菜单系统]§4禁止在副本/试炼中使用此功能"), whoClicked);
+                                        SendInformation.sendMes(Component.text("§6[菜单系统]§4禁止在副本/试炼中使用此功能"), whoClicked);
                                         whoClicked.closeInventory();
                                         return;
                                     }
@@ -94,7 +94,7 @@ public final class Click implements Listener {
 
                     case 4 -> {
                         if (whoClicked.getPersistentDataContainer().get(DataContainer.fuben, PersistentDataType.INTEGER) != 0) {
-                            Yuehua.sendMes(Component.text("§6[菜单系统]§4禁止在副本/试炼中使用此功能"), whoClicked);
+                            SendInformation.sendMes(Component.text("§6[菜单系统]§4禁止在副本/试炼中使用此功能"), whoClicked);
                             whoClicked.closeInventory();
                             return;
                         }
@@ -129,12 +129,12 @@ public final class Click implements Listener {
                             }
                         }
 
-                        Yuehua.sendMes(messages, whoClicked);
+                        SendInformation.sendMes(messages, whoClicked);
                     }
 
                     case 8 -> {
                         if (whoClicked.getPersistentDataContainer().get(DataContainer.fuben, PersistentDataType.INTEGER) != 0) {
-                            Yuehua.sendMes(Component.text("§6[菜单系统]§4禁止在副本/试炼中使用此功能"), whoClicked);
+                            SendInformation.sendMes(Component.text("§6[菜单系统]§4禁止在副本/试炼中使用此功能"), whoClicked);
                             whoClicked.closeInventory();
                             return;
                         }
@@ -147,7 +147,7 @@ public final class Click implements Listener {
                             PlaySound.openInventory(whoClicked);
                             whoClicked.openInventory(Yh.ZA_XIANG);
                         } else {
-                            Yuehua.async(() -> whoClicked.sendMessage(Component.text("§6[菜单系统]§4禁止在副本/试炼中使用此功能")));
+                            Scheduler.async(() -> whoClicked.sendMessage(Component.text("§6[菜单系统]§4禁止在副本/试炼中使用此功能")));
                             whoClicked.closeInventory();
 
                         }
@@ -713,9 +713,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.MIDDLE) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 1);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -743,9 +743,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.LONG_XU_ZHEN) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 2);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -773,9 +773,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.SHAN_SHEN_MIAO) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 3);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -803,9 +803,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.QING_LONG_RU_KOU) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 4);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -832,9 +832,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.SHA_MO_KE_ZHAN) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 5);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -862,9 +862,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.SHA_MO_CUN_ZHUANG) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 6);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -892,9 +892,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.ZHU_QUE_RU_KOU) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 7);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -922,9 +922,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.CHEN_DA_FU) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 8);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -952,9 +952,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.SHAN_DONG_CUN_ZHUANG) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 9);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -982,9 +982,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.BAI_HU_RU_KOU) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 10);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -1012,9 +1012,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.SHUI_ZU_CUN_ZHUANG) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 11);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -1042,9 +1042,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.PENG_LAI_DU_KOU) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 12);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -1072,9 +1072,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.XUAN_WU_RU_KOU) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 13);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -1102,9 +1102,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.SHI_HUANG_RU_KOU) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 14);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -1132,9 +1132,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.HUO_MO_RU_KOU) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 15);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -1162,9 +1162,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.DA_SHI_JIE_ZHEN_YAO_TA) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 16);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -1192,9 +1192,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.KU_GU_RU_KOU) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 17);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -1222,9 +1222,9 @@ public final class Click implements Listener {
                             //判断是否在Location附件
                             if (whoClicked.getLocation().distanceSquared(LocationSet.SHENG_SHAN_RU_KOU) < 50) {
                                 whoClicked.addScoreboardTag("chonghua" + 18);
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§a重画晶激活"), whoClicked);
                             } else {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4你没有在重华晶激活点附近"), whoClicked);
                             }
                         }
                     }
@@ -1407,7 +1407,7 @@ public final class Click implements Listener {
                     if (item2 != null) {
                         if (item2.getType() != Material.EMERALD) {
                             //不可以镶嵌
-                            Yuehua.sendMes(Component.text("§6[镶嵌系统]§4只能用玉石镶嵌"), whoClicked);
+                            SendInformation.sendMes(Component.text("§6[镶嵌系统]§4只能用玉石镶嵌"), whoClicked);
                             return;
                         }
 
@@ -1422,12 +1422,12 @@ public final class Click implements Listener {
                             //可以镶嵌
                             String id = pdc1.get(DataContainer.insertid, PersistentDataType.STRING);
                             if (!Objects.equals(id, "null")) {
-                                Yuehua.sendMes(Component.text("§6[镶嵌系统]§4需要先拆卸已镶嵌的玉石"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[镶嵌系统]§4需要先拆卸已镶嵌的玉石"), whoClicked);
                             } else {
                                 ItemMeta itemMeta2 = item2.getItemMeta();
                                 String idYuShi = itemMeta2.getPersistentDataContainer().get(DataContainer.id, PersistentDataType.STRING);
                                 if (!Check.checkYushi(idYuShi, pdc1.get(DataContainer.slot, PersistentDataType.INTEGER))) {
-                                    Yuehua.sendMes(Component.text("§6[镶嵌系统]§4此装备不可镶嵌此玉石"), whoClicked);
+                                    SendInformation.sendMes(Component.text("§6[镶嵌系统]§4此装备不可镶嵌此玉石"), whoClicked);
                                     return;
                                 }
 
@@ -1447,7 +1447,7 @@ public final class Click implements Listener {
                             }
                         } else {
                             //不可以镶嵌
-                            Yuehua.sendMes(Component.text("§6[镶嵌系统]§4这个物品不可以镶嵌"), whoClicked);
+                            SendInformation.sendMes(Component.text("§6[镶嵌系统]§4这个物品不可以镶嵌"), whoClicked);
                         }
 
                     } else {
@@ -1458,7 +1458,7 @@ public final class Click implements Listener {
                             //可以镶嵌
                             String id = pdc1.get(DataContainer.insertid, PersistentDataType.STRING);
                             if (Objects.equals(id, "null")) {
-                                Yuehua.sendMes(Component.text("§6[菜单系统]§4没有可以拆卸的玉石"), whoClicked);
+                                SendInformation.sendMes(Component.text("§6[菜单系统]§4没有可以拆卸的玉石"), whoClicked);
                             } else {
                                 pdc1.set(DataContainer.insertid, PersistentDataType.STRING, "null");
                                 List<Component> lore = itemMeta1.lore();
@@ -1473,7 +1473,7 @@ public final class Click implements Listener {
 
                             }
                         } else {
-                            Yuehua.sendMes(Component.text("§6[菜单系统]§4这个物品不可以拆除镶嵌"), whoClicked);
+                            SendInformation.sendMes(Component.text("§6[菜单系统]§4这个物品不可以拆除镶嵌"), whoClicked);
                         }
                     }
 
@@ -1588,9 +1588,9 @@ public final class Click implements Listener {
                             Player sellerPlayer = Bukkit.getPlayer(seller);
                             if (sellerPlayer != null && sellerPlayer.isOnline()) {
                                 Yuehua.playerData.get(sellerPlayer.getUniqueId()).money += price;
-                                Yuehua.sendMes(Component.text("§6[全球市场]§a你的商品" + itemName + "被购买了，获得了§b" + price + "§a元"), sellerPlayer);
+                                SendInformation.sendMes(Component.text("§6[全球市场]§a你的商品" + itemName + "被购买了，获得了§b" + price + "§a元"), sellerPlayer);
                             } else {
-                                Yuehua.async(() -> {
+                                Scheduler.async(() -> {
                                     int count = SQL.retrieveShiChangMoney(seller);
                                     SQL.storeShiChangMoney(seller, count + price);
                                 });

@@ -44,7 +44,7 @@ public final class Money {
         ItemMeta itemMetaMONEY_ZHANSHEN = MONEY_ZHANSHEN.getItemMeta();
 
 
-        itemMetaTongQian.setMaxStackSize(1000);
+        itemMetaTongQian.setMaxStackSize(99);
         itemMetaJinYuanBao.setMaxStackSize(99);
         itemMetaYinPiao.setMaxStackSize(99);
         itemMetaZuanShi.setMaxStackSize(99);

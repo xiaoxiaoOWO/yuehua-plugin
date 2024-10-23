@@ -36,7 +36,6 @@ public final class DanData extends Data {
     public SlotWithOneActiveSkill slot4;
     public SlotWithOneActiveSkill slot5;
 
-    public long lastThrownPotionTime;
 
 
     public DanData(Player player) {
@@ -49,7 +48,6 @@ public final class DanData extends Data {
         cd_shui = time + 20 * 30L;
         cd_huo = time + 20 * 30L;
         cd_tu = time + 20 * 30L;
-        lastThrownPotionTime = time;
 
         PersistentDataContainer pck = player.getPersistentDataContainer();
         zhenfa_score = pck.get(DataContainer.zhenfa, PersistentDataType.DOUBLE);

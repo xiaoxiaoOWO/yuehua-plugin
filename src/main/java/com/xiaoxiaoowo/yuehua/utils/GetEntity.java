@@ -1,5 +1,6 @@
 package com.xiaoxiaoowo.yuehua.utils;
 
+import com.xiaoxiaoowo.yuehua.itemstack.monsterzhuangbei.Helmet;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.Location;
@@ -17,7 +18,7 @@ public final class GetEntity {
     public static World world;
     public static Random random;
 
-    public static double mydistance(Location location1, Location location2){
+    public static double mydistance(Location location1, Location location2) {
         double dx = location1.getX() - location2.getX();
         double dy = location1.getY() - location2.getY();
         double dz = location1.getZ() - location2.getZ();
@@ -125,7 +126,7 @@ public final class GetEntity {
         double nearestDistance = 0;
         for (Entity entity : entities) {
             Mob mob = (Mob) entity;
-            double distance = mydistance(location,mob.getLocation());
+            double distance = mydistance(location, mob.getLocation());
             if (nearest == null || distance < nearestDistance) {
                 nearest = mob;
                 nearestDistance = distance;
@@ -204,7 +205,7 @@ public final class GetEntity {
         double nearestDistance = 0;
         for (Entity entity : entities) {
             Player player = (Player) entity;
-            double distance = mydistance(location,player.getLocation());
+            double distance = mydistance(location, player.getLocation());
             if (nearest == null || distance < nearestDistance) {
                 nearest = player;
                 nearestDistance = distance;
@@ -213,6 +214,7 @@ public final class GetEntity {
         }
         return nearest;
     }
+
 
     public static ArrayList<Mob> getRayMonsterWithRoatation(Player player, double midDistance, double angle) {
         Location location = player.getEyeLocation();
@@ -234,1550 +236,8 @@ public final class GetEntity {
         Collection<Entity> monsters = GetEntity.getMonsters(midPoint, dx + 0.5, dy + 0.5, dz + 0.5);
         ArrayList<Mob> mobs = new ArrayList<>(monsters.size());
         Vector eyeVector = location.toVector();
-        //生物高度的一半加上去获得中心坐标向量，距离设置为高度宽度平均值一半的平方（避免一个过大造成的严重影响）,再稍微大一点
-        for (Entity entity : monsters) {
-            Mob entity1 = (Mob) entity;
-            double scale = entity1.getAttribute(Attribute.GENERIC_SCALE).getValue();
-            double scaleSquared = scale * scale;
-            switch (entity.getType()) {
-                case SILVERFISH -> {
-                    //高度：0.3格
-                    //宽度：0.4格
-                    Silverfish mob = (Silverfish) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.031 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
+        helpRay(monsters, mobs, 1, eyeVector, direction);
 
-                case SHULKER -> {
-                    //宽高1格
-                    Shulker mob = (Shulker) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.5 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case RAVAGER -> {
-                    Ravager mob = (Ravager) entity;
-
-                    //高度：2.2格
-                    //宽度：1.95格
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 1.1 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 1.08 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITCH -> {
-                    Witch mob = (Witch) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ILLUSIONER -> {
-                    Illusioner mob = (Illusioner) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case VINDICATOR -> {
-                    Vindicator mob = (Vindicator) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case PILLAGER -> {
-                    Pillager mob = (Pillager) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOMBIFIED_PIGLIN -> {
-                    PigZombie mob = (PigZombie) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-
-                case PIGLIN_BRUTE -> {
-                    PiglinBrute mob = (PiglinBrute) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOGLIN -> {
-                    Zoglin mob = (Zoglin) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.3965格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.6982格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-
-                case RABBIT -> {
-                    Rabbit mob = (Rabbit) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.5格
-                        //宽度：0.4格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.051 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.25格
-                        //宽度：0.2格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.125 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.013 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case PHANTOM -> {
-                    Phantom mob = (Phantom) entity;
-                    int size = mob.getSize();
-                    //尺寸
-                    double halfwidth = 0.9 + 0.2 * size;
-                    double halfweight = 0.5 + 0.1 * size;
-                    double average = (halfwidth + halfweight) / 2;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + halfweight).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < average * average) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SPIDER -> {
-                    Spider mob = (Spider) entity;
-                    //高度：0.9格
-                    //宽度：1.4格
-                    mob.getWidth();
-                    mob.getHeight();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.45 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.331 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case CAVE_SPIDER -> {
-                    CaveSpider mob = (CaveSpider) entity;
-                    //高度: 0.5方块
-                    //宽度: 0.7方块
-                    mob.getWidth();
-                    mob.getHeight();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case STRAY -> {
-                    Stray mob = (Stray) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case BOGGED -> {
-                    Bogged mob = (Bogged) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SKELETON -> {
-                    Skeleton mob = (Skeleton) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case MAGMA_CUBE -> {
-                    MagmaCube mob = (MagmaCube) entity;
-                    //高度：0.52*size
-                    //宽度：0.52*size
-                    int size = mob.getSize();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.26 * size).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.068 * size * size) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SLIME -> {
-                    Slime mob = (Slime) entity;
-                    //高度：0.52*size
-                    //宽度：0.52*size
-                    int size = mob.getSize();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.26 * size).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.068 * size * size) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case PIGLIN -> {
-                    Piglin mob = (Piglin) entity;
-
-                    //成年
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOMBIE_VILLAGER -> {
-                    ZombieVillager mob = (ZombieVillager) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case ZOMBIE -> {
-                    Zombie mob = (Zombie) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case DROWNED -> {
-                    Drowned mob = (Drowned) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-
-                case EVOKER -> {
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Evoker mob = (Evoker) entity;
-
-
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case GHAST -> {
-                    //高度：4.0格
-                    //宽度：4.0格
-                    Ghast mob = (Ghast) entity;
-
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 2.0 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 4.0 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ENDERMITE -> {
-                    //高度：0.3格
-                    //宽度：0.4格
-                    Endermite mob = (Endermite) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.031 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ELDER_GUARDIAN -> {
-                    //高度：1.9975格
-                    //宽度：1.9975格
-                    ElderGuardian mob = (ElderGuardian) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.99875 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 1 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case PUFFERFISH -> {
-                    PufferFish mob = (PufferFish) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    int state = mob.getPuffState();
-                    switch (state) {
-                        case 0 -> {
-                            //未膨胀的河豚：
-                            //高度：0.35格
-                            //宽度：0.35格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.175 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.031 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-
-                        case 1 -> {
-                            //半膨胀的河豚：
-                            //高度：0.5格
-                            //宽度：0.5格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.063 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-
-                        case 2 -> {
-                            //完全膨胀的河豚：
-                            //高度：0.7格
-                            //宽度：0.7格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.123 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-                    }
-
-                }
-
-                case GUARDIAN -> {
-                    //高度：0.85格
-                    //宽度：0.85格
-                    Guardian mob = (Guardian) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.425 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.181 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case HUSK -> {
-                    Husk mob = (Husk) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-
-                }
-//
-                case HOGLIN -> {
-                    Hoglin mob = (Hoglin) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.3965格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.6982格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case ENDERMAN -> {
-                    Enderman mob = (Enderman) entity;
-                    //高度：2.9格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.45 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.16 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.74 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.03 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.81 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.58 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v7 = base.clone().setY(base.getY() + 2.32 * scale).subtract(eyeVector);
-                    double distance7 = v7.crossProduct(direction).lengthSquared();
-                    if (distance7 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v8 = base.clone().setY(base.getY() + 0.29 * scale).subtract(eyeVector);
-                    double distance8 = v8.crossProduct(direction).lengthSquared();
-                    if (distance8 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v9 = base.clone().setY(base.getY() + 2.61 * scale).subtract(eyeVector);
-                    double distance9 = v9.crossProduct(direction).lengthSquared();
-                    if (distance9 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITHER -> {
-                    Wither mob = (Wither) entity;
-                    //高度：3.5格
-                    //宽度：0.9格
-                    Vector base = mob.getLocation().toVector();
-
-
-                    Vector v1 = base.clone().setY(base.getY() + 2.0 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.5 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.0 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.5 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 3.0 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.5 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITHER_SKELETON -> {
-                    WitherSkeleton mob = (WitherSkeleton) entity;
-                    //高度：2.4格
-                    //宽度：0.7格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.372 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.029 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 0.686 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.715 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 2.058 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.343 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WARDEN -> {
-                    Warden mob = (Warden) entity;
-                    //高度：2.9格
-                    //宽度：0.9格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.45 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.966 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.929 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.412 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.483 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case BREEZE -> {
-                    //高度：1.77格
-                    //宽度：0.6格
-                    Breeze mob = (Breeze) entity;
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.885 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.59 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.18 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.475 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.295 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case BLAZE -> {
-                    //高度：1.8格
-                    //宽度：0.6格
-                    Blaze mob = (Blaze) entity;
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.9 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.6 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.2 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.5 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.3 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-
-
-                }
-
-
-                case CREEPER -> {
-                    //高度：1.7格
-                    //宽度：0.6格
-                    Creeper mob = (Creeper) entity;
-
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.85 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.566 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.132 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.415 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.283 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                //条件敌对
-
-                case POLAR_BEAR -> {
-                    PolarBear mob = (PolarBear) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.4格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.7格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case BEE -> {
-                    Bee mob = (Bee) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.6格
-                        //宽度：0.7格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.3格
-                        //宽度：0.35格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-                case DOLPHIN -> {
-                    //高度：0.6格
-                    //宽度：0.9格
-                    Dolphin mob = (Dolphin) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.165 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-                case FOX -> {
-                    Fox mob = (Fox) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.7格
-                        //宽度：0.6格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.35格
-                        //宽度：0.3格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.175 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case IRON_GOLEM -> {
-                    //高度：2.7格
-                    //宽度：1.4格
-                    IronGolem mob = (IronGolem) entity;
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 1.35 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.675 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 2.025 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case VEX -> {
-                    Vex mob = (Vex) entity;
-                    //高度：0.8格
-                    //宽度：0.4格
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 0.6 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.4 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 0.2 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WOLF -> {
-                    Wolf mob = (Wolf) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.85格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-                        Vector v1 = base.clone().setY(base.getY() + 0.284 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.095 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.568 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.095 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.425格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-                        Vector v1 = base.clone().setY(base.getY() + 0.142 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.023 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.284 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.023 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case PANDA -> {
-                    Panda mob = (Panda) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.25格
-                        //宽度：1.3格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.625 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.407 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.625格
-                        //宽度：0.65格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3125 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.102 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-            }
-
-        }
         return mobs;
     }
 
@@ -1802,3120 +262,38 @@ public final class GetEntity {
         ArrayList<Mob> mobs = new ArrayList<>(monsters.size());
         Vector eyeVector = location.toVector();
         sizemultiplier = sizemultiplier * sizemultiplier;
-        //生物高度的一半加上去获得中心坐标向量，距离设置为高度宽度平均值一半的平方（避免一个过大造成的严重影响）,再稍微大一点
-        for (Entity entity : monsters) {
-            Mob entity1 = (Mob) entity;
-            double scale = entity1.getAttribute(Attribute.GENERIC_SCALE).getValue();
-            double scaleSquared = scale * scale * sizemultiplier;
-            switch (entity.getType()) {
-                case SILVERFISH -> {
-                    //高度：0.3格
-                    //宽度：0.4格
-                    Silverfish mob = (Silverfish) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.031 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
+        helpRay(monsters, mobs, sizemultiplier, eyeVector, direction);
 
-                case SHULKER -> {
-                    //宽高1格
-                    Shulker mob = (Shulker) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.5 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case RAVAGER -> {
-                    Ravager mob = (Ravager) entity;
-
-                    //高度：2.2格
-                    //宽度：1.95格
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 1.1 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 1.08 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITCH -> {
-                    Witch mob = (Witch) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ILLUSIONER -> {
-                    Illusioner mob = (Illusioner) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case VINDICATOR -> {
-                    Vindicator mob = (Vindicator) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case PILLAGER -> {
-                    Pillager mob = (Pillager) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOMBIFIED_PIGLIN -> {
-                    PigZombie mob = (PigZombie) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-
-                case PIGLIN_BRUTE -> {
-                    PiglinBrute mob = (PiglinBrute) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOGLIN -> {
-                    Zoglin mob = (Zoglin) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.3965格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.6982格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-
-                case RABBIT -> {
-                    Rabbit mob = (Rabbit) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.5格
-                        //宽度：0.4格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.051 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.25格
-                        //宽度：0.2格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.125 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.013 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case PHANTOM -> {
-                    Phantom mob = (Phantom) entity;
-                    int size = mob.getSize();
-                    //尺寸
-                    double halfwidth = 0.9 + 0.2 * size;
-                    double halfweight = 0.5 + 0.1 * size;
-                    double average = (halfwidth + halfweight) / 2;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + halfweight).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < average * average) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SPIDER -> {
-                    Spider mob = (Spider) entity;
-                    //高度：0.9格
-                    //宽度：1.4格
-                    mob.getWidth();
-                    mob.getHeight();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.45 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.331 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case CAVE_SPIDER -> {
-                    CaveSpider mob = (CaveSpider) entity;
-                    //高度: 0.5方块
-                    //宽度: 0.7方块
-                    mob.getWidth();
-                    mob.getHeight();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case STRAY -> {
-                    Stray mob = (Stray) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case BOGGED -> {
-                    Bogged mob = (Bogged) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SKELETON -> {
-                    Skeleton mob = (Skeleton) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case MAGMA_CUBE -> {
-                    MagmaCube mob = (MagmaCube) entity;
-                    //高度：0.52*size
-                    //宽度：0.52*size
-                    int size = mob.getSize();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.26 * size).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.068 * size * size) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SLIME -> {
-                    Slime mob = (Slime) entity;
-                    //高度：0.52*size
-                    //宽度：0.52*size
-                    int size = mob.getSize();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.26 * size).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.068 * size * size) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case PIGLIN -> {
-                    Piglin mob = (Piglin) entity;
-
-                    //成年
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOMBIE_VILLAGER -> {
-                    ZombieVillager mob = (ZombieVillager) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case ZOMBIE -> {
-                    Zombie mob = (Zombie) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case DROWNED -> {
-                    Drowned mob = (Drowned) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-
-                case EVOKER -> {
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Evoker mob = (Evoker) entity;
-
-
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case GHAST -> {
-                    //高度：4.0格
-                    //宽度：4.0格
-                    Ghast mob = (Ghast) entity;
-
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 2.0 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 4.0 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ENDERMITE -> {
-                    //高度：0.3格
-                    //宽度：0.4格
-                    Endermite mob = (Endermite) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.031 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ELDER_GUARDIAN -> {
-                    //高度：1.9975格
-                    //宽度：1.9975格
-                    ElderGuardian mob = (ElderGuardian) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.99875 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 1 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case PUFFERFISH -> {
-                    PufferFish mob = (PufferFish) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    int state = mob.getPuffState();
-                    switch (state) {
-                        case 0 -> {
-                            //未膨胀的河豚：
-                            //高度：0.35格
-                            //宽度：0.35格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.175 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.031 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-
-                        case 1 -> {
-                            //半膨胀的河豚：
-                            //高度：0.5格
-                            //宽度：0.5格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.063 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-
-                        case 2 -> {
-                            //完全膨胀的河豚：
-                            //高度：0.7格
-                            //宽度：0.7格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.123 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-                    }
-
-                }
-
-                case GUARDIAN -> {
-                    //高度：0.85格
-                    //宽度：0.85格
-                    Guardian mob = (Guardian) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.425 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.181 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case HUSK -> {
-                    Husk mob = (Husk) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-
-                }
-//
-                case HOGLIN -> {
-                    Hoglin mob = (Hoglin) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.3965格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.6982格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case ENDERMAN -> {
-                    Enderman mob = (Enderman) entity;
-                    //高度：2.9格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.45 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.16 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.74 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.03 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.81 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.58 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v7 = base.clone().setY(base.getY() + 2.32 * scale).subtract(eyeVector);
-                    double distance7 = v7.crossProduct(direction).lengthSquared();
-                    if (distance7 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v8 = base.clone().setY(base.getY() + 0.29 * scale).subtract(eyeVector);
-                    double distance8 = v8.crossProduct(direction).lengthSquared();
-                    if (distance8 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v9 = base.clone().setY(base.getY() + 2.61 * scale).subtract(eyeVector);
-                    double distance9 = v9.crossProduct(direction).lengthSquared();
-                    if (distance9 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITHER -> {
-                    Wither mob = (Wither) entity;
-                    //高度：3.5格
-                    //宽度：0.9格
-                    Vector base = mob.getLocation().toVector();
-
-
-                    Vector v1 = base.clone().setY(base.getY() + 2.0 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.5 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.0 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.5 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 3.0 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.5 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITHER_SKELETON -> {
-                    WitherSkeleton mob = (WitherSkeleton) entity;
-                    //高度：2.4格
-                    //宽度：0.7格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.372 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.029 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 0.686 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.715 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 2.058 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.343 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WARDEN -> {
-                    Warden mob = (Warden) entity;
-                    //高度：2.9格
-                    //宽度：0.9格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.45 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.966 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.929 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.412 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.483 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case BREEZE -> {
-                    //高度：1.77格
-                    //宽度：0.6格
-                    Breeze mob = (Breeze) entity;
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.885 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.59 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.18 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.475 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.295 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case BLAZE -> {
-                    //高度：1.8格
-                    //宽度：0.6格
-                    Blaze mob = (Blaze) entity;
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.9 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.6 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.2 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.5 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.3 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-
-
-                }
-
-
-                case CREEPER -> {
-                    //高度：1.7格
-                    //宽度：0.6格
-                    Creeper mob = (Creeper) entity;
-
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.85 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.566 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.132 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.415 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.283 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                //条件敌对
-
-                case POLAR_BEAR -> {
-                    PolarBear mob = (PolarBear) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.4格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.7格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case BEE -> {
-                    Bee mob = (Bee) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.6格
-                        //宽度：0.7格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.3格
-                        //宽度：0.35格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-                case DOLPHIN -> {
-                    //高度：0.6格
-                    //宽度：0.9格
-                    Dolphin mob = (Dolphin) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.165 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-                case FOX -> {
-                    Fox mob = (Fox) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.7格
-                        //宽度：0.6格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.35格
-                        //宽度：0.3格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.175 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case IRON_GOLEM -> {
-                    //高度：2.7格
-                    //宽度：1.4格
-                    IronGolem mob = (IronGolem) entity;
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 1.35 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.675 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 2.025 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case VEX -> {
-                    Vex mob = (Vex) entity;
-                    //高度：0.8格
-                    //宽度：0.4格
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 0.6 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.4 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 0.2 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WOLF -> {
-                    Wolf mob = (Wolf) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.85格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-                        Vector v1 = base.clone().setY(base.getY() + 0.284 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.095 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.568 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.095 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.425格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-                        Vector v1 = base.clone().setY(base.getY() + 0.142 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.023 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.284 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.023 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case PANDA -> {
-                    Panda mob = (Panda) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.25格
-                        //宽度：1.3格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.625 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.407 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.625格
-                        //宽度：0.65格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3125 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.102 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-            }
-
-        }
         return mobs;
     }
 
-    public static ArrayList<Mob> getLineMonster(Vector eyeVector, Vector vector2) {
-        double x = eyeVector.getX();
-        double y = eyeVector.getY();
-        double z = eyeVector.getZ();
+    public static ArrayList<Mob> getLineMonster(Vector start, Vector end) {
+        double x = start.getX();
+        double y = start.getY();
+        double z = start.getZ();
 
-        double dx = (vector2.getX() - x) / 2;
-        double dy = (vector2.getY() - y) / 2;
-        double dz = (vector2.getZ() - z) / 2;
+        double dx = (end.getX() - x) / 2;
+        double dy = (end.getY() - y) / 2;
+        double dz = (end.getZ() - z) / 2;
 
         Vector direction = new Vector(dx, dy, dz).normalize();
 
         Location midPoint = new Location(GetEntity.world, x + dx, y + dy, z + dz);
         Collection<Entity> monsters = GetEntity.getMonsters(midPoint, dx + 0.5, dy + 0.5, dz + 0.5);
         ArrayList<Mob> mobs = new ArrayList<>(monsters.size());
+        helpRay(monsters, mobs, 1, start, direction);
 
-        for (Entity entity : monsters) {
-            Mob entity1 = (Mob) entity;
-            double scale = entity1.getAttribute(Attribute.GENERIC_SCALE).getValue();
-            double scaleSquared = scale * scale;
-            switch (entity.getType()) {
-                case SILVERFISH -> {
-                    //高度：0.3格
-                    //宽度：0.4格
-                    Silverfish mob = (Silverfish) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.031 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SHULKER -> {
-                    //宽高1格
-                    Shulker mob = (Shulker) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.5 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case RAVAGER -> {
-                    Ravager mob = (Ravager) entity;
-
-                    //高度：2.2格
-                    //宽度：1.95格
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 1.1 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 1.08 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITCH -> {
-                    Witch mob = (Witch) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ILLUSIONER -> {
-                    Illusioner mob = (Illusioner) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case VINDICATOR -> {
-                    Vindicator mob = (Vindicator) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case PILLAGER -> {
-                    Pillager mob = (Pillager) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOMBIFIED_PIGLIN -> {
-                    PigZombie mob = (PigZombie) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-
-                case PIGLIN_BRUTE -> {
-                    PiglinBrute mob = (PiglinBrute) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOGLIN -> {
-                    Zoglin mob = (Zoglin) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.3965格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.6982格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-
-                case RABBIT -> {
-                    Rabbit mob = (Rabbit) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.5格
-                        //宽度：0.4格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.051 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.25格
-                        //宽度：0.2格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.125 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.013 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case PHANTOM -> {
-                    Phantom mob = (Phantom) entity;
-                    int size = mob.getSize();
-                    //尺寸
-                    double halfwidth = 0.9 + 0.2 * size;
-                    double halfweight = 0.5 + 0.1 * size;
-                    double average = (halfwidth + halfweight) / 2;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + halfweight).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < average * average) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SPIDER -> {
-                    Spider mob = (Spider) entity;
-                    //高度：0.9格
-                    //宽度：1.4格
-                    mob.getWidth();
-                    mob.getHeight();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.45 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.331 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case CAVE_SPIDER -> {
-                    CaveSpider mob = (CaveSpider) entity;
-                    //高度: 0.5方块
-                    //宽度: 0.7方块
-                    mob.getWidth();
-                    mob.getHeight();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case STRAY -> {
-                    Stray mob = (Stray) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case BOGGED -> {
-                    Bogged mob = (Bogged) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SKELETON -> {
-                    Skeleton mob = (Skeleton) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case MAGMA_CUBE -> {
-                    MagmaCube mob = (MagmaCube) entity;
-                    //高度：0.52*size
-                    //宽度：0.52*size
-                    int size = mob.getSize();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.26 * size).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.068 * size * size) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SLIME -> {
-                    Slime mob = (Slime) entity;
-                    //高度：0.52*size
-                    //宽度：0.52*size
-                    int size = mob.getSize();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.26 * size).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.068 * size * size) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case PIGLIN -> {
-                    Piglin mob = (Piglin) entity;
-
-                    //成年
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOMBIE_VILLAGER -> {
-                    ZombieVillager mob = (ZombieVillager) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case ZOMBIE -> {
-                    Zombie mob = (Zombie) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case DROWNED -> {
-                    Drowned mob = (Drowned) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-
-                case EVOKER -> {
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Evoker mob = (Evoker) entity;
-
-
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case GHAST -> {
-                    //高度：4.0格
-                    //宽度：4.0格
-                    Ghast mob = (Ghast) entity;
-
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 2.0 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 4.0 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ENDERMITE -> {
-                    //高度：0.3格
-                    //宽度：0.4格
-                    Endermite mob = (Endermite) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.031 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ELDER_GUARDIAN -> {
-                    //高度：1.9975格
-                    //宽度：1.9975格
-                    ElderGuardian mob = (ElderGuardian) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.99875 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 1 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case PUFFERFISH -> {
-                    PufferFish mob = (PufferFish) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    int state = mob.getPuffState();
-                    switch (state) {
-                        case 0 -> {
-                            //未膨胀的河豚：
-                            //高度：0.35格
-                            //宽度：0.35格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.175 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.031 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-
-                        case 1 -> {
-                            //半膨胀的河豚：
-                            //高度：0.5格
-                            //宽度：0.5格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.063 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-
-                        case 2 -> {
-                            //完全膨胀的河豚：
-                            //高度：0.7格
-                            //宽度：0.7格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.123 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-                    }
-
-                }
-
-                case GUARDIAN -> {
-                    //高度：0.85格
-                    //宽度：0.85格
-                    Guardian mob = (Guardian) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.425 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.181 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case HUSK -> {
-                    Husk mob = (Husk) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-
-                }
-//
-                case HOGLIN -> {
-                    Hoglin mob = (Hoglin) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.3965格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.6982格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case ENDERMAN -> {
-                    Enderman mob = (Enderman) entity;
-                    //高度：2.9格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.45 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.16 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.74 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.03 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.81 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.58 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v7 = base.clone().setY(base.getY() + 2.32 * scale).subtract(eyeVector);
-                    double distance7 = v7.crossProduct(direction).lengthSquared();
-                    if (distance7 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v8 = base.clone().setY(base.getY() + 0.29 * scale).subtract(eyeVector);
-                    double distance8 = v8.crossProduct(direction).lengthSquared();
-                    if (distance8 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v9 = base.clone().setY(base.getY() + 2.61 * scale).subtract(eyeVector);
-                    double distance9 = v9.crossProduct(direction).lengthSquared();
-                    if (distance9 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITHER -> {
-                    Wither mob = (Wither) entity;
-                    //高度：3.5格
-                    //宽度：0.9格
-                    Vector base = mob.getLocation().toVector();
-
-
-                    Vector v1 = base.clone().setY(base.getY() + 2.0 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.5 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.0 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.5 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 3.0 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.5 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITHER_SKELETON -> {
-                    WitherSkeleton mob = (WitherSkeleton) entity;
-                    //高度：2.4格
-                    //宽度：0.7格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.372 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.029 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 0.686 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.715 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 2.058 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.343 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WARDEN -> {
-                    Warden mob = (Warden) entity;
-                    //高度：2.9格
-                    //宽度：0.9格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.45 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.966 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.929 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.412 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.483 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case BREEZE -> {
-                    //高度：1.77格
-                    //宽度：0.6格
-                    Breeze mob = (Breeze) entity;
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.885 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.59 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.18 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.475 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.295 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case BLAZE -> {
-                    //高度：1.8格
-                    //宽度：0.6格
-                    Blaze mob = (Blaze) entity;
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.9 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.6 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.2 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.5 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.3 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-
-
-                }
-                case CREEPER -> {
-                    //高度：1.7格
-                    //宽度：0.6格
-                    Creeper mob = (Creeper) entity;
-
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.85 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.566 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.132 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.415 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.283 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                //条件敌对
-
-                case POLAR_BEAR -> {
-                    PolarBear mob = (PolarBear) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.4格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.7格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case BEE -> {
-                    Bee mob = (Bee) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.6格
-                        //宽度：0.7格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.3格
-                        //宽度：0.35格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-                case DOLPHIN -> {
-                    //高度：0.6格
-                    //宽度：0.9格
-                    Dolphin mob = (Dolphin) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.165 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-                case FOX -> {
-                    Fox mob = (Fox) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.7格
-                        //宽度：0.6格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.35格
-                        //宽度：0.3格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.175 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case IRON_GOLEM -> {
-                    //高度：2.7格
-                    //宽度：1.4格
-                    IronGolem mob = (IronGolem) entity;
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 1.35 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.675 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 2.025 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case VEX -> {
-                    Vex mob = (Vex) entity;
-                    //高度：0.8格
-                    //宽度：0.4格
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 0.6 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.4 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 0.2 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WOLF -> {
-                    Wolf mob = (Wolf) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.85格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-                        Vector v1 = base.clone().setY(base.getY() + 0.284 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.095 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.568 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.095 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.425格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-                        Vector v1 = base.clone().setY(base.getY() + 0.142 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.023 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.284 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.023 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case PANDA -> {
-                    Panda mob = (Panda) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.25格
-                        //宽度：1.3格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.625 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.407 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.625格
-                        //宽度：0.65格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3125 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.102 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-            }
-
-        }
         return mobs;
     }
 
-    public static ArrayList<Mob> getLineMonster(Vector eyeVector, Vector vector2,double sizemultiplier) {
-        double x = eyeVector.getX();
-        double y = eyeVector.getY();
-        double z = eyeVector.getZ();
+    public static ArrayList<Mob> getLineMonster(Vector start, Vector end, double sizemultiplier) {
+        double x = start.getX();
+        double y = start.getY();
+        double z = start.getZ();
 
-        double dx = (vector2.getX() - x) / 2;
-        double dy = (vector2.getY() - y) / 2;
-        double dz = (vector2.getZ() - z) / 2;
+        double dx = (end.getX() - x) / 2;
+        double dy = (end.getY() - y) / 2;
+        double dz = (end.getZ() - z) / 2;
 
         Vector direction = new Vector(dx, dy, dz).normalize();
 
@@ -4923,1547 +301,8 @@ public final class GetEntity {
         Collection<Entity> monsters = GetEntity.getMonsters(midPoint, dx + 0.5, dy + 0.5, dz + 0.5);
         ArrayList<Mob> mobs = new ArrayList<>(monsters.size());
         sizemultiplier = sizemultiplier * sizemultiplier;
-        for (Entity entity : monsters) {
-            Mob entity1 = (Mob) entity;
-            double scale = entity1.getAttribute(Attribute.GENERIC_SCALE).getValue();
-            double scaleSquared = scale * scale * sizemultiplier;
-            switch (entity.getType()) {
-                case SILVERFISH -> {
-                    //高度：0.3格
-                    //宽度：0.4格
-                    Silverfish mob = (Silverfish) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.031 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
+        helpRay(monsters, mobs, sizemultiplier, start, direction);
 
-                case SHULKER -> {
-                    //宽高1格
-                    Shulker mob = (Shulker) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.5 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case RAVAGER -> {
-                    Ravager mob = (Ravager) entity;
-
-                    //高度：2.2格
-                    //宽度：1.95格
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 1.1 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 1.08 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITCH -> {
-                    Witch mob = (Witch) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ILLUSIONER -> {
-                    Illusioner mob = (Illusioner) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case VINDICATOR -> {
-                    Vindicator mob = (Vindicator) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case PILLAGER -> {
-                    Pillager mob = (Pillager) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOMBIFIED_PIGLIN -> {
-                    PigZombie mob = (PigZombie) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-
-                case PIGLIN_BRUTE -> {
-                    PiglinBrute mob = (PiglinBrute) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOGLIN -> {
-                    Zoglin mob = (Zoglin) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.3965格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.6982格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-
-                case RABBIT -> {
-                    Rabbit mob = (Rabbit) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.5格
-                        //宽度：0.4格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.051 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.25格
-                        //宽度：0.2格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.125 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.013 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case PHANTOM -> {
-                    Phantom mob = (Phantom) entity;
-                    int size = mob.getSize();
-                    //尺寸
-                    double halfwidth = 0.9 + 0.2 * size;
-                    double halfweight = 0.5 + 0.1 * size;
-                    double average = (halfwidth + halfweight) / 2;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + halfweight).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < average * average) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SPIDER -> {
-                    Spider mob = (Spider) entity;
-                    //高度：0.9格
-                    //宽度：1.4格
-                    mob.getWidth();
-                    mob.getHeight();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.45 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.331 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case CAVE_SPIDER -> {
-                    CaveSpider mob = (CaveSpider) entity;
-                    //高度: 0.5方块
-                    //宽度: 0.7方块
-                    mob.getWidth();
-                    mob.getHeight();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case STRAY -> {
-                    Stray mob = (Stray) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case BOGGED -> {
-                    Bogged mob = (Bogged) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SKELETON -> {
-                    Skeleton mob = (Skeleton) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case MAGMA_CUBE -> {
-                    MagmaCube mob = (MagmaCube) entity;
-                    //高度：0.52*size
-                    //宽度：0.52*size
-                    int size = mob.getSize();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.26 * size).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.068 * size * size) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SLIME -> {
-                    Slime mob = (Slime) entity;
-                    //高度：0.52*size
-                    //宽度：0.52*size
-                    int size = mob.getSize();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.26 * size).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.068 * size * size) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case PIGLIN -> {
-                    Piglin mob = (Piglin) entity;
-
-                    //成年
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOMBIE_VILLAGER -> {
-                    ZombieVillager mob = (ZombieVillager) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case ZOMBIE -> {
-                    Zombie mob = (Zombie) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case DROWNED -> {
-                    Drowned mob = (Drowned) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-
-                case EVOKER -> {
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Evoker mob = (Evoker) entity;
-
-
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case GHAST -> {
-                    //高度：4.0格
-                    //宽度：4.0格
-                    Ghast mob = (Ghast) entity;
-
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 2.0 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 4.0 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ENDERMITE -> {
-                    //高度：0.3格
-                    //宽度：0.4格
-                    Endermite mob = (Endermite) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.031 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ELDER_GUARDIAN -> {
-                    //高度：1.9975格
-                    //宽度：1.9975格
-                    ElderGuardian mob = (ElderGuardian) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.99875 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 1 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case PUFFERFISH -> {
-                    PufferFish mob = (PufferFish) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    int state = mob.getPuffState();
-                    switch (state) {
-                        case 0 -> {
-                            //未膨胀的河豚：
-                            //高度：0.35格
-                            //宽度：0.35格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.175 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.031 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-
-                        case 1 -> {
-                            //半膨胀的河豚：
-                            //高度：0.5格
-                            //宽度：0.5格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.063 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-
-                        case 2 -> {
-                            //完全膨胀的河豚：
-                            //高度：0.7格
-                            //宽度：0.7格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.123 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-                    }
-
-                }
-
-                case GUARDIAN -> {
-                    //高度：0.85格
-                    //宽度：0.85格
-                    Guardian mob = (Guardian) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.425 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.181 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case HUSK -> {
-                    Husk mob = (Husk) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-
-                }
-//
-                case HOGLIN -> {
-                    Hoglin mob = (Hoglin) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.3965格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.6982格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case ENDERMAN -> {
-                    Enderman mob = (Enderman) entity;
-                    //高度：2.9格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.45 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.16 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.74 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.03 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.81 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.58 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v7 = base.clone().setY(base.getY() + 2.32 * scale).subtract(eyeVector);
-                    double distance7 = v7.crossProduct(direction).lengthSquared();
-                    if (distance7 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v8 = base.clone().setY(base.getY() + 0.29 * scale).subtract(eyeVector);
-                    double distance8 = v8.crossProduct(direction).lengthSquared();
-                    if (distance8 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v9 = base.clone().setY(base.getY() + 2.61 * scale).subtract(eyeVector);
-                    double distance9 = v9.crossProduct(direction).lengthSquared();
-                    if (distance9 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITHER -> {
-                    Wither mob = (Wither) entity;
-                    //高度：3.5格
-                    //宽度：0.9格
-                    Vector base = mob.getLocation().toVector();
-
-
-                    Vector v1 = base.clone().setY(base.getY() + 2.0 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.5 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.0 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.5 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 3.0 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.5 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITHER_SKELETON -> {
-                    WitherSkeleton mob = (WitherSkeleton) entity;
-                    //高度：2.4格
-                    //宽度：0.7格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.372 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.029 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 0.686 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.715 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 2.058 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.343 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WARDEN -> {
-                    Warden mob = (Warden) entity;
-                    //高度：2.9格
-                    //宽度：0.9格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.45 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.966 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.929 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.412 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.483 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case BREEZE -> {
-                    //高度：1.77格
-                    //宽度：0.6格
-                    Breeze mob = (Breeze) entity;
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.885 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.59 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.18 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.475 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.295 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case BLAZE -> {
-                    //高度：1.8格
-                    //宽度：0.6格
-                    Blaze mob = (Blaze) entity;
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.9 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.6 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.2 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.5 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.3 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-
-
-                }
-                case CREEPER -> {
-                    //高度：1.7格
-                    //宽度：0.6格
-                    Creeper mob = (Creeper) entity;
-
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.85 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.566 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.132 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.415 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.283 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                //条件敌对
-
-                case POLAR_BEAR -> {
-                    PolarBear mob = (PolarBear) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.4格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.7格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case BEE -> {
-                    Bee mob = (Bee) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.6格
-                        //宽度：0.7格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.3格
-                        //宽度：0.35格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-                case DOLPHIN -> {
-                    //高度：0.6格
-                    //宽度：0.9格
-                    Dolphin mob = (Dolphin) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.165 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-                case FOX -> {
-                    Fox mob = (Fox) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.7格
-                        //宽度：0.6格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.35格
-                        //宽度：0.3格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.175 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case IRON_GOLEM -> {
-                    //高度：2.7格
-                    //宽度：1.4格
-                    IronGolem mob = (IronGolem) entity;
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 1.35 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.675 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 2.025 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case VEX -> {
-                    Vex mob = (Vex) entity;
-                    //高度：0.8格
-                    //宽度：0.4格
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 0.6 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.4 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 0.2 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WOLF -> {
-                    Wolf mob = (Wolf) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.85格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-                        Vector v1 = base.clone().setY(base.getY() + 0.284 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.095 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.568 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.095 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.425格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-                        Vector v1 = base.clone().setY(base.getY() + 0.142 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.023 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.284 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.023 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case PANDA -> {
-                    Panda mob = (Panda) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.25格
-                        //宽度：1.3格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.625 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.407 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.625格
-                        //宽度：0.65格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3125 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.102 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-            }
-
-        }
         return mobs;
     }
 
@@ -6481,1552 +320,11 @@ public final class GetEntity {
         ArrayList<Mob> mobs = new ArrayList<>(monsters.size());
         Vector eyeVector = location.toVector();
         //生物高度的一半加上去获得中心坐标向量，距离设置为高度宽度平均值一半的平方（避免一个过大造成的严重影响）,再稍微大一点
-        for (Entity entity : monsters) {
-            Mob entity1 = (Mob) entity;
-            double scale = entity1.getAttribute(Attribute.GENERIC_SCALE).getValue();
-            double scaleSquared = scale * scale;
-            switch (entity.getType()) {
-                case SILVERFISH -> {
-                    //高度：0.3格
-                    //宽度：0.4格
-                    Silverfish mob = (Silverfish) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.031 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SHULKER -> {
-                    //宽高1格
-                    Shulker mob = (Shulker) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.5 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case RAVAGER -> {
-                    Ravager mob = (Ravager) entity;
-
-                    //高度：2.2格
-                    //宽度：1.95格
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 1.1 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 1.08 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITCH -> {
-                    Witch mob = (Witch) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ILLUSIONER -> {
-                    Illusioner mob = (Illusioner) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case VINDICATOR -> {
-                    Vindicator mob = (Vindicator) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case PILLAGER -> {
-                    Pillager mob = (Pillager) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOMBIFIED_PIGLIN -> {
-                    PigZombie mob = (PigZombie) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-
-                case PIGLIN_BRUTE -> {
-                    PiglinBrute mob = (PiglinBrute) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOGLIN -> {
-                    Zoglin mob = (Zoglin) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.3965格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.6982格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-
-                case RABBIT -> {
-                    Rabbit mob = (Rabbit) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.5格
-                        //宽度：0.4格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.051 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.25格
-                        //宽度：0.2格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.125 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.013 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case PHANTOM -> {
-                    Phantom mob = (Phantom) entity;
-                    int size = mob.getSize();
-                    //尺寸
-                    double halfwidth = 0.9 + 0.2 * size;
-                    double halfweight = 0.5 + 0.1 * size;
-                    double average = (halfwidth + halfweight) / 2;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + halfweight).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < average * average) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SPIDER -> {
-                    Spider mob = (Spider) entity;
-                    //高度：0.9格
-                    //宽度：1.4格
-                    mob.getWidth();
-                    mob.getHeight();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.45 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.331 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case CAVE_SPIDER -> {
-                    CaveSpider mob = (CaveSpider) entity;
-                    //高度: 0.5方块
-                    //宽度: 0.7方块
-                    mob.getWidth();
-                    mob.getHeight();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case STRAY -> {
-                    Stray mob = (Stray) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case BOGGED -> {
-                    Bogged mob = (Bogged) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SKELETON -> {
-                    Skeleton mob = (Skeleton) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case MAGMA_CUBE -> {
-                    MagmaCube mob = (MagmaCube) entity;
-                    //高度：0.52*size
-                    //宽度：0.52*size
-                    int size = mob.getSize();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.26 * size).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.068 * size * size) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SLIME -> {
-                    Slime mob = (Slime) entity;
-                    //高度：0.52*size
-                    //宽度：0.52*size
-                    int size = mob.getSize();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.26 * size).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.068 * size * size) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case PIGLIN -> {
-                    Piglin mob = (Piglin) entity;
-
-                    //成年
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOMBIE_VILLAGER -> {
-                    ZombieVillager mob = (ZombieVillager) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case ZOMBIE -> {
-                    Zombie mob = (Zombie) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case DROWNED -> {
-                    Drowned mob = (Drowned) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-
-                case EVOKER -> {
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Evoker mob = (Evoker) entity;
-
-
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case GHAST -> {
-                    //高度：4.0格
-                    //宽度：4.0格
-                    Ghast mob = (Ghast) entity;
-
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 2.0 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 4.0 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ENDERMITE -> {
-                    //高度：0.3格
-                    //宽度：0.4格
-                    Endermite mob = (Endermite) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.031 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ELDER_GUARDIAN -> {
-                    //高度：1.9975格
-                    //宽度：1.9975格
-                    ElderGuardian mob = (ElderGuardian) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.99875 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 1 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case PUFFERFISH -> {
-                    PufferFish mob = (PufferFish) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    int state = mob.getPuffState();
-                    switch (state) {
-                        case 0 -> {
-                            //未膨胀的河豚：
-                            //高度：0.35格
-                            //宽度：0.35格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.175 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.031 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-
-                        case 1 -> {
-                            //半膨胀的河豚：
-                            //高度：0.5格
-                            //宽度：0.5格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.063 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-
-                        case 2 -> {
-                            //完全膨胀的河豚：
-                            //高度：0.7格
-                            //宽度：0.7格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.123 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-                    }
-
-                }
-
-                case GUARDIAN -> {
-                    //高度：0.85格
-                    //宽度：0.85格
-                    Guardian mob = (Guardian) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.425 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.181 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case HUSK -> {
-                    Husk mob = (Husk) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-
-                }
-//
-                case HOGLIN -> {
-                    Hoglin mob = (Hoglin) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.3965格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.6982格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case ENDERMAN -> {
-                    Enderman mob = (Enderman) entity;
-                    //高度：2.9格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.45 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.16 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.74 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.03 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.81 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.58 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v7 = base.clone().setY(base.getY() + 2.32 * scale).subtract(eyeVector);
-                    double distance7 = v7.crossProduct(direction).lengthSquared();
-                    if (distance7 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v8 = base.clone().setY(base.getY() + 0.29 * scale).subtract(eyeVector);
-                    double distance8 = v8.crossProduct(direction).lengthSquared();
-                    if (distance8 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v9 = base.clone().setY(base.getY() + 2.61 * scale).subtract(eyeVector);
-                    double distance9 = v9.crossProduct(direction).lengthSquared();
-                    if (distance9 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITHER -> {
-                    Wither mob = (Wither) entity;
-                    //高度：3.5格
-                    //宽度：0.9格
-                    Vector base = mob.getLocation().toVector();
-
-
-                    Vector v1 = base.clone().setY(base.getY() + 2.0 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.5 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.0 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.5 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 3.0 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.5 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITHER_SKELETON -> {
-                    WitherSkeleton mob = (WitherSkeleton) entity;
-                    //高度：2.4格
-                    //宽度：0.7格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.372 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.029 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 0.686 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.715 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 2.058 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.343 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WARDEN -> {
-                    Warden mob = (Warden) entity;
-                    //高度：2.9格
-                    //宽度：0.9格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.45 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.966 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.929 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.412 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.483 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case BREEZE -> {
-                    //高度：1.77格
-                    //宽度：0.6格
-                    Breeze mob = (Breeze) entity;
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.885 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.59 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.18 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.475 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.295 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case BLAZE -> {
-                    //高度：1.8格
-                    //宽度：0.6格
-                    Blaze mob = (Blaze) entity;
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.9 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.6 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.2 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.5 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.3 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-
-
-                }
-                case CREEPER -> {
-                    //高度：1.7格
-                    //宽度：0.6格
-                    Creeper mob = (Creeper) entity;
-
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.85 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.566 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.132 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.415 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.283 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                //条件敌对
-
-                case POLAR_BEAR -> {
-                    PolarBear mob = (PolarBear) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.4格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.7格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case BEE -> {
-                    Bee mob = (Bee) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.6格
-                        //宽度：0.7格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.3格
-                        //宽度：0.35格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-                case DOLPHIN -> {
-                    //高度：0.6格
-                    //宽度：0.9格
-                    Dolphin mob = (Dolphin) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.165 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-                case FOX -> {
-                    Fox mob = (Fox) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.7格
-                        //宽度：0.6格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.35格
-                        //宽度：0.3格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.175 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case IRON_GOLEM -> {
-                    //高度：2.7格
-                    //宽度：1.4格
-                    IronGolem mob = (IronGolem) entity;
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 1.35 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.675 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 2.025 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case VEX -> {
-                    Vex mob = (Vex) entity;
-                    //高度：0.8格
-                    //宽度：0.4格
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 0.6 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.4 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 0.2 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WOLF -> {
-                    Wolf mob = (Wolf) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.85格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-                        Vector v1 = base.clone().setY(base.getY() + 0.284 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.095 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.568 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.095 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.425格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-                        Vector v1 = base.clone().setY(base.getY() + 0.142 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.023 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.284 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.023 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case PANDA -> {
-                    Panda mob = (Panda) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.25格
-                        //宽度：1.3格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.625 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.407 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.625格
-                        //宽度：0.65格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3125 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.102 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-            }
-
-        }
+        helpRay(monsters, mobs, 1, eyeVector, direction);
         return mobs;
     }
 
-    public static ArrayList<Mob> getRayMonster(Player player, double midDistance,double sizemultiplier) {
+    public static ArrayList<Mob> getRayMonster(Player player, double midDistance, double sizemultiplier) {
         Location location = player.getEyeLocation();
         double x = location.getX();
         double y = location.getY();
@@ -8040,1552 +338,9 @@ public final class GetEntity {
         ArrayList<Mob> mobs = new ArrayList<>(monsters.size());
         Vector eyeVector = location.toVector();
         sizemultiplier = sizemultiplier * sizemultiplier;
-        //生物高度的一半加上去获得中心坐标向量，距离设置为高度宽度平均值一半的平方（避免一个过大造成的严重影响）,再稍微大一点
-        for (Entity entity : monsters) {
-            Mob entity1 = (Mob) entity;
-            double scale = entity1.getAttribute(Attribute.GENERIC_SCALE).getValue();
-            double scaleSquared = scale * scale * sizemultiplier;
-            switch (entity.getType()) {
-                case SILVERFISH -> {
-                    //高度：0.3格
-                    //宽度：0.4格
-                    Silverfish mob = (Silverfish) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.031 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SHULKER -> {
-                    //宽高1格
-                    Shulker mob = (Shulker) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.5 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case RAVAGER -> {
-                    Ravager mob = (Ravager) entity;
-
-                    //高度：2.2格
-                    //宽度：1.95格
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 1.1 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 1.08 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITCH -> {
-                    Witch mob = (Witch) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ILLUSIONER -> {
-                    Illusioner mob = (Illusioner) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case VINDICATOR -> {
-                    Vindicator mob = (Vindicator) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case PILLAGER -> {
-                    Pillager mob = (Pillager) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOMBIFIED_PIGLIN -> {
-                    PigZombie mob = (PigZombie) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-
-                case PIGLIN_BRUTE -> {
-                    PiglinBrute mob = (PiglinBrute) entity;
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOGLIN -> {
-                    Zoglin mob = (Zoglin) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.3965格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.6982格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-
-                case RABBIT -> {
-                    Rabbit mob = (Rabbit) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.5格
-                        //宽度：0.4格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.051 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.25格
-                        //宽度：0.2格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.125 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.013 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case PHANTOM -> {
-                    Phantom mob = (Phantom) entity;
-                    int size = mob.getSize();
-                    //尺寸
-                    double halfwidth = 0.9 + 0.2 * size;
-                    double halfweight = 0.5 + 0.1 * size;
-                    double average = (halfwidth + halfweight) / 2;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + halfweight).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < average * average) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SPIDER -> {
-                    Spider mob = (Spider) entity;
-                    //高度：0.9格
-                    //宽度：1.4格
-                    mob.getWidth();
-                    mob.getHeight();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.45 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.331 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case CAVE_SPIDER -> {
-                    CaveSpider mob = (CaveSpider) entity;
-                    //高度: 0.5方块
-                    //宽度: 0.7方块
-                    mob.getWidth();
-                    mob.getHeight();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case STRAY -> {
-                    Stray mob = (Stray) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case BOGGED -> {
-                    Bogged mob = (Bogged) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SKELETON -> {
-                    Skeleton mob = (Skeleton) entity;
-                    //高度1.99
-                    //宽度0.6
-                    Vector base = mob.getLocation().toVector();
-
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case MAGMA_CUBE -> {
-                    MagmaCube mob = (MagmaCube) entity;
-                    //高度：0.52*size
-                    //宽度：0.52*size
-                    int size = mob.getSize();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.26 * size).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.068 * size * size) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case SLIME -> {
-                    Slime mob = (Slime) entity;
-                    //高度：0.52*size
-                    //宽度：0.52*size
-                    int size = mob.getSize();
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.26 * size).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.068 * size * size) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case PIGLIN -> {
-                    Piglin mob = (Piglin) entity;
-
-                    //成年
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ZOMBIE_VILLAGER -> {
-                    ZombieVillager mob = (ZombieVillager) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case ZOMBIE -> {
-                    Zombie mob = (Zombie) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case DROWNED -> {
-                    Drowned mob = (Drowned) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-
-                case EVOKER -> {
-                    //高度：1.95格
-                    //宽度：0.6格
-                    Evoker mob = (Evoker) entity;
-
-
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case GHAST -> {
-                    //高度：4.0格
-                    //宽度：4.0格
-                    Ghast mob = (Ghast) entity;
-
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 2.0 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 4.0 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ENDERMITE -> {
-                    //高度：0.3格
-                    //宽度：0.4格
-                    Endermite mob = (Endermite) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.031 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case ELDER_GUARDIAN -> {
-                    //高度：1.9975格
-                    //宽度：1.9975格
-                    ElderGuardian mob = (ElderGuardian) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.99875 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 1 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case PUFFERFISH -> {
-                    PufferFish mob = (PufferFish) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    int state = mob.getPuffState();
-                    switch (state) {
-                        case 0 -> {
-                            //未膨胀的河豚：
-                            //高度：0.35格
-                            //宽度：0.35格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.175 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.031 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-
-                        case 1 -> {
-                            //半膨胀的河豚：
-                            //高度：0.5格
-                            //宽度：0.5格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.063 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-
-                        case 2 -> {
-                            //完全膨胀的河豚：
-                            //高度：0.7格
-                            //宽度：0.7格
-                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.123 * scaleSquared) {
-                                mobs.add(mob);
-                            }
-                        }
-                    }
-
-                }
-
-                case GUARDIAN -> {
-                    //高度：0.85格
-                    //宽度：0.85格
-                    Guardian mob = (Guardian) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.425 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.181 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case HUSK -> {
-                    Husk mob = (Husk) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.95格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    } else {
-                        //幼年
-                        //高度：0.975格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-
-                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(eyeVector);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(eyeVector);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(eyeVector);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-
-                }
-//
-                case HOGLIN -> {
-                    Hoglin mob = (Hoglin) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.3965格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.6982格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case ENDERMAN -> {
-                    Enderman mob = (Enderman) entity;
-                    //高度：2.9格
-                    //宽度：0.6格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.45 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.16 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.74 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.03 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.81 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.58 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v7 = base.clone().setY(base.getY() + 2.32 * scale).subtract(eyeVector);
-                    double distance7 = v7.crossProduct(direction).lengthSquared();
-                    if (distance7 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v8 = base.clone().setY(base.getY() + 0.29 * scale).subtract(eyeVector);
-                    double distance8 = v8.crossProduct(direction).lengthSquared();
-                    if (distance8 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v9 = base.clone().setY(base.getY() + 2.61 * scale).subtract(eyeVector);
-                    double distance9 = v9.crossProduct(direction).lengthSquared();
-                    if (distance9 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITHER -> {
-                    Wither mob = (Wither) entity;
-                    //高度：3.5格
-                    //宽度：0.9格
-                    Vector base = mob.getLocation().toVector();
-
-
-                    Vector v1 = base.clone().setY(base.getY() + 2.0 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.5 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.0 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.5 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 3.0 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.5 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.255 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WITHER_SKELETON -> {
-                    WitherSkeleton mob = (WitherSkeleton) entity;
-                    //高度：2.4格
-                    //宽度：0.7格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.372 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 1.029 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 0.686 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.715 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 2.058 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v6 = base.clone().setY(base.getY() + 0.343 * scale).subtract(eyeVector);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.123 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WARDEN -> {
-                    Warden mob = (Warden) entity;
-                    //高度：2.9格
-                    //宽度：0.9格
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 1.45 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.966 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.929 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 2.412 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.483 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.234 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case BREEZE -> {
-                    //高度：1.77格
-                    //宽度：0.6格
-                    Breeze mob = (Breeze) entity;
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.885 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.59 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.18 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.475 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.295 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.089 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-
-                case BLAZE -> {
-                    //高度：1.8格
-                    //宽度：0.6格
-                    Blaze mob = (Blaze) entity;
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.9 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.6 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.2 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.5 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.3 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-
-
-                }
-                case CREEPER -> {
-                    //高度：1.7格
-                    //宽度：0.6格
-                    Creeper mob = (Creeper) entity;
-
-                    Vector base = mob.getLocation().toVector();
-
-                    Vector v1 = base.clone().setY(base.getY() + 0.85 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.566 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 1.132 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v4 = base.clone().setY(base.getY() + 1.415 * scale).subtract(eyeVector);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v5 = base.clone().setY(base.getY() + 0.283 * scale).subtract(eyeVector);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                //条件敌对
-
-                case POLAR_BEAR -> {
-                    PolarBear mob = (PolarBear) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.4格
-                        //宽度：1.4格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.7格
-                        //宽度：0.7格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case BEE -> {
-                    Bee mob = (Bee) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.6格
-                        //宽度：0.7格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.3格
-                        //宽度：0.35格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-                case DOLPHIN -> {
-                    //高度：0.6格
-                    //宽度：0.9格
-                    Dolphin mob = (Dolphin) entity;
-                    Vector eyeToEntityFeet = mob.getLocation().toVector();
-                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3 * scale).subtract(eyeVector);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.165 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-                case FOX -> {
-                    Fox mob = (Fox) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.7格
-                        //宽度：0.6格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.106 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.35格
-                        //宽度：0.3格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.175 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.027 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-                case IRON_GOLEM -> {
-                    //高度：2.7格
-                    //宽度：1.4格
-                    IronGolem mob = (IronGolem) entity;
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 1.35 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.675 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 2.025 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.495 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case VEX -> {
-                    Vex mob = (Vex) entity;
-                    //高度：0.8格
-                    //宽度：0.4格
-                    Vector base = mob.getLocation().toVector();
-                    Vector v1 = base.clone().setY(base.getY() + 0.6 * scale).subtract(eyeVector);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v2 = base.clone().setY(base.getY() + 0.4 * scale).subtract(eyeVector);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                        continue;
-                    }
-                    Vector v3 = base.clone().setY(base.getY() + 0.2 * scale).subtract(eyeVector);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.045 * scaleSquared) {
-                        mobs.add(mob);
-                    }
-                }
-
-                case WOLF -> {
-                    Wolf mob = (Wolf) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：0.85格
-                        //宽度：0.6格
-                        Vector base = mob.getLocation().toVector();
-                        Vector v1 = base.clone().setY(base.getY() + 0.284 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.095 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.568 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.095 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.425格
-                        //宽度：0.3格
-                        Vector base = mob.getLocation().toVector();
-                        Vector v1 = base.clone().setY(base.getY() + 0.142 * scale).subtract(eyeVector);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.023 * scaleSquared) {
-                            mobs.add(mob);
-                            continue;
-                        }
-                        Vector v2 = base.clone().setY(base.getY() + 0.284 * scale).subtract(eyeVector);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.023 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-
-                    }
-                }
-
-                case PANDA -> {
-                    Panda mob = (Panda) entity;
-                    if (mob.isAdult()) {
-                        //成年
-                        //高度：1.25格
-                        //宽度：1.3格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.625 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.407 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    } else {
-                        //幼年
-                        //高度：0.625格
-                        //宽度：0.65格
-                        Vector eyeToEntityFeet = mob.getLocation().toVector();
-                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3125 * scale).subtract(eyeVector);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.102 * scaleSquared) {
-                            mobs.add(mob);
-                        }
-                    }
-                }
-
-            }
-
-        }
+        helpRay(monsters, mobs, sizemultiplier, eyeVector, direction);
         return mobs;
     }
-
 
     public static void init() {
         world = Bukkit.getWorld("world");
@@ -9645,6 +400,1552 @@ public final class GetEntity {
     }
 
 
+    public static void helpRay(Collection<Entity> monsters, ArrayList<Mob> filteredMonsters, double sizemultiplier, Vector startLocation, Vector direction) {
+        for (Entity entity : monsters) {
+            Mob entity1 = (Mob) entity;
+            double scale = entity1.getAttribute(Attribute.GENERIC_SCALE).getValue();
+            double scaleSquared = scale * scale * sizemultiplier;
+            switch (entity.getType()) {
+                //生物高度的一半加上去获得中心坐标向量，距离设置为高度宽度平均值一半的平方（避免一个过大造成的严重影响）,再稍微大一点
+                case SILVERFISH -> {
+                    //高度：0.3格
+                    //宽度：0.4格
+                    Silverfish mob = (Silverfish) entity;
+                    Vector eyeToEntityFeet = mob.getLocation().toVector();
+                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(startLocation);
+                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                    if (distance < 0.031 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case SHULKER -> {
+                    //宽高1格
+                    Shulker mob = (Shulker) entity;
+                    Vector eyeToEntityFeet = mob.getLocation().toVector();
+                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.5 * scale).subtract(startLocation);
+                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                    if (distance < 0.255 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+
+                case RAVAGER -> {
+                    Ravager mob = (Ravager) entity;
+
+                    //高度：2.2格
+                    //宽度：1.95格
+                    Vector eyeToEntityFeet = mob.getLocation().toVector();
+                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 1.1 * scale).subtract(startLocation);
+                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                    if (distance < 1.08 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case WITCH -> {
+                    Witch mob = (Witch) entity;
+                    //高度：1.95格
+                    //宽度：0.6格
+                    Vector base = mob.getLocation().toVector();
+
+                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
+                    double distance4 = v4.crossProduct(direction).lengthSquared();
+                    if (distance4 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
+                    double distance5 = v5.crossProduct(direction).lengthSquared();
+                    if (distance5 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case ILLUSIONER -> {
+                    Illusioner mob = (Illusioner) entity;
+                    //高度：1.95格
+                    //宽度：0.6格
+                    Vector base = mob.getLocation().toVector();
+
+                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
+                    double distance4 = v4.crossProduct(direction).lengthSquared();
+                    if (distance4 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
+                    double distance5 = v5.crossProduct(direction).lengthSquared();
+                    if (distance5 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case VINDICATOR -> {
+                    Vindicator mob = (Vindicator) entity;
+                    //高度：1.95格
+                    //宽度：0.6格
+                    Vector base = mob.getLocation().toVector();
+
+                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
+                    double distance4 = v4.crossProduct(direction).lengthSquared();
+                    if (distance4 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
+                    double distance5 = v5.crossProduct(direction).lengthSquared();
+                    if (distance5 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+
+                case PILLAGER -> {
+                    Pillager mob = (Pillager) entity;
+                    //高度：1.95格
+                    //宽度：0.6格
+                    Vector base = mob.getLocation().toVector();
+
+                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
+                    double distance4 = v4.crossProduct(direction).lengthSquared();
+                    if (distance4 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
+                    double distance5 = v5.crossProduct(direction).lengthSquared();
+                    if (distance5 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case ZOMBIFIED_PIGLIN -> {
+                    PigZombie mob = (PigZombie) entity;
+                    if (mob.isAdult()) {
+                        //成年
+                        //高度：1.95格
+                        //宽度：0.6格
+                        Vector base = mob.getLocation().toVector();
+
+                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
+                        double distance1 = v1.crossProduct(direction).lengthSquared();
+                        if (distance1 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
+                        double distance2 = v2.crossProduct(direction).lengthSquared();
+                        if (distance2 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
+                        double distance3 = v3.crossProduct(direction).lengthSquared();
+                        if (distance3 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
+                        double distance4 = v4.crossProduct(direction).lengthSquared();
+                        if (distance4 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
+                        double distance5 = v5.crossProduct(direction).lengthSquared();
+                        if (distance5 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+
+                    } else {
+                        //幼年
+                        //高度：0.975格
+                        //宽度：0.3格
+                        Vector base = mob.getLocation().toVector();
+
+                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(startLocation);
+                        double distance1 = v1.crossProduct(direction).lengthSquared();
+                        if (distance1 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
+                        double distance2 = v2.crossProduct(direction).lengthSquared();
+                        if (distance2 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
+                        double distance3 = v3.crossProduct(direction).lengthSquared();
+                        if (distance3 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(startLocation);
+                        double distance4 = v4.crossProduct(direction).lengthSquared();
+                        if (distance4 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(startLocation);
+                        double distance5 = v5.crossProduct(direction).lengthSquared();
+                        if (distance5 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+
+                    }
+                }
+
+
+                case PIGLIN_BRUTE -> {
+                    PiglinBrute mob = (PiglinBrute) entity;
+                    //高度：1.95格
+                    //宽度：0.6格
+                    Vector base = mob.getLocation().toVector();
+
+                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
+                    double distance4 = v4.crossProduct(direction).lengthSquared();
+                    if (distance4 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
+                    double distance5 = v5.crossProduct(direction).lengthSquared();
+                    if (distance5 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case ZOGLIN -> {
+                    Zoglin mob = (Zoglin) entity;
+                    if (mob.isAdult()) {
+                        //成年
+                        //高度：1.4格
+                        //宽度：1.3965格
+                        Vector eyeToEntityFeet = mob.getLocation().toVector();
+                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(startLocation);
+                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                        if (distance < 0.495 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+                    } else {
+                        //幼年
+                        //高度：0.7格
+                        //宽度：0.6982格
+                        Vector eyeToEntityFeet = mob.getLocation().toVector();
+                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(startLocation);
+                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                        if (distance < 0.123 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+                    }
+                }
+
+
+                case RABBIT -> {
+                    Rabbit mob = (Rabbit) entity;
+                    if (mob.isAdult()) {
+                        //成年
+                        //高度：0.5格
+                        //宽度：0.4格
+                        Vector eyeToEntityFeet = mob.getLocation().toVector();
+                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(startLocation);
+                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                        if (distance < 0.051 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+                    } else {
+                        //幼年
+                        //高度：0.25格
+                        //宽度：0.2格
+                        Vector eyeToEntityFeet = mob.getLocation().toVector();
+                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.125 * scale).subtract(startLocation);
+                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                        if (distance < 0.013 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+                    }
+                }
+
+                case PHANTOM -> {
+                    Phantom mob = (Phantom) entity;
+                    int size = mob.getSize();
+                    //尺寸
+                    double halfwidth = 0.9 + 0.2 * size;
+                    double halfweight = 0.5 + 0.1 * size;
+                    double average = (halfwidth + halfweight) / 2;
+                    Vector eyeToEntityFeet = mob.getLocation().toVector();
+                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + halfweight).subtract(startLocation);
+                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                    if (distance < average * average) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case SPIDER -> {
+                    Spider mob = (Spider) entity;
+                    //高度：0.9格
+                    //宽度：1.4格
+                    mob.getWidth();
+                    mob.getHeight();
+                    Vector eyeToEntityFeet = mob.getLocation().toVector();
+                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.45 * scale).subtract(startLocation);
+                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                    if (distance < 0.331 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case CAVE_SPIDER -> {
+                    CaveSpider mob = (CaveSpider) entity;
+                    //高度: 0.5方块
+                    //宽度: 0.7方块
+                    mob.getWidth();
+                    mob.getHeight();
+                    Vector eyeToEntityFeet = mob.getLocation().toVector();
+                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(startLocation);
+                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                    if (distance < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+
+                case STRAY -> {
+                    Stray mob = (Stray) entity;
+                    //高度1.99
+                    //宽度0.6
+                    Vector base = mob.getLocation().toVector();
+
+                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.11 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.11 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.11 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(startLocation);
+                    double distance4 = v4.crossProduct(direction).lengthSquared();
+                    if (distance4 < 0.11 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(startLocation);
+                    double distance5 = v5.crossProduct(direction).lengthSquared();
+                    if (distance5 < 0.11 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case BOGGED -> {
+                    Bogged mob = (Bogged) entity;
+                    //高度1.99
+                    //宽度0.6
+                    Vector base = mob.getLocation().toVector();
+                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.11 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.11 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.11 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(startLocation);
+                    double distance4 = v4.crossProduct(direction).lengthSquared();
+                    if (distance4 < 0.11 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(startLocation);
+                    double distance5 = v5.crossProduct(direction).lengthSquared();
+                    if (distance5 < 0.11 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case SKELETON -> {
+                    Skeleton mob = (Skeleton) entity;
+                    //高度1.99
+                    //宽度0.6
+                    Vector base = mob.getLocation().toVector();
+
+                    Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.11 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.11 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.11 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(startLocation);
+                    double distance4 = v4.crossProduct(direction).lengthSquared();
+                    if (distance4 < 0.11 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(startLocation);
+                    double distance5 = v5.crossProduct(direction).lengthSquared();
+                    if (distance5 < 0.11 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case MAGMA_CUBE -> {
+                    MagmaCube mob = (MagmaCube) entity;
+                    //高度：0.52*size
+                    //宽度：0.52*size
+                    int size = mob.getSize();
+                    Vector eyeToEntityFeet = mob.getLocation().toVector();
+                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.26 * size).subtract(startLocation);
+                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                    if (distance < 0.068 * size * size) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case SLIME -> {
+                    Slime mob = (Slime) entity;
+                    //高度：0.52*size
+                    //宽度：0.52*size
+                    int size = mob.getSize();
+                    Vector eyeToEntityFeet = mob.getLocation().toVector();
+                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.26 * size).subtract(startLocation);
+                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                    if (distance < 0.068 * size * size) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case PIGLIN -> {
+                    Piglin mob = (Piglin) entity;
+
+                    //成年
+                    //高度：1.95格
+                    //宽度：0.6格
+                    Vector base = mob.getLocation().toVector();
+
+                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
+                    double distance4 = v4.crossProduct(direction).lengthSquared();
+                    if (distance4 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
+                    double distance5 = v5.crossProduct(direction).lengthSquared();
+                    if (distance5 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case ZOMBIE_VILLAGER -> {
+                    ZombieVillager mob = (ZombieVillager) entity;
+                    if (mob.isAdult()) {
+                        //成年
+                        //高度：1.95格
+                        //宽度：0.6格
+                        Vector base = mob.getLocation().toVector();
+
+                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
+                        double distance1 = v1.crossProduct(direction).lengthSquared();
+                        if (distance1 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
+                        double distance2 = v2.crossProduct(direction).lengthSquared();
+                        if (distance2 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
+                        double distance3 = v3.crossProduct(direction).lengthSquared();
+                        if (distance3 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
+                        double distance4 = v4.crossProduct(direction).lengthSquared();
+                        if (distance4 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
+                        double distance5 = v5.crossProduct(direction).lengthSquared();
+                        if (distance5 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+
+                    } else {
+                        //幼年
+                        //高度：0.975格
+                        //宽度：0.3格
+                        Vector base = mob.getLocation().toVector();
+
+                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(startLocation);
+                        double distance1 = v1.crossProduct(direction).lengthSquared();
+                        if (distance1 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
+                        double distance2 = v2.crossProduct(direction).lengthSquared();
+                        if (distance2 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
+                        double distance3 = v3.crossProduct(direction).lengthSquared();
+                        if (distance3 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(startLocation);
+                        double distance4 = v4.crossProduct(direction).lengthSquared();
+                        if (distance4 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(startLocation);
+                        double distance5 = v5.crossProduct(direction).lengthSquared();
+                        if (distance5 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+
+                    }
+                }
+
+                case ZOMBIE -> {
+                    Zombie mob = (Zombie) entity;
+                    if (mob.isAdult()) {
+                        //成年
+                        //高度：1.95格
+                        //宽度：0.6格
+                        Vector base = mob.getLocation().toVector();
+
+                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
+                        double distance1 = v1.crossProduct(direction).lengthSquared();
+                        if (distance1 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
+                        double distance2 = v2.crossProduct(direction).lengthSquared();
+                        if (distance2 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
+                        double distance3 = v3.crossProduct(direction).lengthSquared();
+                        if (distance3 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
+                        double distance4 = v4.crossProduct(direction).lengthSquared();
+                        if (distance4 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
+                        double distance5 = v5.crossProduct(direction).lengthSquared();
+                        if (distance5 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+
+                    } else {
+                        //幼年
+                        //高度：0.975格
+                        //宽度：0.3格
+                        Vector base = mob.getLocation().toVector();
+
+                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(startLocation);
+                        double distance1 = v1.crossProduct(direction).lengthSquared();
+                        if (distance1 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
+                        double distance2 = v2.crossProduct(direction).lengthSquared();
+                        if (distance2 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
+                        double distance3 = v3.crossProduct(direction).lengthSquared();
+                        if (distance3 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(startLocation);
+                        double distance4 = v4.crossProduct(direction).lengthSquared();
+                        if (distance4 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(startLocation);
+                        double distance5 = v5.crossProduct(direction).lengthSquared();
+                        if (distance5 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+
+                    }
+                }
+
+                case DROWNED -> {
+                    Drowned mob = (Drowned) entity;
+                    if (mob.isAdult()) {
+                        //成年
+                        //高度：1.95格
+                        //宽度：0.6格
+                        Vector base = mob.getLocation().toVector();
+
+                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
+                        double distance1 = v1.crossProduct(direction).lengthSquared();
+                        if (distance1 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
+                        double distance2 = v2.crossProduct(direction).lengthSquared();
+                        if (distance2 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
+                        double distance3 = v3.crossProduct(direction).lengthSquared();
+                        if (distance3 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
+                        double distance4 = v4.crossProduct(direction).lengthSquared();
+                        if (distance4 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
+                        double distance5 = v5.crossProduct(direction).lengthSquared();
+                        if (distance5 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+
+                    } else {
+                        //幼年
+                        //高度：0.975格
+                        //宽度：0.3格
+                        Vector base = mob.getLocation().toVector();
+
+                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(startLocation);
+                        double distance1 = v1.crossProduct(direction).lengthSquared();
+                        if (distance1 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
+                        double distance2 = v2.crossProduct(direction).lengthSquared();
+                        if (distance2 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
+                        double distance3 = v3.crossProduct(direction).lengthSquared();
+                        if (distance3 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(startLocation);
+                        double distance4 = v4.crossProduct(direction).lengthSquared();
+                        if (distance4 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(startLocation);
+                        double distance5 = v5.crossProduct(direction).lengthSquared();
+                        if (distance5 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+
+                    }
+                }
+
+
+                case EVOKER -> {
+                    //高度：1.95格
+                    //宽度：0.6格
+                    Evoker mob = (Evoker) entity;
+
+
+                    Vector base = mob.getLocation().toVector();
+
+                    Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
+                    double distance4 = v4.crossProduct(direction).lengthSquared();
+                    if (distance4 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
+                    double distance5 = v5.crossProduct(direction).lengthSquared();
+                    if (distance5 < 0.106 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case GHAST -> {
+                    //高度：4.0格
+                    //宽度：4.0格
+                    Ghast mob = (Ghast) entity;
+
+                    Vector eyeToEntityFeet = mob.getLocation().toVector();
+                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 2.0 * scale).subtract(startLocation);
+                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                    if (distance < 4.0 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case ENDERMITE -> {
+                    //高度：0.3格
+                    //宽度：0.4格
+                    Endermite mob = (Endermite) entity;
+                    Vector eyeToEntityFeet = mob.getLocation().toVector();
+                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(startLocation);
+                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                    if (distance < 0.031 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case ELDER_GUARDIAN -> {
+                    //高度：1.9975格
+                    //宽度：1.9975格
+                    ElderGuardian mob = (ElderGuardian) entity;
+                    Vector eyeToEntityFeet = mob.getLocation().toVector();
+                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.99875 * scale).subtract(startLocation);
+                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                    if (distance < 1 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case PUFFERFISH -> {
+                    PufferFish mob = (PufferFish) entity;
+                    Vector eyeToEntityFeet = mob.getLocation().toVector();
+                    int state = mob.getPuffState();
+                    switch (state) {
+                        case 0 -> {
+                            //未膨胀的河豚：
+                            //高度：0.35格
+                            //宽度：0.35格
+                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.175 * scale).subtract(startLocation);
+                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                            if (distance < 0.031 * scaleSquared) {
+                                filteredMonsters.add(mob);
+                            }
+                        }
+
+                        case 1 -> {
+                            //半膨胀的河豚：
+                            //高度：0.5格
+                            //宽度：0.5格
+                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(startLocation);
+                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                            if (distance < 0.063 * scaleSquared) {
+                                filteredMonsters.add(mob);
+                            }
+                        }
+
+                        case 2 -> {
+                            //完全膨胀的河豚：
+                            //高度：0.7格
+                            //宽度：0.7格
+                            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(startLocation);
+                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                            if (distance < 0.123 * scaleSquared) {
+                                filteredMonsters.add(mob);
+                            }
+                        }
+                    }
+
+                }
+
+                case GUARDIAN -> {
+                    //高度：0.85格
+                    //宽度：0.85格
+                    Guardian mob = (Guardian) entity;
+                    Vector eyeToEntityFeet = mob.getLocation().toVector();
+                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.425 * scale).subtract(startLocation);
+                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                    if (distance < 0.181 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case HUSK -> {
+                    Husk mob = (Husk) entity;
+                    if (mob.isAdult()) {
+                        //成年
+                        //高度：1.95格
+                        //宽度：0.6格
+                        Vector base = mob.getLocation().toVector();
+
+                        Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
+                        double distance1 = v1.crossProduct(direction).lengthSquared();
+                        if (distance1 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
+                        double distance2 = v2.crossProduct(direction).lengthSquared();
+                        if (distance2 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
+                        double distance3 = v3.crossProduct(direction).lengthSquared();
+                        if (distance3 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
+                        double distance4 = v4.crossProduct(direction).lengthSquared();
+                        if (distance4 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
+                        double distance5 = v5.crossProduct(direction).lengthSquared();
+                        if (distance5 < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+
+                    } else {
+                        //幼年
+                        //高度：0.975格
+                        //宽度：0.3格
+                        Vector base = mob.getLocation().toVector();
+
+                        Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(startLocation);
+                        double distance1 = v1.crossProduct(direction).lengthSquared();
+                        if (distance1 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
+                        double distance2 = v2.crossProduct(direction).lengthSquared();
+                        if (distance2 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
+                        double distance3 = v3.crossProduct(direction).lengthSquared();
+                        if (distance3 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(startLocation);
+                        double distance4 = v4.crossProduct(direction).lengthSquared();
+                        if (distance4 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(startLocation);
+                        double distance5 = v5.crossProduct(direction).lengthSquared();
+                        if (distance5 < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+
+                    }
+
+                }
+//
+                case HOGLIN -> {
+                    Hoglin mob = (Hoglin) entity;
+                    if (mob.isAdult()) {
+                        //成年
+                        //高度：1.4格
+                        //宽度：1.3965格
+                        Vector eyeToEntityFeet = mob.getLocation().toVector();
+                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(startLocation);
+                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                        if (distance < 0.495 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+                    } else {
+                        //幼年
+                        //高度：0.7格
+                        //宽度：0.6982格
+                        Vector eyeToEntityFeet = mob.getLocation().toVector();
+                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(startLocation);
+                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                        if (distance < 0.123 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+
+                    }
+                }
+
+                case ENDERMAN -> {
+                    Enderman mob = (Enderman) entity;
+                    //高度：2.9格
+                    //宽度：0.6格
+                    Vector base = mob.getLocation().toVector();
+
+                    Vector v1 = base.clone().setY(base.getY() + 1.45 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 1.16 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 1.74 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v4 = base.clone().setY(base.getY() + 2.03 * scale).subtract(startLocation);
+                    double distance4 = v4.crossProduct(direction).lengthSquared();
+                    if (distance4 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v5 = base.clone().setY(base.getY() + 0.81 * scale).subtract(startLocation);
+                    double distance5 = v5.crossProduct(direction).lengthSquared();
+                    if (distance5 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v6 = base.clone().setY(base.getY() + 0.58 * scale).subtract(startLocation);
+                    double distance6 = v6.crossProduct(direction).lengthSquared();
+                    if (distance6 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v7 = base.clone().setY(base.getY() + 2.32 * scale).subtract(startLocation);
+                    double distance7 = v7.crossProduct(direction).lengthSquared();
+                    if (distance7 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v8 = base.clone().setY(base.getY() + 0.29 * scale).subtract(startLocation);
+                    double distance8 = v8.crossProduct(direction).lengthSquared();
+                    if (distance8 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v9 = base.clone().setY(base.getY() + 2.61 * scale).subtract(startLocation);
+                    double distance9 = v9.crossProduct(direction).lengthSquared();
+                    if (distance9 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case WITHER -> {
+                    Wither mob = (Wither) entity;
+                    //高度：3.5格
+                    //宽度：0.9格
+                    Vector base = mob.getLocation().toVector();
+
+
+                    Vector v1 = base.clone().setY(base.getY() + 2.0 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.255 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 1.5 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.255 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 1.0 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.255 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v4 = base.clone().setY(base.getY() + 2.5 * scale).subtract(startLocation);
+                    double distance4 = v4.crossProduct(direction).lengthSquared();
+                    if (distance4 < 0.255 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v5 = base.clone().setY(base.getY() + 3.0 * scale).subtract(startLocation);
+                    double distance5 = v5.crossProduct(direction).lengthSquared();
+                    if (distance5 < 0.255 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v6 = base.clone().setY(base.getY() + 0.5 * scale).subtract(startLocation);
+                    double distance6 = v6.crossProduct(direction).lengthSquared();
+                    if (distance6 < 0.255 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case WITHER_SKELETON -> {
+                    WitherSkeleton mob = (WitherSkeleton) entity;
+                    //高度：2.4格
+                    //宽度：0.7格
+                    Vector base = mob.getLocation().toVector();
+
+                    Vector v1 = base.clone().setY(base.getY() + 1.372 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.123 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 1.029 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.123 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 0.686 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.123 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v4 = base.clone().setY(base.getY() + 1.715 * scale).subtract(startLocation);
+                    double distance4 = v4.crossProduct(direction).lengthSquared();
+                    if (distance4 < 0.123 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v5 = base.clone().setY(base.getY() + 2.058 * scale).subtract(startLocation);
+                    double distance5 = v5.crossProduct(direction).lengthSquared();
+                    if (distance5 < 0.123 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v6 = base.clone().setY(base.getY() + 0.343 * scale).subtract(startLocation);
+                    double distance6 = v6.crossProduct(direction).lengthSquared();
+                    if (distance6 < 0.123 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case WARDEN -> {
+                    Warden mob = (Warden) entity;
+                    //高度：2.9格
+                    //宽度：0.9格
+                    Vector base = mob.getLocation().toVector();
+
+                    Vector v1 = base.clone().setY(base.getY() + 1.45 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.234 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 0.966 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.234 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 1.929 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.234 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v4 = base.clone().setY(base.getY() + 2.412 * scale).subtract(startLocation);
+                    double distance4 = v4.crossProduct(direction).lengthSquared();
+                    if (distance4 < 0.234 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v5 = base.clone().setY(base.getY() + 0.483 * scale).subtract(startLocation);
+                    double distance5 = v5.crossProduct(direction).lengthSquared();
+                    if (distance5 < 0.234 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case BREEZE -> {
+                    //高度：1.77格
+                    //宽度：0.6格
+                    Breeze mob = (Breeze) entity;
+                    Vector base = mob.getLocation().toVector();
+
+                    Vector v1 = base.clone().setY(base.getY() + 0.885 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.089 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 0.59 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.089 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 1.18 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.089 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v4 = base.clone().setY(base.getY() + 1.475 * scale).subtract(startLocation);
+                    double distance4 = v4.crossProduct(direction).lengthSquared();
+                    if (distance4 < 0.089 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v5 = base.clone().setY(base.getY() + 0.295 * scale).subtract(startLocation);
+                    double distance5 = v5.crossProduct(direction).lengthSquared();
+                    if (distance5 < 0.089 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+
+                case BLAZE -> {
+                    //高度：1.8格
+                    //宽度：0.6格
+                    Blaze mob = (Blaze) entity;
+                    Vector base = mob.getLocation().toVector();
+
+                    Vector v1 = base.clone().setY(base.getY() + 0.9 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 0.6 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 1.2 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v4 = base.clone().setY(base.getY() + 1.5 * scale).subtract(startLocation);
+                    double distance4 = v4.crossProduct(direction).lengthSquared();
+                    if (distance4 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v5 = base.clone().setY(base.getY() + 0.3 * scale).subtract(startLocation);
+                    double distance5 = v5.crossProduct(direction).lengthSquared();
+                    if (distance5 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+
+
+                }
+
+
+                case CREEPER -> {
+                    //高度：1.7格
+                    //宽度：0.6格
+                    Creeper mob = (Creeper) entity;
+
+                    Vector base = mob.getLocation().toVector();
+
+                    Vector v1 = base.clone().setY(base.getY() + 0.85 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 0.566 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 1.132 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v4 = base.clone().setY(base.getY() + 1.415 * scale).subtract(startLocation);
+                    double distance4 = v4.crossProduct(direction).lengthSquared();
+                    if (distance4 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v5 = base.clone().setY(base.getY() + 0.283 * scale).subtract(startLocation);
+                    double distance5 = v5.crossProduct(direction).lengthSquared();
+                    if (distance5 < 0.095 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                //条件敌对
+
+                case POLAR_BEAR -> {
+                    PolarBear mob = (PolarBear) entity;
+                    if (mob.isAdult()) {
+                        //成年
+                        //高度：1.4格
+                        //宽度：1.4格
+                        Vector eyeToEntityFeet = mob.getLocation().toVector();
+                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(startLocation);
+                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                        if (distance < 0.495 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+                    } else {
+                        //幼年
+                        //高度：0.7格
+                        //宽度：0.7格
+                        Vector eyeToEntityFeet = mob.getLocation().toVector();
+                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(startLocation);
+                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                        if (distance < 0.123 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+                    }
+                }
+
+                case BEE -> {
+                    Bee mob = (Bee) entity;
+                    if (mob.isAdult()) {
+                        //成年
+                        //高度：0.6格
+                        //宽度：0.7格
+                        Vector eyeToEntityFeet = mob.getLocation().toVector();
+                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3 * scale).subtract(startLocation);
+                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                        if (distance < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+                    } else {
+                        //幼年
+                        //高度：0.3格
+                        //宽度：0.35格
+                        Vector eyeToEntityFeet = mob.getLocation().toVector();
+                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(startLocation);
+                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                        if (distance < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+                    }
+                }
+                case DOLPHIN -> {
+                    //高度：0.6格
+                    //宽度：0.9格
+                    Dolphin mob = (Dolphin) entity;
+                    Vector eyeToEntityFeet = mob.getLocation().toVector();
+                    eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3 * scale).subtract(startLocation);
+                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                    if (distance < 0.165 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+                case FOX -> {
+                    Fox mob = (Fox) entity;
+                    if (mob.isAdult()) {
+                        //成年
+                        //高度：0.7格
+                        //宽度：0.6格
+                        Vector eyeToEntityFeet = mob.getLocation().toVector();
+                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(startLocation);
+                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                        if (distance < 0.106 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+                    } else {
+                        //幼年
+                        //高度：0.35格
+                        //宽度：0.3格
+                        Vector eyeToEntityFeet = mob.getLocation().toVector();
+                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.175 * scale).subtract(startLocation);
+                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                        if (distance < 0.027 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+                    }
+                }
+
+                case IRON_GOLEM -> {
+                    //高度：2.7格
+                    //宽度：1.4格
+                    IronGolem mob = (IronGolem) entity;
+                    Vector base = mob.getLocation().toVector();
+                    Vector v1 = base.clone().setY(base.getY() + 1.35 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.495 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 0.675 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.495 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 2.025 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.495 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case VEX -> {
+                    Vex mob = (Vex) entity;
+                    //高度：0.8格
+                    //宽度：0.4格
+                    Vector base = mob.getLocation().toVector();
+                    Vector v1 = base.clone().setY(base.getY() + 0.6 * scale).subtract(startLocation);
+                    double distance1 = v1.crossProduct(direction).lengthSquared();
+                    if (distance1 < 0.045 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v2 = base.clone().setY(base.getY() + 0.4 * scale).subtract(startLocation);
+                    double distance2 = v2.crossProduct(direction).lengthSquared();
+                    if (distance2 < 0.045 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                        continue;
+                    }
+                    Vector v3 = base.clone().setY(base.getY() + 0.2 * scale).subtract(startLocation);
+                    double distance3 = v3.crossProduct(direction).lengthSquared();
+                    if (distance3 < 0.045 * scaleSquared) {
+                        filteredMonsters.add(mob);
+                    }
+                }
+
+                case WOLF -> {
+                    Wolf mob = (Wolf) entity;
+                    if (mob.isAdult()) {
+                        //成年
+                        //高度：0.85格
+                        //宽度：0.6格
+                        Vector base = mob.getLocation().toVector();
+                        Vector v1 = base.clone().setY(base.getY() + 0.284 * scale).subtract(startLocation);
+                        double distance1 = v1.crossProduct(direction).lengthSquared();
+                        if (distance1 < 0.095 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v2 = base.clone().setY(base.getY() + 0.568 * scale).subtract(startLocation);
+                        double distance2 = v2.crossProduct(direction).lengthSquared();
+                        if (distance2 < 0.095 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+                    } else {
+                        //幼年
+                        //高度：0.425格
+                        //宽度：0.3格
+                        Vector base = mob.getLocation().toVector();
+                        Vector v1 = base.clone().setY(base.getY() + 0.142 * scale).subtract(startLocation);
+                        double distance1 = v1.crossProduct(direction).lengthSquared();
+                        if (distance1 < 0.023 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                            continue;
+                        }
+                        Vector v2 = base.clone().setY(base.getY() + 0.284 * scale).subtract(startLocation);
+                        double distance2 = v2.crossProduct(direction).lengthSquared();
+                        if (distance2 < 0.023 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+
+                    }
+                }
+
+                case PANDA -> {
+                    Panda mob = (Panda) entity;
+                    if (mob.isAdult()) {
+                        //成年
+                        //高度：1.25格
+                        //宽度：1.3格
+                        Vector eyeToEntityFeet = mob.getLocation().toVector();
+                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.625 * scale).subtract(startLocation);
+                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                        if (distance < 0.407 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+                    } else {
+                        //幼年
+                        //高度：0.625格
+                        //宽度：0.65格
+                        Vector eyeToEntityFeet = mob.getLocation().toVector();
+                        eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3125 * scale).subtract(startLocation);
+                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
+                        if (distance < 0.102 * scaleSquared) {
+                            filteredMonsters.add(mob);
+                        }
+                    }
+                }
+
+            }
+
+        }
+    }
 }
 
 

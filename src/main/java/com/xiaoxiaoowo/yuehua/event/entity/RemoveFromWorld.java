@@ -19,14 +19,6 @@ public final class RemoveFromWorld implements Listener {
             UUID uuid = entity.getUniqueId();
             Yuehua.monsterData.get(uuid).taskIds.forEach(it -> Yuehua.scheduler.cancelTask(it));
             Yuehua.monsterData.remove(uuid);
-            return;
-        }
-
-        if (tags.contains("display")) {
-            entity.remove();
-            UUID uuid = entity.getUniqueId();
-            Yuehua.scheduler.cancelTask(Yuehua.disPlayData.get(uuid).taskId);
-            Yuehua.disPlayData.remove(uuid);
         }
 
     }

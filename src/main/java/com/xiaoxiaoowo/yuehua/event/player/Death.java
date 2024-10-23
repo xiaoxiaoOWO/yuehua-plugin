@@ -3,6 +3,8 @@ package com.xiaoxiaoowo.yuehua.event.player;
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import com.xiaoxiaoowo.yuehua.system.handleObsevers.DoDeath;
+import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.title.Title;
@@ -27,7 +29,11 @@ public final class Death implements Listener {
     @EventHandler
     public void onDeath(PlayerDeathEvent e) {
         Player player = e.getPlayer();
-
+        Data data = Yuehua.playerData.get(player.getUniqueId());
+        for (String observer : data.deathObservers){
+            DoDeath.onDeath(observer,e,data);
+            return;
+        }
 
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         /*
@@ -100,7 +106,7 @@ public final class Death implements Listener {
         pdc.set(DataContainer.fuben, PersistentDataType.INTEGER, 0);
 
 
-        Yuehua.async(() -> player.showTitle(title));
+        Scheduler.async(() -> player.showTitle(title));
 
     }
 }
