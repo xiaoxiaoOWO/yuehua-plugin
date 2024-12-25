@@ -19,43 +19,118 @@ public final class AdvancementSet {
     public static final Advancement fubenRoot = Bukkit.getAdvancement(new NamespacedKey("yuehua", "fuben/root"));
 
 
-    public static final Advancement eastjiangshi = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastjiangshi"));
-    public static final Advancement eastjiangshi_final = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastjiangshi_final"));
-    public static final Advancement eastkulou = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastkulou"));
-    public static final Advancement eastkulou_final = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastkulou_final"));
-    public static final Advancement eastzhizhu = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastzhizhu"));
-    public static final Advancement eastzhizhu_final = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastzhizhu_final"));
+    public static final Advancement eastjiangshi_100 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastjiangshi_100"));
+    public static final Advancement eastjiangshi_200 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastjiangshi_200"));
+    public static final Advancement eastjiangshi_500 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastjiangshi_500"));
+    public static final Advancement eastjiangshi_1000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastjiangshi_1000"));
+    public static final Advancement eastjiangshi_2000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastjiangshi_2000"));
+    public static final Advancement eastjiangshi_5000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastjiangshi_5000"));
 
+    public static final Advancement eastkulou_100 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastkulou_100"));
+    public static final Advancement eastkulou_200 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastkulou_200"));
+    public static final Advancement eastkulou_500 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastkulou_500"));
+    public static final Advancement eastkulou_1000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastkulou_1000"));
+    public static final Advancement eastkulou_2000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastkulou_2000"));
+    public static final Advancement eastkulou_5000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastkulou_5000"));
 
-    public static final Advancement eastdufeng = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastdufeng"));
-    public static final Advancement eastdufeng_final = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastdufeng_final"));
-    public static final Advancement eastjiangshijinyin = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastjiangshijinyin"));
-    public static final Advancement eastjiangshijinyin_final = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastjiangshijinyin_final"));
-    public static final Advancement eastkugugongjianshou = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastkugugongjianshou"));
-    public static final Advancement eastkugugongjianshou_final = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastkugugongjianshou_final"));
-    public static final Advancement eastzhizhujinyin = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastzhizhujinyin"));
-    public static final Advancement eastzhizhujinyin_final = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastzhizhujinyin_final"));
+    public static final Advancement eastzhizhu_100 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastzhizhu_100"));
+    public static final Advancement eastzhizhu_200 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastzhizhu_200"));
+    public static final Advancement eastzhizhu_500 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastzhizhu_500"));
+    public static final Advancement eastzhizhu_1000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastzhizhu_1000"));
+    public static final Advancement eastzhizhu_2000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastzhizhu_2000"));
+    public static final Advancement eastzhizhu_5000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastzhizhu_5000"));
 
-    public static final Advancement shanshenshooter = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenshooter"));
-    public static final Advancement shanshenshooter_final = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenshooter_final"));
-    public static final Advancement shanshenspider = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenspider"));
-    public static final Advancement shanshenspider_final = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenspider_final"));
-    public static final Advancement shanshenzombie = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenzombie"));
-    public static final Advancement shanshenzombie_final = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenzombie_final"));
+    public static final Advancement eastdufeng_100 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastdufeng_100"));
+    public static final Advancement eastdufeng_200 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastdufeng_200"));
+    public static final Advancement eastdufeng_500 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastdufeng_500"));
+    public static final Advancement eastdufeng_1000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastdufeng_1000"));
+    public static final Advancement eastdufeng_2000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastdufeng_2000"));
+    public static final Advancement eastdufeng_5000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastdufeng_5000"));
 
-    public static final Advancement yaojindufeng = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojindufeng"));
-    public static final Advancement yaojindufeng_final = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojindufeng_final"));
-    public static final Advancement yaojingpanda = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojingpanda"));
-    public static final Advancement yaojingpanda_final = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojingpanda_final"));
-    public static final Advancement yaojinshooter = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojinshooter"));
-    public static final Advancement yaojinshooter_final = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojinshooter_final"));
+    public static final Advancement eastjiangshijinyin_100 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastjiangshijinyin_100"));
+    public static final Advancement eastjiangshijinyin_200 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastjiangshijinyin_200"));
+    public static final Advancement eastjiangshijinyin_500 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastjiangshijinyin_500"));
+    public static final Advancement eastjiangshijinyin_1000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastjiangshijinyin_1000"));
+    public static final Advancement eastjiangshijinyin_2000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastjiangshijinyin_2000"));
+    public static final Advancement eastjiangshijinyin_5000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastjiangshijinyin_5000"));
 
-    public static final Advancement jianxiguimei = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/jianxi/jianxiguimei"));
-    public static final Advancement jianxiguimei_final = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/jianxi/jianxiguimei_final"));
-    public static final Advancement linyouduzhu = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/linyou/linyouduzhu"));
-    public static final Advancement linyouduzhu_final = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/linyou/linyouduzhu_final"));
-    public static final Advancement zhizhunvwang = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/zhizhu/zhizhunvwang"));
-    public static final Advancement zhizhunvwang_final = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/zhizhu/zhizhunvwang_final"));
+    public static final Advancement eastkugugongjianshou_100 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastkugugongjianshou_100"));
+    public static final Advancement eastkugugongjianshou_200 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastkugugongjianshou_200"));
+    public static final Advancement eastkugugongjianshou_500 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastkugugongjianshou_500"));
+    public static final Advancement eastkugugongjianshou_1000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastkugugongjianshou_1000"));
+    public static final Advancement eastkugugongjianshou_2000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastkugugongjianshou_2000"));
+    public static final Advancement eastkugugongjianshou_5000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastkugugongjianshou_5000"));
+
+    public static final Advancement eastzhizhujinyin_100 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastzhizhujinyin_100"));
+    public static final Advancement eastzhizhujinyin_200 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastzhizhujinyin_200"));
+    public static final Advancement eastzhizhujinyin_500 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastzhizhujinyin_500"));
+    public static final Advancement eastzhizhujinyin_1000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastzhizhujinyin_1000"));
+    public static final Advancement eastzhizhujinyin_2000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastzhizhujinyin_2000"));
+    public static final Advancement eastzhizhujinyin_5000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/east/eastzhizhujinyin_5000"));
+
+    public static final Advancement shanshenshooter_100 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenshooter_100"));
+    public static final Advancement shanshenshooter_200 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenshooter_200"));
+    public static final Advancement shanshenshooter_500 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenshooter_500"));
+    public static final Advancement shanshenshooter_1000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenshooter_1000"));
+    public static final Advancement shanshenshooter_2000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenshooter_2000"));
+    public static final Advancement shanshenshooter_5000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenshooter_5000"));
+
+    public static final Advancement shanshenspider_100 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenspider_100"));
+    public static final Advancement shanshenspider_200 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenspider_200"));
+    public static final Advancement shanshenspider_500 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenspider_500"));
+    public static final Advancement shanshenspider_1000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenspider_1000"));
+    public static final Advancement shanshenspider_2000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenspider_2000"));
+    public static final Advancement shanshenspider_5000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenspider_5000"));
+
+    public static final Advancement shanshenzombie_100 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenzombie_100"));
+    public static final Advancement shanshenzombie_200 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenzombie_200"));
+    public static final Advancement shanshenzombie_500 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenzombie_500"));
+    public static final Advancement shanshenzombie_1000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenzombie_1000"));
+    public static final Advancement shanshenzombie_2000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenzombie_2000"));
+    public static final Advancement shanshenzombie_5000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/shanshen/shanshenzombie_5000"));
+
+    public static final Advancement yaojindufeng_100 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojindufeng_100"));
+    public static final Advancement yaojindufeng_200 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojindufeng_200"));
+    public static final Advancement yaojindufeng_500 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojindufeng_500"));
+    public static final Advancement yaojindufeng_1000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojindufeng_1000"));
+    public static final Advancement yaojindufeng_2000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojindufeng_2000"));
+    public static final Advancement yaojindufeng_5000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojindufeng_5000"));
+
+    public static final Advancement yaojingpanda_100 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojingpanda_100"));
+    public static final Advancement yaojingpanda_200 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojingpanda_200"));
+    public static final Advancement yaojingpanda_500 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojingpanda_500"));
+    public static final Advancement yaojingpanda_1000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojingpanda_1000"));
+    public static final Advancement yaojingpanda_2000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojingpanda_2000"));
+    public static final Advancement yaojingpanda_5000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojingpanda_5000"));
+
+    public static final Advancement yaojinshooter_100 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojinshooter_100"));
+    public static final Advancement yaojinshooter_200 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojinshooter_200"));
+    public static final Advancement yaojinshooter_500 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojinshooter_500"));
+    public static final Advancement yaojinshooter_1000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojinshooter_1000"));
+    public static final Advancement yaojinshooter_2000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojinshooter_2000"));
+    public static final Advancement yaojinshooter_5000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/yaojin/yaojinshooter_5000"));
+
+    public static final Advancement jianxiguimei_100 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/jianxi/jianxiguimei_100"));
+    public static final Advancement jianxiguimei_200 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/jianxi/jianxiguimei_200"));
+    public static final Advancement jianxiguimei_500 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/jianxi/jianxiguimei_500"));
+    public static final Advancement jianxiguimei_1000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/jianxi/jianxiguimei_1000"));
+    public static final Advancement jianxiguimei_2000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/jianxi/jianxiguimei_2000"));
+    public static final Advancement jianxiguimei_5000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/jianxi/jianxiguimei_5000"));
+
+    public static final Advancement linyouduzhu_100 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/linyou/linyouduzhu_100"));
+    public static final Advancement linyouduzhu_200 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/linyou/linyouduzhu_200"));
+    public static final Advancement linyouduzhu_500 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/linyou/linyouduzhu_500"));
+    public static final Advancement linyouduzhu_1000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/linyou/linyouduzhu_1000"));
+    public static final Advancement linyouduzhu_2000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/linyou/linyouduzhu_2000"));
+    public static final Advancement linyouduzhu_5000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/linyou/linyouduzhu_5000"));
+
+    public static final Advancement zhizhunvwang_100 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/zhizhu/zhizhunvwang_100"));
+    public static final Advancement zhizhunvwang_200 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/zhizhu/zhizhunvwang_200"));
+    public static final Advancement zhizhunvwang_500 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/zhizhu/zhizhunvwang_500"));
+    public static final Advancement zhizhunvwang_1000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/zhizhu/zhizhunvwang_1000"));
+    public static final Advancement zhizhunvwang_2000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/zhizhu/zhizhunvwang_2000"));
+    public static final Advancement zhizhunvwang_5000 = Bukkit.getAdvancement(new NamespacedKey("yuehua", "kill/zhizhu/zhizhunvwang_5000"));
+
 
     public static void giveAdv(Player player, Advancement advancement, int point) {
         AdvancementProgress advancementProgress = player.getAdvancementProgress(advancement);

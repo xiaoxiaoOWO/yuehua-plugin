@@ -1,16 +1,10 @@
 package com.xiaoxiaoowo.yuehua.system;
 
-import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.guis.Yh;
-import com.xiaoxiaoowo.yuehua.utils.SQL;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.scoreboard.Scoreboard;
 
-import static com.xiaoxiaoowo.yuehua.utils.Shichang.initialShiChang;
+import static com.xiaoxiaoowo.yuehua.guis.Shichang.initialShiChang;
 
 @SuppressWarnings("deprecation")
 public final class Team {

@@ -1,22 +1,17 @@
 # Details
 
-Date : 2024-12-24 08:07:29
+Date : 2024-12-26 06:13:42
 
-Directory d:\\panling\\yuehua-plugin\\src
+Directory d:\\panling\\yuehua-plugin\\src\\main
 
-Total : 391 files,  68453 codes, 2724 comments, 11530 blanks, all 82707 lines
+Total : 389 files,  68817 codes, 2748 comments, 11635 blanks, all 83200 lines
 
 [Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
 
 ## Files
 | filename | language | code | comment | blank | total |
 | :--- | :--- | ---: | ---: | ---: | ---: |
-| [src/.VSCodeCounter/2024-10-18_14-33-33/details.md](/src/.VSCodeCounter/2024-10-18_14-33-33/details.md) | Markdown | 223 | 0 | 6 | 229 |
-| [src/.VSCodeCounter/2024-10-18_14-33-33/diff-details.md](/src/.VSCodeCounter/2024-10-18_14-33-33/diff-details.md) | Markdown | 9 | 0 | 6 | 15 |
-| [src/.VSCodeCounter/2024-10-18_14-33-33/diff.md](/src/.VSCodeCounter/2024-10-18_14-33-33/diff.md) | Markdown | 12 | 0 | 7 | 19 |
-| [src/.VSCodeCounter/2024-10-18_14-33-33/results.json](/src/.VSCodeCounter/2024-10-18_14-33-33/results.json) | JSON | 1 | 0 | 0 | 1 |
-| [src/.VSCodeCounter/2024-10-18_14-33-33/results.md](/src/.VSCodeCounter/2024-10-18_14-33-33/results.md) | Markdown | 73 | 0 | 7 | 80 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/Yuehua.java](/src/main/java/com/xiaoxiaoowo/yuehua/Yuehua.java) | Java | 286 | 39 | 61 | 386 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/Yuehua.java](/src/main/java/com/xiaoxiaoowo/yuehua/Yuehua.java) | Java | 302 | 39 | 66 | 407 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/attribute/AttributeSet.java](/src/main/java/com/xiaoxiaoowo/yuehua/attribute/AttributeSet.java) | Java | 1,905 | 0 | 307 | 2,212 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/attribute/attributes/MyAttribute.java](/src/main/java/com/xiaoxiaoowo/yuehua/attribute/attributes/MyAttribute.java) | Java | 8 | 0 | 6 | 14 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/attribute/attributes/fangyu/Fakang.java](/src/main/java/com/xiaoxiaoowo/yuehua/attribute/attributes/fangyu/Fakang.java) | Java | 34 | 0 | 7 | 41 |
@@ -50,10 +45,10 @@ Total : 391 files,  68453 codes, 2724 comments, 11530 blanks, all 82707 lines
 | [src/main/java/com/xiaoxiaoowo/yuehua/attribute/attributes/vanilla/HpMul.java](/src/main/java/com/xiaoxiaoowo/yuehua/attribute/attributes/vanilla/HpMul.java) | Java | 54 | 0 | 11 | 65 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/attribute/attributes/vanilla/Jump.java](/src/main/java/com/xiaoxiaoowo/yuehua/attribute/attributes/vanilla/Jump.java) | Java | 37 | 0 | 9 | 46 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/attribute/attributes/vanilla/Speed.java](/src/main/java/com/xiaoxiaoowo/yuehua/attribute/attributes/vanilla/Speed.java) | Java | 56 | 0 | 11 | 67 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/commands/Test.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/Test.java) | Java | 1,043 | 659 | 338 | 2,040 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/commands/Test.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/Test.java) | Java | 1,045 | 659 | 338 | 2,042 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/commands/blockcommand/Advancement.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/blockcommand/Advancement.java) | Java | 11 | 0 | 3 | 14 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/commands/blockcommand/BlockTp.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/blockcommand/BlockTp.java) | Java | 42 | 0 | 6 | 48 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/commands/blockcommand/IntoGame.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/blockcommand/IntoGame.java) | Java | 222 | 13 | 32 | 267 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/commands/blockcommand/IntoGame.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/blockcommand/IntoGame.java) | Java | 238 | 13 | 37 | 288 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/commands/blockcommand/MarkRelife.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/blockcommand/MarkRelife.java) | Java | 64 | 0 | 8 | 72 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/commands/blockcommand/MyBossSpawn.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/blockcommand/MyBossSpawn.java) | Java | 63 | 0 | 11 | 74 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/commands/blockcommand/MySpawn.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/blockcommand/MySpawn.java) | Java | 73 | 0 | 15 | 88 |
@@ -85,7 +80,7 @@ Total : 391 files,  68453 codes, 2724 comments, 11530 blanks, all 82707 lines
 | [src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/Kill.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/Kill.java) | Java | 14 | 0 | 3 | 17 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/MoneyCMD.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/MoneyCMD.java) | Java | 416 | 2 | 62 | 480 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/Sale.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/Sale.java) | Java | 98 | 0 | 23 | 121 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/Sell.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/Sell.java) | Java | 137 | 1 | 27 | 165 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/Sell.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/Sell.java) | Java | 140 | 1 | 26 | 167 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/Yhteam.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/Yhteam.java) | Java | 300 | 0 | 73 | 373 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/YuanSuCMD.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/YuanSuCMD.java) | Java | 1,027 | 0 | 26 | 1,053 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/completer/ArrowCom.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/completer/ArrowCom.java) | Java | 27 | 0 | 7 | 34 |
@@ -97,7 +92,7 @@ Total : 391 files,  68453 codes, 2724 comments, 11530 blanks, all 82707 lines
 | [src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/completer/Yhteam.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/completer/Yhteam.java) | Java | 33 | 0 | 9 | 42 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/completer/YuanSuCom.java](/src/main/java/com/xiaoxiaoowo/yuehua/commands/playercommand/completer/YuanSuCom.java) | Java | 35 | 0 | 8 | 43 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/data/DanData.java](/src/main/java/com/xiaoxiaoowo/yuehua/data/DanData.java) | Java | 124 | 1 | 40 | 165 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/data/Data.java](/src/main/java/com/xiaoxiaoowo/yuehua/data/Data.java) | Java | 1,001 | 46 | 240 | 1,287 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/data/Data.java](/src/main/java/com/xiaoxiaoowo/yuehua/data/Data.java) | Java | 1,030 | 46 | 250 | 1,326 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/data/GongData.java](/src/main/java/com/xiaoxiaoowo/yuehua/data/GongData.java) | Java | 78 | 8 | 26 | 112 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/data/MonsterData.java](/src/main/java/com/xiaoxiaoowo/yuehua/data/MonsterData.java) | Java | 110 | 0 | 35 | 145 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/data/PetData.java](/src/main/java/com/xiaoxiaoowo/yuehua/data/PetData.java) | Java | 38 | 0 | 14 | 52 |
@@ -203,7 +198,7 @@ Total : 391 files,  68453 codes, 2724 comments, 11530 blanks, all 82707 lines
 | [src/main/java/com/xiaoxiaoowo/yuehua/entity/npc/yushi/Zijinshi.java](/src/main/java/com/xiaoxiaoowo/yuehua/entity/npc/yushi/Zijinshi.java) | Java | 116 | 4 | 27 | 147 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/entity/other/Pig.java](/src/main/java/com/xiaoxiaoowo/yuehua/entity/other/Pig.java) | Java | 18 | 5 | 4 | 27 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/entity/pet/other/FeiXianJian.java](/src/main/java/com/xiaoxiaoowo/yuehua/entity/pet/other/FeiXianJian.java) | Java | 24 | 5 | 7 | 36 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/event/Inventory/Click.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/Inventory/Click.java) | Java | 4,067 | 49 | 577 | 4,693 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/event/Inventory/Click.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/Inventory/Click.java) | Java | 4,075 | 49 | 579 | 4,703 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/event/Inventory/Close.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/Inventory/Close.java) | Java | 158 | 0 | 17 | 175 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/event/Inventory/Open.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/Inventory/Open.java) | Java | 18 | 0 | 4 | 22 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/event/Projectile/Hit.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/Projectile/Hit.java) | Java | 99 | 5 | 9 | 113 |
@@ -228,21 +223,22 @@ Total : 391 files,  68453 codes, 2724 comments, 11530 blanks, all 82707 lines
 | [src/main/java/com/xiaoxiaoowo/yuehua/event/player/Death.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/player/Death.java) | Java | 33 | 17 | 12 | 62 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/event/player/DropItem.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/player/DropItem.java) | Java | 17 | 0 | 4 | 21 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/event/player/FlowerPotManipulate.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/player/FlowerPotManipulate.java) | Java | 16 | 0 | 4 | 20 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/event/player/Interact.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/player/Interact.java) | Java | 1,144 | 27 | 175 | 1,346 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/event/player/Interact.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/player/Interact.java) | Java | 1,175 | 27 | 184 | 1,386 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/event/player/InventorySlotChange.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/player/InventorySlotChange.java) | Java | 686 | 112 | 54 | 852 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/event/player/Join.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/player/Join.java) | Java | 349 | 13 | 68 | 430 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/event/player/Join.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/player/Join.java) | Java | 360 | 24 | 75 | 459 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/event/player/LevelChange.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/player/LevelChange.java) | Java | 206 | 5 | 28 | 239 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/event/player/Login.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/player/Login.java) | Java | 23 | 0 | 7 | 30 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/event/player/Quit.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/player/Quit.java) | Java | 116 | 1 | 11 | 128 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/event/player/Quit.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/player/Quit.java) | Java | 132 | 1 | 16 | 149 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/event/player/Swap.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/player/Swap.java) | Java | 13 | 0 | 3 | 16 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/event/player/Teleport.java](/src/main/java/com/xiaoxiaoowo/yuehua/event/player/Teleport.java) | Java | 19 | 0 | 3 | 22 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/guis/Advancenment.java](/src/main/java/com/xiaoxiaoowo/yuehua/guis/Advancenment.java) | Java | 3 | 0 | 2 | 5 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/guis/DuanZao.java](/src/main/java/com/xiaoxiaoowo/yuehua/guis/DuanZao.java) | Java | 363 | 0 | 70 | 433 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/guis/Recipe.java](/src/main/java/com/xiaoxiaoowo/yuehua/guis/Recipe.java) | Java | 280 | 2 | 85 | 367 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/guis/Task.java](/src/main/java/com/xiaoxiaoowo/yuehua/guis/Task.java) | Java | 148 | 1 | 21 | 170 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/guis/Shichang.java](/src/main/java/com/xiaoxiaoowo/yuehua/guis/Shichang.java) | Java | 76 | 13 | 17 | 106 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/guis/Task.java](/src/main/java/com/xiaoxiaoowo/yuehua/guis/Task.java) | Java | 266 | 1 | 40 | 307 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/guis/Yh.java](/src/main/java/com/xiaoxiaoowo/yuehua/guis/Yh.java) | Java | 899 | 10 | 98 | 1,007 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/guis/bank/JianDai.java](/src/main/java/com/xiaoxiaoowo/yuehua/guis/bank/JianDai.java) | Java | 113 | 0 | 17 | 130 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/guis/bank/MoneyBank.java](/src/main/java/com/xiaoxiaoowo/yuehua/guis/bank/MoneyBank.java) | Java | 175 | 3 | 32 | 210 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/guis/bank/MoneyBank.java](/src/main/java/com/xiaoxiaoowo/yuehua/guis/bank/MoneyBank.java) | Java | 184 | 3 | 34 | 221 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/guis/bank/YuanSuBank.java](/src/main/java/com/xiaoxiaoowo/yuehua/guis/bank/YuanSuBank.java) | Java | 337 | 4 | 70 | 411 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/guis/op/OpGui.java](/src/main/java/com/xiaoxiaoowo/yuehua/guis/op/OpGui.java) | Java | 16 | 0 | 7 | 23 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/guis/op/OpTp.java](/src/main/java/com/xiaoxiaoowo/yuehua/guis/op/OpTp.java) | Java | 52 | 0 | 10 | 62 |
@@ -276,10 +272,10 @@ Total : 391 files,  68453 codes, 2724 comments, 11530 blanks, all 82707 lines
 | [src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/ArmorFeet.java](/src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/ArmorFeet.java) | Java | 990 | 4 | 31 | 1,025 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/ArmorHead.java](/src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/ArmorHead.java) | Java | 999 | 4 | 61 | 1,064 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/ArmorLeg.java](/src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/ArmorLeg.java) | Java | 999 | 4 | 36 | 1,039 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/BiWeapon.java](/src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/BiWeapon.java) | Java | 711 | 3 | 58 | 772 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/BiWeapon.java](/src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/BiWeapon.java) | Java | 711 | 3 | 60 | 774 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/Fabao.java](/src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/Fabao.java) | Java | 1,361 | 12 | 106 | 1,479 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/Shipin.java](/src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/Shipin.java) | Java | 2,202 | 0 | 181 | 2,383 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/Weapon.java](/src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/Weapon.java) | Java | 1,557 | 10 | 76 | 1,643 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/Weapon.java](/src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/Weapon.java) | Java | 1,557 | 10 | 84 | 1,651 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/YiQi.java](/src/main/java/com/xiaoxiaoowo/yuehua/items/zhuangbei/YiQi.java) | Java | 624 | 3 | 51 | 678 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/jineng/DoJiNeng.java](/src/main/java/com/xiaoxiaoowo/yuehua/jineng/DoJiNeng.java) | Java | 173 | 0 | 25 | 198 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/jineng/dan/zhenfa/Huo.java](/src/main/java/com/xiaoxiaoowo/yuehua/jineng/dan/zhenfa/Huo.java) | Java | 29 | 0 | 10 | 39 |
@@ -317,10 +313,10 @@ Total : 391 files,  68453 codes, 2724 comments, 11530 blanks, all 82707 lines
 | [src/main/java/com/xiaoxiaoowo/yuehua/system/Act.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/Act.java) | Java | 429 | 1 | 86 | 516 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/system/Buff.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/Buff.java) | Java | 600 | 0 | 66 | 666 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/system/Cure.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/Cure.java) | Java | 102 | 5 | 18 | 125 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/system/Damage.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/Damage.java) | Java | 396 | 28 | 137 | 561 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/system/DataContainer.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/DataContainer.java) | Java | 249 | 24 | 78 | 351 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/system/Damage.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/Damage.java) | Java | 397 | 28 | 138 | 563 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/system/DataContainer.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/DataContainer.java) | Java | 251 | 24 | 81 | 356 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/system/Init.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/Init.java) | Java | 145 | 0 | 34 | 179 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/system/Team.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/Team.java) | Java | 49 | 1 | 9 | 59 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/system/Team.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/Team.java) | Java | 33 | 1 | 11 | 45 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/system/act/ActFuling.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/act/ActFuling.java) | Java | 837 | 0 | 106 | 943 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/system/act/ActYuShi.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/act/ActYuShi.java) | Java | 1,660 | 0 | 236 | 1,896 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/system/dz/Fabao.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/dz/Fabao.java) | Java | 27 | 3 | 8 | 38 |
@@ -343,7 +339,7 @@ Total : 391 files,  68453 codes, 2724 comments, 11530 blanks, all 82707 lines
 | [src/main/java/com/xiaoxiaoowo/yuehua/system/handleObsevers/DoHitObserver.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/handleObsevers/DoHitObserver.java) | Java | 160 | 0 | 36 | 196 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/system/handleObsevers/DoHuDunObserver.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/handleObsevers/DoHuDunObserver.java) | Java | 14 | 0 | 4 | 18 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/system/handleObsevers/DoJiNengObservers.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/handleObsevers/DoJiNengObservers.java) | Java | 54 | 1 | 12 | 67 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/system/handleObsevers/DoKillMonsterObserver.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/handleObsevers/DoKillMonsterObserver.java) | Java | 67 | 0 | 22 | 89 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/system/handleObsevers/DoKillMonsterObserver.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/handleObsevers/DoKillMonsterObserver.java) | Java | 233 | 0 | 24 | 257 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/system/handleObsevers/DoPlayerProjectileObserver.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/handleObsevers/DoPlayerProjectileObserver.java) | Java | 456 | 3 | 73 | 532 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/system/handleObsevers/DoZhenfaObserver.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/handleObsevers/DoZhenfaObserver.java) | Java | 53 | 1 | 14 | 68 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/system/handlePets/DoPetAttack.java](/src/main/java/com/xiaoxiaoowo/yuehua/system/handlePets/DoPetAttack.java) | Java | 17 | 0 | 4 | 21 |
@@ -384,15 +380,17 @@ Total : 391 files,  68453 codes, 2724 comments, 11530 blanks, all 82707 lines
 | [src/main/java/com/xiaoxiaoowo/yuehua/task/weapon/YouLong.java](/src/main/java/com/xiaoxiaoowo/yuehua/task/weapon/YouLong.java) | Java | 32 | 0 | 8 | 40 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/task/weapon/YouLongShui.java](/src/main/java/com/xiaoxiaoowo/yuehua/task/weapon/YouLongShui.java) | Java | 42 | 1 | 10 | 53 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/task/yiqi/LAOZHANSHIDUNPAI.java](/src/main/java/com/xiaoxiaoowo/yuehua/task/yiqi/LAOZHANSHIDUNPAI.java) | Java | 26 | 0 | 10 | 36 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/utils/AdvancementSet.java](/src/main/java/com/xiaoxiaoowo/yuehua/utils/AdvancementSet.java) | Java | 124 | 0 | 22 | 146 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/utils/Check.java](/src/main/java/com/xiaoxiaoowo/yuehua/utils/Check.java) | Java | 50 | 0 | 13 | 63 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/utils/ComponentSet.java](/src/main/java/com/xiaoxiaoowo/yuehua/utils/ComponentSet.java) | Java | 51 | 0 | 12 | 63 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/utils/GetEntity.java](/src/main/java/com/xiaoxiaoowo/yuehua/utils/GetEntity.java) | Java | 1,701 | 165 | 199 | 2,065 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/utils/LevelLeaderBoard.java](/src/main/java/com/xiaoxiaoowo/yuehua/utils/LevelLeaderBoard.java) | Java | 20 | 0 | 6 | 26 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/utils/LocationCheck.java](/src/main/java/com/xiaoxiaoowo/yuehua/utils/LocationCheck.java) | Java | 198 | 45 | 43 | 286 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/utils/LocationSet.java](/src/main/java/com/xiaoxiaoowo/yuehua/utils/LocationSet.java) | Java | 85 | 1 | 4 | 90 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/utils/MoveEntity.java](/src/main/java/com/xiaoxiaoowo/yuehua/utils/MoveEntity.java) | Java | 162 | 26 | 53 | 241 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/utils/MySocket.java](/src/main/java/com/xiaoxiaoowo/yuehua/utils/MySocket.java) | Java | 253 | 4 | 44 | 301 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/utils/PlaySound.java](/src/main/java/com/xiaoxiaoowo/yuehua/utils/PlaySound.java) | Java | 173 | 0 | 61 | 234 |
-| [src/main/java/com/xiaoxiaoowo/yuehua/utils/RandomChest.java](/src/main/java/com/xiaoxiaoowo/yuehua/utils/RandomChest.java) | Java | 137 | 0 | 16 | 153 |
+| [src/main/java/com/xiaoxiaoowo/yuehua/utils/RandomChest.java](/src/main/java/com/xiaoxiaoowo/yuehua/utils/RandomChest.java) | Java | 187 | 0 | 21 | 208 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/utils/SQL.java](/src/main/java/com/xiaoxiaoowo/yuehua/utils/SQL.java) | Java | 2,894 | 79 | 465 | 3,438 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/utils/Scheduler.java](/src/main/java/com/xiaoxiaoowo/yuehua/utils/Scheduler.java) | Java | 40 | 1 | 14 | 55 |
 | [src/main/java/com/xiaoxiaoowo/yuehua/utils/SendInformation.java](/src/main/java/com/xiaoxiaoowo/yuehua/utils/SendInformation.java) | Java | 76 | 0 | 26 | 102 |

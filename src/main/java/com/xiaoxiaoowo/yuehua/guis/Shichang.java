@@ -1,8 +1,7 @@
-package com.xiaoxiaoowo.yuehua.utils;
+package com.xiaoxiaoowo.yuehua.guis;
 
-import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.guis.Yh;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import com.xiaoxiaoowo.yuehua.utils.SQL;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
