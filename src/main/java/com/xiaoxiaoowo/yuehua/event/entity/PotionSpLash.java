@@ -21,13 +21,13 @@ public final class PotionSpLash implements Listener {
         ThrownPotion thrownPotion = e.getPotion();
         if (thrownPotion.getShooter() instanceof Player player) {
             Data data = Yuehua.playerData.get(player.getUniqueId());
-            if (data.job != 3) {
-                e.setCancelled(true);
-                SendInformation.sendMes(Component.text("§e[游戏机制]§4只有炼丹师可以使用喷溅型丹药"),player);
-                return;
-            }
             DanData danData = (DanData) data;
-            switch (thrownPotion.getPersistentDataContainer().get(DataContainer.id, PersistentDataType.STRING)){
+            String id = thrownPotion.getPersistentDataContainer().get(DataContainer.id, PersistentDataType.STRING);
+            switch (id){
+
+
+                case null -> {}
+                default -> SendInformation.broadcastMes(Component.text(id));
 
             }
         }

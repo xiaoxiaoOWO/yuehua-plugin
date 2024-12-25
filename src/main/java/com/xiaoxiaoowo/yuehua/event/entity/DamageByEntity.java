@@ -1,14 +1,14 @@
 package com.xiaoxiaoowo.yuehua.event.entity;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.data.Data;
-import com.xiaoxiaoowo.yuehua.data.GongData;
-import com.xiaoxiaoowo.yuehua.data.MonsterData;
-import com.xiaoxiaoowo.yuehua.data.ZhanData;
+import com.xiaoxiaoowo.yuehua.data.*;
+import com.xiaoxiaoowo.yuehua.items.dz.YuanSu;
 import com.xiaoxiaoowo.yuehua.system.handleMonsters.DoMonsterAttack;
-import com.xiaoxiaoowo.yuehua.system.handleMonsters.DoMonsterAttackedObserver;
+import com.xiaoxiaoowo.yuehua.system.handleMonsters.DoMonsterAttacked;
 import com.xiaoxiaoowo.yuehua.system.handleMonsters.DoMonsterWuLiAttacked;
 import com.xiaoxiaoowo.yuehua.system.handleObsevers.*;
+import com.xiaoxiaoowo.yuehua.system.handlePets.DoPetAttack;
+import com.xiaoxiaoowo.yuehua.system.handlePets.DoPetAttacked;
 import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import com.xiaoxiaoowo.yuehua.utils.SendInformation;
 import net.kyori.adventure.text.Component;
@@ -17,13 +17,21 @@ import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.projectiles.ProjectileSource;
 
 import java.util.Random;
+import java.util.Set;
 
 public final class DamageByEntity implements Listener {
 
     private static final Random random = new Random();
+    private static final ItemStack jin = YuanSu.jin.clone();
+    private static final ItemStack mu = YuanSu.mu.clone();
+    private static final ItemStack shui = YuanSu.shui.clone();
+    private static final ItemStack huo = YuanSu.huo.clone();
+    private static final ItemStack tu = YuanSu.tu.clone();
 
     @EventHandler
     public void onDamageByEntity(EntityDamageByEntityEvent e) {
@@ -46,6 +54,7 @@ public final class DamageByEntity implements Listener {
     private void PlayerAttack(EntityDamageByEntityEvent e, Player player) {
         Entity damagee = e.getEntity();
         if (!damagee.getScoreboardTags().contains("m")) {
+            e.setCancelled(true);
             return;
         }
         //玩家普攻怪物
@@ -53,7 +62,7 @@ public final class DamageByEntity implements Listener {
         if (player.getInventory().getHeldItemSlot() == 0) {
             Data data = Yuehua.playerData.get(player.getUniqueId());
             if (!data.canAttack) {
-                SendInformation.sendMes(Component.text("§e[游戏机制]§4你被缴械了，无法近战攻击"), player);
+                SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你被缴械了，无法近战攻击"));
                 e.setCancelled(true);
                 return;
             }
@@ -62,12 +71,10 @@ public final class DamageByEntity implements Listener {
                 case 1 -> {
                     //未进阶，刹那
                     ZhanData zhanData = (ZhanData) data;
-
                     double attack = data.attack;
                     double baoji = data.baoji;
                     double baojixiaoguo = data.baojixiaoguo;
                     double pojia = data.pojia;
-
                     double hujia = monsterData.hujia;
                     double gedang = monsterData.gedang;
 
@@ -76,22 +83,22 @@ public final class DamageByEntity implements Listener {
                             //判断是否暴击
                             if (data.mustBaoji > 0) {
                                 data.mustBaoji--;
-                                SendInformation.sendMes(Component.text("§e[游戏机制]§b[暴击]§a触发"), player);
+
                                 attack = attack * baojixiaoguo;
                                 for (String observer : data.baoJiObservers) {
-                                    attack = attack * DoBaojiObserver.doBaoji(observer, data, (Mob) damagee);
+                                    attack = attack * DoBaojiObserver.doBaoji(observer, data, monsterData);
                                 }
                             } else if (random.nextDouble() < baoji) {
-                                SendInformation.sendMes(Component.text("§e[游戏机制]§b[暴击]§a触发"), player);
+
                                 attack = attack * baojixiaoguo;
                                 for (String observer : data.baoJiObservers) {
-                                    attack = attack * DoBaojiObserver.doBaoji(observer, data, (Mob) damagee);
+                                    attack = attack * DoBaojiObserver.doBaoji(observer, data, monsterData);
                                 }
                             }
 
                             //根据护甲和破甲计算伤害
                             double x = Math.max(0.0, hujia - pojia);
-                            double y = Math.min(1.0, x);
+                            double y = x / (0.5 + x);
                             double damage = attack - gedang;
                             //根据格挡计算伤害
                             damage = damage * (1.0 - y);
@@ -99,48 +106,46 @@ public final class DamageByEntity implements Listener {
                             monsterData.lastAttacker = player;
 
                             for (String observer : data.attackObservers) {
-                                attack = attack * DoAttackObserver.doAttack(observer, data, (Mob) damagee);
+                                damage = damage * DoAttackObserver.doAttack(observer, data, monsterData);
                             }
 
                             for (String observer : monsterData.wuliAttackedObservers) {
-                                attack = attack * DoMonsterWuLiAttacked.doWuLiAttacked(observer, monsterData, data);
+                                damage = damage * DoMonsterWuLiAttacked.doWuLiAttacked(observer, monsterData, data);
                             }
 
                             for (String observer : monsterData.attackedObservers) {
-                                attack = attack * DoMonsterAttackedObserver.doAttacked(observer, monsterData, data);
+                                damage = damage * DoMonsterAttacked.doAttacked(observer, monsterData, data);
                             }
 
                             e.setDamage(damage);
 
                         } else {
-                            Scheduler.async(() -> player.sendMessage(Component.text("§e[游戏机制]§4只有蓄力满才能攻击")));
-                            e.setCancelled(true);
+                            e.setDamage(0);
                         }
                     } else {
                         float cool = player.getAttackCooldown();
                         //天巧
                         if (cool < 0.2f) {
-                            Scheduler.async(() -> player.sendMessage(Component.text("§e[游戏机制]§4至少要蓄力§b20%")));
-                            e.setCancelled(true);
+                            e.setDamage(0);
                         } else if (cool < 0.4f) {
                             if (data.mustBaoji > 0) {
                                 data.mustBaoji--;
-                                SendInformation.sendMes(Component.text("§e[游戏机制]§b[暴击]§a触发"), player);
+
                                 attack = attack * baojixiaoguo;
                                 for (String observer : data.baoJiObservers) {
-                                    attack = attack * DoBaojiObserver.doBaoji(observer, data, (Mob) damagee);
+                                    attack = attack * DoBaojiObserver.doBaoji(observer, data, monsterData);
                                 }
                             } else if (random.nextDouble() < baoji) {
-                                SendInformation.sendMes(Component.text("§e[游戏机制]§b[暴击]§a触发"), player);
+
                                 attack = attack * baojixiaoguo;
                                 for (String observer : data.baoJiObservers) {
-                                    attack = attack * DoBaojiObserver.doBaoji(observer, data, (Mob) damagee);
+                                    attack = attack * DoBaojiObserver.doBaoji(observer, data, monsterData);
                                 }
                             }
 
                             //根据护甲和破甲计算伤害
                             double x = Math.max(0.0, hujia - pojia);
-                            double y = Math.min(1.0, x);
+                            double y = x / (0.5 + x);
                             double damage = attack - gedang;
                             //根据格挡计算伤害
                             damage = damage * (1.0 - y);
@@ -148,15 +153,15 @@ public final class DamageByEntity implements Listener {
                             monsterData.lastAttacker = player;
 
                             for (String observer : data.attackObservers) {
-                                attack = attack * DoAttackObserver.doAttack(observer, data, (Mob) damagee);
+                                damage = damage * DoAttackObserver.doAttack(observer, data, monsterData);
                             }
 
                             for (String observer : monsterData.wuliAttackedObservers) {
-                                attack = attack * DoMonsterWuLiAttacked.doWuLiAttacked(observer, monsterData, data);
+                                damage = damage * DoMonsterWuLiAttacked.doWuLiAttacked(observer, monsterData, data);
                             }
 
                             for (String observer : monsterData.attackedObservers) {
-                                attack = attack * DoMonsterAttackedObserver.doAttacked(observer, monsterData, data);
+                                damage = damage * DoMonsterAttacked.doAttacked(observer, monsterData, data);
                             }
 
                             e.setDamage(damage);
@@ -170,7 +175,7 @@ public final class DamageByEntity implements Listener {
                         }
                     }
                 }
-                case 2, 3 -> {
+                case 2 -> {
                     if (player.getAttackCooldown() > 0.99f) {
                         double attack = data.attack;
                         double baoji = data.baoji;
@@ -181,22 +186,23 @@ public final class DamageByEntity implements Listener {
 
                         if (data.mustBaoji > 0) {
                             data.mustBaoji--;
-                            SendInformation.sendMes(Component.text("§e[游戏机制]§b[暴击]§a触发"), player);
+
                             attack = attack * baojixiaoguo;
                             for (String observer : data.baoJiObservers) {
-                                attack = attack * DoBaojiObserver.doBaoji(observer, data, (Mob) damagee);
+                                attack = attack * DoBaojiObserver.doBaoji(observer, data, monsterData);
                             }
                         } else if (random.nextDouble() < baoji) {
-                            SendInformation.sendMes(Component.text("§e[游戏机制]§b[暴击]§a触发"), player);
+
                             attack = attack * baojixiaoguo;
                             for (String observer : data.baoJiObservers) {
-                                attack = attack * DoBaojiObserver.doBaoji(observer, data, (Mob) damagee);
+                                attack = attack * DoBaojiObserver.doBaoji(observer, data, monsterData);
                             }
                         }
 
                         //根据护甲和破甲计算伤害
                         double x = Math.max(0.0, hujia - pojia);
-                        double y = Math.min(1.0, x);
+                        double y = x / (0.5 + x);
+                        ;
                         double damage = attack - gedang;
                         //根据格挡计算伤害
                         damage = damage * (1.0 - y);
@@ -204,22 +210,86 @@ public final class DamageByEntity implements Listener {
                         monsterData.lastAttacker = player;
 
                         for (String observer : data.attackObservers) {
-                            attack = attack * DoAttackObserver.doAttack(observer, data, (Mob) damagee);
+                            damage = damage * DoAttackObserver.doAttack(observer, data, monsterData);
                         }
 
                         for (String observer : monsterData.wuliAttackedObservers) {
-                            attack = attack * DoMonsterWuLiAttacked.doWuLiAttacked(observer, monsterData, data);
+                            damage = damage * DoMonsterWuLiAttacked.doWuLiAttacked(observer, monsterData, data);
                         }
 
                         for (String observer : monsterData.attackedObservers) {
-                            attack = attack * DoMonsterAttackedObserver.doAttacked(observer, monsterData, data);
+                            damage = damage * DoMonsterAttacked.doAttacked(observer, monsterData, data);
                         }
 
                         e.setDamage(damage);
 
                     } else {
-                        Scheduler.async(() -> player.sendMessage(Component.text("§e[游戏机制]§4只有蓄力满才能攻击")));
-                        e.setCancelled(true);
+                        e.setDamage(0);
+                    }
+                }
+                case 3 -> {
+                    if (player.getAttackCooldown() > 0.99f) {
+                        double attack = data.attack;
+                        double baoji = data.baoji;
+                        double baojixiaoguo = data.baojixiaoguo;
+                        double pojia = data.pojia;
+                        double hujia = monsterData.hujia;
+                        double gedang = monsterData.gedang;
+                        DanData danData = (DanData) data;
+
+                        switch (data.slot0.id) {
+                            case "fangShenDuanBi" -> attack += danData.zhenfa * 1;
+                        }
+
+                        if (data.mustBaoji > 0) {
+                            data.mustBaoji--;
+
+                            attack = attack * baojixiaoguo;
+                            for (String observer : data.baoJiObservers) {
+                                attack = attack * DoBaojiObserver.doBaoji(observer, data, monsterData);
+                            }
+                        } else if (random.nextDouble() < baoji) {
+
+                            attack = attack * baojixiaoguo;
+                            for (String observer : data.baoJiObservers) {
+                                attack = attack * DoBaojiObserver.doBaoji(observer, data, monsterData);
+                            }
+                        }
+
+                        //根据护甲和破甲计算伤害
+                        double x = Math.max(0.0, hujia - pojia);
+                        double y = x / (0.5 + x);
+                        double damage = attack - gedang;
+                        //根据格挡计算伤害
+                        damage = damage * (1.0 - y);
+
+                        monsterData.lastAttacker = player;
+
+                        for (String observer : data.attackObservers) {
+                            damage = damage * DoAttackObserver.doAttack(observer, data, monsterData);
+                        }
+
+                        for (String observer : monsterData.wuliAttackedObservers) {
+                            damage = damage * DoMonsterWuLiAttacked.doWuLiAttacked(observer, monsterData, data);
+                        }
+
+                        for (String observer : monsterData.attackedObservers) {
+                            damage = damage * DoMonsterAttacked.doAttacked(observer, monsterData, data);
+                        }
+
+
+                        e.setDamage(damage);
+
+                        if (damage > monsterData.monster.getHealth()) {
+                            //能杀死
+                            switch (data.slot0.id) {
+                                case "fangShenDuanBi" -> randomGive(player, 2);
+                            }
+                        }
+
+
+                    } else {
+                        e.setDamage(0);
                     }
                 }
                 default -> e.setCancelled(true);
@@ -236,13 +306,11 @@ public final class DamageByEntity implements Listener {
         if (damagee.getType() == EntityType.PLAYER) {
             Player player = (Player) damagee;
             Data data = Yuehua.playerData.get(player.getUniqueId());
+
             double hujia = data.hujia;
             double gedang = data.gedang;
 
             ProjectileSource projectileSource = damager.getShooter();
-            if (projectileSource == null) {
-                return;
-            }
             Mob mob = (Mob) projectileSource;
             data.lastAttacker = mob;
 
@@ -250,11 +318,15 @@ public final class DamageByEntity implements Listener {
             double pojia = monsterData.pojia;
             double damage = monsterData.attack;
 
+
             damage -= gedang;
             double x = Math.max(0.0, hujia - pojia);
-            double y = Math.min(0.8, x);
+            double y = x / (0.5 + x);
+            ;
             damage = damage * (1.0 - y);
             damage = damage * (1.0 - data.jianmian);
+
+            double damageBefore = damage;
 
 
             for (String observer : monsterData.attackObservers) {
@@ -266,20 +338,88 @@ public final class DamageByEntity implements Listener {
             }
 
             for (String observer : data.attackedObservers) {
-                damage = damage * DoAttackedObserver.doAttacked(observer, data, mob);
+                damage = damage * DoAttackedObserver.doAttacked(observer, data, mob, damageBefore);
             }
 
             e.setDamage(damage);
 
         } else {
-            if (!damagee.getScoreboardTags().contains("m")) {
+            Set<String> tags = damagee.getScoreboardTags();
+            if (!tags.contains("m")) {
+                if (tags.contains("p")) {
+                    ProjectileSource projectileSource = damager.getShooter();
+                    Mob mob = (Mob) projectileSource;
+                    MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
+
+                    //宠物被怪物箭射击
+                    PetData petData = Yuehua.petData.get(damagee.getUniqueId());
+                    double hujia = petData.hujia;
+                    double gedang = petData.gedang;
+
+                    petData.lastAttacker = mob;
+
+
+                    double pojia = monsterData.pojia;
+                    double damage = monsterData.attack;
+
+                    damage -= gedang;
+                    double x = Math.max(0.0, hujia - pojia);
+                    double y = x / (0.5 + x);
+                    ;
+                    damage = damage * (1.0 - y);
+
+                    for (String observer : monsterData.attackObservers) {
+                        damage = damage * DoMonsterAttack.doMonsterAttack(observer, petData, monsterData);
+                    }
+
+                    for (String observer : petData.attackedObservers) {
+                        damage = damage * DoPetAttacked.doAttacked(observer, monsterData, petData);
+                    }
+
+                    e.setDamage(damage);
+
+                }
                 return;
             }
+            //怪物被玩家或宠物箭射击
             ProjectileSource projectileSource = damager.getShooter();
-            if (projectileSource == null) {
+            Entity entity = (Entity) projectileSource;
+            if (entity.getType() != EntityType.PLAYER) {
+                Mob mob = (Mob) entity;
+                //宠物射击怪物
+                PetData petData = Yuehua.petData.get(mob.getUniqueId());
+
+                MonsterData monsterData = Yuehua.monsterData.get(damagee.getUniqueId());
+                double hujia = monsterData.hujia;
+                double gedang = monsterData.gedang;
+
+                double pojia = petData.pojia;
+                double damage = petData.attack;
+
+                damage -= gedang;
+                double x = Math.max(0.0, hujia - pojia);
+                double y = x / (0.5 + x);
+                ;
+                damage = damage * (1.0 - y);
+                monsterData.lastAttacker = petData.Owner;
+
+                for (String observer : petData.attackObservers) {
+                    damage = damage * DoPetAttack.doPetAttack(observer, monsterData, petData);
+                }
+
+                for (String observer : monsterData.wuliAttackedObservers) {
+                    damage = damage * DoMonsterWuLiAttacked.doWuLiAttacked(observer, monsterData, petData);
+                }
+
+                for (String observer : monsterData.attackedObservers) {
+                    damage = damage * DoMonsterAttacked.doAttacked(observer, monsterData, petData);
+                }
+
+                e.setDamage(damage);
                 return;
             }
-            Player player = (Player) projectileSource;
+            //玩家的箭射击怪物
+            Player player = (Player) entity;
 
             MonsterData monsterData = Yuehua.monsterData.get(damagee.getUniqueId());
             double hujia = monsterData.hujia;
@@ -296,28 +436,33 @@ public final class DamageByEntity implements Listener {
             //判断是否暴击
             if (data.mustBaoji > 0) {
                 data.mustBaoji--;
-                SendInformation.sendMes(Component.text("§e[游戏机制]§b[暴击]§a触发"), player);
+
                 damage = damage * baojixiaoguo;
                 for (String observer : data.baoJiObservers) {
-                    damage = damage * DoBaojiObserver.doBaoji(observer, data, (Mob) damagee);
+                    damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
                 }
             } else if (random.nextDouble() < baoji) {
-                SendInformation.sendMes(Component.text("§e[游戏机制]§b[暴击]§a触发"), player);
+
                 damage = damage * baojixiaoguo;
                 for (String observer : data.baoJiObservers) {
-                    damage = damage * DoBaojiObserver.doBaoji(observer, data, (Mob) damagee);
+                    damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
                 }
             }
 
             damage -= gedang;
             double x = Math.max(0.0, hujia - pojia);
-            double y = Math.min(1.0, x);
+            double y = x / (0.5 + x);
+            ;
             damage = damage * (1.0 - y);
             monsterData.lastAttacker = player;
 
+            Set<String> arrowTags = damager.getScoreboardTags();
+
             //被动
-            for (String observer : gongData.hitObservers) {
-                damage = damage * DoHitObserver.doHit(observer, gongData, (Mob) damagee);
+            if (arrowTags.contains("fullforce")) {
+                for (String observer : gongData.hitObservers) {
+                    damage = damage * DoHitObserver.doHit(observer, gongData, monsterData);
+                }
             }
 
             for (String observer : monsterData.wuliAttackedObservers) {
@@ -325,14 +470,14 @@ public final class DamageByEntity implements Listener {
             }
 
             for (String observer : monsterData.attackedObservers) {
-                damage = damage * DoMonsterAttackedObserver.doAttacked(observer, monsterData, data);
+                damage = damage * DoMonsterAttacked.doAttacked(observer, monsterData, data);
             }
 
             e.setDamage(damage);
 
             //技能
-            for (String tag : damager.getScoreboardTags()) {
-                DoPlayerProjectile.doProjectile(tag, gongData, (Mob) damagee);
+            for (String tag : arrowTags) {
+                DoPlayerProjectileObserver.doProjectile(tag, gongData, (Mob) damagee);
             }
 
         }
@@ -342,15 +487,86 @@ public final class DamageByEntity implements Listener {
 
     private void TridentAttack(EntityDamageByEntityEvent e, Trident damager) {
         Entity damagee = e.getEntity();
+        if (damagee.getType() != EntityType.PLAYER) {
+            Set<String> tags = damagee.getScoreboardTags();
+            if (tags.contains("m")) {
+                ProjectileSource projectileSource = damager.getShooter();
+                Mob mob = (Mob) projectileSource;
+                PetData petData = Yuehua.petData.get(mob.getUniqueId());
+
+                //怪物被宠物投掷三叉戟
+                MonsterData monsterData = Yuehua.monsterData.get(damagee.getUniqueId());
+                double hujia = monsterData.hujia;
+                double gedang = monsterData.gedang;
+
+                monsterData.lastAttacker = petData.Owner;
+                double pojia = petData.pojia;
+                double damage = petData.attack;
+
+                damage -= gedang;
+                double x = Math.max(0.0, hujia - pojia);
+                double y = x / (0.5 + x);
+                ;
+                damage = damage * (1.0 - y);
+
+                for (String observer : petData.attackObservers) {
+                    damage = damage * DoPetAttack.doPetAttack(observer, monsterData, petData);
+                }
+
+                for (String observer : monsterData.wuliAttackedObservers) {
+                    damage = damage * DoMonsterWuLiAttacked.doWuLiAttacked(observer, monsterData, petData);
+                }
+
+                for (String observer : monsterData.attackedObservers) {
+                    damage = damage * DoMonsterAttacked.doAttacked(observer, monsterData, petData);
+                }
+
+                e.setDamage(damage);
+
+
+            } else {
+                ProjectileSource projectileSource = damager.getShooter();
+                Mob mob = (Mob) projectileSource;
+                MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
+
+                //宠物被怪物投掷三叉戟
+                PetData petData = Yuehua.petData.get(damagee.getUniqueId());
+                double hujia = petData.hujia;
+                double gedang = petData.gedang;
+
+
+                petData.lastAttacker = mob;
+
+                double pojia = monsterData.pojia;
+                double damage = monsterData.attack;
+
+                damage -= gedang;
+                double x = Math.max(0.0, hujia - pojia);
+                double y = x / (0.5 + x);
+                ;
+                damage = damage * (1.0 - y);
+
+                for (String observer : monsterData.attackObservers) {
+                    damage = damage * DoMonsterAttack.doMonsterAttack(observer, petData, monsterData);
+                }
+
+                for (String observer : petData.attackedObservers) {
+                    damage = damage * DoPetAttacked.doAttacked(observer, monsterData, petData);
+                }
+
+                e.setDamage(damage);
+
+            }
+            return;
+        }
+
         Player player = (Player) damagee;
         Data data = Yuehua.playerData.get(player.getUniqueId());
+
         double hujia = data.hujia;
         double gedang = data.gedang;
 
         ProjectileSource projectileSource = damager.getShooter();
-        if (projectileSource == null) {
-            return;
-        }
         Mob mob = (Mob) projectileSource;
         data.lastAttacker = mob;
 
@@ -358,11 +574,15 @@ public final class DamageByEntity implements Listener {
         double pojia = monsterData.pojia;
         double damage = monsterData.attack;
 
+
         damage -= gedang;
         double x = Math.max(0.0, hujia - pojia);
-        double y = Math.min(0.8, x);
+        double y = x / (0.5 + x);
+        ;
         damage = damage * (1.0 - y);
         damage = damage * (1.0 - data.sanchajimian);
+
+        double damageBefore = damage;
 
 
         for (String observer : monsterData.attackObservers) {
@@ -374,7 +594,7 @@ public final class DamageByEntity implements Listener {
         }
 
         for (String observer : data.attackedObservers) {
-            damage = damage * DoAttackedObserver.doAttacked(observer, data, mob);
+            damage = damage * DoAttackedObserver.doAttacked(observer, data, mob, damageBefore);
         }
 
         e.setDamage(damage);
@@ -383,15 +603,89 @@ public final class DamageByEntity implements Listener {
 
     private void ProjectileAttack(EntityDamageByEntityEvent e, Projectile damager) {
         Entity damagee = e.getEntity();
+
+        if (damagee.getType() != EntityType.PLAYER) {
+            Set<String> tags = damagee.getScoreboardTags();
+            if (tags.contains("m")) {
+                ProjectileSource projectileSource = damager.getShooter();
+                Mob mob = (Mob) projectileSource;
+                PetData petData = Yuehua.petData.get(mob.getUniqueId());
+
+                //怪物被宠物发射物品攻击
+                MonsterData monsterData = Yuehua.monsterData.get(damagee.getUniqueId());
+                double hujia = monsterData.hujia;
+                double gedang = monsterData.gedang;
+
+
+                monsterData.lastAttacker = petData.Owner;
+                double pojia = petData.pojia;
+                double damage = petData.attack;
+
+                damage -= gedang;
+                double x = Math.max(0.0, hujia - pojia);
+                double y = x / (0.5 + x);
+                ;
+                damage = damage * (1.0 - y);
+
+                for (String observer : petData.attackObservers) {
+                    damage = damage * DoPetAttack.doPetAttack(observer, monsterData, petData);
+                }
+
+                for (String observer : monsterData.wuliAttackedObservers) {
+                    damage = damage * DoMonsterWuLiAttacked.doWuLiAttacked(observer, monsterData, petData);
+                }
+
+                for (String observer : monsterData.attackedObservers) {
+                    damage = damage * DoMonsterAttacked.doAttacked(observer, monsterData, petData);
+                }
+
+                e.setDamage(damage);
+
+
+            } else {
+                ProjectileSource projectileSource = damager.getShooter();
+                Mob mob = (Mob) projectileSource;
+                MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
+
+                //宠物被怪物发射物品攻击
+                PetData petData = Yuehua.petData.get(damagee.getUniqueId());
+                double hujia = petData.hujia;
+                double gedang = petData.gedang;
+
+
+                petData.lastAttacker = mob;
+
+
+                double pojia = monsterData.pojia;
+                double damage = monsterData.attack;
+
+                damage -= gedang;
+                double x = Math.max(0.0, hujia - pojia);
+                double y = x / (0.5 + x);
+                ;
+                damage = damage * (1.0 - y);
+
+                for (String observer : monsterData.attackObservers) {
+                    damage = damage * DoMonsterAttack.doMonsterAttack(observer, petData, monsterData);
+                }
+
+                for (String observer : petData.attackedObservers) {
+                    damage = damage * DoPetAttacked.doAttacked(observer, monsterData, petData);
+                }
+
+                e.setDamage(damage);
+
+            }
+            return;
+        }
+
         Player player = (Player) damagee;
         Data data = Yuehua.playerData.get(player.getUniqueId());
+
         double hujia = data.hujia;
         double gedang = data.gedang;
 
         ProjectileSource projectileSource = damager.getShooter();
-        if (projectileSource == null) {
-            return;
-        }
         Mob mob = (Mob) projectileSource;
         data.lastAttacker = mob;
 
@@ -399,11 +693,14 @@ public final class DamageByEntity implements Listener {
         double pojia = monsterData.pojia;
         double damage = monsterData.attack;
 
+
         damage -= gedang;
         double x = Math.max(0.0, hujia - pojia);
-        double y = Math.min(0.8, x);
+        double y = x / (0.5 + x);
+        ;
         damage = damage * (1.0 - y);
 
+        double damageBefore = damage;
 
         for (String observer : monsterData.attackObservers) {
             damage = damage * DoMonsterAttack.doMonsterAttack(observer, data, monsterData);
@@ -414,42 +711,117 @@ public final class DamageByEntity implements Listener {
         }
 
         for (String observer : data.attackedObservers) {
-            damage = damage * DoAttackedObserver.doAttacked(observer, data, mob);
+            damage = damage * DoAttackedObserver.doAttacked(observer, data, mob, damageBefore);
         }
 
         e.setDamage(damage);
     }
 
-    private void LightningAttack(EntityDamageByEntityEvent e) {
-        if (e.getEntityType() != EntityType.PLAYER) {
-            return;
-        }
-        Player player = (Player) e.getEntity();
-        Data data = Yuehua.playerData.get(player.getUniqueId());
-        double max_hp = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
-        double percent = 0.5;
-
-        for (String observer : data.attackedObservers) {
-            percent = percent * DoAttackedObserver.doAttacked(observer, data, null);
-        }
-
-        e.setDamage(max_hp * percent);
-
-    }
 
     private void EvokerFangsAttack(EntityDamageByEntityEvent e, EvokerFangs damager) {
-        if (e.getEntityType() != EntityType.PLAYER) {
+        Entity damagee = e.getEntity();
+        if (damagee.getType() != EntityType.PLAYER) {
+            Set<String> tags = damagee.getScoreboardTags();
+            if (tags.contains("m")) {
+                Mob mob = (Mob) damager.getOwner();
+                if (mob == null) {
+                    e.setCancelled(true);
+                    damager.remove();
+                    return;
+                }
+                PetData petData = Yuehua.petData.get(mob.getUniqueId());
+                if (petData == null) {
+                    e.setCancelled(true);
+                    return;
+                }
+
+                //怪物被宠物发射物品攻击
+                MonsterData monsterData = Yuehua.monsterData.get(damagee.getUniqueId());
+                double hujia = monsterData.hujia;
+                double gedang = monsterData.gedang;
+
+
+                monsterData.lastAttacker = petData.Owner;
+                double pojia = petData.pojia;
+                double damage = petData.attack;
+
+                damage -= gedang;
+                double x = Math.max(0.0, hujia - pojia);
+                double y = x / (0.5 + x);
+                ;
+                damage = damage * (1.0 - y);
+
+                for (String observer : petData.attackObservers) {
+                    damage = damage * DoPetAttack.doPetAttack(observer, monsterData, petData);
+                }
+
+                for (String observer : monsterData.wuliAttackedObservers) {
+                    damage = damage * DoMonsterWuLiAttacked.doWuLiAttacked(observer, monsterData, petData);
+                }
+
+                for (String observer : monsterData.attackedObservers) {
+                    damage = damage * DoMonsterAttacked.doAttacked(observer, monsterData, petData);
+                }
+
+                e.setDamage(damage);
+
+
+            } else {
+                Mob mob = (Mob) damager.getOwner();
+                if (mob == null) {
+                    e.setCancelled(true);
+                    damager.remove();
+                    return;
+                }
+                MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
+                if (monsterData == null) {
+                    e.setCancelled(true);
+                    return;
+                }
+
+
+                //宠物被怪物发射物品攻击
+                PetData petData = Yuehua.petData.get(damagee.getUniqueId());
+                double hujia = petData.hujia;
+                double gedang = petData.gedang;
+
+
+                petData.lastAttacker = mob;
+
+
+                double pojia = monsterData.pojia;
+                double damage = monsterData.attack;
+
+                damage -= gedang;
+                double x = Math.max(0.0, hujia - pojia);
+                double y = x / (0.5 + x);
+                ;
+                damage = damage * (1.0 - y);
+
+                for (String observer : monsterData.attackObservers) {
+                    damage = damage * DoMonsterAttack.doMonsterAttack(observer, petData, monsterData);
+                }
+
+                for (String observer : petData.attackedObservers) {
+                    damage = damage * DoPetAttacked.doAttacked(observer, monsterData, petData);
+                }
+
+                e.setDamage(damage);
+
+            }
             return;
         }
         Player player = (Player) e.getEntity();
         Data data = Yuehua.playerData.get(player.getUniqueId());
+
         double hujia = data.hujia;
         double gedang = data.gedang;
 
 
-        EvokerFangs fangs = damager;
-        Mob evoker = (Mob) fangs.getOwner();
+        Mob evoker = (Mob) damager.getOwner();
         if (evoker == null) {
+            e.setCancelled(true);
+            damager.remove();
             return;
         }
         data.lastAttacker = evoker;
@@ -459,9 +831,13 @@ public final class DamageByEntity implements Listener {
         double pojia = monsterData.pojia;
 
         double x = Math.max(0.0, hujia - pojia);
-        double y = Math.min(0.8, x);
+        double y = x / (0.5 + x);
+
+
         damage -= gedang;
         damage = damage * (1.0 - y);
+
+        double damageBefore = damage;
 
         for (String observer : monsterData.attackObservers) {
             damage = damage * DoMonsterAttack.doMonsterAttack(observer, data, monsterData);
@@ -472,14 +848,85 @@ public final class DamageByEntity implements Listener {
         }
 
         for (String observer : data.attackedObservers) {
-            damage = damage * DoAttackedObserver.doAttacked(observer, data, evoker);
+            damage = damage * DoAttackedObserver.doAttacked(observer, data, evoker, damageBefore);
         }
 
         e.setDamage(damage);
     }
 
     private void MonsterAttack(EntityDamageByEntityEvent e, Entity damager) {
-        if (e.getEntityType() != EntityType.PLAYER) {
+        Entity damagee = e.getEntity();
+        if (damagee.getType() != EntityType.PLAYER) {
+            Set<String> tags = damagee.getScoreboardTags();
+            if (tags.contains("m")) {
+                if (!damager.getScoreboardTags().contains("p")) {
+                    return;
+                }
+                //怪物被宠物攻击
+                MonsterData monsterData = Yuehua.monsterData.get(damagee.getUniqueId());
+                double hujia = monsterData.hujia;
+                double gedang = monsterData.gedang;
+
+                PetData petData = Yuehua.petData.get(damager.getUniqueId());
+                monsterData.lastAttacker = petData.Owner;
+                double pojia = petData.pojia;
+                double damage = petData.attack;
+
+                damage -= gedang;
+                double x = Math.max(0.0, hujia - pojia);
+                double y = x / (0.5 + x);
+                ;
+                damage = damage * (1.0 - y);
+
+                for (String observer : petData.attackObservers) {
+                    damage = damage * DoPetAttack.doPetAttack(observer, monsterData, petData);
+                }
+
+                for (String observer : monsterData.wuliAttackedObservers) {
+                    damage = damage * DoMonsterWuLiAttacked.doWuLiAttacked(observer, monsterData, petData);
+                }
+
+                for (String observer : monsterData.attackedObservers) {
+                    damage = damage * DoMonsterAttacked.doAttacked(observer, monsterData, petData);
+                }
+
+                e.setDamage(damage);
+
+
+            } else {
+                if (!damager.getScoreboardTags().contains("m")) {
+                    return;
+                }
+                Mob mob = (Mob) damager;
+
+                //宠物被怪物攻击
+                PetData petData = Yuehua.petData.get(damagee.getUniqueId());
+                double hujia = petData.hujia;
+                double gedang = petData.gedang;
+                petData.lastAttacker = mob;
+
+                MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
+                double pojia = monsterData.pojia;
+                double damage = monsterData.attack;
+
+
+                damage -= gedang;
+                double x = Math.max(0.0, hujia - pojia);
+                double y = x / (0.5 + x);
+                ;
+                damage = damage * (1.0 - y);
+
+                for (String observer : monsterData.attackObservers) {
+                    damage = damage * DoMonsterAttack.doMonsterAttack(observer, petData, monsterData);
+                }
+
+                for (String observer : petData.attackedObservers) {
+                    damage = damage * DoPetAttacked.doAttacked(observer, monsterData, petData);
+                }
+
+                e.setDamage(damage);
+
+            }
             return;
         }
         if (!damager.getScoreboardTags().contains("m")) {
@@ -488,6 +935,7 @@ public final class DamageByEntity implements Listener {
 
         Player player = (Player) e.getEntity();
         Data data = Yuehua.playerData.get(player.getUniqueId());
+
         data.lastAttacker = (Mob) damager;
 
         double hujia = data.hujia;
@@ -498,9 +946,13 @@ public final class DamageByEntity implements Listener {
         double pojia = monsterData.pojia;
 
         double x = Math.max(0.0, hujia - pojia);
-        double y = Math.min(0.8, x);
+        double y = x / (0.5 + x);
+
+
         damage -= gedang;
         damage = damage * (1.0 - y);
+
+        double damageBefore = damage;
 
         for (String observer : monsterData.attackObservers) {
             damage = damage * DoMonsterAttack.doMonsterAttack(observer, data, monsterData);
@@ -511,7 +963,7 @@ public final class DamageByEntity implements Listener {
         }
 
         for (String observer : data.attackedObservers) {
-            damage = damage * DoAttackedObserver.doAttacked(observer, data, (Mob) damager);
+            damage = damage * DoAttackedObserver.doAttacked(observer, data, (Mob) damager, damageBefore);
         }
 
         e.setDamage(damage);
@@ -519,5 +971,41 @@ public final class DamageByEntity implements Listener {
 
     }
 
+    private void LightningAttack(EntityDamageByEntityEvent e) {
+        if (e.getEntityType() != EntityType.PLAYER) {
+            return;
+        }
+
+
+        Player player = (Player) e.getEntity();
+        Data data = Yuehua.playerData.get(player.getUniqueId());
+        double max_hp = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+        double percent = 0.5;
+
+        double damageBefore = max_hp * percent;
+
+        for (String observer : data.attackedObservers) {
+            percent = percent * DoAttackedObserver.doAttacked(observer, data, null, damageBefore);
+        }
+
+        e.setDamage(max_hp * percent);
+
+
+    }
+
+    private void randomGive(Player player, int count) {
+        PlayerInventory playerInventory = player.getInventory();
+        for (int i = 0; i < count; i++) {
+            int randomNum = random.nextInt(5);
+            switch (randomNum) {
+                case 0 -> playerInventory.addItem(jin);
+                case 1 -> playerInventory.addItem(mu);
+                case 2 -> playerInventory.addItem(shui);
+                case 3 -> playerInventory.addItem(huo);
+                case 4 -> playerInventory.addItem(tu);
+            }
+
+        }
+    }
 
 }

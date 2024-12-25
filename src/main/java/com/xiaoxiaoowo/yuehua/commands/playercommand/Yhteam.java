@@ -19,6 +19,13 @@ public final class Yhteam implements CommandExecutor {
         String playerName = player.getName();
         Scheduler.async(
                 () -> {
+                    if(args.length == 0){
+                        player.sendMessage(
+                                Component.text("§6[命令系统]§4参数错误")
+                        );
+                        return;
+                    }
+
                     switch (args[0]) {
                         case "create" -> {
                             if (args.length != 1) {

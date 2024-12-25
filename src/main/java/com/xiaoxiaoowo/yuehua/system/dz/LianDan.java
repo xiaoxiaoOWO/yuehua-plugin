@@ -1,36 +1,41 @@
 package com.xiaoxiaoowo.yuehua.system.dz;
 
+import com.xiaoxiaoowo.yuehua.guis.Recipe;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public final class LianDan {
-    public static void liandan(Inventory inventory, String id){
-        ItemStack item1 = inventory.getItem(1);
-        ItemStack item2 = inventory.getItem(2);
-        ItemStack item3 = inventory.getItem(3);
-        ItemStack item4 = inventory.getItem(4);
-        ItemStack item5 = inventory.getItem(5);
-        ItemStack item6 = inventory.getItem(6);
-        ItemStack item7 = inventory.getItem(7);
-        ItemStack item8 = inventory.getItem(8);
-
-        switch (id){
-
+    public static void liandan(Inventory inventory, String id, Player player) {
+        id = Help.removeCore(id);
+        Inventory recipe = Recipe.danContents.get(id);
+        //查看核心id有无对应配方
+        if (recipe == null) {
+            return;
         }
+
+        //查看是否满足配方
+        if (!Help.invCompare(recipe, inventory)) {
+            return;
+        }
+        //给与物品
+        ItemStack itemStack = Recipe.idToItem.get(id);
     }
 
-    public static void danshiLiandan(Inventory inventory, String id){
-        ItemStack item1 = inventory.getItem(1);
-        ItemStack item2 = inventory.getItem(2);
-        ItemStack item3 = inventory.getItem(3);
-        ItemStack item4 = inventory.getItem(4);
-        ItemStack item5 = inventory.getItem(5);
-        ItemStack item6 = inventory.getItem(6);
-        ItemStack item7 = inventory.getItem(7);
-        ItemStack item8 = inventory.getItem(8);
-
-        switch (id){
-
+    public static void danshiLiandan(Inventory inventory, String id, Player player) {
+        id = Help.removeCore(id);
+        Inventory recipe = Recipe.dandanContents.get(id);
+        //查看核心id有无对应配方
+        if (recipe == null) {
+            return;
         }
+
+        //查看是否满足配方
+        if (!Help.invCompare(recipe, inventory)) {
+            return;
+        }
+        //给与物品
+        ItemStack itemStack = Recipe.idToItem.get(id);
+
     }
 }

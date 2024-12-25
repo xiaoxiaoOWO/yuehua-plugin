@@ -57,7 +57,7 @@ public final class RenOu implements CommandExecutor {
             if (damage < 1e-6) {
                 return true;
             }
-            for (Entity entity : GetEntity.getPlayers(location, 8, 8, 3)) {
+            for (Entity entity : GetEntity.getPlayers(location, 10, 10, 10)) {
                 Player player = (Player) entity;
                 Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance, () -> {
                     player.sendMessage(

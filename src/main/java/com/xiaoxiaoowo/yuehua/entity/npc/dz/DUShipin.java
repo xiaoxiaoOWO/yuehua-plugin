@@ -1,10 +1,9 @@
 package com.xiaoxiaoowo.yuehua.entity.npc.dz;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.itemstack.Book;
-import com.xiaoxiaoowo.yuehua.itemstack.dz.Core;
-import com.xiaoxiaoowo.yuehua.itemstack.dz.TehuaShui;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Other;
+import com.xiaoxiaoowo.yuehua.items.dz.Core;
+import com.xiaoxiaoowo.yuehua.items.dz.TehuaShui;
+import com.xiaoxiaoowo.yuehua.items.other.Other;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;

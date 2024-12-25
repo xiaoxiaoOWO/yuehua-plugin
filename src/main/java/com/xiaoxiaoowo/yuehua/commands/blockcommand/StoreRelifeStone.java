@@ -4,6 +4,7 @@ import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import com.xiaoxiaoowo.yuehua.utils.PlaySound;
+import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Location;
@@ -57,7 +58,8 @@ public final class StoreRelifeStone implements CommandExecutor {
         int incount = count;
 
         Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance,()->{
-            PlaySound.pickupOrb(player);
+
+            Scheduler.sync(() ->  PlaySound.pickupOrb(player));
             player.sendMessage(
                     Component.text("§6[月华]§a重生石存储量：")
                             .append(Component.text(incount).color(NamedTextColor.AQUA))

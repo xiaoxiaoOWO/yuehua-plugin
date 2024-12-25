@@ -16,9 +16,9 @@ public final class ActYuShi {
         PersistentDataContainer pdc = player.getPersistentDataContainer();
 
         double baseValue = pdc.get(DataContainer.attack_add, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue + 1);
+        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue + 3);
         double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
-        double finalValue = mulValue * (baseValue + 1);
+        double finalValue = mulValue * (baseValue + 3);
         pdc.set(DataContainer.attack, PersistentDataType.DOUBLE, finalValue);
         data.setAttackScore(finalValue);
     }
@@ -28,9 +28,9 @@ public final class ActYuShi {
         PersistentDataContainer pdc = player.getPersistentDataContainer();
 
         double baseValue = pdc.get(DataContainer.attack_add, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue - 1);
+        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue - 3);
         double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
-        double finalValue = mulValue * (baseValue - 1);
+        double finalValue = mulValue * (baseValue - 3);
         pdc.set(DataContainer.attack, PersistentDataType.DOUBLE, finalValue);
         data.setAttackScore(finalValue);
     }
@@ -40,9 +40,9 @@ public final class ActYuShi {
         PersistentDataContainer pdc = player.getPersistentDataContainer();
 
         double baseValue = pdc.get(DataContainer.attack_add, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue + 2);
+        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue + 6);
         double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
-        double finalValue = mulValue * (baseValue + 2);
+        double finalValue = mulValue * (baseValue + 6);
         pdc.set(DataContainer.attack, PersistentDataType.DOUBLE, finalValue);
         data.setAttackScore(finalValue);
     }
@@ -52,9 +52,9 @@ public final class ActYuShi {
         PersistentDataContainer pdc = player.getPersistentDataContainer();
 
         double baseValue = pdc.get(DataContainer.attack_add, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue - 2);
+        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue - 6);
         double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
-        double finalValue = mulValue * (baseValue - 2);
+        double finalValue = mulValue * (baseValue - 6);
         pdc.set(DataContainer.attack, PersistentDataType.DOUBLE, finalValue);
         data.setAttackScore(finalValue);
     }
@@ -64,9 +64,9 @@ public final class ActYuShi {
         PersistentDataContainer pdc = player.getPersistentDataContainer();
 
         double baseValue = pdc.get(DataContainer.attack_add, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue + 4);
+        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue + 12);
         double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
-        double finalValue = mulValue * (baseValue + 4);
+        double finalValue = mulValue * (baseValue + 12);
         pdc.set(DataContainer.attack, PersistentDataType.DOUBLE, finalValue);
         data.setAttackScore(finalValue);
     }
@@ -76,9 +76,9 @@ public final class ActYuShi {
         PersistentDataContainer pdc = player.getPersistentDataContainer();
 
         double baseValue = pdc.get(DataContainer.attack_add, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue - 4);
+        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue - 12);
         double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
-        double finalValue = mulValue * (baseValue - 4);
+        double finalValue = mulValue * (baseValue - 12);
         pdc.set(DataContainer.attack, PersistentDataType.DOUBLE, finalValue);
         data.setAttackScore(finalValue);
     }
@@ -88,9 +88,9 @@ public final class ActYuShi {
         PersistentDataContainer pdc = player.getPersistentDataContainer();
 
         double baseValue = pdc.get(DataContainer.attack_add, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue + 8);
+        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue + 24);
         double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
-        double finalValue = mulValue * (baseValue + 8);
+        double finalValue = mulValue * (baseValue + 24);
         pdc.set(DataContainer.attack, PersistentDataType.DOUBLE, finalValue);
         data.setAttackScore(finalValue);
     }
@@ -100,9 +100,9 @@ public final class ActYuShi {
         PersistentDataContainer pdc = player.getPersistentDataContainer();
 
         double baseValue = pdc.get(DataContainer.attack_add, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue - 8);
+        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue - 24);
         double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
-        double finalValue = mulValue * (baseValue - 8);
+        double finalValue = mulValue * (baseValue - 24);
         pdc.set(DataContainer.attack, PersistentDataType.DOUBLE, finalValue);
         data.setAttackScore(finalValue);
     }
@@ -112,9 +112,9 @@ public final class ActYuShi {
         PersistentDataContainer pdc = player.getPersistentDataContainer();
 
         double baseValue = pdc.get(DataContainer.attack_add, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue + 16);
+        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue + 48);
         double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
-        double finalValue = mulValue * (baseValue + 16);
+        double finalValue = mulValue * (baseValue + 48);
         pdc.set(DataContainer.attack, PersistentDataType.DOUBLE, finalValue);
         data.setAttackScore(finalValue);
     }
@@ -124,9 +124,9 @@ public final class ActYuShi {
         PersistentDataContainer pdc = player.getPersistentDataContainer();
 
         double baseValue = pdc.get(DataContainer.attack_add, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue - 16);
+        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue - 48);
         double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
-        double finalValue = mulValue * (baseValue - 16);
+        double finalValue = mulValue * (baseValue - 48);
         pdc.set(DataContainer.attack, PersistentDataType.DOUBLE, finalValue);
         data.setAttackScore(finalValue);
     }
@@ -136,9 +136,9 @@ public final class ActYuShi {
         PersistentDataContainer pdc = player.getPersistentDataContainer();
 
         double baseValue = pdc.get(DataContainer.attack_add, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue + 32);
+        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue + 96);
         double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
-        double finalValue = mulValue * (baseValue + 32);
+        double finalValue = mulValue * (baseValue + 96);
         pdc.set(DataContainer.attack, PersistentDataType.DOUBLE, finalValue);
         data.setAttackScore(finalValue);
     }
@@ -148,9 +148,9 @@ public final class ActYuShi {
         PersistentDataContainer pdc = player.getPersistentDataContainer();
 
         double baseValue = pdc.get(DataContainer.attack_add, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue - 32);
+        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue - 96);
         double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
-        double finalValue = mulValue * (baseValue - 32);
+        double finalValue = mulValue * (baseValue - 96);
         pdc.set(DataContainer.attack, PersistentDataType.DOUBLE, finalValue);
         data.setAttackScore(finalValue);
     }
@@ -160,9 +160,9 @@ public final class ActYuShi {
         PersistentDataContainer pdc = player.getPersistentDataContainer();
 
         double baseValue = pdc.get(DataContainer.attack_add, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue + 64);
+        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue + 192);
         double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
-        double finalValue = mulValue * (baseValue + 64);
+        double finalValue = mulValue * (baseValue + 192);
         pdc.set(DataContainer.attack, PersistentDataType.DOUBLE, finalValue);
         data.setAttackScore(finalValue);
     }
@@ -172,9 +172,9 @@ public final class ActYuShi {
         PersistentDataContainer pdc = player.getPersistentDataContainer();
 
         double baseValue = pdc.get(DataContainer.attack_add, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue - 64);
+        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue - 192);
         double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
-        double finalValue = mulValue * (baseValue - 64);
+        double finalValue = mulValue * (baseValue - 192);
         pdc.set(DataContainer.attack, PersistentDataType.DOUBLE, finalValue);
         data.setAttackScore(finalValue);
     }
@@ -184,9 +184,9 @@ public final class ActYuShi {
         PersistentDataContainer pdc = player.getPersistentDataContainer();
 
         double baseValue = pdc.get(DataContainer.attack_add, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue + 128);
+        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue + 384);
         double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
-        double finalValue = mulValue * (baseValue + 128);
+        double finalValue = mulValue * (baseValue + 384);
         pdc.set(DataContainer.attack, PersistentDataType.DOUBLE, finalValue);
         data.setAttackScore(finalValue);
     }
@@ -196,9 +196,9 @@ public final class ActYuShi {
         PersistentDataContainer pdc = player.getPersistentDataContainer();
 
         double baseValue = pdc.get(DataContainer.attack_add, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue - 128);
+        pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue - 384);
         double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
-        double finalValue = mulValue * (baseValue - 128);
+        double finalValue = mulValue * (baseValue - 384);
         pdc.set(DataContainer.attack, PersistentDataType.DOUBLE, finalValue);
         data.setAttackScore(finalValue);
     }
@@ -623,59 +623,11 @@ public final class ActYuShi {
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue + 0.01);
-        data.setHujiaScore(baseValue + 0.01);
-    }
-
-    public static void deActJinHuangShi1(Data data){
-        Player player = data.player;
-        PersistentDataContainer pdc = player.getPersistentDataContainer();
-        double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue - 0.01);
-        data.setHujiaScore(baseValue - 0.01);
-    }
-
-    public static void actJinHuangShi2(Data data){
-        Player player = data.player;
-        PersistentDataContainer pdc = player.getPersistentDataContainer();
-        double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue + 0.02);
-        data.setHujiaScore(baseValue + 0.02);
-    }
-
-    public static void deActJinHuangShi2(Data data){
-        Player player = data.player;
-        PersistentDataContainer pdc = player.getPersistentDataContainer();
-        double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue - 0.02);
-        data.setHujiaScore(baseValue - 0.02);
-    }
-
-    public static void actJinHuangShi3(Data data){
-        Player player = data.player;
-        PersistentDataContainer pdc = player.getPersistentDataContainer();
-        double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue + 0.03);
-        data.setHujiaScore(baseValue + 0.03);
-    }
-
-    public static void deActJinHuangShi3(Data data){
-        Player player = data.player;
-        PersistentDataContainer pdc = player.getPersistentDataContainer();
-        double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue - 0.03);
-        data.setHujiaScore(baseValue - 0.03);
-    }
-
-    public static void actJinHuangShi4(Data data){
-        Player player = data.player;
-        PersistentDataContainer pdc = player.getPersistentDataContainer();
-        double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
         pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue + 0.05);
         data.setHujiaScore(baseValue + 0.05);
     }
 
-    public static void deActJinHuangShi4(Data data){
+    public static void deActJinHuangShi1(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
@@ -683,23 +635,7 @@ public final class ActYuShi {
         data.setHujiaScore(baseValue - 0.05);
     }
 
-    public static void actJinHuangShi5(Data data){
-        Player player = data.player;
-        PersistentDataContainer pdc = player.getPersistentDataContainer();
-        double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue + 0.07);
-        data.setHujiaScore(baseValue + 0.07);
-    }
-
-    public static void deActJinHuangShi5(Data data){
-        Player player = data.player;
-        PersistentDataContainer pdc = player.getPersistentDataContainer();
-        double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue - 0.07);
-        data.setHujiaScore(baseValue - 0.07);
-    }
-
-    public static void actJinHuangShi6(Data data){
+    public static void actJinHuangShi2(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
@@ -707,7 +643,7 @@ public final class ActYuShi {
         data.setHujiaScore(baseValue + 0.1);
     }
 
-    public static void deActJinHuangShi6(Data data){
+    public static void deActJinHuangShi2(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
@@ -715,583 +651,615 @@ public final class ActYuShi {
         data.setHujiaScore(baseValue - 0.1);
     }
 
+    public static void actJinHuangShi3(Data data){
+        Player player = data.player;
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
+        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue + 0.15);
+        data.setHujiaScore(baseValue + 0.15);
+    }
+
+    public static void deActJinHuangShi3(Data data){
+        Player player = data.player;
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
+        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue - 0.15);
+        data.setHujiaScore(baseValue - 0.15);
+    }
+
+    public static void actJinHuangShi4(Data data){
+        Player player = data.player;
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
+        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue +  0.2);
+        data.setHujiaScore(baseValue +  0.2);
+    }
+
+    public static void deActJinHuangShi4(Data data){
+        Player player = data.player;
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
+        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue -  0.2);
+        data.setHujiaScore(baseValue -  0.2);
+    }
+
+    public static void actJinHuangShi5(Data data){
+        Player player = data.player;
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
+        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue +  0.25);
+        data.setHujiaScore(baseValue +  0.25);
+    }
+
+    public static void deActJinHuangShi5(Data data){
+        Player player = data.player;
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
+        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue -  0.25);
+        data.setHujiaScore(baseValue -  0.25);
+    }
+
+    public static void actJinHuangShi6(Data data){
+        Player player = data.player;
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
+        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue +  0.3);
+        data.setHujiaScore(baseValue +  0.3);
+    }
+
+    public static void deActJinHuangShi6(Data data){
+        Player player = data.player;
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
+        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue -  0.3);
+        data.setHujiaScore(baseValue -  0.3);
+    }
+
     public static void actJinHuangShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue + 0.13);
-        data.setHujiaScore(baseValue + 0.13);
+        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue +  0.35);
+        data.setHujiaScore(baseValue +  0.35);
     }
 
     public static void deActJinHuangShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue - 0.13);
-        data.setHujiaScore(baseValue - 0.13);
+        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue -  0.35);
+        data.setHujiaScore(baseValue -  0.35);
     }
 
     public static void actJinHuangShi8(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue + 0.17);
-        data.setHujiaScore(baseValue + 0.17);
+        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue +  0.4);
+        data.setHujiaScore(baseValue +  0.4);
     }
 
     public static void deActJinHuangShi8(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue - 0.17);
-        data.setHujiaScore(baseValue - 0.17);
+        pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue -  0.4);
+        data.setHujiaScore(baseValue -  0.4);
     }
 
     public static void actHouTuShi1(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.gedang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue + 0.01);
-        data.setGedangScore(baseValue + 0.01);
+        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue + 2.5);
+        data.setGedangScore(baseValue + 2.5);
     }
 
     public static void deActHouTuShi1(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.gedang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue - 0.01);
-        data.setGedangScore(baseValue - 0.01);
+        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue - 2.5);
+        data.setGedangScore(baseValue - 2.5);
     }
 
     public static void actHouTuShi2(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.gedang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue + 0.02);
-        data.setGedangScore(baseValue + 0.02);
+        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue + 5);
+        data.setGedangScore(baseValue + 5);
     }
 
     public static void deActHouTuShi2(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.gedang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue - 0.02);
-        data.setGedangScore(baseValue - 0.02);
+        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue - 5);
+        data.setGedangScore(baseValue - 5);
     }
 
     public static void actHouTuShi3(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.gedang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue + 0.03);
-        data.setGedangScore(baseValue + 0.03);
+        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue + 7.5);
+        data.setGedangScore(baseValue + 7.5);
     }
 
     public static void deActHouTuShi3(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.gedang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue - 0.03);
-        data.setGedangScore(baseValue - 0.03);
+        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue - 7.5);
+        data.setGedangScore(baseValue - 7.5);
     }
 
     public static void actHouTuShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.gedang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue + 0.05);
-        data.setGedangScore(baseValue + 0.05);
+        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue + 10);
+        data.setGedangScore(baseValue + 10);
     }
 
     public static void deActHouTuShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.gedang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue - 0.05);
-        data.setGedangScore(baseValue - 0.05);
+        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue - 10);
+        data.setGedangScore(baseValue - 10);
     }
 
     public static void actHouTuShi5(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.gedang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue + 0.07);
-        data.setGedangScore(baseValue + 0.07);
+        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue + 12.5);
+        data.setGedangScore(baseValue + 12.5);
     }
 
     public static void deActHouTuShi5(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.gedang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue - 0.07);
-        data.setGedangScore(baseValue - 0.07);
+        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue - 12.5);
+        data.setGedangScore(baseValue - 12.5);
     }
 
     public static void actHouTuShi6(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.gedang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue + 0.1);
-        data.setGedangScore(baseValue + 0.1);
+        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue + 15);
+        data.setGedangScore(baseValue + 15);
     }
 
     public static void deActHouTuShi6(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.gedang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue - 0.1);
-        data.setGedangScore(baseValue - 0.1);
+        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue - 15);
+        data.setGedangScore(baseValue - 15);
     }
 
     public static void actHouTuShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.gedang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue + 0.13);
-        data.setGedangScore(baseValue + 0.13);
+        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue + 17.5);
+        data.setGedangScore(baseValue + 17.5);
     }
 
     public static void deActHouTuShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.gedang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue - 0.13);
-        data.setGedangScore(baseValue - 0.13);
+        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue - 17.5);
+        data.setGedangScore(baseValue - 17.5);
     }
 
     public static void actHouTuShi8(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.gedang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue + 0.17);
-        data.setGedangScore(baseValue + 0.17);
+        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue + 20);
+        data.setGedangScore(baseValue + 20);
     }
 
     public static void deActHouTuShi8(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.gedang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue - 0.17);
-        data.setGedangScore(baseValue - 0.17);
+        pdc.set(DataContainer.gedang, PersistentDataType.DOUBLE, baseValue - 20);
+        data.setGedangScore(baseValue - 20);
     }
 
     public static void actZiJingShi1(Data data){
         Player player = data.player;
         AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
-        attributeInstance.setBaseValue(baseValue + 1);
+        attributeInstance.setBaseValue(baseValue + 4);
     }
 
     public static void deActZiJingShi1(Data data){
         Player player = data.player;
         AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
-        attributeInstance.setBaseValue(baseValue - 1);
+        attributeInstance.setBaseValue(baseValue - 4);
     }
 
     public static void actZiJingShi2(Data data){
         Player player = data.player;
         AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
-        attributeInstance.setBaseValue(baseValue + 2);
+        attributeInstance.setBaseValue(baseValue + 8);
     }
 
     public static void deActZiJingShi2(Data data){
         Player player = data.player;
         AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
-        attributeInstance.setBaseValue(baseValue - 2);
+        attributeInstance.setBaseValue(baseValue - 8);
     }
 
     public static void actZiJingShi3(Data data){
         Player player = data.player;
         AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
-        attributeInstance.setBaseValue(baseValue + 4);
+        attributeInstance.setBaseValue(baseValue + 16);
     }
 
     public static void deActZiJingShi3(Data data){
         Player player = data.player;
         AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
-        attributeInstance.setBaseValue(baseValue - 4);
+        attributeInstance.setBaseValue(baseValue - 16);
     }
 
     public static void actZiJingShi4(Data data){
         Player player = data.player;
         AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
-        attributeInstance.setBaseValue(baseValue + 8);
+        attributeInstance.setBaseValue(baseValue + 32);
     }
 
     public static void deActZiJingShi4(Data data){
         Player player = data.player;
         AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
-        attributeInstance.setBaseValue(baseValue - 8);
+        attributeInstance.setBaseValue(baseValue - 32);
     }
 
     public static void actZiJingShi5(Data data){
         Player player = data.player;
         AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
-        attributeInstance.setBaseValue(baseValue + 16);
+        attributeInstance.setBaseValue(baseValue + 64);
     }
 
     public static void deActZiJingShi5(Data data){
         Player player = data.player;
         AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
-        attributeInstance.setBaseValue(baseValue - 16);
+        attributeInstance.setBaseValue(baseValue - 64);
     }
 
     public static void actZiJingShi6(Data data){
         Player player = data.player;
         AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
-        attributeInstance.setBaseValue(baseValue + 32);
+        attributeInstance.setBaseValue(baseValue + 128);
     }
 
     public static void deActZiJingShi6(Data data){
         Player player = data.player;
         AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
-        attributeInstance.setBaseValue(baseValue - 32);
+        attributeInstance.setBaseValue(baseValue - 128);
     }
 
     public static void actZiJingShi7(Data data){
         Player player = data.player;
         AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
-        attributeInstance.setBaseValue(baseValue + 64);
+        attributeInstance.setBaseValue(baseValue + 256);
     }
 
     public static void deActZiJingShi7(Data data){
         Player player = data.player;
         AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
-        attributeInstance.setBaseValue(baseValue - 64);
+        attributeInstance.setBaseValue(baseValue - 256);
     }
 
     public static void actZiJingShi8(Data data){
         Player player = data.player;
         AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
-        attributeInstance.setBaseValue(baseValue + 128);
+        attributeInstance.setBaseValue(baseValue + 512);
     }
 
     public static void deActZiJingShi8(Data data) {
         Player player = data.player;
         AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
-        attributeInstance.setBaseValue(baseValue - 128);
+        attributeInstance.setBaseValue(baseValue - 512);
     }
 
     public static void actTuLuShi1(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baoji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue + 0.01);
-        data.setBaojiScore(baseValue + 0.01);
+        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue + 0.05);
+        data.setBaojiScore(baseValue + 0.05);
     }
 
     public static void deActTuLuShi1(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baoji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue - 0.01);
-        data.setBaojiScore(baseValue - 0.01);
+        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue - 0.05);
+        data.setBaojiScore(baseValue - 0.05);
     }
 
     public static void actTuLuShi2(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baoji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue + 0.02);
-        data.setBaojiScore(baseValue + 0.02);
+        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue + 0.1);
+        data.setBaojiScore(baseValue + 0.1);
     }
 
     public static void deActTuLuShi2(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baoji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue - 0.02);
-        data.setBaojiScore(baseValue - 0.02);
+        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue - 0.1);
+        data.setBaojiScore(baseValue - 0.1);
     }
 
     public static void actTuLuShi3(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baoji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue + 0.04);
-        data.setBaojiScore(baseValue + 0.04);
+        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue + 0.15);
+        data.setBaojiScore(baseValue + 0.15);
     }
 
     public static void deActTuLuShi3(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baoji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue - 0.04);
-        data.setBaojiScore(baseValue - 0.04);
+        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue - 0.15);
+        data.setBaojiScore(baseValue - 0.15);
     }
 
     public static void actTuLuShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baoji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue + 0.07);
-        data.setBaojiScore(baseValue + 0.07);
+        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue + 0.2);
+        data.setBaojiScore(baseValue + 0.2);
     }
 
     public static void deActTuLuShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baoji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue - 0.07);
-        data.setBaojiScore(baseValue - 0.07);
+        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue - 0.2);
+        data.setBaojiScore(baseValue - 0.2);
     }
 
     public static void actTuLuShi5(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baoji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue + 0.11);
-        data.setBaojiScore(baseValue + 0.11);
+        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue + 0.25);
+        data.setBaojiScore(baseValue + 0.25);
     }
 
     public static void deActTuLuShi5(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baoji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue - 0.11);
-        data.setBaojiScore(baseValue - 0.11);
+        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue - 0.25);
+        data.setBaojiScore(baseValue - 0.25);
     }
 
     public static void actTuLuShi6(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baoji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue + 0.16);
-        data.setBaojiScore(baseValue + 0.16);
+        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue + 0.3);
+        data.setBaojiScore(baseValue + 0.3);
     }
 
     public static void deActTuLuShi6(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baoji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue - 0.16);
-        data.setBaojiScore(baseValue - 0.16);
+        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue - 0.3);
+        data.setBaojiScore(baseValue - 0.3);
     }
 
     public static void actTuLuShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baoji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue + 0.22);
-        data.setBaojiScore(baseValue + 0.22);
+        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue + 0.35);
+        data.setBaojiScore(baseValue + 0.35);
     }
 
     public static void deActTuLuShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baoji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue - 0.22);
-        data.setBaojiScore(baseValue - 0.22);
+        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue - 0.35);
+        data.setBaojiScore(baseValue - 0.35);
     }
 
     public static void actTuLuShi8(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baoji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue + 0.29);
-        data.setBaojiScore(baseValue + 0.29);
+        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue + 0.4);
+        data.setBaojiScore(baseValue + 0.4);
     }
 
     public static void deActTuLuShi8(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baoji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue - 0.29);
-        data.setBaojiScore(baseValue - 0.29);
+        pdc.set(DataContainer.baoji, PersistentDataType.DOUBLE, baseValue - 0.4);
+        data.setBaojiScore(baseValue - 0.4);
     }
 
     public static void actHongYueShi1(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue + 0.03);
-        data.setBaoJiXiaoGuoScore(baseValue + 0.03);
+        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue +  0.01);
+        data.setBaoJiXiaoGuoScore(baseValue +  0.01);
     }
 
     public static void deActHongYueShi1(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue - 0.03);
-        data.setBaoJiXiaoGuoScore(baseValue - 0.03);
+        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue -  0.01);
+        data.setBaoJiXiaoGuoScore(baseValue -  0.01);
     }
 
     public static void actHongYueShi2(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue + 0.06);
-        data.setBaoJiXiaoGuoScore(baseValue + 0.06);
+        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue +  0.02);
+        data.setBaoJiXiaoGuoScore(baseValue +  0.02);
     }
 
     public static void deActHongYueShi2(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue - 0.06);
-        data.setBaoJiXiaoGuoScore(baseValue - 0.06);
+        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue -  0.02);
+        data.setBaoJiXiaoGuoScore(baseValue -  0.02);
     }
 
     public static void actHongYueShi3(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue + 0.12);
-        data.setBaoJiXiaoGuoScore(baseValue + 0.12);
+        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue + 0.04);
+        data.setBaoJiXiaoGuoScore(baseValue + 0.04);
     }
 
     public static void deActHongYueShi3(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue - 0.12);
-        data.setBaoJiXiaoGuoScore(baseValue - 0.12);
+        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue - 0.04);
+        data.setBaoJiXiaoGuoScore(baseValue - 0.04);
     }
 
     public static void actHongYueShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue + 0.21);
-        data.setBaoJiXiaoGuoScore(baseValue + 0.21);
+        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue + 0.08);
+        data.setBaoJiXiaoGuoScore(baseValue + 0.08);
     }
 
     public static void deActHongYueShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue - 0.21);
-        data.setBaoJiXiaoGuoScore(baseValue - 0.21);
+        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue - 0.08);
+        data.setBaoJiXiaoGuoScore(baseValue - 0.08);
     }
 
     public static void actHongYueShi5(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue + 0.33);
-        data.setBaoJiXiaoGuoScore(baseValue + 0.33);
+        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue + 0.16);
+        data.setBaoJiXiaoGuoScore(baseValue + 0.16);
     }
 
     public static void deActHongYueShi5(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue - 0.33);
-        data.setBaoJiXiaoGuoScore(baseValue - 0.33);
+        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue - 0.16);
+        data.setBaoJiXiaoGuoScore(baseValue - 0.16);
     }
 
     public static void actHongYueShi6(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue + 0.48);
-        data.setBaoJiXiaoGuoScore(baseValue + 0.48);
+        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue + 0.32);
+        data.setBaoJiXiaoGuoScore(baseValue + 0.32);
     }
 
     public static void deActHongYueShi6(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue - 0.48);
-        data.setBaoJiXiaoGuoScore(baseValue - 0.48);
+        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue - 0.32);
+        data.setBaoJiXiaoGuoScore(baseValue - 0.32);
     }
 
     public static void actHongYueShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue + 0.66);
-        data.setBaoJiXiaoGuoScore(baseValue + 0.66);
+        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue + 0.64);
+        data.setBaoJiXiaoGuoScore(baseValue + 0.64);
     }
 
     public static void deActHongYueShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue - 0.66);
-        data.setBaoJiXiaoGuoScore(baseValue - 0.66);
+        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue - 0.64);
+        data.setBaoJiXiaoGuoScore(baseValue - 0.64);
     }
 
     public static void actHongYueShi8(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue + 0.87);
-        data.setBaoJiXiaoGuoScore(baseValue + 0.87);
+        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue + 1.28);
+        data.setBaoJiXiaoGuoScore(baseValue + 1.28);
     }
 
     public static void deActHongYueShi8(Data data) {
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue - 0.87);
-        data.setBaoJiXiaoGuoScore(baseValue - 0.87);
+        pdc.set(DataContainer.baojixiaoguo, PersistentDataType.DOUBLE, baseValue - 1.28);
+        data.setBaoJiXiaoGuoScore(baseValue - 1.28);
     }
 
     public static void actMiYinShi1(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue + 0.02);
-        data.setBaoJiXiaoGuoScore(baseValue + 0.02);
+        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue + 0.05);
+        data.setBaoJiXiaoGuoScore(baseValue + 0.05);
     }
 
     public static void deActMiYinShi1(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue - 0.02);
-        data.setBaoJiXiaoGuoScore(baseValue - 0.02);
+        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue - 0.05);
+        data.setBaoJiXiaoGuoScore(baseValue - 0.05);
     }
 
     public static void actMiYinShi2(Data data){
-        Player player = data.player;
-        PersistentDataContainer pdc = player.getPersistentDataContainer();
-        double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue + 0.04);
-        data.setBaoJiXiaoGuoScore(baseValue + 0.04);
-    }
-
-    public static void deActMiYinShi2(Data data){
-        Player player = data.player;
-        PersistentDataContainer pdc = player.getPersistentDataContainer();
-        double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue - 0.04);
-        data.setBaoJiXiaoGuoScore(baseValue - 0.04);
-    }
-
-    public static void actMiYinShi3(Data data){
-        Player player = data.player;
-        PersistentDataContainer pdc = player.getPersistentDataContainer();
-        double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue + 0.06);
-        data.setBaoJiXiaoGuoScore(baseValue + 0.06);
-    }
-
-    public static void deActMiYinShi3(Data data){
-        Player player = data.player;
-        PersistentDataContainer pdc = player.getPersistentDataContainer();
-        double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue - 0.06);
-        data.setBaoJiXiaoGuoScore(baseValue - 0.06);
-    }
-
-    public static void actMiYinShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
@@ -1299,7 +1267,7 @@ public final class ActYuShi {
         data.setBaoJiXiaoGuoScore(baseValue + 0.1);
     }
 
-    public static void deActMiYinShi4(Data data){
+    public static void deActMiYinShi2(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
@@ -1307,23 +1275,23 @@ public final class ActYuShi {
         data.setBaoJiXiaoGuoScore(baseValue - 0.1);
     }
 
-    public static void actMiYinShi5(Data data){
+    public static void actMiYinShi3(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue + 0.14);
-        data.setBaoJiXiaoGuoScore(baseValue + 0.14);
+        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue + 0.15);
+        data.setBaoJiXiaoGuoScore(baseValue + 0.15);
     }
 
-    public static void deActMiYinShi5(Data data){
+    public static void deActMiYinShi3(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue - 0.14);
-        data.setBaoJiXiaoGuoScore(baseValue - 0.14);
+        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue - 0.15);
+        data.setBaoJiXiaoGuoScore(baseValue - 0.15);
     }
 
-    public static void actMiYinShi6(Data data){
+    public static void actMiYinShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
@@ -1331,7 +1299,7 @@ public final class ActYuShi {
         data.setBaoJiXiaoGuoScore(baseValue + 0.2);
     }
 
-    public static void deActMiYinShi6(Data data){
+    public static void deActMiYinShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
@@ -1339,87 +1307,87 @@ public final class ActYuShi {
         data.setBaoJiXiaoGuoScore(baseValue - 0.2);
     }
 
+    public static void actMiYinShi5(Data data){
+        Player player = data.player;
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
+        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue + 0.25);
+        data.setBaoJiXiaoGuoScore(baseValue + 0.25);
+    }
+
+    public static void deActMiYinShi5(Data data){
+        Player player = data.player;
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
+        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue - 0.25);
+        data.setBaoJiXiaoGuoScore(baseValue - 0.25);
+    }
+
+    public static void actMiYinShi6(Data data){
+        Player player = data.player;
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
+        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue + 0.3);
+        data.setBaoJiXiaoGuoScore(baseValue + 0.3);
+    }
+
+    public static void deActMiYinShi6(Data data){
+        Player player = data.player;
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
+        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue - 0.3);
+        data.setBaoJiXiaoGuoScore(baseValue - 0.3);
+    }
+
     public static void actMiYinShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue + 0.26);
-        data.setBaoJiXiaoGuoScore(baseValue + 0.26);
+        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue + 0.35);
+        data.setBaoJiXiaoGuoScore(baseValue + 0.35);
     }
 
     public static void deActMiYinShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue - 0.26);
-        data.setBaoJiXiaoGuoScore(baseValue - 0.26);
+        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue - 0.35);
+        data.setBaoJiXiaoGuoScore(baseValue - 0.35);
     }
 
     public static void actMiYinShi8(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue + 0.34);
-        data.setBaoJiXiaoGuoScore(baseValue + 0.34);
+        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue + 0.4);
+        data.setBaoJiXiaoGuoScore(baseValue + 0.4);
     }
 
     public static void deActMiYinShi8(Data data) {
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.renxing, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue - 0.34);
-        data.setBaoJiXiaoGuoScore(baseValue - 0.34);
+        pdc.set(DataContainer.renxing, PersistentDataType.DOUBLE, baseValue - 0.4);
+        data.setBaoJiXiaoGuoScore(baseValue - 0.4);
     }
 
     public static void actYuLuShi1(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue + 0.02);
-        data.setShengjiScore(baseValue + 0.02);
+        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue + 0.05);
+        data.setShengjiScore(baseValue + 0.05);
     }
 
     public static void deActYuLuShi1(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue - 0.02);
-        data.setShengjiScore(baseValue - 0.02);
+        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue - 0.05);
+        data.setShengjiScore(baseValue - 0.05);
     }
 
     public static void actYuLuShi2(Data data){
-        Player player = data.player;
-        PersistentDataContainer pdc = player.getPersistentDataContainer();
-        double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue + 0.04);
-        data.setShengjiScore(baseValue + 0.04);
-    }
-
-    public static void deActYuLuShi2(Data data){
-        Player player = data.player;
-        PersistentDataContainer pdc = player.getPersistentDataContainer();
-        double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue - 0.04);
-        data.setShengjiScore(baseValue - 0.04);
-    }
-
-    public static void actYuLuShi3(Data data){
-        Player player = data.player;
-        PersistentDataContainer pdc = player.getPersistentDataContainer();
-        double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue + 0.06);
-        data.setShengjiScore(baseValue + 0.06);
-    }
-
-    public static void deActYuLuShi3(Data data){
-        Player player = data.player;
-        PersistentDataContainer pdc = player.getPersistentDataContainer();
-        double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue - 0.06);
-        data.setShengjiScore(baseValue - 0.06);
-    }
-
-    public static void actYuLuShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
@@ -1427,7 +1395,7 @@ public final class ActYuShi {
         data.setShengjiScore(baseValue + 0.1);
     }
 
-    public static void deActYuLuShi4(Data data){
+    public static void deActYuLuShi2(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
@@ -1435,23 +1403,23 @@ public final class ActYuShi {
         data.setShengjiScore(baseValue - 0.1);
     }
 
-    public static void actYuLuShi5(Data data){
+    public static void actYuLuShi3(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue + 0.14);
-        data.setShengjiScore(baseValue + 0.14);
+        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue + 0.15);
+        data.setShengjiScore(baseValue + 0.15);
     }
 
-    public static void deActYuLuShi5(Data data){
+    public static void deActYuLuShi3(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue - 0.14);
-        data.setShengjiScore(baseValue - 0.14);
+        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue - 0.15);
+        data.setShengjiScore(baseValue - 0.15);
     }
 
-    public static void actYuLuShi6(Data data){
+    public static void actYuLuShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
@@ -1459,7 +1427,7 @@ public final class ActYuShi {
         data.setShengjiScore(baseValue + 0.2);
     }
 
-    public static void deActYuLuShi6(Data data){
+    public static void deActYuLuShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
@@ -1467,420 +1435,452 @@ public final class ActYuShi {
         data.setShengjiScore(baseValue - 0.2);
     }
 
+    public static void actYuLuShi5(Data data){
+        Player player = data.player;
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
+        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue + 0.25);
+        data.setShengjiScore(baseValue + 0.25);
+    }
+
+    public static void deActYuLuShi5(Data data){
+        Player player = data.player;
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
+        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue - 0.25);
+        data.setShengjiScore(baseValue - 0.25);
+    }
+
+    public static void actYuLuShi6(Data data){
+        Player player = data.player;
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
+        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue + 0.3);
+        data.setShengjiScore(baseValue + 0.3);
+    }
+
+    public static void deActYuLuShi6(Data data){
+        Player player = data.player;
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
+        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue - 0.3);
+        data.setShengjiScore(baseValue - 0.3);
+    }
+
     public static void actYuLuShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue + 0.26);
-        data.setShengjiScore(baseValue + 0.26);
+        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue + 0.35);
+        data.setShengjiScore(baseValue + 0.35);
     }
 
     public static void deActYuLuShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue - 0.26);
-        data.setShengjiScore(baseValue - 0.26);
+        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue - 0.35);
+        data.setShengjiScore(baseValue - 0.35);
     }
 
     public static void actYuLuShi8(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue + 0.34);
-        data.setShengjiScore(baseValue + 0.34);
+        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue + 0.4);
+        data.setShengjiScore(baseValue + 0.4);
     }
 
     public static void deActYuLuShi8(Data data) {
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue - 0.34);
-        data.setShengjiScore(baseValue - 0.34);
+        pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue - 0.4);
+        data.setShengjiScore(baseValue - 0.4);
     }
 
     public static void actBingShuangShi1(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.fakang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue + 0.01);
-        data.setShengjiScore(baseValue + 0.01);
+        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue +  0.05);
+        data.setShengjiScore(baseValue +  0.05);
     }
 
     public static void deActBingShuangShi1(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.fakang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue - 0.01);
-        data.setShengjiScore(baseValue - 0.01);
+        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue -  0.05);
+        data.setShengjiScore(baseValue -  0.05);
     }
 
     public static void actBingShuangShi2(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.fakang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue + 0.02);
-        data.setShengjiScore(baseValue + 0.02);
+        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue +  0.1);
+        data.setShengjiScore(baseValue +  0.1);
     }
 
     public static void deActBingShuangShi2(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.fakang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue - 0.02);
-        data.setShengjiScore(baseValue - 0.02);
+        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue -  0.1);
+        data.setShengjiScore(baseValue -  0.1);
     }
 
     public static void actBingShuangShi3(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.fakang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue + 0.03);
-        data.setShengjiScore(baseValue + 0.03);
+        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue + 0.15);
+        data.setShengjiScore(baseValue + 0.15);
     }
 
     public static void deActBingShuangShi3(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.fakang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue - 0.03);
-        data.setShengjiScore(baseValue - 0.03);
+        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue - 0.15);
+        data.setShengjiScore(baseValue - 0.15);
     }
 
     public static void actBingShuangShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.fakang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue + 0.05);
-        data.setShengjiScore(baseValue + 0.05);
+        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue +  0.2);
+        data.setShengjiScore(baseValue +  0.2);
     }
 
     public static void deActBingShuangShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.fakang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue - 0.05);
-        data.setShengjiScore(baseValue - 0.05);
+        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue -  0.2);
+        data.setShengjiScore(baseValue -  0.2);
     }
 
     public static void actBingShuangShi5(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.fakang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue + 0.07);
-        data.setShengjiScore(baseValue + 0.07);
+        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue +  0.25);
+        data.setShengjiScore(baseValue +  0.25);
     }
 
     public static void deActBingShuangShi5(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.fakang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue - 0.07);
-        data.setShengjiScore(baseValue - 0.07);
+        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue -  0.25);
+        data.setShengjiScore(baseValue -  0.25);
     }
 
     public static void actBingShuangShi6(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.fakang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue + 0.1);
-        data.setShengjiScore(baseValue + 0.1);
+        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue +  0.3);
+        data.setShengjiScore(baseValue +  0.3);
     }
 
     public static void deActBingShuangShi6(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.fakang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue - 0.1);
-        data.setShengjiScore(baseValue - 0.1);
+        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue -  0.3);
+        data.setShengjiScore(baseValue -  0.3);
     }
 
     public static void actBingShuangShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.fakang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue + 0.13);
-        data.setShengjiScore(baseValue + 0.13);
+        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue +  0.35);
+        data.setShengjiScore(baseValue +  0.35);
     }
 
     public static void deActBingShuangShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.fakang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue - 0.13);
-        data.setShengjiScore(baseValue - 0.13);
+        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue -  0.35);
+        data.setShengjiScore(baseValue -  0.35);
     }
 
     public static void actBingShuangShi8(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.fakang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue + 0.17);
-        data.setShengjiScore(baseValue + 0.17);
+        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue +  0.4);
+        data.setShengjiScore(baseValue +  0.4);
     }
 
     public static void deActBingShuangShi8(Data data) {
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.fakang, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue - 0.17);
-        data.setShengjiScore(baseValue - 0.17);
+        pdc.set(DataContainer.fakang, PersistentDataType.DOUBLE, baseValue -  0.4);
+        data.setShengjiScore(baseValue -  0.4);
     }
 
     public static void actYanYangShi1(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue + 0.01);
-        data.setPofaScore(baseValue + 0.01);
+        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue +  0.05);
+        data.setPofaScore(baseValue +  0.05);
     }
 
     public static void deActYanYangShi1(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue - 0.01);
-        data.setPofaScore(baseValue - 0.01);
+        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue -  0.05);
+        data.setPofaScore(baseValue -  0.05);
     }
 
     public static void actYanYangShi2(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue + 0.02);
-        data.setPofaScore(baseValue + 0.02);
+        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue +  0.1);
+        data.setPofaScore(baseValue +  0.1);
     }
 
     public static void deActYanYangShi2(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue - 0.02);
-        data.setPofaScore(baseValue - 0.02);
+        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue -  0.1);
+        data.setPofaScore(baseValue -  0.1);
     }
 
     public static void actYanYangShi3(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue + 0.04);
-        data.setPofaScore(baseValue + 0.04);
+        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue + 0.15);
+        data.setPofaScore(baseValue + 0.15);
     }
 
     public static void deActYanYangShi3(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue - 0.04);
-        data.setPofaScore(baseValue - 0.04);
+        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue - 0.15);
+        data.setPofaScore(baseValue - 0.15);
     }
 
     public static void actYanYangShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue + 0.08);
-        data.setPofaScore(baseValue + 0.08);
+        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue +  0.2);
+        data.setPofaScore(baseValue +  0.2);
     }
 
     public static void deActYanYangShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue - 0.08);
-        data.setPofaScore(baseValue - 0.08);
+        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue -  0.2);
+        data.setPofaScore(baseValue -  0.2);
     }
 
     public static void actYanYangShi5(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue + 0.16);
-        data.setPofaScore(baseValue + 0.16);
+        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue +  0.25);
+        data.setPofaScore(baseValue +  0.25);
     }
 
     public static void deActYanYangShi5(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue - 0.16);
-        data.setPofaScore(baseValue - 0.16);
+        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue -  0.25);
+        data.setPofaScore(baseValue -  0.25);
     }
 
     public static void actYanYangShi6(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue + 0.32);
-        data.setPofaScore(baseValue + 0.32);
+        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue +  0.3);
+        data.setPofaScore(baseValue +  0.3);
     }
 
     public static void deActYanYangShi6(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue - 0.32);
-        data.setPofaScore(baseValue - 0.32);
+        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue -  0.3);
+        data.setPofaScore(baseValue -  0.3);
     }
 
     public static void actYanYangShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue + 0.64);
-        data.setPofaScore(baseValue + 0.64);
+        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue +  0.35);
+        data.setPofaScore(baseValue +  0.35);
     }
 
     public static void deActYanYangShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue - 0.64);
-        data.setPofaScore(baseValue - 0.64);
+        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue -  0.35);
+        data.setPofaScore(baseValue -  0.35);
     }
 
     public static void actYanYangShi8(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue + 1.28);
-        data.setPofaScore(baseValue + 1.28);
+        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue +  0.4);
+        data.setPofaScore(baseValue +  0.4);
     }
 
     public static void deActYanYangShi8(Data data) {
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue - 1.28);
-        data.setPofaScore(baseValue - 1.28);
+        pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue -  0.4);
+        data.setPofaScore(baseValue -  0.4);
     }
 
     public static void actSuiYanShi1(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pojia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue + 0.01);
-        data.setPojiaScore(baseValue + 0.01);
+        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue +  0.05);
+        data.setPojiaScore(baseValue +  0.05);
     }
 
     public static void deActSuiYanShi1(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pojia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue - 0.01);
-        data.setPojiaScore(baseValue - 0.01);
+        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue -  0.05);
+        data.setPojiaScore(baseValue -  0.05);
     }
 
     public static void actSuiYanShi2(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pojia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue + 0.02);
-        data.setPojiaScore(baseValue + 0.02);
+        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue +  0.1);
+        data.setPojiaScore(baseValue +  0.1);
     }
 
     public static void deActSuiYanShi2(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pojia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue - 0.02);
-        data.setPojiaScore(baseValue - 0.02);
+        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue -  0.1);
+        data.setPojiaScore(baseValue -  0.1);
     }
 
     public static void actSuiYanShi3(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pojia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue + 0.04);
-        data.setPojiaScore(baseValue + 0.04);
+        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue + 0.15);
+        data.setPojiaScore(baseValue + 0.15);
     }
 
     public static void deActSuiYanShi3(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pojia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue - 0.04);
-        data.setPojiaScore(baseValue - 0.04);
+        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue - 0.15);
+        data.setPojiaScore(baseValue - 0.15);
     }
 
     public static void actSuiYanShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pojia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue + 0.08);
-        data.setPojiaScore(baseValue + 0.08);
+        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue +  0.2);
+        data.setPojiaScore(baseValue +  0.2);
     }
 
     public static void deActSuiYanShi4(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pojia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue - 0.08);
-        data.setPojiaScore(baseValue - 0.08);
+        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue -  0.2);
+        data.setPojiaScore(baseValue -  0.2);
     }
 
     public static void actSuiYanShi5(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pojia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue + 0.16);
-        data.setPojiaScore(baseValue + 0.16);
+        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue +  0.25);
+        data.setPojiaScore(baseValue +  0.25);
     }
 
     public static void deActSuiYanShi5(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pojia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue - 0.16);
-        data.setPojiaScore(baseValue - 0.16);
+        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue -  0.25);
+        data.setPojiaScore(baseValue -  0.25);
     }
 
     public static void actSuiYanShi6(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pojia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue + 0.32);
-        data.setPojiaScore(baseValue + 0.32);
+        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue +  0.3);
+        data.setPojiaScore(baseValue +  0.3);
     }
 
     public static void deActSuiYanShi6(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pojia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue - 0.32);
-        data.setPojiaScore(baseValue - 0.32);
+        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue -  0.3);
+        data.setPojiaScore(baseValue -  0.3);
     }
 
     public static void actSuiYanShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pojia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue + 0.64);
-        data.setPojiaScore(baseValue + 0.64);
+        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue +  0.35);
+        data.setPojiaScore(baseValue +  0.35);
     }
 
     public static void deActSuiYanShi7(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pojia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue - 0.64);
-        data.setPojiaScore(baseValue - 0.64);
+        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue -  0.35);
+        data.setPojiaScore(baseValue -  0.35);
     }
 
     public static void actSuiYanShi8(Data data){
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pojia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue + 1.28);
-        data.setPojiaScore(baseValue + 1.28);
+        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue +  0.4);
+        data.setPojiaScore(baseValue +  0.4);
     }
 
     public static void deActSuiYanShi8(Data data) {
         Player player = data.player;
         PersistentDataContainer pdc = player.getPersistentDataContainer();
         double baseValue = pdc.get(DataContainer.pojia, PersistentDataType.DOUBLE);
-        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue - 1.28);
-        data.setPojiaScore(baseValue - 1.28);
+        pdc.set(DataContainer.pojia, PersistentDataType.DOUBLE, baseValue -  0.4);
+        data.setPojiaScore(baseValue -  0.4);
     }
 
 

@@ -95,6 +95,7 @@ public final class MyTp implements CommandExecutor {
             case "奈何桥" -> player.teleport(NAI_HE_QIAO);
             case "忠烈祠" -> player.teleport(ZHONG_LIE_CI);
             case "出生点" -> player.teleport(CHU_SHENG_DIAN);
+            case "物品" -> player.teleport(WU_PIN);
         }
 
         return true;

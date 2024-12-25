@@ -98,6 +98,10 @@ public final class Sale implements CommandExecutor {
             iniCount = itemCount;
             saler = player;
 
+            Buy.buyerNow = null;
+            Buy.priceNow = 0;
+
+
             String playerName = player.getName();
             String itemDisplay = handItem.getDisplayName();
 
@@ -108,6 +112,7 @@ public final class Sale implements CommandExecutor {
             );
 
             new SaleTask(playerName, itemDisplay, count).runTaskTimer(Yuehua.instance, 20 * 10, 20 * 10);
+
 
         });
         return true;

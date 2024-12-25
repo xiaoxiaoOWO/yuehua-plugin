@@ -1,154 +1,124 @@
 package com.xiaoxiaoowo.yuehua.system;
 
 
+import com.xiaoxiaoowo.yuehua.attribute.AttributeSet;
+import com.xiaoxiaoowo.yuehua.attribute.attributes.MyAttribute;
 import com.xiaoxiaoowo.yuehua.data.DanData;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.data.GongData;
 import com.xiaoxiaoowo.yuehua.data.ZhanData;
 import com.xiaoxiaoowo.yuehua.system.act.ActFuling;
-import com.xiaoxiaoowo.yuehua.system.act.ActHujia;
 import com.xiaoxiaoowo.yuehua.system.act.ActYuShi;
-import com.xiaoxiaoowo.yuehua.task.hujia.Xiong1;
-import com.xiaoxiaoowo.yuehua.utils.Scheduler;
+import org.bukkit.entity.Player;
+import org.bukkit.persistence.PersistentDataContainer;
+
+import java.util.List;
+
+import static com.xiaoxiaoowo.yuehua.system.Init.*;
 
 //不要忘了神器绑身体
 public final class Act {
 
-    public static void actHelp(Data data, String id){
-
+    public static void actHelp(Data data, String id, PersistentDataContainer pdc) {
+        List<MyAttribute> attributeList = AttributeSet.attributes.get(id);
+        if (attributeList == null) {
+            return;
+        }
+        for (MyAttribute attribute : attributeList) {
+            attribute.act(data, pdc);
+        }
     }
 
 
-    public static void deActHelp(Data data, String id){
-
+    public static void deActHelp(Data data, String id, PersistentDataContainer pdc) {
+        List<MyAttribute> attributeList = AttributeSet.attributes.get(id);
+        if (attributeList == null) {
+            return;
+        }
+        for (MyAttribute attribute : attributeList) {
+            attribute.deAct(data, pdc);
+        }
     }
+
 
     public static void actZhan(ZhanData data, String id) {
-        actHelp(data, id);
-        switch (id) {
-            case "tou1" -> ActHujia.actTou1(data);
+        Player player = data.player;
+        PersistentDataContainer persistentDataContainer = player.getPersistentDataContainer();
+        actHelp(data, id, persistentDataContainer);
+        initZhan(data, id);
 
-            case "taomujian" -> {
-
-            }
-        }
     }
 
     public static void deActZhan(ZhanData data, String id) {
-        deActHelp(data, id);
-        switch (id) {
-            case "tou1" -> ActHujia.deActTou1(data);
-        }
-
+        Player player = data.player;
+        PersistentDataContainer persistentDataContainer = player.getPersistentDataContainer();
+        deActHelp(data, id, persistentDataContainer);
+        deInitZhan(data, id);
     }
 
     public static void actGong(GongData data, String id) {
-        actHelp(data, id);
-        switch (id) {
-            case "tou1" -> ActHujia.actTou1(data);
-        }
+        Player player = data.player;
+        PersistentDataContainer persistentDataContainer = player.getPersistentDataContainer();
+        actHelp(data, id, persistentDataContainer);
+        initGong(data, id);
     }
 
     public static void deActGong(GongData data, String id) {
-        deActHelp(data, id);
-        switch (id) {
-            case "tou1" -> ActHujia.deActTou1(data);
-        }
-
+        Player player = data.player;
+        PersistentDataContainer persistentDataContainer = player.getPersistentDataContainer();
+        deActHelp(data, id, persistentDataContainer);
+        deInitGong(data, id);
     }
 
     public static void actDan(DanData data, String id) {
-        actHelp(data, id);
-        switch (id) {
-            case "tou1" -> ActHujia.actTou1(data);
-        }
+        Player player = data.player;
+        PersistentDataContainer persistentDataContainer = player.getPersistentDataContainer();
+        actHelp(data, id, persistentDataContainer);
+        initDan(data, id);
     }
 
     public static void deActDan(DanData data, String id) {
-        deActHelp(data, id);
-        switch (id) {
-            case "tou1" -> ActHujia.deActTou1(data);
-        }
-
+        Player player = data.player;
+        PersistentDataContainer persistentDataContainer = player.getPersistentDataContainer();
+        deActHelp(data, id, persistentDataContainer);
+        deInitDan(data, id);
     }
 
 
     public static void actAll(Data data, String id) {
-        actHelp(data, id);
-        switch (id) {
-
-        }
-
+        Player player = data.player;
+        PersistentDataContainer persistentDataContainer = player.getPersistentDataContainer();
+        actHelp(data, id, persistentDataContainer);
+        initAll(data, id);
     }
 
     public static void deActAll(Data data, String id) {
-        deActHelp(data, id);
-        switch (id) {
-        }
-
+        Player player = data.player;
+        PersistentDataContainer persistentDataContainer = player.getPersistentDataContainer();
+        deActHelp(data, id, persistentDataContainer);
+        deInitAll(data, id);
     }
 
     public static void actAllEnderChest(Data data, String id) {
-        actHelp(data, id);
-        switch (id) {
-        }
-
+        Player player = data.player;
+        PersistentDataContainer persistentDataContainer = player.getPersistentDataContainer();
+        actHelp(data, id, persistentDataContainer);
+        initAllEnderChest(data, id);
     }
 
 
     public static void deActAllEnderChest(Data data, String id) {
-        deActHelp(data, id);
-        switch (id) {
-        }
-
+        Player player = data.player;
+        PersistentDataContainer persistentDataContainer = player.getPersistentDataContainer();
+        deActHelp(data, id, persistentDataContainer);
+        deInitAllEnderChest(data, id);
     }
 
-    public static void initZhan(ZhanData data, String id) {
-        switch (id) {
-            case "tou1" -> data.attackedObservers.add("tou1");
-            case "xiong1" -> Scheduler.syncLater(new Xiong1(data), (long) (30 * 20 * data.real_cool));
-            case "tui1" -> data.curedObservers.add("tui1");
-
-        }
-
-    }
-
-    public static void initGong(GongData data, String id) {
-        switch (id) {
-            case "tou1" -> data.attackedObservers.add("tou1");
-            case "xiong1" -> Scheduler.syncLater(new Xiong1(data), (long) (30 * 20 * data.real_cool));
-            case "tui1" -> data.curedObservers.add("tui1");
-        }
-
-    }
-
-    public static void initDan(DanData data, String id) {
-        switch (id) {
-            case "tou1" -> data.attackedObservers.add("tou1");
-            case "xiong1" -> Scheduler.syncLater(new Xiong1(data), (long) (30 * 20 * data.real_cool));
-            case "tui1" -> data.curedObservers.add("tui1");
-        }
-
-    }
-
-    public static void initAll(Data data, String id) {
-        switch (id) {
-
-        }
-
-
-    }
-
-    public static void initAllEnderChest(Data data, String id) {
-        switch (id) {
-
-        }
-
-
-    }
 
     public static void actInsert(Data data, String id) {
         switch (id) {
+
+
             case "xueseshi1" -> ActYuShi.actXueseshi1(data);
             case "xueseshi2" -> ActYuShi.actXueseshi2(data);
             case "xueseshi3" -> ActYuShi.actXueseshi3(data);
@@ -265,6 +235,10 @@ public final class Act {
             case "suiyanshi6" -> ActYuShi.actSuiYanShi6(data);
             case "suiyanshi7" -> ActYuShi.actSuiYanShi7(data);
             case "suiyanshi8" -> ActYuShi.actSuiYanShi8(data);
+
+            case null, default -> {
+            }
+
         }
 
     }
@@ -387,6 +361,8 @@ public final class Act {
             case "suiyanshi6" -> ActYuShi.deActSuiYanShi6(data);
             case "suiyanshi7" -> ActYuShi.deActSuiYanShi7(data);
             case "suiyanshi8" -> ActYuShi.deActSuiYanShi8(data);
+            case null, default -> {
+            }
         }
 
     }
@@ -457,6 +433,8 @@ public final class Act {
             case "juli2" -> ActFuling.actjuli2(data);
             case "juli3" -> ActFuling.actjuli3(data);
             case "juli4" -> ActFuling.actjuli4(data);
+            case null, default -> {
+            }
         }
 
     }
@@ -527,6 +505,8 @@ public final class Act {
             case "juli2" -> ActFuling.deActjuli2(data);
             case "juli3" -> ActFuling.deActjuli3(data);
             case "juli4" -> ActFuling.deActjuli4(data);
+            case null, default -> {
+            }
         }
 
     }

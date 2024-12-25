@@ -1,9 +1,9 @@
 package com.xiaoxiaoowo.yuehua.entity.npc.dz;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.itemstack.dz.Core;
-import com.xiaoxiaoowo.yuehua.itemstack.dz.TehuaShui;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Other;
+import com.xiaoxiaoowo.yuehua.items.dz.Core;
+import com.xiaoxiaoowo.yuehua.items.dz.TehuaShui;
+import com.xiaoxiaoowo.yuehua.items.other.Other;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -70,6 +70,18 @@ public final class ArmorLeg {
             MerchantRecipe recipeDefault12 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipeDefault12.addIngredient(Other.ARROW);
             recipesDefault.add(recipeDefault12);
+            MerchantRecipe recipeDefault13 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault13.addIngredient(Other.ARROW);
+            recipesDefault.add(recipeDefault13);
+            MerchantRecipe recipeDefault14 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault14.addIngredient(Other.ARROW);
+            recipesDefault.add(recipeDefault14);
+            MerchantRecipe recipeDefault15 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault15.addIngredient(Other.ARROW);
+            recipesDefault.add(recipeDefault15);
+            MerchantRecipe recipeDefault16 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault16.addIngredient(Other.ARROW);
+            recipesDefault.add(recipeDefault16);
             it.setRecipes(recipesDefault);
 
 
@@ -183,6 +195,26 @@ public final class ArmorLeg {
             recipe11.addIngredient(core5);
             recipe11.addIngredient(shui5);
             it.setRecipe(11,recipe11);
+
+            MerchantRecipe recipe12 = new MerchantRecipe(Core.tuiSp2, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe12.addIngredient(core2);
+            recipe12.addIngredient(shui2);
+            it.setRecipe(12,recipe12);
+
+            MerchantRecipe recipe13 = new MerchantRecipe(Core.tuiSp3, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe13.addIngredient(core3);
+            recipe13.addIngredient(shui3);
+            it.setRecipe(13,recipe13);
+
+            MerchantRecipe recipe14 = new MerchantRecipe(Core.tuiSp4, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe14.addIngredient(core4);
+            recipe14.addIngredient(shui4);
+            it.setRecipe(14,recipe14);
+
+            MerchantRecipe recipe15 = new MerchantRecipe(Core.tuiSp5, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe15.addIngredient(core5);
+            recipe15.addIngredient(shui5);
+            it.setRecipe(15,recipe15);
 
 
         });

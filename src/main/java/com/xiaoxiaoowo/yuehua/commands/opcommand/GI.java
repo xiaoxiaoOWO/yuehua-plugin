@@ -1,17 +1,14 @@
 package com.xiaoxiaoowo.yuehua.commands.opcommand;
 
 
-import com.xiaoxiaoowo.yuehua.itemstack.dz.FuLing;
-import com.xiaoxiaoowo.yuehua.itemstack.dz.Ingredient;
-import com.xiaoxiaoowo.yuehua.itemstack.dz.YuShi;
-import com.xiaoxiaoowo.yuehua.itemstack.dz.YuanSu;
-import com.xiaoxiaoowo.yuehua.itemstack.liandan.Dan;
-import com.xiaoxiaoowo.yuehua.itemstack.liandan.Herb;
-import com.xiaoxiaoowo.yuehua.itemstack.monsterzhuangbei.Bow;
-import com.xiaoxiaoowo.yuehua.itemstack.other.*;
-import com.xiaoxiaoowo.yuehua.itemstack.zhuangbei.*;
+import com.xiaoxiaoowo.yuehua.guis.Recipe;
+import com.xiaoxiaoowo.yuehua.items.dz.*;
+import com.xiaoxiaoowo.yuehua.items.liandan.Dan;
+import com.xiaoxiaoowo.yuehua.items.liandan.Herb;
+import com.xiaoxiaoowo.yuehua.items.monsterzhuangbei.Bow;
+import com.xiaoxiaoowo.yuehua.items.other.*;
+import com.xiaoxiaoowo.yuehua.items.zhuangbei.*;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -100,7 +97,7 @@ public final class GI implements CommandExecutor {
                 );
 
 
-                case "ingredient" -> List.of(
+                case "ingredient1" -> List.of(
                         Ingredient.BI_SHI_SUI,
                         Ingredient.CHI_TONG_DING,
                         Ingredient.XUAN_TIE_DING,
@@ -133,9 +130,25 @@ public final class GI implements CommandExecutor {
                         Ingredient.BI_BO_JING,
                         Ingredient.QI_CAI_JIN,
                         Ingredient.WAN_YUE_YIN,
+                        Ingredient.SHAN_MEI_JIN_TIE,
                         Ingredient.QIAN_NIAN_YU,
                         Ingredient.ZHANG_NIE_YIN_TIE,
                         Ingredient.XUE_YING_SHI
+                );
+
+                case "ingredient2" -> List.of(
+                        Ingredient.ZHU_WANG_YAN,
+                        Ingredient.HE_SHUI_LING,
+                        Ingredient.MENG_DU_SU,
+                        Ingredient.TAI_SUI,
+                        Ingredient.TUAN_ZHANG_LING,
+                        Ingredient.ZI_YAN,
+                        Ingredient.JIAO_GU,
+                        Ingredient.JIN_GANG,
+                        Ingredient.YAO_SHI_NEI_DAN,
+                        Ingredient.BAI_GU,
+                        Ingredient.MIAO_LING,
+                        Ingredient.YUAN_XUAN_FANG
                 );
 
 
@@ -245,8 +258,6 @@ public final class GI implements CommandExecutor {
                         Food.ZhuangYuanYueBin,
                         Food.DuiTangYueBin,
                         Food.SanHongYueBin,
-                        Food.YiHeYueBin,
-                        Food.BanHeYueBin,
                         Food.xianTao,
                         Food.pinGuo,
                         Food.fengmi,
@@ -355,6 +366,38 @@ public final class GI implements CommandExecutor {
                         ArmorHead.danTou8
                 );
 
+                case "coretou" -> List.of(
+                        Core.touSp2,
+                        Core.touSp3,
+                        Core.touSp4,
+                        Core.touSp5,
+                        Core.touSp6,
+                        Core.touSp7,
+                        Core.touSp8,
+                        Core.zhanTou2,
+                        Core.zhanTou3,
+                        Core.zhanTou4,
+                        Core.zhanTou5,
+                        Core.zhanTou6,
+                        Core.zhanTou7,
+                        Core.zhanTou8,
+                        Core.gongTou2,
+                        Core.gongTou3,
+                        Core.gongTou4,
+                        Core.gongTou5,
+                        Core.gongTou6,
+                        Core.gongTou7,
+                        Core.gongTou8,
+                        Core.danTou2,
+                        Core.danTou3,
+                        Core.danTou4,
+                        Core.danTou5,
+                        Core.danTou6,
+                        Core.danTou7,
+                        Core.danTou8
+                );
+
+
                 case "xiong" -> List.of(
                         ArmorChest.xiong1,
                         ArmorChest.xiongSp2,
@@ -385,7 +428,68 @@ public final class GI implements CommandExecutor {
                         ArmorChest.danXiong6,
                         ArmorChest.danXiong7,
                         ArmorChest.danXiong8
+                );
 
+                case "corexiong" -> List.of(
+                        Core.xiongSp2,
+                        Core.xiongSp3,
+                        Core.xiongSp4,
+                        Core.xiongSp5,
+                        Core.xiongSp6,
+                        Core.xiongSp7,
+                        Core.xiongSp8,
+                        Core.zhanXiong2,
+                        Core.zhanXiong3,
+                        Core.zhanXiong4,
+                        Core.zhanXiong5,
+                        Core.zhanXiong6,
+                        Core.zhanXiong7,
+                        Core.zhanXiong8,
+                        Core.gongXiong2,
+                        Core.gongXiong3,
+                        Core.gongXiong4,
+                        Core.gongXiong5,
+                        Core.gongXiong6,
+                        Core.gongXiong7,
+                        Core.gongXiong8,
+                        Core.danXiong2,
+                        Core.danXiong3,
+                        Core.danXiong4,
+                        Core.danXiong5,
+                        Core.danXiong6,
+                        Core.danXiong7,
+                        Core.danXiong8
+                );
+
+                case "coretui" -> List.of(
+                        Core.tuiSp2,
+                        Core.tuiSp3,
+                        Core.tuiSp4,
+                        Core.tuiSp5,
+                        Core.tuiSp6,
+                        Core.tuiSp7,
+                        Core.tuiSp8,
+                        Core.zhanTui2,
+                        Core.zhanTui3,
+                        Core.zhanTui4,
+                        Core.zhanTui5,
+                        Core.zhanTui6,
+                        Core.zhanTui7,
+                        Core.zhanTui8,
+                        Core.gongTui2,
+                        Core.gongTui3,
+                        Core.gongTui4,
+                        Core.gongTui5,
+                        Core.gongTui6,
+                        Core.gongTui7,
+                        Core.gongTui8,
+                        Core.danTui2,
+                        Core.danTui3,
+                        Core.danTui4,
+                        Core.danTui5,
+                        Core.danTui6,
+                        Core.danTui7,
+                        Core.danTui8
                 );
 
                 case "tui" -> List.of(
@@ -418,6 +522,37 @@ public final class GI implements CommandExecutor {
                         ArmorLeg.danTui6,
                         ArmorLeg.danTui7,
                         ArmorLeg.danTui8
+                );
+
+                case "corexie" -> List.of(
+                        Core.xieSp2,
+                        Core.xieSp3,
+                        Core.xieSp4,
+                        Core.xieSp5,
+                        Core.xieSp6,
+                        Core.xieSp7,
+                        Core.xieSp8,
+                        Core.zhanXie2,
+                        Core.zhanXie3,
+                        Core.zhanXie4,
+                        Core.zhanXie5,
+                        Core.zhanXie6,
+                        Core.zhanXie7,
+                        Core.zhanXie8,
+                        Core.gongXie2,
+                        Core.gongXie3,
+                        Core.gongXie4,
+                        Core.gongXie5,
+                        Core.gongXie6,
+                        Core.gongXie7,
+                        Core.gongXie8,
+                        Core.danXie2,
+                        Core.danXie3,
+                        Core.danXie4,
+                        Core.danXie5,
+                        Core.danXie6,
+                        Core.danXie7,
+                        Core.danXie8
                 );
 
                 case "xie" -> List.of(
@@ -461,7 +596,7 @@ public final class GI implements CommandExecutor {
                         Weapon.SAN_BAO_YU_RU_YI,
                         Weapon.XUAN_YUAN,
                         Weapon.QIN_TONG_JIAN,
-                        Weapon.JU_TONG_ZHAN_CHUI,
+                        Weapon.CHI_TONG_JIAN,
                         Weapon.TAI_JI_JIAN,
                         Weapon.KUN_LUN_FEI_XIAN_JIAN,
                         Weapon.TAI_E,
@@ -470,6 +605,24 @@ public final class GI implements CommandExecutor {
                         Weapon.YOU_LONG_QIANG,
                         Weapon.HU_TOU_ZHAN_JIN_QIANG,
                         Weapon.RU_YI_JIN_GU_BANG
+                );
+
+                case "coreweapon1" -> List.of(
+                        Core.KAI_SHAN_DAO,
+                        Core.JU_TONG_ZHAN_CHUI,
+                        Core.PO_KONG_FU,
+                        Core.SAN_BAO_YU_RU_YI,
+                        Core.XUAN_YUAN,
+                        Core.QIN_TONG_JIAN,
+                        Core.TAI_JI_JIAN,
+                        Core.KUN_LUN_FEI_XIAN_JIAN,
+                        Core.CHI_TONG_JIAN,
+                        Core.TAI_E,
+                        Core.YIN_YUE_QIANG,
+                        Core.HONG_YIN_QIANG,
+                        Core.YOU_LONG_QIANG,
+                        Core.HU_TOU_ZHAN_JIN_QIANG,
+                        Core.RU_YI_JIN_GU_BANG
                 );
 
                 case "weapon2" -> List.of(
@@ -491,6 +644,24 @@ public final class GI implements CommandExecutor {
                         Weapon.LIU_GUANG
                 );
 
+                case "coreweapon2" -> List.of(
+                        Core.QIN_TONG_GONG,
+                        Core.YAN_TIE_GONG,
+                        Core.ZHONG_CHUI_GONG,
+                        Core.BEI_DOU_MIE_SHEN_GONG,
+                        Core.ZHU_RI,
+                        Core.HEI_TIE_NU,
+                        Core.HONG_LIN_NU,
+                        Core.JIAO_LONG_NU,
+                        Core.RI_YUE_LIU_XING_NU,
+                        Core.LIANG_YI,
+                        Core.FU_RONG_GONG,
+                        Core.HONG_LUAN_GONG,
+                        Core.TIAN_QIONG_GONG,
+                        Core.SHE_TIAN_ZHUI_YUE_GONG,
+                        Core.LIU_GUANG
+                );
+
                 case "weapon3" -> List.of(
                         Weapon.HEI_TIE_GUO,
                         Weapon.QIN_TONG_GUO,
@@ -498,7 +669,14 @@ public final class GI implements CommandExecutor {
                         Weapon.SUO_HUN_LU,
                         Weapon.QI_SHA_DING,
                         Weapon.HUN_YUAN_SHEN_DING
+                );
 
+                case "coreweapon3" -> List.of(
+                        Core.QIN_TONG_GUO,
+                        Core.LIAN_DAN_LU,
+                        Core.SUO_HUN_LU,
+                        Core.QI_SHA_DING,
+                        Core.HUN_YUAN_SHEN_DING
                 );
 
                 case "shouhun" -> List.of(
@@ -531,6 +709,32 @@ public final class GI implements CommandExecutor {
                         Shipin.XUAN_WU_SHENG_QI6
                 );
 
+                case "coreshouhun" -> List.of(
+                        Core.QING_LONG_SHENG_QI2,
+                        Core.QING_LONG_SHENG_QI3,
+                        Core.QING_LONG_SHENG_QI4,
+                        Core.QING_LONG_SHENG_QI5,
+                        Core.QING_LONG_SHENG_QI6,
+
+                        Core.BAI_HU_SHENG_QI2,
+                        Core.BAI_HU_SHENG_QI3,
+                        Core.BAI_HU_SHENG_QI4,
+                        Core.BAI_HU_SHENG_QI5,
+                        Core.BAI_HU_SHENG_QI6,
+
+                        Core.ZHU_QUE_SHENG_QI2,
+                        Core.ZHU_QUE_SHENG_QI3,
+                        Core.ZHU_QUE_SHENG_QI4,
+                        Core.ZHU_QUE_SHENG_QI5,
+                        Core.ZHU_QUE_SHENG_QI6,
+
+                        Core.XUAN_WU_SHENG_QI2,
+                        Core.XUAN_WU_SHENG_QI3,
+                        Core.XUAN_WU_SHENG_QI4,
+                        Core.XUAN_WU_SHENG_QI5,
+                        Core.XUAN_WU_SHENG_QI6
+                );
+
                 case "jiezhi1" -> List.of(
                         Shipin.PO_SUN_TAN_ZHI_JIE,
                         Shipin.TAN_YU_ZHI_JIE,
@@ -557,6 +761,30 @@ public final class GI implements CommandExecutor {
                         Shipin.CHI_YU_MING_JIE
                 );
 
+                case "corejiezhi1" -> List.of(
+                        Core.TAN_YU_ZHI_JIE,
+                        Core.TAN_LAN_DU_JIE,
+                        Core.TAN_LAN_XIE_JIE,
+                        Core.TAN_LAN_GUI_JIE,
+                        Core.TAN_LAN_MO_JIE,
+                        Core.TAN_LAN_MING_JIE,
+
+                        Core.CHEN_NU_ZHI_JIE,
+                        Core.CHEN_HEN_DU_JIE,
+                        Core.CHEN_HEN_XIE_JIE,
+                        Core.CHEN_HEN_GUI_JIE,
+                        Core.CHEN_HEN_MO_JIE,
+                        Core.CHEN_HEN_MING_JIE,
+
+
+                        Core.CHI_MI_ZHI_JIE,
+                        Core.CHI_YU_DU_JIE,
+                        Core.CHI_YU_XIE_JIE,
+                        Core.CHI_YU_GUI_JIE,
+                        Core.CHI_YU_MO_JIE,
+                        Core.CHI_YU_MING_JIE
+                );
+
                 case "jiezhi2" -> List.of(
                         Shipin.CHAN_DING_FA_JIE,
                         Shipin.CHAN_DING_SHENG_JIE,
@@ -577,6 +805,26 @@ public final class GI implements CommandExecutor {
                         Shipin.CHI_JIE_SHEN_JIE
                 );
 
+                case "corejiezhi2" -> List.of(
+                        Core.CHAN_DING_FA_JIE,
+                        Core.CHAN_DING_SHENG_JIE,
+                        Core.CHAN_DING_FO_JIE,
+                        Core.CHAN_DING_XIAN_JIE,
+                        Core.CHAN_DING_SHEN_JIE,
+
+                        Core.ZHI_HUI_FA_JIE,
+                        Core.ZHI_HUI_SHENG_JIE,
+                        Core.ZHI_HUI_FO_JIE,
+                        Core.ZHI_HUI_XIAN_JIE,
+                        Core.ZHI_HUI_SHEN_JIE,
+
+                        Core.CHI_JIE_FA_JIE,
+                        Core.CHI_JIE_SHENG_JIE,
+                        Core.CHI_JIE_FO_JIE,
+                        Core.CHI_JIE_XIAN_JIE,
+                        Core.CHI_JIE_SHEN_JIE
+                );
+
                 case "xiantian" -> List.of(
                         Shipin.HUN_TIAN_LIN,
                         Shipin.TAI_CHU_SHEN_JIA,
@@ -585,6 +833,7 @@ public final class GI implements CommandExecutor {
                         Shipin.JIU_TIAN_XUAN_YU,
                         Shipin.WEI_TUO_TIAN
                 );
+
 
                 case "monsterbow" -> List.of(
                         Bow.bow1,
@@ -616,6 +865,24 @@ public final class GI implements CommandExecutor {
                         YiQi.MINGHONG
                 );
 
+                case "coreyiqi" -> List.of(
+                        Core.XINBINDUNPAI,
+                        Core.JINRUIDUNPAI,
+                        Core.CHISEYUEHUO,
+                        Core.JINGANGBUHUAI,
+                        Core.CHENBINLUOXUE,
+                        Core.XINBINJIANDAI,
+                        Core.JINRUIJIANDAI,
+                        Core.YINGYANJIANDAI,
+                        Core.CANGGUNINGWANG,
+                        Core.NIEPANYUNANG,
+                        Core.TIEZHIDUANBI,
+                        Core.HUIYIDAO,
+                        Core.LONGYADAO,
+                        Core.ZHANGQICUIZHU,
+                        Core.MINGHONG
+                );
+
                 case "biweapon" -> List.of(
                         BiWeapon.FEIREN,
                         BiWeapon.JINRUIFEIREN,
@@ -639,6 +906,26 @@ public final class GI implements CommandExecutor {
                         BiWeapon.JIUFENGLAIYI
                 );
 
+                case "corebiweapon" -> List.of(
+                        Core.JINRUIFEIREN,
+                        Core.WUSHENGXIUJIAN,
+                        Core.HUIXUANTAJI,
+                        Core.WUYINWUZONG,
+                        Core.YANWANGTIE,
+
+                        Core.HUANGTONGCHONG,
+                        Core.MINGYUE,
+                        Core.CANLAN,
+                        Core.JINJING,
+                        Core.XIAOTIAN,
+
+                        Core.QINFENGYINYIN,
+                        Core.LIUSHUICHANCHAN,
+                        Core.BUQICHUNYU,
+                        Core.SANSHENGZHENHUN,
+                        Core.JIUFENGLAIYI
+                );
+
                 case "fabao0" -> List.of(
                         Fabao.YAOWANGHULU,
                         Fabao.CIXINMIAOLIAN,
@@ -648,7 +935,25 @@ public final class GI implements CommandExecutor {
                         Fabao.SHENXINYUGU,
                         Fabao.ZHENHUNYUXIAO,
                         Fabao.DIKUIHUALAN,
-                        Fabao.TAIJIBAGUA
+                        Fabao.TAIJIBAGUA,
+                        Fabao.ZHAOYAOJIN,
+                        Fabao.YUFUCHEN,
+                        Fabao.WUSEBUTIANSHI
+                );
+
+                case "corefabao0" -> List.of(
+                        Core.YAOWANGHULU,
+                        Core.CIXINMIAOLIAN,
+                        Core.YUNLANGBAN,
+                        Core.YINYANGZHANLONGJIAN,
+                        Core.XUANFENGZONGSHAN,
+                        Core.SHENXINYUGU,
+                        Core.ZHENHUNYUXIAO,
+                        Core.DIKUIHUALAN,
+                        Core.TAIJIBAGUA,
+                        Core.ZHAOYAOJIN,
+                        Core.YUFUCHEN,
+                        Core.WUSEBUTIANSHI
                 );
 
 
@@ -663,6 +968,17 @@ public final class GI implements CommandExecutor {
                         Fabao.ZHENLEITIANCHUI
                 );
 
+                case "corefabao1" -> List.of(
+                        Core.JUEDOULING,
+                        Core.LEIMINGGU,
+                        Core.HUANSILIN,
+                        Core.NIUMONUHOU,
+                        Core.DOUQISHI,
+                        Core.PANGUANBI,
+                        Core.MINSHENGJIAN,
+                        Core.ZHENLEITIANCHUI
+                );
+
                 case "fabao2" -> List.of(
                         Fabao.DIAOHUNGAN,
                         Fabao.SHELINZHU,
@@ -672,6 +988,17 @@ public final class GI implements CommandExecutor {
                         Fabao.DUOHUNTANG,
                         Fabao.MOYUANFOZHU,
                         Fabao.FUXINRUYI
+                );
+
+                case "corefabao2" -> List.of(
+                        Core.DIAOHUNGAN,
+                        Core.SHELINZHU,
+                        Core.YUJINPIN,
+                        Core.TIANJISHENJIN,
+                        Core.RUIYINGYAN,
+                        Core.DUOHUNTANG,
+                        Core.MOYUANFOZHU,
+                        Core.FUXINRUYI
                 );
 
                 case "fabao3" -> List.of(
@@ -684,7 +1011,7 @@ public final class GI implements CommandExecutor {
                         Fabao.WUMINGMOYINLUO,
                         Fabao.SHETIANHUAXUELING,
                         Fabao.KUYELING,
-                        Fabao.YUJINPIN,
+                        Fabao.LUOBEIJINPIN,
                         Fabao.PINYUSHUIYU,
                         Fabao.DIKONGYUMOQUAN,
                         Fabao.LUANSHENGU,
@@ -693,8 +1020,32 @@ public final class GI implements CommandExecutor {
                         Fabao.MODUOHUNFAN
                 );
 
+                case "corefabao3" -> List.of(
+                        Core.LVYEXIANZONG,
+                        Core.QINGNVHANSHUANG,
+                        Core.ZHURONGKUYAN,
+                        Core.ZHUDIANXUANJING,
+                        Core.BUHUNWANG,
+                        Core.YANGSHOUJIAN,
+                        Core.WUMINGMOYINLUO,
+                        Core.SHETIANHUAXUELING,
+                        Core.KUYELING,
+                        Core.LUOBEIJINPIN,
+                        Core.PINYUSHUIYU,
+                        Core.DIKONGYUMOQUAN,
+                        Core.LUANSHENGU,
+                        Core.JINGULIAN,
+                        Core.JIANCHANGULIN,
+                        Core.MODUOHUNFAN
+                );
 
-                default -> List.of();
+
+                default -> {
+                    ItemStack itemStack = Recipe.idToItem.get(args[0]);
+                    yield List.of(
+                            itemStack
+                    );
+                }
             };
 
 

@@ -1,6 +1,5 @@
 package com.xiaoxiaoowo.yuehua.utils;
 
-import com.xiaoxiaoowo.yuehua.itemstack.monsterzhuangbei.Helmet;
 import org.bukkit.Bukkit;
 import org.bukkit.GameRule;
 import org.bukkit.Location;
@@ -17,6 +16,7 @@ import java.util.Random;
 public final class GetEntity {
     public static World world;
     public static Random random;
+
 
     public static double mydistance(Location location1, Location location2) {
         double dx = location1.getX() - location2.getX();
@@ -57,6 +57,13 @@ public final class GetEntity {
 
     public static Collection<Entity> getMonsters(Location location, double x, double y, double z) {
         return world.getNearbyEntities(location, x, y, z, entity -> entity.getScoreboardTags().contains("m"));
+    }
+
+    public static Collection<Entity> getArrowTrident(Location location, double x, double y, double z) {
+        return world.getNearbyEntities(location, x, y, z, entity -> {
+            EntityType entityType = entity.getType();
+            return (entityType == EntityType.ARROW) || (entityType == EntityType.TRIDENT);
+        });
     }
 
     public static ArrayList<Mob> getNumberLimitMonsters(Location location, double x, double y, double z, int num) {
@@ -216,12 +223,11 @@ public final class GetEntity {
     }
 
 
-    public static ArrayList<Mob> getRayMonsterWithRoatation(Player player, double midDistance, double angle) {
-        Location location = player.getEyeLocation();
-        double x = location.getX();
-        double y = location.getY();
-        double z = location.getZ();
-        Vector forward = location.getDirection();
+    public static ArrayList<Mob> getRayMonsterWithRoatation(Location eyeLocation, double midDistance, double angle) {
+        double x = eyeLocation.getX();
+        double y = eyeLocation.getY();
+        double z = eyeLocation.getZ();
+        Vector forward = eyeLocation.getDirection();
         // 计算 Right 向量
         Vector upReference = new Vector(0, 1, 0); // Y轴向量
         Vector right = upReference.getCrossProduct(forward).normalize(); // Right
@@ -233,20 +239,19 @@ public final class GetEntity {
         double dy = direction.getY() * midDistance;
         double dz = direction.getZ() * midDistance;
         Location midPoint = new Location(GetEntity.world, x + dx, y + dy, z + dz);
-        Collection<Entity> monsters = GetEntity.getMonsters(midPoint, dx + 0.5, dy + 0.5, dz + 0.5);
+        Collection<Entity> monsters = GetEntity.getMonsters(midPoint, Math.abs(dx)+0.5, Math.abs(dy)+0.5, Math.abs(dz)+0.5);
         ArrayList<Mob> mobs = new ArrayList<>(monsters.size());
-        Vector eyeVector = location.toVector();
-        helpRay(monsters, mobs, 1, eyeVector, direction);
+        Vector eyeVector = eyeLocation.toVector();
+        helpRay(monsters, mobs, 0, eyeVector, direction);
 
         return mobs;
     }
 
-    public static ArrayList<Mob> getRayMonsterWithRoatation(Player player, double midDistance, double angle, double sizemultiplier) {
-        Location location = player.getEyeLocation();
-        double x = location.getX();
-        double y = location.getY();
-        double z = location.getZ();
-        Vector forward = location.getDirection();
+    public static ArrayList<Mob> getRayMonsterWithRoatation(Location eyeLocation, double midDistance, double angle, double sizeAdder) {
+        double x = eyeLocation.getX();
+        double y = eyeLocation.getY();
+        double z = eyeLocation.getZ();
+        Vector forward = eyeLocation.getDirection();
         // 计算 Right 向量
         Vector upReference = new Vector(0, 1, 0); // Y轴向量
         Vector right = upReference.getCrossProduct(forward).normalize(); // Right
@@ -258,11 +263,10 @@ public final class GetEntity {
         double dy = direction.getY() * midDistance;
         double dz = direction.getZ() * midDistance;
         Location midPoint = new Location(GetEntity.world, x + dx, y + dy, z + dz);
-        Collection<Entity> monsters = GetEntity.getMonsters(midPoint, dx + 0.5, dy + 0.5, dz + 0.5);
+        Collection<Entity> monsters = GetEntity.getMonsters(midPoint, Math.abs(dx)+0.5+sizeAdder, Math.abs(dy)+0.5+sizeAdder, Math.abs(dz)+0.5+sizeAdder);
         ArrayList<Mob> mobs = new ArrayList<>(monsters.size());
-        Vector eyeVector = location.toVector();
-        sizemultiplier = sizemultiplier * sizemultiplier;
-        helpRay(monsters, mobs, sizemultiplier, eyeVector, direction);
+        Vector eyeVector = eyeLocation.toVector();
+        helpRay(monsters, mobs, sizeAdder, eyeVector, direction);
 
         return mobs;
     }
@@ -279,14 +283,14 @@ public final class GetEntity {
         Vector direction = new Vector(dx, dy, dz).normalize();
 
         Location midPoint = new Location(GetEntity.world, x + dx, y + dy, z + dz);
-        Collection<Entity> monsters = GetEntity.getMonsters(midPoint, dx + 0.5, dy + 0.5, dz + 0.5);
+        Collection<Entity> monsters = GetEntity.getMonsters(midPoint, Math.abs(dx) + 0.5, Math.abs(dy) + 0.5, Math.abs(dz) + 0.5);
         ArrayList<Mob> mobs = new ArrayList<>(monsters.size());
-        helpRay(monsters, mobs, 1, start, direction);
+        helpRay(monsters, mobs, 0, start, direction);
 
         return mobs;
     }
 
-    public static ArrayList<Mob> getLineMonster(Vector start, Vector end, double sizemultiplier) {
+    public static ArrayList<Player> getLinePlayer(Vector start, Vector end) {
         double x = start.getX();
         double y = start.getY();
         double z = start.getZ();
@@ -298,52 +302,119 @@ public final class GetEntity {
         Vector direction = new Vector(dx, dy, dz).normalize();
 
         Location midPoint = new Location(GetEntity.world, x + dx, y + dy, z + dz);
-        Collection<Entity> monsters = GetEntity.getMonsters(midPoint, dx + 0.5, dy + 0.5, dz + 0.5);
+        Collection<Entity> entities = GetEntity.getPlayers(midPoint, Math.abs(dx) + 0.5, Math.abs(dy) + 0.5, Math.abs(dz) + 0.5);
+        ArrayList<Player> players = new ArrayList<>(entities.size());
+        helpRayPlayer(entities, players, 0, start, direction);
+        return players;
+    }
+
+
+    public static ArrayList<Player> getLinePlayer(Vector start, Vector end, double sizeAdder) {
+        double x = start.getX();
+        double y = start.getY();
+        double z = start.getZ();
+
+        double dx = (end.getX() - x) / 2;
+        double dy = (end.getY() - y) / 2;
+        double dz = (end.getZ() - z) / 2;
+
+        Vector direction = new Vector(dx, dy, dz).normalize();
+
+        Location midPoint = new Location(GetEntity.world, x + dx, y + dy, z + dz);
+        Collection<Entity> entities = GetEntity.getPlayers(midPoint, Math.abs(dx) + 0.5 +sizeAdder, Math.abs(dy) + 0.5 +sizeAdder, Math.abs(dz) + 0.5 +sizeAdder);
+        ArrayList<Player> players = new ArrayList<>(entities.size());
+        helpRayPlayer(entities, players, sizeAdder, start, direction);
+        return players;
+    }
+
+    public static ArrayList<Mob> getLineMonster(Vector start, Vector end, double sizeAdder) {
+        double x = start.getX();
+        double y = start.getY();
+        double z = start.getZ();
+
+        double dx = (end.getX() - x) / 2;
+        double dy = (end.getY() - y) / 2;
+        double dz = (end.getZ() - z) / 2;
+
+        Vector direction = new Vector(dx, dy, dz).normalize();
+
+        Location midPoint = new Location(GetEntity.world, x + dx, y + dy, z + dz);
+        Collection<Entity> monsters = GetEntity.getMonsters(midPoint, Math.abs(dx) + 0.5 +sizeAdder, Math.abs(dy) + 0.5 +sizeAdder, Math.abs(dz) + 0.5 +sizeAdder);
         ArrayList<Mob> mobs = new ArrayList<>(monsters.size());
-        sizemultiplier = sizemultiplier * sizemultiplier;
-        helpRay(monsters, mobs, sizemultiplier, start, direction);
+        helpRay(monsters, mobs, sizeAdder, start, direction);
 
         return mobs;
     }
 
-    public static ArrayList<Mob> getRayMonster(Player player, double midDistance) {
-        Location location = player.getEyeLocation();
-        double x = location.getX();
-        double y = location.getY();
-        double z = location.getZ();
-        Vector direction = location.getDirection();
+    public static ArrayList<Mob> getRayMonster(Location eyeLocation, double midDistance) {
+        double x = eyeLocation.getX();
+        double y = eyeLocation.getY();
+        double z = eyeLocation.getZ();
+        Vector direction = eyeLocation.getDirection();
         double dx = direction.getX() * midDistance;
         double dy = direction.getY() * midDistance;
         double dz = direction.getZ() * midDistance;
         Location midPoint = new Location(GetEntity.world, x + dx, y + dy, z + dz);
-        Collection<Entity> monsters = GetEntity.getMonsters(midPoint, dx + 0.5, dy + 0.5, dz + 0.5);
+        Collection<Entity> monsters = GetEntity.getMonsters(midPoint, Math.abs(dx)+0.5, Math.abs(dy)+0.5, Math.abs(dz)+0.5);
         ArrayList<Mob> mobs = new ArrayList<>(monsters.size());
-        Vector eyeVector = location.toVector();
+        Vector eyeVector = eyeLocation.toVector();
         //生物高度的一半加上去获得中心坐标向量，距离设置为高度宽度平均值一半的平方（避免一个过大造成的严重影响）,再稍微大一点
-        helpRay(monsters, mobs, 1, eyeVector, direction);
+        helpRay(monsters, mobs, 0, eyeVector, direction);
         return mobs;
     }
 
-    public static ArrayList<Mob> getRayMonster(Player player, double midDistance, double sizemultiplier) {
-        Location location = player.getEyeLocation();
-        double x = location.getX();
-        double y = location.getY();
-        double z = location.getZ();
-        Vector direction = location.getDirection();
+    public static ArrayList<Player> getRayPlayer(Location eyeLocation, double midDistance) {
+        double x = eyeLocation.getX();
+        double y = eyeLocation.getY();
+        double z = eyeLocation.getZ();
+        Vector direction = eyeLocation.getDirection();
         double dx = direction.getX() * midDistance;
         double dy = direction.getY() * midDistance;
         double dz = direction.getZ() * midDistance;
         Location midPoint = new Location(GetEntity.world, x + dx, y + dy, z + dz);
-        Collection<Entity> monsters = GetEntity.getMonsters(midPoint, dx + 0.5, dy + 0.5, dz + 0.5);
+        Collection<Entity> entities = GetEntity.getPlayers(midPoint, Math.abs(dx)+0.5, Math.abs(dy)+0.5, Math.abs(dz)+0.5);
+        ArrayList<Player> players = new ArrayList<>(entities.size());
+        Vector eyeVector = eyeLocation.toVector();
+        helpRayPlayer(entities, players, 0, eyeVector, direction);
+        return players;
+    }
+
+    public static ArrayList<Mob> getRayMonster(Location eyeLocation, double midDistance, double sizeAdder) {
+        double x = eyeLocation.getX();
+        double y = eyeLocation.getY();
+        double z = eyeLocation.getZ();
+        Vector direction = eyeLocation.getDirection();
+        double dx = direction.getX() * midDistance;
+        double dy = direction.getY() * midDistance;
+        double dz = direction.getZ() * midDistance;
+        Location midPoint = new Location(GetEntity.world, x + dx, y + dy, z + dz);
+        Collection<Entity> monsters = GetEntity.getMonsters(midPoint, Math.abs(dx) + 0.5 + sizeAdder, Math.abs(dy) + 0.5 + sizeAdder, Math.abs(dz) + 0.5 + sizeAdder);
         ArrayList<Mob> mobs = new ArrayList<>(monsters.size());
-        Vector eyeVector = location.toVector();
-        sizemultiplier = sizemultiplier * sizemultiplier;
-        helpRay(monsters, mobs, sizemultiplier, eyeVector, direction);
+        Vector eyeVector = eyeLocation.toVector();
+        helpRay(monsters, mobs, sizeAdder, eyeVector, direction);
         return mobs;
     }
+
+    public static ArrayList<Player> getRayPlayer(Location eyeLocation, double midDistance, double sizeAdder) {
+        double x = eyeLocation.getX();
+        double y = eyeLocation.getY();
+        double z = eyeLocation.getZ();
+        Vector direction = eyeLocation.getDirection();
+        double dx = direction.getX() * midDistance;
+        double dy = direction.getY() * midDistance;
+        double dz = direction.getZ() * midDistance;
+        Location midPoint = new Location(GetEntity.world, x + dx, y + dy, z + dz);
+        Collection<Entity> entities = GetEntity.getPlayers(midPoint, Math.abs(dx) + 0.5 + sizeAdder, Math.abs(dy) + 0.5 + sizeAdder, Math.abs(dz) + 0.5 + sizeAdder);
+        ArrayList<Player> players = new ArrayList<>(entities.size());
+        Vector eyeVector = eyeLocation.toVector();
+        helpRayPlayer(entities, players, sizeAdder, eyeVector, direction);
+        return players;
+    }
+
 
     public static void init() {
         world = Bukkit.getWorld("world");
+        world.setSpawnLocation(1331, 83, 42);
         random = new Random();
 
         //Gamerule
@@ -388,23 +459,37 @@ public final class GetEntity {
         world.setGameRule(GameRule.PROJECTILES_CAN_BREAK_BLOCKS, false);
         world.setGameRule(GameRule.RANDOM_TICK_SPEED, 0);
         world.setGameRule(GameRule.REDUCED_DEBUG_INFO, false);
-        world.setGameRule(GameRule.SEND_COMMAND_FEEDBACK, false);
+        world.setGameRule(GameRule.SEND_COMMAND_FEEDBACK, true);
         world.setGameRule(GameRule.SHOW_DEATH_MESSAGES, true);
         world.setGameRule(GameRule.SNOW_ACCUMULATION_HEIGHT, 0);
         world.setGameRule(GameRule.SPAWN_RADIUS, 0);
         world.setGameRule(GameRule.SPAWN_CHUNK_RADIUS, 0);
         world.setGameRule(GameRule.SPECTATORS_GENERATE_CHUNKS, true);
         world.setGameRule(GameRule.TNT_EXPLOSION_DROP_DECAY, true);
-        world.setGameRule(GameRule.UNIVERSAL_ANGER, false);
+        world.setGameRule(GameRule.UNIVERSAL_ANGER, true);
         world.setGameRule(GameRule.WATER_SOURCE_CONVERSION, true);
     }
 
+    public static void helpRayPlayer(Collection<Entity> entities, ArrayList<Player> players, double sizeAdder, Vector startLocation, Vector direction) {
+        for (Entity entity : entities) {
+            Player player = (Player) entity;
+            double scale = player.getAttribute(Attribute.GENERIC_SCALE).getValue();
+            //高度：2格
+            //宽度：2格
+            Vector eyeToEntityFeet = player.getLocation().toVector();
+            eyeToEntityFeet.setY(eyeToEntityFeet.getY() + scale).subtract(startLocation);
+            double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+            if (distance < scale) {
+                players.add(player);
+            }
+        }
+    }
 
-    public static void helpRay(Collection<Entity> monsters, ArrayList<Mob> filteredMonsters, double sizemultiplier, Vector startLocation, Vector direction) {
+
+    public static void helpRay(Collection<Entity> monsters, ArrayList<Mob> filteredMonsters, double sizeAdder, Vector startLocation, Vector direction) {
         for (Entity entity : monsters) {
             Mob entity1 = (Mob) entity;
             double scale = entity1.getAttribute(Attribute.GENERIC_SCALE).getValue();
-            double scaleSquared = scale * scale * sizemultiplier;
             switch (entity.getType()) {
                 //生物高度的一半加上去获得中心坐标向量，距离设置为高度宽度平均值一半的平方（避免一个过大造成的严重影响）,再稍微大一点
                 case SILVERFISH -> {
@@ -413,8 +498,8 @@ public final class GetEntity {
                     Silverfish mob = (Silverfish) entity;
                     Vector eyeToEntityFeet = mob.getLocation().toVector();
                     eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(startLocation);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.031 * scaleSquared) {
+                    double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                    if (distance < 0.175 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -424,8 +509,8 @@ public final class GetEntity {
                     Shulker mob = (Shulker) entity;
                     Vector eyeToEntityFeet = mob.getLocation().toVector();
                     eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.5 * scale).subtract(startLocation);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.255 * scaleSquared) {
+                    double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                    if (distance < 0.5 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -438,8 +523,8 @@ public final class GetEntity {
                     //宽度：1.95格
                     Vector eyeToEntityFeet = mob.getLocation().toVector();
                     eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 1.1 * scale).subtract(startLocation);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 1.08 * scaleSquared) {
+                    double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                    if (distance < 1.0375 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -451,32 +536,32 @@ public final class GetEntity {
                     Vector base = mob.getLocation().toVector();
 
                     Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
+                    double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                    if (distance4 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
+                    double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                    if (distance5 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -488,32 +573,32 @@ public final class GetEntity {
                     Vector base = mob.getLocation().toVector();
 
                     Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
+                    double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                    if (distance4 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
+                    double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                    if (distance5 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -525,32 +610,32 @@ public final class GetEntity {
                     Vector base = mob.getLocation().toVector();
 
                     Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
+                    double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                    if (distance4 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
+                    double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                    if (distance5 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -563,32 +648,32 @@ public final class GetEntity {
                     Vector base = mob.getLocation().toVector();
 
                     Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
+                    double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                    if (distance4 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
+                    double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                    if (distance5 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -602,32 +687,32 @@ public final class GetEntity {
                         Vector base = mob.getLocation().toVector();
 
                         Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
+                        double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                        if (distance1 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
+                        double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                        if (distance2 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
+                        double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                        if (distance3 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
+                        double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                        if (distance4 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
+                        double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                        if (distance5 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                         }
 
@@ -638,32 +723,32 @@ public final class GetEntity {
                         Vector base = mob.getLocation().toVector();
 
                         Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(startLocation);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
+                        double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                        if (distance1 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
+                        double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                        if (distance2 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
+                        double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                        if (distance3 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(startLocation);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
+                        double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                        if (distance4 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(startLocation);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
+                        double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                        if (distance5 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                         }
 
@@ -678,32 +763,32 @@ public final class GetEntity {
                     Vector base = mob.getLocation().toVector();
 
                     Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
+                    double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                    if (distance4 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
+                    double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                    if (distance5 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -716,8 +801,8 @@ public final class GetEntity {
                         //宽度：1.3965格
                         Vector eyeToEntityFeet = mob.getLocation().toVector();
                         eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(startLocation);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
+                        double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                        if (distance < 0.699125 * scale) {
                             filteredMonsters.add(mob);
                         }
                     } else {
@@ -726,8 +811,8 @@ public final class GetEntity {
                         //宽度：0.6982格
                         Vector eyeToEntityFeet = mob.getLocation().toVector();
                         eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(startLocation);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
+                        double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                        if (distance < 0.34955 * scale) {
                             filteredMonsters.add(mob);
                         }
                     }
@@ -742,8 +827,8 @@ public final class GetEntity {
                         //宽度：0.4格
                         Vector eyeToEntityFeet = mob.getLocation().toVector();
                         eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(startLocation);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.051 * scaleSquared) {
+                        double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                        if (distance < 0.225 * scale) {
                             filteredMonsters.add(mob);
                         }
                     } else {
@@ -752,8 +837,8 @@ public final class GetEntity {
                         //宽度：0.2格
                         Vector eyeToEntityFeet = mob.getLocation().toVector();
                         eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.125 * scale).subtract(startLocation);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.013 * scaleSquared) {
+                        double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                        if (distance < 0.1125 * scale) {
                             filteredMonsters.add(mob);
                         }
                     }
@@ -768,8 +853,8 @@ public final class GetEntity {
                     double average = (halfwidth + halfweight) / 2;
                     Vector eyeToEntityFeet = mob.getLocation().toVector();
                     eyeToEntityFeet.setY(eyeToEntityFeet.getY() + halfweight).subtract(startLocation);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < average * average) {
+                    double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                    if (distance < average) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -782,8 +867,8 @@ public final class GetEntity {
                     mob.getHeight();
                     Vector eyeToEntityFeet = mob.getLocation().toVector();
                     eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.45 * scale).subtract(startLocation);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.331 * scaleSquared) {
+                    double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                    if (distance < 0.575 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -796,8 +881,8 @@ public final class GetEntity {
                     mob.getHeight();
                     Vector eyeToEntityFeet = mob.getLocation().toVector();
                     eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(startLocation);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.095 * scaleSquared) {
+                    double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                    if (distance < 0.3 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -810,32 +895,32 @@ public final class GetEntity {
                     Vector base = mob.getLocation().toVector();
 
                     Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.3155 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.3155 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.3155 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(startLocation);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
+                    double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                    if (distance4 < 0.3155 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(startLocation);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
+                    double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                    if (distance5 < 0.3155 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -846,32 +931,32 @@ public final class GetEntity {
                     //宽度0.6
                     Vector base = mob.getLocation().toVector();
                     Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.3155 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.3155 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.3155 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(startLocation);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
+                    double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                    if (distance4 < 0.3155 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(startLocation);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
+                    double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                    if (distance5 < 0.3155 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -883,32 +968,32 @@ public final class GetEntity {
                     Vector base = mob.getLocation().toVector();
 
                     Vector v1 = base.clone().setY(base.getY() + 0.993 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.11 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.3155 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 0.662 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.11 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.3155 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 1.324 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.11 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.3155 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v4 = base.clone().setY(base.getY() + 1.655 * scale).subtract(startLocation);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.11 * scaleSquared) {
+                    double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                    if (distance4 < 0.3155 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v5 = base.clone().setY(base.getY() + 0.331 * scale).subtract(startLocation);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.11 * scaleSquared) {
+                    double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                    if (distance5 < 0.3155 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -920,8 +1005,8 @@ public final class GetEntity {
                     int size = mob.getSize();
                     Vector eyeToEntityFeet = mob.getLocation().toVector();
                     eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.26 * size).subtract(startLocation);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.068 * size * size) {
+                    double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                    if (distance < 0.26 * size) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -933,8 +1018,8 @@ public final class GetEntity {
                     int size = mob.getSize();
                     Vector eyeToEntityFeet = mob.getLocation().toVector();
                     eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.26 * size).subtract(startLocation);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.068 * size * size) {
+                    double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                    if (distance < 0.26 * size) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -948,32 +1033,32 @@ public final class GetEntity {
                     Vector base = mob.getLocation().toVector();
 
                     Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
+                    double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                    if (distance4 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
+                    double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                    if (distance5 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -987,32 +1072,32 @@ public final class GetEntity {
                         Vector base = mob.getLocation().toVector();
 
                         Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
+                        double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                        if (distance1 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
+                        double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                        if (distance2 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
+                        double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                        if (distance3 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
+                        double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                        if (distance4 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
+                        double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                        if (distance5 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                         }
 
@@ -1023,32 +1108,32 @@ public final class GetEntity {
                         Vector base = mob.getLocation().toVector();
 
                         Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(startLocation);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
+                        double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                        if (distance1 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
+                        double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                        if (distance2 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
+                        double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                        if (distance3 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(startLocation);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
+                        double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                        if (distance4 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(startLocation);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
+                        double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                        if (distance5 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                         }
 
@@ -1064,32 +1149,32 @@ public final class GetEntity {
                         Vector base = mob.getLocation().toVector();
 
                         Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
+                        double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                        if (distance1 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
+                        double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                        if (distance2 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
+                        double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                        if (distance3 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
+                        double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                        if (distance4 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
+                        double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                        if (distance5 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                         }
 
@@ -1100,32 +1185,32 @@ public final class GetEntity {
                         Vector base = mob.getLocation().toVector();
 
                         Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(startLocation);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
+                        double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                        if (distance1 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
+                        double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                        if (distance2 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
+                        double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                        if (distance3 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(startLocation);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
+                        double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                        if (distance4 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(startLocation);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
+                        double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                        if (distance5 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                         }
 
@@ -1141,32 +1226,32 @@ public final class GetEntity {
                         Vector base = mob.getLocation().toVector();
 
                         Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
+                        double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                        if (distance1 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
+                        double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                        if (distance2 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
+                        double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                        if (distance3 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
+                        double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                        if (distance4 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
+                        double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                        if (distance5 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                         }
 
@@ -1177,32 +1262,32 @@ public final class GetEntity {
                         Vector base = mob.getLocation().toVector();
 
                         Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(startLocation);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
+                        double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                        if (distance1 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
+                        double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                        if (distance2 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
+                        double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                        if (distance3 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(startLocation);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
+                        double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                        if (distance4 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(startLocation);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
+                        double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                        if (distance5 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                         }
 
@@ -1219,32 +1304,32 @@ public final class GetEntity {
                     Vector base = mob.getLocation().toVector();
 
                     Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.106 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.106 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.106 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.106 * scaleSquared) {
+                    double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                    if (distance4 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.106 * scaleSquared) {
+                    double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                    if (distance5 < 0.3125 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -1256,8 +1341,8 @@ public final class GetEntity {
 
                     Vector eyeToEntityFeet = mob.getLocation().toVector();
                     eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 2.0 * scale).subtract(startLocation);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 4.0 * scaleSquared) {
+                    double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                    if (distance < 2.0 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -1268,8 +1353,8 @@ public final class GetEntity {
                     Endermite mob = (Endermite) entity;
                     Vector eyeToEntityFeet = mob.getLocation().toVector();
                     eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(startLocation);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.031 * scaleSquared) {
+                    double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                    if (distance < 0.175 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -1280,8 +1365,8 @@ public final class GetEntity {
                     ElderGuardian mob = (ElderGuardian) entity;
                     Vector eyeToEntityFeet = mob.getLocation().toVector();
                     eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.99875 * scale).subtract(startLocation);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 1 * scaleSquared) {
+                    double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                    if (distance < 1 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -1296,8 +1381,8 @@ public final class GetEntity {
                             //高度：0.35格
                             //宽度：0.35格
                             eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.175 * scale).subtract(startLocation);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.031 * scaleSquared) {
+                            double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                            if (distance < 0.175 * scale) {
                                 filteredMonsters.add(mob);
                             }
                         }
@@ -1307,8 +1392,8 @@ public final class GetEntity {
                             //高度：0.5格
                             //宽度：0.5格
                             eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.25 * scale).subtract(startLocation);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.063 * scaleSquared) {
+                            double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                            if (distance < 0.25 * scale) {
                                 filteredMonsters.add(mob);
                             }
                         }
@@ -1318,8 +1403,8 @@ public final class GetEntity {
                             //高度：0.7格
                             //宽度：0.7格
                             eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(startLocation);
-                            double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                            if (distance < 0.123 * scaleSquared) {
+                            double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                            if (distance < 0.35 * scale) {
                                 filteredMonsters.add(mob);
                             }
                         }
@@ -1333,8 +1418,8 @@ public final class GetEntity {
                     Guardian mob = (Guardian) entity;
                     Vector eyeToEntityFeet = mob.getLocation().toVector();
                     eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.425 * scale).subtract(startLocation);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.181 * scaleSquared) {
+                    double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                    if (distance < 0.425 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -1348,32 +1433,32 @@ public final class GetEntity {
                         Vector base = mob.getLocation().toVector();
 
                         Vector v1 = base.clone().setY(base.getY() + 0.975 * scale).subtract(startLocation);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.106 * scaleSquared) {
+                        double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                        if (distance1 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v2 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.106 * scaleSquared) {
+                        double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                        if (distance2 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v3 = base.clone().setY(base.getY() + 1.3 * scale).subtract(startLocation);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.106 * scaleSquared) {
+                        double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                        if (distance3 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v4 = base.clone().setY(base.getY() + 1.625 * scale).subtract(startLocation);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.106 * scaleSquared) {
+                        double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                        if (distance4 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v5 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.106 * scaleSquared) {
+                        double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                        if (distance5 < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                         }
 
@@ -1384,32 +1469,32 @@ public final class GetEntity {
                         Vector base = mob.getLocation().toVector();
 
                         Vector v1 = base.clone().setY(base.getY() + 0.4875 * scale).subtract(startLocation);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.027 * scaleSquared) {
+                        double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                        if (distance1 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v2 = base.clone().setY(base.getY() + 0.325 * scale).subtract(startLocation);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.027 * scaleSquared) {
+                        double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                        if (distance2 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v3 = base.clone().setY(base.getY() + 0.65 * scale).subtract(startLocation);
-                        double distance3 = v3.crossProduct(direction).lengthSquared();
-                        if (distance3 < 0.027 * scaleSquared) {
+                        double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                        if (distance3 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v4 = base.clone().setY(base.getY() + 0.8125 * scale).subtract(startLocation);
-                        double distance4 = v4.crossProduct(direction).lengthSquared();
-                        if (distance4 < 0.027 * scaleSquared) {
+                        double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                        if (distance4 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v5 = base.clone().setY(base.getY() + 0.1625 * scale).subtract(startLocation);
-                        double distance5 = v5.crossProduct(direction).lengthSquared();
-                        if (distance5 < 0.027 * scaleSquared) {
+                        double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                        if (distance5 < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                         }
 
@@ -1425,8 +1510,8 @@ public final class GetEntity {
                         //宽度：1.3965格
                         Vector eyeToEntityFeet = mob.getLocation().toVector();
                         eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(startLocation);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
+                        double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                        if (distance < 0.7 * scale) {
                             filteredMonsters.add(mob);
                         }
                     } else {
@@ -1435,8 +1520,8 @@ public final class GetEntity {
                         //宽度：0.6982格
                         Vector eyeToEntityFeet = mob.getLocation().toVector();
                         eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(startLocation);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
+                        double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                        if (distance < 0.35 * scale) {
                             filteredMonsters.add(mob);
                         }
 
@@ -1450,56 +1535,56 @@ public final class GetEntity {
                     Vector base = mob.getLocation().toVector();
 
                     Vector v1 = base.clone().setY(base.getY() + 1.45 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 1.16 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 1.74 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v4 = base.clone().setY(base.getY() + 2.03 * scale).subtract(startLocation);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
+                    double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                    if (distance4 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v5 = base.clone().setY(base.getY() + 0.81 * scale).subtract(startLocation);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
+                    double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                    if (distance5 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v6 = base.clone().setY(base.getY() + 0.58 * scale).subtract(startLocation);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.095 * scaleSquared) {
+                    double distance6 = v6.crossProduct(direction).length() - sizeAdder;
+                    if (distance6 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v7 = base.clone().setY(base.getY() + 2.32 * scale).subtract(startLocation);
-                    double distance7 = v7.crossProduct(direction).lengthSquared();
-                    if (distance7 < 0.095 * scaleSquared) {
+                    double distance7 = v7.crossProduct(direction).length() - sizeAdder;
+                    if (distance7 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v8 = base.clone().setY(base.getY() + 0.29 * scale).subtract(startLocation);
-                    double distance8 = v8.crossProduct(direction).lengthSquared();
-                    if (distance8 < 0.095 * scaleSquared) {
+                    double distance8 = v8.crossProduct(direction).length() - sizeAdder;
+                    if (distance8 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v9 = base.clone().setY(base.getY() + 2.61 * scale).subtract(startLocation);
-                    double distance9 = v9.crossProduct(direction).lengthSquared();
-                    if (distance9 < 0.095 * scaleSquared) {
+                    double distance9 = v9.crossProduct(direction).length() - sizeAdder;
+                    if (distance9 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -1512,38 +1597,38 @@ public final class GetEntity {
 
 
                     Vector v1 = base.clone().setY(base.getY() + 2.0 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.255 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.475 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 1.5 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.255 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.475 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 1.0 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.255 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.475 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v4 = base.clone().setY(base.getY() + 2.5 * scale).subtract(startLocation);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.255 * scaleSquared) {
+                    double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                    if (distance4 < 0.475 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v5 = base.clone().setY(base.getY() + 3.0 * scale).subtract(startLocation);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.255 * scaleSquared) {
+                    double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                    if (distance5 < 0.475 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v6 = base.clone().setY(base.getY() + 0.5 * scale).subtract(startLocation);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.255 * scaleSquared) {
+                    double distance6 = v6.crossProduct(direction).length() - sizeAdder;
+                    if (distance6 < 0.475 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -1555,38 +1640,38 @@ public final class GetEntity {
                     Vector base = mob.getLocation().toVector();
 
                     Vector v1 = base.clone().setY(base.getY() + 1.372 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.123 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.35 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 1.029 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.123 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.35 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 0.686 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.123 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.35 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v4 = base.clone().setY(base.getY() + 1.715 * scale).subtract(startLocation);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.123 * scaleSquared) {
+                    double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                    if (distance4 < 0.35 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v5 = base.clone().setY(base.getY() + 2.058 * scale).subtract(startLocation);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.123 * scaleSquared) {
+                    double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                    if (distance5 < 0.35 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v6 = base.clone().setY(base.getY() + 0.343 * scale).subtract(startLocation);
-                    double distance6 = v6.crossProduct(direction).lengthSquared();
-                    if (distance6 < 0.123 * scaleSquared) {
+                    double distance6 = v6.crossProduct(direction).length() - sizeAdder;
+                    if (distance6 < 0.35 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -1598,32 +1683,32 @@ public final class GetEntity {
                     Vector base = mob.getLocation().toVector();
 
                     Vector v1 = base.clone().setY(base.getY() + 1.45 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.234 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.45 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 0.966 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.234 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.45 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 1.929 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.234 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.45 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v4 = base.clone().setY(base.getY() + 2.412 * scale).subtract(startLocation);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.234 * scaleSquared) {
+                    double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                    if (distance4 < 0.45 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v5 = base.clone().setY(base.getY() + 0.483 * scale).subtract(startLocation);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.234 * scaleSquared) {
+                    double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                    if (distance5 < 0.45 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -1635,32 +1720,32 @@ public final class GetEntity {
                     Vector base = mob.getLocation().toVector();
 
                     Vector v1 = base.clone().setY(base.getY() + 0.885 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.089 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 0.59 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.089 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 1.18 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.089 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v4 = base.clone().setY(base.getY() + 1.475 * scale).subtract(startLocation);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.089 * scaleSquared) {
+                    double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                    if (distance4 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v5 = base.clone().setY(base.getY() + 0.295 * scale).subtract(startLocation);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.089 * scaleSquared) {
+                    double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                    if (distance5 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -1673,32 +1758,32 @@ public final class GetEntity {
                     Vector base = mob.getLocation().toVector();
 
                     Vector v1 = base.clone().setY(base.getY() + 0.9 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 0.6 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 1.2 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v4 = base.clone().setY(base.getY() + 1.5 * scale).subtract(startLocation);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
+                    double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                    if (distance4 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v5 = base.clone().setY(base.getY() + 0.3 * scale).subtract(startLocation);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
+                    double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                    if (distance5 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                     }
 
@@ -1714,32 +1799,32 @@ public final class GetEntity {
                     Vector base = mob.getLocation().toVector();
 
                     Vector v1 = base.clone().setY(base.getY() + 0.85 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.095 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 0.566 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.095 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 1.132 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.095 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v4 = base.clone().setY(base.getY() + 1.415 * scale).subtract(startLocation);
-                    double distance4 = v4.crossProduct(direction).lengthSquared();
-                    if (distance4 < 0.095 * scaleSquared) {
+                    double distance4 = v4.crossProduct(direction).length() - sizeAdder;
+                    if (distance4 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v5 = base.clone().setY(base.getY() + 0.283 * scale).subtract(startLocation);
-                    double distance5 = v5.crossProduct(direction).lengthSquared();
-                    if (distance5 < 0.095 * scaleSquared) {
+                    double distance5 = v5.crossProduct(direction).length() - sizeAdder;
+                    if (distance5 < 0.3 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -1754,8 +1839,8 @@ public final class GetEntity {
                         //宽度：1.4格
                         Vector eyeToEntityFeet = mob.getLocation().toVector();
                         eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.7 * scale).subtract(startLocation);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.495 * scaleSquared) {
+                        double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                        if (distance < 0.7 * scale) {
                             filteredMonsters.add(mob);
                         }
                     } else {
@@ -1764,8 +1849,8 @@ public final class GetEntity {
                         //宽度：0.7格
                         Vector eyeToEntityFeet = mob.getLocation().toVector();
                         eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(startLocation);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.123 * scaleSquared) {
+                        double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                        if (distance < 0.35 * scale) {
                             filteredMonsters.add(mob);
                         }
                     }
@@ -1779,8 +1864,8 @@ public final class GetEntity {
                         //宽度：0.7格
                         Vector eyeToEntityFeet = mob.getLocation().toVector();
                         eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3 * scale).subtract(startLocation);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.106 * scaleSquared) {
+                        double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                        if (distance < 0.325 * scale) {
                             filteredMonsters.add(mob);
                         }
                     } else {
@@ -1789,8 +1874,8 @@ public final class GetEntity {
                         //宽度：0.35格
                         Vector eyeToEntityFeet = mob.getLocation().toVector();
                         eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.15 * scale).subtract(startLocation);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.027 * scaleSquared) {
+                        double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                        if (distance < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                         }
                     }
@@ -1801,8 +1886,8 @@ public final class GetEntity {
                     Dolphin mob = (Dolphin) entity;
                     Vector eyeToEntityFeet = mob.getLocation().toVector();
                     eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3 * scale).subtract(startLocation);
-                    double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                    if (distance < 0.165 * scaleSquared) {
+                    double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                    if (distance < 0.375 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -1814,8 +1899,8 @@ public final class GetEntity {
                         //宽度：0.6格
                         Vector eyeToEntityFeet = mob.getLocation().toVector();
                         eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.35 * scale).subtract(startLocation);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.106 * scaleSquared) {
+                        double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                        if (distance < 0.3125 * scale) {
                             filteredMonsters.add(mob);
                         }
                     } else {
@@ -1824,8 +1909,8 @@ public final class GetEntity {
                         //宽度：0.3格
                         Vector eyeToEntityFeet = mob.getLocation().toVector();
                         eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.175 * scale).subtract(startLocation);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.027 * scaleSquared) {
+                        double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                        if (distance < 0.15625 * scale) {
                             filteredMonsters.add(mob);
                         }
                     }
@@ -1837,20 +1922,20 @@ public final class GetEntity {
                     IronGolem mob = (IronGolem) entity;
                     Vector base = mob.getLocation().toVector();
                     Vector v1 = base.clone().setY(base.getY() + 1.35 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.495 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.7 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 0.675 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.495 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.7 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 2.025 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.495 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.7 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -1861,20 +1946,20 @@ public final class GetEntity {
                     //宽度：0.4格
                     Vector base = mob.getLocation().toVector();
                     Vector v1 = base.clone().setY(base.getY() + 0.6 * scale).subtract(startLocation);
-                    double distance1 = v1.crossProduct(direction).lengthSquared();
-                    if (distance1 < 0.045 * scaleSquared) {
+                    double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                    if (distance1 < 0.2 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v2 = base.clone().setY(base.getY() + 0.4 * scale).subtract(startLocation);
-                    double distance2 = v2.crossProduct(direction).lengthSquared();
-                    if (distance2 < 0.045 * scaleSquared) {
+                    double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                    if (distance2 < 0.2 * scale) {
                         filteredMonsters.add(mob);
                         continue;
                     }
                     Vector v3 = base.clone().setY(base.getY() + 0.2 * scale).subtract(startLocation);
-                    double distance3 = v3.crossProduct(direction).lengthSquared();
-                    if (distance3 < 0.045 * scaleSquared) {
+                    double distance3 = v3.crossProduct(direction).length() - sizeAdder;
+                    if (distance3 < 0.2 * scale) {
                         filteredMonsters.add(mob);
                     }
                 }
@@ -1887,14 +1972,14 @@ public final class GetEntity {
                         //宽度：0.6格
                         Vector base = mob.getLocation().toVector();
                         Vector v1 = base.clone().setY(base.getY() + 0.284 * scale).subtract(startLocation);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.095 * scaleSquared) {
+                        double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                        if (distance1 < 0.3 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v2 = base.clone().setY(base.getY() + 0.568 * scale).subtract(startLocation);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.095 * scaleSquared) {
+                        double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                        if (distance2 < 0.3 * scale) {
                             filteredMonsters.add(mob);
                         }
                     } else {
@@ -1903,14 +1988,14 @@ public final class GetEntity {
                         //宽度：0.3格
                         Vector base = mob.getLocation().toVector();
                         Vector v1 = base.clone().setY(base.getY() + 0.142 * scale).subtract(startLocation);
-                        double distance1 = v1.crossProduct(direction).lengthSquared();
-                        if (distance1 < 0.023 * scaleSquared) {
+                        double distance1 = v1.crossProduct(direction).length() - sizeAdder;
+                        if (distance1 < 0.15 * scale) {
                             filteredMonsters.add(mob);
                             continue;
                         }
                         Vector v2 = base.clone().setY(base.getY() + 0.284 * scale).subtract(startLocation);
-                        double distance2 = v2.crossProduct(direction).lengthSquared();
-                        if (distance2 < 0.023 * scaleSquared) {
+                        double distance2 = v2.crossProduct(direction).length() - sizeAdder;
+                        if (distance2 < 0.15 * scale) {
                             filteredMonsters.add(mob);
                         }
 
@@ -1925,8 +2010,8 @@ public final class GetEntity {
                         //宽度：1.3格
                         Vector eyeToEntityFeet = mob.getLocation().toVector();
                         eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.625 * scale).subtract(startLocation);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.407 * scaleSquared) {
+                        double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                        if (distance < 0.65 * scale) {
                             filteredMonsters.add(mob);
                         }
                     } else {
@@ -1935,8 +2020,8 @@ public final class GetEntity {
                         //宽度：0.65格
                         Vector eyeToEntityFeet = mob.getLocation().toVector();
                         eyeToEntityFeet.setY(eyeToEntityFeet.getY() + 0.3125 * scale).subtract(startLocation);
-                        double distance = eyeToEntityFeet.crossProduct(direction).lengthSquared();
-                        if (distance < 0.102 * scaleSquared) {
+                        double distance = eyeToEntityFeet.crossProduct(direction).length() - sizeAdder;
+                        if (distance < 0.325 * scale) {
                             filteredMonsters.add(mob);
                         }
                     }

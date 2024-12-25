@@ -27,8 +27,12 @@ public final class DataGet implements CommandExecutor {
             if (args.length != 0) {
                 name = args[0];
             }
+            Player player1 = Bukkit.getPlayer(name);
+            if(player1 == null){
+                return true;
+            }
 
-            Data data = Yuehua.playerData.get(Bukkit.getPlayer(name).getUniqueId());
+            Data data = Yuehua.playerData.get(player1.getUniqueId());
             player.sendMessage(
                     Component.text(data.toString())
             );

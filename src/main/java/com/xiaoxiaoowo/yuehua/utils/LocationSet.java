@@ -46,7 +46,7 @@ public final class LocationSet {
     public static final Location BAI_GU_JING = new Location(GetEntity.world, 157, 54, -545);
     public static final Location XUAN_WU_RU_KOU = new Location(GetEntity.world, -84, 34, -521);
     public static final Location PENG_LAI_DU_KOU = new Location(GetEntity.world, 346, 34, -524);
-    public static final Location SHENG_SHAN_RU_KOU = new Location(GetEntity.world, 309, 33, -732);
+    public static final Location SHENG_SHAN_RU_KOU = new Location(GetEntity.world, -184, 99, -833);
     public static final Location JIA_PAN_RU_KOU = new Location(GetEntity.world, -183, 99, -832);
     public static final Location HUANG_CHENG_ZHONG_XIN = new Location(GetEntity.world, 179, 43, 63);
     public static final Location HUANG_GONG = new Location(GetEntity.world, 179, 66, -155);
@@ -85,4 +85,5 @@ public final class LocationSet {
     public static final Location CHU_SHENG_DIAN = new Location(GetEntity.world, 1312, 76, 43);
     public static final Location QING_LONG_RU_KOU = new Location(GetEntity.world, 552, 34, 394);
     public static final Location BLOCK_TP_XUAN_WU = new Location(GetEntity.world, -83, 34, -515, 0, 0);
+    public static final Location WU_PIN = new Location(GetEntity.world,1346.5,49,515.5,180,0);
 }

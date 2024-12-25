@@ -2,10 +2,13 @@ package com.xiaoxiaoowo.yuehua.data;
 
 import com.xiaoxiaoowo.yuehua.data.slot.SlotBuilder;
 import com.xiaoxiaoowo.yuehua.data.slot.SlotWithOneActiveSkill;
-import com.xiaoxiaoowo.yuehua.system.Act;
+import com.xiaoxiaoowo.yuehua.guis.DuanZao;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
-import com.xiaoxiaoowo.yuehua.utils.GetEntity;
+import com.xiaoxiaoowo.yuehua.system.Init;
+import com.xiaoxiaoowo.yuehua.utils.Transfer;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
@@ -18,6 +21,8 @@ public final class DanData extends Data {
 
     public Set<String> zhenfaObservers;
 
+    public boolean noinforDan;
+
     public long cd_jin;
     public long cd_mu;
     public long cd_shui;
@@ -27,6 +32,7 @@ public final class DanData extends Data {
 
     public double zhenfa;
     public double zhenfa_score;
+    public double zhenfa_add;
     public double zhenfa_mul;
     public double noCost1;
     public double noCost2;
@@ -36,20 +42,17 @@ public final class DanData extends Data {
     public SlotWithOneActiveSkill slot4;
     public SlotWithOneActiveSkill slot5;
 
+    public Inventory danlu;
+    public int zhenfa_level;
 
 
     public DanData(Player player) {
         super(player);
         zhenfaObservers = new HashSet<>(5);
 
-        long time = GetEntity.world.getGameTime();
-        cd_jin = time + 20 * 30L;
-        cd_mu = time + 20 * 30L;
-        cd_shui = time + 20 * 30L;
-        cd_huo = time + 20 * 30L;
-        cd_tu = time + 20 * 30L;
 
         PersistentDataContainer pck = player.getPersistentDataContainer();
+        noinforDan = pck.get(DataContainer.noInforDan, PersistentDataType.BOOLEAN);
         zhenfa_score = pck.get(DataContainer.zhenfa, PersistentDataType.DOUBLE);
         noCost1 = pck.get(DataContainer.no_cost_1, PersistentDataType.DOUBLE);
         noCost2 = pck.get(DataContainer.no_cost_2, PersistentDataType.DOUBLE);
@@ -58,48 +61,60 @@ public final class DanData extends Data {
         String slot4ID = pck.get(DataContainer.slot4, PersistentDataType.STRING);
         String slot5ID = pck.get(DataContainer.slot5, PersistentDataType.STRING);
 
-        zhenfa = zhenfa_score;
+
+        cd_jin = pck.get(DataContainer.jinCd, PersistentDataType.LONG) + 20 * 2L;
+        cd_mu = pck.get(DataContainer.muCd, PersistentDataType.LONG) + 20 * 10L;
+        cd_shui = pck.get(DataContainer.shuiCd, PersistentDataType.LONG) + 20 * 10L;
+        cd_huo = pck.get(DataContainer.huoCd, PersistentDataType.LONG) + 20 * 10L;
+        cd_tu = pck.get(DataContainer.tuCd, PersistentDataType.LONG) + 20 * 10L;
+
+        zhenfa_add = 0.0;
         zhenfa_mul = 1.0;
+        zhenfa_level = 0;
+
+        updateZhenfa();
 
         slot3 = SlotBuilder.slot3Builder(slot3ID, real_cool);
         slot4 = SlotBuilder.slot4Builder(slot4ID, real_cool);
         slot5 = SlotBuilder.slot5Builder(slot5ID, real_cool);
 
-        Act.initDan(this, slot0.id);
-        Act.initDan(this, slot1.id);
-        Act.initDan(this, slot2.id);
-        Act.initDan(this, slot3.id);
-        Act.initDan(this, slot4.id);
-        Act.initDan(this, slot5.id);
-        Act.initDan(this, slot36.id);
-        Act.initDan(this, slot37.id);
-        Act.initDan(this, slot38.id);
-        Act.initDan(this, slot39.id);
-        Act.initDan(this, slot40.id);
+        Init.initDan(this, slot0.id);
+        Init.initDan(this, slot1.id);
+        Init.initDan(this, slot2.id);
+        Init.initDan(this, slot3.id);
+        Init.initDan(this, slot4.id);
+        Init.initDan(this, slot5.id);
+        Init.initDan(this, slot36.id);
+        Init.initDan(this, slot37.id);
+        Init.initDan(this, slot38.id);
+        Init.initDan(this, slot39.id);
+        Init.initDan(this, slot40.id);
 
-        updateZhenfa();
+
+        danlu = switch (slot40.id) {
+            case "heiTieGuo" -> Bukkit.createInventory(player, 18, "§b黑铁锅");
+            case "qinTongGuo" -> Bukkit.createInventory(player, 18, "§b青铜锅");
+            case "lianDanLu" -> Bukkit.createInventory(player, 18, "§b炼丹炉");
+            case "suoHunLu" -> Bukkit.createInventory(player, 18, "§b锁魂炉");
+            case "qiShaDing" -> Bukkit.createInventory(player, 18, "§b七煞鼎");
+            case "hunYuanShenDing" -> Bukkit.createInventory(player, 18, "§b混元神鼎");
+            default -> null;
+        };
+        if (danlu != null) {
+            danlu.setItem(17, DuanZao.HUOZHEZI);
+        }
 
 
     }
 
     public String toString() {
         return super.toString()
-               + "§6[命令系统]§azhenfa: §b" + zhenfa
-               + " §aslot0: §b" + slot0.id
-               + " §aslot1: §b" + slot1.id + "\n"
-               + "§6[命令系统]§aslot2: §b" + slot2.id
-               + " §aslot3: §b" + slot3.id
-               + " §aslot4: §b" + slot4.id + "\n"
-               + "§6[命令系统]§aslot5: §b" + slot5.id
-               + " §aslot36: §b" + slot36.id
-               + " §aslot37: §b" + slot37.id + "\n"
-               + "§6[命令系统]§aslot38: §b" + slot38.id
-               + " §aslot39: §b" + slot39.id
-               + " §aslot40: §b" + slot40.id;
+                + "§6[命令系统]§azhenfa: §b" + zhenfa;
     }
 
     public void updateZhenfa() {
-        zhenfa = Math.max(0.0, zhenfa_score * zhenfa_mul);
+        zhenfa = Math.max(0.0, (zhenfa_score + zhenfa_add) * zhenfa_mul);
+        Transfer.transferAttribute(this);
     }
 
     public void updateNoCost1() {
@@ -116,6 +131,11 @@ public final class DanData extends Data {
 
     public void setZhenfaScore(double value) {
         zhenfa_score = value;
+        updateZhenfa();
+    }
+
+    public void updateZhenfaAdd(double value) {
+        zhenfa_add += value;
         updateZhenfa();
     }
 
@@ -139,7 +159,6 @@ public final class DanData extends Data {
         noCost3 = value;
         updateNoCost3();
     }
-
 
 
 }

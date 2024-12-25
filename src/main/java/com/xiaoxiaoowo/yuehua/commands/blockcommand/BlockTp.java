@@ -37,7 +37,7 @@ public final class BlockTp implements CommandExecutor {
                 if(player.getScoreboardTags().contains("xuanwu")){
                     player.teleportAsync(LocationSet.BLOCK_TP_XUAN_WU);
                 }else {
-                    SendInformation.sendMes(Component.text("§6[玄武准许]§4你还没有获得玄武的准许"),player);
+                    SendInformation.sendMes(player, Component.text("§6[玄武准许]§4你还没有获得玄武的准许"));
                 }
             }
         }

@@ -21,9 +21,15 @@ public final class Close implements Listener {
     public void onInventoryClose(InventoryCloseEvent event) {
         String title = event.getView().getOriginalTitle();
         if (title.equals("§b饰品槽")) {
+
+
             Inventory inventory = event.getInventory();
             Player player = (Player) event.getPlayer();
             Data data = Yuehua.playerData.get(player.getUniqueId());
+
+            Scheduler.async(
+                    () -> SQL.storeShiPin(player.getName(), inventory)
+            );
 
             ItemStack itemStack0 = inventory.getItem(0);
             String oldId0 = data.eSlot0.id;
@@ -35,7 +41,9 @@ public final class Close implements Listener {
                     String newId = pdc.get(DataContainer.id, PersistentDataType.STRING);
                     if (!newId.equals(oldId0)) {
                         Act.deActAllEnderChest(data, oldId0);
-                        Act.actAllEnderChest(data, newId);
+                        if(pdc.get(DataContainer.slot,PersistentDataType.INTEGER) == 0){
+                            Act.actAllEnderChest(data, newId);
+                        }
                     }
                 }
             }
@@ -51,7 +59,9 @@ public final class Close implements Listener {
                     String newId = pdc.get(DataContainer.id, PersistentDataType.STRING);
                     if (!newId.equals(oldId1)) {
                         Act.deActAllEnderChest(data, oldId1);
-                        Act.actAllEnderChest(data, newId);
+                        if(pdc.get(DataContainer.slot,PersistentDataType.INTEGER) == 1){
+                            Act.actAllEnderChest(data, newId);
+                        }
                     }
                 }
             }
@@ -66,7 +76,9 @@ public final class Close implements Listener {
                     String newId = pdc.get(DataContainer.id, PersistentDataType.STRING);
                     if (!newId.equals(oldId2)) {
                         Act.deActAllEnderChest(data, oldId2);
-                        Act.actAllEnderChest(data, newId);
+                        if(pdc.get(DataContainer.slot,PersistentDataType.INTEGER) == 2){
+                            Act.actAllEnderChest(data, newId);
+                        }
                     }
                 }
             }
@@ -81,7 +93,9 @@ public final class Close implements Listener {
                     String newId = pdc.get(DataContainer.id, PersistentDataType.STRING);
                     if (!newId.equals(oldId3)) {
                         Act.deActAllEnderChest(data, oldId3);
-                        Act.actAllEnderChest(data, newId);
+                        if(pdc.get(DataContainer.slot,PersistentDataType.INTEGER) == 3){
+                            Act.actAllEnderChest(data, newId);
+                        }
                     }
                 }
             }
@@ -96,7 +110,9 @@ public final class Close implements Listener {
                     String newId = pdc.get(DataContainer.id, PersistentDataType.STRING);
                     if (!newId.equals(oldId4)) {
                         Act.deActAllEnderChest(data, oldId4);
-                        Act.actAllEnderChest(data, newId);
+                        if(pdc.get(DataContainer.slot,PersistentDataType.INTEGER) == 4){
+                            Act.actAllEnderChest(data, newId);
+                        }
                     }
                 }
             }
@@ -111,7 +127,9 @@ public final class Close implements Listener {
                     String newId = pdc.get(DataContainer.id, PersistentDataType.STRING);
                     if (!newId.equals(oldId5)) {
                         Act.deActAllEnderChest(data, oldId5);
-                        Act.actAllEnderChest(data, newId);
+                        if(pdc.get(DataContainer.slot,PersistentDataType.INTEGER) == 5){
+                            Act.actAllEnderChest(data, newId);
+                        }
                     }
                 }
             }
@@ -126,7 +144,9 @@ public final class Close implements Listener {
                     String newId = pdc.get(DataContainer.id, PersistentDataType.STRING);
                     if (!newId.equals(oldId6)) {
                         Act.deActAllEnderChest(data, oldId6);
-                        Act.actAllEnderChest(data, newId);
+                        if(pdc.get(DataContainer.slot,PersistentDataType.INTEGER) == 6){
+                            Act.actAllEnderChest(data, newId);
+                        }
                     }
                 }
             }
@@ -141,16 +161,14 @@ public final class Close implements Listener {
                     String newId = pdc.get(DataContainer.id, PersistentDataType.STRING);
                     if (!newId.equals(oldId7)) {
                         Act.deActAllEnderChest(data, oldId7);
-                        Act.actAllEnderChest(data, newId);
+                        if(pdc.get(DataContainer.slot,PersistentDataType.INTEGER) == 7){
+                            Act.actAllEnderChest(data, newId);
+                        }
                     }
                 }
             }
 
-            Scheduler.async(
-                    () ->{
-                        SQL.storeShiPin(player.getName(), inventory);
-                    }
-            );
+
         }
     }
 }

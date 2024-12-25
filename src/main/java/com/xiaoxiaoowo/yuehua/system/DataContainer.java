@@ -1,7 +1,6 @@
 package com.xiaoxiaoowo.yuehua.system;
 
 import org.bukkit.NamespacedKey;
-import org.checkerframework.checker.units.qual.N;
 
 public final class DataContainer {
     //物品数据
@@ -11,6 +10,7 @@ public final class DataContainer {
     public static final NamespacedKey insertid;
     public static final NamespacedKey seller;
     public static final NamespacedKey price;
+    public static final NamespacedKey shooter;
     //实体数据
 
     //等级奖励
@@ -117,6 +117,8 @@ public final class DataContainer {
     public static final NamespacedKey slot4;
     public static final NamespacedKey slot5;
     public static final NamespacedKey slot8;
+
+    //头是39，脚是36
     public static final NamespacedKey slot36;
     public static final NamespacedKey slot37;
     public static final NamespacedKey slot38;
@@ -138,9 +140,82 @@ public final class DataContainer {
     //环城
     public static final NamespacedKey huanChengTime;
 
+    public static final NamespacedKey noInfor;
+    public static final NamespacedKey noSound;
+    public static final NamespacedKey jiuji;
+    public static final NamespacedKey noInforDan;
+
+    public static final NamespacedKey guajiCount;
+
+    public static final NamespacedKey jinCd;
+    public static final NamespacedKey muCd;
+    public static final NamespacedKey shuiCd;
+    public static final NamespacedKey huoCd;
+    public static final NamespacedKey tuCd;
+
+    public static final NamespacedKey checkCount;
+
+    public static final NamespacedKey mainTask;
+
+    public static final NamespacedKey xuanshanglevel;
+    public static final NamespacedKey xuanshangCd;
+    public static final NamespacedKey xuanshangId;
+
+    public static final NamespacedKey advancementPoint;
+
+    //东方骷髅，僵尸，蜘蛛
+    public static final NamespacedKey killEastSkeletonConut;
+    public static final NamespacedKey killEastZombieCount;
+    public static final NamespacedKey killEastSpiderCount;
+
+    //东方，枯骨弓箭手，毒蜂，僵尸精英，蜘蛛精英
+    public static final NamespacedKey killEastArrowSkeletonCount;
+    public static final NamespacedKey killEastPoisonFlyCount;
+    public static final NamespacedKey killEastZombieEliteCount;
+    public static final NamespacedKey killEastSpiderEliteCount;
+
+    //东方山神庙僵尸，蜘蛛，弓箭手
+    public static final NamespacedKey killEastZombieMountainCount;
+    public static final NamespacedKey killEastSpiderMountainCount;
+    public static final NamespacedKey killEastArrowSkeletonMountainCount;
+
+    //东方神木妖精毒蜂，熊猫，弓箭手
+    public static final NamespacedKey killEastPoisonFlyMountainCount;
+    public static final NamespacedKey killEastPandaMountainCount;
+    public static final NamespacedKey killEastArrowSkeletonSHENMUCount;
+
+    //东方蜘蛛女王，水鬼，毒蜘蛛
+    public static final NamespacedKey killEastSpiderQueenMountainCount;
+    public static final NamespacedKey killEastWaterGhostMountainCount;
+    public static final NamespacedKey killEastPoisonSpiderMountainCount;
+
+
 
     static {
         String namespace = "yh";
+
+        advancementPoint = new NamespacedKey(namespace, "advancement_point");
+
+        killEastSkeletonConut = new NamespacedKey(namespace, "kill_east_skeleton_count");
+        killEastZombieCount = new NamespacedKey(namespace, "kill_east_zombie_count");
+        killEastSpiderCount = new NamespacedKey(namespace, "kill_east_spider_count");
+
+        killEastArrowSkeletonCount = new NamespacedKey(namespace, "kill_east_arrow_skeleton_count");
+        killEastPoisonFlyCount = new NamespacedKey(namespace, "kill_east_poison_fly_count");
+        killEastZombieEliteCount = new NamespacedKey(namespace, "kill_east_zombie_elite_count");
+        killEastSpiderEliteCount = new NamespacedKey(namespace, "kill_east_spider_elite_count");
+
+        killEastZombieMountainCount = new NamespacedKey(namespace, "kill_east_zombie_mountain_count");
+        killEastSpiderMountainCount = new NamespacedKey(namespace, "kill_east_spider_mountain_count");
+        killEastArrowSkeletonMountainCount = new NamespacedKey(namespace, "kill_east_arrow_skeleton_mountain_count");
+
+        killEastPoisonFlyMountainCount = new NamespacedKey(namespace, "kill_east_poison_fly_mountain_count");
+        killEastPandaMountainCount = new NamespacedKey(namespace, "kill_east_panda_mountain_count");
+        killEastArrowSkeletonSHENMUCount = new NamespacedKey(namespace, "kill_east_arrow_skeleton_mountain2_count");
+
+        killEastSpiderQueenMountainCount = new NamespacedKey(namespace, "kill_east_spider_queen_mountain_count");
+        killEastWaterGhostMountainCount = new NamespacedKey(namespace, "kill_east_water_ghost_mountain_count");
+        killEastPoisonSpiderMountainCount = new NamespacedKey(namespace, "kill_east_poison_spider_mountain_count");
 
 
         slot = new NamespacedKey(namespace, "slot");
@@ -255,6 +330,26 @@ public final class DataContainer {
 
         XianTaoCount = new NamespacedKey(namespace, "xiantaocount");
         huanChengTime = new NamespacedKey(namespace, "huanchengtime");
+
+        noInfor = new NamespacedKey(namespace, "noinfor");
+        noSound = new NamespacedKey(namespace, "nosound");
+        jiuji = new NamespacedKey(namespace, "jiuji");
+        noInforDan = new NamespacedKey(namespace, "noinfodan");
+        guajiCount = new NamespacedKey(namespace, "guajicount");
+
+        jinCd = new NamespacedKey(namespace, "jincd");
+        muCd = new NamespacedKey(namespace, "mucd");
+        shuiCd = new NamespacedKey(namespace, "shuicd");
+        huoCd = new NamespacedKey(namespace, "huocd");
+        tuCd = new NamespacedKey(namespace, "tucd");
+
+        checkCount = new NamespacedKey(namespace, "checkcount");
+        shooter = new NamespacedKey(namespace, "shooter");
+
+        mainTask = new NamespacedKey(namespace, "maintask");
+        xuanshanglevel = new NamespacedKey(namespace, "xuanshanglevel");
+        xuanshangCd = new NamespacedKey(namespace, "xuanshangcd");
+        xuanshangId = new NamespacedKey(namespace, "xuanshangid");
 
     }
 }

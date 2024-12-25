@@ -3,6 +3,7 @@ package com.xiaoxiaoowo.yuehua.commands.playercommand;
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import com.xiaoxiaoowo.yuehua.task.other.SaleTask;
 import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
@@ -41,7 +42,7 @@ public final class Buy implements CommandExecutor {
                         player.sendMessage(Component.text("§6[命令系统]§4禁止在副本/试炼中使用此功能"));
                         return;
                     }
-                    int price = 0;
+                    int price;
                     try {
                         price = Integer.parseInt(args[0]);
                     } catch (NumberFormatException e) {
@@ -56,9 +57,9 @@ public final class Buy implements CommandExecutor {
                         return;
                     }
 
-                    if (price < priceNow) {
+                    if (price < priceNow * 1.2) {
                         player.sendMessage(
-                                Component.text("§6[命令系统]§4你的出价没有当前最高价高")
+                                Component.text("§6[命令系统]§4你的出价至少比上一位拍卖者高20%")
                         );
                         return;
                     }
@@ -81,6 +82,9 @@ public final class Buy implements CommandExecutor {
 
                     buyerNow = player;
                     priceNow = price;
+                    if(SaleTask.num < 2){
+                        SaleTask.num = 2;
+                    }
 
                     Bukkit.broadcast(Component.text("§6[拍卖系统]§a玩家：§b" + player.getName() + "§a参与了拍卖").appendNewline()
                             .append(Component.text("§6[拍卖系统]§a出价：§b" + price))

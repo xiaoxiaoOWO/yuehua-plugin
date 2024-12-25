@@ -10,6 +10,6 @@ public final class Swap implements Listener {
     @EventHandler
     public void onSwap(PlayerSwapHandItemsEvent e) {
         e.setCancelled(true);
-        SendInformation.sendMes(Component.text("§e[游戏机制]§4为防止BUG，不要使用副手交换！"),e.getPlayer());
+        SendInformation.sendMes(e.getPlayer(), Component.text("§e[游戏机制]§4为防止BUG，不要使用副手交换！"));
     }
 }

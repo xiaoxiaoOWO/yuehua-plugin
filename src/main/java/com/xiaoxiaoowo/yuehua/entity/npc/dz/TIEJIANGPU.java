@@ -1,8 +1,14 @@
 package com.xiaoxiaoowo.yuehua.entity.npc.dz;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.itemstack.Book;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Other;
+import com.xiaoxiaoowo.yuehua.items.Book;
+import com.xiaoxiaoowo.yuehua.items.other.Money;
+import com.xiaoxiaoowo.yuehua.items.other.Other;
+import com.xiaoxiaoowo.yuehua.items.zhuangbei.*;
+import com.xiaoxiaoowo.yuehua.items.zhuangbei.ArmorChest;
+import com.xiaoxiaoowo.yuehua.items.zhuangbei.ArmorFeet;
+import com.xiaoxiaoowo.yuehua.items.zhuangbei.ArmorHead;
+import com.xiaoxiaoowo.yuehua.items.zhuangbei.ArmorLeg;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -33,18 +39,62 @@ public final class TIEJIANGPU {
 
             //需要1个交易项目
             List<MerchantRecipe> recipesDefault = new ArrayList<>();
+
             MerchantRecipe recipeDefault1 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipeDefault1.addIngredient(Other.ARROW);
+            MerchantRecipe recipeDefault2 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault2.addIngredient(Other.ARROW);
+            MerchantRecipe recipeDefault3 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault3.addIngredient(Other.ARROW);
+            MerchantRecipe recipeDefault4 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault4.addIngredient(Other.ARROW);
+            MerchantRecipe recipeDefault5 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault5.addIngredient(Other.ARROW);
+            MerchantRecipe recipeDefault6 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault6.addIngredient(Other.ARROW);
+            MerchantRecipe recipeDefault7 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault7.addIngredient(Other.ARROW);
+
             recipesDefault.add(recipeDefault1);
+            recipesDefault.add(recipeDefault2);
+            recipesDefault.add(recipeDefault3);
+            recipesDefault.add(recipeDefault4);
+            recipesDefault.add(recipeDefault5);
+            recipesDefault.add(recipeDefault6);
+            recipesDefault.add(recipeDefault7);
             it.setRecipes(recipesDefault);
 
             ItemStack npcPaoPao = Other.NPC_PAOPAO;
-
-
             MerchantRecipe recipe = new MerchantRecipe(Book.DZ, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe.addIngredient(npcPaoPao);
             it.setRecipe(0, recipe);
 
+            ItemStack tongqian = Money.tongQian.clone();
+            tongqian.setAmount(10);
+
+            MerchantRecipe recipe1 = new MerchantRecipe(ArmorHead.tou1, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe1.addIngredient(tongqian);
+            it.setRecipe(1, recipe1);
+
+            MerchantRecipe recipe2 = new MerchantRecipe(ArmorChest.xiong1, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe2.addIngredient(tongqian);
+            it.setRecipe(2, recipe2);
+
+            MerchantRecipe recipe3 = new MerchantRecipe(ArmorLeg.tui1, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe3.addIngredient(tongqian);
+            it.setRecipe(3, recipe3);
+
+            MerchantRecipe recipe4 = new MerchantRecipe(ArmorFeet.xie1, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe4.addIngredient(tongqian);
+            it.setRecipe(4,recipe4);
+
+            MerchantRecipe recipe5 = new MerchantRecipe(Weapon.TAO_MU_JIAN, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe5.addIngredient(tongqian);
+            it.setRecipe(5,recipe5);
+
+            MerchantRecipe recipe6 = new MerchantRecipe(Weapon.TENG_MU_GONG, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe6.addIngredient(tongqian);
+            it.setRecipe(6,recipe6);
 
         });
         //村民外观

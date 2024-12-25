@@ -19,8 +19,8 @@ public final class Login implements Listener {
             return;
         }
         long timeNow = System.currentTimeMillis();
-        if (timeNow - (time + 1000 * 120) <= 0) {
-            e.disallow(PlayerLoginEvent.Result.KICK_OTHER,Component.text("§c两分钟内仅允许登录一次！"));
+        if (timeNow - (time + 1000 * 60) <= 0) {
+            e.disallow(PlayerLoginEvent.Result.KICK_OTHER,Component.text("§c一分钟内仅允许登录一次！"));
         }
 
 

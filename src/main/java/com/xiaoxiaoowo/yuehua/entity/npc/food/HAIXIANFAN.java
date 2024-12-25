@@ -1,9 +1,9 @@
 package com.xiaoxiaoowo.yuehua.entity.npc.food;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Food;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Money;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Other;
+import com.xiaoxiaoowo.yuehua.items.other.Food;
+import com.xiaoxiaoowo.yuehua.items.other.Money;
+import com.xiaoxiaoowo.yuehua.items.other.Other;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -63,39 +63,39 @@ public final class HAIXIANFAN {
             ItemStack xieQian = Food.xieQian.clone();
 
 
-            tongqian.setAmount(6);
+            tongqian.setAmount(3);
             kaoYu.setAmount(5);
             MerchantRecipe recipe0 = new MerchantRecipe(kaoYu, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe0.addIngredient(tongqian);
             it.setRecipe(0, recipe0);
 
 
-            tongqian.setAmount(10);
-            kaoGuiYu.setAmount(4);
+            tongqian.setAmount(6);
+            kaoGuiYu.setAmount(5);
             MerchantRecipe recipe1 = new MerchantRecipe(kaoGuiYu, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe1.addIngredient(tongqian);
             it.setRecipe(1, recipe1);
 
-            tongqian.setAmount(15);
+            tongqian.setAmount(9);
             kaoXueYu.setAmount(5);
             MerchantRecipe recipe2 = new MerchantRecipe(kaoXueYu, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe2.addIngredient(tongqian);
             it.setRecipe(2, recipe2);
 
-            tongqian.setAmount(15);
-            kaoYouYu.setAmount(3);
+            tongqian.setAmount(12);
+            kaoYouYu.setAmount(5);
             MerchantRecipe recipe3 = new MerchantRecipe(kaoYouYu, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe3.addIngredient(tongqian);
             it.setRecipe(3, recipe3);
 
-            tongqian.setAmount(18);
-            kaoXia.setAmount(3);
+            tongqian.setAmount(14);
+            kaoXia.setAmount(5);
             MerchantRecipe recipe4 = new MerchantRecipe(kaoXia, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe4.addIngredient(tongqian);
             it.setRecipe(4, recipe4);
 
-            tongqian.setAmount(25);
-            xieQian.setAmount(1);
+            tongqian.setAmount(15);
+            xieQian.setAmount(5);
             MerchantRecipe recipe5 = new MerchantRecipe(xieQian, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe5.addIngredient(tongqian);
             it.setRecipe(5, recipe5);

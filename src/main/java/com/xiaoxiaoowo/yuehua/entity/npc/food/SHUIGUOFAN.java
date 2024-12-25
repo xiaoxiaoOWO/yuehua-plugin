@@ -1,9 +1,9 @@
 package com.xiaoxiaoowo.yuehua.entity.npc.food;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Food;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Money;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Other;
+import com.xiaoxiaoowo.yuehua.items.other.Food;
+import com.xiaoxiaoowo.yuehua.items.other.Money;
+import com.xiaoxiaoowo.yuehua.items.other.Other;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -75,57 +75,57 @@ public final class SHUIGUOFAN {
             ItemStack fengmi = Food.fengmi.clone();
 
 
-            tongqian.setAmount(5);
+            tongqian.setAmount(4);
             pinguo.setAmount(5);
             MerchantRecipe recipe0 = new MerchantRecipe(pinguo, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe0.addIngredient(tongqian);
             it.setRecipe(0, recipe0);
 
 
-            tongqian.setAmount(5);
-            xiguapian.setAmount(4);
+            tongqian.setAmount(6);
+            xiguapian.setAmount(5);
             MerchantRecipe recipe1 = new MerchantRecipe(xiguapian, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe1.addIngredient(tongqian);
             it.setRecipe(1, recipe1);
 
-            tongqian.setAmount(7);
-            qinpinguo.setAmount(4);
+            tongqian.setAmount(8);
+            qinpinguo.setAmount(5);
             MerchantRecipe recipe2 = new MerchantRecipe(qinpinguo, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe2.addIngredient(tongqian);
             it.setRecipe(2, recipe2);
 
             tongqian.setAmount(10);
-            putao.setAmount(4);
+            putao.setAmount(5);
             MerchantRecipe recipe3 = new MerchantRecipe(putao, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe3.addIngredient(tongqian);
             it.setRecipe(3, recipe3);
 
-            tongqian.setAmount(15);
-            li.setAmount(4);
+            tongqian.setAmount(12);
+            li.setAmount(5);
             MerchantRecipe recipe4 = new MerchantRecipe(li, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe4.addIngredient(tongqian);
             it.setRecipe(4, recipe4);
 
-            tongqian.setAmount(20);
-            xiangjiao.setAmount(4);
+            tongqian.setAmount(14);
+            xiangjiao.setAmount(5);
             MerchantRecipe recipe5 = new MerchantRecipe(xiangjiao, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe5.addIngredient(tongqian);
             it.setRecipe(5, recipe5);
 
-            tongqian.setAmount(25);
-            caomei.setAmount(4);
+            tongqian.setAmount(16);
+            caomei.setAmount(5);
             MerchantRecipe recipe6 = new MerchantRecipe(caomei, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe6.addIngredient(tongqian);
             it.setRecipe(6, recipe6);
 
-            tongqian.setAmount(30);
-            bolo.setAmount(1);
+            tongqian.setAmount(18);
+            bolo.setAmount(5);
             MerchantRecipe recipe7 = new MerchantRecipe(bolo, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe7.addIngredient(tongqian);
             it.setRecipe(7, recipe7);
 
-            tongqian.setAmount(99);
-            fengmi.setAmount(1);
+            tongqian.setAmount(40);
+            fengmi.setAmount(5);
             MerchantRecipe recipe8 = new MerchantRecipe(fengmi, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe8.addIngredient(tongqian);
             it.setRecipe(8, recipe8);

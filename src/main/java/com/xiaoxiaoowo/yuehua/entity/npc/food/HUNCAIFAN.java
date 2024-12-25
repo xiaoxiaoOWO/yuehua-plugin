@@ -1,9 +1,9 @@
 package com.xiaoxiaoowo.yuehua.entity.npc.food;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Food;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Money;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Other;
+import com.xiaoxiaoowo.yuehua.items.other.Food;
+import com.xiaoxiaoowo.yuehua.items.other.Money;
+import com.xiaoxiaoowo.yuehua.items.other.Other;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -63,39 +63,39 @@ public final class HUNCAIFAN {
             ItemStack DADADAJITUI = Food.DADADAJITUI.clone();
 
 
-            tongqian.setAmount(5);
-            kaoJi.setAmount(3);
+            tongqian.setAmount(6);
+            kaoJi.setAmount(5);
             MerchantRecipe recipe0 = new MerchantRecipe(kaoJi, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe0.addIngredient(tongqian);
             it.setRecipe(0, recipe0);
 
 
             tongqian.setAmount(8);
-            tuRou.setAmount(4);
+            tuRou.setAmount(5);
             MerchantRecipe recipe1 = new MerchantRecipe(tuRou, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe1.addIngredient(tongqian);
             it.setRecipe(1, recipe1);
 
-            tongqian.setAmount(14);
+            tongqian.setAmount(10);
             yangTui.setAmount(5);
             MerchantRecipe recipe2 = new MerchantRecipe(yangTui, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe2.addIngredient(tongqian);
             it.setRecipe(2, recipe2);
 
-            tongqian.setAmount(18);
+            tongqian.setAmount(11);
             zhuPai.setAmount(5);
             MerchantRecipe recipe3 = new MerchantRecipe(zhuPai, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe3.addIngredient(tongqian);
             it.setRecipe(3, recipe3);
 
-            tongqian.setAmount(21);
+            tongqian.setAmount(12);
             niuPai.setAmount(5);
             MerchantRecipe recipe4 = new MerchantRecipe(niuPai, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe4.addIngredient(tongqian);
             it.setRecipe(4, recipe4);
 
-            tongqian.setAmount(50);
-            DADADAJITUI.setAmount(1);
+            tongqian.setAmount(13);
+            DADADAJITUI.setAmount(5);
             MerchantRecipe recipe5 = new MerchantRecipe(DADADAJITUI, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe5.addIngredient(tongqian);
             it.setRecipe(5, recipe5);

@@ -7,21 +7,22 @@ import com.xiaoxiaoowo.yuehua.commands.opcommand.data.DataCountGet;
 import com.xiaoxiaoowo.yuehua.commands.opcommand.data.DataGet;
 import com.xiaoxiaoowo.yuehua.commands.opcommand.data.DataSet;
 import com.xiaoxiaoowo.yuehua.commands.opcommand.data.ItemDataGet;
-import com.xiaoxiaoowo.yuehua.commands.playercommand.Yhteam;
+import com.xiaoxiaoowo.yuehua.commands.playercommand.Check;
 import com.xiaoxiaoowo.yuehua.commands.playercommand.*;
-import com.xiaoxiaoowo.yuehua.commands.playercommand.completer.*;
-import com.xiaoxiaoowo.yuehua.data.Data;
-import com.xiaoxiaoowo.yuehua.data.GongData;
-import com.xiaoxiaoowo.yuehua.data.MonsterData;
-import com.xiaoxiaoowo.yuehua.data.TransferData;
+import com.xiaoxiaoowo.yuehua.commands.playercommand.completer.BuyCom;
+import com.xiaoxiaoowo.yuehua.commands.playercommand.completer.SaleCom;
+import com.xiaoxiaoowo.yuehua.commands.playercommand.completer.SellCom;
+import com.xiaoxiaoowo.yuehua.data.*;
 import com.xiaoxiaoowo.yuehua.event.Inventory.Click;
 import com.xiaoxiaoowo.yuehua.event.Inventory.Close;
 import com.xiaoxiaoowo.yuehua.event.Inventory.Open;
 import com.xiaoxiaoowo.yuehua.event.Projectile.Hit;
-import com.xiaoxiaoowo.yuehua.event.entity.Damage;
+import com.xiaoxiaoowo.yuehua.event.block.CauldronLevelChange;
+import com.xiaoxiaoowo.yuehua.event.block.Ingite;
 import com.xiaoxiaoowo.yuehua.event.entity.Death;
 import com.xiaoxiaoowo.yuehua.event.entity.*;
 import com.xiaoxiaoowo.yuehua.event.player.*;
+import com.xiaoxiaoowo.yuehua.guis.DuanZao;
 import com.xiaoxiaoowo.yuehua.shilian.huancheng.HuanCheng;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.system.Team;
@@ -29,39 +30,45 @@ import com.xiaoxiaoowo.yuehua.utils.*;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.InetSocketAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.sql.SQLException;
 import java.util.*;
+import java.util.logging.Logger;
 
 public final class Yuehua extends JavaPlugin {
     public static JavaPlugin instance;
     public static BukkitScheduler scheduler;
     public static CommandSender console;
     public static Collection<? extends Player> players;
-    public static ServerSocket serverSocket;
-    public static ServerSocket mySocket;
+
     public static Map<UUID, Data> playerData;
     public static Map<UUID, MonsterData> monsterData;
-    public static Set<String> nameSet;
-    public static List<Inventory> shichang = new ArrayList<>(100);
+    public static Map<UUID, PetData> petData;
+
     public static Map<UUID, Long> timeLastIn;
+    public static Set<UUID> checkSet;
+
+
+    public static List<Inventory> shichang = new ArrayList<>(100);
+    public static Map<String, Inventory> sharedInv = new HashMap<>(1000);
+
+    public static Logger logger;
+
 
     @Override
     public void onEnable() {
+//        Bukkit.setWhitelist(false);
+
         instance = this;
+        logger = this.getLogger();
         scheduler = Bukkit.getScheduler();
         console = Bukkit.createCommandSender(it -> {
         });
@@ -70,14 +77,29 @@ public final class Yuehua extends JavaPlugin {
         //playerData size = player count * 100
         playerData = new HashMap<>(500);
         monsterData = new HashMap<>(20000);
-        nameSet = new HashSet<>(200);
+        petData = new HashMap<>(2000);
+
+        checkSet = new HashSet<>(200);
         timeLastIn = new HashMap<>(1600);
         //数据库
         SQL.connect();
 
+
         for (int i = 0; i < 100; i++) {
             Inventory inventory = SQL.retrieveShiChang(i);
             shichang.add(inventory);
+        }
+
+        Scheduler.asyncTimer(Shichang::reshapeShichang, 0, 1200);
+
+
+        //初始化共享存储
+        SQL.initialShared();
+
+        try {
+            DuanZao.getFromSql();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
         //初始化
@@ -88,13 +110,20 @@ public final class Yuehua extends JavaPlugin {
 
         //注册命令
         registerCommand();
+
+
     }
 
 
     @Override
     public void onDisable() {
-        //清空监听器与任务
-        scheduler.cancelTasks(instance);
+        Bukkit.setWhitelist(true);
+
+        try {
+            MySocket.server.stop();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         //保存玩家数据
         for (Player player : players) {
@@ -121,6 +150,28 @@ public final class Yuehua extends JavaPlugin {
             pdc.set(DataContainer.ConcentratedShuiCount, PersistentDataType.INTEGER, data.concentratedShuiCount);
             pdc.set(DataContainer.ConcentratedHuoCount, PersistentDataType.INTEGER, data.concentratedHuoCount);
             pdc.set(DataContainer.ConcentratedTuCount, PersistentDataType.INTEGER, data.concentratedTuCount);
+            pdc.set(DataContainer.checkCount, PersistentDataType.INTEGER, data.nextCheckCount);
+
+            pdc.set(DataContainer.killEastSkeletonConut, PersistentDataType.INTEGER, data.killEastSkeletonConut);
+            pdc.set(DataContainer.killEastZombieCount, PersistentDataType.INTEGER, data.killEastZombieCount);
+            pdc.set(DataContainer.killEastSpiderCount, PersistentDataType.INTEGER, data.killEastSpiderCount);
+
+            pdc.set(DataContainer.killEastArrowSkeletonCount, PersistentDataType.INTEGER, data.killEastArrowSkeletonCount);
+            pdc.set(DataContainer.killEastPoisonFlyCount, PersistentDataType.INTEGER, data.killEastPoisonFlyCount);
+            pdc.set(DataContainer.killEastZombieEliteCount, PersistentDataType.INTEGER, data.killEastZombieEliteCount);
+            pdc.set(DataContainer.killEastSpiderEliteCount, PersistentDataType.INTEGER, data.killEastSpiderEliteCount);
+
+            pdc.set(DataContainer.killEastZombieMountainCount, PersistentDataType.INTEGER, data.killEastZombieMountainCount);
+            pdc.set(DataContainer.killEastSpiderMountainCount, PersistentDataType.INTEGER, data.killEastSpiderMountainCount);
+            pdc.set(DataContainer.killEastArrowSkeletonMountainCount, PersistentDataType.INTEGER, data.killEastArrowSkeletonMountainCount);
+
+            pdc.set(DataContainer.killEastPoisonFlyMountainCount, PersistentDataType.INTEGER, data.killEastPoisonFlyMountainCount);
+            pdc.set(DataContainer.killEastPandaMountainCount, PersistentDataType.INTEGER, data.killEastPandaMountainCount);
+            pdc.set(DataContainer.killEastArrowSkeletonSHENMUCount, PersistentDataType.INTEGER, data.killEastArrowSkeletonSHENMUCount);
+
+            pdc.set(DataContainer.killEastSpiderQueenMountainCount, PersistentDataType.INTEGER, data.killEastSpiderQueenMountainCount);
+            pdc.set(DataContainer.killEastWaterGhostMountainCount, PersistentDataType.INTEGER, data.killEastWaterGhostMountainCount);
+            pdc.set(DataContainer.killEastPoisonSpiderMountainCount, PersistentDataType.INTEGER, data.killEastPoisonSpiderMountainCount);
 
             if (data.job == 2) {
                 GongData gongData = (GongData) data;
@@ -128,7 +179,18 @@ public final class Yuehua extends JavaPlugin {
                 pdc.set(DataContainer.arrow_count, PersistentDataType.INTEGER, gongData.arrow_count);
             }
 
+            if (data.job == 3) {
+                DanData danData = (DanData) data;
+                //金木水火土
+                pdc.set(DataContainer.jinCd, PersistentDataType.LONG, danData.cd_jin);
+                pdc.set(DataContainer.muCd, PersistentDataType.LONG, danData.cd_mu);
+                pdc.set(DataContainer.shuiCd, PersistentDataType.LONG, danData.cd_shui);
+                pdc.set(DataContainer.huoCd, PersistentDataType.LONG, danData.cd_huo);
+                pdc.set(DataContainer.tuCd, PersistentDataType.LONG, danData.cd_tu);
+            }
+
             String name = player.getName();
+            player.kick(Component.text("服务器关闭"));
             if (data.inventory1 != null) {
                 SQL.storePlayerInventory1(name, data.inventory1);
             }
@@ -188,21 +250,32 @@ public final class Yuehua extends JavaPlugin {
             }
         }
 
+
         for (int i = 0; i < 100; i++) {
             SQL.storeShiChang(i, shichang.get(i));
         }
 
+        //保存共享存储
+        for (Map.Entry<String, Inventory> entry : sharedInv.entrySet()) {
+            SQL.storeShared(entry.getKey(), entry.getValue());
+        }
+
+        //保存配方
+        SQL.storeRecipe();
+
+        DuanZao.storeToSql();
+
         //关数据库
         SQL.close();
 
-        //关TCP
-        try {
-            if (serverSocket != null && !serverSocket.isClosed()) {
-                serverSocket.close(); // 关闭服务器套接字
+        for (Entity entity : GetEntity.world.getEntities()) {
+            if (entity.getScoreboardTags().contains("p")) {
+                entity.remove();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+
+        //清空监听器与任务
+        scheduler.cancelTasks(instance);
     }
 
     private void init() {
@@ -210,58 +283,8 @@ public final class Yuehua extends JavaPlugin {
         GetEntity.init();
         //队伍
         Team.init();
-        //BGM
-        Scheduler.asyncTimer(
-                () -> {
-                    for (Player player : players) {
-                        LocationCheck.check(player);
-                    }
-                }
-                , 0, 20 * 60 * 3);
 
-        Scheduler.asyncTimer(
-                () -> {
-                    for (Data data : playerData.values()) {
-                        Player player = data.player;
-                        TransferData transferData = new TransferData(data);
-                        String string = transferData.toString();
-                        InetSocketAddress inetSocketAddress = player.getAddress();
-                        String ip = inetSocketAddress.getAddress().getHostAddress();
-
-                        try (Socket socket = new Socket(ip, 23454);
-                             OutputStream out = socket.getOutputStream()) {
-                            out.write(string.getBytes());
-                            out.flush();
-                        } catch (Exception e) {
-                            Scheduler.sync(
-                                    () -> player.kick(Component.text("§c网络异常!"))
-                            );
-                        }
-                    }
-                }
-                , 0, 10);
-
-
-        //开tcpserver
-        try {
-            serverSocket = new ServerSocket(23455);
-            System.out.println("TCP Server started on port: " + 23455);
-        } catch (IOException e) {
-            Bukkit.shutdown();
-            throw new RuntimeException(e);
-        }
-
-        new Thread(new TcpServer()).start();
-
-        try {
-            mySocket = new ServerSocket(23456);
-            System.out.println("TCP Server started on port: " + 23456);
-        } catch (IOException e) {
-            Bukkit.shutdown();
-            throw new RuntimeException(e);
-        }
-
-        new Thread(new MySocket()).start();
+        MySocket.init();
     }
 
     private void registerListener() {
@@ -270,6 +293,7 @@ public final class Yuehua extends JavaPlugin {
         //entity
         pluginManager.registerEvents(new AddToWorld(), this);
         pluginManager.registerEvents(new Breed(), this);
+        pluginManager.registerEvents(new Combust(), this);
         pluginManager.registerEvents(new Damage(), this);
         pluginManager.registerEvents(new DamageByEntity(), this);
         pluginManager.registerEvents(new Death(), this);
@@ -300,7 +324,7 @@ public final class Yuehua extends JavaPlugin {
         pluginManager.registerEvents(new Login(), this);
         pluginManager.registerEvents(new Quit(), this);
         pluginManager.registerEvents(new Swap(), this);
-        pluginManager.registerEvents(new Teleport(), this);
+//        pluginManager.registerEvents(new Teleport(), this);
 
         //projectile
         pluginManager.registerEvents(new Hit(), this);
@@ -309,6 +333,9 @@ public final class Yuehua extends JavaPlugin {
 
         //Spawner
         //pluginManager.registerEvents(new Spawn(), this);
+
+        pluginManager.registerEvents(new CauldronLevelChange(), this);
+        pluginManager.registerEvents(new Ingite(), this);
 
     }
 
@@ -323,11 +350,13 @@ public final class Yuehua extends JavaPlugin {
         Objects.requireNonNull(Bukkit.getPluginCommand("relife")).setExecutor(new Relife());
         Objects.requireNonNull(Bukkit.getPluginCommand("renou")).setExecutor(new RenOu());
         Objects.requireNonNull(Bukkit.getPluginCommand("renou2")).setExecutor(new RenOu2());
+        Objects.requireNonNull(Bukkit.getPluginCommand("renou3")).setExecutor(new RenOu3());
         Objects.requireNonNull(Bukkit.getPluginCommand("select")).setExecutor(new Select());
         Objects.requireNonNull(Bukkit.getPluginCommand("storerelifestone")).setExecutor(new StoreRelifeStone());
 
         //opcommand
         //DATA
+        Objects.requireNonNull(Bukkit.getPluginCommand("a")).setExecutor(new A());
         Objects.requireNonNull(Bukkit.getPluginCommand("datacountget")).setExecutor(new DataCountGet());
         Objects.requireNonNull(Bukkit.getPluginCommand("dataget")).setExecutor(new DataGet());
         Objects.requireNonNull(Bukkit.getPluginCommand("dataset")).setExecutor(new DataSet());
@@ -335,47 +364,42 @@ public final class Yuehua extends JavaPlugin {
 
         Objects.requireNonNull(Bukkit.getPluginCommand("clearup")).setExecutor(new Clearup());
         Objects.requireNonNull(Bukkit.getPluginCommand("gi")).setExecutor(new GI());
+        Objects.requireNonNull(Bukkit.getPluginCommand("mysave")).setExecutor(new MySave());
         Objects.requireNonNull(Bukkit.getPluginCommand("mytp")).setExecutor(new MyTp());
         Objects.requireNonNull(Bukkit.getPluginCommand("mytp")).setTabCompleter(new MyTpTab());
         Objects.requireNonNull(Bukkit.getPluginCommand("perget")).setExecutor(new com.xiaoxiaoowo.yuehua.commands.opcommand.PerGet());
+        Objects.requireNonNull(Bukkit.getPluginCommand("r")).setExecutor(new R());
         Objects.requireNonNull(Bukkit.getPluginCommand("setsign")).setExecutor(new SetSign());
         Objects.requireNonNull(Bukkit.getPluginCommand("mysummon")).setExecutor(new Summon());
 
         //playercommand
-        Objects.requireNonNull(Bukkit.getPluginCommand("arrow")).setTabCompleter(new ArrowCom());
+//        Objects.requireNonNull(Bukkit.getPluginCommand("arrow")).setTabCompleter(new ArrowCom());
         Objects.requireNonNull(Bukkit.getPluginCommand("buy")).setTabCompleter(new BuyCom());
-        Objects.requireNonNull(Bukkit.getPluginCommand("money")).setTabCompleter(new com.xiaoxiaoowo.yuehua.commands.playercommand.completer.MoneyCom());
-        Objects.requireNonNull(Bukkit.getPluginCommand("ys")).setTabCompleter(new YuanSuCom());
+//        Objects.requireNonNull(Bukkit.getPluginCommand("money")).setTabCompleter(new com.xiaoxiaoowo.yuehua.commands.playercommand.completer.MoneyCom());
+//        Objects.requireNonNull(Bukkit.getPluginCommand("ys")).setTabCompleter(new YuanSuCom());
         Objects.requireNonNull(Bukkit.getPluginCommand("sale")).setTabCompleter(new SaleCom());
         Objects.requireNonNull(Bukkit.getPluginCommand("sell")).setTabCompleter(new SellCom());
         Objects.requireNonNull(Bukkit.getPluginCommand("yhteam")).setTabCompleter(new com.xiaoxiaoowo.yuehua.commands.playercommand.completer.Yhteam());
-        Objects.requireNonNull(Bukkit.getPluginCommand("arrow")).setExecutor(new ArrowCMD());
+//        Objects.requireNonNull(Bukkit.getPluginCommand("arrow")).setExecutor(new ArrowCMD());
         Objects.requireNonNull(Bukkit.getPluginCommand("buy")).setExecutor(new Buy());
-        Objects.requireNonNull(Bukkit.getPluginCommand("ki")).setExecutor(new Kill());
-        Objects.requireNonNull(Bukkit.getPluginCommand("money")).setExecutor(new MoneyCMD());
+//        Objects.requireNonNull(Bukkit.getPluginCommand("ki")).setExecutor(new Kill());
+//        Objects.requireNonNull(Bukkit.getPluginCommand("money")).setExecutor(new MoneyCMD());
         Objects.requireNonNull(Bukkit.getPluginCommand("sale")).setExecutor(new Sale());
         Objects.requireNonNull(Bukkit.getPluginCommand("sell")).setExecutor(new Sell());
-        Objects.requireNonNull(Bukkit.getPluginCommand("yh")).setExecutor(new Yh());
+//        Objects.requireNonNull(Bukkit.getPluginCommand("yh")).setExecutor(new Yh());
         Objects.requireNonNull(Bukkit.getPluginCommand("yhteam")).setExecutor(new Yhteam());
-        Objects.requireNonNull(Bukkit.getPluginCommand("ys")).setExecutor(new YuanSuCMD());
+//        Objects.requireNonNull(Bukkit.getPluginCommand("ys")).setExecutor(new YuanSuCMD());
+        Objects.requireNonNull(Bukkit.getPluginCommand("c")).setExecutor(new Check());
+        Objects.requireNonNull(Bukkit.getPluginCommand("c")).setTabCompleter(new com.xiaoxiaoowo.yuehua.commands.playercommand.completer.Check());
+        Objects.requireNonNull(Bukkit.getPluginCommand("fixlore")).setExecutor(new FixLore());
 
         //test
         Objects.requireNonNull(Bukkit.getPluginCommand("test")).setExecutor(new Test());
 
+        Objects.requireNonNull(Bukkit.getPluginCommand("advancement")).setExecutor(new Advancement());
+
         //环城跑酷
         Objects.requireNonNull(Bukkit.getPluginCommand("huancheng")).setExecutor(new HuanCheng());
-    }
-
-    public static boolean ItemCompare(ItemStack itemStack1, ItemStack itemStack2) {
-        if (itemStack1.getType() != itemStack2.getType()) {
-            return false;
-        }
-        if (itemStack1.getAmount() != itemStack2.getAmount()) {
-            return false;
-        }
-        ItemMeta itemMeta1 = itemStack1.getItemMeta();
-        ItemMeta itemMeta2 = itemStack2.getItemMeta();
-        return Objects.equals(itemMeta1.getPersistentDataContainer().get(DataContainer.id, PersistentDataType.STRING), itemMeta2.getPersistentDataContainer().get(DataContainer.id, PersistentDataType.STRING));
     }
 
 }

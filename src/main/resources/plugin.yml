@@ -4,6 +4,14 @@ main: com.xiaoxiaoowo.yuehua.Yuehua
 api-version: '1.20'
 depend: [NBTAPI]
 commands:
+  advancement:
+    description: advancement
+  a:
+    description: a
+  check:
+    description: check
+  r:
+    description: r
   blocktp:
     description: blocktp
   duanzao:
@@ -22,6 +30,8 @@ commands:
     description: renou
   renou2:
     description: renou2
+  renou3:
+    description: renou3
   select:
     description: select
   storerelifestone:
@@ -36,6 +46,8 @@ commands:
     description: itemdata
   clearup:
     description: clearup
+  mysave:
+    description: mysave
   gi:
     description: gi
     aliases:
@@ -50,33 +62,19 @@ commands:
     description: setsign
   mysummon:
     description: mysummon
-  arrow:
-    description: arrow
   buy:
     description: buy
-  ki:
-    description: ki
-  money:
-    description: money
   sell:
     description: sell
   sale:
     description: sale
-  yh:
-    description: yh
-    aliases:
-      - YH
-      - yH
-      - Yh
   yhteam:
     description: yhteam
-  ys:
-    description: ys
-    aliases:
-      - YS
-      - yS
-      - Ys
   test:
     description: test
   huancheng:
     description: huancheng
+  c:
+    description: c
+  fixlore:
+    description: fixlore

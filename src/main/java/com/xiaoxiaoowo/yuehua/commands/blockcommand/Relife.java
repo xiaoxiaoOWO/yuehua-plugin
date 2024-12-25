@@ -45,7 +45,7 @@ public final class Relife implements CommandExecutor {
                 if (stoneCount == 0) {
                     Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance, () -> {
                         player.sendMessage(
-                                Component.text("§6[重生存储]§4重生石不足")
+                                Component.text("§6[重生存储]§4重生石不足，请在奈何桥背面存储")
                         );
                     });
                     return true;
@@ -87,7 +87,7 @@ public final class Relife implements CommandExecutor {
                 if (stoneCount == 0) {
                     Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance, () -> {
                         player.sendMessage(
-                                Component.text("§6[重生存储]§4重生石不足")
+                                Component.text("§6[重生存储]§4重生石不足，请在奈何桥背面存储")
                         );
                     });
                     return true;

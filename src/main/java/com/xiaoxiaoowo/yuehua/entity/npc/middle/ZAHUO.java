@@ -1,11 +1,10 @@
 package com.xiaoxiaoowo.yuehua.entity.npc.middle;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.itemstack.Book;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Feather;
-import com.xiaoxiaoowo.yuehua.itemstack.other.FuBen;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Money;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Other;
+import com.xiaoxiaoowo.yuehua.items.other.Feather;
+import com.xiaoxiaoowo.yuehua.items.other.FuBen;
+import com.xiaoxiaoowo.yuehua.items.other.Money;
+import com.xiaoxiaoowo.yuehua.items.other.Other;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -48,12 +47,15 @@ public final class ZAHUO {
             recipeDefault5.addIngredient(Other.ARROW);
             MerchantRecipe recipeDefault6 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipeDefault6.addIngredient(Other.ARROW);
+            MerchantRecipe recipeDefault7 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault7.addIngredient(Other.ARROW);
             recipesDefault.add(recipeDefault1);
             recipesDefault.add(recipeDefault2);
             recipesDefault.add(recipeDefault3);
             recipesDefault.add(recipeDefault4);
             recipesDefault.add(recipeDefault5);
             recipesDefault.add(recipeDefault6);
+            recipesDefault.add(recipeDefault7);
             it.setRecipes(recipesDefault);
 
 
@@ -80,33 +82,37 @@ public final class ZAHUO {
             MerchantRecipe recipe0 = new MerchantRecipe(arrow, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             yinyuan.setAmount(1);
             recipe0.addIngredient(yinyuan);
-            it.setRecipe(0,recipe0);
+            it.setRecipe(0, recipe0);
 
             MerchantRecipe recipe1 = new MerchantRecipe(qingying, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             yuanbao.setAmount(1);
             recipe1.addIngredient(yuanbao);
-            it.setRecipe(1,recipe1);
+            it.setRecipe(1, recipe1);
 
             MerchantRecipe recipe2 = new MerchantRecipe(tongyaoshi, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
-            yinyuan.setAmount(5);
-            recipe2.addIngredient(yinyuan);
-            it.setRecipe(2,recipe2);
+            yuanbao.setAmount(2);
+            recipe2.addIngredient(yuanbao);
+            it.setRecipe(2, recipe2);
 
             MerchantRecipe recipe3 = new MerchantRecipe(yinyaoshi, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
-            yuanbao.setAmount(1);
+            yuanbao.setAmount(5);
             recipe3.addIngredient(yuanbao);
-            recipe3.addIngredient(yinyuan);
-            it.setRecipe(3,recipe3);
+            it.setRecipe(3, recipe3);
 
             MerchantRecipe recipe4 = new MerchantRecipe(jinyaoshi, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
-            yuanbao.setAmount(5);
-            recipe4.addIngredient(yuanbao);
-            it.setRecipe(4,recipe4);
+            yinpiao.setAmount(2);
+            recipe4.addIngredient(yinpiao);
+            it.setRecipe(4, recipe4);
 
             MerchantRecipe recipe5 = new MerchantRecipe(yuyaoshi, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
-            yinpiao.setAmount(2);
+            yinpiao.setAmount(5);
             recipe5.addIngredient(yinpiao);
-            it.setRecipe(5,recipe5);
+            it.setRecipe(5, recipe5);
+
+            MerchantRecipe recipe6 = new MerchantRecipe(Other.wangyuanjin, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            yuanbao.setAmount(1);
+            recipe6.addIngredient(yuanbao);
+            it.setRecipe(6, recipe6);
 
 
         });

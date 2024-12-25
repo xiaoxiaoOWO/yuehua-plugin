@@ -23,10 +23,10 @@ public final class DataCountGet implements CommandExecutor {
             }
 
             SendInformation.sendMes(
-                    List.of(
+                    player, List.of(
                             Component.text("§6[命令系统]§a玩家数据量: " + "§b" + Yuehua.playerData.size()),
                             Component.text("§6[命令系统]§a怪物数据量: " + "§b" + Yuehua.monsterData.size())
-                    ), player);
+                    ));
         }
         return true;
     }

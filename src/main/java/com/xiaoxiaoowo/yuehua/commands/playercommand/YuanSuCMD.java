@@ -2,7 +2,7 @@ package com.xiaoxiaoowo.yuehua.commands.playercommand;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.Data;
-import com.xiaoxiaoowo.yuehua.itemstack.dz.YuanSu;
+import com.xiaoxiaoowo.yuehua.items.dz.YuanSu;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -49,7 +49,7 @@ public final class YuanSuCMD implements CommandExecutor {
                         }
                         int amount;
                         try {
-                            amount = Integer.parseInt(args[1]);
+                            amount = Integer.parseInt(args[2]);
                         } catch (NumberFormatException e) {
                             player.sendMessage(
                                     Component.text("§6[命令系统]§4参数错误")
@@ -341,7 +341,7 @@ public final class YuanSuCMD implements CommandExecutor {
                         }
                         int amount;
                         try {
-                            amount = Integer.parseInt(args[1]);
+                            amount = Integer.parseInt(args[2]);
                         } catch (NumberFormatException e) {
                             player.sendMessage(
                                     Component.text("§6[命令系统]§4参数错误")

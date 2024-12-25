@@ -16,6 +16,7 @@ import org.bukkit.inventory.PlayerInventory;
 
 public final class LoadCrossBow implements Listener {
 
+
     @EventHandler
     public void onLoadCrossBow(EntityLoadCrossbowEvent e) {
         LivingEntity livingEntity = e.getEntity();
@@ -29,7 +30,8 @@ public final class LoadCrossBow implements Listener {
                 if(gongData.branch == 1){
                     gongData.time_charging = GetEntity.world.getGameTime() - gongData.time_charging;
                 }
-                gongData.readyCrossBow = false;
+                gongData.noAct = GetEntity.world.getGameTime() + 1;
+
             } else {
                 e.setCancelled(true);
                 Scheduler.async(() -> player.sendMessage(

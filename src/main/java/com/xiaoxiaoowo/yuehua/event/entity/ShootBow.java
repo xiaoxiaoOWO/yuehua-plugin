@@ -3,34 +3,31 @@ package com.xiaoxiaoowo.yuehua.event.entity;
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.GongData;
 import com.xiaoxiaoowo.yuehua.data.MonsterData;
+import com.xiaoxiaoowo.yuehua.data.PetData;
 import com.xiaoxiaoowo.yuehua.data.slot.SlotWithOneActiveSkill;
 import com.xiaoxiaoowo.yuehua.data.slot.SlotWithTwoActiveSkill;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Other;
-import com.xiaoxiaoowo.yuehua.system.DoJiNeng;
+import com.xiaoxiaoowo.yuehua.items.other.Other;
+import com.xiaoxiaoowo.yuehua.jineng.DoJiNeng;
 import com.xiaoxiaoowo.yuehua.system.handleMonsters.DoMonsterShoot;
-import com.xiaoxiaoowo.yuehua.system.handleObsevers.DoDeath;
-import com.xiaoxiaoowo.yuehua.system.handleObsevers.DoJiNengObservers;
+import com.xiaoxiaoowo.yuehua.system.handlePets.DoPetShoot;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import com.xiaoxiaoowo.yuehua.utils.SendInformation;
 import net.kyori.adventure.text.Component;
-import org.bukkit.Location;
-import org.bukkit.entity.*;
+import org.bukkit.entity.Arrow;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.util.Vector;
 
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
 
 public final class ShootBow implements Listener {
 
-    private static final Random random = new Random();
-
     private static final ItemStack ARROW = Other.ARROW.clone();
-
-
 
     @EventHandler
     public void onShootBow(EntityShootBowEvent e) {
@@ -40,77 +37,86 @@ public final class ShootBow implements Listener {
             Player player = (Player) livingEntity;
             GongData data = (GongData) Yuehua.playerData.get(player.getUniqueId());
             if (!data.canShoot) {
-                SendInformation.sendMes(Component.text("§e[游戏机制]§4你被缴械了，无法射箭"), player);
+                SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你被缴械了，无法射箭"));
                 e.setCancelled(true);
                 return;
             }
+            data.noAct = GetEntity.world.getGameTime() + 1;
 
-            data.readyBow = false;
 
             Arrow arrowEntity = (Arrow) e.getProjectile();
             arrowEntity.setCritical(false);
             double arrow = data.arrow;
 
+            long time;
+            if (data.isBow) {
+                time = GetEntity.world.getGameTime() - data.time_pulling;
+            } else {
+                time = data.time_charging;
+                data.time_charging = GetEntity.world.getGameTime();
+            }
+
+
             if (data.branch != 1) {
                 //未进阶，簌霖
-
             } else {
-                //长虹
-                long time;
-
-                if (data.isBow) {
-                    time = GetEntity.world.getGameTime() - data.time_pulling;
-                } else {
-                    time = data.time_charging;
-                    data.time_charging = GetEntity.world.getGameTime();
-                }
-
             }
 
             arrowEntity.setDamage(arrow);
 
+            //不能再拾取
+            arrowEntity.setPickupStatus(Arrow.PickupStatus.DISALLOWED);
 
-            if (random.nextDouble() < data.arrow_no_cost) {
-                SendInformation.sendMes(Component.text("§e[游戏机制]§b[箭矢不消耗]§a触发"), player);
-                player.getInventory().addItem(ARROW);
+
+            PlayerInventory playerInventory = player.getInventory();
+            if (data.arrow_count > 0) {
+                data.arrow_count--;
+                playerInventory.addItem(ARROW);
             }
 
-            if (random.nextDouble() < data.arrow_pierce) {
-                SendInformation.sendMes(Component.text("§e[游戏机制]§b[穿透箭]§a触发"), player);
-                arrowEntity.setPierceLevel(127);
+
+            //箭的速度
+            Vector speed = arrowEntity.getVelocity();
+            Vector direction = speed.clone().normalize();
+
+
+            double force = e.getForce();
+            if (force < 2.99) {
+                //非满弦箭，只可能是弓
+                //附灵一，蓄力所需时间减少
+                double timeNeed = (1 - data.arrow_no_cost) * 20;
+                if (time >= timeNeed - 0.01) {
+                    //附灵变满弦
+                    arrowEntity.setVelocity(direction.multiply(3));
+                    arrowEntity.addScoreboardTag("fullforce");
+                }
+
+            } else {
+                //满弦箭
+                //附灵二，加强满弦初速度
+                double speedMultiplier = 1 + data.arrow_pierce;
+                arrowEntity.setVelocity(speed.multiply(speedMultiplier));
+                arrowEntity.addScoreboardTag("fullforce");
             }
+
 
             if (!data.canJiNeng) {
                 return;
             }
 
-            if(data.slot0 instanceof SlotWithTwoActiveSkill slotWithTwoActiveSkill){
-                if(slotWithTwoActiveSkill.cd_active2 < GetEntity.world.getGameTime()){
-                    Location location = player.getLocation();
-                    double dxpitch = location.getPitch() - data.startPitch;
-                    double dxyaw = location.getYaw() - data.startYaw;
-
-                    if(dxpitch < -75){
-                        DoJiNeng.doUpHeadShoot(slotWithTwoActiveSkill.id, data);
-                        return;
-                    }
-
-                    if(dxpitch > 75){
-                        DoJiNeng.doDownHeadShoot(slotWithTwoActiveSkill.id,data);
-                        return;
-                    }
-
-                    if(dxyaw > 150 || dxyaw < -150){
-                        DoJiNeng.doRorateShoot(slotWithTwoActiveSkill.id,data);
-                        return;
-                    }
-                }
-            }
 
             //玩家是否下蹲
             if (!player.isSneaking()) {
                 return;
             }
+
+//            if (data.slot0 instanceof SlotWithTwoActiveSkill slotWithTwoActiveSkill) {
+//                if (slotWithTwoActiveSkill.cd_active2 < GetEntity.world.getGameTime()) {
+//                    switch (slotWithTwoActiveSkill.id) {
+//
+//                    }
+//                }
+//            }
 
             SlotWithOneActiveSkill slotWithOneActiveSkill = data.slot0;
             if (slotWithOneActiveSkill.cd_active > GetEntity.world.getGameTime()) {
@@ -121,7 +127,16 @@ public final class ShootBow implements Listener {
             DoJiNeng.doJiNengProjectile(slotWithOneActiveSkill.id, data, arrowEntity);
 
 
-        }else {
+        } else {
+            if (livingEntity.getScoreboardTags().contains("p")) {
+                PetData petData = Yuehua.petData.get(livingEntity.getUniqueId());
+                for (String id : petData.shootObservers) {
+                    DoPetShoot.doShoot(id, petData, (Arrow) e.getProjectile());
+                }
+                return;
+
+            }
+
             MonsterData monsterData = Yuehua.monsterData.get(livingEntity.getUniqueId());
             for (String id : monsterData.shootObservers) {
                 DoMonsterShoot.doShoot(id, monsterData, (Arrow) e.getProjectile());

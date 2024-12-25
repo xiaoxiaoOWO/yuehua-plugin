@@ -1,7 +1,10 @@
 package com.xiaoxiaoowo.yuehua.utils;
 
 
-import com.xiaoxiaoowo.yuehua.commands.playercommand.Yh;
+import com.xiaoxiaoowo.yuehua.Yuehua;
+import com.xiaoxiaoowo.yuehua.guis.Recipe;
+import com.xiaoxiaoowo.yuehua.guis.Yh;
+import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import de.tr7zw.nbtapi.NBT;
 import de.tr7zw.nbtapi.NBTCompound;
 import de.tr7zw.nbtapi.NBTItem;
@@ -10,14 +13,330 @@ import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public final class SQL {
     private static Connection connection;
+    private static Connection recipeConnection;
 
     private final static String url = "jdbc:sqlite:world/yh.db";
+    private final static String recipeUrl = "jdbc:sqlite:world/recipe.db";
+
+    private static final String getAllShared = """
+            SELECT * FROM shared;
+            """;
+
+    private static final String getAllRecipe = """
+            SELECT * FROM recipe;
+            """;
+
+    private static final String getAllZhanArmor = """
+            SELECT * FROM zhanarmor;
+            """;
+
+    private static final String getAllGongArmor = """
+            SELECT * FROM gongarmor;
+            """;
+
+    private static final String getAllDanArmor = """
+            SELECT * FROM danarmor;
+            """;
+
+    private static final String getAllZhanWeapon = """
+            SELECT * FROM zhanweapon;
+            """;
+
+    private static final String getAllGongWeapon = """
+            SELECT * FROM gongweapon;
+            """;
+
+    private static final String getAllDanWeapon = """
+            SELECT * FROM danweapon;
+            """;
+
+    private static final String getAllZhanBiWeapon = """
+            SELECT * FROM zhanbiweapon;
+            """;
+
+    private static final String getAllGongBiWeapon = """
+            SELECT * FROM gongbiweapon;
+            """;
+
+    private static final String getAllDanBiWeapon = """
+            SELECT * FROM danbiweapon;
+            """;
+
+    private static final String getAllZhanFaBao = """
+            SELECT * FROM zhanfabao;
+            """;
+
+    private static final String getAllGongFaBao = """
+            SELECT * FROM gongfabao;
+            """;
+
+    private static final String getAllDanFaBao = """
+            SELECT * FROM danfabao;
+            """;
+
+    private static final String getAllZhanYiQi = """
+            SELECT * FROM zhanyiqi;
+            """;
+
+    private static final String getAllGongYiQi = """
+            SELECT * FROM gongyiqi;
+            """;
+
+    private static final String getAllDanYiQi = """
+            SELECT * FROM danyiqi;
+            """;
+
+    private static final String getAllShipinRecipe = """
+            SELECT * FROM shipinrecipe;
+            """;
+
+    private static final String getAllDanDan = """
+            SELECT * FROM dandan;
+            """;
+
+    private static final String getAllDan = """
+            SELECT * FROM dan;
+            """;
+
+    private static final String getAllIdItem = """
+            SELECT * FROM iditem;
+            """;
+
+
+    private static final String getZhanArmor = """
+            SELECT data
+            FROM zhanarmor
+            WHERE name = ?;
+            """;
+
+    private static final String getGongArmor = """
+            SELECT data
+            FROM gongarmor
+            WHERE name = ?;
+            """;
+
+    private static final String getDanArmor = """
+            SELECT data
+            FROM danarmor
+            WHERE name = ?;
+            """;
+
+
+    private static final String getZhanWeapon = """
+            SELECT data
+            FROM zhanweapon
+            WHERE name = ?;
+            """;
+
+    private static final String getGongWeapon = """
+            SELECT data
+            FROM gongweapon
+            WHERE name = ?;
+            """;
+
+    private static final String getDanWeapon = """
+            SELECT data
+            FROM danweapon
+            WHERE name = ?;
+            """;
+
+    private static final String getZhanBiWeapon = """
+            SELECT data
+            FROM zhanbiweapon
+            WHERE name = ?;
+            """;
+
+    private static final String getGongBiWeapon = """
+            SELECT data
+            FROM gongbiweapon
+            WHERE name = ?;
+            """;
+
+    private static final String getDanBiWeapon = """
+            SELECT data
+            FROM danbiweapon
+            WHERE name = ?;
+            """;
+
+    private static final String getZhanFaBao = """
+            SELECT data
+            FROM zhanfabao
+            WHERE name = ?;
+            """;
+    private static final String getGongFaBao = """
+            SELECT data
+            FROM gongfabao
+            WHERE name = ?;
+            """;
+
+    private static final String getDanFaBao = """
+            SELECT data
+            FROM danfabao
+            WHERE name = ?;
+            """;
+
+    private static final String getZhanYiQi = """
+            SELECT data
+            FROM zhanyiqi
+            WHERE name = ?;
+            """;
+
+    private static final String getGongYiQi = """
+            SELECT data
+            FROM gongyiqi
+            WHERE name = ?;
+            """;
+
+
+    private static final String getDanYiQi = """
+            SELECT data
+            FROM danyiqi
+            WHERE name = ?;
+            """;
+
+    private static final String getDanDan = """
+            SELECT data
+            FROM dandan
+            WHERE name = ?;
+            """;
+
+    private static final String getDan = """
+            SELECT data
+            FROM dan
+            WHERE name = ?;
+            """;
+
+    private static final String getIdItem = """
+            SELECT data
+            FROM iditem
+            WHERE name = ?;
+            """;
+
+    private static final String getShipinRecipe = """
+            SELECT data
+            FROM shipinrecipe
+            WHERE name = ?;
+            """;
+
+    private static final String storeShared = """
+            INSERT OR REPLACE INTO shared (player_name, shared) VALUES (?, ?);
+            """;
+
+    private static final String storeRecipe = """
+            INSERT OR REPLACE INTO recipe (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeZhanArmor = """
+            INSERT OR REPLACE INTO zhanarmor (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeGongArmor = """
+            INSERT OR REPLACE INTO gongarmor (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeDanArmor = """
+            INSERT OR REPLACE INTO danarmor (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeZhanWeapon = """
+            INSERT OR REPLACE INTO zhanweapon (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeGongWeapon = """
+            INSERT OR REPLACE INTO gongweapon (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeDanWeapon = """
+            INSERT OR REPLACE INTO danweapon (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeZhanBiWeapon = """
+            INSERT OR REPLACE INTO zhanbiweapon (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeGongBiWeapon = """
+            INSERT OR REPLACE INTO gongbiweapon (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeDanBiWeapon = """
+            INSERT OR REPLACE INTO danbiweapon (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeZhanFaBao = """
+            INSERT OR REPLACE INTO zhanfabao (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeGongFaBao = """
+            INSERT OR REPLACE INTO gongfabao (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeDanFaBao = """
+            INSERT OR REPLACE INTO danfabao (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeZhanYiQi = """
+            INSERT OR REPLACE INTO zhanyiqi (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeGongYiQi = """
+            INSERT OR REPLACE INTO gongyiqi (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeDanYiQi = """
+            INSERT OR REPLACE INTO danyiqi (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeShipinRecipe = """
+            INSERT OR REPLACE INTO shipinrecipe (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeDanDan = """
+            INSERT OR REPLACE INTO dandan (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeDan = """
+            INSERT OR REPLACE INTO dan (name, data)
+            VALUES (?, ?);
+            """;
+    private static final String storeIdItem = """
+            INSERT OR REPLACE INTO iditem (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeDuanZaoTai = """
+            INSERT OR REPLACE INTO duanzaotai (name, data)
+            VALUES (?, ?);
+            """;
+
     private static final String storeInventory1 = """
             INSERT OR REPLACE INTO inventory1 (player_name, data)
             VALUES (?, ?);
@@ -122,6 +441,18 @@ public final class SQL {
     private static final String storeShiChangMoney = """
             INSERT OR REPLACE INTO shichangmoney (player_name, count)
             VALUES (?, ?);
+            """;
+
+    private static final String getShared = """
+            SELECT shared
+            FROM shared
+            WHERE player_name = ?;
+            """;
+
+    private static final String getDuanZaoTai = """
+            SELECT data
+            FROM duanzaotai
+            WHERE name = ?;
             """;
 
     private static final String getInventory1 = """
@@ -316,22 +647,11 @@ public final class SQL {
             WHERE apply_team = ?;
             """;
 
-    private static final String storeShared = """
-            INSERT OR REPLACE INTO shared (player_name, shared) VALUES (?, ?);
-            """;
-
-    private static final String getShared = """
-            SELECT shared
-            FROM shared
-            WHERE player_name = ?;
-            """;
-
-
-
 
     public static void connect() {
         try {
             connection = DriverManager.getConnection(url);
+            recipeConnection = DriverManager.getConnection(recipeUrl);
             init();
         } catch (SQLException e) {
             Bukkit.shutdown();
@@ -343,6 +663,14 @@ public final class SQL {
         if (connection != null) {
             try {
                 connection.close();
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+            }
+        }
+
+        if (recipeConnection != null) {
+            try {
+                recipeConnection.close();
             } catch (SQLException e) {
                 Bukkit.shutdown();
             }
@@ -530,6 +858,155 @@ public final class SQL {
                 CREATE TABLE IF NOT EXISTS inventory18 (
                     id INTEGER PRIMARY KEY,
                     player_name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+        String CREATE_TABLE27 = """
+                CREATE TABLE IF NOT EXISTS recipe (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+        String CREATE_TABLE28 = """
+                CREATE TABLE IF NOT EXISTS zhanarmor (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+        String CREATE_TABLE29 = """
+                CREATE TABLE IF NOT EXISTS gongarmor (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+        String CREATE_TABLE30 = """
+                CREATE TABLE IF NOT EXISTS danarmor (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+        String CREATE_TABLE31 = """
+                CREATE TABLE IF NOT EXISTS zhanweapon (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+        String CREATE_TABLE32 = """
+                CREATE TABLE IF NOT EXISTS gongweapon (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+        String CREATE_TABLE33 = """
+                CREATE TABLE IF NOT EXISTS danweapon (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+
+        String CREATE_TABLE34 = """
+                CREATE TABLE IF NOT EXISTS zhanbiweapon (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+        String CREATE_TABLE35 = """
+                CREATE TABLE IF NOT EXISTS gongbiweapon (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+        String CREATE_TABLE36 = """
+                CREATE TABLE IF NOT EXISTS danbiweapon (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+
+        String CREATE_TABLE37 = """
+                CREATE TABLE IF NOT EXISTS zhanfabao (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+        String CREATE_TABLE38 = """
+                CREATE TABLE IF NOT EXISTS gongfabao (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+        String CREATE_TABLE39 = """
+                CREATE TABLE IF NOT EXISTS danfabao (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+
+        String CREATE_TABLE40 = """
+                CREATE TABLE IF NOT EXISTS zhanyiqi (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+        String CREATE_TABLE41 = """
+                CREATE TABLE IF NOT EXISTS gongyiqi (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+        String CREATE_TABLE42 = """
+                CREATE TABLE IF NOT EXISTS danyiqi (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+        String CREATE_TABLE43 = """
+                CREATE TABLE IF NOT EXISTS shipinrecipe (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+        String CREATE_TABLE44 = """
+                CREATE TABLE IF NOT EXISTS dan (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+        String CREATE_TABLE45 = """
+                CREATE TABLE IF NOT EXISTS dandan (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+        String CREATE_TABLE46 = """
+                CREATE TABLE IF NOT EXISTS iditem (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
+        String CREATE_TABLE47 = """
+                CREATE TABLE IF NOT EXISTS duanzaotai (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
                     data TEXT NOT NULL
                 );""";
 
@@ -743,10 +1220,189 @@ public final class SQL {
             throw new RuntimeException(e);
         }
 
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE27);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE28);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE29);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE30);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE31);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE32);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE33);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE34);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE35);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE36);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE37);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE38);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE39);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE40);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE41);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE42);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE43);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE44);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE45);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE46);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = connection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE47);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
 
 
     }
 
+
+    public static void storeDuanZaoTai(String name, Inventory inventory) {
+        try (PreparedStatement pstmt = connection.prepareStatement(storeDuanZaoTai)) {
+            pstmt.setString(1, name);
+            pstmt.setString(2, NBTItem.convertItemArraytoNBT(inventory.getContents()).toString());
+            pstmt.execute();
+        } // try-with-resources 将自动关闭 pstmt
+        catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+    }
 
     public static void storePlayerInventory1(String playerName, Inventory inventory) {
         try (PreparedStatement pstmt = connection.prepareStatement(storeInventory1)) {
@@ -980,6 +1636,19 @@ public final class SQL {
         }
     }
 
+    public static void storeShared(String playerName, Inventory inventory) {
+        try (PreparedStatement pstmt = connection.prepareStatement(storeShared)
+        ) {
+            pstmt.setString(1, playerName);
+            pstmt.setString(2, NBTItem.convertItemArraytoNBT(inventory.getContents()).toString());
+            pstmt.execute();
+        } // try-with-resources 将自动关闭 pstmt
+        catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public static void storeShiPin(String playerName, Inventory inventory) {
         try (PreparedStatement pstmt = connection.prepareStatement(storeShiPin)
@@ -1018,6 +1687,24 @@ public final class SQL {
             Bukkit.shutdown();
             throw new RuntimeException(e);
         }
+    }
+
+    public static Inventory retrieveDuanzaotai(String name) throws SQLException {
+        Inventory inventory = Bukkit.createInventory(null, 18, Component.text(name));
+        try (PreparedStatement pstmt = connection.prepareStatement(getDuanZaoTai)) {
+            pstmt.setString(1, name);
+
+            ResultSet resultSet = pstmt.executeQuery();
+            while (resultSet.next()) {
+                String data = resultSet.getString("data");
+                inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+            }
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        return inventory;
     }
 
     public static Inventory retrievePlayerInventory1(Player player) {
@@ -1362,6 +2049,25 @@ public final class SQL {
         return inventory;
     }
 
+    public static Inventory retrieveShared(Player player) {
+        Inventory inventory = Bukkit.createInventory(player, 54, Component.text("混元袋☯无界").color(NamedTextColor.AQUA));
+        String playerName = player.getName();
+        try (PreparedStatement pstmt = connection.prepareStatement(getShared)) {
+            pstmt.setString(1, playerName);
+
+            ResultSet resultSet = pstmt.executeQuery();
+            while (resultSet.next()) {
+                String data = resultSet.getString("shared");
+                inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+            }
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        return inventory;
+    }
+
     public static Inventory initialInventory(Player player, String a) {
         Inventory inventory = Bukkit.createInventory(player, 54, Component.text("乾坤盒☯" + a).color(NamedTextColor.AQUA));
         inventory.setItem(53, Yh.BACK_BEFORE);
@@ -1370,7 +2076,7 @@ public final class SQL {
 
 
     public static Inventory retrieveShiChang(int id) {
-        Inventory inventory = Bukkit.createInventory(null, 54, Component.text("全球市场[第" + (id + 1) + "页]").color(NamedTextColor.AQUA));
+        Inventory inventory = Bukkit.createInventory(null, 54, Component.text("月华市场[第" + (id + 1) + "页]").color(NamedTextColor.AQUA));
         try (PreparedStatement pstmt = connection.prepareStatement(getShiChang)) {
             pstmt.setInt(1, id);
 
@@ -1471,17 +2177,6 @@ public final class SQL {
         }
     }
 
-    public static void storeShared(String playerName, String shared) {
-        try (PreparedStatement pstmt = connection.prepareStatement(storeShared)) {
-            pstmt.setString(1, playerName);
-            pstmt.setString(2, shared);
-            pstmt.execute();
-        } catch (SQLException e) {
-            Bukkit.shutdown();
-            throw new RuntimeException(e);
-        }
-    }
-
     public static String getYhTeam(String playerName) {
         String yhTeam = "null";
         try (PreparedStatement pstmt = connection.prepareStatement(getYhTeam)) {
@@ -1497,20 +2192,6 @@ public final class SQL {
         return yhTeam;
     }
 
-    public static String getShared(String playerName) {
-        String shared = "null";
-        try (PreparedStatement pstmt = connection.prepareStatement(getShared)) {
-            pstmt.setString(1, playerName);
-            ResultSet resultSet = pstmt.executeQuery();
-            while (resultSet.next()) {
-                shared = resultSet.getString("shared");
-            }
-        } catch (SQLException e) {
-            Bukkit.shutdown();
-            throw new RuntimeException(e);
-        }
-        return shared;
-    }
 
     public static void storeYhTeamApply(String playerName, String applyTeam) {
         try (PreparedStatement pstmt = connection.prepareStatement(storeYhTeamApply)) {
@@ -1560,7 +2241,7 @@ public final class SQL {
     }
 
     public static List<String> getTeamPlayer(String yhTeam) {
-        List<String> playerList = new java.util.ArrayList<>();
+        List<String> playerList = new ArrayList<>();
         try (PreparedStatement pstmt = connection.prepareStatement(getTeamPlayer)) {
             pstmt.setString(1, yhTeam);
             ResultSet resultSet = pstmt.executeQuery();
@@ -1575,7 +2256,7 @@ public final class SQL {
     }
 
     public static List<String> getTeamApplyPlayer(String applyTeam) {
-        List<String> playerList = new java.util.ArrayList<>();
+        List<String> playerList = new ArrayList<>();
         try (PreparedStatement pstmt = connection.prepareStatement(getTeamApplyPlayer)) {
             pstmt.setString(1, applyTeam);
             ResultSet resultSet = pstmt.executeQuery();
@@ -1589,5 +2270,1168 @@ public final class SQL {
         return playerList;
     }
 
+    public static void initialShared(Player player) {
+        String playerName = player.getName();
+        Inventory inventory = Bukkit.createInventory(player, 54, Component.text("混元袋☯无界").color(NamedTextColor.AQUA));
+        inventory.setItem(53, Yh.BACK_BEFORE);
+        try (PreparedStatement pstmt = connection.prepareStatement(storeShared)
+        ) {
+            pstmt.setString(1, playerName);
+            pstmt.setString(2, NBTItem.convertItemArraytoNBT(inventory.getContents()).toString());
+            pstmt.execute();
+            Scheduler.sync(
+                    () -> Yuehua.sharedInv.put(playerName, inventory)
+            );
+        } // try-with-resources 将自动关闭 pstmt
+        catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void initialShared() {
+        try (PreparedStatement pstmt = connection.prepareStatement(getAllShared)) {
+            ResultSet resultSet = pstmt.executeQuery();
+            while (resultSet.next()) {
+                Inventory inventory = Bukkit.createInventory(null, 54, Component.text("混元袋☯无界").color(NamedTextColor.AQUA));
+                String playerName = resultSet.getString("player_name"); // 获取player_name列的数据
+                String data = resultSet.getString("shared"); // 获取shared列的数据
+                inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                Yuehua.sharedInv.put(playerName, inventory);
+            }
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public static void initialRecipe() {
+        try (PreparedStatement pstmt = recipeConnection.prepareStatement(getAllRecipe)) {
+            ResultSet resultSet = pstmt.executeQuery();
+            while (resultSet.next()) {
+                String name = resultSet.getString("name"); // 获取name列的数据
+                String data = resultSet.getString("data"); // 获取data列的数据
+                Inventory inventory = switch (name) {
+                    case "§b护甲配方[战][第一页]" -> Recipe.zhanArmor;
+
+                    case "§b护甲配方[弓][第一页]" -> Recipe.gongArmor;
+
+                    case "§b护甲配方[丹][第一页]" -> Recipe.danArmor;
+
+                    case "§b护甲配方[战][第二页]" -> Recipe.zhanArmor2;
+
+                    case "§b护甲配方[弓][第二页]" -> Recipe.gongArmor2;
+
+                    case "§b护甲配方[丹][第二页]" -> Recipe.danArmor2;
+
+                    case "§b武器配方[战][第一页]" -> Recipe.zhanWeapon;
+
+                    case "§b武器配方[弓][第一页]" -> Recipe.gongWeapon;
+
+                    case "§b武器配方[丹][第一页]" -> Recipe.danWeapon;
+
+                    case "§b武器配方[战][第二页]" -> Recipe.zhanWeapon2;
+
+                    case "§b武器配方[弓][第二页]" -> Recipe.gongWeapon2;
+
+                    case "§b武器配方[丹][第二页]" -> Recipe.danWeapon2;
+
+                    case "§b副武器配方[战][第一页]" -> Recipe.zhanBiWeapon;
+
+                    case "§b副武器配方[弓][第一页]" -> Recipe.gongBiWeapon;
+
+                    case "§b副武器配方[丹][第一页]" -> Recipe.danBiWeapon;
+
+                    case "§b副武器配方[战][第二页]" -> Recipe.zhanBiWeapon2;
+
+                    case "§b副武器配方[弓][第二页]" -> Recipe.gongBiWeapon2;
+
+                    case "§b副武器配方[丹][第二页]" -> Recipe.danBiWeapon2;
+
+                    case "§b法宝配方[战][第一页]" -> Recipe.zhanFaBao;
+
+                    case "§b法宝配方[弓][第一页]" -> Recipe.gongFaBao;
+
+                    case "§b法宝配方[丹][第一页]" -> Recipe.danFaBao;
+
+                    case "§b法宝配方[战][第二页]" -> Recipe.zhanFaBao2;
+
+                    case "§b法宝配方[弓][第二页]" -> Recipe.gongFaBao2;
+
+                    case "§b法宝配方[丹][第二页]" -> Recipe.danFaBao2;
+
+                    case "§b异器配方[战][第一页]" -> Recipe.zhanYiQi;
+
+                    case "§b异器配方[弓][第一页]" -> Recipe.gongYiQi;
+
+                    case "§b异器配方[丹][第一页]" -> Recipe.danYiQi;
+
+                    case "§b异器配方[战][第二页]" -> Recipe.zhanFaBao2;
+
+                    case "§b异器配方[弓][第二页]" -> Recipe.gongFaBao2;
+
+                    case "§b异器配方[丹][第二页]" -> Recipe.danFaBao2;
+
+                    case "§b饰品配方[第一页]" -> Recipe.shipin;
+
+                    case "§b饰品配方[第二页]" -> Recipe.shipin2;
+
+                    case "§b丹药配方[第一页]" -> Recipe.recipeAllDan;
+
+                    case "§b丹药配方[第二页]" -> Recipe.recipeAllDan2;
+
+                    case "§b丹药配方[仅炼丹][第一页]" -> Recipe.recipeDanDan;
+
+                    case "§b丹药配方[仅炼丹][第二页]" -> Recipe.recipeDanDan2;
+
+
+                    default -> null;
+                };
+                inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+
+
+
+            }
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+
+//        try (PreparedStatement pstmt = recipeConnection.prepareStatement(getAllIdItem)) {
+//            ResultSet resultSet = pstmt.executeQuery();
+//            while (resultSet.next()) {
+//                String name = resultSet.getString("name"); // 获取name列的数据
+//                String data = resultSet.getString("data"); // 获取data列的数据
+//                ItemStack itemStack = NBTItem.convertNBTtoItem((NBTCompound) NBT.parseNBT(data));
+//                Recipe.idToItem.put(name, itemStack);
+//            }
+//        } catch (SQLException e) {
+//            Bukkit.shutdown();
+//            throw new RuntimeException(e);
+//        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.zhanArmor.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getZhanArmor)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b护甲配方[战][第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.zhanarmorContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.zhanArmor2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getZhanArmor)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b护甲配方[战][第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.zhanarmorContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.gongArmor.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getGongArmor)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b护甲配方[弓][第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.gongarmorContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.gongArmor2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getGongArmor)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b护甲配方[弓][第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.gongarmorContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.danArmor.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getDanArmor)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b护甲配方[丹][第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.danarmorContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.danArmor2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getDanArmor)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b护甲配方[丹][第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.danarmorContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.zhanWeapon.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getZhanWeapon)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b武器配方[战][第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.zhanweaponContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.zhanWeapon2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getZhanWeapon)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b武器配方[战][第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.zhanweaponContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.gongWeapon.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getGongWeapon)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b武器配方[弓][第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.gongweaponContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.gongWeapon2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getGongWeapon)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b武器配方[弓][第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.gongweaponContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.danWeapon.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getDanWeapon)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b武器配方[丹][第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.danweaponContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.danWeapon2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getDanWeapon)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b武器配方[丹][第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.danweaponContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.zhanBiWeapon.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getZhanBiWeapon)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b副武器配方[战][第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.zhanbiweaponContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.zhanBiWeapon2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getZhanBiWeapon)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b副武器配方[战][第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.zhanbiweaponContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.gongBiWeapon.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getGongBiWeapon)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b副武器配方[弓][第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.gongbiweaponContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.gongBiWeapon2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getGongBiWeapon)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b副武器配方[弓][第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.gongbiweaponContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.danBiWeapon.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getDanBiWeapon)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b副武器配方[丹][第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.danbiweaponContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.danBiWeapon2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getDanBiWeapon)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b副武器配方[丹][第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.danbiweaponContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.zhanFaBao.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getZhanFaBao)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b法宝配方[战][第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.zhanfabaoContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.zhanFaBao2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getZhanFaBao)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b法宝配方[战][第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.zhanfabaoContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.gongFaBao.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getGongFaBao)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b法宝配方[弓][第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.gongfabaoContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.gongFaBao2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getGongFaBao)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b法宝配方[弓][第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.gongfabaoContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.danFaBao.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getDanFaBao)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b法宝配方[丹][第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.danfabaoContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.danFaBao2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getDanFaBao)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b法宝配方[丹][第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.danfabaoContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.zhanYiQi.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getZhanYiQi)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b异器配方[战][第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.zhanyiqiContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.zhanYiQi2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getZhanYiQi)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b异器配方[战][第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.zhanyiqiContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.gongYiQi.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getGongYiQi)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b异器配方[弓][第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.gongyiqiContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.gongYiQi2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getGongYiQi)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b异器配方[弓][第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.gongyiqiContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.danYiQi.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getDanYiQi)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b异器配方[丹][第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.danyiqiContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.danYiQi2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getDanYiQi)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b异器配方[丹][第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.danyiqiContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.shipin.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getShipinRecipe)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b饰品配方[第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.shipinContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.shipin2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getShipinRecipe)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b饰品配方[第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.shipinContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.recipeAllDan.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getDan)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b丹药配方[第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.danContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.recipeAllDan2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getDan)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b丹药配方[第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.danContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.recipeDanDan.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getDanDan)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b丹药配方[仅炼丹][第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.dandanContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.recipeDanDan2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getDanDan)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b丹药配方[仅炼丹][第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.dandanContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+
+    }
+
+    public static void storeOneInv(Inventory inventory, String name, String sql) {
+        try (PreparedStatement pstmt = recipeConnection.prepareStatement(sql)
+        ) {
+            pstmt.setString(1, name);
+            pstmt.setString(2, NBTItem.convertItemArraytoNBT(inventory.getContents()).toString());
+            pstmt.execute();
+        } // try-with-resources 将自动关闭 pstmt
+        catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public static void storeRecipe() {
+        storeOneInv(Recipe.zhanArmor, "§b护甲配方[战][第一页]", storeRecipe);
+        storeOneInv(Recipe.zhanArmor2, "§b护甲配方[战][第二页]", storeRecipe);
+        storeOneInv(Recipe.gongArmor, "§b护甲配方[弓][第一页]", storeRecipe);
+        storeOneInv(Recipe.gongArmor2, "§b护甲配方[弓][第二页]", storeRecipe);
+        storeOneInv(Recipe.danArmor, "§b护甲配方[丹][第一页]", storeRecipe);
+        storeOneInv(Recipe.danArmor2, "§b护甲配方[丹][第二页]", storeRecipe);
+
+        storeOneInv(Recipe.zhanWeapon, "§b武器配方[战][第一页]", storeRecipe);
+        storeOneInv(Recipe.zhanWeapon2, "§b武器配方[战][第二页]", storeRecipe);
+        storeOneInv(Recipe.gongWeapon, "§b武器配方[弓][第一页]", storeRecipe);
+        storeOneInv(Recipe.gongWeapon2, "§b武器配方[弓][第二页]", storeRecipe);
+        storeOneInv(Recipe.danWeapon, "§b武器配方[丹][第一页]", storeRecipe);
+        storeOneInv(Recipe.danWeapon2, "§b武器配方[丹][第二页]", storeRecipe);
+
+        storeOneInv(Recipe.zhanBiWeapon, "§b副武器配方[战][第一页]", storeRecipe);
+        storeOneInv(Recipe.zhanBiWeapon2, "§b副武器配方[战][第二页]", storeRecipe);
+        storeOneInv(Recipe.gongBiWeapon, "§b副武器配方[弓][第一页]", storeRecipe);
+        storeOneInv(Recipe.gongBiWeapon2, "§b副武器配方[弓][第二页]", storeRecipe);
+        storeOneInv(Recipe.danBiWeapon, "§b副武器配方[丹][第一页]", storeRecipe);
+        storeOneInv(Recipe.danBiWeapon2, "§b副武器配方[丹][第二页]", storeRecipe);
+
+        storeOneInv(Recipe.zhanFaBao, "§b法宝配方[战][第一页]", storeRecipe);
+        storeOneInv(Recipe.zhanFaBao2, "§b法宝配方[战][第二页]", storeRecipe);
+        storeOneInv(Recipe.gongFaBao, "§b法宝配方[弓][第一页]", storeRecipe);
+        storeOneInv(Recipe.gongFaBao2, "§b法宝配方[弓][第二页]", storeRecipe);
+        storeOneInv(Recipe.danFaBao, "§b法宝配方[丹][第一页]", storeRecipe);
+        storeOneInv(Recipe.danFaBao2, "§b法宝配方[丹][第二页]", storeRecipe);
+
+        storeOneInv(Recipe.zhanYiQi, "§b异器配方[战][第一页]", storeRecipe);
+        storeOneInv(Recipe.zhanYiQi2, "§b异器配方[战][第二页]", storeRecipe);
+        storeOneInv(Recipe.gongYiQi, "§b异器配方[弓][第一页]", storeRecipe);
+        storeOneInv(Recipe.gongYiQi2, "§b异器配方[弓][第二页]", storeRecipe);
+        storeOneInv(Recipe.danYiQi, "§b异器配方[丹][第一页]", storeRecipe);
+        storeOneInv(Recipe.danYiQi2, "§b异器配方[丹][第二页]", storeRecipe);
+
+        storeOneInv(Recipe.shipin, "§b饰品配方[第一页]", storeRecipe);
+        storeOneInv(Recipe.shipin2, "§b饰品配方[第二页]", storeRecipe);
+
+        storeOneInv(Recipe.recipeAllDan, "§b丹药配方[第一页]", storeRecipe);
+        storeOneInv(Recipe.recipeAllDan2, "§b丹药配方[第二页]", storeRecipe);
+        storeOneInv(Recipe.recipeDanDan, "§b丹药配方[仅炼丹][第一页]", storeRecipe);
+        storeOneInv(Recipe.recipeDanDan2, "§b丹药配方[仅炼丹][第二页]", storeRecipe);
+
+        Recipe.zhanarmorContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeZhanArmor);
+        });
+
+        Recipe.gongarmorContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeGongArmor);
+        });
+
+        Recipe.danarmorContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeDanArmor);
+        });
+
+        Recipe.zhanweaponContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeZhanWeapon);
+        });
+
+        Recipe.gongweaponContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeGongWeapon);
+        });
+
+        Recipe.danweaponContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeDanWeapon);
+        });
+
+        Recipe.zhanbiweaponContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeZhanBiWeapon);
+        });
+
+        Recipe.gongbiweaponContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeGongBiWeapon);
+        });
+
+        Recipe.danbiweaponContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeDanBiWeapon);
+        });
+
+        Recipe.zhanfabaoContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeZhanFaBao);
+        });
+
+        Recipe.gongfabaoContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeGongFaBao);
+        });
+
+        Recipe.danfabaoContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeDanFaBao);
+        });
+
+        Recipe.zhanyiqiContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeZhanYiQi);
+        });
+
+        Recipe.gongyiqiContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeGongYiQi);
+        });
+
+        Recipe.danyiqiContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeDanYiQi);
+        });
+
+        Recipe.shipinContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeShipinRecipe);
+        });
+
+        Recipe.danContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeDan);
+        });
+
+        Recipe.dandanContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeDanDan);
+        });
+
+//        Recipe.idToItem.forEach((key, value) -> {
+//            try (PreparedStatement pstmt = recipeConnection.prepareStatement(storeIdItem)
+//            ) {
+//                pstmt.setString(1, key);
+//                pstmt.setString(2, NBTItem.convertItemtoNBT(value).toString());
+//                pstmt.execute();
+//            } // try-with-resources 将自动关闭 pstmt
+//            catch (SQLException e) {
+//                Bukkit.shutdown();
+//                throw new RuntimeException(e);
+//            }
+//
+//        });
+
+
+    }
+
 
 }
+
+
+
+
+

@@ -5,7 +5,6 @@ import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.system.Team;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Location;
 import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.Command;
@@ -26,7 +25,7 @@ public final class Select implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player player) {
-            Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance,()->{
+            Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance, () -> {
                 player.sendMessage(
                         Component.text("§6[命令系统]§4你没有权限使用这个命令")
                 );
@@ -52,7 +51,6 @@ public final class Select implements CommandExecutor {
                 persistentDataContainer.remove(DataContainer.arrow);
                 persistentDataContainer.remove(DataContainer.arrow_add);
                 persistentDataContainer.remove(DataContainer.arrow_mul);
-                persistentDataContainer.remove(DataContainer.arrow_count);
                 persistentDataContainer.remove(DataContainer.arrow_count_max);
                 persistentDataContainer.remove(DataContainer.arrow_no_cost);
                 persistentDataContainer.remove(DataContainer.arrow_pierce);
@@ -102,12 +100,14 @@ public final class Select implements CommandExecutor {
                         persistentDataContainer.set(DataContainer.arrow, PersistentDataType.DOUBLE, 0.0);
                         persistentDataContainer.set(DataContainer.arrow_add, PersistentDataType.DOUBLE, 0.0);
                         persistentDataContainer.set(DataContainer.arrow_mul, PersistentDataType.DOUBLE, 1.0);
-                        persistentDataContainer.set(DataContainer.arrow_count, PersistentDataType.INTEGER, 0);
+                        if (!persistentDataContainer.has(DataContainer.arrow_count)) {
+                            persistentDataContainer.set(DataContainer.arrow_count, PersistentDataType.INTEGER, 0);
+                        }
                         persistentDataContainer.set(DataContainer.arrow_count_max, PersistentDataType.INTEGER, 0);
-                        persistentDataContainer.set(DataContainer.arrow_no_cost,PersistentDataType.DOUBLE,0.0);
-                        persistentDataContainer.set(DataContainer.arrow_pierce,PersistentDataType.DOUBLE,0.0);
-                        persistentDataContainer.set(DataContainer.is_bow,PersistentDataType.BOOLEAN,true);
-                        persistentDataContainer.set(DataContainer.time_charging,PersistentDataType.LONG,GetEntity.world.getGameTime());
+                        persistentDataContainer.set(DataContainer.arrow_no_cost, PersistentDataType.DOUBLE, 0.0);
+                        persistentDataContainer.set(DataContainer.arrow_pierce, PersistentDataType.DOUBLE, 0.0);
+                        persistentDataContainer.set(DataContainer.is_bow, PersistentDataType.BOOLEAN, false);
+                        persistentDataContainer.set(DataContainer.time_charging, PersistentDataType.LONG, GetEntity.world.getGameTime());
 
                     }
                     case "dan" -> {
@@ -115,9 +115,9 @@ public final class Select implements CommandExecutor {
                         persistentDataContainer.set(DataContainer.zhenfa, PersistentDataType.DOUBLE, 0.0);
                         persistentDataContainer.set(DataContainer.zhenfa_add, PersistentDataType.DOUBLE, 0.0);
                         persistentDataContainer.set(DataContainer.zhenfa_mul, PersistentDataType.DOUBLE, 1.0);
-                        persistentDataContainer.set(DataContainer.no_cost_1,PersistentDataType.DOUBLE, 0.0);
-                        persistentDataContainer.set(DataContainer.no_cost_2,PersistentDataType.DOUBLE, 0.0);
-                        persistentDataContainer.set(DataContainer.no_cost_3,PersistentDataType.DOUBLE, 0.0);
+                        persistentDataContainer.set(DataContainer.no_cost_1, PersistentDataType.DOUBLE, 0.0);
+                        persistentDataContainer.set(DataContainer.no_cost_2, PersistentDataType.DOUBLE, 0.0);
+                        persistentDataContainer.set(DataContainer.no_cost_3, PersistentDataType.DOUBLE, 0.0);
                         persistentDataContainer.set(DataContainer.slot3, PersistentDataType.STRING, "null");
                         persistentDataContainer.set(DataContainer.slot4, PersistentDataType.STRING, "null");
                         persistentDataContainer.set(DataContainer.slot5, PersistentDataType.STRING, "null");
@@ -133,7 +133,6 @@ public final class Select implements CommandExecutor {
                         persistentDataContainer.remove(DataContainer.arrow);
                         persistentDataContainer.remove(DataContainer.arrow_add);
                         persistentDataContainer.remove(DataContainer.arrow_mul);
-                        persistentDataContainer.remove(DataContainer.arrow_count);
                         persistentDataContainer.remove(DataContainer.arrow_count_max);
                         persistentDataContainer.remove(DataContainer.arrow_no_cost);
                         persistentDataContainer.remove(DataContainer.arrow_pierce);

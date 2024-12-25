@@ -1,28 +1,29 @@
 package com.xiaoxiaoowo.yuehua.event.player;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.commands.playercommand.Yh;
+import com.xiaoxiaoowo.yuehua.attribute.attributes.vanilla.Jump;
+import com.xiaoxiaoowo.yuehua.attribute.attributes.vanilla.Speed;
 import com.xiaoxiaoowo.yuehua.data.DanData;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.data.GongData;
 import com.xiaoxiaoowo.yuehua.data.ZhanData;
-import com.xiaoxiaoowo.yuehua.itemstack.Book;
+import com.xiaoxiaoowo.yuehua.guis.Task;
+import com.xiaoxiaoowo.yuehua.guis.Yh;
+import com.xiaoxiaoowo.yuehua.items.Book;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
-import com.xiaoxiaoowo.yuehua.utils.GetEntity;
-import com.xiaoxiaoowo.yuehua.utils.SQL;
-import com.xiaoxiaoowo.yuehua.utils.Scheduler;
+import com.xiaoxiaoowo.yuehua.utils.*;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffect;
@@ -35,6 +36,7 @@ public final class Join implements Listener {
     public static final PotionEffect effect = new PotionEffect(PotionEffectType.NIGHT_VISION, -1, 10, false, false, true);
     private static final Location WAITING = new Location(GetEntity.world, 218.5, 50, -1779.5);
 
+
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player player = e.getPlayer();
@@ -45,9 +47,7 @@ public final class Join implements Listener {
             InetSocketAddress inetSocketAddress = player.getAddress();
             if (inetSocketAddress == null) {
                 Scheduler.sync(
-                        () -> {
-                            player.kick(Component.text("§4网络出现了故障"));
-                        }
+                        () -> player.kick(Component.text("§4网络出现了故障"))
                 );
                 return;
             }
@@ -70,7 +70,7 @@ public final class Join implements Listener {
                             Scheduler.sync(
                                     () -> {
                                         player.teleportAsync(location);
-                                        player.banPlayer("§4禁止多开,如有特殊情况请联系管理员");
+                                        player.kick(Component.text("§4禁止多开,如有特殊情况请联系管理员"));
                                     }
                             );
                             return;
@@ -84,14 +84,76 @@ public final class Join implements Listener {
             PersistentDataContainer persistentDataContainer = player.getPersistentDataContainer();
             if (!persistentDataContainer.has(DataContainer.attack)) {
 
-                player.getInventory().addItem(Book.YUE_HUA);
+                PlayerInventory inventory = player.getInventory();
+                inventory.addItem(Book.START);
+                inventory.addItem(Book.SHUXIN);
+                inventory.addItem(Book.NEIRONG);
+                inventory.addItem(Book.WANFA);
+                inventory.addItem(Book.JINJI);
+
+                Inventory inventory1 = Bukkit.createInventory(player, 54, Component.translatable("qkd1"));
+                Inventory inventory2 = Bukkit.createInventory(player, 54, Component.translatable("qkd2"));
+                Inventory inventory3 = Bukkit.createInventory(player, 54, Component.translatable("qkd3"));
+                Inventory inventory4 = Bukkit.createInventory(player, 54, Component.translatable("qkd4"));
+                Inventory inventory5 = Bukkit.createInventory(player, 54, Component.translatable("qkd5"));
+                Inventory inventory6 = Bukkit.createInventory(player, 54, Component.translatable("qkd6"));
+                Inventory inventory7 = Bukkit.createInventory(player, 54, Component.translatable("qkd7"));
+                Inventory inventory8 = Bukkit.createInventory(player, 54, Component.translatable("qkd8"));
+                Inventory inventory9 = Bukkit.createInventory(player, 54, Component.translatable("qkd9"));
+                Inventory inventory10 = Bukkit.createInventory(player, 54, Component.translatable("qkd10"));
+                Inventory inventory11 = Bukkit.createInventory(player, 54, Component.translatable("qkd11"));
+                Inventory inventory12 = Bukkit.createInventory(player, 54, Component.translatable("qkd12"));
+                Inventory inventory13 = Bukkit.createInventory(player, 54, Component.translatable("qkd13"));
+                Inventory inventory14 = Bukkit.createInventory(player, 54, Component.translatable("qkd14"));
+                Inventory inventory15 = Bukkit.createInventory(player, 54, Component.translatable("qkd15"));
+                Inventory inventory16 = Bukkit.createInventory(player, 54, Component.translatable("qkd16"));
+                Inventory inventory17 = Bukkit.createInventory(player, 54, Component.translatable("qkd17"));
+                Inventory inventory18 = Bukkit.createInventory(player, 54, Component.translatable("qkd18"));
+
+                inventory1.setItem(53, Yh.BACK_BEFORE);
+                inventory2.setItem(53, Yh.BACK_BEFORE);
+                inventory3.setItem(53, Yh.BACK_BEFORE);
+                inventory4.setItem(53, Yh.BACK_BEFORE);
+                inventory5.setItem(53, Yh.BACK_BEFORE);
+                inventory6.setItem(53, Yh.BACK_BEFORE);
+                inventory7.setItem(53, Yh.BACK_BEFORE);
+                inventory8.setItem(53, Yh.BACK_BEFORE);
+                inventory9.setItem(53, Yh.BACK_BEFORE);
+                inventory10.setItem(53, Yh.BACK_BEFORE);
+                inventory11.setItem(53, Yh.BACK_BEFORE);
+                inventory12.setItem(53, Yh.BACK_BEFORE);
+                inventory13.setItem(53, Yh.BACK_BEFORE);
+                inventory14.setItem(53, Yh.BACK_BEFORE);
+                inventory15.setItem(53, Yh.BACK_BEFORE);
+                inventory16.setItem(53, Yh.BACK_BEFORE);
+                inventory17.setItem(53, Yh.BACK_BEFORE);
+                inventory18.setItem(53, Yh.BACK_BEFORE);
+
+                SQL.storePlayerInventory1(name, inventory1);
+                SQL.storePlayerInventory2(name, inventory2);
+                SQL.storePlayerInventory3(name, inventory3);
+                SQL.storePlayerInventory4(name, inventory4);
+                SQL.storePlayerInventory5(name, inventory5);
+                SQL.storePlayerInventory6(name, inventory6);
+                SQL.storePlayerInventory7(name, inventory7);
+                SQL.storePlayerInventory8(name, inventory8);
+                SQL.storePlayerInventory9(name, inventory9);
+                SQL.storePlayerInventory10(name, inventory10);
+                SQL.storePlayerInventory11(name, inventory11);
+                SQL.storePlayerInventory12(name, inventory12);
+                SQL.storePlayerInventory13(name, inventory13);
+                SQL.storePlayerInventory14(name, inventory14);
+                SQL.storePlayerInventory15(name, inventory15);
+                SQL.storePlayerInventory16(name, inventory16);
+                SQL.storePlayerInventory17(name, inventory17);
+                SQL.storePlayerInventory18(name, inventory18);
+
 
                 //违规记录
                 SQL.setCount(name);
 
                 SQL.storeYhTeam(name, "null");
 
-//                SQL.storeShared(name, "null");
 
                 //初始化视频槽
                 Inventory shipinBar = Bukkit.createInventory(player, 9, Component.text("饰品槽").color(NamedTextColor.AQUA));
@@ -184,6 +246,62 @@ public final class Join implements Listener {
 
                 persistentDataContainer.set(DataContainer.XianTaoCount, PersistentDataType.INTEGER, 0);
 
+                persistentDataContainer.set(DataContainer.noInfor, PersistentDataType.BOOLEAN, Boolean.FALSE);
+
+                persistentDataContainer.set(DataContainer.noInforDan, PersistentDataType.BOOLEAN, Boolean.FALSE);
+
+                persistentDataContainer.set(DataContainer.noSound, PersistentDataType.BOOLEAN, Boolean.FALSE);
+
+                persistentDataContainer.set(DataContainer.jiuji, PersistentDataType.LONG, 0L);
+
+                persistentDataContainer.set(DataContainer.guajiCount, PersistentDataType.INTEGER, 0);
+
+                persistentDataContainer.set(DataContainer.muCd, PersistentDataType.LONG, 0L);
+                persistentDataContainer.set(DataContainer.shuiCd, PersistentDataType.LONG, 0L);
+                persistentDataContainer.set(DataContainer.huoCd, PersistentDataType.LONG, 0L);
+                persistentDataContainer.set(DataContainer.tuCd, PersistentDataType.LONG, 0L);
+                persistentDataContainer.set(DataContainer.jinCd, PersistentDataType.LONG, 0L);
+
+                persistentDataContainer.set(DataContainer.checkCount, PersistentDataType.INTEGER, 500);
+
+                persistentDataContainer.set(DataContainer.killEastSkeletonConut, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastZombieCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastSpiderCount, PersistentDataType.INTEGER, 0);
+
+                persistentDataContainer.set(DataContainer.killEastArrowSkeletonCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastPoisonFlyCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastZombieEliteCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastSpiderEliteCount, PersistentDataType.INTEGER, 0);
+
+                persistentDataContainer.set(DataContainer.killEastZombieMountainCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastSpiderMountainCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastArrowSkeletonMountainCount, PersistentDataType.INTEGER, 0);
+
+                persistentDataContainer.set(DataContainer.killEastPoisonFlyMountainCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastPandaMountainCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastArrowSkeletonSHENMUCount, PersistentDataType.INTEGER, 0);
+
+                persistentDataContainer.set(DataContainer.killEastSpiderQueenMountainCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastWaterGhostMountainCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastPoisonSpiderMountainCount, PersistentDataType.INTEGER, 0);
+
+                persistentDataContainer.set(DataContainer.xuanshanglevel, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.xuanshangCd, PersistentDataType.LONG, 0L);
+                persistentDataContainer.set(DataContainer.xuanshangId, PersistentDataType.STRING, "null");
+
+                persistentDataContainer.set(DataContainer.mainTask, PersistentDataType.INTEGER, 0);
+
+                persistentDataContainer.set(DataContainer.advancementPoint,PersistentDataType.INTEGER,0);
+                Scheduler.sync(()->{
+                    player.getAdvancementProgress(AdvancementSet.killRoot).awardCriteria("impossibe");
+                    player.getAdvancementProgress(AdvancementSet.killRoot).awardCriteria("impossibe");
+                    player.getAdvancementProgress(AdvancementSet.allRoot).awardCriteria("impossibe");
+                    player.getAdvancementProgress(AdvancementSet.zhanRoot).awardCriteria("impossibe");
+                    player.getAdvancementProgress(AdvancementSet.gongRoot).awardCriteria("impossibe");
+                    player.getAdvancementProgress(AdvancementSet.danRoot).awardCriteria("impossibe");
+                    player.getAdvancementProgress(AdvancementSet.fubenRoot).awardCriteria("impossibe");
+                });
+
                 persistentDataContainer.set(DataContainer.attack_add, PersistentDataType.DOUBLE, 1.0);
                 persistentDataContainer.set(DataContainer.attack_mul, PersistentDataType.DOUBLE, 1.0);
                 persistentDataContainer.set(DataContainer.attack, PersistentDataType.DOUBLE, 1.0);
@@ -191,9 +309,80 @@ public final class Join implements Listener {
                 if (player.isOp()) {
                     player.addScoreboardTag("night_vision");
                 }
-
-
             }
+
+            if (!persistentDataContainer.has(DataContainer.noInfor)) {
+                persistentDataContainer.set(DataContainer.noInfor, PersistentDataType.BOOLEAN, Boolean.FALSE);
+            }
+
+            if (!persistentDataContainer.has(DataContainer.noInforDan)) {
+                persistentDataContainer.set(DataContainer.noInforDan, PersistentDataType.BOOLEAN, Boolean.FALSE);
+            }
+
+            if (!persistentDataContainer.has(DataContainer.noSound)) {
+                persistentDataContainer.set(DataContainer.noSound, PersistentDataType.BOOLEAN, Boolean.FALSE);
+            }
+
+            if (!persistentDataContainer.has(DataContainer.jiuji)) {
+                persistentDataContainer.set(DataContainer.jiuji, PersistentDataType.LONG, 0L);
+            }
+
+            if (!persistentDataContainer.has(DataContainer.guajiCount)) {
+                persistentDataContainer.set(DataContainer.guajiCount, PersistentDataType.INTEGER, 0);
+            }
+
+            if (!persistentDataContainer.has(DataContainer.jinCd)) {
+                persistentDataContainer.set(DataContainer.muCd, PersistentDataType.LONG, 0L);
+                persistentDataContainer.set(DataContainer.shuiCd, PersistentDataType.LONG, 0L);
+                persistentDataContainer.set(DataContainer.huoCd, PersistentDataType.LONG, 0L);
+                persistentDataContainer.set(DataContainer.tuCd, PersistentDataType.LONG, 0L);
+                persistentDataContainer.set(DataContainer.jinCd, PersistentDataType.LONG, 0L);
+            }
+
+            if (!persistentDataContainer.has(DataContainer.checkCount)) {
+                persistentDataContainer.set(DataContainer.checkCount, PersistentDataType.INTEGER, 500);
+            }
+
+            if (!persistentDataContainer.has(DataContainer.mainTask)) {
+                persistentDataContainer.set(DataContainer.killEastSkeletonConut, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastZombieCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastSpiderCount, PersistentDataType.INTEGER, 0);
+
+                persistentDataContainer.set(DataContainer.killEastArrowSkeletonCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastPoisonFlyCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastZombieEliteCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastSpiderEliteCount, PersistentDataType.INTEGER, 0);
+
+                persistentDataContainer.set(DataContainer.killEastZombieMountainCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastSpiderMountainCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastArrowSkeletonMountainCount, PersistentDataType.INTEGER, 0);
+
+                persistentDataContainer.set(DataContainer.killEastPoisonFlyMountainCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastPandaMountainCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastArrowSkeletonSHENMUCount, PersistentDataType.INTEGER, 0);
+
+                persistentDataContainer.set(DataContainer.killEastSpiderQueenMountainCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastWaterGhostMountainCount, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.killEastPoisonSpiderMountainCount, PersistentDataType.INTEGER, 0);
+
+                persistentDataContainer.set(DataContainer.xuanshanglevel, PersistentDataType.INTEGER, 0);
+                persistentDataContainer.set(DataContainer.xuanshangCd, PersistentDataType.LONG, 0L);
+                persistentDataContainer.set(DataContainer.xuanshangId, PersistentDataType.STRING, "null");
+
+                persistentDataContainer.set(DataContainer.mainTask, PersistentDataType.INTEGER, 0);
+            }
+
+//            if(!player.getAdvancementProgress(AdvancementSet.allRoot).isDone()){
+//                Scheduler.sync(()->{
+//                    persistentDataContainer.set(DataContainer.advancementPoint,PersistentDataType.INTEGER,0);
+//                    player.getAdvancementProgress(AdvancementSet.killRoot).awardCriteria("impossibe");
+//                    player.getAdvancementProgress(AdvancementSet.allRoot).awardCriteria("impossibe");
+//                    player.getAdvancementProgress(AdvancementSet.zhanRoot).awardCriteria("impossibe");
+//                    player.getAdvancementProgress(AdvancementSet.gongRoot).awardCriteria("impossibe");
+//                    player.getAdvancementProgress(AdvancementSet.danRoot).awardCriteria("impossibe");
+//                    player.getAdvancementProgress(AdvancementSet.fubenRoot).awardCriteria("impossibe");
+//                });
+//            }
 
             //根据职业初始化数据
             Data data = switch (persistentDataContainer.get(DataContainer.job, PersistentDataType.INTEGER)) {
@@ -215,13 +404,19 @@ public final class Join implements Listener {
             Scheduler.sync(
                     () -> {
                         Yuehua.playerData.put(uuid, data);
-                        Yuehua.timeLastIn.put(uuid,System.currentTimeMillis());
+                        if (data.job != 0) {
+                            Task.checkMain(player);
+                        }
+                        player.getAttribute(Attribute.GENERIC_JUMP_STRENGTH).removeModifier(Jump.canNotJump);
+                        player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(Speed.canNotMove);
+                        Scheduler.asyncLater(() -> Transfer.transferAttribute(data), 5 * 20);
+                        Yuehua.timeLastIn.put(uuid, System.currentTimeMillis());
                         if (player.isOp()) {
                             player.teleportAsync(location);
                             player.addScoreboardTag("op");
                             player.setGameMode(GameMode.CREATIVE);
                         } else {
-                            if (persistentDataContainer.get(DataContainer.fuben, PersistentDataType.INTEGER) != 0) {
+                            if (data.fuben > 1000) {
                                 player.setHealth(0);
                                 player.sendMessage(
                                         Component.text("§e[游戏机制]§4试图逃离副本机制，你已被惩罚")
@@ -235,22 +430,29 @@ public final class Join implements Listener {
 
 
             Scheduler.asyncLater(() -> {
-                if (!Yuehua.nameSet.remove(name)) {
+                if (!Yuehua.checkSet.remove(uuid)) {
                     if (player.isOnline()) {
-                        SQL.addCount(name);
+//                        int invalidCount = SQL.getCount(name);
+//                        SQL.addCount(name);
+
+//                        if (invalidCount > 10) {
+//                            Scheduler.sync(
+//                                    () -> player.ban("§c多次违规，永久BAN!", (Date) null, null)
+//                            );
+//                        }
+
 
                         Scheduler.sync(
-                                () -> player.kick(Component.text("§c疑似使用非官方客户端，多次违规将永久BAN！"))
+                                () -> player.kick(Component.text("§c疑似使用非官方客户端"))
                         );
                     }
                 }
-            }, 20 * 20);
+            }, 10 * 20);
 
 
         });
-
-
     }
+
 
 }
 

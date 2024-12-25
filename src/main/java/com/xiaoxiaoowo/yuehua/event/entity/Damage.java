@@ -3,7 +3,7 @@ package com.xiaoxiaoowo.yuehua.event.entity;
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.system.handleObsevers.DoAttackedObserver;
-import org.bukkit.attribute.Attribute;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -20,33 +20,33 @@ public final class Damage implements Listener {
         if (damagee.getType() == EntityType.PLAYER) {
             Player player = (Player) damagee;
             Data data = Yuehua.playerData.get(damagee.getUniqueId());
-            if(data == null){
+            if (data == null) {
                 return;
             }
 
-            double max_hp = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+
+            double max_hp = player.getHealth();
             switch (e.getCause()) {
-                //仙人掌,切石机
-                case CONTACT -> {
-                    double percent = 0.1;
-                    for (String observer : data.attackedObservers) {
-                       percent = percent * DoAttackedObserver.doAttacked(observer, data,null);
-                    }
-                    e.setDamage(max_hp * percent);
-                }
 
 
-                case VOID, STARVATION,KILL,WORLD_BORDER -> player.setHealth(0);
+                case VOID, STARVATION, KILL, WORLD_BORDER -> player.setHealth(0);
 
                 case FALL -> {
-                    double percent = e.getDamage() * 0.05;
-                    double shuailuomian = data.shuailuomian;
-
-                    for (String observer : data.attackedObservers) {
-                        percent = percent * DoAttackedObserver.doAttacked(observer, data,null);
+                    double damage = e.getDamage();
+                    if (damage < 3) {
+                        e.setCancelled(true);
+                        return;
                     }
 
-                    e.setDamage(max_hp * percent * (1.0 - shuailuomian));
+                    double percent = damage * 0.05;
+                    double shuailuomian = data.shuailuomian;
+                    double damageBefore = max_hp * percent * (1 - shuailuomian);
+
+                    for (String observer : data.attackedObservers) {
+                        percent = percent * DoAttackedObserver.doAttacked(observer, data, null, damageBefore);
+                    }
+
+                    e.setDamage(Math.max(2, max_hp * percent * (1.0 - shuailuomian)));
                 }
 
                 //火焰伤害
@@ -54,43 +54,51 @@ public final class Damage implements Listener {
                     double percent = 0.1;
                     double huomian = data.huomian;
 
+                    double damageBefore = max_hp * percent * (1.0 - huomian);
+
                     for (String observer : data.attackedObservers) {
-                        percent = percent * DoAttackedObserver.doAttacked(observer, data,null);
+                        percent = percent * DoAttackedObserver.doAttacked(observer, data, null, damageBefore);
                     }
-                    e.setDamage(max_hp * percent * (1.0 - huomian));
+                    e.setDamage(Math.max(2, max_hp * percent * (1.0 - huomian)));
                 }
 
 
-                case DROWNING -> {
+                case DROWNING,CONTACT -> {
                     double percent = 0.1;
 
+                    double damageBefore = max_hp * percent;
+
                     for (String observer : data.attackedObservers) {
-                        percent = percent * DoAttackedObserver.doAttacked(observer, data,null);
+                        percent = percent * DoAttackedObserver.doAttacked(observer, data, null, damageBefore);
                     }
 
-                    e.setDamage(max_hp * percent);
+                    e.setDamage(Math.max(2, max_hp * percent));
                 }
 
                 case FREEZE -> {
                     double percent = 0.1;
                     double bingmian = data.bingmian;
 
+                    double damageBefore = max_hp * percent * (1.0 - bingmian);
+
                     for (String observer : data.attackedObservers) {
-                        percent = percent * DoAttackedObserver.doAttacked(observer, data,null);
+                        percent = percent * DoAttackedObserver.doAttacked(observer, data, null, damageBefore);
                     }
 
-                    e.setDamage(max_hp * percent * (1.0 - bingmian));
+                    e.setDamage(Math.max(2, max_hp * percent * (1.0 - bingmian)));
                 }
 
                 case POISON, WITHER -> {
                     double percent = 0.1;
                     double dumian = data.dumian;
 
+                    double damageBefore = max_hp * percent * (1.0 - dumian);
+
                     for (String observer : data.attackedObservers) {
-                        percent = percent *  DoAttackedObserver.doAttacked(observer, data,null);
+                        percent = percent * DoAttackedObserver.doAttacked(observer, data, null, damageBefore);
                     }
 
-                    e.setDamage(max_hp * percent * (1.0 - dumian));
+                    e.setDamage(Math.max(2, max_hp * percent * (1.0 - dumian)));
                 }
 
 

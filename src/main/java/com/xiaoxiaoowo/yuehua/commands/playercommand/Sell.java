@@ -3,6 +3,7 @@ package com.xiaoxiaoowo.yuehua.commands.playercommand;
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -23,23 +24,11 @@ import org.jetbrains.annotations.NotNull;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public final class Sell implements CommandExecutor {
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年MM月dd日 HH时mm分ss秒");
 
-    private static final HashSet<String> middlelengthId = new HashSet<>() {
-        {
-
-        }
-    };
-
-    private static final HashSet<String> longlengthId = new HashSet<>() {
-        {
-
-        }
-    };
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
@@ -74,8 +63,8 @@ public final class Sell implements CommandExecutor {
                 return;
             }
             Data data = Yuehua.playerData.get(player.getUniqueId());
-            int cost = (int) (amount * 0.02);
-            int finalCost = Math.max(2, cost);
+            int cost = (int) (amount * 0.01);
+            int finalCost = Math.max(1, cost);
             if (data.money < finalCost) {
                 player.sendMessage(
                         Component.text("§6[命令系统]§4余额不足扣除税费")
@@ -141,21 +130,14 @@ public final class Sell implements CommandExecutor {
             PersistentDataContainer itemPdc = meta.getPersistentDataContainer();
             itemPdc.set(DataContainer.seller, PersistentDataType.STRING, player.getName());
             itemPdc.set(DataContainer.price, PersistentDataType.INTEGER, amount);
+            itemPdc.set(DataContainer.time_charging, PersistentDataType.LONG, GetEntity.world.getGameTime());
             List<Component> lores = meta.lore();
             if (lores == null) {
                 lores = new ArrayList<>(3);
             }
 
-            String id = itemPdc.get(DataContainer.id, PersistentDataType.STRING);
 
-            if (longlengthId.contains(id)) {
-                lores.add(Component.text("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓").color(NamedTextColor.WHITE).decoration(TextDecoration.ITALIC, false));
-            } else if (middlelengthId.contains(id)) {
-                lores.add(Component.text("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓").color(NamedTextColor.WHITE).decoration(TextDecoration.ITALIC, false));
-            } else {
-                lores.add(Component.text("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓").color(NamedTextColor.WHITE).decoration(TextDecoration.ITALIC, false));
-            }
-
+            lores.add(Component.text("〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓").color(NamedTextColor.WHITE).decoration(TextDecoration.ITALIC, false));
 
             lores.add(Component.text("售卖者: ").color(NamedTextColor.GREEN).decoration(TextDecoration.ITALIC, false)
                     .append(Component.text(player.getName()).color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false)));
@@ -170,9 +152,12 @@ public final class Sell implements CommandExecutor {
             data.money -= finalCost;
 
             player.sendMessage(Component.text("§6[命令系统]§a上架成功！扣除税费: §b" + finalCost));
-
-            handItem.setAmount(count);
-            Yuehua.shichang.get(page).addItem(handItem);
+            int finalPage = page;
+            int finalCount = count;
+            Scheduler.sync(() -> {
+                handItem.setAmount(finalCount);
+                Yuehua.shichang.get(finalPage).addItem(handItem);
+            });
 
 
         });

@@ -12,7 +12,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Skeleton;
 import org.bukkit.entity.Zombie;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
@@ -25,11 +24,9 @@ public final class RenOu2 implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player player) {
-            Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance, () -> {
-                player.sendMessage(
-                        Component.text("§6[命令系统]§4你没有权限使用这个命令")
-                );
-            });
+            Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance, () -> player.sendMessage(
+                    Component.text("§6[命令系统]§4你没有权限使用这个命令")
+            ));
             return true;
         }
 
@@ -56,7 +53,7 @@ public final class RenOu2 implements CommandExecutor {
             if (damage < 1e-6) {
                 return true;
             }
-            for (Entity entity : GetEntity.getPlayers(location, 8, 8, 3)) {
+            for (Entity entity : GetEntity.getPlayers(location, 10, 10, 10)) {
                 Player player = (Player) entity;
                 Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance, () -> {
                     player.sendMessage(

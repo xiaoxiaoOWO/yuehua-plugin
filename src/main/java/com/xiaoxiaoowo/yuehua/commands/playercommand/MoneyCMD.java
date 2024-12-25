@@ -2,7 +2,7 @@ package com.xiaoxiaoowo.yuehua.commands.playercommand;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.Data;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Money;
+import com.xiaoxiaoowo.yuehua.items.other.Money;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;

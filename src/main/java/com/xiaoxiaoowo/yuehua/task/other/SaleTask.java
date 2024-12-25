@@ -5,6 +5,8 @@ import com.xiaoxiaoowo.yuehua.commands.playercommand.Buy;
 import com.xiaoxiaoowo.yuehua.commands.playercommand.Sale;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import com.xiaoxiaoowo.yuehua.utils.PlaySound;
+import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import com.xiaoxiaoowo.yuehua.utils.SendInformation;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
@@ -15,7 +17,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public final class SaleTask extends BukkitRunnable {
     //10s一次
-    public int num;
+    public static int num;
     public String name;
     public String itemName;
     public int count;
@@ -73,12 +75,17 @@ public final class SaleTask extends BukkitRunnable {
                                 salerData.money += Buy.priceNow;
                                 buyerData.money -= Buy.priceNow;
 
-
                                 SendInformation.broadcastMes(
                                         Component.text("§6[拍卖系统]§a玩家§b" + name + "的物品：§b" + itemName).append(Component.text("§b*" + count)).appendNewline()
                                                 .append(Component.text("§6[拍卖系统]§a最终购买者为：§b" + Buy.buyerNow.getName())).appendNewline()
                                                 .append(Component.text("§6[拍卖系统]§a最终出价为：§b" + Buy.priceNow))
                                 );
+
+                                Scheduler.sync(() ->{
+                                    PlaySound.saleFinish(Buy.buyerNow);
+                                    PlaySound.saleFinish(Sale.saler);
+                                });
+
                             } else {
                                 SendInformation.broadcastMes(
                                         Component.text("§6[拍卖系统]§4拍卖者破坏规则，拍卖失败")

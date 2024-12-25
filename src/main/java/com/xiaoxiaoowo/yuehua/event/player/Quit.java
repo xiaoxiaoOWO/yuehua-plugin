@@ -1,6 +1,7 @@
 package com.xiaoxiaoowo.yuehua.event.player;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
+import com.xiaoxiaoowo.yuehua.data.DanData;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.data.GongData;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
@@ -24,7 +25,6 @@ public final class Quit implements org.bukkit.event.Listener {
             return;
         }
 
-        data.taskIds.forEach(it -> Yuehua.scheduler.cancelTask(it));
         Yuehua.playerData.remove(uuid);
 
 
@@ -45,12 +45,43 @@ public final class Quit implements org.bukkit.event.Listener {
         pdc.set(DataContainer.ConcentratedShuiCount, PersistentDataType.INTEGER, data.concentratedShuiCount);
         pdc.set(DataContainer.ConcentratedHuoCount, PersistentDataType.INTEGER, data.concentratedHuoCount);
         pdc.set(DataContainer.ConcentratedTuCount, PersistentDataType.INTEGER, data.concentratedTuCount);
+        pdc.set(DataContainer.checkCount,PersistentDataType.INTEGER,data.nextCheckCount);
 
+        pdc.set(DataContainer.killEastSkeletonConut, PersistentDataType.INTEGER, data.killEastSkeletonConut);
+        pdc.set(DataContainer.killEastZombieCount, PersistentDataType.INTEGER, data.killEastZombieCount);
+        pdc.set(DataContainer.killEastSpiderCount, PersistentDataType.INTEGER, data.killEastSpiderCount);
+
+        pdc.set(DataContainer.killEastArrowSkeletonCount, PersistentDataType.INTEGER, data.killEastArrowSkeletonCount);
+        pdc.set(DataContainer.killEastPoisonFlyCount, PersistentDataType.INTEGER, data.killEastPoisonFlyCount);
+        pdc.set(DataContainer.killEastZombieEliteCount, PersistentDataType.INTEGER, data.killEastZombieEliteCount);
+        pdc.set(DataContainer.killEastSpiderEliteCount, PersistentDataType.INTEGER, data.killEastSpiderEliteCount);
+
+        pdc.set(DataContainer.killEastZombieMountainCount, PersistentDataType.INTEGER, data.killEastZombieMountainCount);
+        pdc.set(DataContainer.killEastSpiderMountainCount, PersistentDataType.INTEGER, data.killEastSpiderMountainCount);
+        pdc.set(DataContainer.killEastArrowSkeletonMountainCount, PersistentDataType.INTEGER, data.killEastArrowSkeletonMountainCount);
+
+        pdc.set(DataContainer.killEastPoisonFlyMountainCount, PersistentDataType.INTEGER, data.killEastPoisonFlyMountainCount);
+        pdc.set(DataContainer.killEastPandaMountainCount, PersistentDataType.INTEGER, data.killEastPandaMountainCount);
+        pdc.set(DataContainer.killEastArrowSkeletonSHENMUCount, PersistentDataType.INTEGER, data.killEastArrowSkeletonSHENMUCount);
+
+        pdc.set(DataContainer.killEastSpiderQueenMountainCount, PersistentDataType.INTEGER, data.killEastSpiderQueenMountainCount);
+        pdc.set(DataContainer.killEastWaterGhostMountainCount, PersistentDataType.INTEGER, data.killEastWaterGhostMountainCount);
+        pdc.set(DataContainer.killEastPoisonSpiderMountainCount, PersistentDataType.INTEGER, data.killEastPoisonSpiderMountainCount);
 
         if (data.job == 2) {
             GongData gongData = (GongData) data;
             pdc.set(DataContainer.arrow_count, PersistentDataType.INTEGER, gongData.arrow_count);
             pdc.set(DataContainer.time_charging, PersistentDataType.LONG, gongData.time_charging);
+        }
+
+        if (data.job == 3) {
+            DanData danData = (DanData) data;
+            //金木水火土
+            pdc.set(DataContainer.jinCd,PersistentDataType.LONG,danData.cd_jin);
+            pdc.set(DataContainer.muCd,PersistentDataType.LONG,danData.cd_mu);
+            pdc.set(DataContainer.shuiCd,PersistentDataType.LONG,danData.cd_shui);
+            pdc.set(DataContainer.huoCd,PersistentDataType.LONG,danData.cd_huo);
+            pdc.set(DataContainer.tuCd,PersistentDataType.LONG,danData.cd_tu);
         }
 
         Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance, () -> {
@@ -109,7 +140,7 @@ public final class Quit implements org.bukkit.event.Listener {
             if (data.inventory18 != null) {
                 SQL.storePlayerInventory18(name, data.inventory18);
             }
-            if (data.shipinBar != null){
+            if (data.shipinBar != null) {
                 SQL.storeShiPin(uuid.toString(), data.shipinBar);
             }
         });

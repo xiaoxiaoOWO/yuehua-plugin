@@ -2,19 +2,23 @@ package com.xiaoxiaoowo.yuehua.commands;
 
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.commands.playercommand.Yh;
 import com.xiaoxiaoowo.yuehua.data.DanData;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.data.GongData;
 import com.xiaoxiaoowo.yuehua.data.ZhanData;
+import com.xiaoxiaoowo.yuehua.display.test.TestDisplay;
 import com.xiaoxiaoowo.yuehua.display.test.TestRay;
 import com.xiaoxiaoowo.yuehua.event.player.Death;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Food;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Other;
+import com.xiaoxiaoowo.yuehua.guis.Advancenment;
+import com.xiaoxiaoowo.yuehua.guis.Yh;
+import com.xiaoxiaoowo.yuehua.items.other.Food;
+import com.xiaoxiaoowo.yuehua.items.other.Other;
+import com.xiaoxiaoowo.yuehua.system.Buff;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.*;
 import net.kyori.adventure.text.Component;
 import org.bukkit.*;
+import org.bukkit.advancement.Advancement;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
@@ -133,6 +137,7 @@ public final class Test implements CommandExecutor {
         final int WUSHIWAN = 500000;
         final int BAIWAN = 1000000;
         final int SanBaiWan = 3000000;
+        final int QIANWAN = 10000000;
 
 
         if (args.length != 1) {
@@ -140,11 +145,135 @@ public final class Test implements CommandExecutor {
         }
 
 
+
         switch (args[0]) {
+
+            case "clear" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                PlayerInventory playerInventory = player.getInventory();
+                playerInventory.clear();
+            }
+
+            case "kill" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Data data = Yuehua.playerData.get(player.getUniqueId());
+                data.updateAttackAdd(100000000);
+            }
+
+            case "inw" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                if(player.isInWater()){
+                    Bukkit.broadcastMessage("在水中");
+                }
+            }
+
+            case "unw" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                if(player.isUnderWater()){
+                    Bukkit.broadcastMessage("在水下");
+                }
+            }
+
+
+
+            case "speed" ->{
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Vector vel = player.getVelocity();
+                vel.add(new Vector(0,2,0));
+            }
+
+            case "speed2" ->{
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Vector vel = player.getVelocity();
+                vel.add(new Vector(0,2,0));
+                player.setVelocity(vel);
+            }
+
+
+            case "Cd" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Data data = Yuehua.playerData.get(player.getUniqueId());
+                data.cool_reduce_unlimited = 1;
+                data.updateCoolReduce();
+            }
+
+            case "notmove" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Data data = Yuehua.playerData.get(player.getUniqueId());
+                Buff.canNotMove(data,100);
+            }
+
+            case "notjump" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Data data = Yuehua.playerData.get(player.getUniqueId());
+                Buff.canNotJump(data,100);
+            }
+
+            case "sound" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                PlaySound.zhiliao(player);
+            }
+
+
+//            case "display" -> {
+//                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+//                Location eyeLocation = player.getEyeLocation();
+//                Vector eyeVector = eyeLocation.toVector();
+//                Vector end = eyeVector.setX(eyeVector.getX() + 10);
+//                end = end.setY(eyeVector.getY() + 10);
+//                end = end.setZ(eyeVector.getZ() + 10);
+//                DisPlayUtils.displayCommon(eyeLocation, Fabao.DIKUIHUALAN,new Vector3f(2,2,2),end);
+//            }
+//
+//
+//            case "display2" -> {
+//                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+//                Location eyeLocation = player.getEyeLocation();
+//                Vector eyeVector = eyeLocation.toVector();
+//                Vector end = eyeVector.setX(eyeVector.getX() + 10);
+//                end = end.setY(eyeVector.getY() + 10);
+//                end = end.setZ(eyeVector.getZ() + 10);
+//                DisPlayUtils.displayCommon(eyeLocation, Fabao.DIKUIHUALAN,new Vector3f(2,2,2),10,100,end);
+//            }
+//
+//            case "display3" -> {
+//                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+//                DisPlayUtils.displayCommon(player.getEyeLocation(), Fabao.DIKUIHUALAN,new Vector3f(2,2,2),Math.PI / 6);
+//            }
+//
+//            case "display4" -> {
+//                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+//                DisPlayUtils.displayCommon(player.getEyeLocation(), Fabao.DIKUIHUALAN,new Vector3f(2,2,2),10,100,Math.PI / 6);
+//            }
+
+            case "display5" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                TestDisplay.test5(player);
+            }
+
+            case "display6" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                TestDisplay.test6(player);
+            }
+
+            case "display7" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                TestDisplay.test7(player);
+            }
+
+            case "display8" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                TestDisplay.test8(player);
+            }
+
+            case "display9" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                TestDisplay.test9(player);
+            }
 
             case "invcheck" -> {
                 Player player = Bukkit.getPlayer("xiaoxiaoOWO");
-                if(player.isInvisible()){
+                if (player.isInvisible()) {
                     SendInformation.broadcastMes(Component.text("§e[游戏机制]§4玩家不可见"));
                 }
             }
@@ -159,14 +288,32 @@ public final class Test implements CommandExecutor {
                 player.setInvisible(false);
             }
 
-            case "yezi1" ->{
+            case "soul1" -> {
                 Player player = Bukkit.getPlayer("xiaoxiaoOWO");
-                Yuehua.playerData.get(player.getUniqueId()).yezi = 1;
+                Data data = Yuehua.playerData.get(player.getUniqueId());
+                data.soul = 1;
+                Transfer.transferData(data);
             }
 
-            case "yezi0" ->{
+            case "soul0" -> {
                 Player player = Bukkit.getPlayer("xiaoxiaoOWO");
-                Yuehua.playerData.get(player.getUniqueId()).yezi = 0;
+                Data data = Yuehua.playerData.get(player.getUniqueId());
+                data.soul = 0;
+                Transfer.transferData(data);
+            }
+
+            case "yezi1" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Data data = Yuehua.playerData.get(player.getUniqueId());
+                data.yezi = 1;
+                Transfer.transferData(data);
+            }
+
+            case "yezi0" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Data data = Yuehua.playerData.get(player.getUniqueId());
+                data.yezi = 0;
+                Transfer.transferData(data);
             }
 
             case "getv" -> {
@@ -253,7 +400,7 @@ public final class Test implements CommandExecutor {
                             }
                         }
                     }
-                    SendInformation.sendMes(Component.text("已设置为雪原"), player);
+                    SendInformation.sendMes(player, Component.text("已设置为雪原"));
                 }, 0, 20L * 5L);
 
             }
@@ -354,7 +501,7 @@ public final class Test implements CommandExecutor {
                 testTimeCost(Test::testPar);
             }
 
-            case "display" -> {
+            case "display555" -> {
                 player = Bukkit.getPlayer("xiaoxiaoOWO");
                 testTimeCost(Test::testSummon);
             }
@@ -625,7 +772,7 @@ public final class Test implements CommandExecutor {
 
             case "get" -> {
                 player = Bukkit.getPlayer("xiaoxiaoOWO");
-                testMspt(Test::perGet, SHIWAN);
+                testMspt(Test::perGet, SanBaiWan);
             }
 
 
@@ -1491,7 +1638,9 @@ public final class Test implements CommandExecutor {
 
 
     private static void perGet() {
-        int attack = player.getPersistentDataContainer().get(DataContainer.attack, PersistentDataType.INTEGER);
+        double attack = player.getPersistentDataContainer().get(DataContainer.attack, PersistentDataType.DOUBLE);
+        attack += 1;
+        attack *= 2;
     }
 
     private static void add100Per() {
@@ -1582,7 +1731,7 @@ public final class Test implements CommandExecutor {
 
 //    private static void testTranAtt() {
 //        AttributeModifier attributeModifier = new AttributeModifier(UUID.randomUUID(), "TEST", 10.0, AttributeModifier.Operation.ADD_NUMBER);
-//        player.getAttribute(Attribute.GENERIC_MAX_HEALTH).addTransientModifier(attributeModifier);
+//        player.getAttribute(Attribute.MAX_HEALTH).addTransientModifier(attributeModifier);
 //    }
 
     private static void testGetMon1() {

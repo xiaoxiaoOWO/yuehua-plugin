@@ -6,8 +6,11 @@ import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.data.GongData;
 import com.xiaoxiaoowo.yuehua.data.ZhanData;
 import com.xiaoxiaoowo.yuehua.system.Act;
+import com.xiaoxiaoowo.yuehua.system.Buff;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import io.papermc.paper.event.player.PlayerInventorySlotChangeEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,6 +18,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.util.io.BukkitObjectInputStream;
 
 import java.util.Objects;
 
@@ -24,6 +28,8 @@ public final class InventorySlotChange implements Listener {
 
     @EventHandler
     public void onInventorySlotChange(PlayerInventorySlotChangeEvent e) {
+
+
         int slot = e.getSlot();
         switch (slot) {
             case 0 -> {
@@ -68,8 +74,7 @@ public final class InventorySlotChange implements Listener {
                     }
                     case 2 -> {
                         GongData gongData = (GongData) data;
-                        if (gongData.readyBow && gongData.readyCrossBow) {
-
+                        if (gongData.noAct < GetEntity.world.getGameTime()) {
                             String id = gongData.slot0.id;
                             Act.deActGong(gongData, id);
                             if (!Objects.equals(id, "null")) {
@@ -97,9 +102,6 @@ public final class InventorySlotChange implements Listener {
                                 Act.actFuling(gongData, enchantId);
                                 Act.actInsert(gongData, insertId);
                             }
-                        } else {
-                            gongData.readyBow = true;
-                            gongData.readyCrossBow = true;
                         }
                     }
                     case 3 -> {
@@ -772,6 +774,7 @@ public final class InventorySlotChange implements Listener {
                                 String enchantId = pdc.get(DataContainer.enchantid, PersistentDataType.STRING);
                                 //激活附灵和镶嵌
                                 Act.actFuling(danData, enchantId);
+                                Act.actInsert(danData, insertId);
                             }
                         }
                     }
@@ -804,7 +807,7 @@ public final class InventorySlotChange implements Listener {
                         Act.deActGong(gongData, data.slot40.id);
                         if (nowType == Material.GOLDEN_PICKAXE) {
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
-                            if (job == pdc.get(DataContainer.id, PersistentDataType.INTEGER)) {
+                            if (job == pdc.get(DataContainer.job, PersistentDataType.INTEGER)) {
                                 Act.actGong(gongData, pdc.get(DataContainer.id, PersistentDataType.STRING));
                             }
                         }
@@ -825,7 +828,7 @@ public final class InventorySlotChange implements Listener {
                         }
                         if (nowType == Material.GOLDEN_PICKAXE) {
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
-                            if (job == pdc.get(DataContainer.id, PersistentDataType.INTEGER)) {
+                            if (job == pdc.get(DataContainer.job, PersistentDataType.INTEGER)) {
                                 Act.actDan(danData, pdc.get(DataContainer.id, PersistentDataType.STRING));
                                 //取出镶嵌ID和附灵ID
                                 String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);

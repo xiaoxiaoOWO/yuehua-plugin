@@ -1,10 +1,9 @@
 package com.xiaoxiaoowo.yuehua.entity.npc.middle;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.itemstack.Book;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Feather;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Money;
-import com.xiaoxiaoowo.yuehua.itemstack.other.Other;
+import com.xiaoxiaoowo.yuehua.items.other.Feather;
+import com.xiaoxiaoowo.yuehua.items.other.Money;
+import com.xiaoxiaoowo.yuehua.items.other.Other;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -47,12 +46,18 @@ public final class ZHINV {
             recipeDefault5.addIngredient(Other.ARROW);
             MerchantRecipe recipeDefault6 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipeDefault6.addIngredient(Other.ARROW);
+            MerchantRecipe recipeDefault7 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault7.addIngredient(Other.ARROW);
+            MerchantRecipe recipeDefault8 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault8.addIngredient(Other.ARROW);
             recipesDefault.add(recipeDefault1);
             recipesDefault.add(recipeDefault2);
             recipesDefault.add(recipeDefault3);
             recipesDefault.add(recipeDefault4);
             recipesDefault.add(recipeDefault5);
             recipesDefault.add(recipeDefault6);
+            recipesDefault.add(recipeDefault7);
+            recipesDefault.add(recipeDefault8);
             it.setRecipes(recipesDefault);
 
             ItemStack yuanBao = Money.jinYuanBao.clone();
@@ -63,7 +68,6 @@ public final class ZHINV {
             ItemStack QingLuanZhiYuSuiPian = Feather.QING_LUAN_ZHI_YU_SUI_PIAN.clone();
             ItemStack tongHeZhiYuSuiPian = Feather.TONG_HE_ZHI_YU_SUI_PIAN.clone();
             ItemStack tongHeZhiYu = Feather.TONG_HE_ZHI_YU.clone();
-
 
 
             jinPengZhiYuSuiPian.setAmount(1);
@@ -105,8 +109,17 @@ public final class ZHINV {
             recipe5.addIngredient(tongHeZhiYuSuiPian);
             it.setRecipe(5, recipe5);
 
+            jinPengZhiYuSuiPian.setAmount(8);
+            QingLuanZhiYuSuiPian.setAmount(1);
+            MerchantRecipe recipe6 = new MerchantRecipe(QingLuanZhiYuSuiPian, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe6.addIngredient(jinPengZhiYuSuiPian);
+            it.setRecipe(6, recipe6);
 
-
+            QingLuanZhiYuSuiPian.setAmount(8);
+            tongHeZhiYuSuiPian.setAmount(1);
+            MerchantRecipe recipe7 = new MerchantRecipe(tongHeZhiYuSuiPian, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe7.addIngredient(QingLuanZhiYuSuiPian);
+            it.setRecipe(7, recipe7);
 
 
         });
