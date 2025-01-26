@@ -1,6 +1,6 @@
 package com.xiaoxiaoowo.yuehua.items.other;
 
-import com.xiaoxiaoowo.yuehua.guis.Recipe;
+import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
 import net.kyori.adventure.text.Component;

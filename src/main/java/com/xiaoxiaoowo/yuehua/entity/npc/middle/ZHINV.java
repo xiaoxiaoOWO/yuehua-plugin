@@ -29,7 +29,7 @@ public final class ZHINV {
             it.setAge(100000000);
 
             //名字
-            it.customName(Component.text("织女").color(NamedTextColor.AQUA));
+            it.customName(Component.text("织造仙女").color(NamedTextColor.AQUA));
             it.setCustomNameVisible(true);
 
             //需要6个交易项目

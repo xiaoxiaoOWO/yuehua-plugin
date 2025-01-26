@@ -84,6 +84,6 @@ public final class LocationSet {
     public static final Location ZHONG_LIE_CI = new Location(GetEntity.world, 1351, 38, 538);
     public static final Location CHU_SHENG_DIAN = new Location(GetEntity.world, 1312, 76, 43);
     public static final Location QING_LONG_RU_KOU = new Location(GetEntity.world, 552, 34, 394);
-    public static final Location BLOCK_TP_XUAN_WU = new Location(GetEntity.world, -83, 34, -515, 0, 0);
+    public static final Location BLOCK_TP_XUAN_WU = new Location(GetEntity.world, -83, 36, -515, 0, 0);
     public static final Location WU_PIN = new Location(GetEntity.world,1346.5,49,515.5,180,0);
 }

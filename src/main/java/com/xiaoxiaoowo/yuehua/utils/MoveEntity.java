@@ -120,12 +120,28 @@ public final class MoveEntity {
         forceToPlayer(player, jiTuiVector);
     }
 
-    public static void qianYin(Data data, Vector center, double force) {
+    public static void jiTuiWithLitteUp(Data data, Vector center, double force) {
         Player player = data.player;
         double forceAfterRenxing = force * (1 - data.renxing);
         Vector currentPos = player.getLocation().toVector();
-        Vector qianYinVector = center.subtract(currentPos).normalize().multiply(forceAfterRenxing);
+        Vector jiTuiVector = currentPos.subtract(center).normalize().multiply(forceAfterRenxing).add(new Vector(0, 0.5, 0));
 
+        forceToPlayer(player, jiTuiVector);
+    }
+
+    public static void qianYinWithLitteUp(Data data, Vector center, double force) {
+        Player player = data.player;
+        double forceAfterRenxing = force * (1 - data.renxing);
+        Vector currentPos = player.getLocation().toVector();
+        Vector qianYinVector = center.subtract(currentPos).normalize().multiply(forceAfterRenxing).add(new Vector(0, 0.5, 0));
+        forceToPlayer(player, qianYinVector);
+    }
+
+    public static void qianYinWithRateAndLitteUp(Data data, Vector center) {
+        Player player = data.player;
+        double forceAfterRenxing = (1 - data.renxing);
+        Vector currentPos = player.getLocation().toVector();
+        Vector qianYinVector = center.subtract(currentPos).multiply(forceAfterRenxing).add(new Vector(0, 0.5, 0));
         forceToPlayer(player, qianYinVector);
     }
 
@@ -141,20 +157,52 @@ public final class MoveEntity {
         Vector currentPos = mob.getLocation().toVector();
         Vector jiTuiVector = currentPos.subtract(center).normalize().multiply(forceAfterRenxing);
         mob.setVelocity(jiTuiVector);
+        Scheduler.syncLater(() -> mob.setVelocity(new Vector(0, 0, 0)), 2);
     }
 
-    public static void qianYin(MonsterData data, Vector center, double force) {
+    public static void qianyin(MonsterData data, Vector center, double force) {
         Mob mob = data.monster;
         double forceAfterRenxing = force * (1 - data.renxing);
         Vector currentPos = mob.getLocation().toVector();
         Vector qianYinVector = center.subtract(currentPos).normalize().multiply(forceAfterRenxing);
         mob.setVelocity(qianYinVector);
+        Scheduler.syncLater(() -> mob.setVelocity(new Vector(0, 0, 0)), 2);
+    }
+
+    public static void qianyin(MonsterData data, Vector center) {
+        Mob mob = data.monster;
+        double forceAfterRenxing = (1 - data.renxing);
+        Vector currentPos = mob.getLocation().toVector();
+        Vector qianYinVector = center.subtract(currentPos).multiply(forceAfterRenxing);
+        mob.setVelocity(qianYinVector);
+        Scheduler.syncLater(() -> mob.setVelocity(new Vector(0, 0, 0)), 2);
     }
 
     public static void jiFei(MonsterData data, double force) {
         Mob mob = data.monster;
         double forceAfterRenxing = force * (1 - data.renxing);
         mob.setVelocity(new Vector(0, forceAfterRenxing, 0));
+        Scheduler.syncLater(() -> mob.setVelocity(new Vector(0, 0, 0)), 2);
+    }
+
+    public static boolean dashNew(Data data, double distance) {
+        Player player = data.player;
+        if (data.fuben >= 1 && data.fuben <= 1000) {
+            return false;
+        }
+        Location eyeLocation = player.getEyeLocation();
+        Location startLocation = player.getLocation();
+        Vector direction;
+        if (player.isUnderWater()) {
+            direction = eyeLocation.getDirection().normalize();
+        } else {
+            direction = eyeLocation.getDirection().setY(0).normalize();
+        }
+        Vector speed = direction.add(new Vector(0, 0.5, 0)).multiply(distance);
+        forceToPlayer(player, speed);
+        Scheduler.syncLater(() -> player.setVelocity(new Vector(0, 0, 0)), 2);
+
+        return true;
     }
 
     public static Location dash(Data data, double distance) {
@@ -167,6 +215,9 @@ public final class MoveEntity {
         Location eyeLocation = player.getEyeLocation();
         Location startLocation = player.getLocation();
 
+        double startY = player.getY();
+        double decimalPart = startY - Math.floor(startY);
+
         Vector direction;
         RayTraceResult rayTrace;
         // 获取玩家视线方向并将其标准化（单位向量）
@@ -175,7 +226,7 @@ public final class MoveEntity {
             rayTrace = GetEntity.world.rayTraceBlocks(
                     startLocation,
                     direction,
-                    distance,
+                    distance + 1,
                     FluidCollisionMode.NEVER,
                     true
             );
@@ -187,7 +238,7 @@ public final class MoveEntity {
                 Vector position = rayTrace.getHitPosition();
                 Vector change = position.subtract(startLocation.toVector());
                 double length = change.length();
-                destination = startLocation.clone().add(direction.multiply(length - 0.5));
+                destination = startLocation.clone().add(direction.multiply(length - 1));
             } else {
                 // 如果没有碰到方块，则移动全部指定距离
                 destination = startLocation.clone().add(direction.multiply(distance));
@@ -209,13 +260,23 @@ public final class MoveEntity {
 
         } else {
             direction = eyeLocation.getDirection().setY(0).normalize();
-            rayTrace = GetEntity.world.rayTraceBlocks(
-                    startLocation,
-                    direction,
-                    distance,
-                    FluidCollisionMode.NEVER,
-                    true
-            );
+            if (decimalPart > 0.1) {
+                rayTrace = GetEntity.world.rayTraceBlocks(
+                        startLocation.clone().add(0, 1.01, 0),
+                        direction,
+                        distance + 1,
+                        FluidCollisionMode.NEVER,
+                        true
+                );
+            } else {
+                rayTrace = GetEntity.world.rayTraceBlocks(
+                        startLocation,
+                        direction,
+                        distance + 1,
+                        FluidCollisionMode.NEVER,
+                        true
+                );
+            }
 
             // 确定最终传送位置
             Location destination;
@@ -224,7 +285,7 @@ public final class MoveEntity {
                 Vector position = rayTrace.getHitPosition();
                 Vector change = position.subtract(startLocation.toVector());
                 double length = change.length();
-                destination = startLocation.add(direction.multiply(length - 0.5));
+                destination = startLocation.add(direction.multiply(length - 1));
             } else {
                 // 如果没有碰到方块，则移动全部指定距离
                 destination = startLocation.add(direction.multiply(distance));

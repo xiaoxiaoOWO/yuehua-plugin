@@ -1,6 +1,6 @@
 package com.xiaoxiaoowo.yuehua.commands.opcommand;
 
-import com.xiaoxiaoowo.yuehua.guis.Recipe;
+import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import net.kyori.adventure.text.Component;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;

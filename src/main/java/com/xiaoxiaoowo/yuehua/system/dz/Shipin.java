@@ -1,7 +1,9 @@
 package com.xiaoxiaoowo.yuehua.system.dz;
 
-import com.xiaoxiaoowo.yuehua.guis.Recipe;
+import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
+import com.xiaoxiaoowo.yuehua.utils.AdvancementSet;
 import com.xiaoxiaoowo.yuehua.utils.PlaySound;
+import org.bukkit.advancement.Advancement;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
@@ -21,5 +23,12 @@ public final class Shipin {
         //设置物品
         PlaySound.dz(player);
         inventory.setItem(0, Recipe.idToItem.get(id));
+
+        String lowcaseId = id.toLowerCase();
+        Advancement advancement = AdvancementSet.idToAdvancements.get(lowcaseId);
+        if (advancement != null) {
+            int points = AdvancementSet.idToPoints.get(lowcaseId);
+            AdvancementSet.giveAdv(player, advancement, points);
+        }
     }
 }

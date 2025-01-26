@@ -12,7 +12,6 @@ public final class Mu {
     public static void putong(DanData danData, double multiplier) {
         Player player = danData.player;
         PlaySound.mu(player);
-
         int extra = Math.min(5, ((int) danData.zhenfa / 20));
         double amount = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * (0.05 + 0.01 * extra) + (20 + 4 * extra);
         Cure.curePlayer(amount, danData);

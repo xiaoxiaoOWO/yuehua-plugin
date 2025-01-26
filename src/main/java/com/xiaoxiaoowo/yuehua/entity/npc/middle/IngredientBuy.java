@@ -21,7 +21,7 @@ import java.util.UUID;
 
 public final class IngredientBuy {
     public static void spawn() {
-        Location location = new Location(GetEntity.world, 89.5, 46, 134.5, 90, 0);
+        Location location = new Location(GetEntity.world, 89.5, 46, 136.5, 90, 0);
         Villager villager = GetEntity.world.spawn(location, Villager.class, false, it -> {
             //村民基础，无AI，静音，不自然移除，无敌,年龄
             it.setAI(false);

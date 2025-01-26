@@ -25,44 +25,60 @@ public final class MyBossSpawn implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        int timeIndex = Integer.parseInt(args[1]);
-        if ((GetEntity.world.getGameTime() % 2400) == timeIndex) {
-            if (sender instanceof Player player) {
-                Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance, () -> {
-                    player.sendMessage(
-                            Component.text("§6[命令系统]§4你没有权限使用这个命令")
-                    );
-                });
-                return true;
-            }
-            BlockCommandSender blockCommandSender = (BlockCommandSender) sender;
-            CommandBlock commandBlock = (CommandBlock) blockCommandSender.getBlock().getState();
-            Location location = commandBlock.getLocation().add(0.5, 2, 0.5);
-            Collection<Entity> players = GetEntity.getPlayers(location, 10, 10, 10);
-            if (players.isEmpty()) {
-                return true;
-            }
-            Collection<Entity> monsters = GetEntity.getMonsters(location, 12, 12, 12);
-            if (monsters.size() > 5) {
-                return true;
-            }
-            String id = args[0];
-            for (Entity entity : monsters) {
-                MonsterData monsterData = Yuehua.monsterData.get(entity.getUniqueId());
-                if (monsterData.id.equals(id)) {
+        int timeIndex;
+        try {
+            timeIndex = Integer.parseInt(args[1]);
+            if ((GetEntity.world.getGameTime() % 1200) == timeIndex) {
+                if (sender instanceof Player player) {
+                    Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance, () -> {
+                        player.sendMessage(
+                                Component.text("§6[命令系统]§4你没有权限使用这个命令")
+                        );
+                    });
                     return true;
                 }
+                BlockCommandSender blockCommandSender = (BlockCommandSender) sender;
+                CommandBlock commandBlock = (CommandBlock) blockCommandSender.getBlock().getState();
+                Location location = commandBlock.getLocation().add(0.5, 2, 0.5);
+                Collection<Entity> players = GetEntity.getPlayers(location, 10, 10, 10);
+                if (players.isEmpty()) {
+                    return true;
+                }
+                Collection<Entity> monsters = GetEntity.getMonsters(location, 12, 12, 12);
+                String id = args[0];
+                for (Entity entity : monsters) {
+                    MonsterData monsterData = Yuehua.monsterData.get(entity.getUniqueId());
+                    if (monsterData.id.equals(id)) {
+                        return true;
+                    }
+                }
+                int randomNextTime = (timeIndex + 400 + random.nextInt(0, 800)) % 1200;
+                commandBlock.setCommand(String.format("mybossspawn %s %d", id, randomNextTime));
+                commandBlock.update();
+
+
+                switch (id) {
+                    case "zhizhunvwang" -> ZHIZHUNVWANG.spawn(location);
+                    case "linyouduzhu" -> LinYouDuZhu.spawn(location);
+                    case "jianxiguimei" -> JIANXIGUIMEI.spawn(location);
+                }
+            }else if (timeIndex >= 1200) {
+                BlockCommandSender blockCommandSender = (BlockCommandSender) sender;
+                CommandBlock commandBlock = (CommandBlock) blockCommandSender.getBlock().getState();
+                String id = args[0];
+                int randomNextTime = random.nextInt(0, 1200);
+                commandBlock.setCommand(String.format("mybossspawn %s %d", id, randomNextTime));
+                commandBlock.update();
             }
-            int randomNextTime = (timeIndex + 600 + random.nextInt(0, 1800)) % 2400;
+
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            BlockCommandSender blockCommandSender = (BlockCommandSender) sender;
+            CommandBlock commandBlock = (CommandBlock) blockCommandSender.getBlock().getState();
+            String id = args[0];
+            int randomNextTime = random.nextInt(0, 1200);
             commandBlock.setCommand(String.format("mybossspawn %s %d", id, randomNextTime));
             commandBlock.update();
-
-
-            switch (id) {
-                case "zhizhunvwang" -> ZHIZHUNVWANG.spawn(location);
-                case "linyouduzhu" -> LinYouDuZhu.spawn(location);
-                case "jianxiguimei" -> JIANXIGUIMEI.spawn(location);
-            }
         }
 
 

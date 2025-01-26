@@ -28,7 +28,7 @@ public final class LAOZHANSHIDUNPAI implements Runnable {
 
         Cure.shouhuPlayer(16, data);
 
-        Scheduler.syncLater(new LAOZHANSHIDUNPAI(data, latest), (long) (10 * 20 * data.real_cool));
+        Scheduler.syncLater(new LAOZHANSHIDUNPAI(data, latest), (long) (20 * 20 * data.real_cool));
 
 
     }

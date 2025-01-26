@@ -9,7 +9,6 @@ import com.xiaoxiaoowo.yuehua.items.Book;
 import com.xiaoxiaoowo.yuehua.items.dz.YuanSu;
 import com.xiaoxiaoowo.yuehua.items.liandan.Dan;
 import com.xiaoxiaoowo.yuehua.items.other.*;
-import com.xiaoxiaoowo.yuehua.items.zhuangbei.*;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import com.xiaoxiaoowo.yuehua.utils.SQL;
@@ -227,18 +226,17 @@ public final class IntoGame implements CommandExecutor {
         inventory.addItem(Book.WANFA);
         inventory.addItem(Book.JINJI);
         inventory.addItem(Feather.XIN_YA_ZHI_YU);
-        inventory.addItem(ArmorHead.tou1.clone(), ArmorChest.xiong1.clone(), ArmorLeg.tui1.clone(), ArmorFeet.xie1.clone());
         switch (job) {
             case 1 -> {
                 baozi.setAmount(99 * 3);
-                inventory.addItem(baozi, tongqian, npc_paopao, race_province, Weapon.TAO_MU_JIAN.clone());
+                inventory.addItem(baozi, tongqian, npc_paopao, race_province);
             }
 
-            case 2 -> inventory.addItem(baozi, tongqian, npc_paopao, race_province, arrow, Weapon.TENG_MU_GONG.clone());
+            case 2 -> inventory.addItem(baozi, tongqian, npc_paopao, race_province, arrow);
 
 
             case 3 ->
-                    inventory.addItem(baozi, tongqian, npc_paopao, race_province, yaoyin1, muyuansu, jinyuansu, Weapon.HEI_TIE_GUO.clone(), YiQi.FANGSHENDUANBI.clone());
+                    inventory.addItem(baozi, tongqian, npc_paopao, race_province, yaoyin1, muyuansu, jinyuansu);
 
         }
 

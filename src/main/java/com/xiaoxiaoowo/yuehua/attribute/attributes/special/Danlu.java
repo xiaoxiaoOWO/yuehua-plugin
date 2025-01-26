@@ -3,7 +3,7 @@ package com.xiaoxiaoowo.yuehua.attribute.attributes.special;
 import com.xiaoxiaoowo.yuehua.attribute.attributes.MyAttribute;
 import com.xiaoxiaoowo.yuehua.data.DanData;
 import com.xiaoxiaoowo.yuehua.data.Data;
-import com.xiaoxiaoowo.yuehua.guis.DuanZao;
+import com.xiaoxiaoowo.yuehua.guis.dz.DuanZao;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;

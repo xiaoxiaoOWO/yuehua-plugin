@@ -2,24 +2,24 @@ package com.xiaoxiaoowo.yuehua.entity.npc.east;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.items.dz.*;
-import com.xiaoxiaoowo.yuehua.items.other.Collection;
-import com.xiaoxiaoowo.yuehua.items.other.Food;
-import com.xiaoxiaoowo.yuehua.items.other.Other;
+import com.xiaoxiaoowo.yuehua.items.other.*;
 import com.xiaoxiaoowo.yuehua.items.PINZHENG;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Villager;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MerchantRecipe;
+import org.bukkit.inventory.meta.BookMeta;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class SHENMUYAOJIN {
+public final class SHENMUYAOJIN {
     public static void spawn() {
         Location location = new Location(GetEntity.world, 633.5, 54, 384.5, -180, 0);
         Villager villager = GetEntity.world.spawn(location, Villager.class, false, it -> {
@@ -63,6 +63,12 @@ public class SHENMUYAOJIN {
             MerchantRecipe recipeDefault9 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipeDefault9.addIngredient(Other.ARROW);
             recipesDefault.add(recipeDefault9);
+            MerchantRecipe recipeDefault10 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault10.addIngredient(Other.ARROW);
+            recipesDefault.add(recipeDefault10);
+            MerchantRecipe recipeDefault11 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault11.addIngredient(Other.ARROW);
+            recipesDefault.add(recipeDefault11);
             it.setRecipes(recipesDefault);
 
 
@@ -119,6 +125,52 @@ public class SHENMUYAOJIN {
             MerchantRecipe recipe8 = new MerchantRecipe(tu, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe8.addIngredient(gongpin);
             it.setRecipe(8, recipe8);
+
+            // First Trade - Purple Dye for Book
+            ItemStack buyItem1 = RaceProvince.yao.clone();
+
+            ItemStack sellItem1 = new ItemStack(Material.WRITTEN_BOOK);
+            sellItem1.editMeta(meta -> {
+                BookMeta bookMeta = (BookMeta) meta;
+                bookMeta.title(Component.text("§9神木妖精的愿望"));
+                bookMeta.author(Component.text("§9神木妖精"));
+                bookMeta.pages(List.of(
+                        Component.translatable("pl.book.ye1.page1"),
+                        Component.translatable("pl.book.ye1.page2")
+                ));
+            });
+
+            // Second Trade - Purple Dye for Nether Wart
+            ItemStack buyItem2 = RaceProvince.yao.clone();
+
+            ItemStack sellItem2 = Mission.shenmuyaojingchouduan.clone();
+
+            MerchantRecipe recipe9 = new MerchantRecipe(sellItem1, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe9.addIngredient(buyItem1);
+            it.setRecipe(9,recipe9);
+
+            MerchantRecipe recipe10 = new MerchantRecipe(sellItem2, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe10.addIngredient(buyItem2);
+            it.setRecipe(10,recipe10);
+
+            ItemStack buyItem = new ItemStack(Material.LIME_DYE, 1);
+            buyItem.editMeta(meta -> {
+                meta.displayName(Component.translatable("§b神木妖精"));
+                meta.lore(List.of(Component.translatable("§7§o沃土是我们神木妖一族赖以修炼的宝物，可惜这里的怪物太过凶悍，沃土大都被它们霸占着")));
+            });
+
+            ItemStack sellItem = new ItemStack(Material.LIME_DYE, 1);
+            sellItem.editMeta(meta -> {
+                meta.displayName(Component.translatable("§b神木妖精"));
+                meta.lore(List.of(Component.translatable("§7§o可不可以请你帮我弄来一些沃土？我可以用这里的一些特产和你交换")));
+            });
+
+            MerchantRecipe firstRecipe = new MerchantRecipe(sellItem, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            firstRecipe.addIngredient(buyItem);
+
+            List<MerchantRecipe> recipes = new ArrayList<>(it.getRecipes());
+            recipes.addFirst(firstRecipe);
+            it.setRecipes(recipes);
 
         });
         //村民外观

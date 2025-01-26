@@ -2,6 +2,7 @@ package com.xiaoxiaoowo.yuehua.entity.monster.other;
 
 import com.xiaoxiaoowo.yuehua.items.monsterzhuangbei.*;
 import com.xiaoxiaoowo.yuehua.items.other.Other;
+import com.xiaoxiaoowo.yuehua.items.other.Skull;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.system.Team;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
@@ -26,7 +27,7 @@ public final class Renou2 {
         armor[0] = Boot.diamondBoots;
         armor[1] = Leg.diamondLeggings;
         armor[2] = Chest.diamondChestplate;
-        armor[3] = Other.XiaoxiaoHead;
+        armor[3] = Skull.XiaoxiaoHead;
     }
 
 
@@ -72,7 +73,7 @@ public final class Renou2 {
                     equipment.setItemInOffHandDropChance(0);
 
                     //属性(护甲和韧性已经没有影响，可以不管)
-                    it.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(1000000);
+                    it.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(100000000);
 
                     //DLC数据
                     PersistentDataContainer pdc = it.getPersistentDataContainer();
@@ -80,7 +81,7 @@ public final class Renou2 {
 
 
                     //生命,一百万
-                    it.setHealth(1000000);
+                    it.setHealth(100000000);
 
                 }
         );

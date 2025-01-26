@@ -17,7 +17,7 @@ import java.util.UUID;
 
 public final class MEISHIJIA {
     public static void spawn() {
-        Location location = new Location(GetEntity.world, 132.5, 46, 173.5, 0, 0);
+        Location location = new Location(GetEntity.world, 130.5, 46, 173.5, 0, 0);
         Villager villager = GetEntity.world.spawn(location, Villager.class, false, it -> {
             //村民基础，无AI，静音，不自然移除，无敌,年龄
             it.setAI(false);

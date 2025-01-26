@@ -1,12 +1,16 @@
 package com.xiaoxiaoowo.yuehua.jineng.gong.weapon.juji;
 
+import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.GongData;
+import com.xiaoxiaoowo.yuehua.display.utils.ParticleUtils;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import com.xiaoxiaoowo.yuehua.utils.PlaySound;
 import com.xiaoxiaoowo.yuehua.utils.SendInformation;
 import net.kyori.adventure.text.Component;
+import org.bukkit.Particle;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public final class YanTieGong {
     public static final String id = "yanTieGong";
@@ -18,5 +22,16 @@ public final class YanTieGong {
         arrow.setPierceLevel(0);
         PlaySound.zishuijinBreak(player);
         SendInformation.sendActionBar(player, Component.text("§e[主动技]§6[魔焰]§a发动"));
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if(arrow.isDead()){
+                    this.cancel();
+                    return;
+                }
+                ParticleUtils.onePoint(arrow.getLocation(), Particle.FLAME,0,0,0,100,0);
+            }
+        }.runTaskTimerAsynchronously(Yuehua.instance,0,2);
     }
 }

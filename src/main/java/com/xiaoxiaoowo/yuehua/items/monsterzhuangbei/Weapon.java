@@ -1,9 +1,7 @@
 package com.xiaoxiaoowo.yuehua.items.monsterzhuangbei;
 
-import com.xiaoxiaoowo.yuehua.utils.ZeroAttributeModifier;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Banner;
 import org.bukkit.block.banner.Pattern;
 import org.bukkit.block.banner.PatternType;
@@ -14,146 +12,146 @@ import org.bukkit.inventory.meta.ItemMeta;
 public final class Weapon {
     //武器
     //战士
-    public static final ItemStack TAO_MU_JIAN = new ItemStack(Material.DIAMOND_PICKAXE);
+    public static final ItemStack TAO_MU_JIAN = new ItemStack(Material.PRISMARINE_SHARD);
 
     //破军
-    public static final ItemStack KAI_SHAN_DAO = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack CHI_TONG_JIAN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack PO_KONG_FU = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack SAN_BAO_YU_RU_YI = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack XUAN_YUAN = new ItemStack(Material.DIAMOND_PICKAXE);
+    public static final ItemStack KAI_SHAN_DAO = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack CHI_TONG_JIAN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack PO_KONG_FU = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack SAN_BAO_YU_RU_YI = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack XUAN_YUAN = new ItemStack(Material.PRISMARINE_SHARD);
 
     //金钟
-    public static final ItemStack QIN_TONG_JIAN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack JU_TONG_ZHAN_CHUI = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack TAI_JI_JIAN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack KUN_LUN_FEI_XIAN_JIAN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack TAI_E = new ItemStack(Material.DIAMOND_PICKAXE);
+    public static final ItemStack QIN_TONG_JIAN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack JU_TONG_ZHAN_CHUI = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack TAI_JI_JIAN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack KUN_LUN_FEI_XIAN_JIAN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack TAI_E = new ItemStack(Material.PRISMARINE_SHARD);
 
     //探云
-    public static final ItemStack YIN_YUE_QIANG = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack HONG_YIN_QIANG = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack YOU_LONG_QIANG = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack HU_TOU_ZHAN_JIN_QIANG = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack RU_YI_JIN_GU_BANG = new ItemStack(Material.DIAMOND_PICKAXE);
+    public static final ItemStack YIN_YUE_QIANG = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack HONG_YIN_QIANG = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack YOU_LONG_QIANG = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack HU_TOU_ZHAN_JIN_QIANG = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack RU_YI_JIN_GU_BANG = new ItemStack(Material.PRISMARINE_SHARD);
 
     //战士，暗器
-    public static final ItemStack FEIREN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack JINRUIFEIREN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack WUSHENGXIUJIAN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack HUIXUANTAJI = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack WUYINWUZONG = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack YANWANGTIE = new ItemStack(Material.DIAMOND_PICKAXE);
+    public static final ItemStack FEIREN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack JINRUIFEIREN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack WUSHENGXIUJIAN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack HUIXUANTAJI = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack WUYINWUZONG = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack YANWANGTIE = new ItemStack(Material.PRISMARINE_SHARD);
 
     //弓箭手，火铳
-    public static final ItemStack HEITIECHONG = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack HUANGTONGCHONG = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack MINGYUE = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack CANLAN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack JINJING = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack XIAOTIAN = new ItemStack(Material.DIAMOND_PICKAXE);
+    public static final ItemStack HEITIECHONG = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack HUANGTONGCHONG = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack MINGYUE = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack CANLAN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack JINJING = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack XIAOTIAN = new ItemStack(Material.PRISMARINE_SHARD);
 
     //炼丹师，灵乐
-    public static final ItemStack XIAO = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack QINFENGYINYIN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack LIUSHUICHANCHAN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack BUQICHUNYU = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack SANSHENGZHENHUN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack JIUFENGLAIYI = new ItemStack(Material.DIAMOND_PICKAXE);
+    public static final ItemStack XIAO = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack QINFENGYINYIN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack LIUSHUICHANCHAN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack BUQICHUNYU = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack SANSHENGZHENHUN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack JIUFENGLAIYI = new ItemStack(Material.PRISMARINE_SHARD);
 
     //分支一，吸引仇恨
-    public static final ItemStack JUEDOULING = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack LEIMINGGU = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack HUANSILIN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack NIUMONUHOU = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+    public static final ItemStack JUEDOULING = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack LEIMINGGU = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack HUANSILIN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack NIUMONUHOU = new ItemStack(Material.PRISMARINE_SHARD, 1);
 
     //分支二，增伤
-    public static final ItemStack DOUQISHI = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack PANGUANBI = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack MINSHENGJIAN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack ZHENLEITIANCHUI = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+    public static final ItemStack DOUQISHI = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack PANGUANBI = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack MINSHENGJIAN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack ZHENLEITIANCHUI = new ItemStack(Material.PRISMARINE_SHARD, 1);
 
     //弓箭手
 
     //分支一，制造傀儡
 
-    public static final ItemStack DIAOHUNGAN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack SHELINZHU = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack YUJINPIN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack TIANJISHENJIN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+    public static final ItemStack DIAOHUNGAN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack SHELINZHU = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack YUJINPIN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack TIANJISHENJIN = new ItemStack(Material.PRISMARINE_SHARD, 1);
 
     //分支二，增伤
-    public static final ItemStack RUIYINGYAN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack DUOHUNTANG = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack MOYUANFOZHU = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack FUXINRUYI = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+    public static final ItemStack RUIYINGYAN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack DUOHUNTANG = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack MOYUANFOZHU = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack FUXINRUYI = new ItemStack(Material.PRISMARINE_SHARD, 1);
 
     //炼丹
 
     //分支一，单点（直线）伤害
-    public static final ItemStack LVYEXIANZONG = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack QINGNVHANSHUANG = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack ZHURONGKUYAN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack ZHUDIANXUANJING = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+    public static final ItemStack LVYEXIANZONG = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack QINGNVHANSHUANG = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack ZHURONGKUYAN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack ZHUDIANXUANJING = new ItemStack(Material.PRISMARINE_SHARD, 1);
 
     //分支二，群体伤害
-    public static final ItemStack BUHUNWANG = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack YANGSHOUJIAN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack WUMINGMOYINLUO = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack SHETIANHUAXUELING = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+    public static final ItemStack BUHUNWANG = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack YANGSHOUJIAN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack WUMINGMOYINLUO = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack SHETIANHUAXUELING = new ItemStack(Material.PRISMARINE_SHARD, 1);
 
     //分支三，辅助队友
-    public static final ItemStack KUYELING = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack LUOBEIJINPIN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack PINYUSHUIYU = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack DIKONGYUMOQUAN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+    public static final ItemStack KUYELING = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack LUOBEIJINPIN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack PINYUSHUIYU = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack DIKONGYUMOQUAN = new ItemStack(Material.PRISMARINE_SHARD, 1);
 
     //分支四，削弱敌人
-    public static final ItemStack LUANSHENGU = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack JINGULIAN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack JIANCHANGULIN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack MODUOHUNFAN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+    public static final ItemStack LUANSHENGU = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack JINGULIAN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack JIANCHANGULIN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack MODUOHUNFAN = new ItemStack(Material.PRISMARINE_SHARD, 1);
 
     //炉子
-    public static final ItemStack HEI_TIE_GUO = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack QIN_TONG_GUO = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack LIAN_DAN_LU = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack SUO_HUN_LU = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack QI_SHA_DING = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack HUN_YUAN_SHEN_DING = new ItemStack(Material.GOLDEN_PICKAXE);
+    public static final ItemStack HEI_TIE_GUO = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack QIN_TONG_GUO = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack LIAN_DAN_LU = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack SUO_HUN_LU = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack QI_SHA_DING = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack HUN_YUAN_SHEN_DING = new ItemStack(Material.RABBIT_HIDE);
 
     //弓箭手箭袋
-    public static final ItemStack LAOLIEHUJIANDAI = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack XINBINJIANDAI = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack JINRUIJIANDAI = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack YINGYANJIANDAI = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack CANGGUNINGWANG = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack NIEPANYUNANG = new ItemStack(Material.GOLDEN_PICKAXE);
+    public static final ItemStack LAOLIEHUJIANDAI = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack XINBINJIANDAI = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack JINRUIJIANDAI = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack YINGYANJIANDAI = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack CANGGUNINGWANG = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack NIEPANYUNANG = new ItemStack(Material.RABBIT_HIDE);
 
 
     //炼丹师萃刃
-    public static final ItemStack FANGSHENDUANBI = new ItemStack(Material.NETHERITE_PICKAXE);
-    public static final ItemStack TIEZHIDUANBI = new ItemStack(Material.NETHERITE_PICKAXE);
-    public static final ItemStack HUIYIDAO = new ItemStack(Material.NETHERITE_PICKAXE);
-    public static final ItemStack LONGYADAO = new ItemStack(Material.NETHERITE_PICKAXE);
-    public static final ItemStack ZHANGQICUIZHU = new ItemStack(Material.NETHERITE_PICKAXE);
-    public static final ItemStack MINGHONG = new ItemStack(Material.NETHERITE_PICKAXE);
+    public static final ItemStack FANGSHENDUANBI = new ItemStack(Material.ANGLER_POTTERY_SHERD);
+    public static final ItemStack TIEZHIDUANBI = new ItemStack(Material.ANGLER_POTTERY_SHERD);
+    public static final ItemStack HUIYIDAO = new ItemStack(Material.ANGLER_POTTERY_SHERD);
+    public static final ItemStack LONGYADAO = new ItemStack(Material.ANGLER_POTTERY_SHERD);
+    public static final ItemStack ZHANGQICUIZHU = new ItemStack(Material.ANGLER_POTTERY_SHERD);
+    public static final ItemStack MINGHONG = new ItemStack(Material.ANGLER_POTTERY_SHERD);
 
     //通用法宝
-    public static final ItemStack ZHAOYAOJIN = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack YUFUCHEN = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack WUSEBUTIANSHI = new ItemStack(Material.IRON_PICKAXE, 1);
+    public static final ItemStack ZHAOYAOJIN = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack YUFUCHEN = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack WUSEBUTIANSHI = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
 
-    public static final ItemStack YAOWANGHULU = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack CIXINMIAOLIAN = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack SHENXINYUGU = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack YINYANGZHANLONGJIAN = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack YUNLANGBAN = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack ZHENHUNYUXIAO = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack DIKUIHUALAN = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack XUANFENGZONGSHAN = new ItemStack(Material.IRON_PICKAXE, 1);
+    public static final ItemStack YAOWANGHULU = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack CIXINMIAOLIAN = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack SHENXINYUGU = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack YINYANGZHANLONGJIAN = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack YUNLANGBAN = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack ZHENHUNYUXIAO = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack DIKUIHUALAN = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack XUANFENGZONGSHAN = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
 
-    public static final ItemStack TAIJIBAGUA = new ItemStack(Material.IRON_PICKAXE, 1);
+    public static final ItemStack TAIJIBAGUA = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
 
 
     //盾牌
@@ -167,32 +165,16 @@ public final class Weapon {
 
     static {
         ItemStack shield = new ItemStack(Material.SHIELD);
-        ItemStack diamond_pickaxe = new ItemStack(Material.DIAMOND_PICKAXE);
-        ItemStack iron_pickaxe = new ItemStack(Material.IRON_PICKAXE);
-        ItemStack golden_pickaxe = new ItemStack(Material.GOLDEN_PICKAXE);
-        ItemStack netherite_pickaxe = new ItemStack(Material.NETHERITE_PICKAXE);
+        ItemStack diamond_pickaxe = new ItemStack(Material.PRISMARINE_SHARD);
+        ItemStack iron_pickaxe = new ItemStack(Material.PRISMARINE_CRYSTALS);
+        ItemStack golden_pickaxe = new ItemStack(Material.RABBIT_HIDE);
+        ItemStack netherite_pickaxe = new ItemStack(Material.ANGLER_POTTERY_SHERD);
 
         ItemMeta shieldMeta = shield.getItemMeta();
         ItemMeta diamond_pickaxeMeta = diamond_pickaxe.getItemMeta();
         ItemMeta iron_pickaxeMeta = iron_pickaxe.getItemMeta();
         ItemMeta golden_pickaxeMeta = golden_pickaxe.getItemMeta();
         ItemMeta netherite_pickaxeMeta = netherite_pickaxe.getItemMeta();
-
-        shieldMeta.setUnbreakable(true);
-        diamond_pickaxeMeta.setUnbreakable(true);
-        iron_pickaxeMeta.setUnbreakable(true);
-        golden_pickaxeMeta.setUnbreakable(true);
-        netherite_pickaxeMeta.setUnbreakable(true);
-
-        diamond_pickaxeMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        iron_pickaxeMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        golden_pickaxeMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        netherite_pickaxeMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-
-        diamond_pickaxeMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        iron_pickaxeMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        golden_pickaxeMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        netherite_pickaxeMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
 
 
         ItemMeta taomujianMeta = diamond_pickaxeMeta.clone();

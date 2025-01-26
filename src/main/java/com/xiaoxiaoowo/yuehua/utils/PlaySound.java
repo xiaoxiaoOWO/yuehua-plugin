@@ -24,7 +24,7 @@ public final class PlaySound {
         SendInformation.sendSoundAtEntity(player, Sound.BLOCK_FIRE_EXTINGUISH);
     }
 
-    public static void levelup(Player player) {
+    public static void success(Player player) {
         SendInformation.sendSoundAtEntity(player, Sound.ENTITY_PLAYER_LEVELUP);
     }
 
@@ -39,6 +39,14 @@ public final class PlaySound {
 
     public static void zishuijinBreak(Player player) {
         SendInformation.sendSoundAtEntity(player, Sound.BLOCK_AMETHYST_BLOCK_BREAK);
+    }
+
+    public static void explode(Player player){
+        SendInformation.sendSoundAtEntity(player,Sound.ENTITY_GENERIC_EXPLODE);
+    }
+
+    public static void load(Player player){
+        SendInformation.sendSoundAtEntity(player,Sound.ITEM_ARMOR_EQUIP_NETHERITE);
     }
 
     public static void zishuijinStep(Player player) {
@@ -63,6 +71,10 @@ public final class PlaySound {
 
     public static void entityBlazeShoot(Player player) {
         SendInformation.sendSoundAtEntity(player, Sound.ENTITY_BLAZE_SHOOT);
+    }
+
+    public static void entityShoot(Player player){
+        SendInformation.sendSoundAtEntity(player,Sound.ENTITY_ARROW_SHOOT);
     }
 
     public static void playerSwim(Player player) {
@@ -154,80 +166,103 @@ public final class PlaySound {
         SendInformation.sendSoundAtEntity(player, "minecraft:zhandou");
     }
 
+    //神仙人妖战
+    public static void storyshen(Player player){
+        SendInformation.sendSoundAtEntity(player,"minecraft:shen_story");
+    }
+
+    public static void storyxian(Player player){
+        SendInformation.sendSoundAtEntity(player,"minecraft:xian_story");
+    }
+
+    public static void storyren(Player player){
+        SendInformation.sendSoundAtEntity(player,"minecraft:ren_story");
+    }
+
+    public static void storyyao(Player player){
+        SendInformation.sendSoundAtEntity(player,"minecraft:yao_story");
+    }
+
+    public static void storyzhan(Player player){
+        SendInformation.sendSoundAtEntity(player,"minecraft:zhan_story");
+    }
+
+
+
     public static void shen(Player player) {
-        SendInformation.sendBgm(player, "minecraft:shen", 12.5f);
+        SendInformation.sendBgm(player, "minecraft:shen", 0.5f);
     }
 
     public static void xian(Player player) {
-        SendInformation.sendBgm(player, "minecraft:xian", 18.75f);
+        SendInformation.sendBgm(player, "minecraft:xian", 0.5f);
     }
 
     public static void ren(Player player) {
-        SendInformation.sendBgm(player, "minecraft:ren", 12.5f);
+        SendInformation.sendBgm(player, "minecraft:ren", 0.5f);
     }
 
     public static void yao(Player player) {
-        SendInformation.sendBgm(player, "minecraft:yao", 12.5f);
+        SendInformation.sendBgm(player, "minecraft:yao", 0.5f);
     }
 
     public static void zhan(Player player) {
-        SendInformation.sendBgm(player, "minecraft:zhan", 12.5f);
+        SendInformation.sendBgm(player, "minecraft:zhan", 0.5f);
     }
 
     public static void penglai(Player player) {
-        SendInformation.sendBgm(player, "minecraft:penglai", 10f);
+        SendInformation.sendBgm(player, "minecraft:penglai", 0.5f);
     }
 
     public static void middle(Player player) {
-        SendInformation.sendBgm(player, "minecraft:middle", 18.75f);
+        SendInformation.sendBgm(player, "minecraft:middle", 0.5f);
     }
 
     public static void senlinrukou(Player player) {
-        SendInformation.sendBgm(player, "minecraft:senlinrukou",12.5f);
+        SendInformation.sendBgm(player, "minecraft:senlinrukou",0.5f);
     }
 
     public static void senlinzhongxin(Player player) {
-        SendInformation.sendBgm(player, "minecraft:senlinzhongxin",12.5f);
+        SendInformation.sendBgm(player, "minecraft:senlinzhongxin",0.5f);
     }
 
     public static void senlinshenchu(Player player){
-        SendInformation.sendBgm(player, "minecraft:senlinshenchu",12.5f);
+        SendInformation.sendBgm(player, "minecraft:senlinshenchu",0.5f);
     }
 
     public static void beifang(Player player) {
-        SendInformation.sendBgm(player, "minecraft:beifang",12.5f);
+        SendInformation.sendBgm(player, "minecraft:beifang",0.5f);
     }
 
     public static void shuizucunzhuang(Player player) {
-        SendInformation.sendBgm(player, "minecraft:shuizucunzhuang",12.5f);
+        SendInformation.sendBgm(player, "minecraft:shuizucunzhuang",0.5f);
     }
 
     public static void shandong(Player player) {
-        SendInformation.sendBgm(player, "minecraft:shandong",12.5f);
+        SendInformation.sendBgm(player, "minecraft:shandong",0.5f);
     }
 
     public static void qiansiguan(Player player) {
-        SendInformation.sendBgm(player, "minecraft:qiansigu",12.5f);
+        SendInformation.sendBgm(player, "minecraft:qiansigu",0.5f);
     }
 
     public static void shamo(Player player) {
-        SendInformation.sendBgm(player, "minecraft:shamo",12.5f);
+        SendInformation.sendBgm(player, "minecraft:shamo",0.5f);
     }
 
     public static void shamorukou(Player player) {
-        SendInformation.sendBgm(player, "minecraft:shamorukou",12.5f);
+        SendInformation.sendBgm(player, "minecraft:shamorukou",0.5f);
     }
 
     public static void xumishan(Player player) {
-        SendInformation.sendBgm(player, "minecraft:xumishan",12.5f);
+        SendInformation.sendBgm(player, "minecraft:xumishan",0.5f);
     }
 
     public static void taolin(Player player) {
-        SendInformation.sendBgm(player, "minecraft:taolin",12.5f);
+        SendInformation.sendBgm(player, "minecraft:taolin",0.5f);
     }
 
     public static void tuzuwu(Player player) {
-        SendInformation.sendBgm(player, "minecraft:tuzuwu",12.5f);
+        SendInformation.sendBgm(player, "minecraft:tuzuwu",0.5f);
     }
 
 }

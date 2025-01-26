@@ -111,7 +111,9 @@ public final class Sale implements CommandExecutor {
                     .append(Component.text("  §a价格：§b" + price))
             );
 
-            new SaleTask(playerName, itemDisplay, count).runTaskTimer(Yuehua.instance, 20 * 10, 20 * 10);
+
+
+            new SaleTask(playerName, itemDisplay, count).runTaskTimer(Yuehua.instance, 20 * 20, 20 * 20);
 
 
         });

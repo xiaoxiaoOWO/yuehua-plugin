@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.scoreboard.Scoreboard;
 
-import static com.xiaoxiaoowo.yuehua.guis.Shichang.initialShiChang;
+import static com.xiaoxiaoowo.yuehua.guis.other.Shichang.initialShiChang;
 
 @SuppressWarnings("deprecation")
 public final class Team {

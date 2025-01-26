@@ -1,18 +1,25 @@
 package com.xiaoxiaoowo.yuehua.system.handleMonsters;
 
+import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.data.MonsterData;
 import com.xiaoxiaoowo.yuehua.data.PetData;
+import com.xiaoxiaoowo.yuehua.display.utils.ParticleUtils;
 import com.xiaoxiaoowo.yuehua.system.Buff;
 import com.xiaoxiaoowo.yuehua.system.Cure;
 import com.xiaoxiaoowo.yuehua.system.Damage;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
 
 public final class DoMonsterWuLiAttacked {
+
+    public static final BlockData iron = Bukkit.createBlockData(Material.IRON_BLOCK);
+
     public static double doWuLiAttacked(String id, MonsterData monsterData, Data data) {
         switch (id) {
 
@@ -59,9 +66,10 @@ public final class DoMonsterWuLiAttacked {
 
         Player player = data.player;
         for (Entity entity : GetEntity.getMonsters(player.getLocation(), 4, 4, 4)) {
-            Mob mob = (Mob) entity;
             double damage = data.attack;
-            Damage.damageMonster(data, damage, mob);
+            MonsterData monsterData = Yuehua.monsterData.get(entity.getUniqueId());
+            Damage.damageMonster(data, damage, monsterData);
+            ParticleUtils.atMonsterBlock(monsterData.monster, iron);
         }
         return 1.0d;
     }

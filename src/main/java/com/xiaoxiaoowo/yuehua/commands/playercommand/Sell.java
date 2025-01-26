@@ -3,6 +3,7 @@ package com.xiaoxiaoowo.yuehua.commands.playercommand;
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import com.xiaoxiaoowo.yuehua.utils.AdvancementSet;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import net.kyori.adventure.text.Component;
@@ -157,7 +158,10 @@ public final class Sell implements CommandExecutor {
             Scheduler.sync(() -> {
                 handItem.setAmount(finalCount);
                 Yuehua.shichang.get(finalPage).addItem(handItem);
+                AdvancementSet.giveAdv(player,AdvancementSet.sell,20);
             });
+
+
 
 
         });

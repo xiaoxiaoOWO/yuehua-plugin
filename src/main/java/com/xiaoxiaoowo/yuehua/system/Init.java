@@ -43,7 +43,7 @@ public final class Init {
 
             case "laoZhanShiDunPai" -> {
                 long time = GetEntity.world.getGameTime();
-                Scheduler.syncLater(new LAOZHANSHIDUNPAI(data, time), (long) (10 * 20 * data.real_cool));
+                Scheduler.syncLater(new LAOZHANSHIDUNPAI(data, time), (long) (20 * 20 * data.real_cool));
                 data.extraData.put(id, time);
             }
 
@@ -88,7 +88,7 @@ public final class Init {
                 data.extraData.put(id, time);
             }
 
-            case "laoLieHuJianDai" -> data.hitObservers.add("laoLieHuJianDai");
+            case "laoLieHuJianDai" -> data.hitObservers.add(id);
 
         }
     }
@@ -100,13 +100,15 @@ public final class Init {
                  "gongXiong4", "gongXiong5" -> data.extraData.remove(id);
             case "tui1", "gongTui2", "gongTui3", "gongTui4", "gongTui5" -> data.jiNengObservers.remove(id);
 
-            case "laoLieHuJianDai" -> data.hitObservers.remove("laoLieHuJianDai");
+            case "laoLieHuJianDai" -> data.hitObservers.remove(id);
 
         }
     }
 
     public static void initDan(DanData data, String id) {
         switch (id) {
+            case "heiTieGuo","qinTongGuo","lianDanLu","suoHunLu","qiShaDing","hunYuanShenDing" -> data.zhenfaObservers.add(id);
+
             case "tou1", "danTou2", "danTou3", "danTou4", "danTou5" -> data.attackedObservers.add(id);
             case "xiong1" -> {
                 long time = GetEntity.world.getGameTime();
@@ -141,6 +143,7 @@ public final class Init {
 
     public static void deInitDan(DanData data, String id) {
         switch (id) {
+            case "heiTieGuo","qinTongGuo","lianDanLu","suoHunLu","qiShaDing","hunYuanShenDing" -> data.zhenfaObservers.remove(id);
             case "tou1", "danTou2", "danTou3", "danTou4", "danTou5" -> data.attackedObservers.remove(id);
             case "xiong1", "xie1", "danXie2", "danXie3", "danXie4", "danXie5", "danXiong2", "danXiong3", "danXiong4",
                  "danXiong5" -> data.extraData.remove(id);

@@ -177,33 +177,33 @@ public final class AttributeSet {
 
         attributes.put("xinBinDunPai", List.of(
                 new ShouHu(24),
-                new Gedang(4),
+                new Gedang(8),
                 new SlotWithId("xinBinDunPai", 40)
         ));
 
         attributes.put("jinRuiDunPai", List.of(
                 new ShouHu(36),
-                new Gedang(8),
+                new Gedang(12),
                 new SlotWithId("jinRuiDunPai", 40)
         ));
 
         attributes.put("chiSeYueHuo", List.of(
-                new ShouHu(54),
-                new Gedang(12),
+                new ShouHu(72),
+                new Gedang(18),
                 new Renxing(0.05),
                 new SlotWithId("chiSeYueHuo", 40)
         ));
 
         attributes.put("jinGangBuHuai", List.of(
-                new ShouHu(81),
-                new Gedang(16),
+                new ShouHu(144),
+                new Gedang(27),
                 new Renxing(0.1),
                 new SlotWithId("jinGangBuHuai", 40)
         ));
 
         attributes.put("chenBinLuoXue", List.of(
-                new ShouHu(121.5),
-                new Gedang(20),
+                new ShouHu(288),
+                new Gedang(54),
                 new Renxing(0.15),
                 new Shengji(0.2),
                 new SlotWithId("chenBinLuoXue", 40)
@@ -495,14 +495,12 @@ public final class AttributeSet {
         attributes.put("heiTieNu", List.of(
                 new ArrowAdd(4),
                 new Pojia(0.05),
-                new Speed(0.2,Speed.weaponSpeed),
                 new SlotWithId("heiTieNu", 0)
         ));
 
         attributes.put("hongLinNu", List.of(
                 new ArrowAdd(8),
                 new Pojia(0.1),
-                new Speed(0.2,Speed.weaponSpeed),
                 new SlotWithId("hongLinNu", 0)
         ));
 
@@ -510,7 +508,6 @@ public final class AttributeSet {
                 new ArrowAdd(16),
                 new BaoJi(0.1),
                 new Pojia(0.15),
-                new Speed(0.2,Speed.weaponSpeed),
                 new SlotWithId("jiaoLongNu", 0)
         ));
 
@@ -518,7 +515,6 @@ public final class AttributeSet {
                 new ArrowAdd(32),
                 new BaoJi(0.2),
                 new Pojia(0.2),
-                new Speed(0.2,Speed.weaponSpeed),
                 new SlotWithId("riYueLiuXingNu", 0)
         ));
 
@@ -527,14 +523,13 @@ public final class AttributeSet {
                 new ArrowMul(0.5),
                 new BaoJi(0.3),
                 new Pojia(0.25),
-                new Speed(0.2,Speed.weaponSpeed),
                 new SlotWithId("liangYi", 0)
         ));
 
         attributes.put("fuRongGong", List.of(
                 new ArrowAdd(4),
                 new Pojia(0.05),
-                new Speed(0.3, Speed.weaponSpeed),
+                new Speed(0.2, Speed.weaponSpeed),
                 new IsBow(),
                 new SlotWithId("fuRongGong", 0)
         ));
@@ -542,7 +537,7 @@ public final class AttributeSet {
         attributes.put("hongLuanGong", List.of(
                 new ArrowAdd(8),
                 new Pojia(0.1),
-                new Speed(0.4, Speed.weaponSpeed),
+                new Speed(0.25, Speed.weaponSpeed),
                 new IsBow(),
                 new SlotWithId("hongLuanGong", 0)
         ));
@@ -551,7 +546,7 @@ public final class AttributeSet {
                 new ArrowAdd(16),
                 new BaoJi(0.1),
                 new Pojia(0.15),
-                new Speed(0.5, Speed.weaponSpeed),
+                new Speed(0.3, Speed.weaponSpeed),
                 new IsBow(),
                 new SlotWithId("tianQiongGong", 0)
         ));
@@ -560,7 +555,7 @@ public final class AttributeSet {
                 new ArrowAdd(32),
                 new BaoJi(0.2),
                 new Pojia(0.2),
-                new Speed(0.6, Speed.weaponSpeed),
+                new Speed(0.35, Speed.weaponSpeed),
                 new IsBow(),
                 new SlotWithId("sheTianZhuiYueGong", 0)
         ));
@@ -570,7 +565,7 @@ public final class AttributeSet {
                 new ArrowMul(0.5),
                 new BaoJi(0.3),
                 new Pojia(0.25),
-                new Speed(0.7, Speed.weaponSpeed),
+                new Speed(0.4, Speed.weaponSpeed),
                 new IsBow(),
                 new SlotWithId("liuGuang", 0)
         ));
@@ -756,14 +751,14 @@ public final class AttributeSet {
 
         attributes.put("zhuRongKuYan",List.of(
                 new ZhenfaAdd(32),
-                new BaojiXiaoguo(0.4),
+                new BaojiXiaoguo(0.3),
                 new SlotWithId("zhuRongKuYan",2)
         ));
 
         attributes.put("zhuDianXuanJing",List.of(
                 new ZhenfaAdd(64),
                 new ZhenfaMul(0.1),
-                new BaojiXiaoguo(0.6),
+                new BaojiXiaoguo(0.4),
                 new SlotWithId("zhuDianXuanJing",2)
         ));
 
@@ -782,14 +777,14 @@ public final class AttributeSet {
 
         attributes.put("wuMingMoYinLuo",List.of(
                 new ZhenfaAdd(32),
-                new BaojiXiaoguo(0.4),
+                new BaojiXiaoguo(0.3),
                 new SlotWithId("wuMingMoYinLuo",3)
         ));
 
         attributes.put("sheTianHuaXueLing",List.of(
                 new ZhenfaAdd(64),
                 new ZhenfaMul(0.1),
-                new BaojiXiaoguo(0.6),
+                new BaojiXiaoguo(0.4),
                 new SlotWithId("sheTianHuaXueLing",3)
         ));
 
@@ -898,54 +893,54 @@ public final class AttributeSet {
         ));
         attributes.put("qingLongShengQi4", List.of(
                 new Renxing(0.2),
-                new DingLi(0.05),
+                new DingLi(0.1),
                 new SlotWithId("qingLongShengQi4", 100)
 
         ));
         attributes.put("qingLongShengQi5", List.of(
                 new Renxing(0.25),
-                new DingLi(0.1),
+                new DingLi(0.15),
                 new SlotWithId("qingLongShengQi5", 100)
 
         ));
 
         attributes.put("qingLongShengQi6", List.of(
                 new Renxing(0.3),
-                new DingLi(0.15),
+                new DingLi(0.2),
                 new SlotWithId("qingLongShengQi6", 100)
 
         ));
 
 
         attributes.put("zhuQueShengQi1", List.of(
-                new Shengji(0.05),
+                new Shengji(0.1),
                 new SlotWithId("zhuQueShengQi1", 101)
         ));
 
         attributes.put("zhuQueShengQi2", List.of(
-                new Shengji(0.1),
+                new Shengji(0.15),
                 new SlotWithId("zhuQueShengQi2", 101)
         ));
 
         attributes.put("zhuQueShengQi3", List.of(
-                new Shengji(0.15),
+                new Shengji(0.2),
                 new SlotWithId("zhuQueShengQi3", 101)
         ));
 
         attributes.put("zhuQueShengQi4", List.of(
-                new Shengji(0.2),
+                new Shengji(0.25),
                 new HpMul(0.2, HpMul.shipinHp),
                 new SlotWithId("zhuQueShengQi4", 101)
         ));
 
         attributes.put("zhuQueShengQi5", List.of(
-                new Shengji(0.25),
+                new Shengji(0.3),
                 new HpMul(0.4, HpMul.shipinHp),
                 new SlotWithId("zhuQueShengQi5", 101)
         ));
 
         attributes.put("zhuQueShengQi6", List.of(
-                new Shengji(0.3),
+                new Shengji(0.35),
                 new HpMul(0.6, HpMul.shipinHp),
                 new SlotWithId("zhuQueShengQi6", 101)
         ));
@@ -999,20 +994,20 @@ public final class AttributeSet {
         ));
 
         attributes.put("xuanWuShengQi4", List.of(
-                new ShouHu(54),
-                new Gedang(15),
+                new ShouHu(72),
+                new Gedang(18),
                 new SlotWithId("xuanWuShengQi4", 103)
         ));
 
         attributes.put("xuanWuShengQi5", List.of(
-                new ShouHu(81),
-                new Gedang(20),
+                new ShouHu(144),
+                new Gedang(27),
                 new SlotWithId("xuanWuShengQi5", 103)
         ));
 
         attributes.put("xuanWuShengQi6", List.of(
-                new ShouHu(121.5),
-                new Gedang(25),
+                new ShouHu(288),
+                new Gedang(54),
                 new SlotWithId("xuanWuShengQi6", 103)
         ));
 
@@ -1060,172 +1055,172 @@ public final class AttributeSet {
         ));
 
         attributes.put("poSunChiZhiJie", List.of(
-                new Pofa(0.05),
+                new Pofa(0.1),
                 new SlotWithId("poSunChiZhiJie", 105)
         ));
 
         attributes.put("chiMiZhiJie", List.of(
-                new Pofa(0.1),
+                new Pofa(0.15),
                 new SlotWithId("chiMiZhiJie", 105)
         ));
 
         attributes.put("chiYuDuJie", List.of(
-                new Pofa(0.15),
+                new Pofa(0.2),
                 new SlotWithId("chiYuDuJie", 105)
         ));
 
         attributes.put("chiYuXieJie", List.of(
-                new Pofa(0.2),
-                new Pojia(0.1),
+                new Pofa(0.25),
+                new Pojia(0.15),
                 new SlotWithId("chiYuXieJie", 105)
         ));
 
         attributes.put("chiYuGuiJie", List.of(
-                new Pofa(0.25),
-                new Pojia(0.15),
+                new Pofa(0.3),
+                new Pojia(0.2),
                 new SlotWithId("chiYuGuiJie", 105)
         ));
 
         attributes.put("chiYuMoJie", List.of(
-                new Pofa(0.3),
-                new Pojia(0.2),
+                new Pofa(0.35),
+                new Pojia(0.25),
                 new SlotWithId("chiYuMoJie", 105)
         ));
 
         attributes.put("chiYuMingJie", List.of(
-                new Pofa(0.35),
-                new Pojia(0.25),
+                new Pofa(0.4),
+                new Pojia(0.3),
                 new SlotWithId("chiYuMingJie", 105)
         ));
 
         attributes.put("poSunChenZhiJie", List.of(
-                new BaojiXiaoguo(0.02),
+                new BaojiXiaoguo(0.2),
                 new SlotWithId("poSunChenZhiJie", 106)
         ));
 
         attributes.put("chenNuZhiJie", List.of(
-                new BaojiXiaoguo(0.04),
+                new BaojiXiaoguo(0.3),
                 new SlotWithId("chenNuZhiJie", 106)
         ));
 
         attributes.put("chenHenDuJie", List.of(
-                new BaojiXiaoguo(0.08),
+                new BaojiXiaoguo(0.4),
                 new SlotWithId("chenHenDuJie", 106)
         ));
 
         attributes.put("chenHenXieJie", List.of(
-                new BaojiXiaoguo(0.16),
+                new BaojiXiaoguo(0.5),
                 new BaoJi(0.05),
                 new SlotWithId("chenHenXieJie", 106)
         ));
 
         attributes.put("chenHenGuiJie", List.of(
-                new BaojiXiaoguo(0.32),
+                new BaojiXiaoguo(0.6),
                 new BaoJi(0.1),
                 new SlotWithId("chenHenGuiJie", 106)
         ));
 
         attributes.put("chenHenMoJie", List.of(
-                new BaojiXiaoguo(0.64),
+                new BaojiXiaoguo(0.7),
                 new BaoJi(0.15),
                 new SlotWithId("chenHenMoJie", 106)
         ));
 
         attributes.put("chenHenMingJie", List.of(
-                new BaojiXiaoguo(1.28),
+                new BaojiXiaoguo(0.8),
                 new BaoJi(0.2),
                 new SlotWithId("chenHenMingJie", 106)
         ));
 
 
         attributes.put("chanDingFaJie", List.of(
-                new Fakang(0.15),
+                new Fakang(0.2),
                 new SlotWithId("chanDingFaJie", 104)
         ));
 
         attributes.put("chanDingShengJie", List.of(
-                new Fakang(0.2),
-                new Gedang(15),
+                new Fakang(0.25),
+                new Gedang(18),
                 new SlotWithId("chanDingShengJie", 104)
         ));
 
         attributes.put("chanDingFoJie", List.of(
-                new Fakang(0.25),
-                new Gedang(20),
+                new Fakang(0.3),
+                new Gedang(27),
                 new SlotWithId("chanDingFoJie", 104)
         ));
 
         attributes.put("chanDingXianJie", List.of(
-                new Fakang(0.3),
-                new Gedang(25),
+                new Fakang(0.35),
+                new Gedang(54),
                 new SlotWithId("chanDingXianJie", 104)
         ));
 
         attributes.put("chanDingShenJie", List.of(
-                new Fakang(0.35),
-                new Gedang(30),
+                new Fakang(0.4),
+                new Gedang(108),
                 new SlotWithId("chanDingShenJie", 104)
         ));
 
 
         attributes.put("zhiHuiFaJie", List.of(
-                new Shengji(0.15),
+                new Shengji(0.2),
                 new SlotWithId("zhiHuiFaJie", 105)
         ));
 
 
         attributes.put("zhiHuiShengJie", List.of(
-                new Shengji(0.2),
-                new Renxing(0.2),
+                new Shengji(0.25),
+                new Renxing(0.25),
                 new SlotWithId("zhiHuiShengJie", 105)
         ));
 
         attributes.put("zhiHuiFoJie", List.of(
-                new Shengji(0.25),
-                new Renxing(0.25),
+                new Shengji(0.3),
+                new Renxing(0.3),
                 new SlotWithId("zhiHuiFoJie", 105)
         ));
 
 
         attributes.put("zhiHuiXianJie", List.of(
-                new Shengji(0.3),
-                new Renxing(0.3),
+                new Shengji(0.35),
+                new Renxing(0.35),
                 new SlotWithId("zhiHuiXianJie", 105)
         ));
 
         attributes.put("zhiHuiShenJie", List.of(
-                new Shengji(0.35),
-                new Renxing(0.35),
+                new Shengji(0.4),
+                new Renxing(0.4),
                 new SlotWithId("zhiHuiShenJie", 105)
         ));
 
         attributes.put("chiJieFaJie", List.of(
-                new ShouHu(24),
+                new ShouHu(36),
                 new SlotWithId("chiJieFaJie", 106)
         ));
 
         attributes.put("chiJieShengJie", List.of(
-                new ShouHu(36),
-                new DingLi(0.1),
+                new ShouHu(72),
+                new DingLi(0.15),
                 new SlotWithId("chiJieShengJie", 106)
         ));
 
         attributes.put("chiJieFoJie", List.of(
-                new ShouHu(54),
-                new DingLi(0.15),
+                new ShouHu(144),
+                new DingLi(0.2),
                 new SlotWithId("chiJieFoJie", 106)
         ));
 
 
         attributes.put("chiJieXianJie", List.of(
-                new ShouHu(81),
-                new DingLi(0.2),
+                new ShouHu(288),
+                new DingLi(0.25),
                 new SlotWithId("chiJieXianJie", 106)
         ));
 
         attributes.put("chiJieShenJie", List.of(
-                new ShouHu(121.5),
-                new DingLi(0.25),
+                new ShouHu(576),
+                new DingLi(0.3),
                 new SlotWithId("chiJieShenJie", 106)
         ));
 
@@ -1395,31 +1390,31 @@ public final class AttributeSet {
         ));
 
         attributes.put("xieSp2", List.of(
-                new Gedang(8),
+                new Gedang(16),
                 new SlotWithId("xieSp2", 36)
         ));
 
         attributes.put("xieSp3", List.of(
-                new Gedang(16),
+                new Gedang(24),
                 new SlotWithId("xieSp3", 36)
         ));
 
         attributes.put("xieSp4", List.of(
-                new Gedang(24),
+                new Gedang(36),
                 new HpMul(0.25, HpMul.xieHp),
                 new SlotWithId("xieSp4", 36)
         ));
 
         attributes.put("xieSp5", List.of(
-                new Gedang(32),
+                new Gedang(54),
                 new HpMul(0.5, HpMul.xieHp),
                 new SlotWithId("xieSp5", 36)
         ));
 
         attributes.put("xieSp6", List.of(
-                new Gedang(-32),
+                new Gedang(-54),
                 new HpMul(-0.5, HpMul.xieHp),
-                new BaojiXiaoguo(1.5),
+                new BaojiXiaoguo(1),
                 new SlotWithId("xieSp6", 36)
         ));
 
@@ -1713,7 +1708,7 @@ public final class AttributeSet {
                 new Hp(8),
                 new Hujia(0.1),
                 new Fakang(0.1),
-                new Gedang(2),
+                new Gedang(4),
                 new Speed(0.02, Speed.touSpeed),
                 new Jump(0.02),
                 new SlotWithId("zhanTou2", 39)
@@ -1723,7 +1718,7 @@ public final class AttributeSet {
                 new Hp(8),
                 new Hujia(0.1),
                 new Fakang(0.1),
-                new Gedang(2),
+                new Gedang(4),
                 new Speed(0.02, Speed.xiongSpeed),
                 new Jump(0.02),
                 new SlotWithId("zhanXiong2", 38)
@@ -1733,7 +1728,7 @@ public final class AttributeSet {
                 new Hp(8),
                 new Hujia(0.1),
                 new Fakang(0.1),
-                new Gedang(2),
+                new Gedang(4),
                 new Speed(0.02, Speed.tuiSpeed),
                 new Jump(0.02),
                 new SlotWithId("zhanTui2", 37)
@@ -1743,7 +1738,7 @@ public final class AttributeSet {
                 new Hp(8),
                 new Hujia(0.1),
                 new Fakang(0.1),
-                new Gedang(2),
+                new Gedang(4),
                 new Speed(0.02, Speed.xieSpeed),
                 new Jump(0.02),
                 new SlotWithId("zhanXie2", 36)
@@ -1753,7 +1748,7 @@ public final class AttributeSet {
                 new Hp(16),
                 new Hujia(0.15),
                 new Fakang(0.15),
-                new Gedang(4),
+                new Gedang(6),
                 new Speed(0.03, Speed.touSpeed),
                 new Jump(0.03),
                 new SlotWithId("zhanTou3", 39)
@@ -1763,7 +1758,7 @@ public final class AttributeSet {
                 new Hp(16),
                 new Hujia(0.15),
                 new Fakang(0.15),
-                new Gedang(4),
+                new Gedang(6),
                 new Speed(0.03, Speed.xiongSpeed),
                 new Jump(0.03),
                 new SlotWithId("zhanXiong3", 38)
@@ -1773,7 +1768,7 @@ public final class AttributeSet {
                 new Hp(16),
                 new Hujia(0.15),
                 new Fakang(0.15),
-                new Gedang(4),
+                new Gedang(6),
                 new Speed(0.03, Speed.tuiSpeed),
                 new Jump(0.03),
                 new SlotWithId("zhanTui3", 37)
@@ -1783,7 +1778,7 @@ public final class AttributeSet {
                 new Hp(16),
                 new Hujia(0.15),
                 new Fakang(0.15),
-                new Gedang(4),
+                new Gedang(6),
                 new Speed(0.03, Speed.xieSpeed),
                 new Jump(0.03),
                 new SlotWithId("zhanXie3", 36)
@@ -1794,7 +1789,7 @@ public final class AttributeSet {
                 new HpMul(0.1, HpMul.touHp),
                 new Hujia(0.2),
                 new Fakang(0.2),
-                new Gedang(6),
+                new Gedang(9),
                 new AttackAdd(6),
                 new Speed(0.04, Speed.touSpeed),
                 new Jump(0.04),
@@ -1806,7 +1801,7 @@ public final class AttributeSet {
                 new HpMul(0.1, HpMul.xiongHp),
                 new Hujia(0.2),
                 new Fakang(0.2),
-                new Gedang(6),
+                new Gedang(9),
                 new AttackAdd(6),
                 new Speed(0.04, Speed.xiongSpeed),
                 new Jump(0.04),
@@ -1818,7 +1813,7 @@ public final class AttributeSet {
                 new HpMul(0.1, HpMul.tuiHp),
                 new Hujia(0.2),
                 new Fakang(0.2),
-                new Gedang(6),
+                new Gedang(9),
                 new AttackAdd(6),
                 new Speed(0.04, Speed.tuiSpeed),
                 new Jump(0.04),
@@ -1830,7 +1825,7 @@ public final class AttributeSet {
                 new HpMul(0.1, HpMul.xieHp),
                 new Hujia(0.2),
                 new Fakang(0.2),
-                new Gedang(6),
+                new Gedang(9),
                 new AttackAdd(6),
                 new Speed(0.04, Speed.xieSpeed),
                 new Jump(0.04),
@@ -1842,7 +1837,7 @@ public final class AttributeSet {
                 new HpMul(0.2, HpMul.touHp),
                 new Hujia(0.25),
                 new Fakang(0.25),
-                new Gedang(8),
+                new Gedang(13.5),
                 new AttackAdd(12),
                 new Speed(0.05, Speed.touSpeed),
                 new Jump(0.05),
@@ -1854,7 +1849,7 @@ public final class AttributeSet {
                 new HpMul(0.2, HpMul.xiongHp),
                 new Hujia(0.25),
                 new Fakang(0.25),
-                new Gedang(8),
+                new Gedang(13.5),
                 new AttackAdd(12),
                 new Speed(0.05, Speed.xiongSpeed),
                 new Jump(0.05),
@@ -1866,7 +1861,7 @@ public final class AttributeSet {
                 new HpMul(0.2, HpMul.tuiHp),
                 new Hujia(0.25),
                 new Fakang(0.25),
-                new Gedang(8),
+                new Gedang(13.5),
                 new AttackAdd(12),
                 new Speed(0.05, Speed.tuiSpeed),
                 new Jump(0.05),
@@ -1878,7 +1873,7 @@ public final class AttributeSet {
                 new HpMul(0.2, HpMul.xieHp),
                 new Hujia(0.25),
                 new Fakang(0.25),
-                new Gedang(8),
+                new Gedang(13.5),
                 new AttackAdd(12),
                 new Speed(0.05, Speed.xieSpeed),
                 new Jump(0.05),
@@ -1890,7 +1885,7 @@ public final class AttributeSet {
                 new HpMul(0.3, HpMul.touHp),
                 new Hujia(0.3),
                 new Fakang(0.3),
-                new Gedang(10),
+                new Gedang(27),
                 new DingLi(0.05),
                 new AttackAdd(24),
                 new AttackMul(0.1),
@@ -1904,7 +1899,7 @@ public final class AttributeSet {
                 new HpMul(0.3, HpMul.xiongHp),
                 new Hujia(0.3),
                 new Fakang(0.3),
-                new Gedang(10),
+                new Gedang(27),
                 new DingLi(0.05),
                 new AttackAdd(24),
                 new AttackMul(0.1),
@@ -1918,7 +1913,7 @@ public final class AttributeSet {
                 new HpMul(0.3, HpMul.tuiHp),
                 new Hujia(0.3),
                 new Fakang(0.3),
-                new Gedang(10),
+                new Gedang(27),
                 new DingLi(0.05),
                 new AttackAdd(24),
                 new AttackMul(0.1),
@@ -1932,7 +1927,7 @@ public final class AttributeSet {
                 new HpMul(0.3, HpMul.xieHp),
                 new Hujia(0.3),
                 new Fakang(0.3),
-                new Gedang(10),
+                new Gedang(27),
                 new DingLi(0.05),
                 new AttackAdd(24),
                 new AttackMul(0.1),

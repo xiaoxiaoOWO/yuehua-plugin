@@ -19,6 +19,8 @@ import java.util.Random;
 public final class DoKillMonsterObserver {
     public static final Random random = new Random();
 
+
+
     public static void doKill(String id, Data data, MonsterData monsterData) {
         switch (id) {
             case "check" -> doCheck(data);
@@ -31,164 +33,629 @@ public final class DoKillMonsterObserver {
             case "eastKulou" -> {
                 data.killEastSkeletonConut++;
                 Player player = data.player;
-                if (data.killEastSkeletonConut > 100) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.eastkulou, 10);
-                }
-                if (data.killEastSkeletonConut > 1000) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_final, 30);
-                }
 
+                switch (data.killEastSkeletonConut) {
+                    case 100 -> AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_100, 5);
+                    case 200 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_200, 10);
+                    }
+                    case 500 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_500, 15);
+                    }
+                    case 1000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_1000, 20);
+                    }
+                    case 2000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_2000, 30);
+                    }
+                    case 5000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_2000, 30);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkulou_5000, 50);
+                    }
+                }
             }
+
             case "eastZhizhu" -> {
                 data.killEastSpiderCount++;
                 Player player = data.player;
-                if (data.killEastSpiderCount > 100) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu, 10);
-                }
-                if (data.killEastSpiderCount > 1000) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_final, 30);
+
+                switch (data.killEastSpiderCount) {
+                    case 100 -> AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_100, 5);
+                    case 200 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_200, 10);
+                    }
+                    case 500 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_500, 15);
+                    }
+                    case 1000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_1000, 20);
+                    }
+                    case 2000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_2000, 30);
+                    }
+                    case 5000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_2000, 30);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhu_5000, 50);
+                    }
                 }
             }
+
             case "eastJiangshi" -> {
                 data.killEastZombieCount++;
                 Player player = data.player;
-                if (data.killEastZombieCount > 100) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi, 10);
-                }
-                if (data.killEastZombieCount > 1000) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_final, 30);
+
+                switch (data.killEastZombieCount) {
+                    case 100 -> AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_100, 5);
+                    case 200 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_200, 10);
+                    }
+                    case 500 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_500, 15);
+                    }
+                    case 1000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_1000, 20);
+                    }
+                    case 2000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_2000, 30);
+                    }
+                    case 5000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_2000, 30);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshi_5000, 50);
+                    }
                 }
             }
+
             case "eastZhizhuJinyin" -> {
                 data.killEastSpiderEliteCount++;
                 Player player = data.player;
-                if (data.killEastSpiderEliteCount > 100) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin, 10);
-                }
-                if (data.killEastSpiderEliteCount > 1000) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_final, 30);
+
+                switch (data.killEastSpiderEliteCount) {
+                    case 100 -> AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_100, 5);
+                    case 200 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_200, 10);
+                    }
+                    case 500 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_500, 15);
+                    }
+                    case 1000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_1000, 20);
+                    }
+                    case 2000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_2000, 30);
+                    }
+                    case 5000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_2000, 30);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastzhizhujinyin_5000, 50);
+                    }
                 }
             }
+
             case "eastDuFeng" -> {
                 data.killEastPoisonFlyCount++;
                 Player player = data.player;
-                if (data.killEastPoisonFlyCount > 100) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng, 10);
-                }
-                if (data.killEastPoisonFlyCount > 1000) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_final, 30);
+
+                switch (data.killEastPoisonFlyCount) {
+                    case 100 -> AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_100, 5);
+                    case 200 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_200, 10);
+                    }
+                    case 500 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_500, 15);
+                    }
+                    case 1000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_1000, 20);
+                    }
+                    case 2000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_2000, 30);
+                    }
+                    case 5000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_2000, 30);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastdufeng_5000, 50);
+                    }
                 }
             }
+
             case "eastkugugongjianshou" -> {
                 data.killEastArrowSkeletonCount++;
                 Player player = data.player;
-                if (data.killEastArrowSkeletonCount > 100) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou, 10);
-                }
-                if (data.killEastArrowSkeletonCount > 1000) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_final, 30);
+
+                switch (data.killEastArrowSkeletonCount) {
+                    case 100 -> AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_100, 5);
+                    case 200 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_200, 10);
+                    }
+                    case 500 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_500, 15);
+                    }
+                    case 1000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_1000, 20);
+                    }
+                    case 2000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_2000, 30);
+                    }
+                    case 5000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_2000, 30);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastkugugongjianshou_5000, 50);
+                    }
                 }
             }
+
             case "eastjiangshijinyin" -> {
                 data.killEastZombieEliteCount++;
                 Player player = data.player;
-                if (data.killEastZombieEliteCount > 100) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin, 10);
-                }
-                if (data.killEastZombieEliteCount > 1000) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_final, 30);
+
+                switch (data.killEastZombieEliteCount) {
+                    case 100 -> AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_100, 5);
+                    case 200 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_200, 10);
+                    }
+                    case 500 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_500, 15);
+                    }
+                    case 1000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_1000, 20);
+                    }
+                    case 2000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_2000, 30);
+                    }
+                    case 5000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_2000, 30);
+                        AdvancementSet.giveAdv(player, AdvancementSet.eastjiangshijinyin_5000, 50);
+                    }
                 }
             }
+
             case "shanshenshooter" -> {
                 data.killEastArrowSkeletonMountainCount++;
                 Player player = data.player;
-                if (data.killEastArrowSkeletonMountainCount > 100) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter, 10);
-                }
-                if (data.killEastArrowSkeletonMountainCount > 1000) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_final, 30);
+
+                switch (data.killEastArrowSkeletonMountainCount) {
+                    case 100 -> AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_100, 5);
+                    case 200 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_200, 10);
+                    }
+                    case 500 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_500, 15);
+                    }
+                    case 1000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_1000, 20);
+                    }
+                    case 2000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_2000, 30);
+                    }
+                    case 5000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_2000, 30);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenshooter_5000, 50);
+                    }
                 }
             }
+
             case "shanshenspider" -> {
                 data.killEastSpiderMountainCount++;
                 Player player = data.player;
-                if (data.killEastSpiderMountainCount > 100) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider, 10);
-                }
-                if (data.killEastSpiderMountainCount > 1000) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_final, 30);
+
+                switch (data.killEastSpiderMountainCount) {
+                    case 100 -> AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_100, 5);
+                    case 200 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_200, 10);
+                    }
+                    case 500 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_500, 15);
+                    }
+                    case 1000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_1000, 20);
+                    }
+                    case 2000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_2000, 30);
+                    }
+                    case 5000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_2000, 30);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenspider_5000, 50);
+                    }
                 }
             }
+
             case "shanshenzombie" -> {
                 data.killEastZombieMountainCount++;
                 Player player = data.player;
-                if (data.killEastZombieMountainCount > 100) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie, 10);
-                }
-                if (data.killEastZombieMountainCount > 1000) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_final, 30);
+
+                switch (data.killEastZombieMountainCount) {
+                    case 100 -> AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_100, 5);
+                    case 200 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_200, 10);
+                    }
+                    case 500 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_500, 15);
+                    }
+                    case 1000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_1000, 20);
+                    }
+                    case 2000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_2000, 30);
+                    }
+                    case 5000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_2000, 30);
+                        AdvancementSet.giveAdv(player, AdvancementSet.shanshenzombie_5000, 50);
+                    }
                 }
             }
+
             case "yaojindufeng" -> {
                 data.killEastPoisonFlyMountainCount++;
                 Player player = data.player;
-                if (data.killEastPoisonFlyMountainCount > 100) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng, 10);
-                }
-                if (data.killEastPoisonFlyMountainCount > 1000) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_final, 30);
+
+                switch (data.killEastPoisonFlyMountainCount) {
+                    case 100 -> AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_100, 5);
+                    case 200 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_200, 10);
+                    }
+                    case 500 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_500, 15);
+                    }
+                    case 1000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_1000, 20);
+                    }
+                    case 2000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_2000, 30);
+                    }
+                    case 5000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_2000, 30);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojindufeng_5000, 50);
+                    }
                 }
             }
+
             case "yaojinshooter" -> {
                 data.killEastArrowSkeletonSHENMUCount++;
                 Player player = data.player;
-                if (data.killEastArrowSkeletonSHENMUCount > 100) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter, 10);
-                }
-                if (data.killEastArrowSkeletonSHENMUCount > 1000) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_final, 30);
+
+                switch (data.killEastArrowSkeletonSHENMUCount) {
+                    case 100 -> AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_100, 5);
+                    case 200 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_200, 10);
+                    }
+                    case 500 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_500, 15);
+                    }
+                    case 1000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_1000, 20);
+                    }
+                    case 2000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_2000, 30);
+                    }
+                    case 5000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_2000, 30);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojinshooter_5000, 50);
+                    }
                 }
             }
+
             case "yaojingpanda" -> {
                 data.killEastPandaMountainCount++;
                 Player player = data.player;
-                if (data.killEastPandaMountainCount > 100) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda, 10);
-                }
-                if (data.killEastPandaMountainCount > 1000) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_final, 30);
+
+                switch (data.killEastPandaMountainCount) {
+                    case 100 -> AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_100, 5);
+                    case 200 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_200, 10);
+                    }
+                    case 500 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_500, 15);
+                    }
+                    case 1000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_1000, 20);
+                    }
+                    case 2000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_2000, 30);
+                    }
+                    case 5000 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_100, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_200, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_500, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_1000, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_2000, 30);
+                        AdvancementSet.giveAdv(player, AdvancementSet.yaojingpanda_5000, 50);
+                    }
                 }
             }
+
             case "zhizhunvwang" -> {
                 data.killEastSpiderQueenMountainCount++;
                 Player player = data.player;
-                if (data.killEastSpiderQueenMountainCount > 50) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang, 10);
-                }
-                if (data.killEastSpiderQueenMountainCount > 500) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_final, 30);
+
+                switch (data.killEastSpiderQueenMountainCount) {
+                    case 10 -> AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_10, 5);
+                    case 20 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_10, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_20, 10);
+                    }
+                    case 50 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_10, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_20, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_50, 15);
+                    }
+                    case 100 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_10, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_20, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_50, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_100, 20);
+                    }
+                    case 200 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_10, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_20, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_50, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_100, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_200, 30);
+                    }
+                    case 500 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_10, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_20, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_50, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_100, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_200, 30);
+                        AdvancementSet.giveAdv(player, AdvancementSet.zhizhunvwang_500, 50);
+                    }
                 }
             }
+
             case "jianxiguimei" -> {
                 data.killEastWaterGhostMountainCount++;
                 Player player = data.player;
-                if (data.killEastWaterGhostMountainCount > 50) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei, 10);
-                }
-                if (data.killEastWaterGhostMountainCount > 500) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_final, 30);
+
+                switch (data.killEastWaterGhostMountainCount) {
+                    case 10 -> AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_10, 5);
+                    case 20 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_10, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_20, 10);
+                    }
+                    case 50 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_10, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_20, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_50, 15);
+                    }
+                    case 100 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_10, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_20, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_50, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_100, 20);
+                    }
+                    case 200 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_10, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_20, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_50, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_100, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_200, 30);
+                    }
+                    case 500 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_10, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_20, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_50, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_100, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_200, 30);
+                        AdvancementSet.giveAdv(player, AdvancementSet.jianxiguimei_500, 50);
+                    }
                 }
             }
+
             case "linyouduzhu" -> {
                 data.killEastPoisonSpiderMountainCount++;
                 Player player = data.player;
-                if (data.killEastPoisonSpiderMountainCount > 50) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu, 10);
-                }
-                if (data.killEastPoisonSpiderMountainCount > 500) {
-                    AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_final, 30);
+
+                switch (data.killEastPoisonSpiderMountainCount) {
+                    case 10 -> AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_10, 5);
+                    case 20 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_10, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_20, 10);
+                    }
+                    case 50 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_10, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_20, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_50, 15);
+                    }
+                    case 100 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_10, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_20, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_50, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_100, 20);
+                    }
+                    case 200 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_10, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_20, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_50, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_100, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_200, 30);
+                    }
+                    case 500 -> {
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_10, 5);
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_20, 10);
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_50, 15);
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_100, 20);
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_200, 30);
+                        AdvancementSet.giveAdv(player, AdvancementSet.linyouduzhu_500, 50);
+                    }
                 }
             }
+
+
+
         }
     }
 

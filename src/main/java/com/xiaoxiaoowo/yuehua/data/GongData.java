@@ -38,6 +38,7 @@ public final class GongData extends Data {
     public boolean canShoot;
 
     public long noAct;
+    public String shootWithParticle = null;
 
 
     public GongData(Player player) {

@@ -11,8 +11,12 @@ public final class FlowerPotManipulate implements Listener {
 
     @EventHandler
     public void onFlowerPotManipulate(PlayerFlowerPotManipulateEvent e) {
-        e.setCancelled(true);
         Player player = e.getPlayer();
+        if(player.isOp()){
+            return;
+        }
+
+        e.setCancelled(true);
         SendInformation.sendMes(player, Component.text("§e[游戏机制]§4不能当采花大盗"));
         player.setHealth(0);
     }

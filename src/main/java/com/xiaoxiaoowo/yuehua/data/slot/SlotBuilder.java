@@ -2,6 +2,7 @@ package com.xiaoxiaoowo.yuehua.data.slot;
 
 
 import com.xiaoxiaoowo.yuehua.data.slot.special.BeiDouMieShen;
+import com.xiaoxiaoowo.yuehua.data.slot.special.Chong;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 
 public final class SlotBuilder {
@@ -30,6 +31,14 @@ public final class SlotBuilder {
 
     public static SlotWithOneActiveSkill slot1Builder(String id, double real_cool) {
         switch (id) {
+
+            case "feiRen", "jinRuiFeiRen" -> {
+                return new SlotWithOneActiveSkill(id, 0, GetEntity.world.getGameTime() + (long) (20 * 2));
+            }
+
+            case "heiTieChong", "huangTongChong" -> {
+                return new Chong(id, 0, 0, GetEntity.world.getGameTime() + (long) (20 * 30), 3);
+            }
 
             default -> {
                 return new SlotWithOneActiveSkill(id);

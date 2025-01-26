@@ -6,11 +6,9 @@ import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.data.GongData;
 import com.xiaoxiaoowo.yuehua.data.ZhanData;
 import com.xiaoxiaoowo.yuehua.system.Act;
-import com.xiaoxiaoowo.yuehua.system.Buff;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import io.papermc.paper.event.player.PlayerInventorySlotChangeEvent;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,13 +16,168 @@ import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.util.io.BukkitObjectInputStream;
 
-import java.util.Objects;
+import java.util.*;
 
 
 public final class InventorySlotChange implements Listener {
 
+    public static final Set<String> BANGDINGID = new HashSet<>();
+
+    static {
+        List<String> ids = List.of(
+                //武器
+                "xuanYuan",
+                "taiE",
+                "ruYiJinGuBang",
+                "zhuRi",
+                "liangYi",
+                "liuGuang",
+                "hunYuanShenDing",
+
+                //副武器
+                "yanWangTie",
+                "xiaoTian",
+                "jiuFengLaiYi",
+
+                //异器
+                "chenBinLuoXue",
+                "niePanYunAng",
+                "mingHong",
+                "",
+                "",
+                "",
+                "",
+
+                //头盔
+                "touSp6",
+                "touSp7",
+                "touSp8",
+                "zhanTou6",
+                "zhanTou7",
+                "zhanTou8",
+                "gongTou6",
+                "gongTou7",
+                "gongTou8",
+                "danTou6",
+                "danTou7",
+                "danTou8",
+                "",
+                "",
+
+                //胸甲
+                "xiongSp6",
+                "xiongSp7",
+                "xiongSp8",
+                "zhanXiong6",
+                "zhanXiong7",
+                "zhanXiong8",
+                "gongXiong6",
+                "gongXiong7",
+                "gongXiong8",
+                "danXiong6",
+                "danXiong7",
+                "danXiong8",
+                "",
+                "",
+                //护腿
+                "tuiSp6",
+                "tuiSp7",
+                "tuiSp8",
+                "zhanTui6",
+                "zhanTui7",
+                "zhanTui8",
+                "gongTui6",
+                "gongTui7",
+                "gongTui8",
+                "danTui6",
+                "danTui7",
+                "danTui8",
+                "",
+                "",
+
+                //鞋子
+                "xieSp6",
+                "xieSp7",
+                "xieSp8",
+                "zhanXie6",
+                "zhanXie7",
+                "zhanXie8",
+                "gongXie6",
+                "gongXie7",
+                "gongXie8",
+                "danXie6",
+                "danXie7",
+                "danXie8",
+                "",
+                "",
+
+                //通用法宝
+                "yaoWangHuLu",
+                "ciXinMiaoLian",
+                "shenXinYuGu",
+                "yinYangZhanLongJian",
+                "yunLangBan",
+                "zhenHunYuXiao",
+                "diKuiHuaLan",
+                "xuanFengZongShan",
+                "taiJiBaGua",
+
+                //战法宝
+                "niuMoNuHou",
+                "zhenLeiTianChui",
+
+                //弓法宝
+                "tianJiShenJin",
+                "fuXinRuYi",
+
+                //丹法宝
+                "zhuDianXuanJing",
+                "sheTianHuaXueLing",
+                "diKongYmoQuan",
+                "moDuoHunFan",
+
+                //兽魂
+                "qingLongShengQi6",
+                "zhuQueShengQi6",
+                "baiHuShengQi6",
+                "xuanWuShengQi6",
+
+                //戒指
+                "tanLanMoJie",
+                "tanLanMingJie",
+                "chiYuMoJie",
+                "chiYuMingJie",
+                "chenHenMoJie",
+                "chenHenMingJie",
+                "chanDingXianJie",
+                "chanDingShenJie",
+                "zhiHuiXianJie",
+                "zhiHuiShenJie",
+                "chiJieXianJie",
+                "chiJieShenJie",
+
+                //先天
+                "hunTianLin",
+                "taiChuShenJia",
+                "ziShaChan",
+                "fengHuoLun",
+                "jiuTianXuanYu",
+                "weiTuoTian"
+
+
+        );
+
+        BANGDINGID.addAll(ids);
+
+
+    }
+
+    public static boolean checkCanActLevel6(Player player, String id) {
+        PersistentDataContainer pdc = player.getPersistentDataContainer();
+        List<String> already = new ArrayList<>(pdc.get(DataContainer.shenqiHaveGot, PersistentDataType.LIST.strings()));
+        return already.contains(id);
+    }
 
     @EventHandler
     public void onInventorySlotChange(PlayerInventorySlotChangeEvent e) {
@@ -56,12 +209,19 @@ public final class InventorySlotChange implements Listener {
                         }
 
                         ItemStack now = e.getNewItemStack();
-                        if (now.getType() == Material.DIAMOND_PICKAXE) {
+                        if (now.getType() == Material.PRISMARINE_SHARD) {
                             //当槽位和职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
+
                             if (slot == pdc.get(DataContainer.slot, PersistentDataType.INTEGER)) {
                                 if (job == pdc.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                                    Act.actZhan(zhanData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                    Act.actZhan(zhanData, idPdc);
                                     //取出镶嵌ID和附灵ID
                                     String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                     String enchantId = pdc.get(DataContainer.enchantid, PersistentDataType.STRING);
@@ -70,6 +230,8 @@ public final class InventorySlotChange implements Listener {
                                     Act.actInsert(zhanData, insertId);
                                 }
                             }
+
+
                         }
                     }
                     case 2 -> {
@@ -94,7 +256,13 @@ public final class InventorySlotChange implements Listener {
                             if (nowType == Material.BOW || nowType == Material.CROSSBOW) {
                                 //当槽位和职业都满足时激活
                                 PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
-                                Act.actGong(gongData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                                if (BANGDINGID.contains(idPdc)) {
+                                    if (!checkCanActLevel6(player, idPdc)) {
+                                        return;
+                                    }
+                                }
+                                Act.actGong(gongData, idPdc);
                                 //取出镶嵌ID和附灵ID
                                 String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                 String enchantId = pdc.get(DataContainer.enchantid, PersistentDataType.STRING);
@@ -110,10 +278,16 @@ public final class InventorySlotChange implements Listener {
                         Act.deActDan(danData, danData.slot0.id);
 
                         ItemStack now = e.getNewItemStack();
-                        if (now.getType() == Material.NETHERITE_PICKAXE) {
+                        if (now.getType() == Material.ANGLER_POTTERY_SHERD) {
                             //当槽位和职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
-                            Act.actDan(danData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
+                            Act.actDan(danData, idPdc);
                         }
                     }
                 }
@@ -143,12 +317,18 @@ public final class InventorySlotChange implements Listener {
                         }
 
                         ItemStack now = e.getNewItemStack();
-                        if (now.getType() == Material.DIAMOND_PICKAXE) {
+                        if (now.getType() == Material.PRISMARINE_SHARD) {
                             //当槽位和职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             if (slot == pdc.get(DataContainer.slot, PersistentDataType.INTEGER)) {
                                 if (job == pdc.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                                    Act.actZhan(zhanData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                    Act.actZhan(zhanData, idPdc);
                                     //取出镶嵌ID
                                     String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                     //激活镶嵌
@@ -171,12 +351,18 @@ public final class InventorySlotChange implements Listener {
                         }
 
                         ItemStack now = e.getNewItemStack();
-                        if (now.getType() == Material.DIAMOND_PICKAXE) {
+                        if (now.getType() == Material.PRISMARINE_SHARD) {
                             //当槽位和职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             if (slot == pdc.get(DataContainer.slot, PersistentDataType.INTEGER)) {
                                 if (job == pdc.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                                    Act.actGong(gongData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                    Act.actGong(gongData, idPdc);
                                     //取出镶嵌ID
                                     String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                     //激活镶嵌
@@ -199,12 +385,18 @@ public final class InventorySlotChange implements Listener {
                         }
 
                         ItemStack now = e.getNewItemStack();
-                        if (now.getType() == Material.DIAMOND_PICKAXE) {
+                        if (now.getType() == Material.PRISMARINE_SHARD) {
                             //当槽位和职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             if (slot == pdc.get(DataContainer.slot, PersistentDataType.INTEGER)) {
                                 if (job == pdc.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                                    Act.actDan(danData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                    Act.actDan(danData, idPdc);
                                     //取出镶嵌ID
                                     String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                     //激活镶嵌
@@ -229,12 +421,18 @@ public final class InventorySlotChange implements Listener {
                         ZhanData zhanData = (ZhanData) data;
                         Act.deActZhan(zhanData, data.slot2.id);
                         ItemStack now = e.getNewItemStack();
-                        if (now.getType() == Material.DIAMOND_PICKAXE) {
+                        if (now.getType() == Material.PRISMARINE_SHARD) {
                             //当槽位和职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             if (slot == pdc.get(DataContainer.slot, PersistentDataType.INTEGER)) {
                                 if (job == pdc.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                                    Act.actZhan(zhanData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                    Act.actZhan(zhanData, idPdc);
                                 }
                             }
                         }
@@ -243,12 +441,18 @@ public final class InventorySlotChange implements Listener {
                         GongData gongData = (GongData) data;
                         Act.deActGong(gongData, data.slot2.id);
                         ItemStack now = e.getNewItemStack();
-                        if (now.getType() == Material.DIAMOND_PICKAXE) {
+                        if (now.getType() == Material.PRISMARINE_SHARD) {
                             //当槽位和职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             if (slot == pdc.get(DataContainer.slot, PersistentDataType.INTEGER)) {
                                 if (job == pdc.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                                    Act.actGong(gongData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                    Act.actGong(gongData, idPdc);
                                 }
                             }
                         }
@@ -257,12 +461,18 @@ public final class InventorySlotChange implements Listener {
                         DanData danData = (DanData) data;
                         Act.deActDan(danData, data.slot2.id);
                         ItemStack now = e.getNewItemStack();
-                        if (now.getType() == Material.DIAMOND_PICKAXE) {
+                        if (now.getType() == Material.PRISMARINE_SHARD) {
                             //当槽位和职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             if (slot == pdc.get(DataContainer.slot, PersistentDataType.INTEGER)) {
                                 if (job == pdc.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                                    Act.actDan(danData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                    Act.actDan(danData, idPdc);
                                 }
                             }
                         }
@@ -289,12 +499,18 @@ public final class InventorySlotChange implements Listener {
 
 
                 ItemStack now = e.getNewItemStack();
-                if (now.getType() == Material.DIAMOND_PICKAXE) {
+                if (now.getType() == Material.PRISMARINE_SHARD) {
                     //当槽位和职业都满足时激活
                     PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                    String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                    if (BANGDINGID.contains(idPdc)) {
+                        if (!checkCanActLevel6(player, idPdc)) {
+                            return;
+                        }
+                    }
                     if (slot == pdc.get(DataContainer.slot, PersistentDataType.INTEGER)) {
                         if (job == pdc.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                            Act.actDan((DanData) data, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                            Act.actDan((DanData) data, idPdc);
                         }
                     }
                 }
@@ -315,12 +531,18 @@ public final class InventorySlotChange implements Listener {
 
 
                 ItemStack now = e.getNewItemStack();
-                if (now.getType() == Material.DIAMOND_PICKAXE) {
+                if (now.getType() == Material.PRISMARINE_SHARD) {
                     //当槽位和职业都满足时激活
                     PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                    String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                    if (BANGDINGID.contains(idPdc)) {
+                        if (!checkCanActLevel6(player, idPdc)) {
+                            return;
+                        }
+                    }
                     if (slot == pdc.get(DataContainer.slot, PersistentDataType.INTEGER)) {
                         if (job == pdc.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                            Act.actDan((DanData) data, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                            Act.actDan((DanData) data, idPdc);
                         }
                     }
                 }
@@ -341,12 +563,18 @@ public final class InventorySlotChange implements Listener {
 
 
                 ItemStack now = e.getNewItemStack();
-                if (now.getType() == Material.DIAMOND_PICKAXE) {
+                if (now.getType() == Material.PRISMARINE_SHARD) {
                     //当槽位和职业都满足时激活
                     PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                    String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                    if (BANGDINGID.contains(idPdc)) {
+                        if (!checkCanActLevel6(player, idPdc)) {
+                            return;
+                        }
+                    }
                     if (slot == pdc.get(DataContainer.slot, PersistentDataType.INTEGER)) {
                         if (job == pdc.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                            Act.actDan((DanData) data, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                            Act.actDan((DanData) data, idPdc);
                         }
                     }
                 }
@@ -363,8 +591,15 @@ public final class InventorySlotChange implements Listener {
                 Act.deActAll(data, data.slot8.id);
 
                 ItemStack now = e.getNewItemStack();
-                if (now.getType() == Material.IRON_PICKAXE) {
-                    Act.actAll(data, now.getItemMeta().getPersistentDataContainer().get(DataContainer.id, PersistentDataType.STRING));
+                if (now.getType() == Material.PRISMARINE_CRYSTALS) {
+                    PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                    String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                    if (BANGDINGID.contains(idPdc)) {
+                        if (!checkCanActLevel6(player, idPdc)) {
+                            return;
+                        }
+                    }
+                    Act.actAll(data, idPdc);
                 }
             }
 
@@ -398,9 +633,15 @@ public final class InventorySlotChange implements Listener {
                         if (now.getType() != Material.AIR) {
                             //当职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             int pdcJob = pdc.get(DataContainer.job, PersistentDataType.INTEGER);
                             if (pdcJob == 0 || pdcJob == job) {
-                                Act.actZhan(zhanData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                Act.actZhan(zhanData, idPdc);
                                 //取出镶嵌ID和附灵ID
                                 String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                 String enchantId = pdc.get(DataContainer.enchantid, PersistentDataType.STRING);
@@ -428,9 +669,15 @@ public final class InventorySlotChange implements Listener {
                         if (now.getType() != Material.AIR) {
                             //当职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             int pdcJob = pdc.get(DataContainer.job, PersistentDataType.INTEGER);
                             if (pdcJob == 0 || pdcJob == job) {
-                                Act.actGong(gongData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                Act.actGong(gongData, idPdc);
                                 //取出镶嵌ID和附灵ID
                                 String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                 String enchantId = pdc.get(DataContainer.enchantid, PersistentDataType.STRING);
@@ -458,9 +705,15 @@ public final class InventorySlotChange implements Listener {
                         if (now.getType() != Material.AIR) {
                             //当职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             int pdcJob = pdc.get(DataContainer.job, PersistentDataType.INTEGER);
                             if (pdcJob == 0 || pdcJob == job) {
-                                Act.actDan(danData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                Act.actDan(danData, idPdc);
                                 //取出镶嵌ID和附灵ID
                                 String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                 String enchantId = pdc.get(DataContainer.enchantid, PersistentDataType.STRING);
@@ -501,9 +754,15 @@ public final class InventorySlotChange implements Listener {
                         if (now.getType() != Material.AIR) {
                             //当职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             int pdcJob = pdc.get(DataContainer.job, PersistentDataType.INTEGER);
                             if (pdcJob == 0 || pdcJob == job) {
-                                Act.actZhan(zhanData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                Act.actZhan(zhanData, idPdc);
                                 //取出镶嵌ID和附灵ID
                                 String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                 String enchantId = pdc.get(DataContainer.enchantid, PersistentDataType.STRING);
@@ -531,9 +790,15 @@ public final class InventorySlotChange implements Listener {
                         if (now.getType() != Material.AIR) {
                             //当职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             int pdcJob = pdc.get(DataContainer.job, PersistentDataType.INTEGER);
                             if (pdcJob == 0 || pdcJob == job) {
-                                Act.actGong(gongData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                Act.actGong(gongData, idPdc);
                                 //取出镶嵌ID和附灵ID
                                 String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                 String enchantId = pdc.get(DataContainer.enchantid, PersistentDataType.STRING);
@@ -561,9 +826,15 @@ public final class InventorySlotChange implements Listener {
                         if (now.getType() != Material.AIR) {
                             //当职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             int pdcJob = pdc.get(DataContainer.job, PersistentDataType.INTEGER);
                             if (pdcJob == 0 || pdcJob == job) {
-                                Act.actDan(danData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                Act.actDan(danData, idPdc);
                                 //取出镶嵌ID和附灵ID
                                 String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                 String enchantId = pdc.get(DataContainer.enchantid, PersistentDataType.STRING);
@@ -604,9 +875,15 @@ public final class InventorySlotChange implements Listener {
                         if (now.getType() != Material.AIR) {
                             //当职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             int pdcJob = pdc.get(DataContainer.job, PersistentDataType.INTEGER);
                             if (pdcJob == 0 || pdcJob == job) {
-                                Act.actZhan(zhanData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                Act.actZhan(zhanData, idPdc);
                                 //取出镶嵌ID和附灵ID
                                 String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                 String enchantId = pdc.get(DataContainer.enchantid, PersistentDataType.STRING);
@@ -634,9 +911,15 @@ public final class InventorySlotChange implements Listener {
                         if (now.getType() != Material.AIR) {
                             //当职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             int pdcJob = pdc.get(DataContainer.job, PersistentDataType.INTEGER);
                             if (pdcJob == 0 || pdcJob == job) {
-                                Act.actGong(gongData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                Act.actGong(gongData, idPdc);
                                 //取出镶嵌ID和附灵ID
                                 String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                 String enchantId = pdc.get(DataContainer.enchantid, PersistentDataType.STRING);
@@ -664,9 +947,15 @@ public final class InventorySlotChange implements Listener {
                         if (now.getType() != Material.AIR) {
                             //当职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             int pdcJob = pdc.get(DataContainer.job, PersistentDataType.INTEGER);
                             if (pdcJob == 0 || pdcJob == job) {
-                                Act.actDan(danData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                Act.actDan(danData, idPdc);
                                 //取出镶嵌ID和附灵ID
                                 String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                 String enchantId = pdc.get(DataContainer.enchantid, PersistentDataType.STRING);
@@ -706,9 +995,15 @@ public final class InventorySlotChange implements Listener {
                         if (now.getType() != Material.AIR) {
                             //当职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             int pdcJob = pdc.get(DataContainer.job, PersistentDataType.INTEGER);
                             if (pdcJob == 0 || pdcJob == job) {
-                                Act.actZhan(zhanData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                Act.actZhan(zhanData, idPdc);
                                 //取出镶嵌ID和附灵ID
                                 String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                 String enchantId = pdc.get(DataContainer.enchantid, PersistentDataType.STRING);
@@ -736,9 +1031,15 @@ public final class InventorySlotChange implements Listener {
                         if (now.getType() != Material.AIR) {
                             //当职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             int pdcJob = pdc.get(DataContainer.job, PersistentDataType.INTEGER);
                             if (pdcJob == 0 || pdcJob == job) {
-                                Act.actGong(gongData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                Act.actGong(gongData, idPdc);
                                 //取出镶嵌ID和附灵ID
                                 String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                 String enchantId = pdc.get(DataContainer.enchantid, PersistentDataType.STRING);
@@ -766,9 +1067,15 @@ public final class InventorySlotChange implements Listener {
                         if (now.getType() != Material.AIR) {
                             //当职业都满足时激活
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             int pdcJob = pdc.get(DataContainer.job, PersistentDataType.INTEGER);
                             if (pdcJob == 0 || pdcJob == job) {
-                                Act.actDan(danData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                Act.actDan(danData, idPdc);
                                 //取出镶嵌ID和附灵ID
                                 String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                 String enchantId = pdc.get(DataContainer.enchantid, PersistentDataType.STRING);
@@ -798,17 +1105,30 @@ public final class InventorySlotChange implements Listener {
                         Act.deActZhan(zhanData, data.slot40.id);
                         //若要激活
                         if (nowType == Material.SHIELD) {
+                            PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             //当槽位和职业都满足时激活
-                            Act.actZhan(zhanData, now.getItemMeta().getPersistentDataContainer().get(DataContainer.id, PersistentDataType.STRING));
+                            Act.actZhan(zhanData, idPdc);
                         }
                     }
                     case 2 -> {
                         GongData gongData = (GongData) data;
                         Act.deActGong(gongData, data.slot40.id);
-                        if (nowType == Material.GOLDEN_PICKAXE) {
+                        if (nowType == Material.RABBIT_HIDE) {
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             if (job == pdc.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                                Act.actGong(gongData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                Act.actGong(gongData, idPdc);
                             }
                         }
                     }
@@ -826,10 +1146,16 @@ public final class InventorySlotChange implements Listener {
                             Act.deActFuling(danData, enchantIdOld);
                             Act.deActInsert(danData, insertIdOld);
                         }
-                        if (nowType == Material.GOLDEN_PICKAXE) {
+                        if (nowType == Material.RABBIT_HIDE) {
                             PersistentDataContainer pdc = now.getItemMeta().getPersistentDataContainer();
+                            String idPdc = pdc.get(DataContainer.id, PersistentDataType.STRING);
+                            if (BANGDINGID.contains(idPdc)) {
+                                if (!checkCanActLevel6(player, idPdc)) {
+                                    return;
+                                }
+                            }
                             if (job == pdc.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                                Act.actDan(danData, pdc.get(DataContainer.id, PersistentDataType.STRING));
+                                Act.actDan(danData, idPdc);
                                 //取出镶嵌ID和附灵ID
                                 String insertId = pdc.get(DataContainer.insertid, PersistentDataType.STRING);
                                 String enchantId = pdc.get(DataContainer.enchantid, PersistentDataType.STRING);
@@ -846,6 +1172,7 @@ public final class InventorySlotChange implements Listener {
 
 
     }
+
 }
 
 

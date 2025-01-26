@@ -5,6 +5,7 @@ import com.xiaoxiaoowo.yuehua.data.DanData;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.event.player.Interact;
 import com.xiaoxiaoowo.yuehua.guis.Yh;
+import com.xiaoxiaoowo.yuehua.guis.op.OpTp;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -15,19 +16,9 @@ import org.java_websocket.server.WebSocketServer;
 import java.net.InetSocketAddress;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.util.HashSet;
 
 public final class MySocket {
     public static WebSocketServer server;
-
-    public static HashSet<String> specials;
-
-    static {
-        specials = new HashSet<>();
-
-        specials.add("fan_fer");
-        specials.add("_lao_bing");
-    }
 
 
     public static void init() {
@@ -158,6 +149,9 @@ public final class MySocket {
                             return;
                         }
                         if (data.job != 3) {
+                            if (player.isOp()) {
+                                Scheduler.sync(() -> player.openInventory(OpTp.OPTP));
+                            }
                             return;
                         }
                         DanData danData = (DanData) data;
@@ -205,48 +199,26 @@ public final class MySocket {
                         String sbString = playerName +
                                 day +
                                 22 +
-                                82416727 +
+                                40131536 +
                                 9 +
                                 26836906;
                         int serverHashCode = sbString.hashCode();
-                        if (serverHashCode == hashCode) {
-                            Yuehua.checkSet.add(player.getUniqueId());
-                            return;
-                        }
 
-                        String sbString3 = playerName +
+
+                        //不带钠
+                        String sbString2 = playerName +
                                 day +
-                                22 +
-                                82407448 +
+                                18 +
+                                35681506  +
                                 9 +
                                 26836906;
-                        int serverHashCode3 = sbString3.hashCode();
-                        if (serverHashCode3 == hashCode) {
-                            Yuehua.checkSet.add(player.getUniqueId());
-                            return;
-                        }
+                        int serverHashCode2 = sbString2.hashCode();
 
-                        String sbString4 = playerName +
-                                day +
-                                21 +
-                                82345848 +
-                                9 +
-                                26836906;
-                        int serverHashCode4 = sbString4.hashCode();
-                        if (serverHashCode4 == hashCode) {
+                        if (serverHashCode2 == hashCode || serverHashCode == hashCode) {
                             Yuehua.checkSet.add(player.getUniqueId());
-                            return;
-                        }
-
-                        if (specials.contains(playerName)) {
-                            String sbString2 = playerName +
-                                    day +
-                                    20 +
-                                    81018200 +
-                                    9 +
-                                    26836906;
-                            int serverHashCode2 = sbString2.hashCode();
-                            if (serverHashCode2 == hashCode) {
+                        } else {
+                            //OP无视规则
+                            if (player.isOp()) {
                                 Yuehua.checkSet.add(player.getUniqueId());
                             }
                         }
@@ -259,6 +231,10 @@ public final class MySocket {
                         if (data != null) {
                             data.webSocket = conn;
                         }
+                    }
+
+                    case "f" -> {
+                        SendInformation.sendActionBar(player, Component.text("§e[游戏机制]§4你的手持装备尚未拥有第二形态"));
                     }
 
                     default -> {

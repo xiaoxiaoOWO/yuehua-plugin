@@ -409,8 +409,27 @@ public class DisPlayUtils {
         });
     }
 
+    //        ItemDisplay itemDisplay = GetEntity.world.spawn(eyeLocation, ItemDisplay.class, it -> {
+    //            //物品与展示方式
+    //            it.setItemStack(itemStack);
+    //            it.setItemDisplayTransform(ItemDisplay.ItemDisplayTransform.GROUND);
+    //            //大小
+    //            Transformation transformation = it.getTransformation();
+    //            transformation.getScale().set(scale);
+    //            transformation.getTranslation().set(0, dy, 0);
+    //            it.setTransformation(transformation);
+    //        });
+    //
+    //        Scheduler.asyncLater(() -> {
+    //            itemDisplay.setInterpolationDelay(0);
+    //            itemDisplay.setInterpolationDuration(time);
+    //
+    //            Transformation transformation = itemDisplay.getTransformation();
+    //            transformation.getTranslation().set(0, dy, distance);
+    //            itemDisplay.setTransformation(transformation);
+    //        }, 2);
 
-    public static ItemDisplay displayJian(Location eyeLocation, ItemStack itemStack, Vector3f scale, float distance, int time) {
+    public static ItemDisplay displayJian(Location eyeLocation, ItemStack itemStack, Vector3f scale, float distance, int time, double dy) {
         ItemDisplay itemDisplay = GetEntity.world.spawn(eyeLocation, ItemDisplay.class, it -> {
             //物品与展示方式
             it.setItemStack(itemStack);
@@ -418,6 +437,7 @@ public class DisPlayUtils {
             //大小
             Transformation transformation = it.getTransformation();
             transformation.getScale().set(scale);
+            transformation.getTranslation().set(0,dy,0);
             //旋转
             Quaternionf rotation = transformation.getLeftRotation();
             rotation.rotateX(Math.toRadians(-10));
@@ -431,7 +451,7 @@ public class DisPlayUtils {
             itemDisplay.setInterpolationDuration(time);
 
             Transformation transformation = itemDisplay.getTransformation();
-            transformation.getTranslation().set(0, 0, distance);
+            transformation.getTranslation().set(0, dy, distance);
             itemDisplay.setTransformation(transformation);
         }, 2);
 

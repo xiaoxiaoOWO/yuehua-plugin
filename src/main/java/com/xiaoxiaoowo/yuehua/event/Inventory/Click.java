@@ -5,24 +5,35 @@ import com.xiaoxiaoowo.yuehua.data.DanData;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.data.GongData;
 import com.xiaoxiaoowo.yuehua.event.player.Join;
-import com.xiaoxiaoowo.yuehua.guis.*;
+import com.xiaoxiaoowo.yuehua.guis.Yh;
 import com.xiaoxiaoowo.yuehua.guis.bank.JianDai;
 import com.xiaoxiaoowo.yuehua.guis.bank.MoneyBank;
 import com.xiaoxiaoowo.yuehua.guis.bank.YuanSuBank;
-import com.xiaoxiaoowo.yuehua.guis.op.OpTp;
+import com.xiaoxiaoowo.yuehua.guis.dz.DuanZao;
+import com.xiaoxiaoowo.yuehua.guis.dz.HuiShou;
+import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
+import com.xiaoxiaoowo.yuehua.guis.mission.PanLing;
+import com.xiaoxiaoowo.yuehua.guis.mission.Task;
+import com.xiaoxiaoowo.yuehua.guis.mission.XuanShang;
+import com.xiaoxiaoowo.yuehua.guis.other.Advancenment;
+import com.xiaoxiaoowo.yuehua.guis.other.Shichang;
 import com.xiaoxiaoowo.yuehua.items.Book;
 import com.xiaoxiaoowo.yuehua.items.dz.YuShi;
 import com.xiaoxiaoowo.yuehua.items.other.Food;
 import com.xiaoxiaoowo.yuehua.items.other.Other;
 import com.xiaoxiaoowo.yuehua.items.other.RaceProvince;
+import com.xiaoxiaoowo.yuehua.items.zhuangbei.Weapon;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.system.dz.*;
 import com.xiaoxiaoowo.yuehua.utils.*;
 import io.papermc.paper.persistence.PersistentDataContainerView;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.HoverEvent;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Statistic;
+import org.bukkit.advancement.Advancement;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -221,19 +232,15 @@ public final class Click implements Listener {
                     }
 
                     case 12 -> {
-                        long timeNow = GetEntity.world.getGameTime();
-                        PersistentDataContainer pdc = whoClicked.getPersistentDataContainer();
-                        if (pdc.get(DataContainer.jiuji, PersistentDataType.LONG) < timeNow) {
-                            pdc.set(DataContainer.jiuji, PersistentDataType.LONG, timeNow + 72000 * 6);
-                            shuilang.setAmount(99);
-                            whoClicked.getInventory().addItem(shuilang);
-                        }
+                        Scheduler.sync(() -> whoClicked.openInventory(Task.MAIN_TASK));
+                        PlaySound.openInventory(whoClicked);
                     }
 
                     case 13 -> {
-                        Data data = Yuehua.playerData.get(whoClicked.getUniqueId());
-                        lunhuizhuanshi(data, whoClicked);
+                        Scheduler.sync(() -> whoClicked.openInventory(XuanShang.XUAN_SHANG));
+                        PlaySound.openInventory(whoClicked);
                     }
+
 
                     case 14 -> {
                         Player player = (Player) event.getWhoClicked();
@@ -276,66 +283,40 @@ public final class Click implements Listener {
                     }
 
                     case 16 -> {
-                        Scheduler.sync(() -> whoClicked.openInventory(Task.MAIN_TASK));
-                        PlaySound.openInventory(whoClicked);
+                        int chengjiuPoint = whoClicked.getPersistentDataContainer().get(DataContainer.advancementPoint, PersistentDataType.INTEGER);
+                        SendInformation.sendMes(whoClicked, Component.text("§6[菜单系统]§a你的成就点为: §b" + chengjiuPoint));
+                        PlaySound.closeInventory(whoClicked);
+                        Scheduler.sync(() -> whoClicked.closeInventory());
                     }
 
                     case 17 -> {
-                        Scheduler.sync(() -> whoClicked.openInventory(Task.XUAN_SHANG));
-                        PlaySound.openInventory(whoClicked);
+                        Data data = Yuehua.playerData.get(whoClicked.getUniqueId());
                     }
 
-
                     case 18 -> {
-                        Data data = Yuehua.playerData.get(whoClicked.getUniqueId());
-                        data.noinfor = !data.noinfor;
-                        Player player = data.player;
-                        player.getPersistentDataContainer().set(DataContainer.noInfor, PersistentDataType.BOOLEAN, data.noinfor);
-                        if (data.noinfor) {
-                            SendInformation.sendMes(player, Component.text("§6[菜单系统]§a成功关闭被动技能的文本提示"));
-                        } else {
-                            SendInformation.sendMes(player, Component.text("§6[菜单系统]§a成功打开被动技能的文本提示"));
+                        long timeNow = GetEntity.world.getGameTime();
+                        PersistentDataContainer pdc = whoClicked.getPersistentDataContainer();
+                        if (pdc.get(DataContainer.jiuji, PersistentDataType.LONG) < timeNow) {
+                            pdc.set(DataContainer.jiuji, PersistentDataType.LONG, timeNow + 72000 * 6);
+                            shuilang.setAmount(99);
+                            whoClicked.getInventory().addItem(shuilang);
                         }
-
                     }
 
                     case 19 -> {
                         Data data = Yuehua.playerData.get(whoClicked.getUniqueId());
-                        data.nosound = !data.nosound;
-                        Player player = data.player;
-                        player.getPersistentDataContainer().set(DataContainer.noSound, PersistentDataType.BOOLEAN, data.nosound);
-                        if (data.nosound) {
-                            SendInformation.sendMes(player, Component.text("§6[菜单系统]§a成功关闭被动技能的音效"));
-                        } else {
-                            SendInformation.sendMes(player, Component.text("§6[菜单系统]§a成功打开被动技能的音效"));
-                        }
+                        lunhuizhuanshi(data, whoClicked);
                     }
 
                     case 20 -> {
                         Data data = Yuehua.playerData.get(whoClicked.getUniqueId());
-                        if (data.job == 3) {
-                            DanData danData = (DanData) data;
-                            danData.noinforDan = !danData.noinforDan;
-                            Player player = danData.player;
-                            player.getPersistentDataContainer().set(DataContainer.noInforDan, PersistentDataType.BOOLEAN, danData.noinforDan);
-                            if (danData.noinforDan) {
-                                SendInformation.sendMes(player, Component.text("§6[菜单系统]§a成功关闭阵法的文本提示"));
-                            } else {
-                                SendInformation.sendMes(player, Component.text("§6[菜单系统]§a成功打开阵法的文本提示"));
-                            }
-                        }
+                        checkJisha(data);
                     }
+
 
                     case 45 -> {
                         Scheduler.sync(() -> whoClicked.closeInventory());
                         whoClicked.setHealth(0);
-                    }
-
-
-                    case 52 -> {
-                        if (whoClicked.isOp()) {
-                            Scheduler.sync(() -> whoClicked.openInventory(OpTp.OPTP));
-                        }
                     }
 
 
@@ -349,8 +330,239 @@ public final class Click implements Listener {
 
                         }
                     }
+                }
+            }
+
+            case "§b忠烈祠藏品" -> {
+                event.setCancelled(true);
+                int slot = event.getRawSlot();
+                if (slot <= 53 && slot > -1) {
+                    ItemStack itemStack = Advancenment.ADV1.getItem(slot);
+                    if (itemStack != null) {
+                        ItemStack item = itemStack.clone();
+                        //判断是否领取过
+                        Player player = (Player) event.getWhoClicked();
+                        if ((player.getStatistic(Statistic.SPRINT_ONE_CM) + player.getStatistic(Statistic.WALK_ONE_CM)) < 10 * 1000) {
+                            SendInformation.sendMes(player, Component.text("§6[成就奖励]§4由于你可能是刷成就奖励的小号，暂时无法领取，继续游戏之后会解锁！"));
+                            PlaySound.closeInventory(player);
+                            Scheduler.sync(() -> player.closeInventory());
+                            return;
+                        }
+                        if (player.getStatistic(Statistic.PLAY_ONE_MINUTE) < 20 * 60 * 60 * 4) {
+                            SendInformation.sendMes(player, Component.text("§6[成就奖励]§4由于你可能是刷成就奖励的小号，暂时无法领取，继续游戏之后会解锁！"));
+                            PlaySound.closeInventory(player);
+                            Scheduler.sync(() -> player.closeInventory());
+                            return;
+                        }
+
+                        if (player.getStatistic(Statistic.DAMAGE_TAKEN) < 3000) {
+                            SendInformation.sendMes(player, Component.text("§6[成就奖励]§4由于你可能是刷成就奖励的小号，暂时无法领取，继续游戏之后会解锁！"));
+                            PlaySound.closeInventory(player);
+                            Scheduler.sync(() -> player.closeInventory());
+                            return;
+                        }
+
+                        PersistentDataContainer pdc = player.getPersistentDataContainer();
+                        List<Integer> already = new ArrayList<>(pdc.get(DataContainer.zhonglie1, PersistentDataType.LIST.integers()));
+                        if (already.contains(slot)) {
+                            SendInformation.sendMes(player, Component.text("§6[成就奖励]§4你已经领取过了这个奖励！"));
+                            return;
+                        }
+                        int pointsHave = pdc.get(DataContainer.advancementPoint, PersistentDataType.INTEGER);
+                        if (pointsHave < Advancenment.points1.get(slot)) {
+                            SendInformation.sendMes(player, List.of(
+                                    Component.text("§6[成就奖励]§4你的成就点不足！"),
+                                    Component.text("§6[成就奖励]§a当前成就点：§b" + pointsHave)
+                            ));
+                            return;
+                        }
 
 
+                        already.add(slot);
+                        pdc.set(DataContainer.zhonglie1, PersistentDataType.LIST.integers(), already);
+                        SendInformation.sendMes(player, Component.text("§6[成就奖励]§a成功领取：" + item.getDisplayName()));
+
+                        if (item.getType() == Material.RAW_GOLD) {
+                            int xp = switch (item.getPersistentDataContainer().get(DataContainer.id, PersistentDataType.STRING)) {
+                                case "xp10" -> 10;
+                                case "xp20" -> 20;
+                                case "xp50" -> 50;
+                                case "xp100" -> 100;
+                                case "xp200" -> 200;
+                                case "xp500" -> 500;
+                                default -> 0;
+                            };
+                            int amount = item.getAmount();
+                            xp *= amount;
+                            player.giveExp(xp, false);
+                            return;
+                        }
+
+                        //去除成就点需求文本
+                        ItemMeta itemMeta = item.getItemMeta();
+                        List<Component> lores = itemMeta.lore();
+                        lores.removeLast();
+                        itemMeta.lore(lores);
+                        item.setItemMeta(itemMeta);
+
+                        player.getInventory().addItem(item);
+                    }
+                }
+            }
+
+            case "§b忠烈祠奇品" -> {
+                event.setCancelled(true);
+                int slot = event.getRawSlot();
+                if (slot <= 53 && slot > -1) {
+                    ItemStack itemStack = Advancenment.ADV2.getItem(slot);
+                    if (itemStack != null) {
+                        ItemStack item = itemStack.clone();
+                        //判断是否领取过
+                        Player player = (Player) event.getWhoClicked();
+                        if ((player.getStatistic(Statistic.SPRINT_ONE_CM) + player.getStatistic(Statistic.WALK_ONE_CM)) < 80 * 1000) {
+                            SendInformation.sendMes(player, Component.text("§6[成就奖励]§4由于你可能是刷成就奖励的小号，暂时无法领取，继续游戏之后会解锁！"));
+                            PlaySound.closeInventory(player);
+                            Scheduler.sync(() -> player.closeInventory());
+                            return;
+                        }
+                        if (player.getStatistic(Statistic.PLAY_ONE_MINUTE) < 20 * 60 * 60 * 18) {
+                            SendInformation.sendMes(player, Component.text("§6[成就奖励]§4由于你可能是刷成就奖励的小号，暂时无法领取，继续游戏之后会解锁！"));
+                            PlaySound.closeInventory(player);
+                            Scheduler.sync(() -> player.closeInventory());
+                            return;
+                        }
+
+                        if (player.getStatistic(Statistic.DAMAGE_TAKEN) < 16000) {
+                            SendInformation.sendMes(player, Component.text("§6[成就奖励]§4由于你可能是刷成就奖励的小号，暂时无法领取，继续游戏之后会解锁！"));
+                            PlaySound.closeInventory(player);
+                            Scheduler.sync(() -> player.closeInventory());
+                            return;
+                        }
+                        PersistentDataContainer pdc = player.getPersistentDataContainer();
+                        List<Integer> already = new ArrayList<>(pdc.get(DataContainer.zhonglie2, PersistentDataType.LIST.integers()));
+                        if (already.contains(slot)) {
+                            SendInformation.sendMes(player, Component.text("§6[成就奖励]§4你已经领取过了这个奖励！"));
+                            return;
+                        }
+                        int pointsHave = pdc.get(DataContainer.advancementPoint, PersistentDataType.INTEGER);
+                        if (pointsHave < Advancenment.points2.get(slot)) {
+                            SendInformation.sendMes(player, List.of(
+                                    Component.text("§6[成就奖励]§4你的成就点不足！"),
+                                    Component.text("§6[成就奖励]§a当前成就点：§b" + pointsHave)
+                            ));
+                            return;
+                        }
+
+                        already.add(slot);
+                        pdc.set(DataContainer.zhonglie2, PersistentDataType.LIST.integers(), already);
+                        SendInformation.sendMes(player, Component.text("§6[成就奖励]§a成功领取：" + item.getDisplayName()));
+
+                        if (item.getCustomModelData() == 12) {
+                            //锁定幸运钥匙盒子
+                            item.editMeta(meta -> {
+                                meta.getPersistentDataContainer().set(DataContainer.owner, PersistentDataType.STRING, player.getUniqueId().toString());
+                                List<Component> lores = meta.lore();
+                                lores.removeLast();
+                                lores.removeLast();
+                                lores.add(Component.text(String.format("§a[绑定者]: §f[%s]", player.getName())));
+                                meta.lore(lores);
+                            });
+
+                            player.getInventory().addItem(item);
+                            return;
+                        }
+
+                        //去除成就点需求文本
+                        ItemMeta itemMeta = item.getItemMeta();
+                        List<Component> lores = itemMeta.lore();
+                        lores.removeLast();
+                        itemMeta.lore(lores);
+                        item.setItemMeta(itemMeta);
+
+                        player.getInventory().addItem(item);
+                    }
+                }
+            }
+
+            case "§b忠烈祠珍品" -> {
+                event.setCancelled(true);
+                int slot = event.getRawSlot();
+                if (slot <= 8 && slot > -1) {
+                    ItemStack itemStack = Advancenment.ADV3.getItem(slot);
+                    if (itemStack != null) {
+                        ItemStack item = itemStack.clone();
+                        //判断是否领取过
+                        Player player = (Player) event.getWhoClicked();
+                        if ((player.getStatistic(Statistic.SPRINT_ONE_CM) + player.getStatistic(Statistic.WALK_ONE_CM)) < 160 * 1000) {
+                            SendInformation.sendMes(player, Component.text("§6[成就奖励]§4由于你可能是刷成就奖励的小号，暂时无法领取，继续游戏之后会解锁！"));
+                            PlaySound.closeInventory(player);
+                            Scheduler.sync(() -> player.closeInventory());
+                            return;
+                        }
+                        if (player.getStatistic(Statistic.PLAY_ONE_MINUTE) < 20 * 60 * 60 * 36) {
+                            SendInformation.sendMes(player, Component.text("§6[成就奖励]§4由于你可能是刷成就奖励的小号，暂时无法领取，继续游戏之后会解锁！"));
+                            PlaySound.closeInventory(player);
+                            Scheduler.sync(() -> player.closeInventory());
+                            return;
+                        }
+
+                        if (player.getStatistic(Statistic.DAMAGE_TAKEN) < 36000) {
+                            SendInformation.sendMes(player, Component.text("§6[成就奖励]§4由于你可能是刷成就奖励的小号，暂时无法领取，继续游戏之后会解锁！"));
+                            PlaySound.closeInventory(player);
+                            Scheduler.sync(() -> player.closeInventory());
+                            return;
+                        }
+
+                        PersistentDataContainer pdc = player.getPersistentDataContainer();
+                        List<Integer> already = new ArrayList<>(pdc.get(DataContainer.zhonglie3, PersistentDataType.LIST.integers()));
+                        if (already.contains(slot)) {
+                            SendInformation.sendMes(player, Component.text("§6[成就奖励]§4你已经领取过了这个奖励！"));
+                            return;
+                        }
+                        int pointsHave = pdc.get(DataContainer.advancementPoint, PersistentDataType.INTEGER);
+                        if (pointsHave < Advancenment.points3.get(slot)) {
+                            SendInformation.sendMes(player, List.of(
+                                    Component.text("§6[成就奖励]§4你的成就点不足！"),
+                                    Component.text("§6[成就奖励]§a当前成就点：§b" + pointsHave)
+                            ));
+                            return;
+                        }
+
+                        already.add(slot);
+                        pdc.set(DataContainer.zhonglie3, PersistentDataType.LIST.integers(), already);
+                        SendInformation.sendMes(player, Component.text("§6[成就奖励]§a成功领取：" + item.getDisplayName()));
+
+                        if (item.getType() == Material.NAUTILUS_SHELL) {
+                            //锁定100%幸运钥匙
+                            item.editMeta(meta -> {
+                                meta.getPersistentDataContainer().set(DataContainer.owner, PersistentDataType.STRING, player.getUniqueId().toString());
+                                List<Component> lores = meta.lore();
+                                lores.removeLast();
+                                lores.removeLast();
+                                lores.add(Component.text(String.format("§a[绑定者]: §f[%s]", player.getName())));
+                                meta.lore(lores);
+                            });
+
+                            player.getInventory().addItem(item);
+                            return;
+                        }
+
+                        //去除成就点需求文本
+                        ItemMeta itemMeta = item.getItemMeta();
+                        List<Component> lores = itemMeta.lore();
+                        lores.removeLast();
+                        itemMeta.lore(lores);
+                        item.setItemMeta(itemMeta);
+
+                        player.getInventory().addItem(item);
+                    }
+                }
+            }
+
+            case "§b回收2阶装备" -> {
+                if (event.getRawSlot() == 8) {
+                    event.setCancelled(true);
+                    HuiShou.doChaiJie((Player) event.getWhoClicked());
                 }
             }
 
@@ -387,7 +599,16 @@ public final class Click implements Listener {
                 }
             }
 
-            case "§b主线任务" -> {
+            case "§b杀怪履历" -> {
+                event.setCancelled(true);
+                Player player = (Player) event.getWhoClicked();
+                if (event.getRawSlot() == 53) {
+                    PlaySound.openInventory(player);
+                    Scheduler.sync(() -> player.openInventory(Yh.MAIN_MENU));
+                }
+            }
+
+            case "§b探索任务" -> {
                 event.setCancelled(true);
                 Player player = (Player) event.getWhoClicked();
                 switch (event.getRawSlot()) {
@@ -417,25 +638,25 @@ public final class Click implements Listener {
                     case 0 -> {
                         PlaySound.closeInventory(player);
                         Scheduler.sync(() -> player.closeInventory());
-                        Task.chechXuanshang(player);
+                        XuanShang.chechXuanshang(player);
                     }
 
                     case 1 -> {
                         PlaySound.closeInventory(player);
                         Scheduler.sync(() -> player.closeInventory());
-                        Task.tijiaoXuanshang(player);
+                        XuanShang.tijiaoXuanshang(player);
                     }
 
                     case 2 -> {
                         PlaySound.closeInventory(player);
                         Scheduler.sync(() -> player.closeInventory());
-                        Task.checkXuanshangCd(player);
+                        XuanShang.checkXuanshangCd(player);
                     }
 
                     case 3 -> {
                         PlaySound.closeInventory(player);
                         Scheduler.sync(() -> player.closeInventory());
-                        Task.checkXuanshangLevel(player);
+                        XuanShang.checkXuanshangLevel(player);
                     }
 
                     case 8 -> {
@@ -443,6 +664,28 @@ public final class Click implements Listener {
                         Scheduler.sync(() -> player.openInventory(Yh.MAIN_MENU));
                     }
                 }
+            }
+
+            case "§b水族祭坛" -> {
+                int slot = event.getRawSlot();
+                if (slot == 8) {
+                    event.setCancelled(true);
+                }
+
+                Player player = (Player) event.getWhoClicked();
+                PanLing.tijiaoXuanWu(player);
+
+            }
+
+            case "§b剑意" -> {
+                int slot = event.getRawSlot();
+                if (slot == 8) {
+                    event.setCancelled(true);
+                }
+
+                Player player = (Player) event.getWhoClicked();
+                PanLing.tijiaoJianYi(player);
+
             }
 
             case "§b元素银行[普通]" -> {
@@ -1113,9 +1356,49 @@ public final class Click implements Listener {
                     }
 
 
-                    case 3 -> whoClicked.getInventory().addItem(Other.NPC_PAOPAO);
+                    case 3 -> {
+                        Data data = Yuehua.playerData.get(whoClicked.getUniqueId());
+                        data.noinfor = !data.noinfor;
+                        Player player = data.player;
+                        player.getPersistentDataContainer().set(DataContainer.noInfor, PersistentDataType.BOOLEAN, data.noinfor);
+                        if (data.noinfor) {
+                            SendInformation.sendMes(player, Component.text("§6[菜单系统]§a成功关闭被动技能的文本提示"));
+                        } else {
+                            SendInformation.sendMes(player, Component.text("§6[菜单系统]§a成功打开被动技能的文本提示"));
+                        }
+
+                    }
 
                     case 4 -> {
+                        Data data = Yuehua.playerData.get(whoClicked.getUniqueId());
+                        data.nosound = !data.nosound;
+                        Player player = data.player;
+                        player.getPersistentDataContainer().set(DataContainer.noSound, PersistentDataType.BOOLEAN, data.nosound);
+                        if (data.nosound) {
+                            SendInformation.sendMes(player, Component.text("§6[菜单系统]§a成功关闭被动技能的音效"));
+                        } else {
+                            SendInformation.sendMes(player, Component.text("§6[菜单系统]§a成功打开被动技能的音效"));
+                        }
+                    }
+
+                    case 5 -> {
+                        Data data = Yuehua.playerData.get(whoClicked.getUniqueId());
+                        if (data.job == 3) {
+                            DanData danData = (DanData) data;
+                            danData.noinforDan = !danData.noinforDan;
+                            Player player = danData.player;
+                            player.getPersistentDataContainer().set(DataContainer.noInforDan, PersistentDataType.BOOLEAN, danData.noinforDan);
+                            if (danData.noinforDan) {
+                                SendInformation.sendMes(player, Component.text("§6[菜单系统]§a成功关闭阵法的文本提示"));
+                            } else {
+                                SendInformation.sendMes(player, Component.text("§6[菜单系统]§a成功打开阵法的文本提示"));
+                            }
+                        }
+                    }
+
+                    case 6 -> whoClicked.getInventory().addItem(Other.NPC_PAOPAO);
+
+                    case 7 -> {
                         Data data = Yuehua.playerData.get(whoClicked.getUniqueId());
                         switch (data.race) {
                             case 1 -> whoClicked.getInventory().addItem(RaceProvince.shen);
@@ -1126,11 +1409,11 @@ public final class Click implements Listener {
                         }
                     }
 
-                    case 5 -> whoClicked.getInventory().addItem(Book.START);
-                    case 6 -> whoClicked.getInventory().addItem(Book.SHUXIN);
-                    case 7 -> whoClicked.getInventory().addItem(Book.NEIRONG);
-                    case 8 -> whoClicked.getInventory().addItem(Book.WANFA);
-                    case 9 -> whoClicked.getInventory().addItem(Book.JINJI);
+                    case 8 -> whoClicked.getInventory().addItem(Book.START);
+                    case 9 -> whoClicked.getInventory().addItem(Book.SHUXIN);
+                    case 10 -> whoClicked.getInventory().addItem(Book.NEIRONG);
+                    case 11 -> whoClicked.getInventory().addItem(Book.WANFA);
+                    case 12 -> whoClicked.getInventory().addItem(Book.JINJI);
 
 
                     case 17 -> {
@@ -1479,7 +1762,7 @@ public final class Click implements Listener {
                         }
 
                     }
-                    case WOODEN_PICKAXE -> {
+                    case ARMS_UP_POTTERY_SHERD -> {
                     }
                     default -> {
                         event.setCancelled(true);
@@ -2322,6 +2605,13 @@ public final class Click implements Listener {
                     return;
                 }
                 pdc1.set(DataContainer.enchantid, PersistentDataType.STRING, idFuling);
+                String idLow = idFuling.toLowerCase();
+                Advancement advancement = AdvancementSet.idToAdvancements.get(idLow);
+                if (advancement != null) {
+                    int points = AdvancementSet.idToPoints.get(idLow);
+                    AdvancementSet.giveAdv((Player) event.getWhoClicked(), advancement, points);
+                }
+
                 List<Component> lore2 = itemMeta2.lore();
                 Component loreFuling = lore2.get(1);
                 List<Component> lore = itemMeta1.lore();
@@ -4515,16 +4805,61 @@ public final class Click implements Listener {
             SendInformation.sendMes(player, Component.text("§e[游戏机制]§4转生要求背包必须清空"));
             return;
         }
-        if (data.money < 500) {
+        if (data.money < 300) {
             SendInformation.sendMes(player, Component.text("§e[游戏机制]§4余额不足"));
             return;
         }
 
-        data.money = data.money - 500;
+        data.money = data.money - 300;
 
         player.teleport(LocationSet.CHU_SHENG_DIAN);
         player.setRespawnLocation(LocationSet.CHU_SHENG_DIAN);
+    }
 
+    public static void checkJisha(Data data) {
+        Scheduler.async(() -> {
+            Inventory inventory = Bukkit.createInventory(null, 54, Component.text("杀怪履历").color(NamedTextColor.AQUA));
+            inventory.setItem(53, Yh.BACK_BEFORE);
+
+            ItemStack dongfang1 = Weapon.TAO_MU_JIAN.clone();
+            dongfang1.editMeta(itemMeta -> {
+                itemMeta.displayName(Component.text("§b东方小怪击杀数"));
+                itemMeta.lore(List.of(
+                        Component.text("§a骷髅： §b" + data.killEastSkeletonConut),
+                        Component.text("§a僵尸： §b" + data.killEastZombieCount),
+                        Component.text("§a蜘蛛： §b" + data.killEastSpiderCount),
+                        Component.text("§a枯骨弓箭手： §b" + data.killEastArrowSkeletonCount),
+                        Component.text("§a毒蜂： §b" + data.killEastPoisonFlyCount),
+                        Component.text("§a僵尸[精英]： §b" + data.killEastZombieEliteCount),
+                        Component.text("§a蜘蛛[精英]： §b" + data.killEastSpiderEliteCount),
+                        Component.text("§a僵尸[携带贡品]： §b" + data.killEastZombieMountainCount),
+                        Component.text("§a蜘蛛[携带贡品]： §b" + data.killEastSpiderMountainCount),
+                        Component.text("§a枯骨弓箭手[携带贡品]： §b" + data.killEastArrowSkeletonMountainCount),
+                        Component.text("§a毒蜂[携带沃土]： §b" + data.killEastPoisonFlyMountainCount),
+                        Component.text("§a貔貅[携带沃土]： §b" + data.killEastPandaMountainCount),
+                        Component.text("§a枯骨弓箭手[携带沃土]： §b" + data.killEastArrowSkeletonSHENMUCount)
+                ));
+            });
+
+            ItemStack dongfang2 = Weapon.TAO_MU_JIAN.clone();
+            dongfang2.editMeta(itemMeta -> {
+                itemMeta.displayName(Component.text("§b东方精英怪击杀数"));
+                itemMeta.lore(List.of(
+                        Component.text("§a蜘蛛女王： §b" + data.killEastSpiderQueenMountainCount),
+                        Component.text("§a涧溪鬼魅： §b" + data.killEastWaterGhostMountainCount),
+                        Component.text("§a林幽毒蛛： §b" + data.killEastPoisonSpiderMountainCount)
+                ));
+            });
+
+            inventory.setItem(0, dongfang1);
+            inventory.setItem(1, dongfang2);
+
+            Scheduler.sync(() -> {
+                PlaySound.openInventory(data.player);
+                data.player.openInventory(inventory);
+            });
+
+        });
     }
 
 

@@ -18,6 +18,30 @@ public final class DoZhenfaObserver {
                 return doTui1(data);
             }
 
+            case "heiTieGuo" -> {
+                return 1.15d;
+            }
+
+            case "qinTongGuo" -> {
+                return 1.3d;
+            }
+
+            case "lianDanLu" -> {
+                return 1.45d;
+            }
+
+            case "suoHunLu" -> {
+                return 1.6d;
+            }
+
+            case "qiShaDing" -> {
+                return 1.75d;
+            }
+
+            case "hunYuanShenDing" -> {
+                return 1.9d;
+            }
+
             case "zhanTui2", "gongTui2", "danTui2", "zhanTui3", "gongTui3", "danTui3", "zhanTui4", "gongTui4",
                  "danTui4", "zhanTui5", "gongTui5", "danTui5" -> {
                 return doTui2345(data);

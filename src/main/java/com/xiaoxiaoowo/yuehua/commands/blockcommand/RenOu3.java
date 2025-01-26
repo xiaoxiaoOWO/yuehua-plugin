@@ -23,16 +23,6 @@ public final class RenOu3 implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (sender instanceof Player player) {
-            Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance, () -> {
-                player.sendMessage(
-                        Component.text("§6[命令系统]§4你没有权限使用这个命令")
-                );
-            });
-            return true;
-        }
-
-
         if (zombie == null || zombie.isDead()) {
             BlockCommandSender blockCommandSender = (BlockCommandSender) sender;
             Location location1 = blockCommandSender.getBlock().getLocation();

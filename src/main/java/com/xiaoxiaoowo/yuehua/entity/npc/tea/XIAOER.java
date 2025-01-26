@@ -45,7 +45,7 @@ public final class XIAOER {
             recipesDefault.add(recipeDefault4);
             it.setRecipes(recipesDefault);
 
-            ItemStack jinyuanbao = Money.yinPiao.clone();
+            ItemStack jinyuanbao = Money.tongQian.clone();
             jinyuanbao.setAmount(5);
 
             MerchantRecipe recipe0 = new MerchantRecipe(Food.tieguanyin, -2147483648, 2147483647, false, 0, 0, 0, 0, true);

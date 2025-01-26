@@ -32,7 +32,7 @@ import org.bukkit.persistence.PersistentDataType;
 import java.util.List;
 
 //第三位阶级
-public final class                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    Core {
+public final class Core {
     // 原核
     public static final ItemStack CORE2 = new ItemStack(Material.IRON_INGOT);
     public static final ItemStack CORE3 = new ItemStack(Material.IRON_INGOT);
@@ -3490,7 +3490,7 @@ public final class                                                              
         fuRongGongMeta.displayName(Component.text("芙蓉弓[锻核]").color(NamedTextColor.GREEN).decoration(TextDecoration.ITALIC, false));
         hongLuanGongMeta.displayName(Component.text("红鸾弓[锻核]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
         tianQiongGongMeta.displayName(Component.text("天琼弓[锻核]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
-        sheTianZhuiYueGongMeta.displayName(Component.text("奢天追月弓[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
+        sheTianZhuiYueGongMeta.displayName(Component.text("雍天簌霖弓[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
         liuGuangMeta.displayName(Component.text("流光[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
 
         qinTongGuoMeta.displayName(Component.text("青铜锅[锻核]").color(NamedTextColor.GREEN).decoration(TextDecoration.ITALIC, false));
@@ -3715,58 +3715,58 @@ public final class                                                              
         CHI_JIE_SHEN_JIEMeta.displayName(Component.text("持戒神戒[锻核]").color(NamedTextColor.DARK_RED).decoration(TextDecoration.ITALIC, false));
 
         ZHAOYAOJINMeta.displayName(Component.text("照妖镜[锻核]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
-        YUFUCHENMeta.displayName(Component.text("羽拂尘[锻核]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
+        YUFUCHENMeta.displayName(Component.text("祭名卷[锻核]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
         WUSEBUTIANSHIMeta.displayName(Component.text("五色补天使[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
 
-        YAOWANGHULUMeta.displayName(Component.text("药王葫芦[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        CIXINMIAOLIANMeta.displayName(Component.text("慈心妙莲[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        SHENXINYUGUMeta.displayName(Component.text("神行渔鼓[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        YINYANGZHANLONGJIANMeta.displayName(Component.text("阴阳斩龙剑[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        YUNLANGBANMeta.displayName(Component.text("云阳板[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        ZHENHUNYUXIAOMeta.displayName(Component.text("镇魂玉箫[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        DIKUIHUALANMeta.displayName(Component.text("地魁花篮[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        XUANFENGZONGSHANMeta.displayName(Component.text("玄风棕扇[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        TAIJIBAGUAMeta.displayName(Component.text("太极八卦[锻核]").color(NamedTextColor.GOLD).decoration(TextDecoration.ITALIC, false));
+        YAOWANGHULUMeta.displayName(Component.text("济世葫芦[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        CIXINMIAOLIANMeta.displayName(Component.text("神护真莲[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        SHENXINYUGUMeta.displayName(Component.text("腾云渔鼓[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        YINYANGZHANLONGJIANMeta.displayName(Component.text("两仪斩龙[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        YUNLANGBANMeta.displayName(Component.text("凌霄灵板[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        ZHENHUNYUXIAOMeta.displayName(Component.text("降魔玉箫[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        DIKUIHUALANMeta.displayName(Component.text("天宝花篮[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        XUANFENGZONGSHANMeta.displayName(Component.text("驭气仙扇[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        TAIJIBAGUAMeta.displayName(Component.text("四象八卦[锻核]").color(NamedTextColor.GOLD).decoration(TextDecoration.ITALIC, false));
 
         JUEDOULINGMeta.displayName(Component.text("决斗令[锻核]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
         LEIMINGGUMeta.displayName(Component.text("雷鸣鼓[锻核]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
-        HUANSILINMeta.displayName(Component.text("幻思铃[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
-        NIUMONUHOUMeta.displayName(Component.text("牛魔怒吼[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        HUANSILINMeta.displayName(Component.text("醉梦铃[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
+        NIUMONUHOUMeta.displayName(Component.text("九天魔啸[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
 
         DOUQISHIMeta.displayName(Component.text("斗气石[锻核]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
         PANGUANBIMeta.displayName(Component.text("判官笔[锻核]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
-        MINSHENGJIANMeta.displayName(Component.text("悯生剑[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
-        ZHENLEITIANCHUIMeta.displayName(Component.text("震雷天锤[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        MINSHENGJIANMeta.displayName(Component.text("渡世剑[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
+        ZHENLEITIANCHUIMeta.displayName(Component.text("九霄雷锤[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
 
         DIAOHUNGANMeta.displayName(Component.text("钓魂竿[锻核]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
         SHELINZHUMeta.displayName(Component.text("摄灵珠[锻核]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
-        YUJINPINMeta.displayName(Component.text("玉净瓶[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
+        YUJINPINMeta.displayName(Component.text("聚元瓶[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
         TIANJISHENJINMeta.displayName(Component.text("天机神镜[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
 
         RUIYINGYANMeta.displayName(Component.text("锐鹰眼[锻核]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
         DUOHUNTANGMeta.displayName(Component.text("夺魂汤[锻核]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
-        MOYUANFOZHUMeta.displayName(Component.text("摩愿佛珠[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
-        FUXINRUYIMeta.displayName(Component.text("浮行如意[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        MOYUANFOZHUMeta.displayName(Component.text("化骨杖[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
+        FUXINRUYIMeta.displayName(Component.text("碧落黄泉[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
 
-        LVYEXIANZONGMeta.displayName(Component.text("绿野仙踪[锻核]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
+        LVYEXIANZONGMeta.displayName(Component.text("万木葱茏[锻核]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
         QINGNVHANSHUANGMeta.displayName(Component.text("青女寒霜[锻核]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
         ZHURONGKUYANMeta.displayName(Component.text("祝融酷炎[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
-        ZHUDIANXUANJINGMeta.displayName(Component.text("朱电玄镜[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        ZHUDIANXUANJINGMeta.displayName(Component.text("两届霜炎[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
 
-        BUHUNWANGMeta.displayName(Component.text("捕魂网[锻核]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
-        YANGSHOUJIANMeta.displayName(Component.text("阳寿剪[锻核]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
-        WUMINGMOYINLUOMeta.displayName(Component.text("无冥魔音螺[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
-        SHETIANHUAXUELINGMeta.displayName(Component.text("奢天化雪令[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        BUHUNWANGMeta.displayName(Component.text("捕魂灵网[锻核]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
+        YANGSHOUJIANMeta.displayName(Component.text("阳寿魔剪[锻核]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
+        WUMINGMOYINLUOMeta.displayName(Component.text("元冥音螺[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
+        SHETIANHUAXUELINGMeta.displayName(Component.text("雪魄寒光[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
 
-        KUYELINGMeta.displayName(Component.text("枯叶灵[锻核]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
-        LUOBEIJINPINMeta.displayName(Component.text("罗悲净瓶[锻核]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
-        PINYUSHUIYUMeta.displayName(Component.text("萍雨水盂[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
-        DIKONGYUMOQUANMeta.displayName(Component.text("帝空御魔圈[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        KUYELINGMeta.displayName(Component.text("碧玉芽叶[锻核]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
+        LUOBEIJINPINMeta.displayName(Component.text("胭脂净蕊[锻核]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
+        PINYUSHUIYUMeta.displayName(Component.text("千古灵魄[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
+        DIKONGYUMOQUANMeta.displayName(Component.text("七虹精元[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
 
-        LUANSHENGUMeta.displayName(Component.text("乱神菇[锻核]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
-        JINGULIANMeta.displayName(Component.text("禁锢镰[锻核]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
-        JIANCHANGULINMeta.displayName(Component.text("间忏蛊铃[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
-        MODUOHUNFANMeta.displayName(Component.text("摩多魂幡[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        LUANSHENGUMeta.displayName(Component.text("乱神恶菇[锻核]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
+        JINGULIANMeta.displayName(Component.text("禁锢冥镰[锻核]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
+        JIANCHANGULINMeta.displayName(Component.text("罪罚冤孽[锻核]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
+        MODUOHUNFANMeta.displayName(Component.text("奈何引魂[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
 
 
         core2Meta.setCustomModelData(52);

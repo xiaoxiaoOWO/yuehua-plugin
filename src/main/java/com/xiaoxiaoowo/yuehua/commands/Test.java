@@ -9,10 +9,10 @@ import com.xiaoxiaoowo.yuehua.data.ZhanData;
 import com.xiaoxiaoowo.yuehua.display.test.TestDisplay;
 import com.xiaoxiaoowo.yuehua.display.test.TestRay;
 import com.xiaoxiaoowo.yuehua.event.player.Death;
-import com.xiaoxiaoowo.yuehua.guis.Advancenment;
 import com.xiaoxiaoowo.yuehua.guis.Yh;
 import com.xiaoxiaoowo.yuehua.items.other.Food;
 import com.xiaoxiaoowo.yuehua.items.other.Other;
+import com.xiaoxiaoowo.yuehua.items.zhuangbei.Special;
 import com.xiaoxiaoowo.yuehua.system.Buff;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.*;
@@ -23,6 +23,7 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.block.Biome;
 import org.bukkit.block.Block;
 import org.bukkit.block.Skull;
+import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -33,11 +34,17 @@ import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Score;
+import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
+
+import static com.xiaoxiaoowo.yuehua.utils.AdvancementSet.idToAdvancements;
+import static com.xiaoxiaoowo.yuehua.utils.AdvancementSet.idToPoints;
 
 
 /* ①取实体数据，缓存第一快(缓存受到map容量影响，不过我的加载因子设置的很小，影响不大)，
@@ -145,8 +152,166 @@ public final class Test implements CommandExecutor {
         }
 
 
-
         switch (args[0]) {
+            case "yanhua" -> {
+                player = Bukkit.getPlayer("xiaoxiaoOWO");
+                player.getInventory().addItem(Special.xianqianhuojian);
+            }
+
+
+            case "level" -> {
+                Scoreboard scoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
+                Objective level = scoreboard.getObjective("level");
+                Set<String> entries = scoreboard.getEntries();
+                for (String entry : entries) {
+                    Score score = level.getScore(entry);
+                    int value = score.getScore(); // 获取具体的分数值
+                    Bukkit.broadcastMessage("entry:" + entry + " 等级:" + value);
+                }
+            }
+
+            case "tie" -> Scheduler.syncTimer(() -> {
+                int count = 0;
+                for (Entity entity1 : GetEntity.world.getEntities()) {
+
+                    if (entity1.getType() == EntityType.VILLAGER) {
+                        Location location = entity1.getLocation();
+                        double a = location.getX() - Math.floor(location.getX());
+                        if (a < 0.1) {
+                            Location newLoc = location.add(0.5, 0, 0.5);
+                            entity1.teleport(newLoc);
+                            count++;
+                        }
+                    }
+                }
+
+                if (count != 0) {
+                    Bukkit.broadcastMessage("整理了" + count + "个NPC");
+                }
+
+
+            }, 0, 1);
+
+            case "adv" -> {
+                for (Map.Entry<String, Advancement> entry : idToAdvancements.entrySet()) {
+                    if (entry.getValue() == null) {
+                        Bukkit.broadcastMessage("成就故障" + entry.getKey());
+                    }
+                    String key = entry.getKey();
+                    if (!idToPoints.containsKey(key)) {
+                        Bukkit.broadcastMessage("点数故障" + entry.getKey());
+                    }
+                }
+            }
+
+            case "allAdc" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                for (Map.Entry<String, Advancement> entry : idToAdvancements.entrySet()) {
+                    AdvancementSet.giveAdv(player, entry.getValue(), idToPoints.get(entry.getKey()));
+                }
+            }
+
+            case "s6" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Location eyeLocation = player.getEyeLocation();
+                Vector direction = eyeLocation.getDirection().setY(0).normalize();
+                ;
+                Vector speed = direction.multiply(6);
+                player.setVelocity(speed);
+            }
+
+            case "s7" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Location eyeLocation = player.getEyeLocation();
+                Vector direction = eyeLocation.getDirection().setY(0).normalize();
+                ;
+                Vector speed = direction.multiply(7);
+                player.setVelocity(speed);
+            }
+
+            case "s8" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Location eyeLocation = player.getEyeLocation();
+                Vector direction = eyeLocation.getDirection().setY(0).normalize();
+                ;
+                Vector speed = direction.multiply(8);
+                player.setVelocity(speed);
+            }
+
+            case "s9" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Location eyeLocation = player.getEyeLocation();
+                Vector direction = eyeLocation.getDirection().setY(0).normalize();
+                ;
+                Vector speed = direction.multiply(9);
+                player.setVelocity(speed);
+            }
+
+
+            case "s10" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Location eyeLocation = player.getEyeLocation();
+                Vector direction = eyeLocation.getDirection().setY(0).normalize();
+                ;
+                Vector speed = direction.multiply(10);
+                player.setVelocity(speed);
+            }
+
+
+            case "s11" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Location eyeLocation = player.getEyeLocation();
+                Vector direction = eyeLocation.getDirection().setY(0).normalize();
+                ;
+                Vector speed = direction.multiply(11);
+                player.setVelocity(speed);
+            }
+
+
+//
+//            case "lizi1" -> {
+//                BlockCommandSender blockCommandSender = (BlockCommandSender) sender;
+//                Location location = blockCommandSender.getBlock().getLocation().add(0.5, 2, 0.5);
+//                ParticleUtils.onePoint(location, Particle.FLAME, 1);
+//            }
+//
+//            case "lizi2" -> {
+//                BlockCommandSender blockCommandSender = (BlockCommandSender) sender;
+//                Location location = blockCommandSender.getBlock().getLocation().add(0.5, 2, 0.5);
+//                ParticleUtils.onePoint(location, Particle.FLAME, 0.000000001, 1);
+//            }
+
+            case "jitui" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Data data = Yuehua.playerData.get(player.getUniqueId());
+                BlockCommandSender blockCommandSender = (BlockCommandSender) sender;
+                Location location = blockCommandSender.getBlock().getLocation().add(0.5, 0, 0.5);
+                MoveEntity.jiTui(data, location.toVector(), 20);
+            }
+
+            case "jitui2" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Data data = Yuehua.playerData.get(player.getUniqueId());
+                BlockCommandSender blockCommandSender = (BlockCommandSender) sender;
+                Location location = blockCommandSender.getBlock().getLocation().add(0.5, 0, 0.5);
+                MoveEntity.jiTuiWithLitteUp(data, location.toVector(), 20);
+            }
+
+
+            case "jifei" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Data data = Yuehua.playerData.get(player.getUniqueId());
+                BlockCommandSender blockCommandSender = (BlockCommandSender) sender;
+                MoveEntity.jiFei(data, 20);
+            }
+
+            case "qianyin" -> {
+                Player player = Bukkit.getPlayer("xiaoxiaoOWO");
+                Data data = Yuehua.playerData.get(player.getUniqueId());
+                BlockCommandSender blockCommandSender = (BlockCommandSender) sender;
+                Location location = blockCommandSender.getBlock().getLocation().add(0.5, 0, 0.5);
+                MoveEntity.qianYinWithLitteUp(data, location.toVector(), 20);
+            }
 
             case "clear" -> {
                 Player player = Bukkit.getPlayer("xiaoxiaoOWO");
@@ -162,30 +327,29 @@ public final class Test implements CommandExecutor {
 
             case "inw" -> {
                 Player player = Bukkit.getPlayer("xiaoxiaoOWO");
-                if(player.isInWater()){
+                if (player.isInWater()) {
                     Bukkit.broadcastMessage("在水中");
                 }
             }
 
             case "unw" -> {
                 Player player = Bukkit.getPlayer("xiaoxiaoOWO");
-                if(player.isUnderWater()){
+                if (player.isUnderWater()) {
                     Bukkit.broadcastMessage("在水下");
                 }
             }
 
 
-
-            case "speed" ->{
+            case "speed" -> {
                 Player player = Bukkit.getPlayer("xiaoxiaoOWO");
                 Vector vel = player.getVelocity();
-                vel.add(new Vector(0,2,0));
+                vel.add(new Vector(0, 2, 0));
             }
 
-            case "speed2" ->{
+            case "speed2" -> {
                 Player player = Bukkit.getPlayer("xiaoxiaoOWO");
                 Vector vel = player.getVelocity();
-                vel.add(new Vector(0,2,0));
+                vel.add(new Vector(0, 2, 0));
                 player.setVelocity(vel);
             }
 
@@ -200,13 +364,13 @@ public final class Test implements CommandExecutor {
             case "notmove" -> {
                 Player player = Bukkit.getPlayer("xiaoxiaoOWO");
                 Data data = Yuehua.playerData.get(player.getUniqueId());
-                Buff.canNotMove(data,100);
+                Buff.canNotMove(data, 100);
             }
 
             case "notjump" -> {
                 Player player = Bukkit.getPlayer("xiaoxiaoOWO");
                 Data data = Yuehua.playerData.get(player.getUniqueId());
-                Buff.canNotJump(data,100);
+                Buff.canNotJump(data, 100);
             }
 
             case "sound" -> {
@@ -372,7 +536,7 @@ public final class Test implements CommandExecutor {
 
                 if (block.getState() instanceof Skull) {
                     Skull skull = (Skull) block.getState();
-                    SkullMeta skullMeta = (SkullMeta) Other.PlayerHeadXiangZi.getItemMeta();
+                    SkullMeta skullMeta = (SkullMeta) com.xiaoxiaoowo.yuehua.items.other.Skull.PlayerHeadXiangZi.getItemMeta();
                     if (skullMeta.hasOwner()) {
                         skull.setOwningPlayer(Bukkit.getOfflinePlayer(skullMeta.getOwningPlayer().getUniqueId())); // Set the owner to retain the custom texture
                     }

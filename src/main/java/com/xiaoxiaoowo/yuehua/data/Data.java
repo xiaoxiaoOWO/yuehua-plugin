@@ -1,17 +1,18 @@
 package com.xiaoxiaoowo.yuehua.data;
 
 
+import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.attribute.attributes.vanilla.HpMul;
 import com.xiaoxiaoowo.yuehua.attribute.attributes.vanilla.Speed;
 import com.xiaoxiaoowo.yuehua.data.slot.EnderChestSlot;
 import com.xiaoxiaoowo.yuehua.data.slot.Slot;
 import com.xiaoxiaoowo.yuehua.data.slot.SlotBuilder;
 import com.xiaoxiaoowo.yuehua.data.slot.SlotWithOneActiveSkill;
-import com.xiaoxiaoowo.yuehua.guis.Recipe;
-import com.xiaoxiaoowo.yuehua.guis.Task;
+import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.system.Act;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.system.Init;
+import com.xiaoxiaoowo.yuehua.task.player.BGM;
 import com.xiaoxiaoowo.yuehua.utils.SQL;
 import com.xiaoxiaoowo.yuehua.utils.Transfer;
 import org.bukkit.Location;
@@ -25,12 +26,17 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.java_websocket.WebSocket;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
+import static com.xiaoxiaoowo.yuehua.event.player.InventorySlotChange.BANGDINGID;
+import static com.xiaoxiaoowo.yuehua.event.player.InventorySlotChange.checkCanActLevel6;
 
 
 public class Data {
@@ -63,6 +69,7 @@ public class Data {
     public boolean noinfor;
     public boolean nosound;
 
+    public long lastBGM = 0L;
     public int snowBlind = 0;
     public int yezi = 0;
     public int zhusi = 0;
@@ -324,7 +331,6 @@ public class Data {
 
         //获取装备ID
 
-
         //还原基础属性
         //攻击速度
         player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(1);
@@ -439,18 +445,21 @@ public class Data {
         ItemStack item0 = playerInventory.getItem(0);
         if (item0 != null) {
             Material type = item0.getType();
-            if (type == Material.DIAMOND_PICKAXE || type == Material.BOW || type == Material.CROSSBOW || type == Material.NETHERITE_PICKAXE) {
+            if (type == Material.PRISMARINE_SHARD || type == Material.BOW || type == Material.CROSSBOW || type == Material.ANGLER_POTTERY_SHERD) {
                 PersistentDataContainer pdcItem0 = item0.getItemMeta().getPersistentDataContainer();
-                if (0 == pdcItem0.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-                    if (job == pdcItem0.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                        Act.actHelp(this, pdcItem0.get(DataContainer.id, PersistentDataType.STRING), pdc);
-                        if (job != 3) {
-                            //取出镶嵌ID和附灵ID
-                            String insertId = pdcItem0.get(DataContainer.insertid, PersistentDataType.STRING);
-                            String enchantId = pdcItem0.get(DataContainer.enchantid, PersistentDataType.STRING);
-                            //激活附灵和镶嵌
-                            Act.actFuling(this, enchantId);
-                            Act.actInsert(this, insertId);
+                String idPdc = pdcItem0.get(DataContainer.id, PersistentDataType.STRING);
+                if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                    if (0 == pdcItem0.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                        if (job == pdcItem0.get(DataContainer.job, PersistentDataType.INTEGER)) {
+                            Act.actHelp(this, idPdc, pdc);
+                            if (job != 3) {
+                                //取出镶嵌ID和附灵ID
+                                String insertId = pdcItem0.get(DataContainer.insertid, PersistentDataType.STRING);
+                                String enchantId = pdcItem0.get(DataContainer.enchantid, PersistentDataType.STRING);
+                                //激活附灵和镶嵌
+                                Act.actFuling(this, enchantId);
+                                Act.actInsert(this, insertId);
+                            }
                         }
                     }
                 }
@@ -461,16 +470,19 @@ public class Data {
         ItemStack item1 = playerInventory.getItem(1);
         if (item1 != null) {
             Material type1 = item1.getType();
-            if (type1 == Material.DIAMOND_PICKAXE) {
+            if (type1 == Material.PRISMARINE_SHARD) {
                 PersistentDataContainer pdcItem1 = item1.getItemMeta().getPersistentDataContainer();
-                if (1 == pdcItem1.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-                    if (job == pdcItem1.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                        Act.actHelp(this, pdcItem1.get(DataContainer.id, PersistentDataType.STRING), pdc);
-                        //取出镶嵌ID
-                        String insertId = pdcItem1.get(DataContainer.insertid, PersistentDataType.STRING);
-                        //激活镶嵌
-                        Act.actInsert(this, insertId);
+                String idPdc = pdcItem1.get(DataContainer.id, PersistentDataType.STRING);
+                if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                    if (1 == pdcItem1.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                        if (job == pdcItem1.get(DataContainer.job, PersistentDataType.INTEGER)) {
+                            Act.actHelp(this, idPdc, pdc);
+                            //取出镶嵌ID
+                            String insertId = pdcItem1.get(DataContainer.insertid, PersistentDataType.STRING);
+                            //激活镶嵌
+                            Act.actInsert(this, insertId);
 
+                        }
                     }
                 }
             }
@@ -480,11 +492,14 @@ public class Data {
         ItemStack item2 = playerInventory.getItem(2);
         if (item2 != null) {
             Material type2 = item2.getType();
-            if (type2 == Material.DIAMOND_PICKAXE) {
+            if (type2 == Material.PRISMARINE_SHARD) {
                 PersistentDataContainer pdcItem2 = item2.getItemMeta().getPersistentDataContainer();
-                if (2 == pdcItem2.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-                    if (job == pdcItem2.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                        Act.actHelp(this, pdcItem2.get(DataContainer.id, PersistentDataType.STRING), pdc);
+                String idPdc = pdcItem2.get(DataContainer.id, PersistentDataType.STRING);
+                if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                    if (2 == pdcItem2.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                        if (job == pdcItem2.get(DataContainer.job, PersistentDataType.INTEGER)) {
+                            Act.actHelp(this, idPdc, pdc);
+                        }
                     }
                 }
             }
@@ -494,10 +509,13 @@ public class Data {
         ItemStack item8 = playerInventory.getItem(8);
         if (item8 != null) {
             Material type8 = item8.getType();
-            if (type8 == Material.IRON_PICKAXE) {
+            if (type8 == Material.PRISMARINE_CRYSTALS) {
                 PersistentDataContainer pdcItem8 = item8.getItemMeta().getPersistentDataContainer();
-                if (8 == pdcItem8.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-                    Act.actHelp(this, pdcItem8.get(DataContainer.id, PersistentDataType.STRING), pdc);
+                String idPdc = pdcItem8.get(DataContainer.id, PersistentDataType.STRING);
+                if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                    if (8 == pdcItem8.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                        Act.actHelp(this, idPdc, pdc);
+                    }
                 }
             }
 
@@ -507,16 +525,19 @@ public class Data {
         ItemStack item36 = playerInventory.getItem(36);
         if (item36 != null) {
             PersistentDataContainer pdcItem36 = item36.getItemMeta().getPersistentDataContainer();
-            if (36 == pdcItem36.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-                int pdcJob = pdcItem36.get(DataContainer.job, PersistentDataType.INTEGER);
-                if (job == pdcJob || pdcJob == 0) {
-                    Act.actHelp(this, pdcItem36.get(DataContainer.id, PersistentDataType.STRING), pdc);
-                    //取出镶嵌ID和附灵ID
-                    String insertId = pdcItem36.get(DataContainer.insertid, PersistentDataType.STRING);
-                    String enchantId = pdcItem36.get(DataContainer.enchantid, PersistentDataType.STRING);
-                    //激活附灵和镶嵌
-                    Act.actFuling(this, enchantId);
-                    Act.actInsert(this, insertId);
+            String idPdc = pdcItem36.get(DataContainer.id, PersistentDataType.STRING);
+            if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                if (36 == pdcItem36.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                    int pdcJob = pdcItem36.get(DataContainer.job, PersistentDataType.INTEGER);
+                    if (job == pdcJob || pdcJob == 0) {
+                        Act.actHelp(this, idPdc, pdc);
+                        //取出镶嵌ID和附灵ID
+                        String insertId = pdcItem36.get(DataContainer.insertid, PersistentDataType.STRING);
+                        String enchantId = pdcItem36.get(DataContainer.enchantid, PersistentDataType.STRING);
+                        //激活附灵和镶嵌
+                        Act.actFuling(this, enchantId);
+                        Act.actInsert(this, insertId);
+                    }
                 }
             }
         }
@@ -525,16 +546,19 @@ public class Data {
         ItemStack item37 = playerInventory.getItem(37);
         if (item37 != null) {
             PersistentDataContainer pdcItem37 = item37.getItemMeta().getPersistentDataContainer();
-            if (37 == pdcItem37.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-                int pdcJob = pdcItem37.get(DataContainer.job, PersistentDataType.INTEGER);
-                if (job == pdcJob || pdcJob == 0) {
-                    Act.actHelp(this, pdcItem37.get(DataContainer.id, PersistentDataType.STRING), pdc);
-                    //取出镶嵌ID和附灵ID
-                    String insertId = pdcItem37.get(DataContainer.insertid, PersistentDataType.STRING);
-                    String enchantId = pdcItem37.get(DataContainer.enchantid, PersistentDataType.STRING);
-                    //激活附灵和镶嵌
-                    Act.actFuling(this, enchantId);
-                    Act.actInsert(this, insertId);
+            String idPdc = pdcItem37.get(DataContainer.id, PersistentDataType.STRING);
+            if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                if (37 == pdcItem37.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                    int pdcJob = pdcItem37.get(DataContainer.job, PersistentDataType.INTEGER);
+                    if (job == pdcJob || pdcJob == 0) {
+                        Act.actHelp(this, idPdc, pdc);
+                        //取出镶嵌ID和附灵ID
+                        String insertId = pdcItem37.get(DataContainer.insertid, PersistentDataType.STRING);
+                        String enchantId = pdcItem37.get(DataContainer.enchantid, PersistentDataType.STRING);
+                        //激活附灵和镶嵌
+                        Act.actFuling(this, enchantId);
+                        Act.actInsert(this, insertId);
+                    }
                 }
             }
         }
@@ -543,17 +567,20 @@ public class Data {
         ItemStack item38 = playerInventory.getItem(38);
         if (item38 != null) {
             PersistentDataContainer pdcItem38 = item38.getItemMeta().getPersistentDataContainer();
-            if (38 == pdcItem38.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-                int pdcJob = pdcItem38.get(DataContainer.job, PersistentDataType.INTEGER);
-                if (job == pdcJob || pdcJob == 0) {
-                    Act.actHelp(this, pdcItem38.get(DataContainer.id, PersistentDataType.STRING), pdc);
+            String idPdc = pdcItem38.get(DataContainer.id, PersistentDataType.STRING);
+            if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                if (38 == pdcItem38.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                    int pdcJob = pdcItem38.get(DataContainer.job, PersistentDataType.INTEGER);
+                    if (job == pdcJob || pdcJob == 0) {
+                        Act.actHelp(this, idPdc, pdc);
 
-                    //取出镶嵌ID和附灵ID
-                    String insertId = pdcItem38.get(DataContainer.insertid, PersistentDataType.STRING);
-                    String enchantId = pdcItem38.get(DataContainer.enchantid, PersistentDataType.STRING);
-                    //激活附灵和镶嵌
-                    Act.actFuling(this, enchantId);
-                    Act.actInsert(this, insertId);
+                        //取出镶嵌ID和附灵ID
+                        String insertId = pdcItem38.get(DataContainer.insertid, PersistentDataType.STRING);
+                        String enchantId = pdcItem38.get(DataContainer.enchantid, PersistentDataType.STRING);
+                        //激活附灵和镶嵌
+                        Act.actFuling(this, enchantId);
+                        Act.actInsert(this, insertId);
+                    }
                 }
             }
         }
@@ -562,17 +589,20 @@ public class Data {
         ItemStack item39 = playerInventory.getItem(39);
         if (item39 != null) {
             PersistentDataContainer pdcItem39 = item39.getItemMeta().getPersistentDataContainer();
-            if (39 == pdcItem39.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-                int pdcJob = pdcItem39.get(DataContainer.job, PersistentDataType.INTEGER);
-                if (job == pdcJob || pdcJob == 0) {
-                    Act.actHelp(this, pdcItem39.get(DataContainer.id, PersistentDataType.STRING), pdc);
+            String idPdc = pdcItem39.get(DataContainer.id, PersistentDataType.STRING);
+            if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                if (39 == pdcItem39.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                    int pdcJob = pdcItem39.get(DataContainer.job, PersistentDataType.INTEGER);
+                    if (job == pdcJob || pdcJob == 0) {
+                        Act.actHelp(this, idPdc, pdc);
 
-                    //取出镶嵌ID和附灵ID
-                    String insertId = pdcItem39.get(DataContainer.insertid, PersistentDataType.STRING);
-                    String enchantId = pdcItem39.get(DataContainer.enchantid, PersistentDataType.STRING);
-                    //激活附灵和镶嵌
-                    Act.actFuling(this, enchantId);
-                    Act.actInsert(this, insertId);
+                        //取出镶嵌ID和附灵ID
+                        String insertId = pdcItem39.get(DataContainer.insertid, PersistentDataType.STRING);
+                        String enchantId = pdcItem39.get(DataContainer.enchantid, PersistentDataType.STRING);
+                        //激活附灵和镶嵌
+                        Act.actFuling(this, enchantId);
+                        Act.actInsert(this, insertId);
+                    }
                 }
             }
         }
@@ -581,18 +611,21 @@ public class Data {
         ItemStack item40 = playerInventory.getItem(40);
         if (item40 != null) {
             Material type40 = item40.getType();
-            if (type40 == Material.SHIELD || type40 == Material.GOLDEN_PICKAXE) {
+            if (type40 == Material.SHIELD || type40 == Material.RABBIT_HIDE) {
                 PersistentDataContainer pdcItem40 = item40.getItemMeta().getPersistentDataContainer();
-                if (40 == pdcItem40.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-                    if (job == pdcItem40.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                        Act.actHelp(this, pdcItem40.get(DataContainer.id, PersistentDataType.STRING), pdc);
-                        if (job == 3) {
-                            //取出镶嵌ID和附灵ID
-                            String insertId = pdcItem40.get(DataContainer.insertid, PersistentDataType.STRING);
-                            String enchantId = pdcItem40.get(DataContainer.enchantid, PersistentDataType.STRING);
-                            //激活附灵和镶嵌
-                            Act.actFuling(this, enchantId);
-                            Act.actInsert(this, insertId);
+                String idPdc = pdcItem40.get(DataContainer.id, PersistentDataType.STRING);
+                if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                    if (40 == pdcItem40.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                        if (job == pdcItem40.get(DataContainer.job, PersistentDataType.INTEGER)) {
+                            Act.actHelp(this, idPdc, pdc);
+                            if (job == 3) {
+                                //取出镶嵌ID和附灵ID
+                                String insertId = pdcItem40.get(DataContainer.insertid, PersistentDataType.STRING);
+                                String enchantId = pdcItem40.get(DataContainer.enchantid, PersistentDataType.STRING);
+                                //激活附灵和镶嵌
+                                Act.actFuling(this, enchantId);
+                                Act.actInsert(this, insertId);
+                            }
                         }
                     }
                 }
@@ -605,10 +638,13 @@ public class Data {
 
         ItemStack eItem0 = shipinBar.getItem(0);
         if (eItem0 != null) {
-            if (eItem0.getType() == Material.WOODEN_PICKAXE) {
+            if (eItem0.getType() == Material.ARMS_UP_POTTERY_SHERD) {
                 PersistentDataContainer pdcEItem0 = eItem0.getItemMeta().getPersistentDataContainer();
-                if (0 == pdcEItem0.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-                    Act.actHelp(this, pdcEItem0.get(DataContainer.id, PersistentDataType.STRING), pdc);
+                String idPdc = pdcEItem0.get(DataContainer.id, PersistentDataType.STRING);
+                if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                    if (0 == pdcEItem0.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                        Act.actHelp(this, idPdc, pdc);
+                    }
                 }
             }
         }
@@ -616,10 +652,13 @@ public class Data {
 
         ItemStack eItem1 = shipinBar.getItem(1);
         if (eItem1 != null) {
-            if (eItem1.getType() == Material.WOODEN_PICKAXE) {
+            if (eItem1.getType() == Material.ARMS_UP_POTTERY_SHERD) {
                 PersistentDataContainer pdcEItem1 = eItem1.getItemMeta().getPersistentDataContainer();
-                if (1 == pdcEItem1.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-                    Act.actHelp(this, pdcEItem1.get(DataContainer.id, PersistentDataType.STRING), pdc);
+                String idPdc = pdcEItem1.get(DataContainer.id, PersistentDataType.STRING);
+                if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                    if (1 == pdcEItem1.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                        Act.actHelp(this, idPdc, pdc);
+                    }
                 }
             }
         }
@@ -627,11 +666,13 @@ public class Data {
 
         ItemStack eItem2 = shipinBar.getItem(2);
         if (eItem2 != null) {
-            if (eItem2.getType() == Material.WOODEN_PICKAXE) {
+            if (eItem2.getType() == Material.ARMS_UP_POTTERY_SHERD) {
                 PersistentDataContainer pdcEItem2 = eItem2.getItemMeta().getPersistentDataContainer();
-                if (2 == pdcEItem2.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-
-                    Act.actHelp(this, pdcEItem2.get(DataContainer.id, PersistentDataType.STRING), pdc);
+                String idPdc = pdcEItem2.get(DataContainer.id, PersistentDataType.STRING);
+                if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                    if (2 == pdcEItem2.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                        Act.actHelp(this, idPdc, pdc);
+                    }
                 }
             }
         }
@@ -639,11 +680,13 @@ public class Data {
 
         ItemStack eItem3 = shipinBar.getItem(3);
         if (eItem3 != null) {
-            if (eItem3.getType() == Material.WOODEN_PICKAXE) {
+            if (eItem3.getType() == Material.ARMS_UP_POTTERY_SHERD) {
                 PersistentDataContainer pdcEItem3 = eItem3.getItemMeta().getPersistentDataContainer();
-                if (3 == pdcEItem3.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-
-                    Act.actHelp(this, pdcEItem3.get(DataContainer.id, PersistentDataType.STRING), pdc);
+                String idPdc = pdcEItem3.get(DataContainer.id, PersistentDataType.STRING);
+                if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                    if (3 == pdcEItem3.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                        Act.actHelp(this, idPdc, pdc);
+                    }
                 }
             }
         }
@@ -651,11 +694,13 @@ public class Data {
 
         ItemStack eItem4 = shipinBar.getItem(4);
         if (eItem4 != null) {
-            if (eItem4.getType() == Material.WOODEN_PICKAXE) {
+            if (eItem4.getType() == Material.ARMS_UP_POTTERY_SHERD) {
                 PersistentDataContainer pdcEItem4 = eItem4.getItemMeta().getPersistentDataContainer();
-                if (4 == pdcEItem4.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-
-                    Act.actHelp(this, pdcEItem4.get(DataContainer.id, PersistentDataType.STRING), pdc);
+                String idPdc = pdcEItem4.get(DataContainer.id, PersistentDataType.STRING);
+                if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                    if (4 == pdcEItem4.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                        Act.actHelp(this, idPdc, pdc);
+                    }
                 }
             }
         }
@@ -663,12 +708,13 @@ public class Data {
 
         ItemStack eItem5 = shipinBar.getItem(5);
         if (eItem5 != null) {
-            if (eItem5.getType() == Material.WOODEN_PICKAXE) {
+            if (eItem5.getType() == Material.ARMS_UP_POTTERY_SHERD) {
                 PersistentDataContainer pdcEItem5 = eItem5.getItemMeta().getPersistentDataContainer();
-                if (5 == pdcEItem5.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-
-
-                    Act.actHelp(this, pdcEItem5.get(DataContainer.id, PersistentDataType.STRING), pdc);
+                String idPdc = pdcEItem5.get(DataContainer.id, PersistentDataType.STRING);
+                if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                    if (5 == pdcEItem5.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                        Act.actHelp(this, idPdc, pdc);
+                    }
                 }
             }
         }
@@ -676,11 +722,13 @@ public class Data {
 
         ItemStack eItem6 = shipinBar.getItem(6);
         if (eItem6 != null) {
-            if (eItem6.getType() == Material.WOODEN_PICKAXE) {
+            if (eItem6.getType() == Material.ARMS_UP_POTTERY_SHERD) {
                 PersistentDataContainer pdcEItem6 = eItem6.getItemMeta().getPersistentDataContainer();
-                if (6 == pdcEItem6.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-
-                    Act.actHelp(this, pdcEItem6.get(DataContainer.id, PersistentDataType.STRING), pdc);
+                String idPdc = pdcEItem6.get(DataContainer.id, PersistentDataType.STRING);
+                if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                    if (6 == pdcEItem6.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                        Act.actHelp(this, idPdc, pdc);
+                    }
                 }
             }
         }
@@ -688,11 +736,13 @@ public class Data {
 
         ItemStack eItem7 = shipinBar.getItem(7);
         if (eItem7 != null) {
-            if (eItem7.getType() == Material.WOODEN_PICKAXE) {
+            if (eItem7.getType() == Material.ARMS_UP_POTTERY_SHERD) {
                 PersistentDataContainer pdcEItem7 = eItem7.getItemMeta().getPersistentDataContainer();
-                if (7 == pdcEItem7.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-
-                    Act.actHelp(this, pdcEItem7.get(DataContainer.id, PersistentDataType.STRING), pdc);
+                String idPdc = pdcEItem7.get(DataContainer.id, PersistentDataType.STRING);
+                if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                    if (7 == pdcEItem7.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                        Act.actHelp(this, idPdc, pdc);
+                    }
                 }
             }
         }
@@ -705,11 +755,14 @@ public class Data {
             ItemStack item3 = playerInventory.getItem(3);
             if (item3 != null) {
                 Material type3 = item3.getType();
-                if (type3 == Material.DIAMOND_PICKAXE) {
+                if (type3 == Material.PRISMARINE_SHARD) {
                     PersistentDataContainer pdcItem3 = item3.getItemMeta().getPersistentDataContainer();
-                    if (3 == pdcItem3.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-                        if (job == pdcItem3.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                            Act.actHelp(this, pdcItem3.get(DataContainer.id, PersistentDataType.STRING), pdc);
+                    String idPdc = pdcItem3.get(DataContainer.id, PersistentDataType.STRING);
+                    if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                        if (3 == pdcItem3.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                            if (job == pdcItem3.get(DataContainer.job, PersistentDataType.INTEGER)) {
+                                Act.actHelp(this, idPdc, pdc);
+                            }
                         }
                     }
                 }
@@ -719,11 +772,14 @@ public class Data {
             ItemStack item4 = playerInventory.getItem(4);
             if (item4 != null) {
                 Material type4 = item4.getType();
-                if (type4 == Material.DIAMOND_PICKAXE) {
+                if (type4 == Material.PRISMARINE_SHARD) {
                     PersistentDataContainer pdcItem4 = item4.getItemMeta().getPersistentDataContainer();
-                    if (4 == pdcItem4.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-                        if (job == pdcItem4.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                            Act.actHelp(this, pdcItem4.get(DataContainer.id, PersistentDataType.STRING), pdc);
+                    String idPdc = pdcItem4.get(DataContainer.id, PersistentDataType.STRING);
+                    if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                        if (4 == pdcItem4.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                            if (job == pdcItem4.get(DataContainer.job, PersistentDataType.INTEGER)) {
+                                Act.actHelp(this, idPdc, pdc);
+                            }
                         }
                     }
                 }
@@ -734,11 +790,14 @@ public class Data {
             if (item5 != null) {
                 Material type5 = item5.getType();
 
-                if (type5 == Material.DIAMOND_PICKAXE) {
+                if (type5 == Material.PRISMARINE_SHARD) {
                     PersistentDataContainer pdcItem5 = item5.getItemMeta().getPersistentDataContainer();
-                    if (5 == pdcItem5.get(DataContainer.slot, PersistentDataType.INTEGER)) {
-                        if (job == pdcItem5.get(DataContainer.job, PersistentDataType.INTEGER)) {
-                            Act.actHelp(this, pdcItem5.get(DataContainer.id, PersistentDataType.STRING), pdc);
+                    String idPdc = pdcItem5.get(DataContainer.id, PersistentDataType.STRING);
+                    if (!BANGDINGID.contains(idPdc) || checkCanActLevel6(player, idPdc)) {
+                        if (5 == pdcItem5.get(DataContainer.slot, PersistentDataType.INTEGER)) {
+                            if (job == pdcItem5.get(DataContainer.job, PersistentDataType.INTEGER)) {
+                                Act.actHelp(this, idPdc, pdc);
+                            }
                         }
                     }
                 }
@@ -759,7 +818,7 @@ public class Data {
             }
             case 2 -> {
                 double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-                pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue + 0.02 * levelAward);
+                pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue + 0.01 * levelAward);
             }
             case 3 -> {
                 double baseValue = pdc.get(DataContainer.gedang, PersistentDataType.DOUBLE);
@@ -793,7 +852,7 @@ public class Data {
             }
             case 4 -> {
                 double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
-                pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue + 0.02 * levelAward);
+                pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue + 0.01 * levelAward);
             }
         }
 
@@ -802,7 +861,7 @@ public class Data {
             case 1 -> {
                 //战士，每次获得4护甲4法抗12攻击
                 double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
-                pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue + 0.04 * levelAward);
+                pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue + 0.02 * levelAward);
                 double baseValue3 = pdc.get(DataContainer.attack_add, PersistentDataType.DOUBLE);
                 pdc.set(DataContainer.attack_add, PersistentDataType.DOUBLE, baseValue3 + 12 * levelAward);
                 double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
@@ -832,7 +891,7 @@ public class Data {
             case 3 -> {
                 //炼丹师，每次获得1破法和4阵法强度
                 double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-                pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue + 0.02 * levelAward);
+                pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue + 0.01 * levelAward);
                 double baseValue2 = pdc.get(DataContainer.zhenfa_add, PersistentDataType.DOUBLE);
                 pdc.set(DataContainer.zhenfa_add, PersistentDataType.DOUBLE, baseValue2 + 4 * levelAward);
                 double mulValue = pdc.get(DataContainer.zhenfa_mul, PersistentDataType.DOUBLE);
@@ -845,6 +904,40 @@ public class Data {
                 pdc.set(DataContainer.shouhu, PersistentDataType.DOUBLE, baseValue5 + 16 * levelAward);
             }
         }
+
+        //支线任务激活
+        Set<String> tags = player.getScoreboardTags();
+        if (tags.contains("jianyi")) {
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+            double baseValue = attributeInstance.getBaseValue();
+            attributeInstance.setBaseValue(baseValue + 32);
+        }
+
+        if (tags.contains("yuzhuzijue")) {
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+            double baseValue = attributeInstance.getBaseValue();
+            attributeInstance.setBaseValue(baseValue + 32);
+        }
+
+
+        if (tags.contains("racezhixian")) {
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+            double baseValue = attributeInstance.getBaseValue();
+            attributeInstance.setBaseValue(baseValue + 32);
+        }
+
+        PotionEffect strength = player.getPotionEffect(PotionEffectType.STRENGTH);
+        if (strength != null) {
+            int level = strength.getAmplifier();
+            switch (level) {
+                case 0 -> this.deathObservers.add("strength1");
+                case 1 -> this.deathObservers.add("strength2");
+                case 2 -> this.deathObservers.add("strength3");
+                case 3 -> this.deathObservers.add("strength4");
+                case 4 -> this.deathObservers.add("strength5");
+            }
+        }
+
 
         //防止未激活任何装备导致没有属性设置
 
@@ -982,9 +1075,12 @@ public class Data {
         Init.initAllEnderChest(this, eSlot7Id);
 
         webSocket = null;
+
         Transfer.transferMonsterData(player);
+
         Recipe.newItemLorePlayer(playerInventory);
 
+        new BGM(this).runTaskTimerAsynchronously(Yuehua.instance, 0, 4 * 20 * 60);
 
 
     }

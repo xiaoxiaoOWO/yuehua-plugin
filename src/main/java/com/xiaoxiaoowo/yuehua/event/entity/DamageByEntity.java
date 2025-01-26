@@ -3,13 +3,14 @@ package com.xiaoxiaoowo.yuehua.event.entity;
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.*;
 import com.xiaoxiaoowo.yuehua.items.dz.YuanSu;
+import com.xiaoxiaoowo.yuehua.system.Team;
 import com.xiaoxiaoowo.yuehua.system.handleMonsters.DoMonsterAttack;
 import com.xiaoxiaoowo.yuehua.system.handleMonsters.DoMonsterAttacked;
 import com.xiaoxiaoowo.yuehua.system.handleMonsters.DoMonsterWuLiAttacked;
 import com.xiaoxiaoowo.yuehua.system.handleObsevers.*;
 import com.xiaoxiaoowo.yuehua.system.handlePets.DoPetAttack;
 import com.xiaoxiaoowo.yuehua.system.handlePets.DoPetAttacked;
-import com.xiaoxiaoowo.yuehua.utils.Scheduler;
+import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import com.xiaoxiaoowo.yuehua.utils.SendInformation;
 import net.kyori.adventure.text.Component;
 import org.bukkit.attribute.Attribute;
@@ -44,12 +45,16 @@ public final class DamageByEntity implements Listener {
                     ProjectileAttack(e, (Projectile) damager);
             case LIGHTNING_BOLT -> LightningAttack(e);
             case EVOKER_FANGS -> EvokerFangsAttack(e, (EvokerFangs) damager);
-            case EGG, DRAGON_FIREBALL, LLAMA_SPIT, POTION, FISHING_BOBBER, SNOWBALL, SPECTRAL_ARROW, ENDER_PEARL,
-                 EXPERIENCE_BOTTLE, FIREWORK_ROCKET, WIND_CHARGE, END_CRYSTAL, EYE_OF_ENDER, FALLING_BLOCK, TNT -> {
+            case EGG, DRAGON_FIREBALL, LLAMA_SPIT, POTION, FISHING_BOBBER, SPECTRAL_ARROW, ENDER_PEARL,
+                 EXPERIENCE_BOTTLE, WIND_CHARGE, END_CRYSTAL, EYE_OF_ENDER, FALLING_BLOCK, TNT -> {
             }
+            case FIREWORK_ROCKET -> FireWorkAttack(e, (Firework) damager);
+            case SNOWBALL -> SnowBallHit(e, (Snowball) damager);
+
             default -> MonsterAttack(e, damager);
         }
     }
+
 
     private void PlayerAttack(EntityDamageByEntityEvent e, Player player) {
         Entity damagee = e.getEntity();
@@ -295,10 +300,169 @@ public final class DamageByEntity implements Listener {
                 default -> e.setCancelled(true);
             }
         } else {
-            Scheduler.async(() -> player.sendMessage(Component.text("§e[游戏机制]§4只能用1号位近战攻击")));
-            e.setCancelled(true);
+            e.setDamage(0);
         }
     }
+
+    private void SnowBallHit(EntityDamageByEntityEvent e, Snowball damager) {
+        Entity damagee = e.getEntity();
+        if (damagee.getType() != EntityType.BLAZE) {
+            e.setCancelled(true);
+            return;
+        }
+
+        if (Team.playerTeam.hasEntity(damagee)) {
+            e.setCancelled(true);
+            return;
+        }
+        //怪物被玩家烟花射击
+        ProjectileSource projectileSource = damager.getShooter();
+        if (projectileSource == null) {
+            e.setCancelled(true);
+            return;
+        }
+        //玩家的烟花射击怪物
+        Player player = (Player) projectileSource;
+
+        MonsterData monsterData = Yuehua.monsterData.get(damagee.getUniqueId());
+
+        double hujia = monsterData.hujia;
+        double gedang = monsterData.gedang;
+
+        Data data = Yuehua.playerData.get(player.getUniqueId());
+        double pojia = data.pojia;
+        double baoji = data.baoji;
+        double baojixiaoguo = data.baojixiaoguo;
+        double jingong = switch (data.job) {
+            case 1 -> data.attack / 3.0;
+            case 2 -> {
+                GongData gongData = (GongData) data;
+                yield gongData.arrow;
+            }
+
+            case 3 -> {
+                DanData danData = (DanData) data;
+                yield danData.zhenfa;
+            }
+
+            default -> 0;
+        };
+
+        double damage = 2 * jingong;
+        //判断是否暴击
+        if (data.mustBaoji > 0) {
+            data.mustBaoji--;
+
+            damage = damage * baojixiaoguo;
+            for (String observer : data.baoJiObservers) {
+                damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
+            }
+        } else if (random.nextDouble() < baoji) {
+
+            damage = damage * baojixiaoguo;
+            for (String observer : data.baoJiObservers) {
+                damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
+            }
+        }
+
+        damage -= gedang;
+        double x = Math.max(0.0, hujia - pojia);
+        double y = x / (0.5 + x);
+        damage = damage * (1.0 - y);
+        monsterData.lastAttacker = player;
+
+
+        for (String observer : monsterData.wuliAttackedObservers) {
+            damage = damage * DoMonsterWuLiAttacked.doWuLiAttacked(observer, monsterData, data);
+        }
+
+        for (String observer : monsterData.attackedObservers) {
+            damage = damage * DoMonsterAttacked.doAttacked(observer, monsterData, data);
+        }
+
+        e.setDamage(damage);
+    }
+
+    private void FireWorkAttack(EntityDamageByEntityEvent e, Firework damager) {
+        Entity damagee = e.getEntity();
+        if (Team.playerTeam.hasEntity(damagee)) {
+            e.setCancelled(true);
+            return;
+        }
+        //怪物被玩家烟花射击
+        ProjectileSource projectileSource = damager.getShooter();
+        if (projectileSource == null) {
+            e.setCancelled(true);
+            return;
+        }
+        //玩家的烟花射击怪物
+        Player player = (Player) projectileSource;
+
+        MonsterData monsterData = Yuehua.monsterData.get(damagee.getUniqueId());
+        if ((long) monsterData.extraData.getOrDefault("yanhualast", 0L) == GetEntity.world.getGameTime()) {
+            e.setCancelled(true);
+            return;
+        }
+
+        monsterData.extraData.put("yanhualast", GetEntity.world.getGameTime());
+        double hujia = monsterData.hujia;
+        double gedang = monsterData.gedang;
+
+        Data data = Yuehua.playerData.get(player.getUniqueId());
+        double pojia = data.pojia;
+        double baoji = data.baoji;
+        double baojixiaoguo = data.baojixiaoguo;
+        double jingong = switch (data.job) {
+            case 1 -> data.attack / 3.0;
+            case 2 -> {
+                GongData gongData = (GongData) data;
+                yield gongData.arrow;
+            }
+
+            case 3 -> {
+                DanData danData = (DanData) data;
+                yield danData.zhenfa;
+            }
+
+            default -> 0;
+        };
+
+        double damage = 15 + 0.15 * jingong;
+        //判断是否暴击
+        if (data.mustBaoji > 0) {
+            data.mustBaoji--;
+
+            damage = damage * baojixiaoguo;
+            for (String observer : data.baoJiObservers) {
+                damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
+            }
+        } else if (random.nextDouble() < baoji) {
+
+            damage = damage * baojixiaoguo;
+            for (String observer : data.baoJiObservers) {
+                damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
+            }
+        }
+
+        damage -= gedang;
+        double x = Math.max(0.0, hujia - pojia);
+        double y = x / (0.5 + x);
+        damage = damage * (1.0 - y);
+        monsterData.lastAttacker = player;
+
+
+        for (String observer : monsterData.wuliAttackedObservers) {
+            damage = damage * DoMonsterWuLiAttacked.doWuLiAttacked(observer, monsterData, data);
+        }
+
+        for (String observer : monsterData.attackedObservers) {
+            damage = damage * DoMonsterAttacked.doAttacked(observer, monsterData, data);
+        }
+
+        e.setDamage(damage);
+
+    }
+
 
     private void ArrowAttack(EntityDamageByEntityEvent e, Arrow damager) {
         Entity damagee = e.getEntity();
@@ -322,11 +486,8 @@ public final class DamageByEntity implements Listener {
             damage -= gedang;
             double x = Math.max(0.0, hujia - pojia);
             double y = x / (0.5 + x);
-            ;
             damage = damage * (1.0 - y);
             damage = damage * (1.0 - data.jianmian);
-
-            double damageBefore = damage;
 
 
             for (String observer : monsterData.attackObservers) {
@@ -338,7 +499,7 @@ public final class DamageByEntity implements Listener {
             }
 
             for (String observer : data.attackedObservers) {
-                damage = damage * DoAttackedObserver.doAttacked(observer, data, mob, damageBefore);
+                damage = damage * DoAttackedObserver.doAttacked(observer, data, mob, damage);
             }
 
             e.setDamage(damage);
@@ -582,8 +743,6 @@ public final class DamageByEntity implements Listener {
         damage = damage * (1.0 - y);
         damage = damage * (1.0 - data.sanchajimian);
 
-        double damageBefore = damage;
-
 
         for (String observer : monsterData.attackObservers) {
             damage = damage * DoMonsterAttack.doMonsterAttack(observer, data, monsterData);
@@ -594,7 +753,7 @@ public final class DamageByEntity implements Listener {
         }
 
         for (String observer : data.attackedObservers) {
-            damage = damage * DoAttackedObserver.doAttacked(observer, data, mob, damageBefore);
+            damage = damage * DoAttackedObserver.doAttacked(observer, data, mob, damage);
         }
 
         e.setDamage(damage);
@@ -700,7 +859,6 @@ public final class DamageByEntity implements Listener {
         ;
         damage = damage * (1.0 - y);
 
-        double damageBefore = damage;
 
         for (String observer : monsterData.attackObservers) {
             damage = damage * DoMonsterAttack.doMonsterAttack(observer, data, monsterData);
@@ -711,7 +869,7 @@ public final class DamageByEntity implements Listener {
         }
 
         for (String observer : data.attackedObservers) {
-            damage = damage * DoAttackedObserver.doAttacked(observer, data, mob, damageBefore);
+            damage = damage * DoAttackedObserver.doAttacked(observer, data, mob, damage);
         }
 
         e.setDamage(damage);
@@ -837,7 +995,6 @@ public final class DamageByEntity implements Listener {
         damage -= gedang;
         damage = damage * (1.0 - y);
 
-        double damageBefore = damage;
 
         for (String observer : monsterData.attackObservers) {
             damage = damage * DoMonsterAttack.doMonsterAttack(observer, data, monsterData);
@@ -848,7 +1005,7 @@ public final class DamageByEntity implements Listener {
         }
 
         for (String observer : data.attackedObservers) {
-            damage = damage * DoAttackedObserver.doAttacked(observer, data, evoker, damageBefore);
+            damage = damage * DoAttackedObserver.doAttacked(observer, data, evoker, damage);
         }
 
         e.setDamage(damage);
@@ -952,7 +1109,6 @@ public final class DamageByEntity implements Listener {
         damage -= gedang;
         damage = damage * (1.0 - y);
 
-        double damageBefore = damage;
 
         for (String observer : monsterData.attackObservers) {
             damage = damage * DoMonsterAttack.doMonsterAttack(observer, data, monsterData);
@@ -963,7 +1119,7 @@ public final class DamageByEntity implements Listener {
         }
 
         for (String observer : data.attackedObservers) {
-            damage = damage * DoAttackedObserver.doAttacked(observer, data, (Mob) damager, damageBefore);
+            damage = damage * DoAttackedObserver.doAttacked(observer, data, (Mob) damager, damage);
         }
 
         e.setDamage(damage);
@@ -982,10 +1138,8 @@ public final class DamageByEntity implements Listener {
         double max_hp = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
         double percent = 0.5;
 
-        double damageBefore = max_hp * percent;
-
         for (String observer : data.attackedObservers) {
-            percent = percent * DoAttackedObserver.doAttacked(observer, data, null, damageBefore);
+            percent = percent * DoAttackedObserver.doAttacked(observer, data, null, max_hp * percent);
         }
 
         e.setDamage(max_hp * percent);

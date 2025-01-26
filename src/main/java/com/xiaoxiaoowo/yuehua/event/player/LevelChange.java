@@ -5,6 +5,7 @@ import com.xiaoxiaoowo.yuehua.data.DanData;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.data.GongData;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import com.xiaoxiaoowo.yuehua.utils.AdvancementSet;
 import com.xiaoxiaoowo.yuehua.utils.PlaySound;
 import com.xiaoxiaoowo.yuehua.utils.SendInformation;
 import net.kyori.adventure.text.Component;
@@ -34,8 +35,9 @@ public final class LevelChange implements Listener {
                 levelAward++;
                 pdc.set(DataContainer.levelAward, PersistentDataType.INTEGER, levelAward);
                 doLevelChange(levelAward * 10, player);
-                if(levelAward == 10){
+                if (levelAward == 10) {
                     player.addScoreboardTag("qkd5");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd5unlock, 30);
                     SendInformation.sendMes(player, Component.text("§6[等级奖励]§a达到100级，解锁乾坤盒☯五！"));
                 }
             }
@@ -44,10 +46,44 @@ public final class LevelChange implements Listener {
     }
 
 
-    public void doLevelChange(int level,Player player){
+    public void doLevelChange(int level, Player player) {
         List<Component> components = new ArrayList<>();
 
-        components.add(Component.text("§6[等级奖励]§a恭喜你升级到了§b"+level+"§a级！"));
+        components.add(Component.text("§6[等级奖励]§a恭喜你升级到了§b" + level + "§a级！"));
+
+        switch (level) {
+            case 10 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_10, 5);
+            case 20 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_20, 10);
+            case 30 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_30, 15);
+            case 40 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_40, 20);
+            case 50 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_50, 25);
+            case 60 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_60, 30);
+            case 70 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_70, 35);
+            case 80 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_80, 40);
+            case 90 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_90, 45);
+            case 100 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_100, 50);
+            case 110 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_110, 55);
+            case 120 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_120, 60);
+            case 130 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_130, 65);
+            case 140 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_140, 70);
+            case 150 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_150, 75);
+            case 160 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_160, 80);
+            case 170 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_170, 85);
+            case 180 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_180, 90);
+            case 190 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_190, 95);
+            case 200 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_200, 100);
+            case 210 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_210, 105);
+            case 220 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_220, 110);
+            case 230 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_230, 115);
+            case 240 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_240, 120);
+            case 250 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_250, 125);
+            case 260 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_260, 130);
+            case 270 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_270, 135);
+            case 280 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_280, 140);
+            case 290 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_290, 145);
+            case 300 -> AdvancementSet.giveAdv(player, AdvancementSet.xp_300, 150);
+        }
+
 
         Data data = Yuehua.playerData.get(player.getUniqueId());
         PersistentDataContainer pdc = player.getPersistentDataContainer();
@@ -64,11 +100,11 @@ public final class LevelChange implements Listener {
             }
             case 2 -> {
                 components.add(
-                        Component.text("§6[等级奖励]§e[仙族祝福]§a破法增加了§b2§a点！")
+                        Component.text("§6[等级奖励]§e[仙族祝福]§a破法增加了§b1§a点！")
                 );
                 double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-                pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue + 0.02);
-                data.setPofaScore(baseValue + 0.02);
+                pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue + 0.01);
+                data.setPofaScore(baseValue + 0.01);
 
             }
             case 3 -> {
@@ -115,11 +151,11 @@ public final class LevelChange implements Listener {
             }
             case 4 -> {
                 components.add(
-                        Component.text("§6[等级奖励]§e[妖族祝福]§a生机增加了§b2§a点！")
+                        Component.text("§6[等级奖励]§e[妖族祝福]§a生机增加了§b1§a点！")
                 );
                 double baseValue = pdc.get(DataContainer.shengji, PersistentDataType.DOUBLE);
-                pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue + 0.02);
-                data.setShengjiScore(baseValue + 0.02);
+                pdc.set(DataContainer.shengji, PersistentDataType.DOUBLE, baseValue + 0.01);
+                data.setShengjiScore(baseValue + 0.01);
             }
         }
 
@@ -128,11 +164,11 @@ public final class LevelChange implements Listener {
             case 1 -> {
                 //战士，每次获得4护甲4法抗12攻击
                 components.add(
-                        Component.text("§6[等级奖励]§e[战士]§a护甲增加了§b4§a点！")
+                        Component.text("§6[等级奖励]§e[战士]§a护甲增加了§b2§a点！")
                 );
                 double baseValue = pdc.get(DataContainer.hujia, PersistentDataType.DOUBLE);
-                pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue + 0.04);
-                data.setHujiaScore(baseValue + 0.04);
+                pdc.set(DataContainer.hujia, PersistentDataType.DOUBLE, baseValue + 0.02);
+                data.setHujiaScore(baseValue + 0.02);
 
 
                 components.add(
@@ -155,8 +191,8 @@ public final class LevelChange implements Listener {
                 components.add(
                         Component.text("§6[等级奖励]§e[战士]§a守护增加了§b16§a点！")
                 );
-                double baseValue5 = pdc.get(DataContainer.shouhu,PersistentDataType.DOUBLE);
-                pdc.set(DataContainer.shouhu,PersistentDataType.DOUBLE,baseValue5 + 16);
+                double baseValue5 = pdc.get(DataContainer.shouhu, PersistentDataType.DOUBLE);
+                pdc.set(DataContainer.shouhu, PersistentDataType.DOUBLE, baseValue5 + 16);
                 data.setShouhuScore(baseValue5 + 16);
 
 
@@ -191,19 +227,19 @@ public final class LevelChange implements Listener {
                 components.add(
                         Component.text("§6[等级奖励]§e[弓箭手]§a守护增加了§b16§a点！")
                 );
-                double baseValue5 = pdc.get(DataContainer.shouhu,PersistentDataType.DOUBLE);
-                pdc.set(DataContainer.shouhu,PersistentDataType.DOUBLE,baseValue5 + 16);
+                double baseValue5 = pdc.get(DataContainer.shouhu, PersistentDataType.DOUBLE);
+                pdc.set(DataContainer.shouhu, PersistentDataType.DOUBLE, baseValue5 + 16);
                 data.setShouhuScore(baseValue5 + 16);
             }
 
             case 3 -> {
                 //炼丹师，每次获得1破法和4阵法强度
                 components.add(
-                        Component.text("§6[等级奖励]§e[炼丹师]§a破法增加了§b2§a点！")
+                        Component.text("§6[等级奖励]§e[炼丹师]§a破法增加了§b1§a点！")
                 );
                 double baseValue = pdc.get(DataContainer.pofa, PersistentDataType.DOUBLE);
-                pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue + 0.02);
-                data.setPofaScore(baseValue + 0.02);
+                pdc.set(DataContainer.pofa, PersistentDataType.DOUBLE, baseValue + 0.01);
+                data.setPofaScore(baseValue + 0.01);
                 components.add(
                         Component.text("§6[等级奖励]§e[炼丹师]§a阵法强度增加了§b4§a点！")
                 );
@@ -225,8 +261,8 @@ public final class LevelChange implements Listener {
                 components.add(
                         Component.text("§6[等级奖励]§e[炼丹师]§a守护增加了§b16§a点！")
                 );
-                double baseValue5 = pdc.get(DataContainer.shouhu,PersistentDataType.DOUBLE);
-                pdc.set(DataContainer.shouhu,PersistentDataType.DOUBLE,baseValue5 + 16);
+                double baseValue5 = pdc.get(DataContainer.shouhu, PersistentDataType.DOUBLE);
+                pdc.set(DataContainer.shouhu, PersistentDataType.DOUBLE, baseValue5 + 16);
                 data.setShouhuScore(baseValue5 + 16);
             }
         }

@@ -4,23 +4,26 @@ import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.*;
 import com.xiaoxiaoowo.yuehua.data.slot.SlotWithOneActiveSkill;
 import com.xiaoxiaoowo.yuehua.data.slot.SlotWithTwoActiveSkill;
+import com.xiaoxiaoowo.yuehua.items.other.Money;
 import com.xiaoxiaoowo.yuehua.jineng.DoJiNeng;
 import com.xiaoxiaoowo.yuehua.system.Damage;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.*;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
+import org.bukkit.Color;
+import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Mob;
-import org.bukkit.entity.Player;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
@@ -34,6 +37,8 @@ public final class Interact implements Listener {
     private static final Random random = new Random();
 
     @EventHandler
+
+
     public void onInteract(PlayerInteractEvent e) {
         //右键
         if (e.getAction().isRightClick()) {
@@ -52,15 +57,11 @@ public final class Interact implements Listener {
                                     gongData.time_pulling = GetEntity.world.getGameTime();
                                 } else {
                                     e.setCancelled(true);
-                                    Scheduler.async(() -> player.sendMessage(
-                                            Component.text("§e[游戏机制]§4只能用一号位使用弓哦").color(NamedTextColor.DARK_RED)
-                                    ));
+                                    Scheduler.async(() -> player.sendMessage(Component.text("§e[游戏机制]§4只能用一号位使用弓哦").color(NamedTextColor.DARK_RED)));
                                 }
                             } else {
                                 e.setCancelled(true);
-                                Scheduler.async(() -> player.sendMessage(
-                                        Component.text("§e[游戏机制]§4你不是弓箭手").color(NamedTextColor.DARK_RED)
-                                ));
+                                Scheduler.async(() -> player.sendMessage(Component.text("§e[游戏机制]§4你不是弓箭手").color(NamedTextColor.DARK_RED)));
                             }
                         }
                         case CROSSBOW -> {
@@ -74,20 +75,16 @@ public final class Interact implements Listener {
                                     }
                                 } else {
                                     e.setCancelled(true);
-                                    Scheduler.async(() -> player.sendMessage(
-                                            Component.text("§e[游戏机制]§4只能用一号位使用弩哦").color(NamedTextColor.DARK_RED)
-                                    ));
+                                    Scheduler.async(() -> player.sendMessage(Component.text("§e[游戏机制]§4只能用一号位使用弩哦").color(NamedTextColor.DARK_RED)));
                                 }
                             } else {
                                 e.setCancelled(true);
-                                Scheduler.async(() -> player.sendMessage(
-                                        Component.text("§e[游戏机制]§4你不是弓箭手").color(NamedTextColor.DARK_RED)
-                                ));
+                                Scheduler.async(() -> player.sendMessage(Component.text("§e[游戏机制]§4你不是弓箭手").color(NamedTextColor.DARK_RED)));
                             }
                         }
 
 
-                        case DIAMOND_PICKAXE -> {
+                        case PRISMARINE_SHARD -> {
                             Player player = e.getPlayer();
                             int slot = player.getInventory().getHeldItemSlot();
                             Data data = Yuehua.playerData.get(player.getUniqueId());
@@ -107,7 +104,7 @@ public final class Interact implements Listener {
                                 }
                             }
                         }
-                        case IRON_PICKAXE -> {
+                        case PRISMARINE_CRYSTALS -> {
                             Player player = e.getPlayer();
                             int slot = player.getInventory().getHeldItemSlot();
                             if (slot == 8) {
@@ -116,17 +113,22 @@ public final class Interact implements Listener {
                             }
                         }
 
+                        case HEARTBREAK_POTTERY_SHERD -> {
+                            Player player = e.getPlayer();
+                            doSpeical(player, item);
+
+                        }
+
 
                         case RAW_GOLD -> {
                             Player player = e.getPlayer();
-                            int cmd = item.getCustomModelData();
-                            int xp = switch (cmd) {
-                                case 1 -> 10;
-                                case 2 -> 20;
-                                case 3 -> 50;
-                                case 4 -> 100;
-                                case 5 -> 200;
-                                case 6 -> 500;
+                            int xp = switch (item.getPersistentDataContainer().get(DataContainer.id, PersistentDataType.STRING)) {
+                                case "xp10" -> 10;
+                                case "xp20" -> 20;
+                                case "xp50" -> 50;
+                                case "xp100" -> 100;
+                                case "xp200" -> 200;
+                                case "xp500" -> 500;
                                 default -> 0;
                             };
                             int amount = item.getAmount();
@@ -135,22 +137,29 @@ public final class Interact implements Listener {
                             player.giveExp(xp, false);
                         }
 
-                        case STONE_PICKAXE -> {
+                        case DIAMOND_PICKAXE -> {
                             Player player = e.getPlayer();
-                            Vector force = player.getEyeLocation().getDirection().multiply(30);
+                            Vector force = player.getEyeLocation().getDirection().multiply(15);
                             player.setVelocity(force);
                         }
 
-                        case DIAMOND_SHOVEL -> {
+                        case GOLDEN_PICKAXE -> {
                             Player player = e.getPlayer();
-                            Data data = Yuehua.playerData.get(player.getUniqueId());
-                            data.job++;
-                            if (data.job > 3) {
-                                data.job = 1;
+                            Entity entity = player.getTargetEntity(64);
+                            if (entity == null) {
+                                return;
                             }
+
+                            Location location = entity.getLocation();
+                            double a = location.getX() - Math.floor(location.getX());
+                            if (a < 0.1) {
+                                Location newLoc = location.add(0.5, 0, 0.5);
+                                entity.teleport(newLoc);
+                            }
+                            entity.setRotation((entity.getYaw() + 90) % 360, 0);
                         }
 
-                        case DIAMOND_AXE -> {
+                        case NETHERITE_PICKAXE -> {
                             Player player = e.getPlayer();
                             Data data = Yuehua.playerData.get(player.getUniqueId());
                             Entity entity = player.getTargetEntity(64);
@@ -168,23 +177,19 @@ public final class Interact implements Listener {
                                 }
 
                             }
-
-
                             if (entity == null) {
                                 return;
                             }
 
                             MonsterData monsterData = Yuehua.monsterData.get(entity.getUniqueId());
-
-                            data.updatePofaAdd(99999);
-
+                            data.updatePofaAdd(1000);
                             Damage.damageMonster(data, 10000000, monsterData);
                         }
 
                         case INK_SAC -> {
                             Player player = e.getPlayer();
                             String id = item.getPersistentDataContainer().get(DataContainer.id, PersistentDataType.STRING);
-                            if (doPinZheng(id, player)) {
+                            if (doPinZheng(id, player, item)) {
                                 player.getInventory().setItemInMainHand(null);
                             }
                         }
@@ -194,9 +199,7 @@ public final class Interact implements Listener {
                             Data data = Yuehua.playerData.get(player.getUniqueId());
                             if (data.job != 1) {
                                 e.setCancelled(true);
-                                Scheduler.async(() -> player.sendMessage(
-                                        Component.text("§e[游戏机制]§4你不是战士").color(NamedTextColor.DARK_RED)
-                                ));
+                                Scheduler.async(() -> player.sendMessage(Component.text("§e[游戏机制]§4你不是战士").color(NamedTextColor.DARK_RED)));
                             } else {
                                 e.setCancelled(true);
                             }
@@ -207,9 +210,7 @@ public final class Interact implements Listener {
                             Player player = e.getPlayer();
                             if (player.getPersistentDataContainer().get(DataContainer.fuben, PersistentDataType.INTEGER) != 0) {
                                 player.setHealth(0);
-                                player.sendMessage(
-                                        Component.text("§e[游戏机制]§4试图逃离副本机制，你已被惩罚")
-                                );
+                                player.sendMessage(Component.text("§e[游戏机制]§4试图逃离副本机制，你已被惩罚"));
                             }
                             e.setCancelled(true);
                         }
@@ -222,19 +223,9 @@ public final class Interact implements Listener {
                                 player.getInventory().setItemInMainHand(null);
                                 SendInformation.sendMes(player, Component.text("§e[游戏机制]§4只有炼丹师可以使用"));
                             }
-                            player.setCooldown(Material.SPLASH_POTION, 40);
+                            player.setCooldown(Material.SPLASH_POTION, 100);
                         }
 
-//                        case DIAMOND_SWORD -> {
-//                            Player player = e.getPlayer();
-//                            Damage.damage(player,10,0,GetEntity.getRayMonster(player, 10));
-//                            Damage.damage(player,10,0,GetEntity.getRayMonsterWithRoatation(player, 10,Math.PI/6));
-//                            Damage.damage(player,10,0,GetEntity.getRayMonsterWithRoatation(player, 10,-Math.PI/6));
-//                            TestRay.run(player);
-//
-//
-//
-//                        }
                     }
                 } else {
                     switch (type) {
@@ -242,9 +233,7 @@ public final class Interact implements Listener {
                             Player player = e.getPlayer();
                             if (player.getPersistentDataContainer().get(DataContainer.fuben, PersistentDataType.INTEGER) != 0) {
                                 player.setHealth(0);
-                                player.sendMessage(
-                                        Component.text("§e[游戏机制]§4试图逃离副本机制，你已被惩罚")
-                                );
+                                player.sendMessage(Component.text("§e[游戏机制]§4试图逃离副本机制，你已被惩罚"));
                             }
                         }
 
@@ -253,9 +242,7 @@ public final class Interact implements Listener {
                             Data data = Yuehua.playerData.get(player.getUniqueId());
                             if (data.job != 1) {
                                 e.setCancelled(true);
-                                Scheduler.async(() -> player.sendMessage(
-                                        Component.text("§e[游戏机制]§4你不是战士").color(NamedTextColor.DARK_RED)
-                                ));
+                                Scheduler.async(() -> player.sendMessage(Component.text("§e[游戏机制]§4你不是战士").color(NamedTextColor.DARK_RED)));
                             } else {
                                 e.setCancelled(true);
                             }
@@ -267,14 +254,10 @@ public final class Interact implements Listener {
                             Data data = Yuehua.playerData.get(player.getUniqueId());
                             if (data.job == 2) {
                                 e.setCancelled(true);
-                                Scheduler.async(() -> player.sendMessage(
-                                        Component.text("§e[游戏机制]§4只能用一号位使用弓哦").color(NamedTextColor.DARK_RED)
-                                ));
+                                Scheduler.async(() -> player.sendMessage(Component.text("§e[游戏机制]§4只能用一号位使用弓哦").color(NamedTextColor.DARK_RED)));
                             } else {
                                 e.setCancelled(true);
-                                Scheduler.async(() -> player.sendMessage(
-                                        Component.text("§e[游戏机制]§4你不是弓箭手").color(NamedTextColor.DARK_RED)
-                                ));
+                                Scheduler.async(() -> player.sendMessage(Component.text("§e[游戏机制]§4你不是弓箭手").color(NamedTextColor.DARK_RED)));
                             }
                         }
                         case CROSSBOW -> {
@@ -282,14 +265,10 @@ public final class Interact implements Listener {
                             Data data = Yuehua.playerData.get(player.getUniqueId());
                             if (data.job == 2) {
                                 e.setCancelled(true);
-                                Scheduler.async(() -> player.sendMessage(
-                                        Component.text("§e[游戏机制]§4只能用一号位使用弩哦").color(NamedTextColor.DARK_RED)
-                                ));
+                                Scheduler.async(() -> player.sendMessage(Component.text("§e[游戏机制]§4只能用一号位使用弩哦").color(NamedTextColor.DARK_RED)));
                             } else {
                                 e.setCancelled(true);
-                                Scheduler.async(() -> player.sendMessage(
-                                        Component.text("§e[游戏机制]§4你不是弓箭手").color(NamedTextColor.DARK_RED)
-                                ));
+                                Scheduler.async(() -> player.sendMessage(Component.text("§e[游戏机制]§4你不是弓箭手").color(NamedTextColor.DARK_RED)));
                             }
                         }
 
@@ -301,8 +280,9 @@ public final class Interact implements Listener {
                                 player.getInventory().setItemInMainHand(null);
                                 SendInformation.sendMes(player, Component.text("§e[游戏机制]§4只有炼丹师可以使用"));
                             }
-                            player.setCooldown(Material.SPLASH_POTION, 40);
+                            player.setCooldown(Material.SPLASH_POTION, 100);
                         }
+
                     }
                 }
             }
@@ -471,8 +451,19 @@ public final class Interact implements Listener {
     }
 
 
-    public static boolean doPinZheng(String id, Player player) {
+    public static boolean doPinZheng(String id, Player player, ItemStack itemStack) {
         switch (id) {
+            case "finishMain", "finishShenHide", "finishXianHide", "finishRenHide", "finishYaoHide",
+                 "finishZhanHide" -> {
+                Set<String> tags = player.getScoreboardTags();
+                if (!tags.contains(id)) {
+                    player.addScoreboardTag(id);
+                    PlaySound.success(player);
+                }
+                return true;
+            }
+
+
             case "yemingzhu" -> {
                 Set<String> tags = player.getScoreboardTags();
                 if (tags.contains("night_vision")) {
@@ -486,15 +477,15 @@ public final class Interact implements Listener {
             }
 
             case "yaoshihe" -> {
-                return RandomChest.randomLuckyKey(player, 1);
+                return RandomChest.randomLuckyKey(player, 1, itemStack);
             }
 
             case "yaoshihe2" -> {
-                return RandomChest.randomLuckyKey(player, 2);
+                return RandomChest.randomLuckyKey(player, 2, itemStack);
             }
 
             case "yaoshihe3" -> {
-                return RandomChest.randomLuckyKey(player, 5);
+                return RandomChest.randomLuckyKey(player, 5, itemStack);
             }
 
             case "yushibag1" -> {
@@ -535,6 +526,7 @@ public final class Interact implements Listener {
                     return false;
                 } else {
                     player.addScoreboardTag("qkd1");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd1unlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁乾坤盒☯一"));
                     return true;
                 }
@@ -545,6 +537,7 @@ public final class Interact implements Listener {
                     return false;
                 } else {
                     player.addScoreboardTag("qkd2");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd2unlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁乾坤盒☯二"));
                     return true;
                 }
@@ -555,6 +548,7 @@ public final class Interact implements Listener {
                     return false;
                 } else {
                     player.addScoreboardTag("qkd3");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd3unlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁乾坤盒☯三"));
                     return true;
                 }
@@ -565,6 +559,7 @@ public final class Interact implements Listener {
                     return false;
                 } else {
                     player.addScoreboardTag("qkd4");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd4unlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁乾坤盒☯四"));
                     return true;
                 }
@@ -575,6 +570,7 @@ public final class Interact implements Listener {
                     return false;
                 } else {
                     player.addScoreboardTag("qkd6");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd6unlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁乾坤盒☯六"));
                     return true;
                 }
@@ -585,6 +581,7 @@ public final class Interact implements Listener {
                     return false;
                 } else {
                     player.addScoreboardTag("qkd7");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd7unlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁乾坤盒☯七"));
                     return true;
                 }
@@ -595,6 +592,7 @@ public final class Interact implements Listener {
                     return false;
                 } else {
                     player.addScoreboardTag("qkd8");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd8unlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁乾坤盒☯八"));
                     return true;
                 }
@@ -605,6 +603,7 @@ public final class Interact implements Listener {
                     return false;
                 } else {
                     player.addScoreboardTag("qkd9");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd9unlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁乾坤盒☯九"));
                     return true;
                 }
@@ -615,6 +614,7 @@ public final class Interact implements Listener {
                     return false;
                 } else {
                     player.addScoreboardTag("qkd10");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd10unlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁乾坤盒☯十"));
                     return true;
                 }
@@ -625,6 +625,7 @@ public final class Interact implements Listener {
                     return false;
                 } else {
                     player.addScoreboardTag("qkd11");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd11unlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁乾坤盒☯十一"));
                     return true;
                 }
@@ -635,6 +636,7 @@ public final class Interact implements Listener {
                     return false;
                 } else {
                     player.addScoreboardTag("qkd12");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd12unlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁乾坤盒☯十二"));
                     return true;
                 }
@@ -645,6 +647,7 @@ public final class Interact implements Listener {
                     return false;
                 } else {
                     player.addScoreboardTag("qkd13");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd13unlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁乾坤盒☯十三"));
                     return true;
                 }
@@ -655,6 +658,7 @@ public final class Interact implements Listener {
                     return false;
                 } else {
                     player.addScoreboardTag("qkd14");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd14unlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁乾坤盒☯十四"));
                     return true;
                 }
@@ -665,6 +669,7 @@ public final class Interact implements Listener {
                     return false;
                 } else {
                     player.addScoreboardTag("qkd15");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd15unlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁乾坤盒☯十五"));
                     return true;
                 }
@@ -675,6 +680,7 @@ public final class Interact implements Listener {
                     return false;
                 } else {
                     player.addScoreboardTag("qkd16");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd16unlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁乾坤盒☯十六"));
                     return true;
                 }
@@ -685,6 +691,7 @@ public final class Interact implements Listener {
                     return false;
                 } else {
                     player.addScoreboardTag("qkd17");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd17unlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁乾坤盒☯十七"));
                     return true;
                 }
@@ -695,10 +702,12 @@ public final class Interact implements Listener {
                     return false;
                 } else {
                     player.addScoreboardTag("qkd18");
+                    AdvancementSet.giveAdv(player, AdvancementSet.qkd18unlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁乾坤盒☯十八"));
                     return true;
                 }
             }
+
 
             case "hunyuandaiunlock" -> {
                 if (player.getScoreboardTags().contains("shared")) {
@@ -708,6 +717,7 @@ public final class Interact implements Listener {
                 } else {
                     player.addScoreboardTag("shared");
                     SQL.initialShared(player);
+                    AdvancementSet.giveAdv(player, AdvancementSet.hunyuanunlock, 30); // 添加给予成就
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6解锁混元袋☯无界"));
                     return true;
                 }
@@ -716,6 +726,7 @@ public final class Interact implements Listener {
             case "chonghua2" -> {
                 if (player.getPersistentDataContainer().get(DataContainer.chonghualevel, PersistentDataType.INTEGER) == 1) {
                     player.getPersistentDataContainer().set(DataContainer.chonghualevel, PersistentDataType.INTEGER, 2);
+                    AdvancementSet.giveAdv(player, AdvancementSet.chonghua2, 30);
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6重华晶升级为2阶"));
                     return true;
                 } else {
@@ -726,6 +737,7 @@ public final class Interact implements Listener {
             case "chonghua3" -> {
                 if (player.getPersistentDataContainer().get(DataContainer.chonghualevel, PersistentDataType.INTEGER) == 2) {
                     player.getPersistentDataContainer().set(DataContainer.chonghualevel, PersistentDataType.INTEGER, 3);
+                    AdvancementSet.giveAdv(player, AdvancementSet.chonghua3, 30);
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6重华晶升级为3阶"));
                     return true;
                 } else {
@@ -736,6 +748,7 @@ public final class Interact implements Listener {
             case "chonghua4" -> {
                 if (player.getPersistentDataContainer().get(DataContainer.chonghualevel, PersistentDataType.INTEGER) == 3) {
                     player.getPersistentDataContainer().set(DataContainer.chonghualevel, PersistentDataType.INTEGER, 4);
+                    AdvancementSet.giveAdv(player, AdvancementSet.chonghua4, 30);
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6重华晶升级为4阶"));
                     return true;
                 } else {
@@ -746,6 +759,7 @@ public final class Interact implements Listener {
             case "chonghua5" -> {
                 if (player.getPersistentDataContainer().get(DataContainer.chonghualevel, PersistentDataType.INTEGER) == 4) {
                     player.getPersistentDataContainer().set(DataContainer.chonghualevel, PersistentDataType.INTEGER, 5);
+                    AdvancementSet.giveAdv(player, AdvancementSet.chonghua5, 30);
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6重华晶升级为5阶"));
                     return true;
                 } else {
@@ -756,6 +770,7 @@ public final class Interact implements Listener {
             case "chonghua6" -> {
                 if (player.getPersistentDataContainer().get(DataContainer.chonghualevel, PersistentDataType.INTEGER) == 5) {
                     player.getPersistentDataContainer().set(DataContainer.chonghualevel, PersistentDataType.INTEGER, 6);
+                    AdvancementSet.giveAdv(player, AdvancementSet.chonghua6, 30);
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6重华晶升级为6阶"));
                     return true;
                 } else {
@@ -766,6 +781,7 @@ public final class Interact implements Listener {
             case "chonghua7" -> {
                 if (player.getPersistentDataContainer().get(DataContainer.chonghualevel, PersistentDataType.INTEGER) == 6) {
                     player.getPersistentDataContainer().set(DataContainer.chonghualevel, PersistentDataType.INTEGER, 7);
+                    AdvancementSet.giveAdv(player, AdvancementSet.chonghua7, 30);
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6重华晶升级为7阶"));
                     return true;
                 } else {
@@ -776,6 +792,7 @@ public final class Interact implements Listener {
             case "chonghua8" -> {
                 if (player.getPersistentDataContainer().get(DataContainer.chonghualevel, PersistentDataType.INTEGER) == 7) {
                     player.getPersistentDataContainer().set(DataContainer.chonghualevel, PersistentDataType.INTEGER, 8);
+                    AdvancementSet.giveAdv(player, AdvancementSet.chonghua8, 30);
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6重华晶升级为8阶"));
                     return true;
                 } else {
@@ -786,6 +803,7 @@ public final class Interact implements Listener {
             case "chonghua9" -> {
                 if (player.getPersistentDataContainer().get(DataContainer.chonghualevel, PersistentDataType.INTEGER) == 8) {
                     player.getPersistentDataContainer().set(DataContainer.chonghualevel, PersistentDataType.INTEGER, 9);
+                    AdvancementSet.giveAdv(player, AdvancementSet.chonghua9, 30);
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6重华晶升级为9阶"));
                     return true;
                 } else {
@@ -796,6 +814,7 @@ public final class Interact implements Listener {
             case "chonghua10" -> {
                 if (player.getPersistentDataContainer().get(DataContainer.chonghualevel, PersistentDataType.INTEGER) == 9) {
                     player.getPersistentDataContainer().set(DataContainer.chonghualevel, PersistentDataType.INTEGER, 10);
+                    AdvancementSet.giveAdv(player, AdvancementSet.chonghua10, 30);
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6重华晶升级为10阶"));
                     return true;
                 } else {
@@ -806,6 +825,7 @@ public final class Interact implements Listener {
             case "chonghua11" -> {
                 if (player.getPersistentDataContainer().get(DataContainer.chonghualevel, PersistentDataType.INTEGER) == 10) {
                     player.getPersistentDataContainer().set(DataContainer.chonghualevel, PersistentDataType.INTEGER, 11);
+                    AdvancementSet.giveAdv(player, AdvancementSet.chonghua11, 30);
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§6重华晶升级为11阶"));
                     return true;
                 } else {
@@ -822,7 +842,8 @@ public final class Interact implements Listener {
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你已经解锁了槽位一！"));
                     return false;
                 }
-                SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你成功解锁了槽位一！"));
+                AdvancementSet.giveAdv(player, AdvancementSet.shipinbar1, 30);
+                SendInformation.sendMes(player, Component.text("§e[游戏机制]§a你成功解锁了槽位一！"));
                 data.shipinBar.setItem(0, null);
                 return true;
             }
@@ -834,7 +855,8 @@ public final class Interact implements Listener {
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你已经解锁了槽位二！"));
                     return false;
                 }
-                SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你成功解锁了槽位二！"));
+                AdvancementSet.giveAdv(player, AdvancementSet.shipinbar2, 30);
+                SendInformation.sendMes(player, Component.text("§e[游戏机制]§a你成功解锁了槽位二！"));
                 data.shipinBar.setItem(1, null);
                 return true;
             }
@@ -846,7 +868,8 @@ public final class Interact implements Listener {
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你已经解锁了槽位三！"));
                     return false;
                 }
-                SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你成功解锁了槽位三！"));
+                AdvancementSet.giveAdv(player, AdvancementSet.shipinbar3, 30);
+                SendInformation.sendMes(player, Component.text("§e[游戏机制]§a你成功解锁了槽位三！"));
                 data.shipinBar.setItem(2, null);
                 return true;
             }
@@ -858,7 +881,8 @@ public final class Interact implements Listener {
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你已经解锁了槽位四！"));
                     return false;
                 }
-                SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你成功解锁了槽位四！"));
+                AdvancementSet.giveAdv(player, AdvancementSet.shipinbar4, 30);
+                SendInformation.sendMes(player, Component.text("§e[游戏机制]§a你成功解锁了槽位四！"));
                 data.shipinBar.setItem(3, null);
                 return true;
             }
@@ -870,7 +894,8 @@ public final class Interact implements Listener {
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你已经解锁了槽位五！"));
                     return false;
                 }
-                SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你成功解锁了槽位五！"));
+                AdvancementSet.giveAdv(player, AdvancementSet.shipinbar5, 30);
+                SendInformation.sendMes(player, Component.text("§e[游戏机制]§a你成功解锁了槽位五！"));
                 data.shipinBar.setItem(4, null);
                 return true;
             }
@@ -882,7 +907,8 @@ public final class Interact implements Listener {
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你已经解锁了槽位六！"));
                     return false;
                 }
-                SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你成功解锁了槽位六！"));
+                AdvancementSet.giveAdv(player, AdvancementSet.shipinbar6, 30);
+                SendInformation.sendMes(player, Component.text("§e[游戏机制]§a你成功解锁了槽位六！"));
                 data.shipinBar.setItem(5, null);
                 return true;
             }
@@ -894,7 +920,8 @@ public final class Interact implements Listener {
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你已经解锁了槽位七！"));
                     return false;
                 }
-                SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你成功解锁了槽位七！"));
+                AdvancementSet.giveAdv(player, AdvancementSet.shipinbar7, 30);
+                SendInformation.sendMes(player, Component.text("§e[游戏机制]§a你成功解锁了槽位七！"));
                 data.shipinBar.setItem(6, null);
                 return true;
             }
@@ -906,7 +933,8 @@ public final class Interact implements Listener {
                     SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你已经解锁了槽位八！"));
                     return false;
                 }
-                SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你成功解锁了槽位八！"));
+                AdvancementSet.giveAdv(player, AdvancementSet.shipinbar8, 30);
+                SendInformation.sendMes(player, Component.text("§e[游戏机制]§a你成功解锁了槽位八！"));
                 data.shipinBar.setItem(7, null);
                 return true;
             }
@@ -1381,5 +1409,88 @@ public final class Interact implements Listener {
 
         }
     }
+
+    public static void doSpeical(Player player, ItemStack item) {
+        switch (item.getCustomModelData()) {
+            case 2 -> {
+                item.setAmount(item.getAmount()-1);
+
+                for(Entity entity : GetEntity.getMonsters(player.getLocation(),4,4,4)){
+                    if(entity.getType() == EntityType.BEE){
+                        MonsterData monsterData = Yuehua.monsterData.get(entity.getUniqueId());
+                        MoveEntity.jiTui(monsterData,player.getLocation().toVector(),6);
+                    }
+                }
+
+
+            }
+
+
+            case 1 -> {
+                int cool = player.getCooldown(Material.HEARTBREAK_POTTERY_SHERD);
+                if (cool > 0) {
+                    SendInformation.sendActionBar(player, Component.text("§e[游戏机制]§4烟花火箭冷却中,剩余§b" + cool / 20.0 + "§4秒"));
+                    return;
+                }
+
+                Location eyeloc = player.getEyeLocation();
+                Vector direction = eyeloc.getDirection();
+                Location fireloc = eyeloc.clone().add(direction.clone().multiply(0.1));
+                Vector speed = direction.multiply(2);
+                Firework firework = GetEntity.world.spawn(fireloc, Firework.class, false, it -> {
+                    it.setGravity(false);
+                    it.setVelocity(speed);
+                    it.setShooter(player);
+
+                    FireworkMeta meta = it.getFireworkMeta();
+                    meta.setPower(1);
+                    int random = GetEntity.random.nextInt(0, 4);
+                    FireworkEffect effect;
+                    if (random == 2) {
+                        effect = FireworkEffect.builder()
+                                .withColor(Color.FUCHSIA, Color.AQUA, Color.LIME, Color.ORANGE, Color.YELLOW)
+                                .withFade(Color.WHITE, Color.BLUE)
+                                .with(FireworkEffect.Type.STAR)
+                                .trail(true)
+                                .flicker(true)
+                                .build();
+                    } else {
+                        effect = FireworkEffect.builder()
+                                .withColor(Color.FUCHSIA, Color.AQUA, Color.LIME, Color.ORANGE, Color.YELLOW)
+                                .withFade(Color.WHITE, Color.BLUE)
+                                .with(FireworkEffect.Type.BALL_LARGE)
+                                .trail(true)
+                                .flicker(true)
+                                .build();
+                    }
+
+
+                    meta.addEffect(effect);
+                    it.setFireworkMeta(meta);
+                });
+
+                new BukkitRunnable() {
+                    int count = 0;
+
+                    @Override
+                    public void run() {
+                        if (firework.isDetonated() || firework.isDead()) {
+                            this.cancel();
+                            return;
+                        }
+                        firework.setVelocity(speed);
+                        count++;
+                        if (count == 4) {
+                            firework.setTicksFlown(99999);
+                        }
+                    }
+                }.runTaskTimer(Yuehua.instance, 0, 1);
+
+
+                player.setCooldown(Material.HEARTBREAK_POTTERY_SHERD, 40);
+            }
+        }
+    }
+
 
 }

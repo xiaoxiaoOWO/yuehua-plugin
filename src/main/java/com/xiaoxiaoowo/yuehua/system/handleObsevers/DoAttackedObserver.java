@@ -1,8 +1,10 @@
 package com.xiaoxiaoowo.yuehua.system.handleObsevers;
 
+import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.DanData;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.data.GongData;
+import com.xiaoxiaoowo.yuehua.data.MonsterData;
 import com.xiaoxiaoowo.yuehua.data.slot.special.BeiDouMieShen;
 import com.xiaoxiaoowo.yuehua.jineng.gong.weapon.juji.BeiDouMieShenGong;
 import com.xiaoxiaoowo.yuehua.system.Cure;
@@ -157,7 +159,8 @@ public final class DoAttackedObserver {
             data.updateAttackAdd(value);
             double damage = data.attack * (0.5 * level + 1);
             if (monster != null) {
-                Damage.damageMonster(data, damage, monster);
+                MonsterData monsterData = Yuehua.monsterData.get(monster.getUniqueId());
+                Damage.damageMonster(data, damage, monsterData);
             }
 
             if (!data.noinfor) {
@@ -220,7 +223,8 @@ public final class DoAttackedObserver {
             gongData.updateArrowAdd(value);
             double damage = gongData.arrow * (1.5 * level + 3);
             if (monster != null) {
-                Damage.damageMonster(data, damage, monster);
+                MonsterData monsterData = Yuehua.monsterData.get(monster.getUniqueId());
+                Damage.damageMonster(data, damage, monsterData);
             }
             if (!data.noinfor) {
                 SendInformation.sendMes(player, Component.text("§e[被动技]§6[守中藏锋]§a触发"));
@@ -250,7 +254,8 @@ public final class DoAttackedObserver {
             danData.updateZhenfaAdd(value);
             double damage = danData.zhenfa * (1.5 * level + 3);
             if (monster != null) {
-                Damage.damageMonster(data, damage, monster);
+                MonsterData monsterData = Yuehua.monsterData.get(monster.getUniqueId());
+                Damage.damageMonster(data, damage, monsterData);
             }
             if (!data.noinfor) {
                 SendInformation.sendMes(player, Component.text("§e[被动技]§6[守中藏锋]§a触发"));

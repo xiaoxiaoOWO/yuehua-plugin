@@ -4,9 +4,11 @@ package com.xiaoxiaoowo.yuehua.task.weapon;
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.data.MonsterData;
+import com.xiaoxiaoowo.yuehua.display.utils.ParticleUtils;
 import com.xiaoxiaoowo.yuehua.system.Buff;
 import com.xiaoxiaoowo.yuehua.system.Damage;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
+import org.bukkit.Particle;
 import org.bukkit.entity.Mob;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
@@ -44,6 +46,7 @@ public final class HongYinQiangFire extends BukkitRunnable {
         for (Mob mob : GetEntity.getLineMonster(start, end, 0.5)) {
             MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
             Damage.damageMonster(data, damage, monsterData);
+            ParticleUtils.atMonster(mob, Particle.FLAME);
             Buff.deFakang(monsterData, 20 * 3, 0.1);
         }
 

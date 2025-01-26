@@ -15,8 +15,20 @@ import java.util.List;
 
 public final class Food {
 
+    public static final ItemStack xinqitian = new ItemStack(Material.BREAD, 1);
+    public static final ItemStack lianxin = new ItemStack(Material.BREAD, 1);
+
+    public static final ItemStack zuanyaun = new ItemStack(Material.BREAD, 1);
+    public static final ItemStack wangyuanwai = new ItemStack(Material.BREAD, 1);
+
+    public static final ItemStack zhangzhe = new ItemStack(Material.BREAD, 1);
+    public static final ItemStack chendaifu = new ItemStack(Material.BREAD, 1);
+
+    public static final ItemStack baigujin = new ItemStack(Material.BREAD, 1);
+    public static final ItemStack penglai = new ItemStack(Material.BREAD, 1);
 
     //丹药
+    public static final ItemStack huixue_0 = new ItemStack(Material.BREAD, 1);
     public static final ItemStack huixue_1 = new ItemStack(Material.BREAD, 1);
     public static final ItemStack huixue_2 = new ItemStack(Material.BREAD, 1);
     public static final ItemStack huixue_3 = new ItemStack(Material.BREAD, 1);
@@ -86,18 +98,174 @@ public final class Food {
 
 
     static {
+
+        //32 - 48
+        huixue_0.setCustomModelData(41);
         huixue_1.setCustomModelData(41);
         huixue_2.setCustomModelData(41);
         huixue_3.setCustomModelData(41);
         huixue_4.setCustomModelData(41);
         SHANSHENZHUFU.setCustomModelData(41);
 
+        xinqitian.setCustomModelData(36);
         jiedu_1.setCustomModelData(36);
         jiedu_2.setCustomModelData(36);
         jiedu_3.setCustomModelData(36);
         jiedu_4.setCustomModelData(36);
 
         SHENMULING.setCustomModelData(46);
+
+        penglai.editMeta(meta -> {
+            meta.setCustomModelData(48);
+            FoodComponent foodComponent = meta.getFood();
+            foodComponent.setCanAlwaysEat(true);
+            foodComponent.setEatSeconds(2.5f);
+            foodComponent.setNutrition(0);
+            foodComponent.setSaturation(0.0f);
+            meta.setFood(foodComponent);
+            meta.setMaxStackSize(1);
+            meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "penglaidanyao");
+            meta.displayName(Component.text("游龙丹").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
+            );
+            meta.lore(
+                    List.of(
+                            Component.text("§f获得无限时长的飞鱼I")
+                    )
+            );
+        });
+
+        baigujin.editMeta(meta -> {
+            meta.setCustomModelData(35);
+            FoodComponent foodComponent = meta.getFood();
+            foodComponent.setCanAlwaysEat(true);
+            foodComponent.setEatSeconds(2.5f);
+            foodComponent.setNutrition(0);
+            foodComponent.setSaturation(0.0f);
+            meta.setFood(foodComponent);
+            meta.setMaxStackSize(1);
+            meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "baigujingdanyao");
+            meta.displayName(Component.text("避水丹").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
+            );
+            meta.lore(
+                    List.of(
+                            Component.text("§f获得无限时长的水下呼吸")
+                    )
+            );
+        });
+
+        chendaifu.editMeta(meta -> {
+            meta.setCustomModelData(33);
+            FoodComponent foodComponent = meta.getFood();
+            foodComponent.setCanAlwaysEat(true);
+            foodComponent.setEatSeconds(2.5f);
+            foodComponent.setNutrition(0);
+            foodComponent.setSaturation(0.0f);
+            meta.setFood(foodComponent);
+            meta.setMaxStackSize(1);
+            meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "chendaifudanyao");
+            meta.displayName(Component.text("陈大夫炼制的丹药").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
+            );
+            meta.lore(
+                    List.of(
+                            Component.text("§f获得无限时长的跳跃提升Ⅰ")
+                    )
+            );
+        });
+
+        zhangzhe.editMeta(meta -> {
+            meta.setCustomModelData(44);
+            FoodComponent foodComponent = meta.getFood();
+            foodComponent.setCanAlwaysEat(true);
+            foodComponent.setEatSeconds(2.5f);
+            foodComponent.setNutrition(0);
+            foodComponent.setSaturation(0.0f);
+            meta.setFood(foodComponent);
+            meta.setMaxStackSize(1);
+            meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "zhangzhedanyao");
+            meta.displayName(Component.text("长者的神力").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
+            );
+            meta.lore(
+                    List.of(
+                            Component.text("§f获得无限时长的速度Ⅰ")
+                    )
+            );
+        });
+
+        wangyuanwai.editMeta(meta -> {
+            meta.setCustomModelData(42);
+            FoodComponent foodComponent = meta.getFood();
+            foodComponent.setCanAlwaysEat(true);
+            foodComponent.setEatSeconds(2.5f);
+            foodComponent.setNutrition(0);
+            foodComponent.setSaturation(0.0f);
+            meta.setFood(foodComponent);
+            meta.setMaxStackSize(1);
+            meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "wangyuanwaidanyao");
+            meta.displayName(Component.text("王员外珍藏的宝贵丹药").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
+            );
+            meta.lore(
+                    List.of(
+                            Component.text("§f获得无限时长的急迫Ⅰ")
+                    )
+            );
+        });
+
+        zuanyaun.editMeta(meta -> {
+            meta.setCustomModelData(39);
+            FoodComponent foodComponent = meta.getFood();
+            foodComponent.setCanAlwaysEat(true);
+            foodComponent.setEatSeconds(2.5f);
+            foodComponent.setNutrition(0);
+            foodComponent.setSaturation(0.0f);
+            meta.setFood(foodComponent);
+            meta.setMaxStackSize(1);
+            meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "zuanyaundanyao");
+            meta.displayName(Component.text("篆元真人炼制的仙丹").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
+            );
+            meta.lore(
+                    List.of(
+                            Component.text("§f获得无限时长的力量Ⅰ(等效转化§b4§f进攻属性)")
+                    )
+            );
+        });
+
+        lianxin.editMeta(meta -> {
+            meta.setCustomModelData(40);
+            FoodComponent foodComponent = meta.getFood();
+            foodComponent.setCanAlwaysEat(true);
+            foodComponent.setEatSeconds(1.0f);
+            foodComponent.setNutrition(0);
+            foodComponent.setSaturation(0.0f);
+            meta.setFood(foodComponent);
+            meta.setMaxStackSize(99);
+            meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "lianxin");
+            meta.displayName(Component.text("抵抗岩浆的试炼丹药").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
+            );
+            meta.lore(
+                    List.of(
+                            Component.text("§f火焰抵抗§b5s")
+                    )
+            );
+        });
+
+        ItemMeta xinqitianMeta = xinqitian.getItemMeta();
+        FoodComponent foodComponentxinqitian = xinqitianMeta.getFood();
+        foodComponentxinqitian.setCanAlwaysEat(true);
+        foodComponentxinqitian.setEatSeconds(1.0f);
+        foodComponentxinqitian.setNutrition(0);
+        foodComponentxinqitian.setSaturation(0.0f);
+        xinqitianMeta.setFood(foodComponentxinqitian);
+        xinqitianMeta.setMaxStackSize(99);
+        xinqitianMeta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "xinqitian");
+        xinqitianMeta.displayName(
+                Component.text("辛氏抗毒丹").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
+        );
+        xinqitianMeta.lore(
+                List.of(
+                        Component.text("§f抵抗毒素§b5s")
+                )
+        );
+        xinqitian.setItemMeta(xinqitianMeta);
 
         ItemMeta itemMetaSHENMU = SHENMULING.getItemMeta();
         FoodComponent foodComponentshenmu = itemMetaSHENMU.getFood();
@@ -107,7 +275,7 @@ public final class Food {
         foodComponentshenmu.setSaturation(0.0f);
         itemMetaSHENMU.setFood(foodComponentshenmu);
         itemMetaSHENMU.setMaxStackSize(1);
-        itemMetaSHENMU.getPersistentDataContainer().set(DataContainer.id,PersistentDataType.STRING,"shenmuling");
+        itemMetaSHENMU.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shenmuling");
         itemMetaSHENMU.displayName(
                 Component.text("神木灵").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
         );
@@ -126,7 +294,7 @@ public final class Food {
         foodComponentshanshen.setSaturation(0.0f);
         itemMetashanshen.setFood(foodComponentshanshen);
         itemMetashanshen.setMaxStackSize(1);
-        itemMetashanshen.getPersistentDataContainer().set(DataContainer.id,PersistentDataType.STRING,"shanshenzhufu");
+        itemMetashanshen.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shanshenzhufu");
         itemMetashanshen.displayName(
                 Component.text("山神祝福").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
         );
@@ -218,6 +386,26 @@ public final class Food {
         );
         jiedu_4.setItemMeta(itemMetaJiedu4);
 
+        ItemMeta itemMetaHuixue0 = huixue_0.getItemMeta();
+        FoodComponent foodComponenthuixue0 = itemMetaHuixue0.getFood();
+        foodComponenthuixue0.setCanAlwaysEat(true);
+        foodComponenthuixue0.setEatSeconds(2.5f);
+        foodComponenthuixue0.setNutrition(0);
+        foodComponenthuixue0.setSaturation(0.0f);
+        itemMetaHuixue0.setFood(foodComponenthuixue0);
+        itemMetaHuixue0.setMaxStackSize(99);
+        itemMetaHuixue0.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "huixue0");
+        itemMetaHuixue0.displayName(
+                Component.text("新手治疗丹").color(NamedTextColor.WHITE).decoration(TextDecoration.ITALIC, false)
+        );
+        itemMetaHuixue0.lore(
+                List.of(
+                        ComponentSet.RARE1,
+                        Component.text("§f回复§b40§f生命")
+                )
+        );
+        huixue_0.setItemMeta(itemMetaHuixue0);
+
 
         ItemMeta itemMetaHuixue1 = huixue_1.getItemMeta();
         FoodComponent foodComponenthuixue1 = itemMetaHuixue1.getFood();
@@ -229,11 +417,11 @@ public final class Food {
         itemMetaHuixue1.setMaxStackSize(99);
         itemMetaHuixue1.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "huixue1");
         itemMetaHuixue1.displayName(
-                Component.text("一般金创药").color(NamedTextColor.WHITE).decoration(TextDecoration.ITALIC, false)
+                Component.text("一般金创药").color(NamedTextColor.GREEN).decoration(TextDecoration.ITALIC, false)
         );
         itemMetaHuixue1.lore(
                 List.of(
-                        ComponentSet.RARE1,
+                        ComponentSet.RARE2,
                         Component.text("§f回复§b40+10%§f生命")
                 )
         );
@@ -249,11 +437,11 @@ public final class Food {
         itemMetaHuixue2.setMaxStackSize(99);
         itemMetaHuixue2.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "huixue2");
         itemMetaHuixue2.displayName(
-                Component.text("中级回元丹").color(NamedTextColor.GREEN).decoration(TextDecoration.ITALIC, false)
+                Component.text("中级回元丹").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false)
         );
         itemMetaHuixue2.lore(
                 List.of(
-                        ComponentSet.RARE2,
+                        ComponentSet.RARE3,
                         Component.text("§f回复§b120+10%§f生命")
                 )
         );
@@ -269,11 +457,11 @@ public final class Food {
         itemMetaHuixue3.setMaxStackSize(99);
         itemMetaHuixue3.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "huixue3");
         itemMetaHuixue3.displayName(
-                Component.text("高级痊愈丸").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false)
+                Component.text("高级痊愈丸").color(NamedTextColor.DARK_PURPLE).decoration(TextDecoration.ITALIC, false)
         );
         itemMetaHuixue3.lore(
                 List.of(
-                        ComponentSet.RARE3,
+                        ComponentSet.RARE4,
                         Component.text("§f回复§b360+10%§f生命")
                 )
         );
@@ -290,11 +478,11 @@ public final class Food {
         itemMetaHuixue4.setMaxStackSize(99);
         itemMetaHuixue4.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "huixue4");
         itemMetaHuixue4.displayName(
-                Component.text("九转还魂丹").color(NamedTextColor.DARK_PURPLE).decoration(TextDecoration.ITALIC, false)
+                Component.text("九转还魂丹").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false)
         );
         itemMetaHuixue4.lore(
                 List.of(
-                        ComponentSet.RARE4,
+                        ComponentSet.RARE5,
                         Component.text("§f回复§b1080+10%§f生命")
                 )
         );
@@ -337,7 +525,7 @@ public final class Food {
         foodComponent22.setCanAlwaysEat(false);
         foodComponent22.setEatSeconds(1.6f);
         foodComponent22.setNutrition(2);
-        foodComponent22.setSaturation(2.4f);
+        foodComponent22.setSaturation(1.2f);
         itemMeta22.setFood(foodComponent22);
         itemMeta22.setMaxStackSize(99);
         itemMeta22.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shuilangniemianren");
@@ -687,7 +875,6 @@ public final class Food {
                 )
         );
         SanHongYueBin.setItemMeta(itemMeta16);
-
 
 
         xianTao.setCustomModelData(19);

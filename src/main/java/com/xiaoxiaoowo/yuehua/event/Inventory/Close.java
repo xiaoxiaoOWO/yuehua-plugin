@@ -16,6 +16,9 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
+import static com.xiaoxiaoowo.yuehua.event.player.InventorySlotChange.BANGDINGID;
+import static com.xiaoxiaoowo.yuehua.event.player.InventorySlotChange.checkCanActLevel6;
+
 public final class Close implements Listener {
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent event) {
@@ -36,13 +39,16 @@ public final class Close implements Listener {
             if (itemStack0 == null) {
                 Act.deActAllEnderChest(data, oldId0);
             } else {
-                if (itemStack0.getType() == Material.WOODEN_PICKAXE) {
+                if (itemStack0.getType() == Material.ARMS_UP_POTTERY_SHERD) {
                     PersistentDataContainer pdc = itemStack0.getItemMeta().getPersistentDataContainer();
                     String newId = pdc.get(DataContainer.id, PersistentDataType.STRING);
                     if (!newId.equals(oldId0)) {
                         Act.deActAllEnderChest(data, oldId0);
-                        if(pdc.get(DataContainer.slot,PersistentDataType.INTEGER) == 0){
-                            Act.actAllEnderChest(data, newId);
+
+                        if (!BANGDINGID.contains(newId) || checkCanActLevel6(player, newId)) {
+                            if (pdc.get(DataContainer.slot, PersistentDataType.INTEGER) == 0) {
+                                Act.actAllEnderChest(data, newId);
+                            }
                         }
                     }
                 }
@@ -54,14 +60,17 @@ public final class Close implements Listener {
             if (itemStack1 == null) {
                 Act.deActAllEnderChest(data, oldId1);
             } else {
-                if (itemStack1.getType() == Material.WOODEN_PICKAXE) {
+                if (itemStack1.getType() == Material.ARMS_UP_POTTERY_SHERD) {
                     PersistentDataContainer pdc = itemStack1.getItemMeta().getPersistentDataContainer();
                     String newId = pdc.get(DataContainer.id, PersistentDataType.STRING);
                     if (!newId.equals(oldId1)) {
                         Act.deActAllEnderChest(data, oldId1);
-                        if(pdc.get(DataContainer.slot,PersistentDataType.INTEGER) == 1){
-                            Act.actAllEnderChest(data, newId);
+                        if (!BANGDINGID.contains(newId) || checkCanActLevel6(player, newId)) {
+                            if (pdc.get(DataContainer.slot, PersistentDataType.INTEGER) == 1) {
+                                Act.actAllEnderChest(data, newId);
+                            }
                         }
+
                     }
                 }
             }
@@ -71,14 +80,17 @@ public final class Close implements Listener {
             if (itemStack2 == null) {
                 Act.deActAllEnderChest(data, oldId2);
             } else {
-                if (itemStack2.getType() == Material.WOODEN_PICKAXE) {
+                if (itemStack2.getType() == Material.ARMS_UP_POTTERY_SHERD) {
                     PersistentDataContainer pdc = itemStack2.getItemMeta().getPersistentDataContainer();
                     String newId = pdc.get(DataContainer.id, PersistentDataType.STRING);
                     if (!newId.equals(oldId2)) {
                         Act.deActAllEnderChest(data, oldId2);
-                        if(pdc.get(DataContainer.slot,PersistentDataType.INTEGER) == 2){
-                            Act.actAllEnderChest(data, newId);
+                        if (!BANGDINGID.contains(newId) || checkCanActLevel6(player, newId)) {
+                            if (pdc.get(DataContainer.slot, PersistentDataType.INTEGER) == 2) {
+                                Act.actAllEnderChest(data, newId);
+                            }
                         }
+
                     }
                 }
             }
@@ -88,13 +100,15 @@ public final class Close implements Listener {
             if (itemStack3 == null) {
                 Act.deActAllEnderChest(data, oldId3);
             } else {
-                if (itemStack3.getType() == Material.WOODEN_PICKAXE) {
+                if (itemStack3.getType() == Material.ARMS_UP_POTTERY_SHERD) {
                     PersistentDataContainer pdc = itemStack3.getItemMeta().getPersistentDataContainer();
                     String newId = pdc.get(DataContainer.id, PersistentDataType.STRING);
                     if (!newId.equals(oldId3)) {
                         Act.deActAllEnderChest(data, oldId3);
-                        if(pdc.get(DataContainer.slot,PersistentDataType.INTEGER) == 3){
-                            Act.actAllEnderChest(data, newId);
+                        if (!BANGDINGID.contains(newId) || checkCanActLevel6(player, newId)) {
+                            if (pdc.get(DataContainer.slot, PersistentDataType.INTEGER) == 3) {
+                                Act.actAllEnderChest(data, newId);
+                            }
                         }
                     }
                 }
@@ -105,13 +119,15 @@ public final class Close implements Listener {
             if (itemStack4 == null) {
                 Act.deActAllEnderChest(data, oldId4);
             } else {
-                if (itemStack4.getType() == Material.WOODEN_PICKAXE) {
+                if (itemStack4.getType() == Material.ARMS_UP_POTTERY_SHERD) {
                     PersistentDataContainer pdc = itemStack4.getItemMeta().getPersistentDataContainer();
                     String newId = pdc.get(DataContainer.id, PersistentDataType.STRING);
                     if (!newId.equals(oldId4)) {
                         Act.deActAllEnderChest(data, oldId4);
-                        if(pdc.get(DataContainer.slot,PersistentDataType.INTEGER) == 4){
-                            Act.actAllEnderChest(data, newId);
+                        if (!BANGDINGID.contains(newId) || checkCanActLevel6(player, newId)) {
+                            if (pdc.get(DataContainer.slot, PersistentDataType.INTEGER) == 4) {
+                                Act.actAllEnderChest(data, newId);
+                            }
                         }
                     }
                 }
@@ -122,13 +138,15 @@ public final class Close implements Listener {
             if (itemStack5 == null) {
                 Act.deActAllEnderChest(data, oldId5);
             } else {
-                if (itemStack5.getType() == Material.WOODEN_PICKAXE) {
+                if (itemStack5.getType() == Material.ARMS_UP_POTTERY_SHERD) {
                     PersistentDataContainer pdc = itemStack5.getItemMeta().getPersistentDataContainer();
                     String newId = pdc.get(DataContainer.id, PersistentDataType.STRING);
                     if (!newId.equals(oldId5)) {
                         Act.deActAllEnderChest(data, oldId5);
-                        if(pdc.get(DataContainer.slot,PersistentDataType.INTEGER) == 5){
-                            Act.actAllEnderChest(data, newId);
+                        if (!BANGDINGID.contains(newId) || checkCanActLevel6(player, newId)) {
+                            if (pdc.get(DataContainer.slot, PersistentDataType.INTEGER) == 5) {
+                                Act.actAllEnderChest(data, newId);
+                            }
                         }
                     }
                 }
@@ -139,13 +157,15 @@ public final class Close implements Listener {
             if (itemStack6 == null) {
                 Act.deActAllEnderChest(data, oldId6);
             } else {
-                if (itemStack6.getType() == Material.WOODEN_PICKAXE) {
+                if (itemStack6.getType() == Material.ARMS_UP_POTTERY_SHERD) {
                     PersistentDataContainer pdc = itemStack6.getItemMeta().getPersistentDataContainer();
                     String newId = pdc.get(DataContainer.id, PersistentDataType.STRING);
                     if (!newId.equals(oldId6)) {
                         Act.deActAllEnderChest(data, oldId6);
-                        if(pdc.get(DataContainer.slot,PersistentDataType.INTEGER) == 6){
-                            Act.actAllEnderChest(data, newId);
+                        if (!BANGDINGID.contains(newId) || checkCanActLevel6(player, newId)) {
+                            if (pdc.get(DataContainer.slot, PersistentDataType.INTEGER) == 6) {
+                                Act.actAllEnderChest(data, newId);
+                            }
                         }
                     }
                 }
@@ -156,13 +176,15 @@ public final class Close implements Listener {
             if (itemStack7 == null) {
                 Act.deActAllEnderChest(data, oldId7);
             } else {
-                if (itemStack7.getType() == Material.WOODEN_PICKAXE) {
+                if (itemStack7.getType() == Material.ARMS_UP_POTTERY_SHERD) {
                     PersistentDataContainer pdc = itemStack7.getItemMeta().getPersistentDataContainer();
                     String newId = pdc.get(DataContainer.id, PersistentDataType.STRING);
                     if (!newId.equals(oldId7)) {
                         Act.deActAllEnderChest(data, oldId7);
-                        if(pdc.get(DataContainer.slot,PersistentDataType.INTEGER) == 7){
-                            Act.actAllEnderChest(data, newId);
+                        if (!BANGDINGID.contains(newId) || checkCanActLevel6(player, newId)) {
+                            if (pdc.get(DataContainer.slot, PersistentDataType.INTEGER) == 7) {
+                                Act.actAllEnderChest(data, newId);
+                            }
                         }
                     }
                 }

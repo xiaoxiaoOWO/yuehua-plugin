@@ -1,7 +1,7 @@
 package com.xiaoxiaoowo.yuehua.items.zhuangbei;
 
 import com.xiaoxiaoowo.yuehua.attribute.AttributeSet;
-import com.xiaoxiaoowo.yuehua.guis.Recipe;
+import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
 import com.xiaoxiaoowo.yuehua.utils.ZeroAttributeModifier;
@@ -456,6 +456,8 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE1,
                                 ComponentSet.JOBALL,
+                                Component.text("§7§o初始装备"),
+                                Component.text("§7§o可以提供简易防护"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("xiong1", 2),
                                 ComponentSet.SHORTJINENG,
@@ -478,6 +480,9 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBALL,
+                                Component.text("§7§o以翠绿菊花瓣层层叠加锻造而成"),
+                                Component.text("§7§o散发着淡淡花香的神秘铠甲"),
+                                Component.text("§7§o拥有某方面的强大力量"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("xiongSp2", 2),
                                 ComponentSet.SHORTFULINGXIANGQIAN,
@@ -497,6 +502,9 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBALL,
+                                Component.text("§7§o翠竹枝叶经千锤百炼交织而成"),
+                                Component.text("§7§o蕴含着不朽竹林的生机与活力"),
+                                Component.text("§7§o拥有某方面的强大力量"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("xiongSp3", 2),
                                 ComponentSet.SHORTFULINGXIANGQIAN,
@@ -516,6 +524,9 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBALL,
+                                Component.text("§7§o雨竹加工山魅遗留下来的精华后"),
+                                Component.text("§7§o再灌注以仙灵制成的装备"),
+                                Component.text("§7§o拥有某方面的强大力量"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("xiongSp4", 2),
                                 ComponentSet.SHORTFULINGXIANGQIAN,
@@ -535,6 +546,9 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBALL,
+                                Component.text("§7§o由散落在大陆各地的炼玉"),
+                                Component.text("§7§o以独特的方式锻造而成"),
+                                Component.text("§7§o拥有某方面的强大力量"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("xiongSp5", 2),
                                 ComponentSet.SHORTFULINGXIANGQIAN,
@@ -554,6 +568,9 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
+                                Component.text("§7§o铸造时融入了无尽地狱的业火"),
+                                Component.text("§7§o散发出令人惧怕的狱炎气息"),
+                                Component.text("§7§o拥有某方面的强大力量"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("xiongSp6", 2),
                                 ComponentSet.SHORTFULINGXIANGQIAN,
@@ -583,6 +600,8 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBZHAN,
+                                Component.text("§7§o用草原狼的皮毛制成的皮套装"),
+                                Component.text("§7§o毛皮很柔软不妨碍施展动作"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("zhanXiong2", 2),
                                 ComponentSet.SHORTJINENG,
@@ -607,6 +626,8 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBZHAN,
+                                Component.text("§7§o附着了上古凶兽饕餮气息的套装"),
+                                Component.text("§7§o装甲上绘有带着肃杀之气的图腾"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("zhanXiong3", 2),
                                 ComponentSet.SHORTJINENG,
@@ -631,6 +652,8 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBZHAN,
+                                Component.text("§7§o寄宿着玄武之力的套装"),
+                                Component.text("§7§o拥有惊人的防御力"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("zhanXiong4", 2),
                                 ComponentSet.SHORTJINENG,
@@ -655,6 +678,9 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBZHAN,
+                                Component.text("§7§o承载青龙之力的套装"),
+                                Component.text("§7§o光是看着就感觉到一阵寒栗"),
+                                Component.text("§7§o攻击和防御效能都相当优秀"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("zhanXiong5", 2),
                                 ComponentSet.SHORTJINENG,
@@ -679,6 +705,8 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBZHAN,
+                                Component.text("§7§o由幽冥鬼火锻造的神秘铠甲"),
+                                Component.text("§7§o缭绕着诡异而致命的蓝色火焰"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("zhanXiong6", 2),
                                 ComponentSet.SHORTJINENG,
@@ -709,6 +737,9 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBGONG,
+                                Component.text("§7§o远方风之国度工匠手工打造"),
+                                Component.text("§7§o制造时注入风之灵气"),
+                                Component.text("§7§o穿戴后能像风一般行动迅速"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("gongXiong2", 2),
                                 ComponentSet.SHORTJINENG,
@@ -733,6 +764,8 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBGONG,
+                                Component.text("§7§o由坚硬的虎皮制成"),
+                                Component.text("§7§o能提供较佳的防御"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("gongXiong3", 2),
                                 ComponentSet.SHORTJINENG,
@@ -757,6 +790,8 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBGONG,
+                                Component.text("§7§o采用最狡猾毒蛇的鳞片制成"),
+                                Component.text("§7§o坚硬的鳞甲可以抵挡致命伤害"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("gongXiong4", 2),
                                 ComponentSet.SHORTJINENG,
@@ -781,6 +816,9 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBGONG,
+                                Component.text("§7§o用最珍贵的赤鹰羽毛制成"),
+                                Component.text("§7§o承袭了猛禽的速度和力量"),
+                                Component.text("§7§o穿戴者能够准确的瞄准并击中敌人的弱点"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("gongXiong5", 2),
                                 ComponentSet.SHORTJINENG,
@@ -805,6 +843,8 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBGONG,
+                                Component.text("§7§o由幽冥鬼火锻造的神秘铠甲"),
+                                Component.text("§7§o缭绕着诡异而致命的蓝色火焰"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("gongXiong6", 2),
                                 ComponentSet.SHORTJINENG,
@@ -835,6 +875,8 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBDAN,
+                                Component.text("§7§o炼丹师学徒常用的服装"),
+                                Component.text("§7§o提供各种大小的口袋方便炼丹使用"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("danXiong2", 2),
                                 ComponentSet.SHORTJINENG,
@@ -859,6 +901,8 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBDAN,
+                                Component.text("§7§o传说由神医华佗所设计"),
+                                Component.text("§7§o为济世医者提供全方位的防护"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("danXiong3", 2),
                                 ComponentSet.SHORTJINENG,
@@ -883,6 +927,8 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBDAN,
+                                Component.text("§7§o集草药精华于一身的套装"),
+                                Component.text("§7§o散发着清凉的自然气息"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("danXiong4", 2),
                                 ComponentSet.SHORTJINENG,
@@ -907,6 +953,9 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBDAN,
+                                Component.text("§7§o利用陨星的碎片打造的套装"),
+                                Component.text("§7§o表面淡淡的星光若隐若现"),
+                                Component.text("§7§o神圣的力量让邪恶生物都感到畏惧"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("danXiong5", 2),
                                 ComponentSet.SHORTJINENG,
@@ -931,6 +980,8 @@ public final class ArmorChest {
                 Stream.of(
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBDAN,
+                                Component.text("§7§o由幽冥鬼火锻造的神秘铠甲"),
+                                Component.text("§7§o缭绕着诡异而致命的蓝色火焰"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("danXiong6", 2),
                                 ComponentSet.SHORTJINENG,

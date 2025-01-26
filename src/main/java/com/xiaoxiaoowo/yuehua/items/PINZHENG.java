@@ -70,8 +70,87 @@ public final class PINZHENG {
     public static final ItemStack yaoshihe2 = new ItemStack(Material.INK_SAC);
     public static final ItemStack yaoshihe3 = new ItemStack(Material.INK_SAC);
 
+    public static final ItemStack finishMain = new ItemStack(Material.INK_SAC);
+    public static final ItemStack finishShenHide = new ItemStack(Material.INK_SAC);
+    public static final ItemStack finishXianHide = new ItemStack(Material.INK_SAC);
+    public static final ItemStack finishRenHide = new ItemStack(Material.INK_SAC);
+    public static final ItemStack finishYaoHide = new ItemStack(Material.INK_SAC);
+    public static final ItemStack finishZhanHide = new ItemStack(Material.INK_SAC);
 
     static {
+        finishMain.editMeta(meta -> {
+            meta.setCustomModelData(1);
+            meta.setMaxStackSize(1);
+            meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "finishMain");
+            meta.displayName(Component.text("§b主线任务完结"));
+            meta.lore(
+                    List.of(
+                            Component.text("右键使用获取进入圣山副本的资格").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
+                    )
+            );
+        });
+
+        finishShenHide.editMeta(meta->{
+            meta.setCustomModelData(1);
+            meta.setMaxStackSize(1);
+            meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "finishShenHide");
+            meta.displayName(Component.text("§b神族隐藏任务完结"));
+            meta.lore(
+                    List.of(
+                            Component.text("右键使用成为知晓神族真相的人").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
+                    )
+            );
+        });
+
+        finishXianHide.editMeta(meta->{
+            meta.setCustomModelData(1);
+            meta.setMaxStackSize(1);
+            meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "finishXianHide");
+            meta.displayName(Component.text("§b仙族隐藏任务完结"));
+            meta.lore(
+                    List.of(
+                            Component.text("右键使用成为知晓仙族真相的人").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
+                    )
+            );
+        });
+
+        finishRenHide.editMeta(meta->{
+            meta.setCustomModelData(1);
+            meta.setMaxStackSize(1);
+            meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "finishRenHide");
+            meta.displayName(Component.text("§b人族隐藏任务完结"));
+            meta.lore(
+                    List.of(
+                            Component.text("右键使用成为知晓人族真相的人").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
+                    )
+            );
+        });
+
+        finishYaoHide.editMeta(meta->{
+            meta.setCustomModelData(1);
+            meta.setMaxStackSize(1);
+            meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "finishYaoHide");
+            meta.displayName(Component.text("§b妖族隐藏任务完结"));
+            meta.lore(
+                    List.of(
+                            Component.text("右键使用成为知晓妖族真相的人").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
+                    )
+            );
+        });
+
+        finishZhanHide.editMeta(meta->{
+            meta.setCustomModelData(1);
+            meta.setMaxStackSize(1);
+            meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "finishZhanHide");
+            meta.displayName(Component.text("§b战神族隐藏任务完结"));
+            meta.lore(
+                    List.of(
+                            Component.text("右键使用成为知晓战神族真相的人").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
+                    )
+            );
+        });
+
+
         ItemMeta yemingzhuMeta = yemingzhu.getItemMeta();
         yemingzhuMeta.setCustomModelData(4);
         yemingzhuMeta.setMaxStackSize(1);
@@ -96,7 +175,8 @@ public final class PINZHENG {
         yaoshiheMeta.lore(
                 List.of(
                         ComponentSet.RARE6,
-                        Component.text("右键打开获得随机一个幸运钥匙").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
+                        Component.text("§a右键打开获得随机一个幸运钥匙"),
+                        Component.text("§a[绑定者]: §f[无]")
                 )
         );
         yaoshihe.setItemMeta(yaoshiheMeta);
@@ -111,7 +191,8 @@ public final class PINZHENG {
         yaoshihe2Meta.lore(
                 List.of(
                         ComponentSet.RARE7,
-                        Component.text("右键打开获得随机两个幸运钥匙").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
+                        Component.text("§a右键打开获得随机二个幸运钥匙"),
+                        Component.text("§a[绑定者]: §f[无]")
                 )
         );
         yaoshihe2.setItemMeta(yaoshihe2Meta);
@@ -126,7 +207,8 @@ public final class PINZHENG {
         yaoshihe3Meta.lore(
                 List.of(
                         ComponentSet.RARE8,
-                        Component.text("右键打开获得随机五个幸运钥匙").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
+                        Component.text("§a右键打开获得随机五个幸运钥匙"),
+                        Component.text("§a[绑定者]: §f[无]")
                 )
         );
         yaoshihe3.setItemMeta(yaoshihe3Meta);

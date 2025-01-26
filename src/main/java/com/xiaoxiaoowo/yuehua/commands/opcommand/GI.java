@@ -1,7 +1,7 @@
 package com.xiaoxiaoowo.yuehua.commands.opcommand;
 
 
-import com.xiaoxiaoowo.yuehua.guis.Recipe;
+import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.items.dz.*;
 import com.xiaoxiaoowo.yuehua.items.liandan.Dan;
 import com.xiaoxiaoowo.yuehua.items.liandan.Herb;
@@ -37,6 +37,28 @@ public final class GI implements CommandExecutor {
             }
 
             List<ItemStack> itemStacks = switch (args[0]) {
+                case "yanhua" -> List.of(Special.xianqianhuojian.clone());
+
+                case "skull" -> List.of(
+                        Skull.shenHead,
+                        Skull.xianHead,
+                        Skull.renHead,
+                        Skull.yaoHead,
+                        Skull.zhanshenHead
+                );
+
+                case "fish" -> List.of(
+                        Fish.xueyu,
+                        Fish.guiyu,
+                        Fish.xiaochouyu,
+                        Fish.lanlin,
+                        Fish.jinlin,
+                        Fish.miao,
+                        Fish.bawangyu,
+                        Fish.canjin
+                );
+
+
                 case "fuling" -> List.of(
                         FuLing.zhusha,
                         FuLing.shouhu1,

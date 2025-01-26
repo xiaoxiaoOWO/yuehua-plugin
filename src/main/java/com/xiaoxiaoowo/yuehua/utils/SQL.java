@@ -2,7 +2,7 @@ package com.xiaoxiaoowo.yuehua.utils;
 
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.guis.Recipe;
+import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.guis.Yh;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import de.tr7zw.nbtapi.NBT;
@@ -14,8 +14,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
 import java.sql.*;

@@ -10,6 +10,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Villager;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MerchantRecipe;
@@ -54,6 +55,25 @@ public final class LaoLieHu {
             MerchantRecipe recipe1 = new MerchantRecipe(YiQi.LAOZHANSHIDUNPAI, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe1.addIngredient(yinpiao);
             it.setRecipe(1, recipe1);
+
+            ItemStack buyItem = new ItemStack(Material.LIME_DYE, 1);
+            buyItem.editMeta(meta -> {
+                meta.displayName(Component.translatable("§b老者"));
+                meta.lore(List.of(Component.translatable("§7§o真怀恋以前和战友们一起在前线御敌的时光啊")));
+            });
+
+            ItemStack sellItem = new ItemStack(Material.LIME_DYE, 1);
+            sellItem.editMeta(meta -> {
+                meta.displayName(Component.translatable("§b老者"));
+                meta.lore(List.of(Component.translatable("§7§o如今这些我也用不上了，你如果需要便拿去吧")));
+            });
+
+            MerchantRecipe firstRecipe = new MerchantRecipe(sellItem, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            firstRecipe.addIngredient(buyItem);
+
+            List<MerchantRecipe> recipes = new ArrayList<>(it.getRecipes());
+            recipes.addFirst(firstRecipe);
+            it.setRecipes(recipes);
 
         });
         //村民外观

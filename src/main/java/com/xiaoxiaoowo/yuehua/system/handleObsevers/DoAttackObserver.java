@@ -3,16 +3,18 @@ package com.xiaoxiaoowo.yuehua.system.handleObsevers;
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.data.MonsterData;
+import com.xiaoxiaoowo.yuehua.display.utils.ParticleUtils;
 import com.xiaoxiaoowo.yuehua.system.Buff;
 import com.xiaoxiaoowo.yuehua.system.Cure;
 import com.xiaoxiaoowo.yuehua.system.Damage;
-import com.xiaoxiaoowo.yuehua.task.other.ContinuedLoseHp;
+import com.xiaoxiaoowo.yuehua.task.weapon.PoKongFu;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import com.xiaoxiaoowo.yuehua.utils.SendInformation;
 import net.kyori.adventure.text.Component;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
@@ -26,6 +28,10 @@ public final class DoAttackObserver {
     private static final World world = GetEntity.world;
     private static final PotionEffect baoHe20s = new PotionEffect(PotionEffectType.SATURATION, 20 * 20, 0);
     public static final Random random = new Random();
+
+    public static final Particle.DustOptions whiteDust = new Particle.DustOptions(Color.WHITE, 2);
+    public static final BlockData iron = Bukkit.createBlockData(Material.IRON_BLOCK);
+    public static final BlockData bedRock = Bukkit.createBlockData(Material.BEDROCK);
 
     public static double doAttack(String id, Data data, MonsterData monsterData) {
         switch (id) {
@@ -69,6 +75,7 @@ public final class DoAttackObserver {
         data.attackObservers.remove("taoMuJian");
         double damage = data.attack * 3;
         Damage.damageMonster(data, damage, monsterData);
+        ParticleUtils.atMonsterDust(monsterData.monster,whiteDust);
 
         return 1.0d;
     }
@@ -78,6 +85,7 @@ public final class DoAttackObserver {
         double damage = data.attack * 4;
         Damage.damageMonster(data, damage, monsterData);
         Buff.deHujia(monsterData, 5 * 20, 0.2, "kaiShanDao");
+        ParticleUtils.atMonster(monsterData.monster,Particle.CRIT);
         return 1.0d;
     }
 
@@ -85,11 +93,13 @@ public final class DoAttackObserver {
         data.attackObservers.remove("juTongZhanChui");
         double damage = data.attack * 5;
         Damage.damageMonster(data, damage, monsterData);
+        ParticleUtils.atMonster(monsterData.monster,Particle.CRIT);
         Player player = data.player;
         double damageRange = data.attack * 3;
         for (Entity entity : GetEntity.getMonsters(player.getLocation(), 5, 5, 5)) {
             MonsterData monsterData2 = Yuehua.monsterData.get(entity.getUniqueId());
             Damage.damageMonster(data, damageRange, monsterData2);
+            ParticleUtils.atMonsterBlock(monsterData2.monster,iron);
             Buff.xuanYun(monsterData2, 2 * 20);
         }
         return 1.0d;
@@ -99,7 +109,8 @@ public final class DoAttackObserver {
         data.attackObservers.remove("poKongFu");
         double damage = data.attack * 6;
         Damage.damageMonster(data, damage, monsterData);
-        new ContinuedLoseHp(5, monsterData, data, data.attack * 2, true).runTaskTimer(Yuehua.instance, 20, 20);
+        ParticleUtils.atMonster(monsterData.monster,Particle.CRIT);
+        new PoKongFu(5, monsterData, data, data.attack * 2).runTaskTimer(Yuehua.instance, 20, 20);
         Buff.jianSu(monsterData, 5 * 20, 1);
 
         monsterData.wuliAttackedObservers.add("poKongFu");
@@ -135,6 +146,7 @@ public final class DoAttackObserver {
         data.attackObservers.remove("sanBaoYuRuYi");
         double damage = data.attack * 7;
         Damage.damageMonster(data, damage, monsterData);
+        ParticleUtils.atMonsterDust(monsterData.monster,whiteDust);
         Map<String, Object> extraData = monsterData.extraData;
         long timeNow = GetEntity.world.getGameTime();
         //生成一个随机数，数字的取值范围是0，1，2
@@ -148,9 +160,10 @@ public final class DoAttackObserver {
                     monsterData.wuliAttackedObservers.remove("sanBaoYuRuYi-fo");
                     SendInformation.sendMes(data.player, Component.text("§e[三宝]§6[佛]§a消除"));
                     for (Entity entity : GetEntity.getMonsters(player.getLocation(), 16, 16, 16)) {
-                        Mob mob = (Mob) entity;
                         damage = data.attack * 28;
-                        Damage.damageMonster(data, damage, mob);
+                        MonsterData monsterData1 = Yuehua.monsterData.get(entity.getUniqueId());
+                        Damage.damageMonster(data, damage, monsterData1);
+                        ParticleUtils.atMonsterBlock(monsterData1.monster,iron);
                     }
                     return 1.0d;
                 }

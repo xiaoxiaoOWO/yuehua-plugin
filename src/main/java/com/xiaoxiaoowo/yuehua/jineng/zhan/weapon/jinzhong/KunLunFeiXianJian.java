@@ -5,6 +5,7 @@ import com.xiaoxiaoowo.yuehua.data.MonsterData;
 import com.xiaoxiaoowo.yuehua.data.PetData;
 import com.xiaoxiaoowo.yuehua.data.ZhanData;
 import com.xiaoxiaoowo.yuehua.display.utils.DisPlayUtils;
+import com.xiaoxiaoowo.yuehua.display.utils.ParticleUtils;
 import com.xiaoxiaoowo.yuehua.entity.pet.other.FeiXianJian;
 import com.xiaoxiaoowo.yuehua.items.zhuangbei.Weapon;
 import com.xiaoxiaoowo.yuehua.system.Cure;
@@ -14,13 +15,16 @@ import com.xiaoxiaoowo.yuehua.utils.PlaySound;
 import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import com.xiaoxiaoowo.yuehua.utils.SendInformation;
 import net.kyori.adventure.text.Component;
-import org.bukkit.Location;
+import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.*;
 import org.joml.Vector3f;
 
 public final class KunLunFeiXianJian {
     public static final String id = "kunLunFeiXianJian";
+    public static final Particle.DustOptions whiteDust = new Particle.DustOptions(Color.WHITE, 2);
+
     public static void skill1(ZhanData zhanData, double multiplier){
         zhanData.slot0.cd_active = GetEntity.world.getGameTime() + (long) (60 * 20 * zhanData.real_cool);
         Player player = zhanData.player;
@@ -28,6 +32,7 @@ public final class KunLunFeiXianJian {
         for (Entity entity : GetEntity.getMonsters(player.getLocation(), 8, 8, 8)) {
             MonsterData monsterData = Yuehua.monsterData.get(entity.getUniqueId());
             Damage.damageMonster(zhanData, damage, monsterData);
+            ParticleUtils.atMonsterDust(monsterData.monster,whiteDust);
         }
         Wolf wolf = FeiXianJian.spawn(zhanData,player);
 

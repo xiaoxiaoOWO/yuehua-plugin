@@ -1,7 +1,7 @@
 package com.xiaoxiaoowo.yuehua.items.zhuangbei;
 
 import com.xiaoxiaoowo.yuehua.attribute.AttributeSet;
-import com.xiaoxiaoowo.yuehua.guis.Recipe;
+import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
 import com.xiaoxiaoowo.yuehua.utils.ZeroAttributeModifier;
@@ -20,82 +20,82 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class Shipin {
-    public static final ItemStack QING_LONG_SHENG_QI1 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack QING_LONG_SHENG_QI2 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack QING_LONG_SHENG_QI3 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack QING_LONG_SHENG_QI4 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack QING_LONG_SHENG_QI5 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack QING_LONG_SHENG_QI6 = new ItemStack(Material.WOODEN_PICKAXE);
+    public static final ItemStack QING_LONG_SHENG_QI1 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack QING_LONG_SHENG_QI2 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack QING_LONG_SHENG_QI3 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack QING_LONG_SHENG_QI4 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack QING_LONG_SHENG_QI5 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack QING_LONG_SHENG_QI6 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
 
-    public static final ItemStack BAI_HU_SHENG_QI1 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack BAI_HU_SHENG_QI2 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack BAI_HU_SHENG_QI3 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack BAI_HU_SHENG_QI4 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack BAI_HU_SHENG_QI5 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack BAI_HU_SHENG_QI6 = new ItemStack(Material.WOODEN_PICKAXE);
+    public static final ItemStack BAI_HU_SHENG_QI1 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack BAI_HU_SHENG_QI2 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack BAI_HU_SHENG_QI3 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack BAI_HU_SHENG_QI4 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack BAI_HU_SHENG_QI5 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack BAI_HU_SHENG_QI6 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
 
-    public static final ItemStack ZHU_QUE_SHENG_QI1 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack ZHU_QUE_SHENG_QI2 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack ZHU_QUE_SHENG_QI3 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack ZHU_QUE_SHENG_QI4 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack ZHU_QUE_SHENG_QI5 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack ZHU_QUE_SHENG_QI6 = new ItemStack(Material.WOODEN_PICKAXE);
+    public static final ItemStack ZHU_QUE_SHENG_QI1 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack ZHU_QUE_SHENG_QI2 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack ZHU_QUE_SHENG_QI3 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack ZHU_QUE_SHENG_QI4 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack ZHU_QUE_SHENG_QI5 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack ZHU_QUE_SHENG_QI6 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
 
-    public static final ItemStack XUAN_WU_SHENG_QI1 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack XUAN_WU_SHENG_QI2 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack XUAN_WU_SHENG_QI3 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack XUAN_WU_SHENG_QI4 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack XUAN_WU_SHENG_QI5 = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack XUAN_WU_SHENG_QI6 = new ItemStack(Material.WOODEN_PICKAXE);
+    public static final ItemStack XUAN_WU_SHENG_QI1 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack XUAN_WU_SHENG_QI2 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack XUAN_WU_SHENG_QI3 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack XUAN_WU_SHENG_QI4 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack XUAN_WU_SHENG_QI5 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack XUAN_WU_SHENG_QI6 = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
 
-    public static final ItemStack HUN_TIAN_LIN = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack TAI_CHU_SHEN_JIA = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack ZI_SHA_CHAN = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack FENG_HUO_LUN = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack JIU_TIAN_XUAN_YU = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack WEI_TUO_TIAN = new ItemStack(Material.WOODEN_PICKAXE);
+    public static final ItemStack HUN_TIAN_LIN = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack TAI_CHU_SHEN_JIA = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack ZI_SHA_CHAN = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack FENG_HUO_LUN = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack JIU_TIAN_XUAN_YU = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack WEI_TUO_TIAN = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
 
-    public static final ItemStack PO_SUN_TAN_ZHI_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack TAN_YU_ZHI_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack TAN_LAN_DU_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack TAN_LAN_XIE_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack TAN_LAN_GUI_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack TAN_LAN_MO_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack TAN_LAN_MING_JIE = new ItemStack(Material.WOODEN_PICKAXE);
+    public static final ItemStack PO_SUN_TAN_ZHI_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack TAN_YU_ZHI_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack TAN_LAN_DU_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack TAN_LAN_XIE_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack TAN_LAN_GUI_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack TAN_LAN_MO_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack TAN_LAN_MING_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
 
-    public static final ItemStack PO_SUN_CHI_ZHI_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHI_MI_ZHI_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHI_YU_DU_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHI_YU_XIE_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHI_YU_GUI_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHI_YU_MO_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHI_YU_MING_JIE = new ItemStack(Material.WOODEN_PICKAXE);
+    public static final ItemStack PO_SUN_CHI_ZHI_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHI_MI_ZHI_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHI_YU_DU_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHI_YU_XIE_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHI_YU_GUI_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHI_YU_MO_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHI_YU_MING_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
 
-    public static final ItemStack PO_SUN_CHEN_ZHI_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHEN_NU_ZHI_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHEN_HEN_DU_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHEN_HEN_XIE_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHEN_HEN_GUI_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHEN_HEN_MO_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHEN_HEN_MING_JIE = new ItemStack(Material.WOODEN_PICKAXE);
+    public static final ItemStack PO_SUN_CHEN_ZHI_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHEN_NU_ZHI_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHEN_HEN_DU_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHEN_HEN_XIE_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHEN_HEN_GUI_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHEN_HEN_MO_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHEN_HEN_MING_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
 
-    public static final ItemStack CHAN_DING_FA_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHAN_DING_SHENG_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHAN_DING_FO_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHAN_DING_XIAN_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHAN_DING_SHEN_JIE = new ItemStack(Material.WOODEN_PICKAXE);
+    public static final ItemStack CHAN_DING_FA_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHAN_DING_SHENG_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHAN_DING_FO_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHAN_DING_XIAN_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHAN_DING_SHEN_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
 
-    public static final ItemStack ZHI_HUI_FA_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack ZHI_HUI_SHENG_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack ZHI_HUI_FO_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack ZHI_HUI_XIAN_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack ZHI_HUI_SHEN_JIE = new ItemStack(Material.WOODEN_PICKAXE);
+    public static final ItemStack ZHI_HUI_FA_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack ZHI_HUI_SHENG_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack ZHI_HUI_FO_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack ZHI_HUI_XIAN_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack ZHI_HUI_SHEN_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
 
-    public static final ItemStack CHI_JIE_FA_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHI_JIE_SHENG_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHI_JIE_FO_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHI_JIE_XIAN_JIE = new ItemStack(Material.WOODEN_PICKAXE);
-    public static final ItemStack CHI_JIE_SHEN_JIE = new ItemStack(Material.WOODEN_PICKAXE);
+    public static final ItemStack CHI_JIE_FA_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHI_JIE_SHENG_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHI_JIE_FO_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHI_JIE_XIAN_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
+    public static final ItemStack CHI_JIE_SHEN_JIE = new ItemStack(Material.ARMS_UP_POTTERY_SHERD);
 
     static {
         ItemMeta qing_long_sheng_qi1_meta = QING_LONG_SHENG_QI1.getItemMeta();
@@ -165,313 +165,73 @@ public final class Shipin {
         ItemMeta chi_jie_xian_jie_meta = CHI_JIE_XIAN_JIE.getItemMeta();
         ItemMeta chi_jie_shen_jie_meta = CHI_JIE_SHEN_JIE.getItemMeta();
 
-        qing_long_sheng_qi1_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        qing_long_sheng_qi2_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        qing_long_sheng_qi3_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        qing_long_sheng_qi4_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        qing_long_sheng_qi5_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        qing_long_sheng_qi6_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
+        qing_long_sheng_qi1_meta.setMaxStackSize(1);
+        qing_long_sheng_qi2_meta.setMaxStackSize(1);
+        qing_long_sheng_qi3_meta.setMaxStackSize(1);
+        qing_long_sheng_qi4_meta.setMaxStackSize(1);
+        qing_long_sheng_qi5_meta.setMaxStackSize(1);
+        qing_long_sheng_qi6_meta.setMaxStackSize(1);
+        zhu_que_sheng_qi1_meta.setMaxStackSize(1);
+        zhu_que_sheng_qi2_meta.setMaxStackSize(1);
+        zhu_que_sheng_qi3_meta.setMaxStackSize(1);
+        zhu_que_sheng_qi4_meta.setMaxStackSize(1);
+        zhu_que_sheng_qi5_meta.setMaxStackSize(1);
+        zhu_que_sheng_qi6_meta.setMaxStackSize(1);
+        bai_hu_sheng_qi1_meta.setMaxStackSize(1);
+        bai_hu_sheng_qi2_meta.setMaxStackSize(1);
+        bai_hu_sheng_qi3_meta.setMaxStackSize(1);
+        bai_hu_sheng_qi4_meta.setMaxStackSize(1);
+        bai_hu_sheng_qi5_meta.setMaxStackSize(1);
+        bai_hu_sheng_qi6_meta.setMaxStackSize(1);
+        xuan_wu_sheng_qi1_meta.setMaxStackSize(1);
+        xuan_wu_sheng_qi2_meta.setMaxStackSize(1);
+        xuan_wu_sheng_qi3_meta.setMaxStackSize(1);
+        xuan_wu_sheng_qi4_meta.setMaxStackSize(1);
+        xuan_wu_sheng_qi5_meta.setMaxStackSize(1);
+        xuan_wu_sheng_qi6_meta.setMaxStackSize(1);
+        hun_tian_lin_meta.setMaxStackSize(1);
+        tai_chu_shen_jia_meta.setMaxStackSize(1);
+        zi_sha_chan_meta.setMaxStackSize(1);
+        feng_huo_lun_meta.setMaxStackSize(1);
+        jiu_tian_xuan_yu_meta.setMaxStackSize(1);
+        wei_tuo_tian_meta.setMaxStackSize(1);
+        po_sun_tan_zhi_jie_meta.setMaxStackSize(1);
+        tan_yu_zhi_jie_meta.setMaxStackSize(1);
+        tan_lan_du_jie_meta.setMaxStackSize(1);
+        tan_lan_xie_jie_meta.setMaxStackSize(1);
+        tan_lan_gui_jie_meta.setMaxStackSize(1);
+        tan_lan_mo_jie_meta.setMaxStackSize(1);
+        tan_lan_ming_jie_meta.setMaxStackSize(1);
+        po_sun_chi_zhi_jie_meta.setMaxStackSize(1);
+        chi_mi_zhi_jie_meta.setMaxStackSize(1);
+        chi_yu_du_jie_meta.setMaxStackSize(1);
+        chi_yu_xie_jie_meta.setMaxStackSize(1);
+        chi_yu_gui_jie_meta.setMaxStackSize(1);
+        chi_yu_mo_jie_meta.setMaxStackSize(1);
+        chi_yu_ming_jie_meta.setMaxStackSize(1);
+        po_sun_chen_zhi_jie_meta.setMaxStackSize(1);
+        chen_nu_zhi_jie_meta.setMaxStackSize(1);
+        chen_hen_du_jie_meta.setMaxStackSize(1);
+        chen_hen_xie_jie_meta.setMaxStackSize(1);
+        chen_hen_gui_jie_meta.setMaxStackSize(1);
+        chen_hen_mo_jie_meta.setMaxStackSize(1);
+        chen_hen_ming_jie_meta.setMaxStackSize(1);
+        chan_ding_fa_jie_meta.setMaxStackSize(1);
+        chan_ding_sheng_jie_meta.setMaxStackSize(1);
+        chan_ding_fo_jie_meta.setMaxStackSize(1);
+        chan_ding_xian_jie_meta.setMaxStackSize(1);
+        chan_ding_shen_jie_meta.setMaxStackSize(1);
+        zhi_hui_fa_jie_meta.setMaxStackSize(1);
+        zhi_hui_sheng_jie_meta.setMaxStackSize(1);
+        zhi_hui_fo_jie_meta.setMaxStackSize(1);
+        zhi_hui_xian_jie_meta.setMaxStackSize(1);
+        zhi_hui_shen_jie_meta.setMaxStackSize(1);
+        chi_jie_fa_jie_meta.setMaxStackSize(1);
+        chi_jie_sheng_jie_meta.setMaxStackSize(1);
+        chi_jie_fo_jie_meta.setMaxStackSize(1);
+        chi_jie_xian_jie_meta.setMaxStackSize(1);
+        chi_jie_shen_jie_meta.setMaxStackSize(1);
 
-        zhu_que_sheng_qi1_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        zhu_que_sheng_qi2_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        zhu_que_sheng_qi3_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        zhu_que_sheng_qi4_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        zhu_que_sheng_qi5_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        zhu_que_sheng_qi6_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-
-        bai_hu_sheng_qi1_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        bai_hu_sheng_qi2_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        bai_hu_sheng_qi3_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        bai_hu_sheng_qi4_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        bai_hu_sheng_qi5_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        bai_hu_sheng_qi6_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-
-        xuan_wu_sheng_qi1_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        xuan_wu_sheng_qi2_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        xuan_wu_sheng_qi3_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        xuan_wu_sheng_qi4_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        xuan_wu_sheng_qi5_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        xuan_wu_sheng_qi6_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-
-        hun_tian_lin_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        tai_chu_shen_jia_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        zi_sha_chan_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        feng_huo_lun_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        jiu_tian_xuan_yu_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        wei_tuo_tian_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-
-        po_sun_tan_zhi_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        tan_yu_zhi_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        tan_lan_du_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        tan_lan_xie_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        tan_lan_gui_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        tan_lan_mo_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        tan_lan_ming_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-
-        po_sun_chi_zhi_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chi_mi_zhi_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chi_yu_du_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chi_yu_xie_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chi_yu_gui_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chi_yu_mo_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chi_yu_ming_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-
-        po_sun_chen_zhi_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chen_nu_zhi_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chen_hen_du_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chen_hen_xie_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chen_hen_gui_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chen_hen_mo_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chen_hen_ming_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-
-        chan_ding_fa_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chan_ding_sheng_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chan_ding_fo_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chan_ding_xian_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chan_ding_shen_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-
-        zhi_hui_fa_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        zhi_hui_sheng_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        zhi_hui_fo_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        zhi_hui_xian_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        zhi_hui_shen_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-
-        chi_jie_fa_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chi_jie_sheng_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chi_jie_fo_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chi_jie_xian_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        chi_jie_shen_jie_meta.addItemFlags(ZeroAttributeModifier.itemFlags);
-
-        qing_long_sheng_qi1_meta.setUnbreakable(true);
-        qing_long_sheng_qi2_meta.setUnbreakable(true);
-        qing_long_sheng_qi3_meta.setUnbreakable(true);
-        qing_long_sheng_qi4_meta.setUnbreakable(true);
-        qing_long_sheng_qi5_meta.setUnbreakable(true);
-        qing_long_sheng_qi6_meta.setUnbreakable(true);
-
-        zhu_que_sheng_qi1_meta.setUnbreakable(true);
-        zhu_que_sheng_qi2_meta.setUnbreakable(true);
-        zhu_que_sheng_qi3_meta.setUnbreakable(true);
-        zhu_que_sheng_qi4_meta.setUnbreakable(true);
-        zhu_que_sheng_qi5_meta.setUnbreakable(true);
-        zhu_que_sheng_qi6_meta.setUnbreakable(true);
-
-        bai_hu_sheng_qi1_meta.setUnbreakable(true);
-        bai_hu_sheng_qi2_meta.setUnbreakable(true);
-        bai_hu_sheng_qi3_meta.setUnbreakable(true);
-        bai_hu_sheng_qi4_meta.setUnbreakable(true);
-        bai_hu_sheng_qi5_meta.setUnbreakable(true);
-        bai_hu_sheng_qi6_meta.setUnbreakable(true);
-
-        xuan_wu_sheng_qi1_meta.setUnbreakable(true);
-        xuan_wu_sheng_qi2_meta.setUnbreakable(true);
-        xuan_wu_sheng_qi3_meta.setUnbreakable(true);
-        xuan_wu_sheng_qi4_meta.setUnbreakable(true);
-        xuan_wu_sheng_qi5_meta.setUnbreakable(true);
-        xuan_wu_sheng_qi6_meta.setUnbreakable(true);
-
-        hun_tian_lin_meta.setUnbreakable(true);
-        tai_chu_shen_jia_meta.setUnbreakable(true);
-        zi_sha_chan_meta.setUnbreakable(true);
-        feng_huo_lun_meta.setUnbreakable(true);
-        jiu_tian_xuan_yu_meta.setUnbreakable(true);
-        wei_tuo_tian_meta.setUnbreakable(true);
-
-        po_sun_tan_zhi_jie_meta.setUnbreakable(true);
-        tan_yu_zhi_jie_meta.setUnbreakable(true);
-        tan_lan_du_jie_meta.setUnbreakable(true);
-        tan_lan_xie_jie_meta.setUnbreakable(true);
-        tan_lan_gui_jie_meta.setUnbreakable(true);
-        tan_lan_mo_jie_meta.setUnbreakable(true);
-        tan_lan_ming_jie_meta.setUnbreakable(true);
-
-        po_sun_chi_zhi_jie_meta.setUnbreakable(true);
-        chi_mi_zhi_jie_meta.setUnbreakable(true);
-        chi_yu_du_jie_meta.setUnbreakable(true);
-        chi_yu_xie_jie_meta.setUnbreakable(true);
-        chi_yu_gui_jie_meta.setUnbreakable(true);
-        chi_yu_mo_jie_meta.setUnbreakable(true);
-        chi_yu_ming_jie_meta.setUnbreakable(true);
-
-        po_sun_chen_zhi_jie_meta.setUnbreakable(true);
-        chen_nu_zhi_jie_meta.setUnbreakable(true);
-        chen_hen_du_jie_meta.setUnbreakable(true);
-        chen_hen_xie_jie_meta.setUnbreakable(true);
-        chen_hen_gui_jie_meta.setUnbreakable(true);
-        chen_hen_mo_jie_meta.setUnbreakable(true);
-        chen_hen_ming_jie_meta.setUnbreakable(true);
-
-        chan_ding_fa_jie_meta.setUnbreakable(true);
-        chan_ding_sheng_jie_meta.setUnbreakable(true);
-        chan_ding_fo_jie_meta.setUnbreakable(true);
-        chan_ding_xian_jie_meta.setUnbreakable(true);
-        chan_ding_shen_jie_meta.setUnbreakable(true);
-
-        zhi_hui_fa_jie_meta.setUnbreakable(true);
-        zhi_hui_sheng_jie_meta.setUnbreakable(true);
-        zhi_hui_fo_jie_meta.setUnbreakable(true);
-        zhi_hui_xian_jie_meta.setUnbreakable(true);
-        zhi_hui_shen_jie_meta.setUnbreakable(true);
-
-        chi_jie_fa_jie_meta.setUnbreakable(true);
-        chi_jie_sheng_jie_meta.setUnbreakable(true);
-        chi_jie_fo_jie_meta.setUnbreakable(true);
-        chi_jie_xian_jie_meta.setUnbreakable(true);
-        chi_jie_shen_jie_meta.setUnbreakable(true);
-
-        qing_long_sheng_qi1_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        qing_long_sheng_qi2_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        qing_long_sheng_qi3_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        qing_long_sheng_qi4_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        qing_long_sheng_qi5_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        qing_long_sheng_qi6_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-
-        zhu_que_sheng_qi1_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        zhu_que_sheng_qi2_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        zhu_que_sheng_qi3_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        zhu_que_sheng_qi4_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        zhu_que_sheng_qi5_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        zhu_que_sheng_qi6_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-
-        bai_hu_sheng_qi1_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        bai_hu_sheng_qi2_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        bai_hu_sheng_qi3_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        bai_hu_sheng_qi4_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        bai_hu_sheng_qi5_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        bai_hu_sheng_qi6_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-
-        xuan_wu_sheng_qi1_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        xuan_wu_sheng_qi2_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        xuan_wu_sheng_qi3_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        xuan_wu_sheng_qi4_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        xuan_wu_sheng_qi5_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        xuan_wu_sheng_qi6_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-
-        hun_tian_lin_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        tai_chu_shen_jia_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        zi_sha_chan_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        feng_huo_lun_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        jiu_tian_xuan_yu_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        wei_tuo_tian_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-
-        po_sun_tan_zhi_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        tan_yu_zhi_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        tan_lan_du_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        tan_lan_xie_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        tan_lan_gui_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        tan_lan_mo_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        tan_lan_ming_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-
-        po_sun_chi_zhi_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chi_mi_zhi_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chi_yu_du_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chi_yu_xie_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chi_yu_gui_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chi_yu_mo_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chi_yu_ming_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-
-        po_sun_chen_zhi_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chen_nu_zhi_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chen_hen_du_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chen_hen_xie_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chen_hen_gui_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chen_hen_mo_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chen_hen_ming_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-
-        chan_ding_fa_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chan_ding_sheng_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chan_ding_fo_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chan_ding_xian_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chan_ding_shen_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-
-        zhi_hui_fa_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        zhi_hui_sheng_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        zhi_hui_fo_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        zhi_hui_xian_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        zhi_hui_shen_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-
-        chi_jie_fa_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chi_jie_sheng_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chi_jie_fo_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chi_jie_xian_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        chi_jie_shen_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-
-        qing_long_sheng_qi1_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        qing_long_sheng_qi2_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        qing_long_sheng_qi3_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        qing_long_sheng_qi4_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        qing_long_sheng_qi5_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        qing_long_sheng_qi6_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-
-        zhu_que_sheng_qi1_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        zhu_que_sheng_qi2_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        zhu_que_sheng_qi3_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        zhu_que_sheng_qi4_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        zhu_que_sheng_qi5_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        zhu_que_sheng_qi6_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-
-        bai_hu_sheng_qi1_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        bai_hu_sheng_qi2_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        bai_hu_sheng_qi3_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        bai_hu_sheng_qi4_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        bai_hu_sheng_qi5_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        bai_hu_sheng_qi6_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-
-        xuan_wu_sheng_qi1_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        xuan_wu_sheng_qi2_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        xuan_wu_sheng_qi3_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        xuan_wu_sheng_qi4_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        xuan_wu_sheng_qi5_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        xuan_wu_sheng_qi6_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-
-        hun_tian_lin_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        tai_chu_shen_jia_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        zi_sha_chan_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        feng_huo_lun_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        jiu_tian_xuan_yu_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        wei_tuo_tian_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-
-        po_sun_tan_zhi_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        tan_yu_zhi_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        tan_lan_du_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        tan_lan_xie_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        tan_lan_gui_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        tan_lan_mo_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        tan_lan_ming_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-
-        po_sun_chi_zhi_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chi_mi_zhi_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chi_yu_du_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chi_yu_xie_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chi_yu_gui_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chi_yu_mo_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chi_yu_ming_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-
-        po_sun_chen_zhi_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chen_nu_zhi_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chen_hen_du_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chen_hen_xie_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chen_hen_gui_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chen_hen_mo_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chen_hen_ming_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-
-        chan_ding_fa_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chan_ding_sheng_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chan_ding_fo_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chan_ding_xian_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chan_ding_shen_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-
-        zhi_hui_fa_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        zhi_hui_sheng_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        zhi_hui_fo_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        zhi_hui_xian_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        zhi_hui_shen_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-
-        chi_jie_fa_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chi_jie_sheng_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chi_jie_fo_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chi_jie_xian_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        chi_jie_shen_jie_meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
 
         qing_long_sheng_qi1_meta.setCustomModelData(1);
         qing_long_sheng_qi2_meta.setCustomModelData(1);
@@ -979,9 +739,12 @@ public final class Shipin {
                                 ComponentSet.RARE1,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN1,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("qingLongShengQi1", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含青龙祝福的圣器"),
+                                Component.text("§7§o令人抵抗操控的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("qingLongShengQi1", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§f[浮行] §f冷却: §b20s")
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -998,9 +761,11 @@ public final class Shipin {
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN1,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("qingLongShengQi2", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含青龙祝福的圣器"),
+                                Component.text("§7§o令人抵抗操控的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("qingLongShengQi2", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1017,9 +782,11 @@ public final class Shipin {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN1,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("qingLongShengQi3", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含青龙祝福的圣器"),
+                                Component.text("§7§o令人抵抗操控的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("qingLongShengQi3", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1036,9 +803,11 @@ public final class Shipin {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN1,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("qingLongShengQi4", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含青龙祝福的圣器"),
+                                Component.text("§7§o令人抵抗操控的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("qingLongShengQi4", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1055,9 +824,11 @@ public final class Shipin {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN1,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("qingLongShengQi5", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含青龙祝福的圣器"),
+                                Component.text("§7§o令人抵抗操控的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("qingLongShengQi5", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1074,9 +845,11 @@ public final class Shipin {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN1,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("qingLongShengQi6", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含青龙祝福的圣器"),
+                                Component.text("§7§o令人抵抗操控的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("qingLongShengQi6", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1093,9 +866,11 @@ public final class Shipin {
                                 ComponentSet.RARE1,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("zhuQueShengQi1", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含朱雀祝福的圣器"),
+                                Component.text("§7§o令人长久生存的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("zhuQueShengQi1", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1112,9 +887,11 @@ public final class Shipin {
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("zhuQueShengQi2", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含朱雀祝福的圣器"),
+                                Component.text("§7§o令人长久生存的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("zhuQueShengQi2", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1131,9 +908,11 @@ public final class Shipin {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("zhuQueShengQi3", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含朱雀祝福的圣器"),
+                                Component.text("§7§o令人长久生存的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("zhuQueShengQi3", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1150,9 +929,11 @@ public final class Shipin {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("zhuQueShengQi4", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含朱雀祝福的圣器"),
+                                Component.text("§7§o令人长久生存的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("zhuQueShengQi4", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1169,9 +950,11 @@ public final class Shipin {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("zhuQueShengQi5", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含朱雀祝福的圣器"),
+                                Component.text("§7§o令人长久生存的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("zhuQueShengQi5", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1188,9 +971,11 @@ public final class Shipin {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("zhuQueShengQi6", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含朱雀祝福的圣器"),
+                                Component.text("§7§o令人长久生存的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("zhuQueShengQi6", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1207,9 +992,11 @@ public final class Shipin {
                                 ComponentSet.RARE1,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN3,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("baiHuShengQi1", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含白虎祝福的圣器"),
+                                Component.text("§7§o令人迅捷快敏的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("baiHuShengQi1", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1226,9 +1013,11 @@ public final class Shipin {
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN3,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("baiHuShengQi2", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含白虎祝福的圣器"),
+                                Component.text("§7§o令人迅捷快敏的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("baiHuShengQi2", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1245,9 +1034,11 @@ public final class Shipin {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN3,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("baiHuShengQi3", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含白虎祝福的圣器"),
+                                Component.text("§7§o令人迅捷快敏的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("baiHuShengQi3", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1264,9 +1055,11 @@ public final class Shipin {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN3,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("baiHuShengQi4", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含白虎祝福的圣器"),
+                                Component.text("§7§o令人迅捷快敏的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("baiHuShengQi4", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1283,9 +1076,11 @@ public final class Shipin {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN3,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("baiHuShengQi5", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含白虎祝福的圣器"),
+                                Component.text("§7§o令人迅捷快敏的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("baiHuShengQi5", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1302,9 +1097,11 @@ public final class Shipin {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN3,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("baiHuShengQi6", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含白虎祝福的圣器"),
+                                Component.text("§7§o令人迅捷快敏的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("baiHuShengQi6", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1321,9 +1118,11 @@ public final class Shipin {
                                 ComponentSet.RARE1,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN4,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("xuanWuShengQi1", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含玄武祝福的圣器"),
+                                Component.text("§7§o令人抵挡伤害的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("xuanWuShengQi1", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1340,9 +1139,11 @@ public final class Shipin {
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN4,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("xuanWuShengQi2", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含玄武祝福的圣器"),
+                                Component.text("§7§o令人抵挡伤害的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("xuanWuShengQi2", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1359,9 +1160,11 @@ public final class Shipin {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN4,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("xuanWuShengQi3", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含玄武祝福的圣器"),
+                                Component.text("§7§o令人抵挡伤害的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("xuanWuShengQi3", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1378,9 +1181,11 @@ public final class Shipin {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN4,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("xuanWuShengQi4", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含玄武祝福的圣器"),
+                                Component.text("§7§o令人抵挡伤害的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("xuanWuShengQi4", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1397,9 +1202,11 @@ public final class Shipin {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN4,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("xuanWuShengQi5", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含玄武祝福的圣器"),
+                                Component.text("§7§o令人抵挡伤害的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("xuanWuShengQi5", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1416,9 +1223,11 @@ public final class Shipin {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN4,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("xuanWuShengQi6", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含玄武祝福的圣器"),
+                                Component.text("§7§o令人抵挡伤害的能力变强"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("xuanWuShengQi6", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1435,9 +1244,12 @@ public final class Shipin {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN8,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("hunTianLin", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o传说中三太子哪吒的法器"),
+                                Component.text("§7§o一眨眼就可以包覆天地"),
+                                Component.text("§7§o刀枪不入,水火不侵的宝物"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("hunTianLin", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1454,9 +1266,12 @@ public final class Shipin {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN8,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("taiChuShenJia", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o盘古开天之时就存在的法器"),
+                                Component.text("§7§o寄宿着洪荒的意志"),
+                                Component.text("§7§o赐予穿戴者强盛的生命力量"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("taiChuShenJia", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1473,9 +1288,12 @@ public final class Shipin {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN8,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("ziShaChan", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o利用北冥之海深处的玄砂打造"),
+                                Component.text("§7§o如同大地一般坚硬的护腿"),
+                                Component.text("§7§o赐予穿戴者强大的防御能力"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("ziShaChan", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1492,9 +1310,12 @@ public final class Shipin {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN8,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("fengHuoLun", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o传说中三太子哪吒的法器"),
+                                Component.text("§7§o踩在风火轮上可以翻转腾云"),
+                                Component.text("§7§o同时还夹带火焰之力袭击敌人"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("fengHuoLun", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1511,9 +1332,12 @@ public final class Shipin {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN8,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("jiuTianXuanYu", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o传说中九天玄女的羽翼"),
+                                Component.text("§7§o赐予穿戴者强盛的生命力量"),
+                                Component.text("§7§o如同草原一般的顽强而坚毅"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("jiuTianXuanYu", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1530,9 +1354,12 @@ public final class Shipin {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN8,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("weiTuoTian", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o拥有疾风般的速度"),
+                                Component.text("§7§o可以让穿戴者缩地成寸"),
+                                Component.text("§7§o一瞬十万里"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("weiTuoTian", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1549,9 +1376,11 @@ public final class Shipin {
                                 ComponentSet.RARE1,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN5,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("poSunTanZhiJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o被贪婪欲望所诱惑的戒指"),
+                                Component.text("§7§o佩戴者将不断追求更多"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("poSunTanZhiJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1568,9 +1397,11 @@ public final class Shipin {
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN5,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("tanYuZhiJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o被贪婪欲望所诱惑的戒指"),
+                                Component.text("§7§o佩戴者将不断追求更多"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("tanYuZhiJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1587,9 +1418,11 @@ public final class Shipin {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN5,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("tanLanDuJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o被贪婪欲望所诱惑的戒指"),
+                                Component.text("§7§o佩戴者将不断追求更多"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("tanLanDuJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1606,9 +1439,11 @@ public final class Shipin {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN5,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("tanLanXieJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o被贪婪欲望所诱惑的戒指"),
+                                Component.text("§7§o佩戴者将不断追求更多"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("tanLanXieJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1625,9 +1460,11 @@ public final class Shipin {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN5,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("tanLanGuiJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o被贪婪欲望所诱惑的戒指"),
+                                Component.text("§7§o佩戴者将不断追求更多"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("tanLanGuiJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1644,9 +1481,11 @@ public final class Shipin {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN5,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("tanLanMoJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o被贪婪欲望所诱惑的戒指"),
+                                Component.text("§7§o佩戴者将不断追求更多"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("tanLanMoJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1663,9 +1502,11 @@ public final class Shipin {
                                 ComponentSet.RARE7,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN5,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("tanLanMingJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o被贪婪欲望所诱惑的戒指"),
+                                Component.text("§7§o佩戴者将不断追求更多"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("tanLanMingJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1682,9 +1523,11 @@ public final class Shipin {
                                 ComponentSet.RARE1,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN6,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("poSunChiZhiJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o令人陷入痴迷的戒指"),
+                                Component.text("§7§o使佩戴者难以自拔"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("poSunChiZhiJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1701,9 +1544,11 @@ public final class Shipin {
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN6,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chiMiZhiJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o令人陷入痴迷的戒指"),
+                                Component.text("§7§o使佩戴者难以自拔"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chiMiZhiJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1720,9 +1565,11 @@ public final class Shipin {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN6,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chiYuDuJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o令人陷入痴迷的戒指"),
+                                Component.text("§7§o使佩戴者难以自拔"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chiYuDuJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1739,9 +1586,11 @@ public final class Shipin {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN6,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chiYuXieJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o令人陷入痴迷的戒指"),
+                                Component.text("§7§o使佩戴者难以自拔"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chiYuXieJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1758,9 +1607,11 @@ public final class Shipin {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN6,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chiYuGuiJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o令人陷入痴迷的戒指"),
+                                Component.text("§7§o使佩戴者难以自拔"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chiYuGuiJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1777,9 +1628,11 @@ public final class Shipin {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN6,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chiYuMoJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o令人陷入痴迷的戒指"),
+                                Component.text("§7§o使佩戴者难以自拔"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chiYuMoJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1796,9 +1649,11 @@ public final class Shipin {
                                 ComponentSet.RARE7,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN6,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chiYuMingJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o令人陷入痴迷的戒指"),
+                                Component.text("§7§o使佩戴者难以自拔"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chiYuMingJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1815,9 +1670,11 @@ public final class Shipin {
                                 ComponentSet.RARE1,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN7,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("poSunChenZhiJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o充满愤怒之力的戒指"),
+                                Component.text("§7§o激发佩戴者的怒火"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("poSunChenZhiJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1834,9 +1691,11 @@ public final class Shipin {
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN7,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chenNuZhiJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o充满愤怒之力的戒指"),
+                                Component.text("§7§o激发佩戴者的怒火"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chenNuZhiJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1853,9 +1712,11 @@ public final class Shipin {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN7,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chenHenDuJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o充满愤怒之力的戒指"),
+                                Component.text("§7§o激发佩戴者的怒火"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chenHenDuJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1872,9 +1733,11 @@ public final class Shipin {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN7,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chenHenXieJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o充满愤怒之力的戒指"),
+                                Component.text("§7§o激发佩戴者的怒火"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chenHenXieJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1891,9 +1754,11 @@ public final class Shipin {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN7,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chenHenGuiJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o充满愤怒之力的戒指"),
+                                Component.text("§7§o激发佩戴者的怒火"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chenHenGuiJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1910,9 +1775,11 @@ public final class Shipin {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN7,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chenHenMoJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o充满愤怒之力的戒指"),
+                                Component.text("§7§o激发佩戴者的怒火"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chenHenMoJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1929,9 +1796,11 @@ public final class Shipin {
                                 ComponentSet.RARE7,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN7,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chenHenMingJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o充满愤怒之力的戒指"),
+                                Component.text("§7§o激发佩戴者的怒火"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chenHenMingJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1948,9 +1817,11 @@ public final class Shipin {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN5,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chanDingFaJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含佛法禅意的法戒"),
+                                Component.text("§7§o助佩戴者心如止水"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chanDingFaJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1967,9 +1838,11 @@ public final class Shipin {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN5,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chanDingShengJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含佛法禅意的法戒"),
+                                Component.text("§7§o助佩戴者心如止水"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chanDingShengJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -1986,9 +1859,11 @@ public final class Shipin {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN5,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chanDingFoJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含佛法禅意的法戒"),
+                                Component.text("§7§o助佩戴者心如止水"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chanDingFoJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -2005,9 +1880,11 @@ public final class Shipin {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN5,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chanDingXianJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含佛法禅意的法戒"),
+                                Component.text("§7§o助佩戴者心如止水"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chanDingXianJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -2024,9 +1901,11 @@ public final class Shipin {
                                 ComponentSet.RARE7,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN5,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chanDingShenJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含佛法禅意的法戒"),
+                                Component.text("§7§o助佩戴者心如止水"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chanDingShenJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -2043,9 +1922,11 @@ public final class Shipin {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN6,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("zhiHuiFaJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o开启智慧之门的法戒"),
+                                Component.text("§7§o增长佩戴者的洞察力"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("zhiHuiFaJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -2062,9 +1943,11 @@ public final class Shipin {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN6,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("zhiHuiShengJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o开启智慧之门的法戒"),
+                                Component.text("§7§o增长佩戴者的洞察力"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("zhiHuiShengJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -2081,9 +1964,11 @@ public final class Shipin {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN6,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("zhiHuiFoJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o开启智慧之门的法戒"),
+                                Component.text("§7§o增长佩戴者的洞察力"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("zhiHuiFoJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -2100,9 +1985,11 @@ public final class Shipin {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN6,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("zhiHuiXianJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o开启智慧之门的法戒"),
+                                Component.text("§7§o增长佩戴者的洞察力"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("zhiHuiXianJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -2119,9 +2006,11 @@ public final class Shipin {
                                 ComponentSet.RARE7,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN6,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("zhiHuiShenJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o开启智慧之门的法戒"),
+                                Component.text("§7§o增长佩戴者的洞察力"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("zhiHuiShenJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -2138,9 +2027,11 @@ public final class Shipin {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN7,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chiJieFaJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o帮助修行者持戒的法器"),
+                                Component.text("§7§o净化心灵的污浊"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chiJieFaJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -2157,9 +2048,11 @@ public final class Shipin {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN7,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chiJieShengJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o帮助修行者持戒的法器"),
+                                Component.text("§7§o净化心灵的污浊"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chiJieShengJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -2176,9 +2069,11 @@ public final class Shipin {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN7,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chiJieFoJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o帮助修行者持戒的法器"),
+                                Component.text("§7§o净化心灵的污浊"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chiJieFoJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -2195,9 +2090,11 @@ public final class Shipin {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN7,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chiJieXianJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o帮助修行者持戒的法器"),
+                                Component.text("§7§o净化心灵的污浊"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chiJieXianJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -2214,9 +2111,11 @@ public final class Shipin {
                                 ComponentSet.RARE7,
                                 ComponentSet.JOBALL,
                                 ComponentSet.ActSHIPIN7,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chiJieShenJie", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o帮助修行者持戒的法器"),
+                                Component.text("§7§o净化心灵的污浊"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chiJieShenJie", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {

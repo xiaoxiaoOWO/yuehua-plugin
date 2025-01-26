@@ -1,7 +1,7 @@
 package com.xiaoxiaoowo.yuehua.items.zhuangbei;
 
 import com.xiaoxiaoowo.yuehua.attribute.AttributeSet;
-import com.xiaoxiaoowo.yuehua.guis.Recipe;
+import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
 import com.xiaoxiaoowo.yuehua.utils.ZeroAttributeModifier;
@@ -34,21 +34,21 @@ public final class YiQi {
     public static final ItemStack CHENBINLUOXUE = new ItemStack(Material.SHIELD);
 
     //弓箭手箭袋
-    public static final ItemStack LAOLIEHUJIANDAI = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack XINBINJIANDAI = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack JINRUIJIANDAI = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack YINGYANJIANDAI = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack CANGGUNINGWANG = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack NIEPANYUNANG = new ItemStack(Material.GOLDEN_PICKAXE);
+    public static final ItemStack LAOLIEHUJIANDAI = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack XINBINJIANDAI = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack JINRUIJIANDAI = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack YINGYANJIANDAI = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack CANGGUNINGWANG = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack NIEPANYUNANG = new ItemStack(Material.RABBIT_HIDE);
 
 
     //炼丹师萃刃
-    public static final ItemStack FANGSHENDUANBI = new ItemStack(Material.NETHERITE_PICKAXE);
-    public static final ItemStack TIEZHIDUANBI = new ItemStack(Material.NETHERITE_PICKAXE);
-    public static final ItemStack HUIYIDAO = new ItemStack(Material.NETHERITE_PICKAXE);
-    public static final ItemStack LONGYADAO = new ItemStack(Material.NETHERITE_PICKAXE);
-    public static final ItemStack ZHANGQICUIZHU = new ItemStack(Material.NETHERITE_PICKAXE);
-    public static final ItemStack MINGHONG = new ItemStack(Material.NETHERITE_PICKAXE);
+    public static final ItemStack FANGSHENDUANBI = new ItemStack(Material.ANGLER_POTTERY_SHERD);
+    public static final ItemStack TIEZHIDUANBI = new ItemStack(Material.ANGLER_POTTERY_SHERD);
+    public static final ItemStack HUIYIDAO = new ItemStack(Material.ANGLER_POTTERY_SHERD);
+    public static final ItemStack LONGYADAO = new ItemStack(Material.ANGLER_POTTERY_SHERD);
+    public static final ItemStack ZHANGQICUIZHU = new ItemStack(Material.ANGLER_POTTERY_SHERD);
+    public static final ItemStack MINGHONG = new ItemStack(Material.ANGLER_POTTERY_SHERD);
 
 
     static {
@@ -73,6 +73,19 @@ public final class YiQi {
         ItemMeta zhangqicuizhuItemMeta = ZHANGQICUIZHU.getItemMeta();
         ItemMeta minghongItemMeta = MINGHONG.getItemMeta();
 
+        laoliehujiandaiItemMeta.setMaxStackSize(1);
+        xinbinjiandaiItemMeta.setMaxStackSize(1);
+        jinruijiandaiItemMeta.setMaxStackSize(1);
+        yingyanjiandaiItemMeta.setMaxStackSize(1);
+        cangguningwangItemMeta.setMaxStackSize(1);
+        niepanyunangItemMeta.setMaxStackSize(1);
+        fangshenduanbiItemMeta.setMaxStackSize(1);
+        tongzhiduanbiItemMeta.setMaxStackSize(1);
+        huiyidaoItemMeta.setMaxStackSize(1);
+        longyadaoItemMeta.setMaxStackSize(1);
+        zhangqicuizhuItemMeta.setMaxStackSize(1);
+        minghongItemMeta.setMaxStackSize(1);
+
         laozhanshidunpaiItemMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
         xinbindunpaiItemMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
         jinruidunpaiItemMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
@@ -80,19 +93,6 @@ public final class YiQi {
         jingangbuhuaiItemMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
         chenbinluoxueItemMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
 
-        laoliehujiandaiItemMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        xinbinjiandaiItemMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        jinruijiandaiItemMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        yingyanjiandaiItemMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        cangguningwangItemMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        niepanyunangItemMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-
-        fangshenduanbiItemMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        tongzhiduanbiItemMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        huiyidaoItemMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        longyadaoItemMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        zhangqicuizhuItemMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        minghongItemMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
 
         laozhanshidunpaiItemMeta.setUnbreakable(true);
         xinbindunpaiItemMeta.setUnbreakable(true);
@@ -100,48 +100,6 @@ public final class YiQi {
         chiseyuehuoItemMeta.setUnbreakable(true);
         jingangbuhuaiItemMeta.setUnbreakable(true);
         chenbinluoxueItemMeta.setUnbreakable(true);
-
-        laoliehujiandaiItemMeta.setUnbreakable(true);
-        xinbinjiandaiItemMeta.setUnbreakable(true);
-        jinruijiandaiItemMeta.setUnbreakable(true);
-        yingyanjiandaiItemMeta.setUnbreakable(true);
-        cangguningwangItemMeta.setUnbreakable(true);
-        niepanyunangItemMeta.setUnbreakable(true);
-
-        fangshenduanbiItemMeta.setUnbreakable(true);
-        tongzhiduanbiItemMeta.setUnbreakable(true);
-        huiyidaoItemMeta.setUnbreakable(true);
-        longyadaoItemMeta.setUnbreakable(true);
-        zhangqicuizhuItemMeta.setUnbreakable(true);
-        minghongItemMeta.setUnbreakable(true);
-
-        laoliehujiandaiItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE,ZeroAttributeModifier.ATTACK_DAMAGE);
-        xinbinjiandaiItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE,ZeroAttributeModifier.ATTACK_DAMAGE);
-        jinruijiandaiItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE,ZeroAttributeModifier.ATTACK_DAMAGE);
-        yingyanjiandaiItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE,ZeroAttributeModifier.ATTACK_DAMAGE);
-        cangguningwangItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE,ZeroAttributeModifier.ATTACK_DAMAGE);
-        niepanyunangItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE,ZeroAttributeModifier.ATTACK_DAMAGE);
-
-        fangshenduanbiItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE,ZeroAttributeModifier.ATTACK_DAMAGE);
-        tongzhiduanbiItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE,ZeroAttributeModifier.ATTACK_DAMAGE);
-        huiyidaoItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE,ZeroAttributeModifier.ATTACK_DAMAGE);
-        longyadaoItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE,ZeroAttributeModifier.ATTACK_DAMAGE);
-        zhangqicuizhuItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE,ZeroAttributeModifier.ATTACK_DAMAGE);
-        minghongItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE,ZeroAttributeModifier.ATTACK_DAMAGE);
-
-        laoliehujiandaiItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED,ZeroAttributeModifier.ATTACK_SPEED);
-        xinbinjiandaiItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED,ZeroAttributeModifier.ATTACK_SPEED);
-        jinruijiandaiItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED,ZeroAttributeModifier.ATTACK_SPEED);
-        yingyanjiandaiItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED,ZeroAttributeModifier.ATTACK_SPEED);
-        cangguningwangItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED,ZeroAttributeModifier.ATTACK_SPEED);
-        niepanyunangItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED,ZeroAttributeModifier.ATTACK_SPEED);
-
-        fangshenduanbiItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED,ZeroAttributeModifier.ATTACK_SPEED);
-        tongzhiduanbiItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED,ZeroAttributeModifier.ATTACK_SPEED);
-        huiyidaoItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED,ZeroAttributeModifier.ATTACK_SPEED);
-        longyadaoItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED,ZeroAttributeModifier.ATTACK_SPEED);
-        zhangqicuizhuItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED,ZeroAttributeModifier.ATTACK_SPEED);
-        minghongItemMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED,ZeroAttributeModifier.ATTACK_SPEED);
 
 
         PersistentDataContainer pdclaozhanshidunpaiItemMeta = laozhanshidunpaiItemMeta.getPersistentDataContainer();
@@ -252,11 +210,13 @@ public final class YiQi {
                                 ComponentSet.RARE1,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.ActFUSHOU,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("laoZhanShiDunPai", 2),
-                                ComponentSet.SHORTJINENG,
-                                Component.text("§6[被动技]§f[坚固] §f冷却: §b10s"),
-                                Component.text("§f获得§b16§f点护盾")
+                                Component.text("§7§o饱经战火洗礼的老盾牌"),
+                                Component.text("§7§o虽有磨损但依然坚固"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("laoZhanShiDunPai", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§f[坚固] §f冷却: §b20s"),
+                                Component.text("§f获得无限时长的§b16§f点护盾")
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -272,9 +232,14 @@ public final class YiQi {
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.ActFUSHOU,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("xinBinDunPai", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o崭新的制式盾牌"),
+                                Component.text("§7§o用料扎实耐用"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("xinBinDunPai", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§a[坚韧] §f冷却: §b20s"),
+                                Component.text("§f获得无限时长的§b24§f点护盾"),
+                                Component.text("§f同时提高§b20§f点护甲，持续§b4s")
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -290,9 +255,14 @@ public final class YiQi {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.ActFUSHOU,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("jinRuiDunPai", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o精心打造的军用盾牌"),
+                                Component.text("§7§o能完美防御各类攻击"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("jinRuiDunPai", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§9[不破] §f冷却: §b20s"),
+                                Component.text("§f获得无限时长的§b36§f点护盾"),
+                                Component.text("§f同时减免§b10%§f任何伤害，持续§b4s")
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -308,9 +278,16 @@ public final class YiQi {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.ActFUSHOU,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chiSeYueHuo", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含烈焰之力的神盾"),
+                                Component.text("§7§o可将敌人的攻击化为火焰反击"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chiSeYueHuo", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§d[焰灵化劫] §f冷却: §b20s"),
+                                Component.text("§f获得无限时长的§b72§f点护盾，并进入§6[烈焰护体]§f状态，持续§b4s"),
+                                Component.text("§f在此期间，受到的任何类型的伤害的§b10%§f均会转为烈焰"),
+                                Component.text("§f转为烈焰的伤害不会再对玩家造成伤害，同时每吸收§b1§f点伤害，转化§b50§f点热力"),
+                                Component.text("§f并对攻击者造成§b[热力值]§f点伤害")
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -326,9 +303,18 @@ public final class YiQi {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.ActFUSHOU,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("jinGangBuHuai", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o以金刚石锻造的无双神盾"),
+                                Component.text("§7§o刀枪不入水火不侵"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("jinGangBuHuai", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§e[玄元不破] §f冷却: 无"),
+                                Component.text("§f受到的任何类型的伤害均会减免§b10%"),
+                                Component.text("§6[被动技]§e[金刚不坏] §f冷却: §b20s"),
+                                Component.text("§f获得无限时长的§b144§f点护盾，然后进入§6[金刚不坏]§f状态，持续§b4s"),
+                                Component.text("§f在此期间，若受到的伤害低于§b[5%最大生命]§f，则完全抵挡这次伤害"),
+                                Component.text("§f同时，若此伤害为物理伤害，则至多造成§b[25%最大生命]§f点伤害"),
+                                Component.text("§f触发上述两种情况，均会对攻击者造成§b[受到的伤害*20]§f点伤害")
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -344,9 +330,11 @@ public final class YiQi {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.ActFUSHOU,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("chenBinLuoXue", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o凝结万载寒冰之力"),
+                                Component.text("§7§o可冻结一切攻击"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("chenBinLuoXue", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -362,11 +350,13 @@ public final class YiQi {
                                 ComponentSet.RARE1,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.ActFUSHOU,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("laoLieHuJianDai", 2),
-                                ComponentSet.SHORTJINENG,
-                                Component.text("§6[被动技]§f[利箭]"),
-                                Component.text("§f满弦箭造成的物理伤害提高§b20%")
+                                Component.text("§7§o老猎人随身携带的箭袋"),
+                                Component.text("§7§o虽破旧但十分实用"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("laoLieHuJianDai", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§f[利箭] §f冷却: 无"),
+                                Component.text("§f满弦箭造成的物理伤害提高§b15%")
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -379,12 +369,17 @@ public final class YiQi {
         );
         xinbinjiandaiItemMeta.lore(
                 Stream.of(
-                                ComponentSet.RARE2,
+                                ComponentSet.RARE4,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.ActFUSHOU,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("xinBinJianDai", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o新手弓手的标配箭袋"),
+                                Component.text("§7§o能妥善收纳各类箭矢"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("xinBinJianDai", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§a[利箭] §f冷却: 无"),
+                                Component.text("§f满弦箭造成的物理伤害提高§b30%"),
+                                Component.text("§f并能额外造成§b[50%箭矢强度]§f法术伤害")
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -400,9 +395,14 @@ public final class YiQi {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.ActFUSHOU,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("jinRuiJianDai", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o军中精锐专用的箭袋"),
+                                Component.text("§7§o可快速取箭增强战力"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("jinRuiJianDai", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§9[锐利] §f冷却: 无"),
+                                Component.text("§f满弦箭造成的物理伤害提高§b45%"),
+                                Component.text("§f若本次是第三次满弦箭命中，则额外造成§b[300%箭矢强度]§f法术伤害")
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -418,9 +418,15 @@ public final class YiQi {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.ActFUSHOU,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("yingYanJianDai", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o蕴含鹰之锐目的箭袋"),
+                                Component.text("§7§o助你百发百中"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("yingYanJianDai", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§d[鹰眼] §f冷却: 无"),
+                                Component.text("§f满弦箭造成的物理伤害提高§b60%§f，同时为目标附加§6[鹰眼]§f印记，持续§b4§fs"),
+                                Component.text("§f命中附有§6[鹰眼]§f印记的目标，将额外造成§b[300%箭矢强度]§f法术伤害，然后消除印记"),
+                                Component.text("§f每消除§b20§f个印记，提高自身§b20%§f箭矢强度，持续§b5s")
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -436,9 +442,20 @@ public final class YiQi {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.ActFUSHOU,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("cangGuNingWang", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o承载上古神明的洞察之力"),
+                                Component.text("§7§o箭无虚发"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("cangGuNingWang", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§e[仓古] §f冷却: 无"),
+                                Component.text("§f满弦箭造成的物理伤害提高§b75%§f，同时额外造成§b[150%箭矢强度]§f法术伤害"),
+                                Component.text("§6[被动技]§e[凝望] §f冷却: §b2s"),
+                                Component.text("§f箭袋之灵沿玩家视线方向进行一次凝望"),
+                                Component.text("§f对沿途距离§b1§f格内的所有怪物施加§6[无可遁形]§f效果，持续§b10s"),
+                                Component.text("§f重复施加不可叠加，将刷新持续时间，处于§6[无可遁形]§f效果的怪物将"),
+                                Component.text("§f无法隐形，并提高受到的任意玩家的箭矢物理伤害§b20%"),
+                                Component.text("§f满弦箭命中处于§6[无可遁形]§f效果的怪物将积攒一层§6[掣获]§f"),
+                                Component.text("§f达到§b20§f层时，将自动消耗全部§6[掣获]§f，并提高§b30%§f箭矢强度，持续§b5s")
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -454,9 +471,11 @@ public final class YiQi {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.ActFUSHOU,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("niePanYunAng", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o注入不死鸟之魂的箭袋"),
+                                Component.text("§7§o箭矢可化作火凤重生"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("niePanYunAng", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -472,9 +491,11 @@ public final class YiQi {
                                 ComponentSet.RARE1,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act1,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("fangShenDuanBi", 2),
-                                ComponentSet.SHORTJINENG,
+                                Component.text("§7§o简单的防身匕首"),
+                                Component.text("§7§o适合在危急时刻使用"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("fangShenDuanBi", 4),
+                                ComponentSet.MIDDLEJINENG,
                                 Component.text("§6[被动技]§f[萃取]"),
                                 Component.text("§f用此武器攻击的物理伤害提高§b[100%阵法强度]§f点"),
                                 Component.text("§f用此武器击杀可额外获取随机§b2§f份普通元素")
@@ -493,9 +514,14 @@ public final class YiQi {
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act1,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("tieZhiDuanBi", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o精铁打造的短匕"),
+                                Component.text("§7§o锋利坚固"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("tieZhiDuanBi", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§a[萃取]"),
+                                Component.text("§f用此武器攻击的物理伤害提高§b[150%阵法强度]§f点"),
+                                Component.text("§f用此武器击杀可额外获取随机§b4§f份普通元素")
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -511,9 +537,14 @@ public final class YiQi {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act1,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("huiYiDao", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o如鹰翼般灵动的弧形刀"),
+                                Component.text("§7§o出招迅捷无比"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("huiYiDao", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§9[萃取]"),
+                                Component.text("§f用此武器攻击的物理伤害提高§b[200%阵法强度]§f点"),
+                                Component.text("§f用此武器击杀可额外获取随机§b6§f份普通元素")
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -529,9 +560,14 @@ public final class YiQi {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act1,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("longYaDao", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o刀身似龙牙般锋利"),
+                                Component.text("§7§o一击即可撕裂敌人"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("longYaDao", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§d[萃取]"),
+                                Component.text("§f用此武器攻击的物理伤害提高§b[250%阵法强度]§f点"),
+                                Component.text("§f用此武器击杀可额外获取随机§b8§f份普通元素")
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -547,9 +583,14 @@ public final class YiQi {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act1,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("zhangQiCuiZhu", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o浸染剧毒的诡异短刃"),
+                                Component.text("§7§o伤口难以愈合"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("zhangQiCuiZhu", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§c[萃取]"),
+                                Component.text("§f用此武器攻击的物理伤害提高§e[300%阵法强度]§f点"),
+                                Component.text("§f用此武器击杀可额外获取随机§b10§f份普通元素")
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -565,9 +606,11 @@ public final class YiQi {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act1,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("mingHong", 2),
-                                ComponentSet.SHORTJINENG
+                                Component.text("§7§o刀锋凝聚凤凰火焰"),
+                                Component.text("§7§o每一击都伴随凤鸣"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("mingHong", 4),
+                                ComponentSet.MIDDLEJINENG
                         )
                         .flatMap(obj -> {
                             if (obj instanceof List<?>) {
@@ -616,11 +659,11 @@ public final class YiQi {
         chenbinluoxueItemMeta.setBlockState(chenbinluoxueBanner);
 
         laoliehujiandaiItemMeta.setCustomModelData(101);
-        xinbinjiandaiItemMeta.setCustomModelData(101);
-        jinruijiandaiItemMeta.setCustomModelData(102);
-        yingyanjiandaiItemMeta.setCustomModelData(103);
-        cangguningwangItemMeta.setCustomModelData(104);
-        niepanyunangItemMeta.setCustomModelData(105);
+        xinbinjiandaiItemMeta.setCustomModelData(102);
+        jinruijiandaiItemMeta.setCustomModelData(103);
+        yingyanjiandaiItemMeta.setCustomModelData(104);
+        cangguningwangItemMeta.setCustomModelData(105);
+        niepanyunangItemMeta.setCustomModelData(106);
 
         fangshenduanbiItemMeta.setCustomModelData(1);
         tongzhiduanbiItemMeta.setCustomModelData(2);

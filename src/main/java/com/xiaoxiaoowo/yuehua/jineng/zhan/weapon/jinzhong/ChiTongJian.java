@@ -3,11 +3,13 @@ package com.xiaoxiaoowo.yuehua.jineng.zhan.weapon.jinzhong;
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.MonsterData;
 import com.xiaoxiaoowo.yuehua.data.ZhanData;
+import com.xiaoxiaoowo.yuehua.display.utils.ParticleUtils;
 import com.xiaoxiaoowo.yuehua.system.Damage;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import com.xiaoxiaoowo.yuehua.utils.PlaySound;
 import com.xiaoxiaoowo.yuehua.utils.SendInformation;
 import net.kyori.adventure.text.Component;
+import org.bukkit.Particle;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Mob;
@@ -25,6 +27,7 @@ public final class ChiTongJian {
         for (Entity entity : GetEntity.getMonsters(player.getLocation(), 6, 6, 6)) {
             MonsterData monsterData = Yuehua.monsterData.get(entity.getUniqueId());
             Damage.damageMonster(zhanData, damage, monsterData);
+            ParticleUtils.atMonster(monsterData.monster, Particle.FLAME);
             Set<String> tags = entity.getScoreboardTags();
             if (tags.contains(id)) {
                 Mob mob = (Mob) entity;

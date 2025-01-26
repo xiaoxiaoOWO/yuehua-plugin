@@ -82,8 +82,8 @@ public final class Buy implements CommandExecutor {
 
                     buyerNow = player;
                     priceNow = price;
-                    if(SaleTask.num < 2){
-                        SaleTask.num = 2;
+                    if(SaleTask.num == 0){
+                        SaleTask.num = 1;
                     }
 
                     Bukkit.broadcast(Component.text("§6[拍卖系统]§a玩家：§b" + player.getName() + "§a参与了拍卖").appendNewline()

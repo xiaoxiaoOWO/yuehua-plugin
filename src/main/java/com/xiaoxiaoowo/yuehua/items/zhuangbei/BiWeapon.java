@@ -1,8 +1,7 @@
 package com.xiaoxiaoowo.yuehua.items.zhuangbei;
 
 import com.xiaoxiaoowo.yuehua.attribute.AttributeSet;
-import com.xiaoxiaoowo.yuehua.attribute.attributes.vanilla.Speed;
-import com.xiaoxiaoowo.yuehua.guis.Recipe;
+import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
 import com.xiaoxiaoowo.yuehua.utils.ZeroAttributeModifier;
@@ -10,6 +9,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.EquipmentSlotGroup;
@@ -24,28 +24,31 @@ import java.util.stream.Stream;
 
 public final class BiWeapon {
     //战士，暗器
-    public static final ItemStack FEIREN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack JINRUIFEIREN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack WUSHENGXIUJIAN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack HUIXUANTAJI = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack WUYINWUZONG = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack YANWANGTIE = new ItemStack(Material.DIAMOND_PICKAXE);
+    public static final ItemStack FEIREN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack JINRUIFEIREN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack WUSHENGXIUJIAN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack HUIXUANTAJI = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack WUYINWUZONG = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack YANWANGTIE = new ItemStack(Material.PRISMARINE_SHARD);
 
     //弓箭手，火铳
-    public static final ItemStack HEITIECHONG = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack HUANGTONGCHONG = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack MINGYUE = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack CANLAN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack JINJING = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack XIAOTIAN = new ItemStack(Material.DIAMOND_PICKAXE);
+    public static final ItemStack HEITIECHONG = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack HUANGTONGCHONG = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack MINGYUE = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack CANLAN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack JINJING = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack XIAOTIAN = new ItemStack(Material.PRISMARINE_SHARD);
 
     //炼丹师，灵乐
-    public static final ItemStack XIAO = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack QINFENGYINYIN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack LIUSHUICHANCHAN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack BUQICHUNYU = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack SANSHENGZHENHUN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack JIUFENGLAIYI = new ItemStack(Material.DIAMOND_PICKAXE);
+    public static final ItemStack XIAO = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack QINFENGYINYIN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack LIUSHUICHANCHAN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack BUQICHUNYU = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack SANSHENGZHENHUN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack JIUFENGLAIYI = new ItemStack(Material.PRISMARINE_SHARD);
+
+    public static final NamespacedKey chongSpeed = new NamespacedKey("yh", "chongspeed");
+    public static final NamespacedKey chongJump = new NamespacedKey("yh", "chongjump");
 
     static {
         ItemMeta feirenMeta = FEIREN.getItemMeta();
@@ -67,38 +70,47 @@ public final class BiWeapon {
         ItemMeta sanshengzhenhunMeta = SANSHENGZHENHUN.getItemMeta();
         ItemMeta jiufenglaiyiMeta = JIUFENGLAIYI.getItemMeta();
 
-        feirenMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        jinruifeirenMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        wushengxiujianMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        huixuantajiMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        wuyinwuzongMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        yanwangtieMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
+        feirenMeta.setMaxStackSize(1);
+        jinruifeirenMeta.setMaxStackSize(1);
+        wushengxiujianMeta.setMaxStackSize(1);
+        huixuantajiMeta.setMaxStackSize(1);
+        wuyinwuzongMeta.setMaxStackSize(1);
+        yanwangtieMeta.setMaxStackSize(1);
+        heitiechongMeta.setMaxStackSize(1);
+        huangtongchongMeta.setMaxStackSize(1);
+        mingyueMeta.setMaxStackSize(1);
+        canlanMeta.setMaxStackSize(1);
+        jinjingMeta.setMaxStackSize(1);
+        xiaotianMeta.setMaxStackSize(1);
+        xiaoMeta.setMaxStackSize(1);
+        qinfengyinyinMeta.setMaxStackSize(1);
+        liushuichanchanMeta.setMaxStackSize(1);
+        buqichunyuMeta.setMaxStackSize(1);
+        sanshengzhenhunMeta.setMaxStackSize(1);
+        jiufenglaiyiMeta.setMaxStackSize(1);
+
         heitiechongMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
         huangtongchongMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
         mingyueMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
         canlanMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
         jinjingMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
         xiaotianMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        xiaoMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        qinfengyinyinMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        liushuichanchanMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        buqichunyuMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        sanshengzhenhunMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        jiufenglaiyiMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
+
 
         heitiechongMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
                 new AttributeModifier(
-                        Speed.biweaponSpeed,
-                        -2,
+                        chongSpeed,
+                        -99,
                         AttributeModifier.Operation.MULTIPLY_SCALAR_1,
                         EquipmentSlotGroup.HAND
                 )
         );
 
+
         huangtongchongMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
                 new AttributeModifier(
-                        Speed.biweaponSpeed,
-                        -2,
+                        chongSpeed,
+                        -99,
                         AttributeModifier.Operation.MULTIPLY_SCALAR_1,
                         EquipmentSlotGroup.HAND
                 )
@@ -106,8 +118,8 @@ public final class BiWeapon {
 
         jinjingMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
                 new AttributeModifier(
-                        Speed.biweaponSpeed,
-                        -2,
+                        chongSpeed,
+                        -99,
                         AttributeModifier.Operation.MULTIPLY_SCALAR_1,
                         EquipmentSlotGroup.HAND
                 )
@@ -115,8 +127,8 @@ public final class BiWeapon {
 
         canlanMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
                 new AttributeModifier(
-                        Speed.biweaponSpeed,
-                        -2,
+                        chongSpeed,
+                        -99,
                         AttributeModifier.Operation.MULTIPLY_SCALAR_1,
                         EquipmentSlotGroup.HAND
                 )
@@ -124,8 +136,8 @@ public final class BiWeapon {
 
         mingyueMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
                 new AttributeModifier(
-                        Speed.biweaponSpeed,
-                        -2,
+                        chongSpeed,
+                        -99,
                         AttributeModifier.Operation.MULTIPLY_SCALAR_1,
                         EquipmentSlotGroup.HAND
                 )
@@ -133,69 +145,67 @@ public final class BiWeapon {
 
         xiaotianMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
                 new AttributeModifier(
-                        Speed.biweaponSpeed,
-                        -2,
+                        chongSpeed,
+                        -99,
                         AttributeModifier.Operation.MULTIPLY_SCALAR_1,
                         EquipmentSlotGroup.HAND
                 )
         );
 
-        feirenMeta.setUnbreakable(true);
-        jinruifeirenMeta.setUnbreakable(true);
-        wushengxiujianMeta.setUnbreakable(true);
-        huixuantajiMeta.setUnbreakable(true);
-        wuyinwuzongMeta.setUnbreakable(true);
-        yanwangtieMeta.setUnbreakable(true);
-        heitiechongMeta.setUnbreakable(true);
-        huangtongchongMeta.setUnbreakable(true);
-        mingyueMeta.setUnbreakable(true);
-        canlanMeta.setUnbreakable(true);
-        jinjingMeta.setUnbreakable(true);
-        xiaotianMeta.setUnbreakable(true);
-        xiaoMeta.setUnbreakable(true);
-        qinfengyinyinMeta.setUnbreakable(true);
-        liushuichanchanMeta.setUnbreakable(true);
-        buqichunyuMeta.setUnbreakable(true);
-        sanshengzhenhunMeta.setUnbreakable(true);
-        jiufenglaiyiMeta.setUnbreakable(true);
+        heitiechongMeta.addAttributeModifier(Attribute.GENERIC_JUMP_STRENGTH,
+                new AttributeModifier(
+                        chongJump,
+                        -99,
+                        AttributeModifier.Operation.MULTIPLY_SCALAR_1,
+                        EquipmentSlotGroup.HAND
+                ));
 
-        feirenMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        jinruifeirenMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        wushengxiujianMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        huixuantajiMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        wuyinwuzongMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        yanwangtieMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        heitiechongMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        huangtongchongMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        mingyueMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        canlanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        jinjingMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        xiaotianMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        xiaoMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        qinfengyinyinMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        liushuichanchanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        buqichunyuMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        sanshengzhenhunMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        jiufenglaiyiMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
+        huangtongchongMeta.addAttributeModifier(Attribute.GENERIC_JUMP_STRENGTH,
+                new AttributeModifier(
+                        chongJump,
+                        -99,
+                        AttributeModifier.Operation.MULTIPLY_SCALAR_1,
+                        EquipmentSlotGroup.HAND
+                )
+        );
 
-        feirenMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        jinruifeirenMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        wushengxiujianMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        huixuantajiMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        wuyinwuzongMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        yanwangtieMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        heitiechongMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        huangtongchongMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        mingyueMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        canlanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        jinjingMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        xiaotianMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        xiaoMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        qinfengyinyinMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        liushuichanchanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        buqichunyuMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        sanshengzhenhunMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        jiufenglaiyiMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
+        jinjingMeta.addAttributeModifier(Attribute.GENERIC_JUMP_STRENGTH,
+                new AttributeModifier(
+                        chongJump,
+                        -99,
+                        AttributeModifier.Operation.MULTIPLY_SCALAR_1,
+                        EquipmentSlotGroup.HAND
+                )
+        );
+
+        canlanMeta.addAttributeModifier(Attribute.GENERIC_JUMP_STRENGTH,
+                new AttributeModifier(
+                        chongJump,
+                        -99,
+                        AttributeModifier.Operation.MULTIPLY_SCALAR_1,
+                        EquipmentSlotGroup.HAND
+                )
+        );
+
+        mingyueMeta.addAttributeModifier(Attribute.GENERIC_JUMP_STRENGTH,
+                new AttributeModifier(
+                        chongJump,
+                        -99,
+                        AttributeModifier.Operation.MULTIPLY_SCALAR_1,
+                        EquipmentSlotGroup.HAND
+                )
+        );
+
+        xiaotianMeta.addAttributeModifier(Attribute.GENERIC_JUMP_STRENGTH,
+                new AttributeModifier(
+                        chongJump,
+                        -99,
+                        AttributeModifier.Operation.MULTIPLY_SCALAR_1,
+                        EquipmentSlotGroup.HAND
+                )
+        );
+
+
 
         PersistentDataContainer pdcfeiren = feirenMeta.getPersistentDataContainer();
         PersistentDataContainer pdcjinruifeiren = jinruifeirenMeta.getPersistentDataContainer();
@@ -234,7 +244,6 @@ public final class BiWeapon {
         pdcbuqichunyu.set(DataContainer.id, PersistentDataType.STRING, "buQiChunYu");
         pdcsanshengzhenhun.set(DataContainer.id, PersistentDataType.STRING, "sanShengZhenHun");
         pdcjiufenglaiyi.set(DataContainer.id, PersistentDataType.STRING, "jiuFengLaiYi");
-
 
 
         pdcfeiren.set(DataContainer.insertid, PersistentDataType.STRING, "null");
@@ -348,10 +357,15 @@ public final class BiWeapon {
                                 ComponentSet.RARE1,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("feiRen", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o精钢打造的投掷飞刃"),
+                                Component.text("§7§o轻巧锋利易于携带"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("feiRen", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[主动技·右键]§f[飞刃] §f锁定冷却: §b2s"),
+                                Component.text("§f向前方掷出一发飞刃，至多飞行§b8§f格(不可穿墙)"),
+                                Component.text("§f并对沿途中所有的目标造成§b[50%近战伤害]§f点物理伤害"),
+                                ComponentSet.MIDDLEXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -369,10 +383,15 @@ public final class BiWeapon {
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("jinRuiFeiRen", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o军中精锐的制式飞刃"),
+                                Component.text("§7§o可快速连续投掷"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("jinRuiFeiRen", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[主动技·右键]§a[飞刃] §f锁定冷却: §b2s"),
+                                Component.text("§f向前方掷出一发飞刃，至多飞行§b16§f格(不可穿墙)"),
+                                Component.text("§f并对沿途中所有的目标造成§b[50%近战伤害]§f点物理伤害"),
+                                ComponentSet.MIDDLEXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -390,10 +409,17 @@ public final class BiWeapon {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("wuShengXiuJian", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o隐藏于袖中的暗器"),
+                                Component.text("§7§o无声无息取人性命"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("wuShengXiuJian", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[主动技·右键]§9[袖箭] §f锁定冷却: §b2s"),
+                                Component.text("§f向前方射出一支毒箭，至多飞行§b20§f格(不可穿墙)"),
+                                Component.text("§f并对沿途中所有的目标造成§b[50%近战伤害]§f点物理伤害"),
+                                Component.text("§f同时会令怪物中毒§b2s§f，可以叠加中毒效果"),
+                                Component.text("§f中毒每秒对怪物造成§b[20%近战伤害]§f点法术伤害"),
+                                ComponentSet.MIDDLEXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -411,10 +437,18 @@ public final class BiWeapon {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("huiXuanTaiJi", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o经特殊淬火的回旋镖"),
+                                Component.text("§7§o可追踪敌人轨迹"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("huiXuanTaiJi", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[主动技·右键]§d[回旋] §f锁定冷却: §b2s"),
+                                Component.text("§f向前方掷出本武器，至多飞行§b20§f格(不可穿墙)"),
+                                Component.text("§f并对沿途中所有的目标造成§b[50%近战伤害]§f点物理伤害"),
+                                Component.text("§f抵达终点时，将会向玩家此时的位置飞行，至多§b40§f格"),
+                                Component.text("§f第二段飞行将对沿途中所有的目标造成§b[100%近战伤害]§f点物理伤害"),
+                                Component.text("§f并能定身怪物§b1s§f，定身时间不可叠加，每次施加刷新时间"),
+                                ComponentSet.MIDDLEXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -432,10 +466,21 @@ public final class BiWeapon {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("wuYinWuZong", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o刃锋如鬼魅般难以捕捉"),
+                                Component.text("§7§o让敌人无处可逃"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("wuYinWuZong", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[主动技·右键]§e[无影] §f锁定冷却: §b2s"),
+                                Component.text("§f向前方掷出本武器，至多飞行§b25§f格(不可穿墙)"),
+                                Component.text("§f并对沿途中所有的目标造成§b[50%近战伤害]§f点物理伤害"),
+                                Component.text("§f抵达终点时，将会停留并不断旋转割裂周围§b2§f格的怪物至多§b10s"),
+                                Component.text("§f若再次释放本技能将会使仍在旋转的本武器立刻消失"),
+                                Component.text("§f割裂效果每秒施加一次，造成§b[100%近战伤害]§f点物理伤害"),
+                                Component.text("§f同时割裂效果会让怪物重伤§b1s§f，降低§b50§f点生机"),
+                                Component.text("§f并能击碎怪物的防御力持续§b1s§f，降低§b10§f点护甲"),
+                                Component.text("§f重伤效果不可叠加，重复施加刷新持续时间，碎甲效果可叠加"),
+                                ComponentSet.MIDDLEXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -453,10 +498,12 @@ public final class BiWeapon {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("yanWangTie", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o染着血色的催命符咒"),
+                                Component.text("§7§o夺人性命于无形"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("yanWangTie", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                ComponentSet.MIDDLEXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -475,10 +522,18 @@ public final class BiWeapon {
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act2,
                                 ComponentSet.SPEED_BI,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("heiTieChong", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o粗糙的火铳"),
+                                Component.text("§7§o射程有限但威力不俗"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("heiTieChong", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[主动技·下蹲右键]§f[装填] §f锁定冷却: §b30s"),
+                                Component.text("§f为黑铁铳装填一枚法力弹，至多存储§b3§f枚"),
+                                Component.text("§f装填需要持续§b4s§f，期间若切换其它物品将中断装填"),
+                                Component.text("§6[主动技·右键]§f[重弹] §f冷却: §b无"),
+                                Component.text("§f向前方至多§b16§f格距离发射，无法穿墙，将在终点或者命中目标处爆炸"),
+                                Component.text("§f对周围§b3§f格怪物造成§b[2500%箭矢强度]§f点物理伤害"),
+                                ComponentSet.MIDDLEXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -497,10 +552,19 @@ public final class BiWeapon {
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act2,
                                 ComponentSet.SPEED_BI,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("huangTongChong", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o经过改良的火铳"),
+                                Component.text("§7§o提升了射击精度"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("huangTongChong", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[主动技·下蹲右键]§a[装填] §f锁定冷却: §b30s"),
+                                Component.text("§f为黑铁铳装填一枚法力弹，至多存储§b3§f枚"),
+                                Component.text("§f装填需要持续§b4s§f，期间若切换其它物品将中断装填"),
+                                Component.text("§6[主动技·右键]§a[烈弹] §f冷却: §b无"),
+                                Component.text("§f向前方至多§b20§f格距离发射，无法穿墙，将在终点或者命中目标处爆炸"),
+                                Component.text("§f对周围§b3§f格怪物造成§b[3000%箭矢强度]§f点物理伤害"),
+                                Component.text("§f并造成§b15%§f减速，持续§b5s"),
+                                ComponentSet.MIDDLEXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -519,10 +583,20 @@ public final class BiWeapon {
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act2,
                                 ComponentSet.SPEED_BI,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("mingYue", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o铳声清亮如明月"),
+                                Component.text("§7§o弹无虚发"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("mingYue", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[主动技·下蹲右键]§9[装填] §f锁定冷却: §b30s"),
+                                Component.text("§f为黑铁铳装填一枚法力弹，至多存储§b3§f枚"),
+                                Component.text("§f装填需要持续§b4s§f，期间若切换其它物品将中断装填"),
+                                Component.text("§6[主动技·右键]§9[明月] §f冷却: §b无"),
+                                Component.text("§f向前方至多§b24§f格距离发射，无法穿墙，将在终点或者命中目标处爆炸"),
+                                Component.text("§f对周围§b3§f格怪物造成§b[3500%箭矢强度]§f点物理伤害"),
+                                Component.text("§f若是在夜晚，则额外在命中地点召唤一道月光"),
+                                Component.text("§f对§b[2*40*2]§f的怪物造成§b[1500%箭矢强度]§f点法术伤害"),
+                                ComponentSet.MIDDLEXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -541,10 +615,21 @@ public final class BiWeapon {
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act2,
                                 ComponentSet.SPEED_BI,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("canLan", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o闪耀着灿烂光辉的神铳"),
+                                Component.text("§7§o每一发都带着致命光芒"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("canLan", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[主动技·下蹲右键]§d[装填] §f锁定冷却: §b30s"),
+                                Component.text("§f为黑铁铳装填一枚法力弹，至多存储§b3§f枚"),
+                                Component.text("§f装填需要持续§b4s§f，期间若切换其它物品将中断装填"),
+                                Component.text("§6[主动技·右键]§d[灿烂] §f冷却: §b无"),
+                                Component.text("§f向前方至多§b28§f格距离发射，无法穿墙，将在终点或者命中目标处爆炸"),
+                                Component.text("§f对周围§b3§f格怪物造成§b[4000%箭矢强度]§f点物理伤害"),
+                                Component.text("§f并在落点留下一团§b[3*3*3]§f持续§b3s§f的火焰"),
+                                Component.text("§f每秒对接触的怪物造成§b[600%箭矢强度]§f点法术伤害"),
+                                Component.text("§f并减少他们§b10§f点法抗，持续§b1.5s"),
+                                ComponentSet.MIDDLEXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -563,10 +648,25 @@ public final class BiWeapon {
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act2,
                                 ComponentSet.SPEED_BI,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("jinJing", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o纯净如明镜的宝铳"),
+                                Component.text("§7§o弹道笔直必中目标"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("jinJing", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[主动技·下蹲右键]§e[装填] §f锁定冷却: §b30s"),
+                                Component.text("§f为黑铁铳装填一枚法力弹，至多存储§b3§f枚"),
+                                Component.text("§f装填需要持续§b4s§f，期间若切换其它物品将中断装填"),
+                                Component.text("§6[主动技·右键]§e[净镜] §f冷却: §b无"),
+                                Component.text("§f向前方至多§b32§f格距离发射，无法穿墙，将在终点或者命中目标处爆炸"),
+                                Component.text("§f对周围§b3§f格怪物造成§b[4500%箭矢强度]§f点物理伤害"),
+                                Component.text("§f并对所有被攻击到的敌人附加§6[净镜]§f印记，持续§b10s"),
+                                Component.text("§f再次附加§6[净镜]§f将刷新持续时间，印记不会被不同玩家共享"),
+                                Component.text("§6[主动技·按键1(不手持本装备也可以释放)]§e[破镜] §f冷却: §b2s"),
+                                Component.text("§f破灭距离自己不超过§b32§f格的怪物的§6[净镜]§f印记"),
+                                Component.text("§f对其造成§b[1500%箭矢强度+5%已损生命值(至多1000点)]§f点法术伤害"),
+                                Component.text("§f同时减少其§b20§f点护甲持续§b3s§f，若触发时怪物生命低于最大生命§b50%§f则翻倍碎甲值"),
+                                Component.text("§f若击杀该怪物，则增加自己§b25%§f箭矢强度，持续§b5s"),
+                                ComponentSet.MIDDLEXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -585,10 +685,12 @@ public final class BiWeapon {
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act2,
                                 ComponentSet.SPEED_BI,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("xiaoTian", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o一声啸响便可震慑群敌"),
+                                Component.text("§7§o蕴含神龙之力的神铳"),
+                                ComponentSet.MIDDLESHUXIN,
+                                AttributeSet.fromId("xiaoTian", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                ComponentSet.MIDDLEXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -606,10 +708,29 @@ public final class BiWeapon {
                                 ComponentSet.RARE1,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("xiao", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o普通的竹制横笛"),
+                                Component.text("§7§o音色清雅动人"),
+                                ComponentSet.LONGSHUXIN,
+                                AttributeSet.fromId("xiao", 6),
+                                ComponentSet.LONGJINENG,
+                                Component.text("§6[被动技]§f[谱曲] §f冷却: §b无"),
+                                Component.text("§f随着你炼化元素释放阵法，箫将收集阵法的灵气谱写不同的曲子，并积攒音符"),
+                                Component.text("§f炼化普通元素积攒§b1§f音符，精炼元素积攒§b3§f音符，浓缩元素积攒§b9§f音符，至多拥有§b15§f音符"),
+                                Component.text("§6[主动技·右键]§f[奏乐] §f锁定冷却: §b30s"),
+                                Component.text("§f若前三次释放的阵法元素满足谱曲要求，则消耗所有音符奏乐"),
+                                Component.text("§b[金金金]§6[噬魂征音]§f对前方至多§b16§f格的所瞄准的单个怪物释放"),
+                                Component.text("§f造成§b[200%阵法强度*音符数]§f点伤害，若本次攻击击杀怪物，则吞噬怪物的魂魄"),
+                                Component.text("§f恢复自己§b40+10%§f最大生命，并提高§b20%§f阵法强度，持续§b5s"),
+                                Component.text("§b[金金火]§6[焚影裂曲]§f在上一次对自己造成伤害的怪物处释放，若怪物死亡则无法释放"),
+                                Component.text("§f对周围§b3§f格怪物造成§b[100%阵法强度*音符数]§f点伤害，并施加易伤效果"),
+                                Component.text("§f易伤效果会提高怪物受到的任何伤害§b20%§f，持续§b5s§f，重复施加刷新持续时间"),
+                                Component.text("§b[金金土]§6[金戈反响]§f获取金戈灵甲，持续§b10s§f，在此期间若受到物理伤害"),
+                                Component.text("§f则对攻击者造成§b[30%阵法强度*释放时音符数]§f点伤害，并减免§b[1%*释放时音符数]§f伤害"),
+                                Component.text("§b[木水土]§6[傀影灵歌]§f在原地召唤一个持续§b20s§f的傀儡"),
+                                Component.text("§f傀儡不会移动与攻击，护甲与格挡与玩家相同，生命为§b[2%玩家最大生命*音符数+100]§f"),
+                                Component.text("§f当释放者受到物理伤害时，若距离§b16§f格内存在傀儡则将本次伤害转移至傀儡，无论傀儡剩余多少血量"),
+                                Component.text("§f均能帮玩家完全转移伤害，即使傀儡仅剩一滴血也能完全帮玩家抵消一次伤害！"),
+                                ComponentSet.LONGXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -627,10 +748,32 @@ public final class BiWeapon {
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("qinFengYinYin", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o吹奏出清风拂面之感"),
+                                Component.text("§7§o音符缭绕不绝"),
+                                ComponentSet.LONGSHUXIN,
+                                AttributeSet.fromId("qinFengYinYin", 6),
+                                ComponentSet.LONGJINENG,
+                                Component.text("§6[被动技]§a[谱曲] §f冷却: §b无"),
+                                Component.text("§f随着你炼化元素释放阵法，箫将收集阵法的灵气谱写不同的曲子，并积攒音符"),
+                                Component.text("§f炼化普通元素积攒§b1§f音符，精炼元素积攒§b3§f音符，浓缩元素积攒§b9§f音符，至多拥有§b15§f音符"),
+                                Component.text("§6[主动技·右键]§a[奏乐] §f锁定冷却: §b30s"),
+                                Component.text("§f若前三次释放的阵法元素满足谱曲要求，则消耗所有音符奏乐"),
+                                Component.text("§b[金金金]§6[噬魂征音]§f对前方至多§b16§f格的所瞄准的单个怪物释放"),
+                                Component.text("§f造成§b[200%阵法强度*音符数]§f点伤害，若本次攻击击杀怪物，则吞噬怪物的魂魄"),
+                                Component.text("§f恢复自己§b40+10%§f最大生命，并提高§b20%§f阵法强度，持续§b5s"),
+                                Component.text("§b[金金火]§6[焚影裂曲]§f在上一次对自己造成伤害的怪物处释放，若怪物死亡则无法释放"),
+                                Component.text("§f对周围§b3§f格怪物造成§b[100%阵法强度*音符数]§f点伤害，并施加易伤效果"),
+                                Component.text("§f易伤效果会提高怪物受到的任何伤害§b20%§f，持续§b5s§f，重复施加刷新持续时间"),
+                                Component.text("§b[金金土]§6[金戈反响]§f获取金戈灵甲，持续§b10s§f，在此期间若受到物理伤害"),
+                                Component.text("§f则对攻击者造成§b[30%阵法强度*释放时音符数]§f点伤害，并减免§b[1%*释放时音符数]§f伤害"),
+                                Component.text("§b[木水土]§6[傀影灵歌]§f在原地召唤一个持续§b20s§f的傀儡"),
+                                Component.text("§f傀儡不会移动与攻击，护甲与格挡与玩家相同，生命为§b[2%玩家最大生命*音符数+100]§f"),
+                                Component.text("§f当释放者受到物理伤害时，若距离§b16§f格内存在傀儡则将本次伤害转移至傀儡，无论傀儡剩余多少血量"),
+                                Component.text("§f均能帮玩家完全转移伤害，即使傀儡仅剩一滴血也能完全帮玩家抵消一次伤害！"),
+                                Component.text("§b[火金土]§6[炎狱颂曲]§f在自身周围召唤岩浆喷发，留下一块§b4*1*4§f的熔岩池，持续§b5s"),
+                                Component.text("§f每秒对处于其中的怪物造成§b[20%阵法强度*释放时音符数]§f点伤害，并叠加一层§6[炎狱]"),
+                                Component.text("§6[炎狱]§f每个熔岩池独立，每一层可以提高熔岩池造成的伤害§b20%"),
+                                ComponentSet.LONGXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -648,10 +791,35 @@ public final class BiWeapon {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("liuShuiChanChan", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o笛声如溪水般清澈"),
+                                Component.text("§7§o听者神清气爽"),
+                                ComponentSet.LONGSHUXIN,
+                                AttributeSet.fromId("liuShuiChanChan", 6),
+                                ComponentSet.LONGJINENG,
+                                Component.text("§6[被动技]§9[谱曲] §f冷却: §b无"),
+                                Component.text("§f随着你炼化元素释放阵法，箫将收集阵法的灵气谱写不同的曲子，并积攒音符"),
+                                Component.text("§f炼化普通元素积攒§b1§f音符，精炼元素积攒§b3§f音符，浓缩元素积攒§b9§f音符，至多拥有§b15§f音符"),
+                                Component.text("§6[主动技·右键]§9[奏乐] §f锁定冷却: §b30s"),
+                                Component.text("§f若前三次释放的阵法元素满足谱曲要求，则消耗所有音符奏乐"),
+                                Component.text("§b[金金金]§6[噬魂征音]§f对前方至多§b16§f格的所瞄准的单个怪物释放"),
+                                Component.text("§f造成§b[200%阵法强度*音符数]§f点伤害，若本次攻击击杀怪物，则吞噬怪物的魂魄"),
+                                Component.text("§f恢复自己§b40+10%§f最大生命，并提高§b20%§f阵法强度，持续§b5s"),
+                                Component.text("§b[金金火]§6[焚影裂曲]§f在上一次对自己造成伤害的怪物处释放，若怪物死亡则无法释放"),
+                                Component.text("§f对周围§b3§f格怪物造成§b[100%阵法强度*音符数]§f点伤害，并施加易伤效果"),
+                                Component.text("§f易伤效果会提高怪物受到的任何伤害§b20%§f，持续§b5s§f，重复施加刷新持续时间"),
+                                Component.text("§b[金金土]§6[金戈反响]§f获取金戈灵甲，持续§b10s§f，在此期间若受到物理伤害"),
+                                Component.text("§f则对攻击者造成§b[30%阵法强度*释放时音符数]§f点伤害，并减免§b[1%*释放时音符数]§f伤害"),
+                                Component.text("§b[木水土]§6[傀影灵歌]§f在原地召唤一个持续§b20s§f的傀儡"),
+                                Component.text("§f傀儡不会移动与攻击，护甲与格挡与玩家相同，生命为§b[2%玩家最大生命*音符数+100]§f"),
+                                Component.text("§f当释放者受到物理伤害时，若距离§b16§f格内存在傀儡则将本次伤害转移至傀儡，无论傀儡剩余多少血量"),
+                                Component.text("§f均能帮玩家完全转移伤害，即使傀儡仅剩一滴血也能完全帮玩家抵消一次伤害！"),
+                                Component.text("§b[火金土]§6[炎狱颂曲]§f在自身周围召唤岩浆喷发，留下一块§b4*1*4§f的熔岩池，持续§b5s"),
+                                Component.text("§f每秒对处于其中的怪物造成§b[20%阵法强度*释放时音符数]§f点伤害，并叠加一层§6[炎狱]"),
+                                Component.text("§6[炎狱]§f每个熔岩池独立，每一层可以提高熔岩池造成的伤害§b20%"),
+                                Component.text("§b[金金木]§6[灵丝夺魂诀]§f对前方至多§b8§f格的所瞄准的单个怪物建立一条持续§b10s的灵魂之链"),
+                                Component.text("§f当灵魂之链存在时，每秒造成§b[20%阵法强度*音符数]§f点伤害，并恢复自己§b8+2%§f最大生命"),
+                                Component.text("§f灵魂之链会在持续时间结束或者链接双方距离超过§b16§f格时断开"),
+                                ComponentSet.LONGXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -669,10 +837,37 @@ public final class BiWeapon {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("buQiChunYu", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o曲调似春雨般绵密"),
+                                Component.text("§7§o抚慰着伤痛之人"),
+                                ComponentSet.LONGSHUXIN,
+                                AttributeSet.fromId("buQiChunYu", 6),
+                                ComponentSet.LONGJINENG,
+                                Component.text("§6[被动技]§d[谱曲] §f冷却: §b无"),
+                                Component.text("§f随着你炼化元素释放阵法，箫将收集阵法的灵气谱写不同的曲子，并积攒音符"),
+                                Component.text("§f炼化普通元素积攒§b1§f音符，精炼元素积攒§b3§f音符，浓缩元素积攒§b9§f音符，至多拥有§b15§f音符"),
+                                Component.text("§6[主动技·右键]§d[奏乐] §f锁定冷却: §b30s"),
+                                Component.text("§f若前三次释放的阵法元素满足谱曲要求，则消耗所有音符奏乐"),
+                                Component.text("§b[金金金]§6[噬魂征音]§f对前方至多§b16§f格的所瞄准的单个怪物释放"),
+                                Component.text("§f造成§b[200%阵法强度*音符数]§f点伤害，若本次攻击击杀怪物，则吞噬怪物的魂魄"),
+                                Component.text("§f恢复自己§b40+10%§f最大生命，并提高§b20%§f阵法强度，持续§b5s"),
+                                Component.text("§b[金金火]§6[焚影裂曲]§f在上一次对自己造成伤害的怪物处释放，若怪物死亡则无法释放"),
+                                Component.text("§f对周围§b3§f格怪物造成§b[100%阵法强度*音符数]§f点伤害，并施加易伤效果"),
+                                Component.text("§f易伤效果会提高怪物受到的任何伤害§b20%§f，持续§b5s§f，重复施加刷新持续时间"),
+                                Component.text("§b[金金土]§6[金戈反响]§f获取金戈灵甲，持续§b10s§f，在此期间若受到物理伤害"),
+                                Component.text("§f则对攻击者造成§b[30%阵法强度*释放时音符数]§f点伤害，并减免§b[1%*释放时音符数]§f伤害"),
+                                Component.text("§b[木水土]§6[傀影灵歌]§f在原地召唤一个持续§b20s§f的傀儡"),
+                                Component.text("§f傀儡不会移动与攻击，护甲与格挡与玩家相同，生命为§b[2%玩家最大生命*音符数+100]§f"),
+                                Component.text("§f当释放者受到物理伤害时，若距离§b16§f格内存在傀儡则将本次伤害转移至傀儡，无论傀儡剩余多少血量"),
+                                Component.text("§f均能帮玩家完全转移伤害，即使傀儡仅剩一滴血也能完全帮玩家抵消一次伤害！"),
+                                Component.text("§b[火金土]§6[炎狱颂曲]§f在自身周围召唤岩浆喷发，留下一块§b4*1*4§f的熔岩池，持续§b5s"),
+                                Component.text("§f每秒对处于其中的怪物造成§b[20%阵法强度*释放时音符数]§f点伤害，并叠加一层§6[炎狱]"),
+                                Component.text("§6[炎狱]§f每个熔岩池独立，每一层可以提高熔岩池造成的伤害§b20%"),
+                                Component.text("§b[金金木]§6[灵丝夺魂诀]§f对前方至多§b8§f格的所瞄准的单个怪物建立一条持续§b10s的灵魂之链"),
+                                Component.text("§f当灵魂之链存在时，每秒造成§b[20%阵法强度*音符数]§f点伤害，并恢复自己§b8+2%§f最大生命"),
+                                Component.text("§f灵魂之链会在持续时间结束或者链接双方距离超过§b16§f格时断开"),
+                                Component.text("§b[金金水]§6[凝露若水吟]§f进入§6[若水]状态持续§b3s§f，在这期间每§b0.3s§f向前方射出不可穿墙的水珠"),
+                                Component.text("§f水珠至多飞行§b8§f格，对沿途的所有怪物造成§b[20%阵法强度*音符数]§f点伤害"),
+                                ComponentSet.LONGXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -690,10 +885,40 @@ public final class BiWeapon {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("sanShengZhenHun", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o三生石上的镇魂曲"),
+                                Component.text("§7§o可平息一切躁动"),
+                                ComponentSet.LONGSHUXIN,
+                                AttributeSet.fromId("sanShengZhenHun", 6),
+                                ComponentSet.LONGJINENG,
+                                Component.text("§6[被动技]§e[谱曲] §f冷却: §b无"),
+                                Component.text("§f随着你炼化元素释放阵法，箫将收集阵法的灵气谱写不同的曲子，并积攒音符"),
+                                Component.text("§f炼化普通元素积攒§b1§f音符，精炼元素积攒§b3§f音符，浓缩元素积攒§b9§f音符，至多拥有§b15§f音符"),
+                                Component.text("§6[主动技·右键]§e[奏乐] §f锁定冷却: §b30s"),
+                                Component.text("§f若前三次释放的阵法元素满足谱曲要求，则消耗所有音符奏乐"),
+                                Component.text("§b[金金金]§6[噬魂征音]§f对前方至多§b16§f格的所瞄准的单个怪物释放"),
+                                Component.text("§f造成§b[200%阵法强度*音符数]§f点伤害，若本次攻击击杀怪物，则吞噬怪物的魂魄"),
+                                Component.text("§f恢复自己§b40+10%§f最大生命，并提高§b20%§f阵法强度，持续§b5s"),
+                                Component.text("§b[金金火]§6[焚影裂曲]§f在上一次对自己造成伤害的怪物处释放，若怪物死亡则无法释放"),
+                                Component.text("§f对周围§b3§f格怪物造成§b[100%阵法强度*音符数]§f点伤害，并施加易伤效果"),
+                                Component.text("§f易伤效果会提高怪物受到的任何伤害§b20%§f，持续§b5s§f，重复施加刷新持续时间"),
+                                Component.text("§b[金金土]§6[金戈反响]§f获取金戈灵甲，持续§b10s§f，在此期间若受到物理伤害"),
+                                Component.text("§f则对攻击者造成§b[30%阵法强度*释放时音符数]§f点伤害，并减免§b[1%*释放时音符数]§f伤害"),
+                                Component.text("§b[木水土]§6[傀影灵歌]§f在原地召唤一个持续§b20s§f的傀儡"),
+                                Component.text("§f傀儡不会移动与攻击，护甲与格挡与玩家相同，生命为§b[2%玩家最大生命*音符数+100]§f"),
+                                Component.text("§f当释放者受到物理伤害时，若距离§b16§f格内存在傀儡则将本次伤害转移至傀儡，无论傀儡剩余多少血量"),
+                                Component.text("§f均能帮玩家完全转移伤害，即使傀儡仅剩一滴血也能完全帮玩家抵消一次伤害！"),
+                                Component.text("§b[火金土]§6[炎狱颂曲]§f在自身周围召唤岩浆喷发，留下一块§b4*1*4§f的熔岩池，持续§b5s"),
+                                Component.text("§f每秒对处于其中的怪物造成§b[20%阵法强度*释放时音符数]§f点伤害，并叠加一层§6[炎狱]"),
+                                Component.text("§6[炎狱]§f每个熔岩池独立，每一层可以提高熔岩池造成的伤害§b20%"),
+                                Component.text("§b[金金木]§6[灵丝夺魂诀]§f对前方至多§b8§f格的所瞄准的单个怪物建立一条持续§b10s§f的灵魂之链"),
+                                Component.text("§f当灵魂之链存在时，每秒造成§b[20%阵法强度*音符数]§f点伤害，并恢复自己§b8+2%§f最大生命"),
+                                Component.text("§f灵魂之链会在持续时间结束或者链接双方距离超过§b16§f格时断开"),
+                                Component.text("§b[金金水]§6[凝露若水吟]§f进入§6[若水]§f状态持续§b3s§f，在这期间每§b0.3s§f向前方射出不可穿墙的水珠"),
+                                Component.text("§f水珠至多飞行§b8§f格，对沿途的所有怪物造成§b[20%阵法强度*音符数]§f点伤害"),
+                                Component.text("§b[金木火]§6[烬火灭世律]§f在自身周围燃起熊熊大火，对周围§b8§f格的怪物造成§b[50%阵法强度*音符数]§f点伤害"),
+                                Component.text("§f同时令他们进入§6[灰烬]§f状态持续§b5s§f，期间受到物理伤害时，会额外造成§b[10%释放时阵法强度*音符数]§f点伤害"),
+                                Component.text("§f并额外减少§b30§f点生机，持续§b1s§f，此效果每§b1s§f至多触发一次"),
+                                ComponentSet.LONGXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -711,10 +936,12 @@ public final class BiWeapon {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act2,
-                                ComponentSet.SHORTSHUXIN,
-                                AttributeSet.fromId("jiuFengLaiYi", 2),
-                                ComponentSet.SHORTJINENG,
-                                ComponentSet.SHORTXIANGQIAN,
+                                Component.text("§7§o九只凤凰齐鸣的神曲"),
+                                Component.text("§7§o听者心旷神怡"),
+                                ComponentSet.LONGSHUXIN,
+                                AttributeSet.fromId("jiuFengLaiYi", 6),
+                                ComponentSet.LONGJINENG,
+                                ComponentSet.LONGXIANGQIAN,
                                 ComponentSet.XIANGQIAN
                         )
                         .flatMap(obj -> {
@@ -749,7 +976,7 @@ public final class BiWeapon {
 
     }
 
-    public static void putId(){
+    public static void putId() {
         Recipe.idToItem.put("feiRen", FEIREN);
         Recipe.idToItem.put("jinRuiFeiRen", JINRUIFEIREN);
         Recipe.idToItem.put("wuShengXiuJian", WUSHENGXIUJIAN);

@@ -1,11 +1,9 @@
 package com.xiaoxiaoowo.yuehua.items.dz;
 
-import com.xiaoxiaoowo.yuehua.guis.Recipe;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
-import net.kyori.adventure.text.format.Style;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -656,7 +654,7 @@ public final class YuShi {
         );
         houtushi1.lore(
                 List.of(ComponentSet.RARE1,
-                        Component.text("§f格挡 +§b2.5"),
+                        Component.text("§f格挡 +§b4"),
                         Component.text("可镶嵌于护甲").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
@@ -668,7 +666,7 @@ public final class YuShi {
         );
         houtushi2.lore(
                 List.of(ComponentSet.RARE2,
-                        Component.text("§f格挡 +§b5"),
+                        Component.text("§f格挡 +§b6"),
                         Component.text("可镶嵌于护甲").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
@@ -680,7 +678,7 @@ public final class YuShi {
         );
         houtushi3.lore(
                 List.of(ComponentSet.RARE3,
-                        Component.text("§f格挡 +§b7.5"),
+                        Component.text("§f格挡 +§b9"),
                         Component.text("可镶嵌于护甲").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
@@ -692,7 +690,7 @@ public final class YuShi {
         );
         houtushi4.lore(
                 List.of(ComponentSet.RARE4,
-                        Component.text("§f格挡 +§b10"),
+                        Component.text("§f格挡 +§b13.5"),
                         Component.text("可镶嵌于护甲").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
@@ -704,7 +702,7 @@ public final class YuShi {
         );
         houtushi5.lore(
                 List.of(ComponentSet.RARE5,
-                        Component.text("§f格挡 +§b12.5"),
+                        Component.text("§f格挡 +§b20.5"),
                         Component.text("可镶嵌于护甲").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
@@ -716,7 +714,7 @@ public final class YuShi {
         );
         houtushi6.lore(
                 List.of(ComponentSet.RARE6,
-                        Component.text("§f格挡 +§b15"),
+                        Component.text("§f格挡 +§b41"),
                         Component.text("可镶嵌于护甲").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
@@ -728,7 +726,7 @@ public final class YuShi {
         );
         houtushi7.lore(
                 List.of(ComponentSet.RARE7,
-                        Component.text("§f格挡 +§b17.5"),
+                        Component.text("§f格挡 +§b82"),
                         Component.text("可镶嵌于护甲").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
@@ -740,7 +738,7 @@ public final class YuShi {
         );
         houtushi8.lore(
                 List.of(ComponentSet.RARE8,
-                        Component.text("§f格挡 +§b20"),
+                        Component.text("§f格挡 +§b164"),
                         Component.text("可镶嵌于护甲").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
@@ -944,7 +942,7 @@ public final class YuShi {
         );
         hongyueshi1.lore(
                 List.of(ComponentSet.RARE1,
-                        Component.text("§f暴击效果 +§b1"),
+                        Component.text("§f暴击效果 +§b10"),
                         Component.text("可镶嵌于主副武器").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
@@ -956,7 +954,7 @@ public final class YuShi {
         );
         hongyueshi2.lore(
                 List.of(ComponentSet.RARE2,
-                        Component.text("§f暴击效果 +§b2"),
+                        Component.text("§f暴击效果 +§b20"),
                         Component.text("可镶嵌于主副武器").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
@@ -968,7 +966,7 @@ public final class YuShi {
         );
         hongyueshi3.lore(
                 List.of(ComponentSet.RARE3,
-                        Component.text("§f暴击效果 +§b4"),
+                        Component.text("§f暴击效果 +§b30"),
                         Component.text("可镶嵌于主副武器").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
@@ -980,7 +978,7 @@ public final class YuShi {
         );
         hongyueshi4.lore(
                 List.of(ComponentSet.RARE4,
-                        Component.text("§f暴击效果 +§b8"),
+                        Component.text("§f暴击效果 +§b40"),
                         Component.text("可镶嵌于主副武器").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
@@ -992,7 +990,7 @@ public final class YuShi {
         );
         hongyueshi5.lore(
                 List.of(ComponentSet.RARE5,
-                        Component.text("§f暴击效果 +§b16"),
+                        Component.text("§f暴击效果 +§b50"),
                         Component.text("可镶嵌于主副武器").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
@@ -1004,7 +1002,7 @@ public final class YuShi {
         );
         hongyueshi6.lore(
                 List.of(ComponentSet.RARE6,
-                        Component.text("§f暴击效果 +§b32"),
+                        Component.text("§f暴击效果 +§b60"),
                         Component.text("可镶嵌于主副武器").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
@@ -1016,7 +1014,7 @@ public final class YuShi {
         );
         hongyueshi7.lore(
                 List.of(ComponentSet.RARE7,
-                        Component.text("§f暴击效果 +§b64"),
+                        Component.text("§f暴击效果 +§b70"),
                         Component.text("可镶嵌于主副武器").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
@@ -1028,7 +1026,7 @@ public final class YuShi {
         );
         hongyueshi8.lore(
                 List.of(ComponentSet.RARE8,
-                        Component.text("§f暴击效果 +§b128"),
+                        Component.text("§f暴击效果 +§b80"),
                         Component.text("可镶嵌于主副武器").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
@@ -1750,7 +1748,6 @@ public final class YuShi {
         SUI_YAN_SHI6.setItemMeta(suiyanshi6);
         SUI_YAN_SHI7.setItemMeta(suiyanshi7);
         SUI_YAN_SHI8.setItemMeta(suiyanshi8);
-
 
 
     }

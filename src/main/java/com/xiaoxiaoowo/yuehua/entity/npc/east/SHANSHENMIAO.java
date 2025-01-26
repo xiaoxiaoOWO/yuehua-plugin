@@ -3,12 +3,15 @@ package com.xiaoxiaoowo.yuehua.entity.npc.east;
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.items.PINZHENG;
 import com.xiaoxiaoowo.yuehua.items.dz.*;
-import com.xiaoxiaoowo.yuehua.items.other.*;
+import com.xiaoxiaoowo.yuehua.items.other.Collection;
+import com.xiaoxiaoowo.yuehua.items.other.Food;
+import com.xiaoxiaoowo.yuehua.items.other.Other;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Villager;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MerchantRecipe;
@@ -17,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class SHANSHENMIAO {
+public final class SHANSHENMIAO {
     public static void spawn() {
         Location location = new Location(GetEntity.world, 837.5, 40, 110.5, 90, 0);
         Villager villager = GetEntity.world.spawn(location, Villager.class, false, it -> {
@@ -79,7 +82,7 @@ public class SHANSHENMIAO {
 
 
             gongpin.setAmount(25);
-            MerchantRecipe recipe2 = new MerchantRecipe(TehuaShui.fangju2 ,-2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            MerchantRecipe recipe2 = new MerchantRecipe(TehuaShui.fangju2, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe2.addIngredient(gongpin);
             it.setRecipe(2, recipe2);
 
@@ -117,6 +120,24 @@ public class SHANSHENMIAO {
             recipe8.addIngredient(gongpin);
             it.setRecipe(8, recipe8);
 
+            ItemStack buyItem = new ItemStack(Material.LIME_DYE, 1);
+            buyItem.editMeta(meta -> {
+                meta.displayName(Component.translatable("§b山神庙庙公"));
+                meta.lore(List.of(Component.translatable("§7§o最近森林里的动物和怪物都越来越可怕了.虽然每次他们暴动的时候我都躲起来,但是原本要供奉给山神的供品却全部都被他们抢走了")));
+            });
+
+            ItemStack sellItem = new ItemStack(Material.LIME_DYE, 1);
+            sellItem.editMeta(meta -> {
+                meta.displayName(Component.translatable("§b山神庙庙公"));
+                meta.lore(List.of(Component.translatable("§7§o可不可以请你帮我把供品抢回来呢？我可以用这座森林里的一些特产和你交换")));
+            });
+
+            MerchantRecipe firstRecipe = new MerchantRecipe(sellItem, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            firstRecipe.addIngredient(buyItem);
+
+            List<MerchantRecipe> recipes = new ArrayList<>(it.getRecipes());
+            recipes.addFirst(firstRecipe);
+            it.setRecipes(recipes);
 
 
         });

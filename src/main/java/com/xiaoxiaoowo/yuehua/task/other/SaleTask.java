@@ -5,6 +5,7 @@ import com.xiaoxiaoowo.yuehua.commands.playercommand.Buy;
 import com.xiaoxiaoowo.yuehua.commands.playercommand.Sale;
 import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import com.xiaoxiaoowo.yuehua.utils.AdvancementSet;
 import com.xiaoxiaoowo.yuehua.utils.PlaySound;
 import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import com.xiaoxiaoowo.yuehua.utils.SendInformation;
@@ -23,7 +24,7 @@ public final class SaleTask extends BukkitRunnable {
     public int count;
 
     public SaleTask(String name, String itemName, int count) {
-        num = 17;
+        num = 2;
         this.name = name;
         this.itemName = itemName;
         this.count = count;
@@ -81,10 +82,13 @@ public final class SaleTask extends BukkitRunnable {
                                                 .append(Component.text("§6[拍卖系统]§a最终出价为：§b" + Buy.priceNow))
                                 );
 
-                                Scheduler.sync(() ->{
-                                    PlaySound.saleFinish(Buy.buyerNow);
-                                    PlaySound.saleFinish(Sale.saler);
-                                });
+
+
+                                AdvancementSet.giveAdv(Buy.buyerNow,AdvancementSet.sale,30);
+                                AdvancementSet.giveAdv(Sale.saler,AdvancementSet.sale,30);
+
+                                PlaySound.saleFinish(Buy.buyerNow);
+                                PlaySound.saleFinish(Sale.saler);
 
                             } else {
                                 SendInformation.broadcastMes(
@@ -113,14 +117,14 @@ public final class SaleTask extends BukkitRunnable {
                         Component.text("§6[拍卖系统]§a玩家§b" + name + "§a的物品：§b" + itemName).append(Component.text("§b*" + count)).appendNewline()
                                 .append(Component.text("§6[拍卖系统]§a当前购买者为：§b无")).appendNewline()
                                 .append(Component.text("§6[拍卖系统]§a当前出价为：§b无§a(起拍价:§b" + Sale.price + "§a)")).appendNewline()
-                                .append(Component.text("§6[拍卖系统]§a剩余时间为：§b" + (num * 10) + "s"))
+                                .append(Component.text("§6[拍卖系统]§a剩余时间为：§b" + (num * 20) + "s"))
                 );
             } else {
                 SendInformation.broadcastMes(
                         Component.text("§6[拍卖系统]§a玩家§b" + name + "§a的物品：§b" + itemName).append(Component.text("§b*" + count)).appendNewline()
                                 .append(Component.text("§6[拍卖系统]§a当前购买者为：§b" + Buy.buyerNow.getName())).appendNewline()
                                 .append(Component.text("§6[拍卖系统]§a当前出价为：§b" + Buy.priceNow)).appendNewline()
-                                .append(Component.text("§6[拍卖系统]§a剩余时间为：§b" + (num * 10) + "s"))
+                                .append(Component.text("§6[拍卖系统]§a剩余时间为：§b" + (num * 20) + "s"))
                 );
             }
             num--;

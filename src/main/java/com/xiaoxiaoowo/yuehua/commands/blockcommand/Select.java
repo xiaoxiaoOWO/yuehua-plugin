@@ -4,6 +4,7 @@ import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.system.Team;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
+import com.xiaoxiaoowo.yuehua.utils.PlaySound;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Location;
 import org.bukkit.command.BlockCommandSender;
@@ -70,21 +71,26 @@ public final class Select implements CommandExecutor {
                     //初始化
                     case "shen" -> {
                         persistentDataContainer.set(DataContainer.race, PersistentDataType.INTEGER, 1);
+                        PlaySound.storyshen(player);
                     }
                     case "xian" -> {
                         persistentDataContainer.set(DataContainer.race, PersistentDataType.INTEGER, 2);
+                        PlaySound.storyxian(player);
 
                     }
                     case "ren" -> {
                         persistentDataContainer.set(DataContainer.race, PersistentDataType.INTEGER, 3);
+                        PlaySound.storyren(player);
 
                     }
                     case "yao" -> {
                         persistentDataContainer.set(DataContainer.race, PersistentDataType.INTEGER, 4);
+                        PlaySound.storyyao(player);
 
                     }
                     case "zhan" -> {
                         persistentDataContainer.set(DataContainer.race, PersistentDataType.INTEGER, 5);
+                        PlaySound.storyzhan(player);
                     }
                 }
                 player.teleportAsync(TP);
@@ -93,7 +99,9 @@ public final class Select implements CommandExecutor {
             case "job" -> {
                 switch (args[1]) {
 
-                    case "zhan" -> persistentDataContainer.set(DataContainer.job, PersistentDataType.INTEGER, 1);
+                    case "zhan" -> {
+                        persistentDataContainer.set(DataContainer.job, PersistentDataType.INTEGER, 1);
+                    }
 
                     case "gong" -> {
                         persistentDataContainer.set(DataContainer.job, PersistentDataType.INTEGER, 2);

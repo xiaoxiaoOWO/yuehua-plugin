@@ -7,6 +7,7 @@ import com.xiaoxiaoowo.yuehua.data.GongData;
 import com.xiaoxiaoowo.yuehua.data.MonsterData;
 import com.xiaoxiaoowo.yuehua.data.slot.special.BeiDouMieShen;
 import com.xiaoxiaoowo.yuehua.display.utils.DisPlayUtils;
+import com.xiaoxiaoowo.yuehua.display.utils.ParticleUtils;
 import com.xiaoxiaoowo.yuehua.items.Skill;
 import com.xiaoxiaoowo.yuehua.jineng.gong.weapon.juji.BeiDouMieShenGong;
 import com.xiaoxiaoowo.yuehua.jineng.gong.weapon.juji.QinTongGong;
@@ -20,9 +21,9 @@ import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import com.xiaoxiaoowo.yuehua.utils.SendInformation;
 import net.kyori.adventure.text.Component;
-import org.bukkit.Location;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.ItemDisplay;
 import org.bukkit.entity.Mob;
@@ -41,6 +42,10 @@ public final class DoPlayerProjectileObserver {
     private static final World world = GetEntity.world;
     public static final PotionEffect TIANQIONG = new PotionEffect(PotionEffectType.SPEED, 20 * 5, 2);
     public static final PotionEffect SHETIAN = new PotionEffect(PotionEffectType.SPEED, 20 * 9, 4);
+
+    public static final Particle.DustOptions whiteDust = new Particle.DustOptions(Color.WHITE, 2);
+
+    public static final BlockData iron = Bukkit.createBlockData(Material.IRON_BLOCK);
 
     public static void doProjectile(String id, GongData data, Mob monster) {
         switch (id) {
@@ -73,11 +78,13 @@ public final class DoPlayerProjectileObserver {
     public static void doFuRong(Player player) {
         double amount = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.2 + 10;
         Cure.curePlayer(amount, player);
+        ParticleUtils.atPlayer(player, Particle.CLOUD);
     }
 
     public static void doSheTian(Player player) {
         double amount = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.2 + 270;
         Cure.curePlayer(amount, player);
+        ParticleUtils.atPlayer(player, Particle.CLOUD);
 
         Data data = Yuehua.playerData.get(player.getUniqueId());
         Map<String, Object> extraData = data.extraData;
@@ -197,6 +204,7 @@ public final class DoPlayerProjectileObserver {
     public static void doTianQiong(Player player) {
         double amount = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.2 + 90;
         Cure.curePlayer(amount, player);
+        ParticleUtils.atPlayer(player, Particle.CLOUD);
         Data data = Yuehua.playerData.get(player.getUniqueId());
         SendInformation.sendMes(player, Component.text("§6[天琼强化]"));
 
@@ -298,12 +306,14 @@ public final class DoPlayerProjectileObserver {
         }
 
         Cure.curePlayer(amount, player);
+        ParticleUtils.atPlayer(player, Particle.CLOUD);
     }
 
     public static void doTengMuGong(GongData data, Mob mob) {
         double damage = data.arrow * 12;
         MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
         Damage.damageMonster(data, damage, monsterData);
+        ParticleUtils.atMonsterDust(mob, whiteDust);
         Buff.jianSu(monsterData, 5 * 20, 0);
     }
 
@@ -311,6 +321,7 @@ public final class DoPlayerProjectileObserver {
         double damage = data.arrow * 15;
         MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
         Damage.damageMonster(data, damage, monsterData);
+        ParticleUtils.atMonsterDust(mob, whiteDust);
         Buff.deHujia(monsterData, 5 * 20, 0.2, QinTongGong.id);
     }
 
@@ -318,6 +329,7 @@ public final class DoPlayerProjectileObserver {
         double damage = data.arrow * 18;
         MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
         Damage.damageMonster(data, damage, monsterData);
+        ParticleUtils.atMonster(mob, Particle.FLAME);
         Set<String> tags = mob.getScoreboardTags();
         if (tags.contains(YanTieGong.id)) {
             double damage2 = mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.4;
@@ -332,6 +344,7 @@ public final class DoPlayerProjectileObserver {
         double damage = data.arrow * 21;
         MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
         Damage.damageMonster(data, damage, monsterData);
+        ParticleUtils.atMonsterDust(mob, whiteDust);
         doZhongChui(data, mob.getLocation().add(0, -1, 0));
     }
 
@@ -358,6 +371,7 @@ public final class DoPlayerProjectileObserver {
             for (Entity entity : GetEntity.getMonsters(endLoc, 5, 5, 5)) {
                 MonsterData monsterData = Yuehua.monsterData.get(entity.getUniqueId());
                 Damage.damageMonster(data, damage, monsterData);
+                ParticleUtils.atMonsterBlock(monsterData.monster, iron);
                 Buff.deHujia(monsterData, 5 * 20, 0.2);
                 Buff.xuanYun(monsterData, 2 * 20);
             }
@@ -369,6 +383,7 @@ public final class DoPlayerProjectileObserver {
         double damage = gongData.arrow * 24;
         MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
         Damage.damageMonster(gongData, damage, monsterData);
+        ParticleUtils.atMonsterDust(mob, whiteDust);
 
         Set<String> tags = mob.getScoreboardTags();
 
@@ -379,6 +394,7 @@ public final class DoPlayerProjectileObserver {
             double lostHp = maxHp - hp;
             double damage2 = Math.min(10000, 0.4 * lostHp);
             Damage.damageMonster(gongData, damage2, monsterData);
+            ParticleUtils.atMonster(mob, Particle.SOUL);
 
         } else {
             tags.add("mieshen");
@@ -392,6 +408,7 @@ public final class DoPlayerProjectileObserver {
                         double lostHp = maxHp - hp;
                         double damage2 = Math.min(10000, 0.4 * lostHp);
                         Damage.damageMonster(gongData, damage2, monsterData);
+                        ParticleUtils.atMonster(mob, Particle.SOUL);
                         tags.remove("mieshen");
                     }
                 }
@@ -405,6 +422,11 @@ public final class DoPlayerProjectileObserver {
         if (!gongData.slot0.id.equals(BeiDouMieShenGong.id)) {
             return;
         }
+        for (Entity entity : GetEntity.getMonsters(location, 8, 8, 8)) {
+            MonsterData monsterData = Yuehua.monsterData.get(entity.getUniqueId());
+            Damage.damageMonster(gongData, 6 * gongData.arrow, monsterData);
+        }
+
 
         location.setPitch(0);
         location.setYaw(gongData.player.getEyeLocation().getYaw());

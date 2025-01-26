@@ -9,6 +9,7 @@ import com.xiaoxiaoowo.yuehua.items.zhuangbei.ArmorChest;
 import com.xiaoxiaoowo.yuehua.items.zhuangbei.ArmorFeet;
 import com.xiaoxiaoowo.yuehua.items.zhuangbei.ArmorHead;
 import com.xiaoxiaoowo.yuehua.items.zhuangbei.ArmorLeg;
+import com.xiaoxiaoowo.yuehua.items.zhuangbei.BiWeapon;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -54,6 +55,14 @@ public final class TIEJIANGPU {
             recipeDefault6.addIngredient(Other.ARROW);
             MerchantRecipe recipeDefault7 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipeDefault7.addIngredient(Other.ARROW);
+            MerchantRecipe recipeDefault8 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault8.addIngredient(Other.ARROW);
+            MerchantRecipe recipeDefault9 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault9.addIngredient(Other.ARROW);
+            MerchantRecipe recipeDefault10 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault10.addIngredient(Other.ARROW);
+            MerchantRecipe recipeDefault11 = new MerchantRecipe(Other.ARROW, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipeDefault11.addIngredient(Other.ARROW);
 
             recipesDefault.add(recipeDefault1);
             recipesDefault.add(recipeDefault2);
@@ -62,6 +71,10 @@ public final class TIEJIANGPU {
             recipesDefault.add(recipeDefault5);
             recipesDefault.add(recipeDefault6);
             recipesDefault.add(recipeDefault7);
+            recipesDefault.add(recipeDefault8);
+            recipesDefault.add(recipeDefault9);
+            recipesDefault.add(recipeDefault10);
+            recipesDefault.add(recipeDefault11);
             it.setRecipes(recipesDefault);
 
             ItemStack npcPaoPao = Other.NPC_PAOPAO;
@@ -95,6 +108,25 @@ public final class TIEJIANGPU {
             MerchantRecipe recipe6 = new MerchantRecipe(Weapon.TENG_MU_GONG, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
             recipe6.addIngredient(tongqian);
             it.setRecipe(6,recipe6);
+
+            MerchantRecipe recipe7 = new MerchantRecipe(Weapon.HEI_TIE_GUO, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe7.addIngredient(tongqian);
+            it.setRecipe(7,recipe7);
+
+            ItemStack jinyuanbao = Money.yinPiao.clone();
+            jinyuanbao.setAmount(1);
+
+            MerchantRecipe recipe8 = new MerchantRecipe(BiWeapon.FEIREN, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe8.addIngredient(jinyuanbao);
+            it.setRecipe(8,recipe8);
+
+            MerchantRecipe recipe9 = new MerchantRecipe(BiWeapon.HEITIECHONG, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe9.addIngredient(jinyuanbao);
+            it.setRecipe(9,recipe9);
+
+            MerchantRecipe recipe10 = new MerchantRecipe(BiWeapon.XIAO, -2147483648, 2147483647, false, 0, 0, 0, 0, true);
+            recipe10.addIngredient(jinyuanbao);
+            it.setRecipe(10,recipe10);
 
         });
         //村民外观

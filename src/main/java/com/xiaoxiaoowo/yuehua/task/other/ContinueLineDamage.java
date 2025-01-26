@@ -1,6 +1,8 @@
 package com.xiaoxiaoowo.yuehua.task.other;
 
+import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.Data;
+import com.xiaoxiaoowo.yuehua.data.MonsterData;
 import com.xiaoxiaoowo.yuehua.system.Damage;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import org.bukkit.entity.Mob;
@@ -36,7 +38,8 @@ public final class ContinueLineDamage extends BukkitRunnable {
         }
 
         for (Mob mob : GetEntity.getLineMonster(start, end)) {
-            Damage.damageMonster(data, damage, mob);
+            MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
+            Damage.damageMonster(data, damage, monsterData);
         }
 
         num--;

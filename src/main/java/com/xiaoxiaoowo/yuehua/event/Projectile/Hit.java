@@ -8,10 +8,7 @@ import com.xiaoxiaoowo.yuehua.system.handleObsevers.DoPlayerProjectileObserver;
 import com.xiaoxiaoowo.yuehua.system.handlePets.DoPetAttack;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Projectile;
+import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
@@ -25,12 +22,15 @@ public final class Hit implements Listener {
     @EventHandler
     public void onHit(ProjectileHitEvent e) {
         Entity shooted = e.getHitEntity();
+        Projectile projectile = e.getEntity();
+        EntityType type = projectile.getType();
+        if (type == EntityType.POTION || type == EntityType.FIREWORK_ROCKET || type == EntityType.SNOWBALL) {
+            return;
+        }
+
+
         if (shooted != null) {
             //击中实体
-            Projectile projectile = e.getEntity();
-            if (projectile.getType() == EntityType.POTION) {
-                return;
-            }
             Entity shooter = (Entity) projectile.getShooter();
             if (shooter == null) {
                 //灵箭
@@ -61,9 +61,9 @@ public final class Hit implements Listener {
             }
             return;
         }
+
         //击中方块
         Block block = e.getHitBlock();
-        Projectile projectile = e.getEntity();
         Entity shooter = (Entity) projectile.getShooter();
         if (shooter == null) {
             //灵箭

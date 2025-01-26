@@ -2,11 +2,13 @@ package com.xiaoxiaoowo.yuehua.data;
 
 import com.xiaoxiaoowo.yuehua.data.slot.SlotBuilder;
 import com.xiaoxiaoowo.yuehua.data.slot.SlotWithOneActiveSkill;
-import com.xiaoxiaoowo.yuehua.guis.DuanZao;
+import com.xiaoxiaoowo.yuehua.guis.dz.DuanZao;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.system.Init;
+import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import com.xiaoxiaoowo.yuehua.utils.Transfer;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -67,6 +69,8 @@ public final class DanData extends Data {
         cd_shui = pck.get(DataContainer.shuiCd, PersistentDataType.LONG) + 20 * 10L;
         cd_huo = pck.get(DataContainer.huoCd, PersistentDataType.LONG) + 20 * 10L;
         cd_tu = pck.get(DataContainer.tuCd, PersistentDataType.LONG) + 20 * 10L;
+
+        Scheduler.sync(() -> player.setCooldown(Material.SPLASH_POTION, 100));
 
         zhenfa_add = 0.0;
         zhenfa_mul = 1.0;

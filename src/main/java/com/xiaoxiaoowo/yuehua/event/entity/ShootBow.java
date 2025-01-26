@@ -5,14 +5,16 @@ import com.xiaoxiaoowo.yuehua.data.GongData;
 import com.xiaoxiaoowo.yuehua.data.MonsterData;
 import com.xiaoxiaoowo.yuehua.data.PetData;
 import com.xiaoxiaoowo.yuehua.data.slot.SlotWithOneActiveSkill;
-import com.xiaoxiaoowo.yuehua.data.slot.SlotWithTwoActiveSkill;
+import com.xiaoxiaoowo.yuehua.display.utils.ParticleUtils;
 import com.xiaoxiaoowo.yuehua.items.other.Other;
 import com.xiaoxiaoowo.yuehua.jineng.DoJiNeng;
 import com.xiaoxiaoowo.yuehua.system.handleMonsters.DoMonsterShoot;
 import com.xiaoxiaoowo.yuehua.system.handlePets.DoPetShoot;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import com.xiaoxiaoowo.yuehua.utils.SendInformation;
+import io.papermc.paper.event.player.AsyncChatEvent;
 import net.kyori.adventure.text.Component;
+import org.bukkit.Particle;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -20,8 +22,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityShootBowEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 
@@ -75,6 +79,7 @@ public final class ShootBow implements Listener {
             }
 
 
+
             //箭的速度
             Vector speed = arrowEntity.getVelocity();
             Vector direction = speed.clone().normalize();
@@ -98,6 +103,10 @@ public final class ShootBow implements Listener {
                 arrowEntity.setVelocity(speed.multiply(speedMultiplier));
                 arrowEntity.addScoreboardTag("fullforce");
             }
+
+
+            doArrowParticle(arrowEntity, data.shootWithParticle);
+
 
 
             if (!data.canJiNeng) {
@@ -140,6 +149,47 @@ public final class ShootBow implements Listener {
             MonsterData monsterData = Yuehua.monsterData.get(livingEntity.getUniqueId());
             for (String id : monsterData.shootObservers) {
                 DoMonsterShoot.doShoot(id, monsterData, (Arrow) e.getProjectile());
+            }
+        }
+    }
+
+    public static void doArrowParticle(Arrow arrow, String id) {
+        switch (id) {
+            case "heiTieNu" -> new BukkitRunnable() {
+                @Override
+                public void run() {
+                    if(arrow.isDead()){
+                        this.cancel();
+                        return;
+                    }
+                    ParticleUtils.onePoint(arrow.getLocation(), Particle.END_ROD,0,0,0,100);
+                }
+            }.runTaskTimerAsynchronously(Yuehua.instance,0,2);
+
+            case "hongLinNu" -> new BukkitRunnable() {
+                @Override
+                public void run() {
+                    if(arrow.isDead()){
+                        this.cancel();
+                        return;
+                    }
+                    ParticleUtils.onePoint(arrow.getLocation(), Particle.FLAME,0,0,0,100);
+                }
+            }.runTaskTimerAsynchronously(Yuehua.instance,0,2);
+
+            case "jiaoLongNu" -> new BukkitRunnable() {
+                @Override
+                public void run() {
+                    if(arrow.isDead()){
+                        this.cancel();
+                        return;
+                    }
+                    ParticleUtils.onePoint(arrow.getLocation(), Particle.RAIN,0,0,0,100);
+                }
+            }.runTaskTimerAsynchronously(Yuehua.instance,0,2);
+
+            case null, default -> {
+
             }
         }
     }

@@ -12,10 +12,8 @@ import com.xiaoxiaoowo.yuehua.system.handleObsevers.DoBaojiObserver;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
-import org.bukkit.util.BoundingBox;
 import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
@@ -32,10 +30,10 @@ public final class Damage {
             Vector end = eyeVector.clone().add(direction.clone().multiply(interval * (i + 1)));
             Scheduler.syncLater(() -> {
                 for (Mob mob : GetEntity.getLineMonster(start, end, sizeAdder)) {
-                    Damage.damageMonster(data, damage, mob);
+                    MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
+                    Damage.damageMonster(data, damage, monsterData);
                 }
             }, (long) ((i + 0.5) * moveTimeForOnePart + 2));
-
         }
     }
 
@@ -51,7 +49,8 @@ public final class Damage {
 
             Scheduler.syncLater(() -> {
                 for (Mob mob : GetEntity.getLineMonster(partStart, partEnd, sizeAdder)) {
-                    Damage.damageMonster(data, damage, mob);
+                    MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
+                    Damage.damageMonster(data, damage, monsterData);
                 }
             }, (long) ((i + 0.5) * moveTimeForOnePart + 2));
         }
@@ -61,7 +60,8 @@ public final class Damage {
     public static void damageOneEye(Location eyeloc, double sizeAdder, double midDistance, double damage, Data data, int moveTimeForOnePart) {
         Scheduler.syncLater(() -> {
             for (Mob mob : GetEntity.getRayMonster(eyeloc, midDistance, sizeAdder)) {
-                Damage.damageMonster(data, damage, mob);
+                MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
+                Damage.damageMonster(data, damage, monsterData);
             }
         }, (long) (0.5 * moveTimeForOnePart + 2));
     }
@@ -69,63 +69,16 @@ public final class Damage {
     public static void damageOneLine(Vector start, Vector end, double sizeAdder, double damage, Data data, int moveTimeForOnePart) {
         Scheduler.syncLater(() -> {
             for (Mob mob : GetEntity.getLineMonster(start, end, sizeAdder)) {
-                Damage.damageMonster(data, damage, mob);
+                MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
+                Damage.damageMonster(data, damage, monsterData);
             }
         }, (long) (0.5 * moveTimeForOnePart + 2));
     }
 
-    public static void damageMonster(Data data, double damage, Mob mob) {
-        Player player = data.player;
 
-        //仇恨
-        if (mob.getTarget() == null) {
-            mob.setTarget(player);
-        }
-        MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
-
-        monsterData.lastAttacker = player;
-
-        double baoji = data.baoji;
-        double baojixiaoguo = data.baojixiaoguo;
-        //判断是否暴击
-        if (data.mustBaoji > 0) {
-            data.mustBaoji--;
-            damage = damage * baojixiaoguo;
-            for (String observer : data.baoJiObservers) {
-                damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
-            }
-        } else if (random.nextDouble() < baoji) {
-            damage = damage * baojixiaoguo;
-            for (String observer : data.baoJiObservers) {
-                damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
-            }
-        }
-
-
-        //取数据
-        double fakang = monsterData.fakang;
-        double gedang = monsterData.gedang;
-        double x = Math.max(0.0, fakang - data.pofa);
-        double y = x / (0.5 + x);
-
-        double damage2 = damage - gedang;
-
-        damage2 = damage2 * (1.0 - y);
-
-        for (String observer : monsterData.mofaAttackedObservers) {
-            damage2 = damage2 * DoMonsterMoFaAttacked.doMoFaAttacked(observer, monsterData, data);
-        }
-
-        for (String observer : monsterData.attackedObservers) {
-            damage2 = damage2 * DoMonsterAttacked.doAttacked(observer, monsterData, data);
-        }
-
-        mob.damage(damage2);
-    }
-
-    public static void damageMonster(Data data, double damage, MonsterData monsterData) {
+    public static double damageMonster(Data data, double damage, MonsterData monsterData) {
         if (monsterData == null) {
-            return;
+            return 0;
         }
 
         Player player = data.player;
@@ -174,119 +127,13 @@ public final class Damage {
         }
 
         mob.damage(damage2);
+        return damage2;
     }
 
 
-    public static void damageMonster(Data data, double damage, ArrayList<Mob> mobs) {
-        Player player = data.player;
-        double baoji = data.baoji;
-        double baojixiaoguo = data.baojixiaoguo;
-
-        for (Mob mob : mobs) {
-            //仇恨
-            if (mob.getTarget() == null) {
-                mob.setTarget(player);
-            }
-            MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
-
-            monsterData.lastAttacker = player;
-
-
-            //判断是否暴击
-            if (data.mustBaoji > 0) {
-                data.mustBaoji--;
-                damage = damage * baojixiaoguo;
-                for (String observer : data.baoJiObservers) {
-                    damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
-                }
-            } else if (random.nextDouble() < baoji) {
-                damage = damage * baojixiaoguo;
-                for (String observer : data.baoJiObservers) {
-                    damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
-                }
-            }
-
-
-            //取数据
-            double fakang = monsterData.fakang;
-            double gedang = monsterData.gedang;
-            double x = Math.max(0.0, fakang - data.pofa);
-            double y = x / (0.5 + x);
-
-            double damage2 = damage - gedang;
-
-            damage2 = damage2 * (1.0 - y);
-
-            for (String observer : monsterData.mofaAttackedObservers) {
-                damage2 = damage2 * DoMonsterMoFaAttacked.doMoFaAttacked(observer, monsterData, data);
-            }
-
-            for (String observer : monsterData.attackedObservers) {
-                damage2 = damage2 * DoMonsterAttacked.doAttacked(observer, monsterData, data);
-            }
-
-            mob.damage(damage2);
-        }
-    }
-
-
-    public static void damageMonsterWhenMonsterDataAlready(Data data, double damage, ArrayList<MonsterData> monsterDataArrayList) {
-        Player player = data.player;
-        double baoji = data.baoji;
-        double baojixiaoguo = data.baojixiaoguo;
-
-        for (MonsterData monsterData : monsterDataArrayList) {
-            Mob mob = monsterData.monster;
-
-            //仇恨
-            if (mob.getTarget() == null) {
-                mob.setTarget(player);
-            }
-
-            monsterData.lastAttacker = player;
-
-
-            //判断是否暴击
-            if (data.mustBaoji > 0) {
-                data.mustBaoji--;
-                damage = damage * baojixiaoguo;
-                for (String observer : data.baoJiObservers) {
-                    damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
-                }
-            } else if (random.nextDouble() < baoji) {
-                damage = damage * baojixiaoguo;
-                for (String observer : data.baoJiObservers) {
-                    damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
-                }
-            }
-
-
-            //取数据
-            double fakang = monsterData.fakang;
-            double gedang = monsterData.gedang;
-            double x = Math.max(0.0, fakang - data.pofa);
-            double y = x / (0.5 + x);
-
-            double damage2 = damage - gedang;
-
-            damage2 = damage2 * (1.0 - y);
-
-            for (String observer : monsterData.mofaAttackedObservers) {
-                damage2 = damage2 * DoMonsterMoFaAttacked.doMoFaAttacked(observer, monsterData, data);
-            }
-
-            for (String observer : monsterData.attackedObservers) {
-                damage2 = damage2 * DoMonsterAttacked.doAttacked(observer, monsterData, data);
-            }
-
-            mob.damage(damage2);
-        }
-    }
-
-    public static void damageMonster(PetData petData, double damage, Mob mob) {
-        MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
+    public static void damageMonster(PetData petData, double damage, MonsterData monsterData) {
         monsterData.lastAttacker = petData.Owner;
-
+        Mob mob = monsterData.monster;
         //取数据
         double fakang = monsterData.fakang;
         double gedang = monsterData.gedang;
@@ -306,39 +153,45 @@ public final class Damage {
         mob.damage(damage2);
     }
 
-    public static void damageMonster(PetData petData, double damage, ArrayList<Mob> mobs) {
-        for (Mob mob : mobs) {
-            MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
-            monsterData.lastAttacker = petData.Owner;
 
-            //取数据
-            double fakang = monsterData.fakang;
-            double gedang = monsterData.gedang;
-            double x = Math.max(0.0, fakang - petData.pofa);
-            double y = x / (0.5 + x);
-            double damage2 = damage - gedang;
-            damage2 = damage2 * (1.0 - y);
+    public static void damagePlayer(Data data, double damage, MonsterData monsterData) {
 
-            for (String observer : monsterData.mofaAttackedObservers) {
-                damage2 = damage2 * DoMonsterMoFaAttacked.doMoFaAttacked(observer, monsterData, petData);
-            }
+        //取数据
+        Mob mob = monsterData.monster;
 
-            for (String observer : monsterData.attackedObservers) {
-                damage2 = damage2 * DoMonsterAttacked.doAttacked(observer, monsterData, petData);
-            }
+        data.lastAttacker = mob;
 
-            mob.damage(damage2);
+        double fakang = data.fakang;
+        double gedang = data.gedang;
+        double x = Math.max(0.0, fakang - monsterData.pofa);
+        double y = x / (0.5 + x);
+
+
+        double damage2 = damage - gedang;
+        damage2 = damage2 * (1.0 - y);
+
+        double damageBefore = damage2;
+
+        for (String observer : data.fashuAttackedObservers) {
+            damage2 = damage2 * DoAttackedObserver.doAttackedMoFa(observer, data, mob);
         }
+
+        for (String observer : data.attackedObservers) {
+            damage2 = damage2 * DoAttackedObserver.doAttacked(observer, data, mob, damageBefore);
+        }
+
+        //伤害
+        data.player.damage(damage2);
+
     }
 
-    public static void damageWuli(Data data, double damage, Mob mob) {
+    public static double damageWuli(Data data, double damage, MonsterData monsterData) {
+        Mob mob = monsterData.monster;
         Player player = data.player;
         //仇恨
         if (mob.getTarget() == null) {
             mob.setTarget(player);
         }
-        MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
-
         monsterData.lastAttacker = player;
 
         double baoji = data.baoji;
@@ -375,188 +228,335 @@ public final class Damage {
         }
 
         mob.damage(damage2);
+        return damage2;
     }
 
-    public static void damageWuli(Data data, double damage, ArrayList<Mob> mobs) {
-        Player player = data.player;
-        double baoji = data.baoji;
-        double baojixiaoguo = data.baojixiaoguo;
-        for (Mob mob : mobs) {
-            //仇恨
-            if (mob.getTarget() == null) {
-                mob.setTarget(player);
-            }
-            MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
-
-            monsterData.lastAttacker = player;
-
-
-            //判断是否暴击
-            if (data.mustBaoji > 0) {
-                data.mustBaoji--;
-                damage = damage * baojixiaoguo;
-                for (String observer : data.baoJiObservers) {
-                    damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
-                }
-            } else if (random.nextDouble() < baoji) {
-                damage = damage * baojixiaoguo;
-                for (String observer : data.baoJiObservers) {
-                    damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
-                }
-            }
-
-            //取数据
-            double hujia = monsterData.hujia;
-            double gedang = monsterData.gedang;
-            double x = Math.max(0.0, hujia - data.pojia);
-            double y = x / (0.5 + x);
-            double damage2 = damage - gedang;
-
-            damage2 = damage2 * (1.0 - y);
-
-            for (String observer : monsterData.wuliAttackedObservers) {
-                damage2 = damage2 * DoMonsterWuLiAttacked.doWuLiAttacked(observer, monsterData, data);
-            }
-
-            for (String observer : monsterData.attackedObservers) {
-                damage2 = damage2 * DoMonsterAttacked.doAttacked(observer, monsterData, data);
-            }
-
-            mob.damage(damage2);
-        }
-    }
+//    public static void damagePlayer(Player player, double damage, MonsterData monsterData) {
+//        //取数据
+//        Data data = Yuehua.playerData.get(player.getUniqueId());
+//
+//        Mob mob = monsterData.monster;
+//
+//        data.lastAttacker = mob;
+//
+//        double fakang = data.fakang;
+//        double gedang = data.gedang;
+//        double x = Math.max(0.0, fakang - monsterData.pofa);
+//        double y = x / (0.5 + x);
+//
+//
+//        double damage2 = damage - gedang;
+//        damage2 = damage2 * (1.0 - y);
+//
+//        double damageBefore = damage2;
+//
+//        for (String observer : data.fashuAttackedObservers) {
+//            damage2 = damage2 * DoAttackedObserver.doAttackedMoFa(observer, data, mob);
+//        }
+//
+//        for (String observer : data.attackedObservers) {
+//            damage2 = damage2 * DoAttackedObserver.doAttacked(observer, data, mob, damageBefore);
+//        }
+//
+//        //伤害
+//        player.damage(damage2);
+//
+//    }
 
 
-    public static void damagePlayer(Player player, double damage, MonsterData monsterData) {
-        //取数据
-        Data data = Yuehua.playerData.get(player.getUniqueId());
+//    public static void damagePlayer(double damage, ArrayList<Player> players, MonsterData monsterData) {
+//        for (Player player : players) {
+//            //取数据
+//            Data data = Yuehua.playerData.get(player.getUniqueId());
+//
+//
+//            Mob mob = monsterData.monster;
+//
+//            data.lastAttacker = mob;
+//
+//            double fakang = data.fakang;
+//            double gedang = data.gedang;
+//            double x = Math.max(0.0, fakang - monsterData.pofa);
+//            double y = x / (0.5 + x);
+//
+//
+//            double damage2 = damage - gedang;
+//            damage2 = damage2 * (1.0 - y);
+//
+//            double damageBefore = damage2;
+//
+//            for (String observer : data.fashuAttackedObservers) {
+//                damage2 = damage2 * DoAttackedObserver.doAttackedMoFa(observer, data, mob);
+//            }
+//
+//            for (String observer : data.attackedObservers) {
+//                damage2 = damage2 * DoAttackedObserver.doAttacked(observer, data, mob, damageBefore);
+//            }
+//
+//            //伤害
+//            player.damage(damage2);
+//        }
+//    }
 
-        Mob mob = monsterData.monster;
+//    public static void damagePlayerWhenDataAlready(double damage, ArrayList<Data> datas, MonsterData monsterData) {
+//        for (Data data : datas) {
+//
+//            //取数据
+//            Mob mob = monsterData.monster;
+//
+//            data.lastAttacker = mob;
+//
+//            double fakang = data.fakang;
+//            double gedang = data.gedang;
+//            double x = Math.max(0.0, fakang - monsterData.pofa);
+//            double y = x / (0.5 + x);
+//
+//
+//            double damage2 = damage - gedang;
+//            damage2 = damage2 * (1.0 - y);
+//
+//            double damageBefore = damage2;
+//
+//            for (String observer : data.fashuAttackedObservers) {
+//                damage2 = damage2 * DoAttackedObserver.doAttackedMoFa(observer, data, mob);
+//            }
+//
+//            for (String observer : data.attackedObservers) {
+//                damage2 = damage2 * DoAttackedObserver.doAttacked(observer, data, mob, damageBefore);
+//            }
+//
+//            //伤害
+//            data.player.damage(damage2);
+//        }
+//    }
 
-        data.lastAttacker = mob;
+    //    public static void damageMonster(Data data, double damage, Mob mob) {
+//        Player player = data.player;
+//
+//        //仇恨
+//        if (mob.getTarget() == null) {
+//            mob.setTarget(player);
+//        }
+//        MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
+//
+//        monsterData.lastAttacker = player;
+//
+//        double baoji = data.baoji;
+//        double baojixiaoguo = data.baojixiaoguo;
+//        //判断是否暴击
+//        if (data.mustBaoji > 0) {
+//            data.mustBaoji--;
+//            damage = damage * baojixiaoguo;
+//            for (String observer : data.baoJiObservers) {
+//                damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
+//            }
+//        } else if (random.nextDouble() < baoji) {
+//            damage = damage * baojixiaoguo;
+//            for (String observer : data.baoJiObservers) {
+//                damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
+//            }
+//        }
+//
+//
+//        //取数据
+//        double fakang = monsterData.fakang;
+//        double gedang = monsterData.gedang;
+//        double x = Math.max(0.0, fakang - data.pofa);
+//        double y = x / (0.5 + x);
+//
+//        double damage2 = damage - gedang;
+//
+//        damage2 = damage2 * (1.0 - y);
+//
+//        for (String observer : monsterData.mofaAttackedObservers) {
+//            damage2 = damage2 * DoMonsterMoFaAttacked.doMoFaAttacked(observer, monsterData, data);
+//        }
+//
+//        for (String observer : monsterData.attackedObservers) {
+//            damage2 = damage2 * DoMonsterAttacked.doAttacked(observer, monsterData, data);
+//        }
+//
+//        mob.damage(damage2);
+//    }
 
-        double fakang = data.fakang;
-        double gedang = data.gedang;
-        double x = Math.max(0.0, fakang - monsterData.pofa);
-        double y = x / (0.5 + x);
-
-
-        double damage2 = damage - gedang;
-        damage2 = damage2 * (1.0 - y);
-
-        double damageBefore = damage2;
-
-        for (String observer : data.fashuAttackedObservers) {
-            damage2 = damage2 * DoAttackedObserver.doAttackedMoFa(observer, data, mob);
-        }
-
-        for (String observer : data.attackedObservers) {
-            damage2 = damage2 * DoAttackedObserver.doAttacked(observer, data, mob, damageBefore);
-        }
-
-        //伤害
-        player.damage(damage2);
-
-    }
-
-
-    public static void damagePlayer(Data data, double damage, MonsterData monsterData) {
-
-        //取数据
-        Mob mob = monsterData.monster;
-
-        data.lastAttacker = mob;
-
-        double fakang = data.fakang;
-        double gedang = data.gedang;
-        double x = Math.max(0.0, fakang - monsterData.pofa);
-        double y = x / (0.5 + x);
-
-
-        double damage2 = damage - gedang;
-        damage2 = damage2 * (1.0 - y);
-
-        double damageBefore = damage2;
-
-        for (String observer : data.fashuAttackedObservers) {
-            damage2 = damage2 * DoAttackedObserver.doAttackedMoFa(observer, data, mob);
-        }
-
-        for (String observer : data.attackedObservers) {
-            damage2 = damage2 * DoAttackedObserver.doAttacked(observer, data, mob, damageBefore);
-        }
-
-        //伤害
-        data.player.damage(damage2);
-
-    }
-
-
-    public static void damagePlayer(double damage, ArrayList<Player> players, MonsterData monsterData) {
-        for (Player player : players) {
-            //取数据
-            Data data = Yuehua.playerData.get(player.getUniqueId());
-
-
-            Mob mob = monsterData.monster;
-
-            data.lastAttacker = mob;
-
-            double fakang = data.fakang;
-            double gedang = data.gedang;
-            double x = Math.max(0.0, fakang - monsterData.pofa);
-            double y = x / (0.5 + x);
-
-
-            double damage2 = damage - gedang;
-            damage2 = damage2 * (1.0 - y);
-
-            double damageBefore = damage2;
-
-            for (String observer : data.fashuAttackedObservers) {
-                damage2 = damage2 * DoAttackedObserver.doAttackedMoFa(observer, data, mob);
-            }
-
-            for (String observer : data.attackedObservers) {
-                damage2 = damage2 * DoAttackedObserver.doAttacked(observer, data, mob, damageBefore);
-            }
-
-            //伤害
-            player.damage(damage2);
-        }
-    }
-
-    public static void damagePlayerWhenDataAlready(double damage, ArrayList<Data> datas, MonsterData monsterData) {
-        for (Data data : datas) {
-
-            //取数据
-            Mob mob = monsterData.monster;
-
-            data.lastAttacker = mob;
-
-            double fakang = data.fakang;
-            double gedang = data.gedang;
-            double x = Math.max(0.0, fakang - monsterData.pofa);
-            double y = x / (0.5 + x);
+    //    public static void damageWuli(Data data, double damage, ArrayList<Mob> mobs) {
+//        Player player = data.player;
+//        double baoji = data.baoji;
+//        double baojixiaoguo = data.baojixiaoguo;
+//        for (Mob mob : mobs) {
+//            //仇恨
+//            if (mob.getTarget() == null) {
+//                mob.setTarget(player);
+//            }
+//            MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
+//
+//            monsterData.lastAttacker = player;
+//
+//
+//            //判断是否暴击
+//            if (data.mustBaoji > 0) {
+//                data.mustBaoji--;
+//                damage = damage * baojixiaoguo;
+//                for (String observer : data.baoJiObservers) {
+//                    damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
+//                }
+//            } else if (random.nextDouble() < baoji) {
+//                damage = damage * baojixiaoguo;
+//                for (String observer : data.baoJiObservers) {
+//                    damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
+//                }
+//            }
+//
+//            //取数据
+//            double hujia = monsterData.hujia;
+//            double gedang = monsterData.gedang;
+//            double x = Math.max(0.0, hujia - data.pojia);
+//            double y = x / (0.5 + x);
+//            double damage2 = damage - gedang;
+//
+//            damage2 = damage2 * (1.0 - y);
+//
+//            for (String observer : monsterData.wuliAttackedObservers) {
+//                damage2 = damage2 * DoMonsterWuLiAttacked.doWuLiAttacked(observer, monsterData, data);
+//            }
+//
+//            for (String observer : monsterData.attackedObservers) {
+//                damage2 = damage2 * DoMonsterAttacked.doAttacked(observer, monsterData, data);
+//            }
+//
+//            mob.damage(damage2);
+//        }
+//    }
 
 
-            double damage2 = damage - gedang;
-            damage2 = damage2 * (1.0 - y);
+//   public static void damageMonster(Data data, double damage, ArrayList<Mob> mobs) {
+//        Player player = data.player;
+//        double baoji = data.baoji;
+//        double baojixiaoguo = data.baojixiaoguo;
+//
+//        for (Mob mob : mobs) {
+//            //仇恨
+//            if (mob.getTarget() == null) {
+//                mob.setTarget(player);
+//            }
+//            MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
+//
+//            monsterData.lastAttacker = player;
+//
+//
+//            //判断是否暴击
+//            if (data.mustBaoji > 0) {
+//                data.mustBaoji--;
+//                damage = damage * baojixiaoguo;
+//                for (String observer : data.baoJiObservers) {
+//                    damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
+//                }
+//            } else if (random.nextDouble() < baoji) {
+//                damage = damage * baojixiaoguo;
+//                for (String observer : data.baoJiObservers) {
+//                    damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
+//                }
+//            }
+//
+//
+//            //取数据
+//            double fakang = monsterData.fakang;
+//            double gedang = monsterData.gedang;
+//            double x = Math.max(0.0, fakang - data.pofa);
+//            double y = x / (0.5 + x);
+//
+//            double damage2 = damage - gedang;
+//
+//            damage2 = damage2 * (1.0 - y);
+//
+//            for (String observer : monsterData.mofaAttackedObservers) {
+//                damage2 = damage2 * DoMonsterMoFaAttacked.doMoFaAttacked(observer, monsterData, data);
+//            }
+//
+//            for (String observer : monsterData.attackedObservers) {
+//                damage2 = damage2 * DoMonsterAttacked.doAttacked(observer, monsterData, data);
+//            }
+//
+//            mob.damage(damage2);
+//        }
+//    }
 
-            double damageBefore = damage2;
 
-            for (String observer : data.fashuAttackedObservers) {
-                damage2 = damage2 * DoAttackedObserver.doAttackedMoFa(observer, data, mob);
-            }
+//    public static void damageMonster(PetData petData, double damage, ArrayList<Mob> mobs) {
+//        for (Mob mob : mobs) {
+//            MonsterData monsterData = Yuehua.monsterData.get(mob.getUniqueId());
+//            monsterData.lastAttacker = petData.Owner;
+//
+//            //取数据
+//            double fakang = monsterData.fakang;
+//            double gedang = monsterData.gedang;
+//            double x = Math.max(0.0, fakang - petData.pofa);
+//            double y = x / (0.5 + x);
+//            double damage2 = damage - gedang;
+//            damage2 = damage2 * (1.0 - y);
+//
+//            for (String observer : monsterData.mofaAttackedObservers) {
+//                damage2 = damage2 * DoMonsterMoFaAttacked.doMoFaAttacked(observer, monsterData, petData);
+//            }
+//
+//            for (String observer : monsterData.attackedObservers) {
+//                damage2 = damage2 * DoMonsterAttacked.doAttacked(observer, monsterData, petData);
+//            }
+//
+//            mob.damage(damage2);
+//        }
+//    }
 
-            for (String observer : data.attackedObservers) {
-                damage2 = damage2 * DoAttackedObserver.doAttacked(observer, data, mob, damageBefore);
-            }
-
-            //伤害
-            data.player.damage(damage2);
-        }
-    }
-
-
+//    public static void damageMonsterWhenMonsterDataAlready(Data data, double damage, ArrayList<MonsterData> monsterDataArrayList) {
+//        Player player = data.player;
+//        double baoji = data.baoji;
+//        double baojixiaoguo = data.baojixiaoguo;
+//
+//        for (MonsterData monsterData : monsterDataArrayList) {
+//            Mob mob = monsterData.monster;
+//
+//            //仇恨
+//            if (mob.getTarget() == null) {
+//                mob.setTarget(player);
+//            }
+//
+//            monsterData.lastAttacker = player;
+//
+//
+//            //判断是否暴击
+//            if (data.mustBaoji > 0) {
+//                data.mustBaoji--;
+//                damage = damage * baojixiaoguo;
+//                for (String observer : data.baoJiObservers) {
+//                    damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
+//                }
+//            } else if (random.nextDouble() < baoji) {
+//                damage = damage * baojixiaoguo;
+//                for (String observer : data.baoJiObservers) {
+//                    damage = damage * DoBaojiObserver.doBaoji(observer, data, monsterData);
+//                }
+//            }
+//
+//
+//            //取数据
+//            double fakang = monsterData.fakang;
+//            double gedang = monsterData.gedang;
+//            double x = Math.max(0.0, fakang - data.pofa);
+//            double y = x / (0.5 + x);
+//
+//            double damage2 = damage - gedang;
+//
+//            damage2 = damage2 * (1.0 - y);
+//
+//            for (String observer : monsterData.mofaAttackedObservers) {
+//                damage2 = damage2 * DoMonsterMoFaAttacked.doMoFaAttacked(observer, monsterData, data);
+//            }
+//
+//            for (String observer : monsterData.attackedObservers) {
+//                damage2 = damage2 * DoMonsterAttacked.doAttacked(observer, monsterData, data);
+//            }
+//
+//            mob.damage(damage2);
+//        }
+//    }
 }

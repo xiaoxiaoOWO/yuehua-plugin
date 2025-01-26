@@ -5,19 +5,88 @@ import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import org.bukkit.Location;
 import org.bukkit.Particle;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
-
+//  /execute at @p run particle minecraft:flame ^ ^2 ^5 0.5 0.5 0.5 0 100 force
 public final class ParticleUtils {
+    public static void onePoint(Location location, Particle particle, double dx, double dy, double dz, double speed, int count) {
+        Scheduler.async(() -> GetEntity.world.spawnParticle(particle, location, count, dx, dy, dz, speed));
+    }
+
+    public static void onePoint(Location location, Particle particle, double dx, double dy, double dz, int count) {
+        Scheduler.async(() -> GetEntity.world.spawnParticle(particle, location, count, dx, dy, dz, 0));
+    }
+
+    public static void onePoint(Location location, Particle particle) {
+        Scheduler.async(() -> GetEntity.world.spawnParticle(particle, location, 100, 0.5, 0.5, 0.5, 0));
+    }
+
+    public static void onePointDust(Location location, Particle.DustOptions dustOptions){
+        Scheduler.async(() -> GetEntity.world.spawnParticle(Particle.DUST, location, 100,
+                0, 0, 0, 0, dustOptions));
+    }
+
+    public static void onePointDust(Location location, Particle.DustTransition dustTransition){
+        Scheduler.async(() -> GetEntity.world.spawnParticle(Particle.DUST_COLOR_TRANSITION, location, 100,
+                0, 0, 0, 0, dustTransition));
+    }
+
+    public static void onePointBlock(Location location, BlockData blockData){
+        Scheduler.async(() -> GetEntity.world.spawnParticle(Particle.BLOCK, location, 100,
+                0, 0, 0, 0, blockData));
+    }
+
+    public static void atMonsterDust(Mob monster, Particle.DustOptions dustOptions) {
+        Scheduler.async(() -> GetEntity.world.spawnParticle(Particle.DUST, monster.getLocation().add(0, 1, 0), 100,
+                0.5, 0.5, 0.5, 0, dustOptions));
+    }
+
+    public static void atMonsterDust(Mob monster, Particle.DustTransition dustTransition) {
+        Scheduler.async(() -> GetEntity.world.spawnParticle(Particle.DUST_COLOR_TRANSITION, monster.getLocation().add(0, 1, 0), 100,
+                0.5, 0.5, 0.5, 0, dustTransition));
+    }
+
+    public static void atPlayerDust(Player player, Particle.DustOptions dustOptions) {
+        Scheduler.async(() -> GetEntity.world.spawnParticle(Particle.DUST, player.getLocation().add(0, 1, 0), 100,
+                0.5, 0.5, 0.5, 0, dustOptions));
+    }
+
+    public static void atPlayerDust(Player player, Particle.DustTransition dustTransition) {
+        Scheduler.async(() -> GetEntity.world.spawnParticle(Particle.DUST_COLOR_TRANSITION, player.getLocation().add(0, 1, 0), 100,
+                0.5, 0.5, 0.5, 0, dustTransition));
+    }
+
+    public static void atMonsterBlock(Mob monster, BlockData blockData) {
+        Scheduler.async(() -> GetEntity.world.spawnParticle(Particle.BLOCK, monster.getLocation().add(0, 1, 0), 100,
+                0.5, 0.5, 0.5, 0, blockData));
+    }
+
+    public static void atPlayerBlock(Player player, BlockData blockData) {
+        Scheduler.async(() -> GetEntity.world.spawnParticle(Particle.BLOCK, player.getLocation().add(0, 1, 0), 100,
+                0.5, 0.5, 0.5, 0, blockData));
+    }
+
+    public static void atMonster(Mob monster, Particle particle) {
+        Scheduler.async(() -> GetEntity.world.spawnParticle(particle, monster.getLocation().add(0, 1, 0), 100,
+                0.5, 0.5, 0.5, 0));
+    }
+
+    public static void atPlayer(Player player, Particle particle) {
+        Scheduler.async(() -> GetEntity.world.spawnParticle(particle, player.getLocation().add(0, 1, 0), 100,
+                0.5, 0.5, 0.5, 0));
+    }
+
 
     public static void parabola(Vector start, Vector end, double height, Particle particle, int time) {
+
         // 计算方向向量和 XZ 平面上每 tick 移动的步长
         Vector direction = end.clone().subtract(start).setY(0); // 忽略 Y 轴，只获取 XZ 平面的方向
         double distance = direction.length();
         direction.normalize(); // 单位向量化
-
 
 
         // 创建一个自取消的任务
@@ -44,7 +113,7 @@ public final class ParticleUtils {
                 position.setY(y);
 
                 // 生成粒子
-                GetEntity.world.spawnParticle(particle, position.toLocation(GetEntity.world), 1);
+                GetEntity.world.spawnParticle(particle, position.toLocation(GetEntity.world), 100,0,0,0,0);
 
                 // 增加 tick
                 t++;
@@ -53,70 +122,115 @@ public final class ParticleUtils {
     }
 
 
-
     // 基础版
     public static void line(Vector vec1, Vector vec2, Particle particle, double count) {
-        double distance = vec1.distance(vec2);
-        Vector vector = vec2.clone().subtract(vec1).normalize().multiply(distance / count);
+        Scheduler.async(
+                () -> {
+                    double distance = vec1.distance(vec2);
+                    Vector vector = vec2.clone().subtract(vec1).normalize().multiply(distance / count);
 
-        for (int i = 0; i < count; i++) {
-            Location particleLocation = vec1.toLocation(GetEntity.world); // 转换为 Location
-            GetEntity.world.spawnParticle(particle, particleLocation, 1, 0, 0, 0);
-            vec1.add(vector);
-        }
+                    for (int i = 0; i < count; i++) {
+                        Location particleLocation = vec1.toLocation(GetEntity.world); // 转换为 Location
+                        GetEntity.world.spawnParticle(particle, particleLocation, 100, 0, 0, 0,0);
+                        vec1.add(vector);
+                    }
+                }
+        );
+    }
+
+    public static void line(Vector vec1, Vector vec2, Particle particle) {
+        Scheduler.async(
+                () -> {
+                    double distance = vec1.distance(vec2);
+                    Vector vector = vec2.clone().subtract(vec1).normalize();
+
+                    for (int i = 0; i < distance; i++) {
+                        Location particleLocation = vec1.toLocation(GetEntity.world); // 转换为 Location
+                        GetEntity.world.spawnParticle(particle, particleLocation, 100, 0, 0, 0,0);
+                        vec1.add(vector);
+                    }
+                }
+        );
     }
 
     // 带有 extra 参数的版本
     public static void line(Vector vec1, Vector vec2, Particle particle, double count, double extra) {
-        double distance = vec1.distance(vec2);
-        Vector vector = vec2.clone().subtract(vec1).normalize().multiply(distance / count);
+        Scheduler.async(() -> {
+            double distance = vec1.distance(vec2);
+            Vector vector = vec2.clone().subtract(vec1).normalize().multiply(distance / count);
 
-        for (int i = 0; i < count; i++) {
-            Location particleLocation = vec1.toLocation(GetEntity.world); // 转换为 Location
-            GetEntity.world.spawnParticle(particle, particleLocation, 1, 0, 0, 0, extra);
-            vec1.add(vector);
-        }
+            for (int i = 0; i < count; i++) {
+                Location particleLocation = vec1.toLocation(GetEntity.world); // 转换为 Location
+                GetEntity.world.spawnParticle(particle, particleLocation, 100, 0, 0, 0, extra);
+                vec1.add(vector);
+            }
+        });
+
     }
 
     // 带有 extra 和 data 参数的版本
     public static <T> void line(Vector vec1, Vector vec2, Particle particle, double count, double extra, T data) {
-        double distance = vec1.distance(vec2);
-        Vector vector = vec2.clone().subtract(vec1).normalize().multiply(distance / count);
+        Scheduler.async(() -> {
+            double distance = vec1.distance(vec2);
+            Vector vector = vec2.clone().subtract(vec1).normalize().multiply(distance / count);
 
-        for (int i = 0; i < count; i++) {
-            Location particleLocation = vec1.toLocation(GetEntity.world); // 转换为 Location
-            GetEntity.world.spawnParticle(particle, particleLocation, 1, 0, 0, 0, extra, data);
-            vec1.add(vector);
-        }
+            for (int i = 0; i < count; i++) {
+                Location particleLocation = vec1.toLocation(GetEntity.world); // 转换为 Location
+                GetEntity.world.spawnParticle(particle, particleLocation, 100, 0, 0, 0, extra, data);
+                vec1.add(vector);
+            }
+        });
+    }
+
+    public static <T> void line(Vector vec1, Vector vec2, Particle particle, double extra, T data) {
+        Scheduler.async(() -> {
+            double distance = vec1.distance(vec2);
+            Vector vector = vec2.clone().subtract(vec1).normalize();
+
+            for (int i = 0; i < distance; i++) {
+                Location particleLocation = vec1.toLocation(GetEntity.world); // 转换为 Location
+                GetEntity.world.spawnParticle(particle, particleLocation, 100, 0, 0, 0, extra, data);
+                vec1.add(vector);
+            }
+        });
     }
 
 
     public static void line(Location loc1, Location loc2, Particle particle, double count) {
+        Scheduler.async(() -> {
+
+        });
         double distance = loc1.distance(loc2);
         Vector vector = loc2.toVector().subtract(loc1.toVector()).normalize().multiply(distance / count);
 
         for (int i = 0; i < count; i++) {
-            GetEntity.world.spawnParticle(particle, loc1, 1, 0, 0, 0);
+            GetEntity.world.spawnParticle(particle, loc1, 100, 0, 0, 0);
             loc1.add(vector);
         }
     }
 
     public static void line(Location loc1, Location loc2, Particle particle, double count, double extra) {
+        Scheduler.async(() -> {
+
+        });
         double distance = loc1.distance(loc2);
         Vector vector = loc2.toVector().subtract(loc1.toVector()).normalize().multiply(distance / count);
 
         for (int i = 0; i < count; i++) {
-            GetEntity.world.spawnParticle(particle, loc1, 1, 0, 0, 0, extra);
+            GetEntity.world.spawnParticle(particle, loc1, 100, 0, 0, 0, extra);
             loc1.add(vector);
         }
     }
 
     public static <T> void line(Location loc1, Location loc2, Particle particle, double count, double extra, T data) {
+        Scheduler.async(() -> {
+
+        });
         double distance = loc1.distance(loc2);
         Vector vector = loc2.toVector().subtract(loc1.toVector()).normalize().multiply(distance / count);
 
         for (int i = 0; i < count; i++) {
-            GetEntity.world.spawnParticle(particle, loc1, 1, 0, 0, 0, extra, data);
+            GetEntity.world.spawnParticle(particle, loc1, 100, 0, 0, 0, extra, data);
             loc1.add(vector);
         }
     }
@@ -263,6 +377,9 @@ public final class ParticleUtils {
 
 
     public static void circle(Location center, double radius, int count, Vector axis, Particle particle) {
+        Scheduler.async(() -> {
+
+        });
         axis = axis.normalize(); // 规范化轴向量
         double angleIncrement = 2 * Math.PI / count;
 
@@ -283,6 +400,9 @@ public final class ParticleUtils {
     }
 
     private static void circle(Location center, double radius, int count, Vector axis, Particle particle, double extra) {
+        Scheduler.async(() -> {
+
+        });
         axis = axis.normalize(); // 规范化轴向量
         double angleIncrement = 2 * Math.PI / count;
 
@@ -303,6 +423,9 @@ public final class ParticleUtils {
     }
 
     public static <T> void circle(Location center, double radius, int count, Vector axis, Particle particle, double extra, T data) {
+        Scheduler.async(() -> {
+
+        });
         axis = axis.normalize(); // 规范化轴向量
         double angleIncrement = 2 * Math.PI / count;
 
@@ -323,6 +446,9 @@ public final class ParticleUtils {
     }
 
     public static void sphere(Location center, double radius, int layers, Particle particle) {
+        Scheduler.async(() -> {
+
+        });
         int particlesPerLayer; // 每层的粒子数量
 
         for (int i = 0; i <= layers; i++) {
@@ -348,6 +474,9 @@ public final class ParticleUtils {
     }
 
     public static void sphere(Location center, double radius, int layers, Particle particle, double extra) {
+        Scheduler.async(() -> {
+
+        });
         int particlesPerLayer; // 每层的粒子数量
 
         for (int i = 0; i <= layers; i++) {
@@ -373,6 +502,9 @@ public final class ParticleUtils {
     }
 
     public static <T> void sphere(Location center, double radius, int layers, Particle particle, double extra, T data) {
+        Scheduler.async(() -> {
+
+        });
         int particlesPerLayer; // 每层的粒子数量
 
         for (int i = 0; i <= layers; i++) {
@@ -399,6 +531,9 @@ public final class ParticleUtils {
 
 
     public static void playerEyeLine(Player player, Particle particle, double distance, double count) {
+        Scheduler.async(() -> {
+
+        });
         Location eyeLocation = player.getEyeLocation();
         Vector direction = eyeLocation.getDirection().normalize().multiply(distance / count);
 
@@ -410,6 +545,9 @@ public final class ParticleUtils {
     }
 
     public static void playerEyeLine(Player player, Particle particle, double distance, double count, double extra) {
+        Scheduler.async(() -> {
+
+        });
         Location eyeLocation = player.getEyeLocation();
         Vector direction = eyeLocation.getDirection().normalize().multiply(distance / count);
 
@@ -421,6 +559,9 @@ public final class ParticleUtils {
     }
 
     public static <T> void playerEyeLine(Player player, Particle particle, double distance, double count, double extra, T data) {
+        Scheduler.async(() -> {
+
+        });
         Location eyeLocation = player.getEyeLocation();
         Vector direction = eyeLocation.getDirection().normalize().multiply(distance / count);
 
@@ -432,6 +573,9 @@ public final class ParticleUtils {
     }
 
     public static void playerEyeLineWithRotation(Player player, Particle particle, double distance, double count, double angle) {
+        Scheduler.async(() -> {
+
+        });
         Location eyeLocation = player.getEyeLocation();
         Vector eyedirection = eyeLocation.getDirection();
 
@@ -452,6 +596,9 @@ public final class ParticleUtils {
     }
 
     public static void playerEyeLineWithRotation(Player player, Particle particle, double distance, double count, double angle, double extra) {
+        Scheduler.async(() -> {
+
+        });
         Location eyeLocation = player.getEyeLocation();
         Vector eyedirection = eyeLocation.getDirection();
 
@@ -472,6 +619,9 @@ public final class ParticleUtils {
     }
 
     public static <T> void playerEyeLineWithRotation(Player player, Particle particle, double distance, double count, double angle, double extra, T data) {
+        Scheduler.async(() -> {
+
+        });
         Location eyeLocation = player.getEyeLocation();
         Vector eyedirection = eyeLocation.getDirection();
 

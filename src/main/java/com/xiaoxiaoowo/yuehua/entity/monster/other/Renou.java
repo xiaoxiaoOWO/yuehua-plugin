@@ -70,7 +70,7 @@ public final class Renou {
                     equipment.setItemInOffHandDropChance(0);
 
                     //属性(护甲和韧性已经没有影响，可以不管)
-                    it.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(1000000);
+                    it.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(100000000);
 
                     //DLC数据
                     PersistentDataContainer pdc = it.getPersistentDataContainer();
@@ -78,7 +78,7 @@ public final class Renou {
 
 
                     //生命,一百万
-                    it.setHealth(1000000);
+                    it.setHealth(100000000);
 
                 }
         );

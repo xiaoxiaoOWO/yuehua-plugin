@@ -3,11 +3,16 @@ package com.xiaoxiaoowo.yuehua.utils;
 import com.xiaoxiaoowo.yuehua.guis.bank.MoneyBank;
 import com.xiaoxiaoowo.yuehua.items.dz.YuShi;
 import com.xiaoxiaoowo.yuehua.items.other.FuBen;
+import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import io.papermc.paper.persistence.PersistentDataContainerView;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.persistence.PersistentDataContainer;
+import org.bukkit.persistence.PersistentDataType;
 
+import java.util.List;
 import java.util.Random;
 
 public final class RandomChest {
@@ -147,28 +152,44 @@ public final class RandomChest {
     public static final ItemStack keyXinyun100 = FuBen.keyXinYun100.clone();
 
 
-    public static boolean randomLuckyKey(Player player, int count) {
+    public static boolean randomLuckyKey(Player player, int count, ItemStack itemStack) {
         PlayerInventory playerInventory = player.getInventory();
         if (MoneyBank.countEmptySlots(playerInventory) < count) {
             SendInformation.sendMes(player, Component.text("§e[游戏机制]§4你的背包中空余空间不足！"));
             return false;
         }
 
+        PersistentDataContainerView persistentDataContainerView = itemStack.getPersistentDataContainer();
+        if(persistentDataContainerView.has(DataContainer.owner)){
+            String uuidString = persistentDataContainerView.get(DataContainer.owner,PersistentDataType.STRING);
+            if(!player.getUniqueId().toString().equals(uuidString)){
+                SendInformation.sendMes(player, Component.text("§e[游戏机制]§4此盒子绑定玩家！"));
+                return false;
+            }
+        }
+
+
         for (int i = 0; i < count; i++) {
+            ItemStack key;
             double randomValue = random.nextDouble();
             if (randomValue > 0.99) {
-                keyXinyun100.setAmount(1);
-                playerInventory.addItem(keyXinyun100);
+                key = FuBen.keyXinYun100.clone();
             } else if (randomValue > 0.9) {
-                keyXinyun20.setAmount(1);
-                playerInventory.addItem(keyXinyun20);
+                key = FuBen.keyXinYun20.clone();
             } else if (randomValue > 0.7) {
-                keyXinyun10.setAmount(1);
-                playerInventory.addItem(keyXinyun10);
+                key = FuBen.keyXinYun10.clone();
             } else {
-                keyXinyun5.setAmount(1);
-                playerInventory.addItem(keyXinyun5);
+                key = FuBen.keyXinYun5.clone();
             }
+            key.setAmount(1);
+            key.editMeta(meta -> {
+                meta.getPersistentDataContainer().set(DataContainer.owner, PersistentDataType.STRING, player.getUniqueId().toString());
+                List<Component> lores = meta.lore();
+                lores.removeLast();
+                lores.add(Component.text(String.format("§a[绑定者]: §f[%s]", player.getName())));
+                meta.lore(lores);
+            });
+            playerInventory.addItem(key);
         }
         PlaySound.pickupOrb(player);
         return true;

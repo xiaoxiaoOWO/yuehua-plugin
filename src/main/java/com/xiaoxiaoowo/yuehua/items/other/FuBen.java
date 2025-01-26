@@ -118,29 +118,33 @@ public final class FuBen {
         keyXinYun5Meta.lore(
                 List.of(
                         ComponentSet.RARE5,
-                        Component.text("用于开启副本和试炼宝箱").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true),
-                        Component.text("并使本次开箱额外附加5点幸运值").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
+                        Component.text("§a用于开启副本和试炼宝箱"),
+                        Component.text("§a并使本次开箱额外附加§b5§a点幸运值"),
+                        Component.text("§a[绑定者]: §f[无]")
                 )
         );
         keyXinYun10Meta.lore(
                 List.of(
                         ComponentSet.RARE6,
-                        Component.text("用于开启副本和试炼宝箱").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true),
-                        Component.text("并使本次开箱额外附加10点幸运值").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
+                        Component.text("§a用于开启副本和试炼宝箱"),
+                        Component.text("§a并使本次开箱额外附加§b10§a点幸运值"),
+                        Component.text("§a[绑定者]: §f[无]")
                 )
         );
         keyXinYun20Meta.lore(
                 List.of(
                         ComponentSet.RARE7,
-                        Component.text("用于开启副本和试炼宝箱").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true),
-                        Component.text("并使本次开箱额外附加20点幸运值").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
+                        Component.text("§a用于开启副本和试炼宝箱"),
+                        Component.text("§a并使本次开箱额外附加§b20§a点幸运值"),
+                        Component.text("§a[绑定者]: §f[无]")
                 )
         );
         keyXinYun100Meta.lore(
                 List.of(
                         ComponentSet.RARE8,
-                        Component.text("用于开启副本和试炼宝箱").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true),
-                        Component.text("并使本次开箱额外附加100点幸运值").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
+                        Component.text("§a用于开启副本和试炼宝箱"),
+                        Component.text("§a并使本次开箱额外附加§b100§a点幸运值"),
+                        Component.text("§a[绑定者]: §f[无]")
                 )
         );
 

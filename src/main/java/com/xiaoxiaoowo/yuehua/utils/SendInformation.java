@@ -1,6 +1,8 @@
 package com.xiaoxiaoowo.yuehua.utils;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
+import com.xiaoxiaoowo.yuehua.data.Data;
+import com.xiaoxiaoowo.yuehua.data.GongData;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import org.bukkit.Bukkit;
@@ -92,6 +94,8 @@ public final class SendInformation {
 
     public static void sendBgm(Player player, String sound, float volume) {
         player.playSound(player, sound, SoundCategory.VOICE, volume, 1);
+        Data data = Yuehua.playerData.get(player.getUniqueId());
+        data.lastBGM = GetEntity.world.getGameTime();
     }
 
     public static void sendSoundAtEntities(Collection<Player> players, String sound, float volume) {

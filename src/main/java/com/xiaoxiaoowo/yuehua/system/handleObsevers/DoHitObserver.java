@@ -59,7 +59,7 @@ public final class DoHitObserver {
             }
 
             case "laoLieHuJianDai" -> {
-                return 1.2d;
+                return 1.15d;
             }
 
 

@@ -3,6 +3,7 @@ package com.xiaoxiaoowo.yuehua.guis;
 import com.xiaoxiaoowo.yuehua.items.dz.YuanSu;
 import com.xiaoxiaoowo.yuehua.items.monsterzhuangbei.Weapon;
 import com.xiaoxiaoowo.yuehua.items.other.Food;
+import com.xiaoxiaoowo.yuehua.items.other.FuBen;
 import com.xiaoxiaoowo.yuehua.items.other.Money;
 import com.xiaoxiaoowo.yuehua.items.other.Other;
 import com.xiaoxiaoowo.yuehua.items.zhuangbei.YiQi;
@@ -604,7 +605,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta31 = itemStack31.getItemMeta();
         itemMeta31.displayName(
                 Component
-                        .text("始皇陵").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("古墓").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
         );
         itemStack31.setItemMeta(itemMeta31);
         CHONG_HUA.setItem(13, itemStack31);
@@ -704,10 +705,10 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta141 = book_mainTask.getItemMeta();
         itemMeta141.displayName(
                 Component
-                        .text("主线任务").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("探索任务").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
         );
         book_mainTask.setItemMeta(itemMeta141);
-        MAIN_MENU.setItem(16,book_mainTask);
+        MAIN_MENU.setItem(12,book_mainTask);
 
         ItemStack book_xuanShang = new ItemStack(Material.YELLOW_DYE);
         book_xuanShang.setCustomModelData(12);
@@ -718,11 +719,11 @@ public final class Yh implements CommandExecutor {
         );
         itemMeta142.lore(
                 List.of(
-                        Component.text("需要在皇宫大卫总管——李公公处接取任务").color(NamedTextColor.GRAY).decorate(TextDecoration.ITALIC)
+                        Component.text("需要在悬赏局——悬赏局局长处接取任务").color(NamedTextColor.GRAY).decorate(TextDecoration.ITALIC)
                 )
         );
         book_xuanShang.setItemMeta(itemMeta142);
-        MAIN_MENU.setItem(17,book_xuanShang);
+        MAIN_MENU.setItem(13,book_xuanShang);
 
 
         ItemStack book_yuehua = new ItemStack(Material.YELLOW_DYE);
@@ -733,7 +734,7 @@ public final class Yh implements CommandExecutor {
                         .text("重新获取书籍——新手指引").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
         );
         book_yuehua.setItemMeta(itemMeta40);
-        ZA_XIANG.setItem(5,book_yuehua);
+        ZA_XIANG.setItem(8,book_yuehua);
 
         ItemStack book_shuxing = new ItemStack(Material.YELLOW_DYE);
         book_shuxing.setCustomModelData(12);
@@ -743,7 +744,7 @@ public final class Yh implements CommandExecutor {
                         .text("重新获取书籍——属性与战斗机制介绍").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
         );
         book_shuxing.setItemMeta(itemMetashuxing);
-        ZA_XIANG.setItem(6,book_shuxing);
+        ZA_XIANG.setItem(9,book_shuxing);
 
         ItemStack book_neirong = new ItemStack(Material.YELLOW_DYE);
         book_neirong.setCustomModelData(12);
@@ -753,7 +754,7 @@ public final class Yh implements CommandExecutor {
                         .text("重新获取书籍——基本游戏内容介绍").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
         );
         book_neirong.setItemMeta(itemMetaneirong);
-        ZA_XIANG.setItem(7,book_neirong);
+        ZA_XIANG.setItem(10,book_neirong);
 
         ItemStack book_wanfa = new ItemStack(Material.YELLOW_DYE);
         book_wanfa.setCustomModelData(12);
@@ -763,7 +764,7 @@ public final class Yh implements CommandExecutor {
                         .text("重新获取书籍——特殊玩法介绍").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
         );
         book_wanfa.setItemMeta(itemMeta43);
-        ZA_XIANG.setItem(8,book_wanfa);
+        ZA_XIANG.setItem(11,book_wanfa);
 
         ItemStack book_jinji = new ItemStack(Material.YELLOW_DYE);
         book_jinji.setCustomModelData(12);
@@ -773,7 +774,7 @@ public final class Yh implements CommandExecutor {
                         .text("重新获取书籍——服务器禁忌/规则").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
         );
         book_jinji.setItemMeta(itemMeta44);
-        ZA_XIANG.setItem(9,book_jinji);
+        ZA_XIANG.setItem(12,book_jinji);
 
 
         ItemStack paopao = new ItemStack(Material.YELLOW_DYE);
@@ -784,7 +785,7 @@ public final class Yh implements CommandExecutor {
                         .text("领取NPC兑换泡泡").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
         );
         paopao.setItemMeta(itemMeta41);
-        ZA_XIANG.setItem(3,paopao);
+        ZA_XIANG.setItem(6,paopao);
 
         ItemStack zhengming = new ItemStack(Material.YELLOW_DYE);
         zhengming.setCustomModelData(14);
@@ -794,18 +795,18 @@ public final class Yh implements CommandExecutor {
                         .text("领取种族证明").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
         );
         zhengming.setItemMeta(itemMeta42);
-        ZA_XIANG.setItem(4,zhengming);
+        ZA_XIANG.setItem(7,zhengming);
 
-        ItemStack chonghuaOp = new ItemStack(Material.YELLOW_DYE);
-        ItemMeta chonghuaOpMeta = chonghuaOp.getItemMeta();
-        chonghuaOpMeta.setCustomModelData(7);
-        chonghuaOpMeta.displayName(
-                Component
-                        .text("OP重华晶").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
-        );
-        chonghuaOp.setItemMeta(chonghuaOpMeta);
-
-        MAIN_MENU.setItem(52,chonghuaOp);
+//        ItemStack chonghuaOp = new ItemStack(Material.YELLOW_DYE);
+//        ItemMeta chonghuaOpMeta = chonghuaOp.getItemMeta();
+//        chonghuaOpMeta.setCustomModelData(7);
+//        chonghuaOpMeta.displayName(
+//                Component
+//                        .text("OP重华晶").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+//        );
+//        chonghuaOp.setItemMeta(chonghuaOpMeta);
+//
+//        MAIN_MENU.setItem(52,chonghuaOp);
         ZA_XIANG.setItem(17,BACK_BEFORE);
 
         ItemStack killYourSelf = new ItemStack(Material.POTION);
@@ -882,6 +883,34 @@ public final class Yh implements CommandExecutor {
         );
         shardInventory.setItemMeta(itemMetaShard);
 
+        ItemStack chengjiuPoint = new ItemStack(Material.YELLOW_DYE);
+        ItemMeta chengjiuMeta = chengjiuPoint.getItemMeta();
+        chengjiuMeta.setCustomModelData(19);
+        chengjiuMeta.displayName(
+                Component.text("成就点数查询").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+        );
+        chengjiuMeta.lore(
+                List.of(
+                        Component.text("点击查看你的成就点数").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false)
+                )
+        );
+        chengjiuPoint.setItemMeta(chengjiuMeta);
+        MAIN_MENU.setItem(16,chengjiuPoint);
+
+        ItemStack fubenCount = FuBen.keyJin.clone();
+        ItemMeta fubenMeta = fubenCount.getItemMeta();
+        fubenMeta.displayName(
+                Component.text("副本次数查询").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+        );
+        fubenMeta.lore(
+                List.of(
+                        Component.text("点击查看你的副本通关次数").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false)
+                )
+        );
+        fubenCount.setItemMeta(fubenMeta);
+        MAIN_MENU.setItem(17,fubenCount);
+
+
         MAIN_MENU.setItem(1,shardInventory);
 
         ItemStack recipe = new ItemStack(Material.WRITTEN_BOOK);
@@ -935,7 +964,7 @@ public final class Yh implements CommandExecutor {
                         .text("开启/关闭被动技能的文本提示").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
         );
         noise.setItemMeta(itemMetaNoise);
-        MAIN_MENU.setItem(18,noise);
+        ZA_XIANG.setItem(3,noise);
 
 
         ItemStack noise2 = new ItemStack(Material.REDSTONE);
@@ -945,7 +974,7 @@ public final class Yh implements CommandExecutor {
                         .text("开启/关闭被动技能的音效").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
         );
         noise2.setItemMeta(itemMetaNoise2);
-        MAIN_MENU.setItem(19,noise2);
+        ZA_XIANG.setItem(4,noise2);
 
         ItemStack noise3 = new ItemStack(Material.REDSTONE);
         ItemMeta itemMetaNoise3 = noise3.getItemMeta();
@@ -954,7 +983,7 @@ public final class Yh implements CommandExecutor {
                         .text("开启/关闭阵法的文本提示").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
         );
         noise3.setItemMeta(itemMetaNoise3);
-        MAIN_MENU.setItem(20,noise3);
+        ZA_XIANG.setItem(5,noise3);
 
         ItemStack shuilang = Food.shuilangniemianren.clone();
         ItemMeta itemMetaShui = shuilang.getItemMeta();
@@ -967,7 +996,7 @@ public final class Yh implements CommandExecutor {
                 )
         );
         shuilang.setItemMeta(itemMetaShui);
-        MAIN_MENU.setItem(12,shuilang);
+        MAIN_MENU.setItem(18,shuilang);
 
         ItemStack show = Weapon.KUN_LUN_FEI_XIAN_JIAN.clone();
         ItemMeta itemMetaShow = show.getItemMeta();
@@ -986,14 +1015,26 @@ public final class Yh implements CommandExecutor {
         itemMetaLun.lore(
                 List.of(
                         Component.text("必须清空自己的背包，而末影箱，饰品槽，乾坤盒不需要清理").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false),
-                        Component.text("轮回转世将花费存款中的500铜钱").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false),
+                        Component.text("轮回转世将花费存款中的300铜钱").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false),
                         Component.text("除此之外，不会扣除其它任何物品，属性等").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false)
                 )
         );
 
         lunhuizhuanshi.setItemMeta(itemMetaLun);
-        MAIN_MENU.setItem(13,lunhuizhuanshi);
+        MAIN_MENU.setItem(19,lunhuizhuanshi);
 
+        ItemStack kill = com.xiaoxiaoowo.yuehua.items.zhuangbei.Weapon.XUAN_YUAN.clone();
+        ItemMeta itemMetaKillCheck = kill.getItemMeta();
+        itemMetaKillCheck.displayName(
+                Component.text("查询怪物击杀数").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+        );
+        itemMetaKillCheck.lore(
+                List.of(
+                        Component.text("查询你的怪物击杀数").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false)
+                )
+        );
+        kill.setItemMeta(itemMetaKillCheck);
+        MAIN_MENU.setItem(20,kill);
 
     }
 

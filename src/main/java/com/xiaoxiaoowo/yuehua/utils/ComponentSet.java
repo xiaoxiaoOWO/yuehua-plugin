@@ -1,6 +1,7 @@
 package com.xiaoxiaoowo.yuehua.utils;
 
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 
 public final class ComponentSet {
     public static final Component template = Component.text("§e[游戏机制]§b");
@@ -50,13 +51,17 @@ public final class ComponentSet {
     public static final Component MIDDLEJINENG = Component.text("§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓§a装备技能§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
     public static final Component MIDDLEFULINGXIANGQIAN = Component.text("§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓§a附灵镶嵌§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
     public static final Component MIDDLEXIANGQIAN = Component.text("§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓§a镶嵌镶嵌§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
-    public static final Component LONGSHUXIN = Component.text("§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓§a装备属性§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
-    public static final Component LONGJINENG = Component.text("§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓§a装备技能§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
-    public static final Component LONGFULINGXIANGQIAN = Component.text("§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓§a附灵镶嵌§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
-    public static final Component LONGXIANGQIAN = Component.text("§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓§a镶嵌镶嵌§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
+    public static final Component LONGSHUXIN = Component.text("§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓§a装备属性§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
+    public static final Component LONGJINENG = Component.text("§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓§a装备技能§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
+    public static final Component LONGFULINGXIANGQIAN = Component.text("§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓§a附灵镶嵌§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
+    public static final Component LONGXIANGQIAN = Component.text("§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓§a镶嵌镶嵌§7〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓");
 
 
     public static final Component FULING = Component.text("§a[附灵]: §f[无]");
     public static final Component XIANGQIAN = Component.text("§a[镶嵌]: §f[无]");
+
+    public static String getPlainText(Component component) {
+        return PlainTextComponentSerializer.plainText().serialize(component);
+    }
 
 }

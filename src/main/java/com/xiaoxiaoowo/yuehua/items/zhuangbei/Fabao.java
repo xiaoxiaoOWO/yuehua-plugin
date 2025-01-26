@@ -1,8 +1,7 @@
 package com.xiaoxiaoowo.yuehua.items.zhuangbei;
 
 import com.xiaoxiaoowo.yuehua.attribute.AttributeSet;
-import com.xiaoxiaoowo.yuehua.commands.opcommand.R;
-import com.xiaoxiaoowo.yuehua.guis.Recipe;
+import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
 import com.xiaoxiaoowo.yuehua.utils.ZeroAttributeModifier;
@@ -21,76 +20,77 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class Fabao {
+
     //通用
-    public static final ItemStack ZHAOYAOJIN = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack YUFUCHEN = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack WUSEBUTIANSHI = new ItemStack(Material.IRON_PICKAXE, 1);
+    public static final ItemStack ZHAOYAOJIN = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack YUFUCHEN = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack WUSEBUTIANSHI = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
 
-    public static final ItemStack YAOWANGHULU = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack CIXINMIAOLIAN = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack SHENXINYUGU = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack YINYANGZHANLONGJIAN = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack YUNLANGBAN = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack ZHENHUNYUXIAO = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack DIKUIHUALAN = new ItemStack(Material.IRON_PICKAXE, 1);
-    public static final ItemStack XUANFENGZONGSHAN = new ItemStack(Material.IRON_PICKAXE, 1);
+    public static final ItemStack YAOWANGHULU = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack CIXINMIAOLIAN = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack SHENXINYUGU = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack YINYANGZHANLONGJIAN = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack YUNLANGBAN = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack ZHENHUNYUXIAO = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack DIKUIHUALAN = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
+    public static final ItemStack XUANFENGZONGSHAN = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
 
-    public static final ItemStack TAIJIBAGUA = new ItemStack(Material.IRON_PICKAXE, 1);
+    public static final ItemStack TAIJIBAGUA = new ItemStack(Material.PRISMARINE_CRYSTALS, 1);
 
     //战士
 
     //分支一，吸引仇恨
-    public static final ItemStack JUEDOULING = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack LEIMINGGU = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack HUANSILIN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack NIUMONUHOU = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+    public static final ItemStack JUEDOULING = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack LEIMINGGU = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack HUANSILIN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack NIUMONUHOU = new ItemStack(Material.PRISMARINE_SHARD, 1);
 
     //分支二，增伤
-    public static final ItemStack DOUQISHI = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack PANGUANBI = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack MINSHENGJIAN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack ZHENLEITIANCHUI = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+    public static final ItemStack DOUQISHI = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack PANGUANBI = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack MINSHENGJIAN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack ZHENLEITIANCHUI = new ItemStack(Material.PRISMARINE_SHARD, 1);
 
     //弓箭手
 
     //分支一，制造傀儡
 
-    public static final ItemStack DIAOHUNGAN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack SHELINZHU = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack YUJINPIN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack TIANJISHENJIN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+    public static final ItemStack DIAOHUNGAN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack SHELINZHU = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack YUJINPIN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack TIANJISHENJIN = new ItemStack(Material.PRISMARINE_SHARD, 1);
 
     //分支二，增伤
-    public static final ItemStack RUIYINGYAN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack DUOHUNTANG = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack MOYUANFOZHU = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack FUXINRUYI = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+    public static final ItemStack RUIYINGYAN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack DUOHUNTANG = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack MOYUANFOZHU = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack FUXINRUYI = new ItemStack(Material.PRISMARINE_SHARD, 1);
 
     //炼丹
 
     //分支一，单点（直线）伤害
-    public static final ItemStack LVYEXIANZONG = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack QINGNVHANSHUANG = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack ZHURONGKUYAN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack ZHUDIANXUANJING = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+    public static final ItemStack LVYEXIANZONG = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack QINGNVHANSHUANG = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack ZHURONGKUYAN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack ZHUDIANXUANJING = new ItemStack(Material.PRISMARINE_SHARD, 1);
 
     //分支二，群体伤害
-    public static final ItemStack BUHUNWANG = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack YANGSHOUJIAN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack WUMINGMOYINLUO = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack SHETIANHUAXUELING = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+    public static final ItemStack BUHUNWANG = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack YANGSHOUJIAN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack WUMINGMOYINLUO = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack SHETIANHUAXUELING = new ItemStack(Material.PRISMARINE_SHARD, 1);
 
     //分支三，辅助队友
-    public static final ItemStack KUYELING = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack LUOBEIJINPIN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack PINYUSHUIYU = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack DIKONGYUMOQUAN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+    public static final ItemStack KUYELING = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack LUOBEIJINPIN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack PINYUSHUIYU = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack DIKONGYUMOQUAN = new ItemStack(Material.PRISMARINE_SHARD, 1);
 
     //分支四，削弱敌人
-    public static final ItemStack LUANSHENGU = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack JINGULIAN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack JIANCHANGULIN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
-    public static final ItemStack MODUOHUNFAN = new ItemStack(Material.DIAMOND_PICKAXE, 1);
+    public static final ItemStack LUANSHENGU = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack JINGULIAN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack JIANCHANGULIN = new ItemStack(Material.PRISMARINE_SHARD, 1);
+    public static final ItemStack MODUOHUNFAN = new ItemStack(Material.PRISMARINE_SHARD, 1);
 
 
     static {
@@ -139,189 +139,50 @@ public final class Fabao {
         ItemMeta jianchangulinMeta = JIANCHANGULIN.getItemMeta();
         ItemMeta moduohunfanMeta = MODUOHUNFAN.getItemMeta();
 
-
-        zhaoyaojinMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        yufuchenMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        wusebutianshiMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        yaowanghuluMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        cixinmiaolianMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        shenxinyuguMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        yinyangzhanlongjianMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        yunlangbanMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        zhenhunyuxiaoMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        dikuihualanMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        xuanfengzongshanMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        taijibaguaMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        juedoulingMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        leimingguMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        huansilinMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        niumonuhouMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        douqishiMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        panguanbiMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        minshengjianMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        zhenleitianchuiMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        diohunganMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        shelinzhuMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        yujinpinMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        tianjishenjinMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        ruiyingyanMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        duohuntangMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        moyuanfozhuMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        fuxinruyiMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        lvyexianzongMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        qingnvhuanshuangMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        zhurongkuyanMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        zhudianxuanjingMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        buhunwangMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        yangshoujianMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        wumingmoyinluoMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        shetianhuaxuelingMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        kuyelingMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        luobeijinpinMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        pinyushuiyuMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        dikongymoquanMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        luanshenguMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        jingulianMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        jianchangulinMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-        moduohunfanMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
-
-
-        zhaoyaojinMeta.setUnbreakable(true);
-        yufuchenMeta.setUnbreakable(true);
-        wusebutianshiMeta.setUnbreakable(true);
-        yaowanghuluMeta.setUnbreakable(true);
-        cixinmiaolianMeta.setUnbreakable(true);
-        shenxinyuguMeta.setUnbreakable(true);
-        yinyangzhanlongjianMeta.setUnbreakable(true);
-        yunlangbanMeta.setUnbreakable(true);
-        zhenhunyuxiaoMeta.setUnbreakable(true);
-        dikuihualanMeta.setUnbreakable(true);
-        xuanfengzongshanMeta.setUnbreakable(true);
-        taijibaguaMeta.setUnbreakable(true);
-        juedoulingMeta.setUnbreakable(true);
-        leimingguMeta.setUnbreakable(true);
-        huansilinMeta.setUnbreakable(true);
-        niumonuhouMeta.setUnbreakable(true);
-        douqishiMeta.setUnbreakable(true);
-        panguanbiMeta.setUnbreakable(true);
-        minshengjianMeta.setUnbreakable(true);
-        zhenleitianchuiMeta.setUnbreakable(true);
-        diohunganMeta.setUnbreakable(true);
-        shelinzhuMeta.setUnbreakable(true);
-        yujinpinMeta.setUnbreakable(true);
-        tianjishenjinMeta.setUnbreakable(true);
-        ruiyingyanMeta.setUnbreakable(true);
-        duohuntangMeta.setUnbreakable(true);
-        moyuanfozhuMeta.setUnbreakable(true);
-        fuxinruyiMeta.setUnbreakable(true);
-        lvyexianzongMeta.setUnbreakable(true);
-        qingnvhuanshuangMeta.setUnbreakable(true);
-        zhurongkuyanMeta.setUnbreakable(true);
-        zhudianxuanjingMeta.setUnbreakable(true);
-        buhunwangMeta.setUnbreakable(true);
-        yangshoujianMeta.setUnbreakable(true);
-        wumingmoyinluoMeta.setUnbreakable(true);
-        shetianhuaxuelingMeta.setUnbreakable(true);
-        kuyelingMeta.setUnbreakable(true);
-        luobeijinpinMeta.setUnbreakable(true);
-        pinyushuiyuMeta.setUnbreakable(true);
-        dikongymoquanMeta.setUnbreakable(true);
-        luanshenguMeta.setUnbreakable(true);
-        jingulianMeta.setUnbreakable(true);
-        jianchangulinMeta.setUnbreakable(true);
-        moduohunfanMeta.setUnbreakable(true);
-
-
-        zhaoyaojinMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        yufuchenMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        wusebutianshiMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        yaowanghuluMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        cixinmiaolianMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        shenxinyuguMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        yinyangzhanlongjianMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        yunlangbanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        zhenhunyuxiaoMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        dikuihualanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        xuanfengzongshanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        taijibaguaMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        juedoulingMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        leimingguMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        huansilinMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        niumonuhouMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        douqishiMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        panguanbiMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        minshengjianMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        zhenleitianchuiMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        diohunganMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        shelinzhuMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        yujinpinMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        tianjishenjinMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        ruiyingyanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        duohuntangMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        moyuanfozhuMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        fuxinruyiMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        lvyexianzongMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        qingnvhuanshuangMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        zhurongkuyanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        zhudianxuanjingMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        buhunwangMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        yangshoujianMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        wumingmoyinluoMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        shetianhuaxuelingMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        kuyelingMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        luobeijinpinMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        pinyushuiyuMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        dikongymoquanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        luanshenguMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        jingulianMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        jianchangulinMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        moduohunfanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-
-
-        zhaoyaojinMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        yufuchenMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        wusebutianshiMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        yaowanghuluMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        cixinmiaolianMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        shenxinyuguMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        yinyangzhanlongjianMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        yunlangbanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        zhenhunyuxiaoMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        dikuihualanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        xuanfengzongshanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        taijibaguaMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        juedoulingMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        leimingguMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        huansilinMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        niumonuhouMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        douqishiMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        panguanbiMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        minshengjianMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        zhenleitianchuiMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        diohunganMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        shelinzhuMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        yujinpinMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        tianjishenjinMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        ruiyingyanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        duohuntangMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        moyuanfozhuMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        fuxinruyiMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        lvyexianzongMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        qingnvhuanshuangMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        zhurongkuyanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        zhudianxuanjingMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        buhunwangMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        yangshoujianMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        wumingmoyinluoMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        shetianhuaxuelingMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        kuyelingMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        luobeijinpinMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        pinyushuiyuMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        dikongymoquanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        luanshenguMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        jingulianMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        jianchangulinMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        moduohunfanMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
+        zhaoyaojinMeta.setMaxStackSize(1);
+        yufuchenMeta.setMaxStackSize(1);
+        wusebutianshiMeta.setMaxStackSize(1);
+        yaowanghuluMeta.setMaxStackSize(1);
+        cixinmiaolianMeta.setMaxStackSize(1);
+        shenxinyuguMeta.setMaxStackSize(1);
+        yinyangzhanlongjianMeta.setMaxStackSize(1);
+        yunlangbanMeta.setMaxStackSize(1);
+        zhenhunyuxiaoMeta.setMaxStackSize(1);
+        dikuihualanMeta.setMaxStackSize(1);
+        xuanfengzongshanMeta.setMaxStackSize(1);
+        taijibaguaMeta.setMaxStackSize(1);
+        juedoulingMeta.setMaxStackSize(1);
+        leimingguMeta.setMaxStackSize(1);
+        huansilinMeta.setMaxStackSize(1);
+        niumonuhouMeta.setMaxStackSize(1);
+        douqishiMeta.setMaxStackSize(1);
+        panguanbiMeta.setMaxStackSize(1);
+        minshengjianMeta.setMaxStackSize(1);
+        zhenleitianchuiMeta.setMaxStackSize(1);
+        diohunganMeta.setMaxStackSize(1);
+        shelinzhuMeta.setMaxStackSize(1);
+        yujinpinMeta.setMaxStackSize(1);
+        tianjishenjinMeta.setMaxStackSize(1);
+        ruiyingyanMeta.setMaxStackSize(1);
+        duohuntangMeta.setMaxStackSize(1);
+        moyuanfozhuMeta.setMaxStackSize(1);
+        fuxinruyiMeta.setMaxStackSize(1);
+        lvyexianzongMeta.setMaxStackSize(1);
+        qingnvhuanshuangMeta.setMaxStackSize(1);
+        zhurongkuyanMeta.setMaxStackSize(1);
+        zhudianxuanjingMeta.setMaxStackSize(1);
+        buhunwangMeta.setMaxStackSize(1);
+        yangshoujianMeta.setMaxStackSize(1);
+        wumingmoyinluoMeta.setMaxStackSize(1);
+        shetianhuaxuelingMeta.setMaxStackSize(1);
+        kuyelingMeta.setMaxStackSize(1);
+        luobeijinpinMeta.setMaxStackSize(1);
+        pinyushuiyuMeta.setMaxStackSize(1);
+        dikongymoquanMeta.setMaxStackSize(1);
+        luanshenguMeta.setMaxStackSize(1);
+        jingulianMeta.setMaxStackSize(1);
+        jianchangulinMeta.setMaxStackSize(1);
+        moduohunfanMeta.setMaxStackSize(1);
 
         PersistentDataContainer pdczhaoyaojin = zhaoyaojinMeta.getPersistentDataContainer();
         PersistentDataContainer pdcyufuchen = yufuchenMeta.getPersistentDataContainer();
@@ -512,55 +373,57 @@ public final class Fabao {
         pdcmoduohunfan.set(DataContainer.slot, PersistentDataType.INTEGER, 5);
 
         zhaoyaojinMeta.displayName(Component.text("照妖镜[法宝]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
-        yufuchenMeta.displayName(Component.text("羽拂尘[法宝]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
+        yufuchenMeta.displayName(Component.text("祭名卷[法宝]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
         wusebutianshiMeta.displayName(Component.text("五色补天石[法宝]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
-        yaowanghuluMeta.displayName(Component.text("药王葫芦[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        cixinmiaolianMeta.displayName(Component.text("慈心妙莲[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        shenxinyuguMeta.displayName(Component.text("神行渔鼓[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        yinyangzhanlongjianMeta.displayName(Component.text("阴阳斩龙剑[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        yunlangbanMeta.displayName(Component.text("云阳板[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        zhenhunyuxiaoMeta.displayName(Component.text("镇魂玉箫[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        dikuihualanMeta.displayName(Component.text("地魁花篮[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        xuanfengzongshanMeta.displayName(Component.text("玄风棕扇[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        taijibaguaMeta.displayName(Component.text("太极八卦[法宝]").color(NamedTextColor.GOLD).decoration(TextDecoration.ITALIC, false));
+        yaowanghuluMeta.displayName(Component.text("济世葫芦[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        cixinmiaolianMeta.displayName(Component.text("神护真莲[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        shenxinyuguMeta.displayName(Component.text("腾云渔鼓[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        yinyangzhanlongjianMeta.displayName(Component.text("两仪斩龙[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        yunlangbanMeta.displayName(Component.text("凌霄灵板[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        zhenhunyuxiaoMeta.displayName(Component.text("降魔玉箫[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        dikuihualanMeta.displayName(Component.text("天宝花篮[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        xuanfengzongshanMeta.displayName(Component.text("驭气仙扇[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        taijibaguaMeta.displayName(Component.text("四象八卦[法宝]").color(NamedTextColor.GOLD).decoration(TextDecoration.ITALIC, false));
         juedoulingMeta.displayName(Component.text("决斗令[法宝]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
         leimingguMeta.displayName(Component.text("雷鸣鼓[法宝]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
-        huansilinMeta.displayName(Component.text("幻思铃[法宝]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
-        niumonuhouMeta.displayName(Component.text("牛魔怒吼[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        huansilinMeta.displayName(Component.text("醉梦铃[法宝]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
+        niumonuhouMeta.displayName(Component.text("九天魔啸[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
         douqishiMeta.displayName(Component.text("斗气石[法宝]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
         panguanbiMeta.displayName(Component.text("判官笔[法宝]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
-        minshengjianMeta.displayName(Component.text("悯生剑[法宝]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
-        zhenleitianchuiMeta.displayName(Component.text("震雷天锤[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        minshengjianMeta.displayName(Component.text("渡世剑[法宝]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
+        zhenleitianchuiMeta.displayName(Component.text("九霄雷锤[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
         diohunganMeta.displayName(Component.text("钓魂竿[法宝]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
         shelinzhuMeta.displayName(Component.text("摄灵珠[法宝]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
-        yujinpinMeta.displayName(Component.text("玉净瓶[法宝]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
+        yujinpinMeta.displayName(Component.text("聚元瓶[法宝]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
         tianjishenjinMeta.displayName(Component.text("天机神镜[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
         ruiyingyanMeta.displayName(Component.text("锐鹰眼[法宝]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
         duohuntangMeta.displayName(Component.text("夺魂汤[法宝]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
-        moyuanfozhuMeta.displayName(Component.text("摩愿佛珠[法宝]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
-        fuxinruyiMeta.displayName(Component.text("浮行如意[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        lvyexianzongMeta.displayName(Component.text("绿野仙踪[法宝]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
+        moyuanfozhuMeta.displayName(Component.text("化骨杖[法宝]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
+        fuxinruyiMeta.displayName(Component.text("碧落黄泉[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        lvyexianzongMeta.displayName(Component.text("万木葱茏[法宝]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
         qingnvhuanshuangMeta.displayName(Component.text("青女寒霜[法宝]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
         zhurongkuyanMeta.displayName(Component.text("祝融酷炎[法宝]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
-        zhudianxuanjingMeta.displayName(Component.text("朱电玄镜[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        buhunwangMeta.displayName(Component.text("捕魂网[法宝]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
-        yangshoujianMeta.displayName(Component.text("阳寿剪[法宝]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
-        wumingmoyinluoMeta.displayName(Component.text("无冥魔音螺[法宝]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
-        shetianhuaxuelingMeta.displayName(Component.text("奢天化雪令[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        kuyelingMeta.displayName(Component.text("枯叶灵[法宝]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
-        luobeijinpinMeta.displayName(Component.text("罗悲净瓶[法宝]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
-        pinyushuiyuMeta.displayName(Component.text("萍雨水盂[法宝]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
-        dikongymoquanMeta.displayName(Component.text("帝空御魔圈[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
-        luanshenguMeta.displayName(Component.text("乱神菇[法宝]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
-        jingulianMeta.displayName(Component.text("禁锢镰[法宝]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
-        jianchangulinMeta.displayName(Component.text("间忏蛊铃[法宝]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
-        moduohunfanMeta.displayName(Component.text("摩多魂幡[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        zhudianxuanjingMeta.displayName(Component.text("两届霜炎[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        buhunwangMeta.displayName(Component.text("捕魂灵网[法宝]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
+        yangshoujianMeta.displayName(Component.text("阳寿魔剪[法宝]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
+        wumingmoyinluoMeta.displayName(Component.text("元冥音螺[法宝]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
+        shetianhuaxuelingMeta.displayName(Component.text("雪魄寒光[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        kuyelingMeta.displayName(Component.text("碧玉芽叶[法宝]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
+        luobeijinpinMeta.displayName(Component.text("胭脂净蕊[法宝]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
+        pinyushuiyuMeta.displayName(Component.text("千古灵魄[法宝]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
+        dikongymoquanMeta.displayName(Component.text("七虹精元[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
+        luanshenguMeta.displayName(Component.text("乱神恶菇[法宝]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
+        jingulianMeta.displayName(Component.text("禁锢冥镰[法宝]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
+        jianchangulinMeta.displayName(Component.text("罪罚冤孽[法宝]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
+        moduohunfanMeta.displayName(Component.text("奈何引魂[法宝]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
 
         zhaoyaojinMeta.lore(
                 Stream.of(
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBALL,
                                 ComponentSet.Act9,
+                                Component.text("§7§o能照出妖魔原形的宝镜"),
+                                Component.text("§7§o驱邪除妖的必备之物"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("zhaoYaoJin", 2),
                                 ComponentSet.SHORTJINENG
@@ -580,6 +443,8 @@ public final class Fabao {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBALL,
                                 ComponentSet.Act9,
+                                Component.text("§7§o记载着诸神名讳的古卷"),
+                                Component.text("§7§o可召唤神力庇护"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("yuFuChen", 2),
                                 ComponentSet.SHORTJINENG
@@ -599,6 +464,8 @@ public final class Fabao {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBALL,
                                 ComponentSet.Act9,
+                                Component.text("§7§o女娲补天所用的神石"),
+                                Component.text("§7§o蕴含造化之力"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("wuSeBuTianShi", 2),
                                 ComponentSet.SHORTJINENG
@@ -618,6 +485,8 @@ public final class Fabao {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBALL,
                                 ComponentSet.Act9,
+                                Component.text("§7§o神医药王炼制的宝葫芦"),
+                                Component.text("§7§o能治愈一切伤痛"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("yaoWangHuLu", 2),
                                 ComponentSet.SHORTJINENG
@@ -637,6 +506,8 @@ public final class Fabao {
                         ComponentSet.RARE6,
                         ComponentSet.JOBALL,
                         ComponentSet.Act9,
+                        Component.text("§7§o莲台散发神圣光辉"),
+                        Component.text("§7§o守护生灵的法宝"),
                         ComponentSet.SHORTSHUXIN,
                         ComponentSet.SHORTJINENG
                 )
@@ -647,6 +518,8 @@ public final class Fabao {
                         ComponentSet.RARE6,
                         ComponentSet.JOBALL,
                         ComponentSet.Act9,
+                        Component.text("§7§o可唤云驾雾的法器"),
+                        Component.text("§7§o击鼓声声震慑妖邪"),
                         ComponentSet.SHORTSHUXIN,
                         ComponentSet.SHORTJINENG
                 )
@@ -657,6 +530,8 @@ public final class Fabao {
                         ComponentSet.RARE6,
                         ComponentSet.JOBALL,
                         ComponentSet.Act9,
+                        Component.text("§7§o蕴含阴阳之力的神剑"),
+                        Component.text("§7§o一剑可斩恶龙"),
                         ComponentSet.SHORTSHUXIN,
                         ComponentSet.SHORTJINENG
                 )
@@ -667,6 +542,8 @@ public final class Fabao {
                         ComponentSet.RARE6,
                         ComponentSet.JOBALL,
                         ComponentSet.Act9,
+                        Component.text("§7§o腾云驾雾的神奇木板"),
+                        Component.text("§7§o可御空飞行"),
                         ComponentSet.SHORTSHUXIN,
                         ComponentSet.SHORTJINENG
                 )
@@ -677,6 +554,8 @@ public final class Fabao {
                         ComponentSet.RARE6,
                         ComponentSet.JOBALL,
                         ComponentSet.Act9,
+                        Component.text("§7§o吹奏可降服妖魔"),
+                        Component.text("§7§o镇压邪祟的神箫"),
                         ComponentSet.SHORTSHUXIN,
                         ComponentSet.SHORTJINENG
                 )
@@ -687,6 +566,8 @@ public final class Fabao {
                         ComponentSet.RARE6,
                         ComponentSet.JOBALL,
                         ComponentSet.Act9,
+                        Component.text("§7§o盛开着天界奇花"),
+                        Component.text("§7§o可收纳万物的宝篮"),
                         ComponentSet.SHORTSHUXIN,
                         ComponentSet.SHORTJINENG
                 )
@@ -697,6 +578,8 @@ public final class Fabao {
                         ComponentSet.RARE6,
                         ComponentSet.JOBALL,
                         ComponentSet.Act9,
+                        Component.text("§7§o掌控风云变幻的神扇"),
+                        Component.text("§7§o一摇便可卷起狂风"),
                         ComponentSet.SHORTSHUXIN,
                         ComponentSet.SHORTJINENG
                 )
@@ -707,6 +590,8 @@ public final class Fabao {
                         ComponentSet.RARE8,
                         ComponentSet.JOBDAN,
                         ComponentSet.Act9,
+                        Component.text("§7§o蕴含四象八卦之力"),
+                        Component.text("§7§o能预知天机变化"),
                         ComponentSet.SHORTSHUXIN,
                         ComponentSet.SHORTJINENG
                 )
@@ -717,6 +602,8 @@ public final class Fabao {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act3,
+                                Component.text("§7§o封印着战意的令牌"),
+                                Component.text("§7§o可引发决斗"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("jueDouLing", 2),
                                 ComponentSet.SHORTJINENG
@@ -736,6 +623,8 @@ public final class Fabao {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act3,
+                                Component.text("§7§o敲响可唤来雷霆"),
+                                Component.text("§7§o震慑妖邪的神鼓"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("leiMingGu", 2),
                                 ComponentSet.SHORTJINENG
@@ -755,6 +644,8 @@ public final class Fabao {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act3,
+                                Component.text("§7§o摇响可让人沉睡"),
+                                Component.text("§7§o梦境之中自有天地"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("huanSiLin", 2),
                                 ComponentSet.SHORTJINENG
@@ -774,6 +665,8 @@ public final class Fabao {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act3,
+                                Component.text("§7§o九天魔神的怒吼"),
+                                Component.text("§7§o发出震天咆哮"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("niuMoNuHou", 2),
                                 ComponentSet.SHORTJINENG
@@ -793,6 +686,8 @@ public final class Fabao {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act3,
+                                Component.text("§7§o凝聚战意的宝石"),
+                                Component.text("§7§o可提升战斗力"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("douQiShi", 2),
                                 ComponentSet.SHORTJINENG
@@ -812,6 +707,8 @@ public final class Fabao {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act3,
+                                Component.text("§7§o判定善恶的神笔"),
+                                Component.text("§7§o一笔定生死"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("panGuanBi", 2),
                                 ComponentSet.SHORTJINENG
@@ -831,6 +728,8 @@ public final class Fabao {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act3,
+                                Component.text("§7§o超脱生死的神剑"),
+                                Component.text("§7§o可斩断因果"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("minShengJian", 2),
                                 ComponentSet.SHORTJINENG
@@ -850,6 +749,8 @@ public final class Fabao {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act3,
+                                Component.text("§7§o掌控九霄雷电"),
+                                Component.text("§7§o一击可破万法"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("zhenLeiTianChui", 2),
                                 ComponentSet.SHORTJINENG
@@ -869,6 +770,8 @@ public final class Fabao {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act3,
+                                Component.text("§7§o能钓取魂魄的神竿"),
+                                Component.text("§7§o让敌人失去意识"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("dioHunGan", 2),
                                 ComponentSet.SHORTJINENG
@@ -888,6 +791,8 @@ public final class Fabao {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act3,
+                                Component.text("§7§o可吸取灵力的宝珠"),
+                                Component.text("§7§o增强使用者修为"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("sheLingZhu", 2),
                                 ComponentSet.SHORTJINENG
@@ -907,6 +812,8 @@ public final class Fabao {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act3,
+                                Component.text("§7§o凝聚天地元气的宝瓶"),
+                                Component.text("§7§o源源不断生生不息"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("yuJinPin", 2),
                                 ComponentSet.SHORTJINENG
@@ -926,6 +833,8 @@ public final class Fabao {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act3,
+                                Component.text("§7§o预知天机的神镜"),
+                                Component.text("§7§o洞察过去未来"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("tianJiShenJin", 2),
                                 ComponentSet.SHORTJINENG
@@ -945,6 +854,8 @@ public final class Fabao {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act3,
+                                Component.text("§7§o如鹰般锐利的神眼"),
+                                Component.text("§7§o能看破虚妄"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("ruiYingYan", 2),
                                 ComponentSet.SHORTJINENG
@@ -964,6 +875,8 @@ public final class Fabao {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act3,
+                                Component.text("§7§o能夺取魂魄的汤药"),
+                                Component.text("§7§o一饮便失去意识"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("duoHunTang", 2),
                                 ComponentSet.SHORTJINENG
@@ -983,6 +896,8 @@ public final class Fabao {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act3,
+                                Component.text("§7§o点化万物的神杖"),
+                                Component.text("§7§o化骨成灰"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("moYuanFoZhu", 2),
                                 ComponentSet.SHORTJINENG
@@ -1002,6 +917,8 @@ public final class Fabao {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act3,
+                                Component.text("§7§o勾连阴阳两界"),
+                                Component.text("§7§o生死由我"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("fuXinRuYi", 2),
                                 ComponentSet.SHORTJINENG
@@ -1021,6 +938,8 @@ public final class Fabao {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act3,
+                                Component.text("§7§o掌控万木生长"),
+                                Component.text("§7§o一念繁花似锦"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("lvYeXianZong", 2),
                                 ComponentSet.SHORTJINENG
@@ -1040,6 +959,8 @@ public final class Fabao {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act3,
+                                Component.text("§7§o掌控寒冰的神器"),
+                                Component.text("§7§o冰封万物"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("qingNvHuanShuang", 2),
                                 ComponentSet.SHORTJINENG
@@ -1059,6 +980,8 @@ public final class Fabao {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act3,
+                                Component.text("§7§o火神的炎力"),
+                                Component.text("§7§o焚尽一切"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("zhuRongKuYan", 2),
                                 ComponentSet.SHORTJINENG
@@ -1078,6 +1001,8 @@ public final class Fabao {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act3,
+                                Component.text("§7§o冰火交织的神器"),
+                                Component.text("§7§o掌控水火"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("zhuDianXuanJing", 2),
                                 ComponentSet.SHORTJINENG
@@ -1097,6 +1022,8 @@ public final class Fabao {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act4,
+                                Component.text("§7§o能捕获魂魄的灵网"),
+                                Component.text("§7§o一网成擒"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("buHunWang", 2),
                                 ComponentSet.SHORTJINENG
@@ -1116,6 +1043,8 @@ public final class Fabao {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act4,
+                                Component.text("§7§o剪断阳寿的魔器"),
+                                Component.text("§7§o生死予夺"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("yangShouJian", 2),
                                 ComponentSet.SHORTJINENG
@@ -1135,6 +1064,8 @@ public final class Fabao {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act4,
+                                Component.text("§7§o发出幽冥之音"),
+                                Component.text("§7§o摄人心魄"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("wuMingMoYinLuo", 2),
                                 ComponentSet.SHORTJINENG
@@ -1154,6 +1085,8 @@ public final class Fabao {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act4,
+                                Component.text("§7§o凝聚极寒之力"),
+                                Component.text("§7§o冰封三尺"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("sheTianHuaXueLing", 2),
                                 ComponentSet.SHORTJINENG
@@ -1173,6 +1106,8 @@ public final class Fabao {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act5,
+                                Component.text("§7§o蕴含生机的神叶"),
+                                Component.text("§7§o生生不息"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("kuYeLing", 2),
                                 ComponentSet.SHORTJINENG
@@ -1192,6 +1127,8 @@ public final class Fabao {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act5,
+                                Component.text("§7§o净化污浊的宝器"),
+                                Component.text("§7§o返璞归真"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("luoBeiJinPin", 2),
                                 ComponentSet.SHORTJINENG
@@ -1211,6 +1148,8 @@ public final class Fabao {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act5,
+                                Component.text("§7§o承载千古灵魂"),
+                                Component.text("§7§o永恒不灭"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("pinYuShuiYu", 2),
                                 ComponentSet.SHORTJINENG
@@ -1230,6 +1169,8 @@ public final class Fabao {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act5,
+                                Component.text("§7§o七色神光凝聚"),
+                                Component.text("§7§o光芒万丈"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("diKongYmoQuan", 2),
                                 ComponentSet.SHORTJINENG
@@ -1249,6 +1190,8 @@ public final class Fabao {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act6,
+                                Component.text("§7§o让人心神失守"),
+                                Component.text("§7§o迷失方向"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("luanShenGu", 2),
                                 ComponentSet.SHORTJINENG
@@ -1268,6 +1211,8 @@ public final class Fabao {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act6,
+                                Component.text("§7§o禁锢灵魂的镰刀"),
+                                Component.text("§7§o无处可逃"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("jinGuLian", 2),
                                 ComponentSet.SHORTJINENG
@@ -1287,6 +1232,8 @@ public final class Fabao {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act6,
+                                Component.text("§7§o惩罚罪业的神器"),
+                                Component.text("§7§o因果报应"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("jianChangGuLin", 2),
                                 ComponentSet.SHORTJINENG
@@ -1306,6 +1253,8 @@ public final class Fabao {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.Act6,
+                                Component.text("§7§o引魂入冥的法器"),
+                                Component.text("§7§o魂归地府"),
                                 ComponentSet.SHORTSHUXIN,
                                 AttributeSet.fromId("moDuoHunFan", 2),
                                 ComponentSet.SHORTJINENG

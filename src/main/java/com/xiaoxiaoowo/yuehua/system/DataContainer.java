@@ -11,6 +11,10 @@ public final class DataContainer {
     public static final NamespacedKey seller;
     public static final NamespacedKey price;
     public static final NamespacedKey shooter;
+
+    //绑定物品
+    public static final NamespacedKey owner;
+
     //实体数据
 
     //等级奖励
@@ -32,7 +36,15 @@ public final class DataContainer {
     //复活点标记,副本标记,
     public static final NamespacedKey relife;
     public static final NamespacedKey relifeStoneCount;
+
     public static final NamespacedKey fuben;
+    public static final NamespacedKey gumuCount;
+    public static final NamespacedKey huomoCount;
+    public static final NamespacedKey kuguCount;
+    public static final NamespacedKey zhengtaCount;
+    public static final NamespacedKey guiouCount;
+    public static final NamespacedKey shengshanCount;
+
 
     //基础数据
     //1->神族,2->仙族,3->人族,4->妖族,5->战神族
@@ -157,6 +169,7 @@ public final class DataContainer {
 
     public static final NamespacedKey mainTask;
 
+
     public static final NamespacedKey xuanshanglevel;
     public static final NamespacedKey xuanshangCd;
     public static final NamespacedKey xuanshangId;
@@ -189,10 +202,20 @@ public final class DataContainer {
     public static final NamespacedKey killEastWaterGhostMountainCount;
     public static final NamespacedKey killEastPoisonSpiderMountainCount;
 
+    public static final NamespacedKey zhonglie1;
+    public static final NamespacedKey zhonglie2;
+    public static final NamespacedKey zhonglie3;
 
+    public static final NamespacedKey xinqitian;
+
+    public static final NamespacedKey shenqiHaveGot;
 
     static {
         String namespace = "yh";
+
+        zhonglie1 = new NamespacedKey(namespace, "zhonglie1");
+        zhonglie2 = new NamespacedKey(namespace, "zhonglie2");
+        zhonglie3 = new NamespacedKey(namespace, "zhonglie3");
 
         advancementPoint = new NamespacedKey(namespace, "advancement_point");
 
@@ -351,5 +374,18 @@ public final class DataContainer {
         xuanshangCd = new NamespacedKey(namespace, "xuanshangcd");
         xuanshangId = new NamespacedKey(namespace, "xuanshangid");
 
+        gumuCount = new NamespacedKey(namespace, "gumucount");
+        huomoCount = new NamespacedKey(namespace, "huomocount");
+        guiouCount = new NamespacedKey(namespace, "guioucount");
+        zhengtaCount = new NamespacedKey(namespace, "zhengta");
+        kuguCount = new NamespacedKey(namespace, "kugu");
+        shengshanCount = new NamespacedKey(namespace, "shengshan");
+
+
+        owner = new NamespacedKey(namespace, "owner");
+
+        xinqitian = new NamespacedKey(namespace, "xinqitian");
+
+        shenqiHaveGot = new NamespacedKey(namespace, "shenqihavegot");
     }
 }

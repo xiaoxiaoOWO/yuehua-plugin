@@ -1,7 +1,7 @@
 package com.xiaoxiaoowo.yuehua.items.zhuangbei;
 
 import com.xiaoxiaoowo.yuehua.attribute.AttributeSet;
-import com.xiaoxiaoowo.yuehua.guis.Recipe;
+import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
 import com.xiaoxiaoowo.yuehua.utils.ZeroAttributeModifier;
@@ -22,28 +22,28 @@ import java.util.stream.Stream;
 
 public final class Weapon {
     //战士
-    public static final ItemStack TAO_MU_JIAN = new ItemStack(Material.DIAMOND_PICKAXE);
+    public static final ItemStack TAO_MU_JIAN = new ItemStack(Material.PRISMARINE_SHARD);
 
     //破军
-    public static final ItemStack KAI_SHAN_DAO = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack JU_TONG_ZHAN_CHUI = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack PO_KONG_FU = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack SAN_BAO_YU_RU_YI = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack XUAN_YUAN = new ItemStack(Material.DIAMOND_PICKAXE);
+    public static final ItemStack KAI_SHAN_DAO = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack JU_TONG_ZHAN_CHUI = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack PO_KONG_FU = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack SAN_BAO_YU_RU_YI = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack XUAN_YUAN = new ItemStack(Material.PRISMARINE_SHARD);
 
     //金钟
-    public static final ItemStack QIN_TONG_JIAN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack CHI_TONG_JIAN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack TAI_JI_JIAN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack KUN_LUN_FEI_XIAN_JIAN = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack TAI_E = new ItemStack(Material.DIAMOND_PICKAXE);
+    public static final ItemStack QIN_TONG_JIAN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack CHI_TONG_JIAN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack TAI_JI_JIAN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack KUN_LUN_FEI_XIAN_JIAN = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack TAI_E = new ItemStack(Material.PRISMARINE_SHARD);
 
     //探云
-    public static final ItemStack YIN_YUE_QIANG = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack HONG_YIN_QIANG = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack YOU_LONG_QIANG = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack HU_TOU_ZHAN_JIN_QIANG = new ItemStack(Material.DIAMOND_PICKAXE);
-    public static final ItemStack RU_YI_JIN_GU_BANG = new ItemStack(Material.DIAMOND_PICKAXE);
+    public static final ItemStack YIN_YUE_QIANG = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack HONG_YIN_QIANG = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack YOU_LONG_QIANG = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack HU_TOU_ZHAN_JIN_QIANG = new ItemStack(Material.PRISMARINE_SHARD);
+    public static final ItemStack RU_YI_JIN_GU_BANG = new ItemStack(Material.PRISMARINE_SHARD);
 
     //弓箭手
     public static final ItemStack TENG_MU_GONG = new ItemStack(Material.BOW);
@@ -72,12 +72,12 @@ public final class Weapon {
 
     //炼丹师
     //丹炉
-    public static final ItemStack HEI_TIE_GUO = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack QIN_TONG_GUO = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack LIAN_DAN_LU = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack SUO_HUN_LU = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack QI_SHA_DING = new ItemStack(Material.GOLDEN_PICKAXE);
-    public static final ItemStack HUN_YUAN_SHEN_DING = new ItemStack(Material.GOLDEN_PICKAXE);
+    public static final ItemStack HEI_TIE_GUO = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack QIN_TONG_GUO = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack LIAN_DAN_LU = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack SUO_HUN_LU = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack QI_SHA_DING = new ItemStack(Material.RABBIT_HIDE);
+    public static final ItemStack HUN_YUAN_SHEN_DING = new ItemStack(Material.RABBIT_HIDE);
 
 
     static {
@@ -120,23 +120,46 @@ public final class Weapon {
         ItemMeta metaQiShaDing = QI_SHA_DING.getItemMeta();
         ItemMeta metaHunYuanShenDing = HUN_YUAN_SHEN_DING.getItemMeta();
 
+        metaTaoMuJian.setMaxStackSize(1);
+        metaKaiShanDao.setMaxStackSize(1);
+        metaJuTongZhanChui.setMaxStackSize(1);
+        metaPoKongFu.setMaxStackSize(1);
+        metaSanBaoYuRuYi.setMaxStackSize(1);
+        metaXuanYuan.setMaxStackSize(1);
+        metaQinTongJian.setMaxStackSize(1);
+        metaChiTongJian.setMaxStackSize(1);
+        metaTaiJiJian.setMaxStackSize(1);
+        metaKunLunFeiXianJian.setMaxStackSize(1);
+        metaTaiE.setMaxStackSize(1);
+        metaYinYueQiang.setMaxStackSize(1);
+        metaHongYinQiang.setMaxStackSize(1);
+        metaYouLongQiang.setMaxStackSize(1);
+        metaHuTouZhanJinQiang.setMaxStackSize(1);
+        metaRuYiJinGuBang.setMaxStackSize(1);
+        metaTengMuGong.setMaxStackSize(1);
+        metaQinTongGong.setMaxStackSize(1);
+        metaYanTieGong.setMaxStackSize(1);
+        metaZhongChuiGong.setMaxStackSize(1);
+        metaBeiDouMieShenGong.setMaxStackSize(1);
+        metaZhuRi.setMaxStackSize(1);
+        metaHeiTieNu.setMaxStackSize(1);
+        metaHongLinNu.setMaxStackSize(1);
+        metaJiaoLongNu.setMaxStackSize(1);
+        metaRiYueLiuXingNu.setMaxStackSize(1);
+        metaLiangYi.setMaxStackSize(1);
+        metaFuRongGong.setMaxStackSize(1);
+        metaHongLuanGong.setMaxStackSize(1);
+        metaTianQiongGong.setMaxStackSize(1);
+        metaSheTianZhuiYueGong.setMaxStackSize(1);
+        metaLiuGuang.setMaxStackSize(1);
+        metaHeiTieGuo.setMaxStackSize(1);
+        metaQinTongGuo.setMaxStackSize(1);
+        metaLianDanLu.setMaxStackSize(1);
+        metaSuoHunLu.setMaxStackSize(1);
+        metaQiShaDing.setMaxStackSize(1);
+        metaHunYuanShenDing.setMaxStackSize(1);
 
-        metaTaoMuJian.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaKaiShanDao.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaChiTongJian.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaPoKongFu.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaSanBaoYuRuYi.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaXuanYuan.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaQinTongJian.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaJuTongZhanChui.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaTaiJiJian.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaKunLunFeiXianJian.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaTaiE.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaYinYueQiang.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaHongYinQiang.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaYouLongQiang.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaHuTouZhanJinQiang.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaRuYiJinGuBang.addItemFlags(ZeroAttributeModifier.itemFlags);
+
         metaTengMuGong.addItemFlags(ZeroAttributeModifier.itemFlags);
         metaQinTongGong.addItemFlags(ZeroAttributeModifier.itemFlags);
         metaYanTieGong.addItemFlags(ZeroAttributeModifier.itemFlags);
@@ -153,12 +176,7 @@ public final class Weapon {
         metaTianQiongGong.addItemFlags(ZeroAttributeModifier.itemFlags);
         metaSheTianZhuiYueGong.addItemFlags(ZeroAttributeModifier.itemFlags);
         metaLiuGuang.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaHeiTieGuo.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaQinTongGuo.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaLianDanLu.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaSuoHunLu.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaQiShaDing.addItemFlags(ZeroAttributeModifier.itemFlags);
-        metaHunYuanShenDing.addItemFlags(ZeroAttributeModifier.itemFlags);
+
 
         metaHeiTieNu.addEnchant(Enchantment.QUICK_CHARGE, 1, true);
         metaHongLinNu.addEnchant(Enchantment.QUICK_CHARGE, 1, true);
@@ -166,22 +184,6 @@ public final class Weapon {
         metaRiYueLiuXingNu.addEnchant(Enchantment.QUICK_CHARGE, 2, true);
         metaLiangYi.addEnchant(Enchantment.QUICK_CHARGE, 2, true);
 
-        metaTaoMuJian.setUnbreakable(true);
-        metaKaiShanDao.setUnbreakable(true);
-        metaChiTongJian.setUnbreakable(true);
-        metaPoKongFu.setUnbreakable(true);
-        metaSanBaoYuRuYi.setUnbreakable(true);
-        metaXuanYuan.setUnbreakable(true);
-        metaQinTongJian.setUnbreakable(true);
-        metaJuTongZhanChui.setUnbreakable(true);
-        metaTaiJiJian.setUnbreakable(true);
-        metaKunLunFeiXianJian.setUnbreakable(true);
-        metaTaiE.setUnbreakable(true);
-        metaYinYueQiang.setUnbreakable(true);
-        metaHongYinQiang.setUnbreakable(true);
-        metaYouLongQiang.setUnbreakable(true);
-        metaHuTouZhanJinQiang.setUnbreakable(true);
-        metaRuYiJinGuBang.setUnbreakable(true);
         metaTengMuGong.setUnbreakable(true);
         metaQinTongGong.setUnbreakable(true);
         metaYanTieGong.setUnbreakable(true);
@@ -198,58 +200,7 @@ public final class Weapon {
         metaTianQiongGong.setUnbreakable(true);
         metaSheTianZhuiYueGong.setUnbreakable(true);
         metaLiuGuang.setUnbreakable(true);
-        metaHeiTieGuo.setUnbreakable(true);
-        metaQinTongGuo.setUnbreakable(true);
-        metaLianDanLu.setUnbreakable(true);
-        metaSuoHunLu.setUnbreakable(true);
-        metaQiShaDing.setUnbreakable(true);
-        metaHunYuanShenDing.setUnbreakable(true);
 
-
-        metaTaoMuJian.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaKaiShanDao.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaChiTongJian.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaPoKongFu.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaSanBaoYuRuYi.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaXuanYuan.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaQinTongJian.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaJuTongZhanChui.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaTaiJiJian.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaKunLunFeiXianJian.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaTaiE.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaYinYueQiang.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaHongYinQiang.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaYouLongQiang.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaHeiTieGuo.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaQinTongGuo.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaLianDanLu.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaSuoHunLu.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaQiShaDing.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        metaHunYuanShenDing.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-
-
-        metaTaoMuJian.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaKaiShanDao.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaChiTongJian.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaPoKongFu.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaSanBaoYuRuYi.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaXuanYuan.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaQinTongJian.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaJuTongZhanChui.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaTaiJiJian.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaKunLunFeiXianJian.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaTaiE.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaYinYueQiang.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaHongYinQiang.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaYouLongQiang.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaHuTouZhanJinQiang.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaRuYiJinGuBang.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaHeiTieGuo.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaQinTongGuo.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaLianDanLu.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaSuoHunLu.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaQiShaDing.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
-        metaHunYuanShenDing.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
 
         PersistentDataContainer pdcTaoMuJian = metaTaoMuJian.getPersistentDataContainer();
         PersistentDataContainer pdcKaiShanDao = metaKaiShanDao.getPersistentDataContainer();
@@ -526,7 +477,7 @@ public final class Weapon {
         metaFuRongGong.displayName(Component.text("芙蓉弓[灵箭]").color(NamedTextColor.GREEN).decoration(TextDecoration.ITALIC, false));
         metaHongLuanGong.displayName(Component.text("红鸾弓[灵箭]").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false));
         metaTianQiongGong.displayName(Component.text("天琼弓[灵箭]").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false));
-        metaSheTianZhuiYueGong.displayName(Component.text("奢天追月弓[灵箭]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
+        metaSheTianZhuiYueGong.displayName(Component.text("雍天簌霖弓[灵箭]").color(NamedTextColor.YELLOW).decoration(TextDecoration.ITALIC, false));
         metaLiuGuang.displayName(Component.text("流光[灵箭]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
         metaHeiTieGuo.displayName(Component.text("黑铁锅[丹炉]").color(NamedTextColor.WHITE).decoration(TextDecoration.ITALIC, false));
         metaQinTongGuo.displayName(Component.text("青铜锅[丹炉]").color(NamedTextColor.GREEN).decoration(TextDecoration.ITALIC, false));
@@ -541,6 +492,8 @@ public final class Weapon {
                                 ComponentSet.RARE1,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act1,
+                                Component.text("§7§o练习用的木剑"),
+                                Component.text("§7§o对黑暗生物有稍微的吓阻效果"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("taoMuJian", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -566,6 +519,8 @@ public final class Weapon {
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act1,
+                                Component.text("§7§o有一点生锈的开山刀"),
+                                Component.text("§7§o不过用来杀出重围应该是不错的"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("kaiShanDao", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -591,6 +546,8 @@ public final class Weapon {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act1,
+                                Component.text("§7§o非常沉的金属锤子"),
+                                Component.text("§7§o依靠惯性可以轻松碾碎怪物"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("juTongZhanChui", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -617,6 +574,8 @@ public final class Weapon {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act1,
+                                Component.text("§7§o划破空气的声音如笛鸣直冲云霄一般"),
+                                Component.text("§7§o让敌人闻之丧胆"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("poKongFu", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -644,6 +603,8 @@ public final class Weapon {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act1,
+                                Component.text("§7§o传说为上古神衹元始天尊的法器"),
+                                Component.text("§7§o可以镇压各方神仙妖魔"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("sanBaoYuRuYi", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -677,6 +638,8 @@ public final class Weapon {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act1,
+                                Component.text("§7§o传说中的神剑，蕴含无穷威能"),
+                                Component.text("§7§o挥舞时天地为之变色"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("xuanYuan", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -698,6 +661,8 @@ public final class Weapon {
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act1,
+                                Component.text("§7§o使用青铜制成的金属长剑"),
+                                Component.text("§7§o剑身有利于招架防御"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("qinTongJian", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -722,6 +687,8 @@ public final class Weapon {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act1,
+                                Component.text("§7§o被朱雀祝福的青铜宝剑"),
+                                Component.text("§7§o拥有灼烧敌人的力量"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("chiTongJian", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -747,6 +714,8 @@ public final class Weapon {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act1,
+                                Component.text("§7§o蕴含了古文化阴阳道法的长剑"),
+                                Component.text("§7§o能够凭借天时强化自身能力"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("taiJiJian", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -773,6 +742,8 @@ public final class Weapon {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act1,
+                                Component.text("§7§o上古时期昆仑众神赠与仙族的飞剑"),
+                                Component.text("§7§o拥有众神之力,非不凡者不能使用"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("kunLunFeiXianJian", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -803,6 +774,8 @@ public final class Weapon {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act1,
+                                Component.text("§7§o上古神兵，斩妖除魔的利器"),
+                                Component.text("§7§o剑气所至，邪祟尽散"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("taiE", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -824,6 +797,8 @@ public final class Weapon {
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act1,
+                                Component.text("§7§o枪尖凝聚月华之力"),
+                                Component.text("§7§o挥舞时如月光流转"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("yinYueQiang", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -848,11 +823,13 @@ public final class Weapon {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act1,
+                                Component.text("§7§o锋芒凌厉，势如破竹"),
+                                Component.text("§7§o随枪舞动的红缨震慑敌胆"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("hongYinQiang", 4),
                                 ComponentSet.MIDDLEJINENG,
                                 Component.text("§6[主动技·右键]§9[浮行] §f冷却: §b20s"),
-                                Component.text("§f向前急掣至多§b6§f格，并沿途留下持续§b3s§f的火焰§7(无法在水中留下)"),
+                                Component.text("§f向前以强度为§b3§f的冲力水平急掣§b0.2s§f，并沿途留下持续§b3s§f的火焰§7(无法在水中留下)"),
                                 Component.text("§f每秒造成§b[200%近战伤害]§f点伤害并减少§b10§f点法抗，持续§b3s"),
                                 ComponentSet.MIDDLEFULINGXIANGQIAN,
                                 ComponentSet.FULING,
@@ -872,11 +849,14 @@ public final class Weapon {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act1,
+                                Component.text("§7§o招式灵动如游龙升天"),
+                                Component.text("§7§o枪出如龙，势不可挡"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("youLongQiang", 4),
                                 ComponentSet.MIDDLEJINENG,
                                 Component.text("§6[主动技·右键]§9[游龙] §f冷却: §b20s"),
-                                Component.text("§f若处于陆地则向前急掣至多§b6§f格，若处于水中则冲刺§b12§f格"),
+                                Component.text("§f向前以强度为§b3§f的冲力水平急掣§b0.2s§f"),
+                                Component.text("§f若完全处于水中则向前以强度为§b6§f的冲力急掣§b0.2s§f"),
                                 Component.text("§f对沿途距离§b1§f格内的怪物造成§b[600%近战伤害]§f点伤害"),
                                 Component.text("§f若终点处于陆地，则在终点创造一片§b3*1*3§f持续§b5s§f的水域"),
                                 Component.text("§f水域制造者处于水域中每秒回复§b1%+10§f最大生命"),
@@ -901,18 +881,20 @@ public final class Weapon {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act1,
+                                Component.text("§7§o枪尖金光闪烁，威猛如虎"),
+                                Component.text("§7§o出枪迅猛，有虎啸山林之势"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("huTouZhanJinQiang", 4),
                                 ComponentSet.MIDDLEJINENG,
                                 Component.text("§6[主动技·右键]§e[虎啸] §f冷却: §b20s"),
-                                Component.text("§f向前急掣至多§b12§f格，对沿途距离§b1.5§f格内的怪物造成§b[700%近战伤害]§f点伤害"),
+                                Component.text("§f向前以强度为§b6§f的冲力水平急掣§b0.25s§f，对沿途距离§b1.5§f格内的怪物造成§b[700%近战伤害]§f点伤害"),
                                 Component.text("§f并击碎它们的防御能力，减少§b25§f点护甲和法抗，持续§b10s"),
                                 Component.text("§f减少护甲与法抗不可叠加，再次减少将刷新持续时间"),
                                 Component.text("§f每命中一个怪物，回复自身§b1.25%+15§f最大生命，至多§b10%+120§f"),
                                 Component.text("§f每命中一个怪物，将为虎头湛金枪积攒一层虎意，至多§b8§f层"),
                                 Component.text("§f在终点处释放虎啸音波，攻击周围§b5§f格的怪物"),
                                 Component.text("§f造成§b[300%近战伤害*虎意层数]§f点伤害"),
-                                Component.text("§f减少怪物§b[50*虎意层数]§f点攻击力，持续§b10s"),
+                                Component.text("§f减少怪物§b[50*虎意层数]§f点攻击力，持续§b9s"),
                                 ComponentSet.MIDDLEFULINGXIANGQIAN,
                                 ComponentSet.FULING,
                                 ComponentSet.XIANGQIAN
@@ -931,6 +913,10 @@ public final class Weapon {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBZHAN,
                                 ComponentSet.Act1,
+                                Component.text("§7§o传说中齐天大圣孙悟空使用的兵器"),
+                                Component.text("§7§o为太上老君制的「定海神珍铁」"),
+                                Component.text("§7§o重达一万三千五百斤,可自由变换长短大小"),
+                                Component.text("§7§o大禹治水后遗留在东海,后被孙悟空取走"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("ruYiJinGuBang", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -953,6 +939,8 @@ public final class Weapon {
                                 ComponentSet.RARE1,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act1,
+                                Component.text("§7§o一般的木质弓"),
+                                Component.text("§7§o常见的入门款,适合初学者使用"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("tengMuGong", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -978,6 +966,8 @@ public final class Weapon {
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act1,
+                                Component.text("§7§o使用青铜制成的弓"),
+                                Component.text("§7§o重量稍微有点沉重"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("qinTongGong", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -1004,6 +994,8 @@ public final class Weapon {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act1,
+                                Component.text("§7§o由焱沙大模出产的稀有焰铁所制成的弓"),
+                                Component.text("§7§o能够给予射出的箭附以火焰"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("yanTieGong", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -1030,6 +1022,8 @@ public final class Weapon {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act1,
+                                Component.text("§7§o虽然重了些,但是可以藉由甩弓的力量"),
+                                Component.text("§7§o将敌人击飞后再进行射击"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("zhongChuiGong", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -1057,6 +1051,8 @@ public final class Weapon {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act1,
+                                Component.text("§7§o战神族打造的弓"),
+                                Component.text("§7§o拥有众星殒神之力的神弓"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("beiDouMieShenGong", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -1064,6 +1060,7 @@ public final class Weapon {
                                 Component.text("§f强化本次射箭，额外造成§b[2400%箭矢强度]§f点伤害"),
                                 Component.text("§f若此箭命中怪物，则为怪物附上印记§6[灭神]§f，持续§b10s§f，再次施加将消除"),
                                 Component.text("§f若此箭未命中怪物，则在落点随机召唤北斗七星中的一颗星，持续§b10s"),
+                                Component.text("§f同时产生星爆，对周围§b8§f格的怪物造成§b[600%箭矢强度]§f点伤害"),
                                 Component.text("§f北斗七星为：天枢、天璇、天玑、天权、玉衡、开阳、摇光"),
                                 Component.text("§f印记§6[灭神]§f持续时间结束或因被再次施加消除时，将对怪物造成灭神一击"),
                                 Component.text("§f造成§b[40%怪物已损生命值]§f点伤害，上限§b10000§f点"),
@@ -1094,6 +1091,9 @@ public final class Weapon {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act1,
+                                Component.text("§7§o传说中射师羿使用的武器"),
+                                Component.text("§7§o射出的杀气箭拥有连太阳都惧怕的力量"),
+                                Component.text("§7§o射出的箭由杀气凝结而成，快速而致命"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("zhuRi", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -1117,6 +1117,8 @@ public final class Weapon {
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act1,
                                 ComponentSet.CHARGE_1,
+                                Component.text("§7§o使用生铁铸成的弩"),
+                                Component.text("§7§o小巧而便于携带"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("heiTieNu", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -1142,6 +1144,8 @@ public final class Weapon {
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act1,
                                 ComponentSet.CHARGE_1,
+                                Component.text("§7§o传说由凤凰落下的羽毛制成的十字弩"),
+                                Component.text("§7§o赐予使用者燃火之力"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("hongLinNu", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -1168,6 +1172,8 @@ public final class Weapon {
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act1,
                                 ComponentSet.CHARGE_1,
+                                Component.text("§7§o寄宿着水龙力量的弩箭"),
+                                Component.text("§7§o强大的机扣让箭矢可以轻易击破敌人装甲"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("jiaoLongNu", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -1199,6 +1205,8 @@ public final class Weapon {
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act1,
                                 ComponentSet.CHARGE_2,
+                                Component.text("§7§o射出的箭矢有如流星一般致命而绚丽"),
+                                Component.text("§7§o让使用的人能如星辰一般游走于敌人之间"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("riYueLiuXingNu", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -1233,6 +1241,8 @@ public final class Weapon {
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act1,
                                 ComponentSet.CHARGE_2,
+                                Component.text("§7§o蕴含阴阳之力的神弓"),
+                                Component.text("§7§o可在两仪中自由转换形态"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("liangYi", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -1255,6 +1265,8 @@ public final class Weapon {
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act1,
+                                Component.text("§7§o由仙界芙蓉花瓣凝聚而成"),
+                                Component.text("§7§o箭矢带着淡雅清香"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("fuRongGong", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -1280,6 +1292,8 @@ public final class Weapon {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act1,
+                                Component.text("§7§o寄宿着红鸾之魂的神弓"),
+                                Component.text("§7§o箭矢可化作火凤击敌"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("hongLuanGong", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -1309,6 +1323,8 @@ public final class Weapon {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act1,
+                                Component.text("§7§o天界琼玉锻造而成"),
+                                Component.text("§7§o射出的箭矢蕴含神圣之力"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("tianQiongGong", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -1338,10 +1354,12 @@ public final class Weapon {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act1,
+                                Component.text("§7§o承载着上古天神之力"),
+                                Component.text("§7§o箭矢可唤来天降甘霖"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("sheTianZhuiYueGong", 4),
                                 ComponentSet.MIDDLEJINENG,
-                                Component.text("§6[主动技·下蹲射击]§e[奢天] §f冷却: §b20s"),
+                                Component.text("§6[主动技·下蹲射击]§e[雍天] §f冷却: §b20s"),
                                 Component.text("§f箭矢不再造成伤害，若命中玩家，则恢复§b270+20%§f最大生命"),
                                 Component.text("§f同时根据天气，为玩家增加不同的祝福，持续§b9s"),
                                 Component.text("§f若处于晴天，则施加§6[飞廉]§f祝福"),
@@ -1370,6 +1388,8 @@ public final class Weapon {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBGONG,
                                 ComponentSet.Act1,
+                                Component.text("§7§o箭矢如流光般璀璨夺目"),
+                                Component.text("§7§o瞬息之间便可洞穿敌人"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("liuGuang", 4),
                                 ComponentSet.MIDDLEJINENG,
@@ -1392,8 +1412,13 @@ public final class Weapon {
                                 ComponentSet.RARE1,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.ActFUSHOU,
+                                Component.text("§7§o最普通的炼丹工具"),
+                                Component.text("§7§o虽然简陋但也能炼制简单的丹药"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("heiTieGuo", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§f[会心] §f冷却: §b无"),
+                                Component.text("§f阵法造成的伤害提高§b15%§f"),
                                 ComponentSet.MIDDLEFULINGXIANGQIAN,
                                 ComponentSet.FULING,
                                 ComponentSet.XIANGQIAN
@@ -1413,8 +1438,13 @@ public final class Weapon {
                                 ComponentSet.RARE2,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.ActFUSHOU,
+                                Component.text("§7§o由上等青铜打造的丹鼎"),
+                                Component.text("§7§o能更好地提纯药材精华"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("qinTongGuo", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§a[贯通] §f冷却: §b无"),
+                                Component.text("§f阵法造成的伤害提高§b30%§f"),
                                 ComponentSet.MIDDLEFULINGXIANGQIAN,
                                 ComponentSet.FULING,
                                 ComponentSet.XIANGQIAN
@@ -1434,8 +1464,13 @@ public final class Weapon {
                                 ComponentSet.RARE3,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.ActFUSHOU,
+                                Component.text("§7§o炼丹师视同性命的工具"),
+                                Component.text("§7§o因为很重所以不太好用来攻击敌人"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("lianDanLu", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§9[万法] §f冷却: §b无"),
+                                Component.text("§f阵法造成的伤害提高§b45%§f"),
                                 ComponentSet.MIDDLEFULINGXIANGQIAN,
                                 ComponentSet.FULING,
                                 ComponentSet.XIANGQIAN
@@ -1455,8 +1490,13 @@ public final class Weapon {
                                 ComponentSet.RARE4,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.ActFUSHOU,
+                                Component.text("§7§o炼丹炉中的上品"),
+                                Component.text("§7§o可以完整地将药性融合,提升丹药效果"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("suoHunLu", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§d[锁魂] §f冷却: §b无"),
+                                Component.text("§f阵法造成的伤害提高§b60%§f"),
                                 ComponentSet.MIDDLEFULINGXIANGQIAN,
                                 ComponentSet.FULING,
                                 ComponentSet.XIANGQIAN
@@ -1476,8 +1516,13 @@ public final class Weapon {
                                 ComponentSet.RARE5,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.ActFUSHOU,
+                                Component.text("§7§o极品丹炉,炼丹师梦寐以求的炼丹工具"),
+                                Component.text("§7§o蕴含的星辰之力让整个鼎散发着淡淡光芒"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("qiShaDing", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§e[七煞] §f冷却: §b无"),
+                                Component.text("§f阵法造成的伤害提高§b75%§f"),
                                 ComponentSet.MIDDLEFULINGXIANGQIAN,
                                 ComponentSet.FULING,
                                 ComponentSet.XIANGQIAN
@@ -1497,8 +1542,15 @@ public final class Weapon {
                                 ComponentSet.RARE6,
                                 ComponentSet.JOBDAN,
                                 ComponentSet.ActFUSHOU,
+                                Component.text("§7§o传说中天地未分之时就存在的法宝"),
+                                Component.text("§7§o鼎内自成一个宇宙"),
+                                Component.text("§7§o任何材料进入都会被完美熔炼"),
+                                Component.text("§7§o是为「混元」,而化万物"),
                                 ComponentSet.MIDDLESHUXIN,
                                 AttributeSet.fromId("hunYuanShenDing", 4),
+                                ComponentSet.MIDDLEJINENG,
+                                Component.text("§6[被动技]§c[混元] §f冷却: §b无"),
+                                Component.text("§f阵法造成的伤害提高§b90%§f"),
                                 ComponentSet.MIDDLEFULINGXIANGQIAN,
                                 ComponentSet.FULING,
                                 ComponentSet.XIANGQIAN
@@ -1544,7 +1596,7 @@ public final class Weapon {
         metaHongLuanGong.setCustomModelData(3);
         metaTianQiongGong.setCustomModelData(4);
         metaSheTianZhuiYueGong.setCustomModelData(5);
-        metaLiuGuang.setCustomModelData(6);
+        metaLiuGuang.setCustomModelData(5);
 
         metaHeiTieGuo.setCustomModelData(1);
         metaQinTongGuo.setCustomModelData(1);

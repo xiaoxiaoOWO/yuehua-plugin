@@ -4,6 +4,8 @@ main: com.xiaoxiaoowo.yuehua.Yuehua
 api-version: '1.20'
 depend: [NBTAPI]
 commands:
+  mission:
+    description: mission
   advancement:
     description: advancement
   a:

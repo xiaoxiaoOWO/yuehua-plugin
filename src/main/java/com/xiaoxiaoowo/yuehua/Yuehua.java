@@ -22,8 +22,8 @@ import com.xiaoxiaoowo.yuehua.event.block.Ingite;
 import com.xiaoxiaoowo.yuehua.event.entity.Death;
 import com.xiaoxiaoowo.yuehua.event.entity.*;
 import com.xiaoxiaoowo.yuehua.event.player.*;
-import com.xiaoxiaoowo.yuehua.guis.DuanZao;
-import com.xiaoxiaoowo.yuehua.guis.Shichang;
+import com.xiaoxiaoowo.yuehua.guis.dz.DuanZao;
+import com.xiaoxiaoowo.yuehua.guis.other.Shichang;
 import com.xiaoxiaoowo.yuehua.shilian.huancheng.HuanCheng;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.system.Team;
@@ -64,6 +64,7 @@ public final class Yuehua extends JavaPlugin {
     public static Logger logger;
 
 
+
     @Override
     public void onEnable() {
 //        Bukkit.setWhitelist(false);
@@ -91,7 +92,7 @@ public final class Yuehua extends JavaPlugin {
             shichang.add(inventory);
         }
 
-        Scheduler.asyncTimer(Shichang::reshapeShichang, 0, 1200);
+        Scheduler.asyncTimer(Shichang::reshapeShichang, 0, 200);
 
 
         //初始化共享存储
@@ -119,6 +120,9 @@ public final class Yuehua extends JavaPlugin {
     @Override
     public void onDisable() {
         Bukkit.setWhitelist(true);
+
+        //清空监听器与任务
+        scheduler.cancelTasks(instance);
 
         try {
             MySocket.server.stop();
@@ -275,8 +279,7 @@ public final class Yuehua extends JavaPlugin {
             }
         }
 
-        //清空监听器与任务
-        scheduler.cancelTasks(instance);
+
     }
 
     private void init() {
@@ -325,7 +328,7 @@ public final class Yuehua extends JavaPlugin {
         pluginManager.registerEvents(new Login(), this);
         pluginManager.registerEvents(new Quit(), this);
         pluginManager.registerEvents(new Swap(), this);
-//        pluginManager.registerEvents(new Teleport(), this);
+        pluginManager.registerEvents(new Teleport(), this);
 
         //projectile
         pluginManager.registerEvents(new Hit(), this);
@@ -354,6 +357,7 @@ public final class Yuehua extends JavaPlugin {
         Objects.requireNonNull(Bukkit.getPluginCommand("renou3")).setExecutor(new RenOu3());
         Objects.requireNonNull(Bukkit.getPluginCommand("select")).setExecutor(new Select());
         Objects.requireNonNull(Bukkit.getPluginCommand("storerelifestone")).setExecutor(new StoreRelifeStone());
+        Objects.requireNonNull(Bukkit.getPluginCommand("mission")).setExecutor(new Mission());
 
         //opcommand
         //DATA
