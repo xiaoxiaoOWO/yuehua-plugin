@@ -33,7 +33,7 @@ public final class Damage implements Listener {
 
                 case FALL -> {
                     double damage = e.getDamage();
-                    if (damage < 3) {
+                    if (damage < 2.1) {
                         e.setCancelled(true);
                         return;
                     }

@@ -2304,6 +2304,7 @@ public final class SQL {
     }
 
 
+    @SuppressWarnings("deprecation")
     public static void initialRecipe() {
         try (PreparedStatement pstmt = recipeConnection.prepareStatement(getAllRecipe)) {
             ResultSet resultSet = pstmt.executeQuery();

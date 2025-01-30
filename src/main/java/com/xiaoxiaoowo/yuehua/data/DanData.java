@@ -48,6 +48,7 @@ public final class DanData extends Data {
     public int zhenfa_level;
 
 
+    @SuppressWarnings("deprecation")
     public DanData(Player player) {
         super(player);
         zhenfaObservers = new HashSet<>(5);

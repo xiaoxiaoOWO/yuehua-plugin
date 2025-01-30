@@ -123,10 +123,6 @@ public final class Join implements Listener {
         if (!persistentDataContainer.has(DataContainer.attack)) {
             PlayerInventory inventory = player.getInventory();
             inventory.addItem(Book.START);
-            inventory.addItem(Book.SHUXIN);
-            inventory.addItem(Book.NEIRONG);
-            inventory.addItem(Book.WANFA);
-            inventory.addItem(Book.JINJI);
 
             Inventory inventory1 = Bukkit.createInventory(player, 54, Component.translatable("qkd1"));
             Inventory inventory2 = Bukkit.createInventory(player, 54, Component.translatable("qkd2"));

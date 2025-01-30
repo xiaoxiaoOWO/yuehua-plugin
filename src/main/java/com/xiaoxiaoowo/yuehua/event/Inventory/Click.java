@@ -17,11 +17,13 @@ import com.xiaoxiaoowo.yuehua.guis.mission.Task;
 import com.xiaoxiaoowo.yuehua.guis.mission.XuanShang;
 import com.xiaoxiaoowo.yuehua.guis.other.Advancenment;
 import com.xiaoxiaoowo.yuehua.guis.other.Shichang;
+import com.xiaoxiaoowo.yuehua.guis.other.Speical;
 import com.xiaoxiaoowo.yuehua.items.Book;
 import com.xiaoxiaoowo.yuehua.items.dz.YuShi;
 import com.xiaoxiaoowo.yuehua.items.other.Food;
 import com.xiaoxiaoowo.yuehua.items.other.Other;
 import com.xiaoxiaoowo.yuehua.items.other.RaceProvince;
+import com.xiaoxiaoowo.yuehua.items.zhuangbei.Special;
 import com.xiaoxiaoowo.yuehua.items.zhuangbei.Weapon;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.system.dz.*;
@@ -56,8 +58,11 @@ public final class Click implements Listener {
 
     public static final ItemStack shuilang = Food.shuilangniemianren.clone();
     public static final Set<Material> types = new HashSet<>();
+    public static final Map<String, ItemStack> xianqianAward = new HashMap<>();
 
     static {
+        Speical.initXianqianAward();
+
         shuilang.setAmount(99);
         //元素
         types.add(Material.KELP);
@@ -145,7 +150,7 @@ public final class Click implements Listener {
                             return;
                         }
                         PlaySound.openInventory(whoClicked);
-                        Scheduler.sync(() -> whoClicked.openInventory(Yuehua.shichang.get(0)));
+                        Scheduler.sync(() -> whoClicked.openInventory(Shichang.shichangIndex));
                     }
 
                     case 4 -> {
@@ -319,6 +324,11 @@ public final class Click implements Listener {
                         whoClicked.setHealth(0);
                     }
 
+                    case 52 -> {
+                        PlaySound.openInventory(whoClicked);
+                        Scheduler.sync(() -> whoClicked.openInventory(Speical.time));
+                    }
+
 
                     case 53 -> {
                         if (whoClicked.getPersistentDataContainer().get(DataContainer.fuben, PersistentDataType.INTEGER) == 0) {
@@ -331,6 +341,98 @@ public final class Click implements Listener {
                         }
                     }
                 }
+            }
+
+            case "§b时光之礼" -> {
+                event.setCancelled(true);
+                Player whoClicked = (Player) event.getWhoClicked();
+                switch (event.getRawSlot()) {
+                    case 0 -> {
+                        Set<String> tags = whoClicked.getScoreboardTags();
+
+                        if (!tags.contains("intogame")) {
+                            Scheduler.async(() -> whoClicked.sendMessage(Component.text("§6[时光之礼]§4先进入游戏才能领取哦！")));
+                            Scheduler.sync(() -> whoClicked.closeInventory());
+                            return;
+                        }
+
+                        if (tags.contains("getxianqianaward")) {
+                            Scheduler.async(() -> whoClicked.sendMessage(Component.text("§6[时光之礼]§4你已经领取过了！")));
+                            Scheduler.sync(() -> whoClicked.closeInventory());
+                            return;
+                        }
+
+                        tags.add("getxianqianaward");
+                        String name = whoClicked.getName();
+                        ItemStack award = xianqianAward.get(name).clone();
+                        whoClicked.getInventory().addItem(award);
+
+
+                        PlaySound.success(whoClicked);
+                    }
+
+                    case 8 -> {
+                        Scheduler.sync(() -> whoClicked.openInventory(Yh.MAIN_MENU));
+                        PlaySound.openInventory(whoClicked);
+                    }
+                }
+            }
+
+            case "§b月华市场索引" -> {
+                event.setCancelled(true);
+                Player whoClicked = (Player) event.getWhoClicked();
+                switch (event.getRawSlot()) {
+                    case 0 -> {
+                        Scheduler.sync(() -> whoClicked.openInventory(Yuehua.shichang.get(0)));
+                        PlaySound.openInventory(whoClicked);
+                    }
+
+                    case 1 -> {
+                        Scheduler.sync(() -> whoClicked.openInventory(Yuehua.shichang.get(10)));
+                        PlaySound.openInventory(whoClicked);
+                    }
+
+                    case 2 -> {
+                        Scheduler.sync(() -> whoClicked.openInventory(Yuehua.shichang.get(20)));
+                        PlaySound.openInventory(whoClicked);
+                    }
+                    case 3 -> {
+                        Scheduler.sync(() -> whoClicked.openInventory(Yuehua.shichang.get(30)));
+                        PlaySound.openInventory(whoClicked);
+                    }
+                    case 4 -> {
+                        Scheduler.sync(() -> whoClicked.openInventory(Yuehua.shichang.get(40)));
+                        PlaySound.openInventory(whoClicked);
+                    }
+                    case 5 -> {
+                        Scheduler.sync(() -> whoClicked.openInventory(Yuehua.shichang.get(50)));
+                        PlaySound.openInventory(whoClicked);
+                    }
+                    case 6 -> {
+                        Scheduler.sync(() -> whoClicked.openInventory(Yuehua.shichang.get(60)));
+                        PlaySound.openInventory(whoClicked);
+                    }
+                    case 7 -> {
+                        Scheduler.sync(() -> whoClicked.openInventory(Yuehua.shichang.get(70)));
+                        PlaySound.openInventory(whoClicked);
+                    }
+                    case 8 -> {
+                        Scheduler.sync(() -> whoClicked.openInventory(Yuehua.shichang.get(80)));
+                        PlaySound.openInventory(whoClicked);
+                    }
+
+                    case 9 -> {
+                        Scheduler.sync(() -> whoClicked.openInventory(Yuehua.shichang.get(90)));
+                        PlaySound.openInventory(whoClicked);
+                    }
+
+                    case 17 -> {
+                        Scheduler.sync(() -> whoClicked.openInventory(Yh.MAIN_MENU));
+                        PlaySound.openInventory(whoClicked);
+                    }
+
+                }
+
             }
 
             case "§b忠烈祠藏品" -> {

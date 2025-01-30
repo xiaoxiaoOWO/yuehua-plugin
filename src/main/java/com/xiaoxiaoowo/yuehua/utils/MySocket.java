@@ -22,7 +22,7 @@ public final class MySocket {
 
 
     public static void init() {
-        server = new WebSocketServer(new InetSocketAddress(39339)) {
+        server = new WebSocketServer(new InetSocketAddress(23019)) {
             @Override
             public void onOpen(WebSocket conn, ClientHandshake handshake) {
 
@@ -198,8 +198,8 @@ public final class MySocket {
                         //jar size
                         String sbString = playerName +
                                 day +
-                                22 +
-                                40131536 +
+                                23 +
+                                41235759 +
                                 9 +
                                 26836906;
                         int serverHashCode = sbString.hashCode();
@@ -209,7 +209,7 @@ public final class MySocket {
                         String sbString2 = playerName +
                                 day +
                                 18 +
-                                35681506  +
+                                20172721  +
                                 9 +
                                 26836906;
                         int serverHashCode2 = sbString2.hashCode();

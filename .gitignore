@@ -1,11 +1,12 @@
 # Build and Release Folders
 build/
 out/
-.gradle/
 bin/
 # Other files and folders
 .settings/
 .idea/
+.gradle/
+.vscode/
 # Executables
 *.swf
 *.air

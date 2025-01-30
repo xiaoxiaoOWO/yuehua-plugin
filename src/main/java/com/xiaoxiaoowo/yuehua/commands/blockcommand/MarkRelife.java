@@ -1,11 +1,5 @@
 package com.xiaoxiaoowo.yuehua.commands.blockcommand;
 
-import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.system.DataContainer;
-import com.xiaoxiaoowo.yuehua.utils.GetEntity;
-import com.xiaoxiaoowo.yuehua.utils.PlaySound;
-import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Location;
 import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.Command;
@@ -16,14 +10,20 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
 
+import com.xiaoxiaoowo.yuehua.Yuehua;
+import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import com.xiaoxiaoowo.yuehua.utils.GetEntity;
+
+import net.kyori.adventure.text.Component;
+
 public final class MarkRelife implements CommandExecutor {
     @Override
-    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
+            @NotNull String[] args) {
         if (sender instanceof Player player) {
-            Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance,()->{
+            Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance, () -> {
                 player.sendMessage(
-                        Component.text("§6[命令系统]§4你没有权限使用这个命令")
-                );
+                        Component.text("§6[命令系统]§4你没有权限使用这个命令"));
             });
             return true;
         }
@@ -58,12 +58,10 @@ public final class MarkRelife implements CommandExecutor {
             case "20" -> pdc.set(DataContainer.relife, PersistentDataType.INTEGER, 20);
         }
 
-        Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance,()->{
+        Yuehua.scheduler.runTaskAsynchronously(Yuehua.instance, () -> {
             player.sendMessage(
-                   Component.text("§6[重生锚点]§a已设置重生点")
-            );
+                    Component.text("§6[重生锚点]§a已设置重生点"));
         });
-
 
         return true;
 

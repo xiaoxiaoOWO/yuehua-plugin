@@ -2,7 +2,6 @@ package com.xiaoxiaoowo.yuehua.attribute.attributes.vanilla;
 
 import com.xiaoxiaoowo.yuehua.attribute.attributes.MyAttribute;
 import com.xiaoxiaoowo.yuehua.data.Data;
-import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
@@ -25,7 +24,6 @@ public final class Speed implements MyAttribute {
 
     public static final NamespacedKey canNotMove = new NamespacedKey("yh", "cannotmove");
 
-
     public double speed;
     public NamespacedKey namespacedKey;
 
@@ -43,9 +41,7 @@ public final class Speed implements MyAttribute {
                         namespacedKey,
                         speed,
                         AttributeModifier.Operation.ADD_SCALAR,
-                        EquipmentSlotGroup.ANY
-                )
-        );
+                        EquipmentSlotGroup.ANY));
     }
 
     @Override
@@ -60,7 +56,7 @@ public final class Speed implements MyAttribute {
         if (speed < 0) {
             return "§f移动速度 -§c" + String.format("%.1f", Math.abs(speed * 100)) + "%" + "    ";
         } else {
-            return "§f移动速度 +§b" + String.format("%.1f", speed * 100) + "%" +"    ";
+            return "§f移动速度 +§b" + String.format("%.1f", speed * 100) + "%" + "    ";
         }
     }
 }

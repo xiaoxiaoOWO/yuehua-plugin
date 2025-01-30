@@ -4,7 +4,6 @@ import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.*;
 import com.xiaoxiaoowo.yuehua.data.slot.SlotWithOneActiveSkill;
 import com.xiaoxiaoowo.yuehua.data.slot.SlotWithTwoActiveSkill;
-import com.xiaoxiaoowo.yuehua.items.other.Money;
 import com.xiaoxiaoowo.yuehua.jineng.DoJiNeng;
 import com.xiaoxiaoowo.yuehua.system.Damage;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
@@ -1413,12 +1412,12 @@ public final class Interact implements Listener {
     public static void doSpeical(Player player, ItemStack item) {
         switch (item.getCustomModelData()) {
             case 2 -> {
-                item.setAmount(item.getAmount()-1);
+                item.setAmount(item.getAmount() - 1);
 
-                for(Entity entity : GetEntity.getMonsters(player.getLocation(),4,4,4)){
-                    if(entity.getType() == EntityType.BEE){
+                for (Entity entity : GetEntity.getMonsters(player.getLocation(), 4, 4, 4)) {
+                    if (entity.getType() == EntityType.BEE) {
                         MonsterData monsterData = Yuehua.monsterData.get(entity.getUniqueId());
-                        MoveEntity.jiTui(monsterData,player.getLocation().toVector(),6);
+                        MoveEntity.jiTui(monsterData, player.getLocation().toVector(), 6);
                     }
                 }
 
@@ -1442,27 +1441,17 @@ public final class Interact implements Listener {
                     it.setVelocity(speed);
                     it.setShooter(player);
 
+                    it.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, item.getPersistentDataContainer().get(DataContainer.id, PersistentDataType.STRING));
+
                     FireworkMeta meta = it.getFireworkMeta();
                     meta.setPower(1);
-                    int random = GetEntity.random.nextInt(0, 4);
-                    FireworkEffect effect;
-                    if (random == 2) {
-                        effect = FireworkEffect.builder()
-                                .withColor(Color.FUCHSIA, Color.AQUA, Color.LIME, Color.ORANGE, Color.YELLOW)
-                                .withFade(Color.WHITE, Color.BLUE)
-                                .with(FireworkEffect.Type.STAR)
-                                .trail(true)
-                                .flicker(true)
-                                .build();
-                    } else {
-                        effect = FireworkEffect.builder()
-                                .withColor(Color.FUCHSIA, Color.AQUA, Color.LIME, Color.ORANGE, Color.YELLOW)
-                                .withFade(Color.WHITE, Color.BLUE)
-                                .with(FireworkEffect.Type.BALL_LARGE)
-                                .trail(true)
-                                .flicker(true)
-                                .build();
-                    }
+                    FireworkEffect effect = FireworkEffect.builder()
+                            .withColor(Color.FUCHSIA, Color.AQUA, Color.LIME, Color.ORANGE, Color.YELLOW)
+                            .withFade(Color.WHITE, Color.BLUE)
+                            .with(FireworkEffect.Type.BALL_LARGE)
+                            .trail(true)
+                            .flicker(true)
+                            .build();
 
 
                     meta.addEffect(effect);

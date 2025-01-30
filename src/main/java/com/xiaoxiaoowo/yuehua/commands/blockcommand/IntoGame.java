@@ -6,8 +6,6 @@ import com.xiaoxiaoowo.yuehua.data.Data;
 import com.xiaoxiaoowo.yuehua.data.GongData;
 import com.xiaoxiaoowo.yuehua.data.ZhanData;
 import com.xiaoxiaoowo.yuehua.items.Book;
-import com.xiaoxiaoowo.yuehua.items.dz.YuanSu;
-import com.xiaoxiaoowo.yuehua.items.liandan.Dan;
 import com.xiaoxiaoowo.yuehua.items.other.*;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
@@ -53,6 +51,10 @@ public final class IntoGame implements CommandExecutor {
         Player player = GetEntity.getNearestPlayer(location, 5, 5, 5);
         if (player == null) {
             return true;
+        }
+
+        if(!player.getScoreboardTags().contains("intogame")){
+            player.addScoreboardTag("intogame");
         }
 
 
@@ -191,22 +193,13 @@ public final class IntoGame implements CommandExecutor {
         //给予物品
         //包子99个
         ItemStack baozi = Food.baoZi.clone();
-        baozi.setAmount(99);
-        //铜钱99枚
-        ItemStack tongqian = Money.tongQian.clone();
-        tongqian.setAmount(99);
+        baozi.setAmount(20);
         //NPC对话泡泡
         ItemStack npc_paopao = Other.NPC_PAOPAO.clone();
         //弓箭手特供道具 一组箭
         ItemStack arrow = Other.ARROW.clone();
         arrow.setAmount(99);
-        //炼丹师特供道具 初级药引1枚、木元素5枚、15
-        ItemStack yaoyin1 = Dan.YAOYIN1.clone();
-        yaoyin1.setAmount(5);
-        ItemStack muyuansu = YuanSu.mu.clone();
-        muyuansu.setAmount(10);
-        ItemStack jinyuansu = YuanSu.jin.clone();
-        jinyuansu.setAmount(30);
+
 
         //种族证明
         ItemStack race_province = switch (race) {
@@ -221,22 +214,17 @@ public final class IntoGame implements CommandExecutor {
         PlayerInventory inventory = player.getInventory();
         inventory.clear();
         inventory.addItem(Book.START);
-        inventory.addItem(Book.SHUXIN);
-        inventory.addItem(Book.NEIRONG);
-        inventory.addItem(Book.WANFA);
-        inventory.addItem(Book.JINJI);
         inventory.addItem(Feather.XIN_YA_ZHI_YU);
         switch (job) {
             case 1 -> {
-                baozi.setAmount(99 * 3);
-                inventory.addItem(baozi, tongqian, npc_paopao, race_province);
+                inventory.addItem(baozi, npc_paopao, race_province);
             }
 
-            case 2 -> inventory.addItem(baozi, tongqian, npc_paopao, race_province, arrow);
+            case 2 -> inventory.addItem(baozi, npc_paopao, race_province, arrow);
 
 
             case 3 ->
-                    inventory.addItem(baozi, tongqian, npc_paopao, race_province, yaoyin1, muyuansu, jinyuansu);
+                    inventory.addItem(baozi, npc_paopao, race_province);
 
         }
 

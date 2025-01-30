@@ -17,6 +17,7 @@ public final class Danlu implements MyAttribute {
     }
 
 
+    @SuppressWarnings("deprecation")
     @Override
     public void act(Data data, PersistentDataContainer pdc) {
         Player player = data.player;

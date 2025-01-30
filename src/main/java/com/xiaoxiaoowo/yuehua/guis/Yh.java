@@ -44,6 +44,7 @@ public final class Yh implements CommandExecutor {
 
     public static final ItemStack BACK_BEFORE = new ItemStack(Material.YELLOW_DYE);
     public static final ItemStack TO_NEXT = new ItemStack(Material.YELLOW_DYE);
+
     public static final ItemStack NO = new ItemStack(Material.YELLOW_DYE);
     public static final ItemStack CHONG_HUA_JING = new ItemStack(Material.YELLOW_DYE);
 
@@ -54,7 +55,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta1 = itemStack1.getItemMeta();
         itemMeta1.displayName(
                 Component
-                        .text("乾坤盒").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("乾坤盒").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> lore1 = new ArrayList<>();
         lore1.add(
@@ -70,7 +71,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta2 = itemStack2.getItemMeta();
         itemMeta2.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 1);
         itemMeta2.displayName(
-                Component.text("乾坤盒☯一").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                Component.text("乾坤盒☯一").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> lore2 = new ArrayList<>();
         lore2.add(
@@ -86,7 +87,7 @@ public final class Yh implements CommandExecutor {
         itemMeta3.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 2);
         itemMeta3.displayName(
                 Component
-                        .text("乾坤盒☯二").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("乾坤盒☯二").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> lore3 = new ArrayList<>();
         lore3.add(
@@ -103,7 +104,7 @@ public final class Yh implements CommandExecutor {
         itemMeta4.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 3);
         itemMeta4.displayName(
                 Component
-                        .text("乾坤盒☯三").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("乾坤盒☯三").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> lore4 = new ArrayList<>();
         lore4.add(
@@ -120,7 +121,7 @@ public final class Yh implements CommandExecutor {
         itemMeta5.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 4);
         itemMeta5.displayName(
                 Component
-                        .text("乾坤盒☯四").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("乾坤盒☯四").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> lore5 = new ArrayList<>();
         lore5.add(
@@ -137,7 +138,7 @@ public final class Yh implements CommandExecutor {
         itemMeta6.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 5);
         itemMeta6.displayName(
                 Component
-                        .text("乾坤盒☯五").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("乾坤盒☯五").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> lore6 = new ArrayList<>();
         lore6.add(
@@ -154,7 +155,7 @@ public final class Yh implements CommandExecutor {
         itemMeta7.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 6);
         itemMeta7.displayName(
                 Component
-                        .text("乾坤盒☯六").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true));
+                        .text("乾坤盒☯六").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true));
         List<Component> lore7 = new ArrayList<>();
         lore7.add(
                 Component
@@ -170,7 +171,7 @@ public final class Yh implements CommandExecutor {
         itemMeta8.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 7);
         itemMeta8.displayName(
                 Component
-                        .text("乾坤盒☯七").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("乾坤盒☯七").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> lore8 = new ArrayList<>();
         lore8.add(
@@ -188,7 +189,7 @@ public final class Yh implements CommandExecutor {
         itemMeta9.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 8);
         itemMeta9.displayName(
                 Component
-                        .text("乾坤盒☯八").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("乾坤盒☯八").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> lore9 = new ArrayList<>();
         lore9.add(
@@ -205,7 +206,7 @@ public final class Yh implements CommandExecutor {
         itemMeta10.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 9);
         itemMeta10.displayName(
                 Component
-                        .text("乾坤盒☯九").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("乾坤盒☯九").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> lore10 = new ArrayList<>();
         lore10.add(
@@ -222,7 +223,7 @@ public final class Yh implements CommandExecutor {
         QINKUNHE10Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 10);
         QINKUNHE10Meta.displayName(
                 Component
-                        .text("乾坤盒☯十").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("乾坤盒☯十").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> QINKUNHE10Lore = new ArrayList<>();
         QINKUNHE10Lore.add(
@@ -239,7 +240,7 @@ public final class Yh implements CommandExecutor {
         QINKUNHE11Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 11);
         QINKUNHE11Meta.displayName(
                 Component
-                        .text("乾坤盒☯十一").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("乾坤盒☯十一").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> QINKUNHE11Lore = new ArrayList<>();
         QINKUNHE11Lore.add(
@@ -256,7 +257,7 @@ public final class Yh implements CommandExecutor {
         QINKUNHE12Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 12);
         QINKUNHE12Meta.displayName(
                 Component
-                        .text("乾坤盒☯十二").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("乾坤盒☯十二").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> QINKUNHE12Lore = new ArrayList<>();
         QINKUNHE12Lore.add(
@@ -273,7 +274,7 @@ public final class Yh implements CommandExecutor {
         QINKUNHE13Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 13);
         QINKUNHE13Meta.displayName(
                 Component
-                        .text("乾坤盒☯十三").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("乾坤盒☯十三").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> QINKUNHE13Lore = new ArrayList<>();
         QINKUNHE13Lore.add(
@@ -290,7 +291,7 @@ public final class Yh implements CommandExecutor {
         QINKUNHE14Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 14);
         QINKUNHE14Meta.displayName(
                 Component
-                        .text("乾坤盒☯十四").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("乾坤盒☯十四").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> QINKUNHE14Lore = new ArrayList<>();
         QINKUNHE14Lore.add(
@@ -307,7 +308,7 @@ public final class Yh implements CommandExecutor {
         QINKUNHE15Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 15);
         QINKUNHE15Meta.displayName(
                 Component
-                        .text("乾坤盒☯十五").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("乾坤盒☯十五").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> QINKUNHE15Lore = new ArrayList<>();
         QINKUNHE15Lore.add(
@@ -324,7 +325,7 @@ public final class Yh implements CommandExecutor {
         QINKUNHE16Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 16);
         QINKUNHE16Meta.displayName(
                 Component
-                        .text("乾坤盒☯十六").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("乾坤盒☯十六").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> QINKUNHE16Lore = new ArrayList<>();
         QINKUNHE16Lore.add(
@@ -341,7 +342,7 @@ public final class Yh implements CommandExecutor {
         QINKUNHE17Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 17);
         QINKUNHE17Meta.displayName(
                 Component
-                        .text("乾坤盒☯十七").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("乾坤盒☯十七").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> QINKUNHE17Lore = new ArrayList<>();
         QINKUNHE17Lore.add(
@@ -358,7 +359,7 @@ public final class Yh implements CommandExecutor {
         QINKUNHE18Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 18);
         QINKUNHE18Meta.displayName(
                 Component
-                        .text("乾坤盒☯十八").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("乾坤盒☯十八").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         List<Component> QINKUNHE18Lore = new ArrayList<>();
         QINKUNHE18Lore.add(
@@ -370,12 +371,11 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(17, QINKUNHE18);
 
 
-
         ItemMeta itemMeta11 = BACK_BEFORE.getItemMeta();
         itemMeta11.setCustomModelData(1);
         itemMeta11.displayName(
                 Component
-                        .text("返回上一页").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("返回上一页").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         BACK_BEFORE.setItemMeta(itemMeta11);
         QIAN_KUN_BAG.setItem(26, BACK_BEFORE);
@@ -385,7 +385,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta12 = itemStack12.getItemMeta();
         itemMeta12.displayName(
                 Component
-                        .text("开启/关闭TPS显示").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("开启/关闭TPS显示").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack12.setItemMeta(itemMeta12);
         ZA_XIANG.setItem(0, itemStack12);
@@ -395,7 +395,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta13 = itemStack13.getItemMeta();
         itemMeta13.displayName(
                 Component
-                        .text("开启/关闭内存显示").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("开启/关闭内存显示").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack13.setItemMeta(itemMeta13);
         ZA_XIANG.setItem(1, itemStack13);
@@ -405,7 +405,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta14 = itemStack14.getItemMeta();
         itemMeta14.displayName(
                 Component
-                        .text("开启/关闭夜视").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("开启/关闭夜视").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack14.setItemMeta(itemMeta14);
         ZA_XIANG.setItem(2, itemStack14);
@@ -415,7 +415,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta15 = itemStack15.getItemMeta();
         itemMeta15.displayName(
                 Component
-                        .text("饰品槽").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("饰品槽").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemMeta15.lore(
                 List.of(
@@ -430,7 +430,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta16 = NO.getItemMeta();
         itemMeta16.displayName(
                 Component
-                        .text("此槽位未开启").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("此槽位未开启").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemMeta16.lore(
                 List.of(
@@ -445,7 +445,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta17 = CHONG_HUA_JING.getItemMeta();
         itemMeta17.displayName(
                 Component
-                        .text("重华晶").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("重华晶").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemMeta17.lore(
                 List.of(
@@ -464,17 +464,17 @@ public final class Yh implements CommandExecutor {
         ItemMeta checkChonghuaMeta = checkChonghua.getItemMeta();
         checkChonghuaMeta.displayName(
                 Component
-                        .text("查询重华晶等级").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("查询重华晶等级").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         checkChonghua.setItemMeta(checkChonghuaMeta);
-        CHONG_HUA.setItem(27,checkChonghua);
+        CHONG_HUA.setItem(27, checkChonghua);
 
         ItemStack itemStack18 = new ItemStack(Material.YELLOW_DYE);
         itemStack18.setCustomModelData(7);
         ItemMeta itemMeta18 = itemStack18.getItemMeta();
         itemMeta18.displayName(
                 Component
-                        .text("皇城中心").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("皇城中心").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack18.setItemMeta(itemMeta18);
         CHONG_HUA.setItem(0, itemStack18);
@@ -484,7 +484,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta19 = itemStack19.getItemMeta();
         itemMeta19.displayName(
                 Component
-                        .text("龙须镇").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("龙须镇").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack19.setItemMeta(itemMeta19);
         CHONG_HUA.setItem(1, itemStack19);
@@ -494,7 +494,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta20 = itemStack20.getItemMeta();
         itemMeta20.displayName(
                 Component
-                        .text("山神庙").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("山神庙").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack20.setItemMeta(itemMeta20);
         CHONG_HUA.setItem(2, itemStack20);
@@ -504,7 +504,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta21 = itemStack21.getItemMeta();
         itemMeta21.displayName(
                 Component
-                        .text("青龙祭坛入口").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("青龙祭坛入口").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack21.setItemMeta(itemMeta21);
         CHONG_HUA.setItem(3, itemStack21);
@@ -515,7 +515,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta22 = itemStack22.getItemMeta();
         itemMeta22.displayName(
                 Component
-                        .text("沙漠客栈").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("沙漠客栈").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack22.setItemMeta(itemMeta22);
         CHONG_HUA.setItem(4, itemStack22);
@@ -525,7 +525,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta23 = itemStack23.getItemMeta();
         itemMeta23.displayName(
                 Component
-                        .text("沙漠村庄").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("沙漠村庄").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack23.setItemMeta(itemMeta23);
         CHONG_HUA.setItem(5, itemStack23);
@@ -535,7 +535,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta24 = itemStack24.getItemMeta();
         itemMeta24.displayName(
                 Component
-                        .text("朱雀祭坛入口").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("朱雀祭坛入口").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack24.setItemMeta(itemMeta24);
         CHONG_HUA.setItem(6, itemStack24);
@@ -545,7 +545,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta25 = itemStack25.getItemMeta();
         itemMeta25.displayName(
                 Component
-                        .text("陈大夫").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("陈大夫").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack25.setItemMeta(itemMeta25);
         CHONG_HUA.setItem(7, itemStack25);
@@ -555,7 +555,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta26 = itemStack26.getItemMeta();
         itemMeta26.displayName(
                 Component
-                        .text("山洞村庄").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("山洞村庄").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack26.setItemMeta(itemMeta26);
         CHONG_HUA.setItem(8, itemStack26);
@@ -565,7 +565,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta27 = itemStack27.getItemMeta();
         itemMeta27.displayName(
                 Component
-                        .text("白虎祭坛入口").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("白虎祭坛入口").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack27.setItemMeta(itemMeta27);
         CHONG_HUA.setItem(9, itemStack27);
@@ -575,7 +575,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta28 = itemStack28.getItemMeta();
         itemMeta28.displayName(
                 Component
-                        .text("水族村庄").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("水族村庄").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack28.setItemMeta(itemMeta28);
         CHONG_HUA.setItem(10, itemStack28);
@@ -585,7 +585,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta29 = itemStack29.getItemMeta();
         itemMeta29.displayName(
                 Component
-                        .text("蓬莱渡口").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("蓬莱渡口").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack29.setItemMeta(itemMeta29);
         CHONG_HUA.setItem(11, itemStack29);
@@ -595,7 +595,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta30 = itemStack30.getItemMeta();
         itemMeta30.displayName(
                 Component
-                        .text("玄武祭坛入口").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("玄武祭坛入口").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack30.setItemMeta(itemMeta30);
         CHONG_HUA.setItem(12, itemStack30);
@@ -605,7 +605,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta31 = itemStack31.getItemMeta();
         itemMeta31.displayName(
                 Component
-                        .text("古墓").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("古墓").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack31.setItemMeta(itemMeta31);
         CHONG_HUA.setItem(13, itemStack31);
@@ -615,7 +615,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta32 = itemStack32.getItemMeta();
         itemMeta32.displayName(
                 Component
-                        .text("火焰魔王巢穴").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("火焰魔王巢穴").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack32.setItemMeta(itemMeta32);
         CHONG_HUA.setItem(14, itemStack32);
@@ -625,7 +625,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta33 = itemStack33.getItemMeta();
         itemMeta33.displayName(
                 Component
-                        .text("镇妖塔").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("镇妖塔").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack33.setItemMeta(itemMeta33);
         CHONG_HUA.setItem(15, itemStack33);
@@ -635,7 +635,7 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta34 = itemStack34.getItemMeta();
         itemMeta34.displayName(
                 Component
-                        .text("哭声回荡的山谷").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("哭声回荡的山谷").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack34.setItemMeta(itemMeta34);
         CHONG_HUA.setItem(16, itemStack34);
@@ -645,19 +645,19 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta35 = itemStack35.getItemMeta();
         itemMeta35.displayName(
                 Component
-                        .text("圣山").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("圣山").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemStack35.setItemMeta(itemMeta35);
         CHONG_HUA.setItem(17, itemStack35);
 
-        CHONG_HUA.setItem(35,BACK_BEFORE);
+        CHONG_HUA.setItem(35, BACK_BEFORE);
 
         ItemStack quanqiushichang = new ItemStack(Material.YELLOW_DYE);
         quanqiushichang.setCustomModelData(8);
         ItemMeta itemMeta36 = quanqiushichang.getItemMeta();
         itemMeta36.displayName(
                 Component
-                        .text("月华市场").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("月华市场").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemMeta36.lore(
                 List.of(
@@ -670,52 +670,65 @@ public final class Yh implements CommandExecutor {
                 )
         );
         quanqiushichang.setItemMeta(itemMeta36);
-        MAIN_MENU.setItem(3,quanqiushichang);
+        MAIN_MENU.setItem(3, quanqiushichang);
 
         ItemStack playerInfo = new ItemStack(Material.YELLOW_DYE);
         playerInfo.setCustomModelData(9);
         ItemMeta itemMeta37 = playerInfo.getItemMeta();
         itemMeta37.displayName(
                 Component
-                        .text("属性查询").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("属性查询").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         playerInfo.setItemMeta(itemMeta37);
-        MAIN_MENU.setItem(15,playerInfo);
+        MAIN_MENU.setItem(15, playerInfo);
 
         TO_NEXT.setCustomModelData(10);
         ItemMeta itemMeta38 = TO_NEXT.getItemMeta();
         itemMeta38.displayName(
                 Component
-                        .text("前往下一页").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("前往下一页").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         TO_NEXT.setItemMeta(itemMeta38);
+
 
         ItemStack zaxiang = new ItemStack(Material.YELLOW_DYE);
         zaxiang.setCustomModelData(11);
         ItemMeta itemMeta139 = zaxiang.getItemMeta();
         itemMeta139.displayName(
                 Component
-                        .text("杂项").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("杂项").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         zaxiang.setItemMeta(itemMeta139);
-        MAIN_MENU.setItem(53,zaxiang);
+        MAIN_MENU.setItem(53, zaxiang);
 
         ItemStack book_mainTask = new ItemStack(Material.YELLOW_DYE);
         book_mainTask.setCustomModelData(12);
         ItemMeta itemMeta141 = book_mainTask.getItemMeta();
         itemMeta141.displayName(
                 Component
-                        .text("探索任务").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("探索任务").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         book_mainTask.setItemMeta(itemMeta141);
-        MAIN_MENU.setItem(12,book_mainTask);
+        MAIN_MENU.setItem(12, book_mainTask);
+
+        ItemStack shiguang = new ItemStack(Material.CLOCK);
+        shiguang.editMeta(meta -> {
+            meta.displayName(Component.text("时光之礼").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true));
+            meta.lore(
+                    List.of(
+                            Component.text("你在月华之前周目的游玩成果，将会以时光之礼的形式回馈").color(NamedTextColor.GRAY).decorate(TextDecoration.ITALIC)
+                    )
+            );
+
+        });
+        MAIN_MENU.setItem(52, shiguang);
 
         ItemStack book_xuanShang = new ItemStack(Material.YELLOW_DYE);
         book_xuanShang.setCustomModelData(12);
         ItemMeta itemMeta142 = book_xuanShang.getItemMeta();
         itemMeta142.displayName(
                 Component
-                        .text("悬赏任务").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("悬赏任务").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemMeta142.lore(
                 List.of(
@@ -723,7 +736,7 @@ public final class Yh implements CommandExecutor {
                 )
         );
         book_xuanShang.setItemMeta(itemMeta142);
-        MAIN_MENU.setItem(13,book_xuanShang);
+        MAIN_MENU.setItem(13, book_xuanShang);
 
 
         ItemStack book_yuehua = new ItemStack(Material.YELLOW_DYE);
@@ -731,50 +744,50 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta40 = book_yuehua.getItemMeta();
         itemMeta40.displayName(
                 Component
-                        .text("重新获取书籍——新手指引").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("重新获取书籍——新手指引").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         book_yuehua.setItemMeta(itemMeta40);
-        ZA_XIANG.setItem(8,book_yuehua);
+        ZA_XIANG.setItem(8, book_yuehua);
 
         ItemStack book_shuxing = new ItemStack(Material.YELLOW_DYE);
         book_shuxing.setCustomModelData(12);
         ItemMeta itemMetashuxing = book_shuxing.getItemMeta();
         itemMetashuxing.displayName(
                 Component
-                        .text("重新获取书籍——属性与战斗机制介绍").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("重新获取书籍——属性与战斗机制介绍").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         book_shuxing.setItemMeta(itemMetashuxing);
-        ZA_XIANG.setItem(9,book_shuxing);
+        ZA_XIANG.setItem(9, book_shuxing);
 
         ItemStack book_neirong = new ItemStack(Material.YELLOW_DYE);
         book_neirong.setCustomModelData(12);
         ItemMeta itemMetaneirong = book_neirong.getItemMeta();
         itemMetaneirong.displayName(
                 Component
-                        .text("重新获取书籍——基本游戏内容介绍").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("重新获取书籍——基本游戏内容介绍").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         book_neirong.setItemMeta(itemMetaneirong);
-        ZA_XIANG.setItem(10,book_neirong);
+        ZA_XIANG.setItem(10, book_neirong);
 
         ItemStack book_wanfa = new ItemStack(Material.YELLOW_DYE);
         book_wanfa.setCustomModelData(12);
         ItemMeta itemMeta43 = book_wanfa.getItemMeta();
         itemMeta43.displayName(
                 Component
-                        .text("重新获取书籍——特殊玩法介绍").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("重新获取书籍——特殊玩法介绍").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         book_wanfa.setItemMeta(itemMeta43);
-        ZA_XIANG.setItem(11,book_wanfa);
+        ZA_XIANG.setItem(11, book_wanfa);
 
         ItemStack book_jinji = new ItemStack(Material.YELLOW_DYE);
         book_jinji.setCustomModelData(12);
         ItemMeta itemMeta44 = book_jinji.getItemMeta();
         itemMeta44.displayName(
                 Component
-                        .text("重新获取书籍——服务器禁忌/规则").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("重新获取书籍——服务器禁忌/规则").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         book_jinji.setItemMeta(itemMeta44);
-        ZA_XIANG.setItem(12,book_jinji);
+        ZA_XIANG.setItem(12, book_jinji);
 
 
         ItemStack paopao = new ItemStack(Material.YELLOW_DYE);
@@ -782,20 +795,20 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMeta41 = paopao.getItemMeta();
         itemMeta41.displayName(
                 Component
-                        .text("领取NPC兑换泡泡").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("领取NPC兑换泡泡").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         paopao.setItemMeta(itemMeta41);
-        ZA_XIANG.setItem(6,paopao);
+        ZA_XIANG.setItem(6, paopao);
 
         ItemStack zhengming = new ItemStack(Material.YELLOW_DYE);
         zhengming.setCustomModelData(14);
         ItemMeta itemMeta42 = zhengming.getItemMeta();
         itemMeta42.displayName(
                 Component
-                        .text("领取种族证明").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("领取种族证明").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         zhengming.setItemMeta(itemMeta42);
-        ZA_XIANG.setItem(7,zhengming);
+        ZA_XIANG.setItem(7, zhengming);
 
 //        ItemStack chonghuaOp = new ItemStack(Material.YELLOW_DYE);
 //        ItemMeta chonghuaOpMeta = chonghuaOp.getItemMeta();
@@ -807,57 +820,57 @@ public final class Yh implements CommandExecutor {
 //        chonghuaOp.setItemMeta(chonghuaOpMeta);
 //
 //        MAIN_MENU.setItem(52,chonghuaOp);
-        ZA_XIANG.setItem(17,BACK_BEFORE);
+        ZA_XIANG.setItem(17, BACK_BEFORE);
 
         ItemStack killYourSelf = new ItemStack(Material.POTION);
         ItemMeta itemMetaKill = killYourSelf.getItemMeta();
         PotionMeta potionMeta = (PotionMeta) itemMetaKill;
         potionMeta.setColor(Color.BLACK);
         potionMeta.displayName(
-                Component.text("鹤顶红").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                Component.text("鹤顶红").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         potionMeta.lore(
                 List.of(
-                        Component.text("点击自杀").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        Component.text("点击自杀").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
                 )
         );
         potionMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
         killYourSelf.setItemMeta(potionMeta);
-        MAIN_MENU.setItem(45,killYourSelf);
+        MAIN_MENU.setItem(45, killYourSelf);
 
         ItemStack oneStepBank = YuanSu.jin.clone();
         ItemMeta itemMetaBank = oneStepBank.getItemMeta();
         itemMetaBank.displayName(
-                Component.text("便捷存储").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                Component.text("便捷存储").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemMetaBank.lore(
                 List.of(
-                        Component.text("点击存储背包内所有的元素和货币").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false)
+                        Component.text("点击存储背包内所有的元素和货币").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false)
                 )
         );
         oneStepBank.setItemMeta(itemMetaBank);
-        MAIN_MENU.setItem(5,oneStepBank);
+        MAIN_MENU.setItem(5, oneStepBank);
 
         ItemStack realBank = YuanSu.bagging_jin.clone();
         ItemMeta itemMetaRealBank = realBank.getItemMeta();
         itemMetaRealBank.displayName(
-                Component.text("元素银行").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                Component.text("元素银行").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         realBank.setItemMeta(itemMetaRealBank);
-        MAIN_MENU.setItem(6,realBank);
+        MAIN_MENU.setItem(6, realBank);
 
         ItemStack money = Money.yinPiao.clone();
         ItemMeta itemMetaMoney = money.getItemMeta();
         itemMetaMoney.displayName(
-                Component.text("金钱银行").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                Component.text("金钱银行").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         money.setItemMeta(itemMetaMoney);
-        MAIN_MENU.setItem(7,money);
+        MAIN_MENU.setItem(7, money);
 
         ItemStack arrow = YiQi.NIEPANYUNANG.clone();
         ItemMeta itemMetaArrow = arrow.getItemMeta();
         itemMetaArrow.displayName(
-                Component.text("箭袋").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                Component.text("箭袋").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemMetaArrow.lore(
                 List.of(
@@ -865,20 +878,20 @@ public final class Yh implements CommandExecutor {
                 )
         );
         arrow.setItemMeta(itemMetaArrow);
-        MAIN_MENU.setItem(9,arrow);
-        MAIN_MENU.setItem(8,arrow);
+        MAIN_MENU.setItem(9, arrow);
+        MAIN_MENU.setItem(8, arrow);
 
         ItemStack shardInventory = new ItemStack(Material.BLUE_DYE);
         ItemMeta itemMetaShard = shardInventory.getItemMeta();
         itemMetaShard.setCustomModelData(20);
         itemMetaShard.displayName(
-                Component.text("混元袋☯无界").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                Component.text("混元袋☯无界").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemMetaShard.lore(
                 List.of(
-                        Component.text("解锁后方可打开").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false),
-                        Component.text("当你处于一个小队中时，将打开队长的混元袋").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false),
-                        Component.text("若你则是队长，则将打开自己的混元袋").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false)
+                        Component.text("解锁后方可打开").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false),
+                        Component.text("当你处于一个小队中时，将打开队长的混元袋").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false),
+                        Component.text("若你则是队长，则将打开自己的混元袋").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false)
                 )
         );
         shardInventory.setItemMeta(itemMetaShard);
@@ -887,31 +900,31 @@ public final class Yh implements CommandExecutor {
         ItemMeta chengjiuMeta = chengjiuPoint.getItemMeta();
         chengjiuMeta.setCustomModelData(19);
         chengjiuMeta.displayName(
-                Component.text("成就点数查询").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                Component.text("成就点数查询").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         chengjiuMeta.lore(
                 List.of(
-                        Component.text("点击查看你的成就点数").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false)
+                        Component.text("点击查看你的成就点数").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false)
                 )
         );
         chengjiuPoint.setItemMeta(chengjiuMeta);
-        MAIN_MENU.setItem(16,chengjiuPoint);
+        MAIN_MENU.setItem(16, chengjiuPoint);
 
         ItemStack fubenCount = FuBen.keyJin.clone();
         ItemMeta fubenMeta = fubenCount.getItemMeta();
         fubenMeta.displayName(
-                Component.text("副本次数查询").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                Component.text("副本次数查询").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         fubenMeta.lore(
                 List.of(
-                        Component.text("点击查看你的副本通关次数").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false)
+                        Component.text("点击查看你的副本通关次数").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false)
                 )
         );
         fubenCount.setItemMeta(fubenMeta);
-        MAIN_MENU.setItem(17,fubenCount);
+        MAIN_MENU.setItem(17, fubenCount);
 
 
-        MAIN_MENU.setItem(1,shardInventory);
+        MAIN_MENU.setItem(1, shardInventory);
 
         ItemStack recipe = new ItemStack(Material.WRITTEN_BOOK);
         BookMeta bookMeta = (BookMeta) recipe.getItemMeta();
@@ -922,7 +935,7 @@ public final class Yh implements CommandExecutor {
                 "§7§o神秘的锻造大师"
         );
         recipe.setItemMeta(bookMeta);
-        MAIN_MENU.setItem(9,recipe);
+        MAIN_MENU.setItem(9, recipe);
 
         ItemStack recipeDan = new ItemStack(Material.WRITTEN_BOOK);
         BookMeta bookMeta1 = (BookMeta) recipeDan.getItemMeta();
@@ -933,7 +946,7 @@ public final class Yh implements CommandExecutor {
                 "§7§o不知名炼丹师"
         );
         recipeDan.setItemMeta(bookMeta1);
-        MAIN_MENU.setItem(10,recipeDan);
+        MAIN_MENU.setItem(10, recipeDan);
 
         ItemStack recipeDanDan = new ItemStack(Material.WRITTEN_BOOK);
         BookMeta bookMeta2 = (BookMeta) recipeDanDan.getItemMeta();
@@ -944,7 +957,7 @@ public final class Yh implements CommandExecutor {
                 "§7§o某知名炼丹师"
         );
         recipeDanDan.setItemMeta(bookMeta2);
-        MAIN_MENU.setItem(11,recipeDanDan);
+        MAIN_MENU.setItem(11, recipeDanDan);
 
 //        ItemStack gonggao = new ItemStack(Material.WRITTEN_BOOK);
 //        BookMeta bookMeta3 = (BookMeta) gonggao.getItemMeta();
@@ -961,87 +974,87 @@ public final class Yh implements CommandExecutor {
         ItemMeta itemMetaNoise = noise.getItemMeta();
         itemMetaNoise.displayName(
                 Component
-                        .text("开启/关闭被动技能的文本提示").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("开启/关闭被动技能的文本提示").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         noise.setItemMeta(itemMetaNoise);
-        ZA_XIANG.setItem(3,noise);
+        ZA_XIANG.setItem(3, noise);
 
 
         ItemStack noise2 = new ItemStack(Material.REDSTONE);
         ItemMeta itemMetaNoise2 = noise2.getItemMeta();
         itemMetaNoise2.displayName(
                 Component
-                        .text("开启/关闭被动技能的音效").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("开启/关闭被动技能的音效").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         noise2.setItemMeta(itemMetaNoise2);
-        ZA_XIANG.setItem(4,noise2);
+        ZA_XIANG.setItem(4, noise2);
 
         ItemStack noise3 = new ItemStack(Material.REDSTONE);
         ItemMeta itemMetaNoise3 = noise3.getItemMeta();
         itemMetaNoise3.displayName(
                 Component
-                        .text("开启/关闭阵法的文本提示").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                        .text("开启/关闭阵法的文本提示").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         noise3.setItemMeta(itemMetaNoise3);
-        ZA_XIANG.setItem(5,noise3);
+        ZA_XIANG.setItem(5, noise3);
 
         ItemStack shuilang = Food.shuilangniemianren.clone();
         ItemMeta itemMetaShui = shuilang.getItemMeta();
         itemMetaShui.displayName(
-                Component.text("伏龙的赈灾粮——免费领取水狼捏面人").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                Component.text("伏龙的赈灾粮——免费领取水狼捏面人").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemMetaShui.lore(
                 List.of(
-                        Component.text("每6小时可领取一次").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false)
+                        Component.text("每6小时可领取一次").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false)
                 )
         );
         shuilang.setItemMeta(itemMetaShui);
-        MAIN_MENU.setItem(18,shuilang);
+        MAIN_MENU.setItem(18, shuilang);
 
         ItemStack show = Weapon.KUN_LUN_FEI_XIAN_JIAN.clone();
         ItemMeta itemMetaShow = show.getItemMeta();
         itemMetaShow.addItemFlags(ZeroAttributeModifier.itemFlags);
         itemMetaShow.displayName(
-                Component.text("展示手持物品").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                Component.text("展示手持物品").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         show.setItemMeta(itemMetaShow);
-        MAIN_MENU.setItem(14,show);
+        MAIN_MENU.setItem(14, show);
 
         ItemStack lunhuizhuanshi = Other.CHONG_SHENG_STONE.clone();
         ItemMeta itemMetaLun = lunhuizhuanshi.getItemMeta();
         itemMetaLun.displayName(
-                Component.text("轮回转世").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                Component.text("轮回转世").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemMetaLun.lore(
                 List.of(
-                        Component.text("必须清空自己的背包，而末影箱，饰品槽，乾坤盒不需要清理").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false),
-                        Component.text("轮回转世将花费存款中的300铜钱").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false),
-                        Component.text("除此之外，不会扣除其它任何物品，属性等").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false)
+                        Component.text("必须清空自己的背包，而末影箱，饰品槽，乾坤盒不需要清理").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false),
+                        Component.text("轮回转世将花费存款中的300铜钱").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false),
+                        Component.text("除此之外，不会扣除其它任何物品，属性等").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false)
                 )
         );
 
         lunhuizhuanshi.setItemMeta(itemMetaLun);
-        MAIN_MENU.setItem(19,lunhuizhuanshi);
+        MAIN_MENU.setItem(19, lunhuizhuanshi);
 
         ItemStack kill = com.xiaoxiaoowo.yuehua.items.zhuangbei.Weapon.XUAN_YUAN.clone();
         ItemMeta itemMetaKillCheck = kill.getItemMeta();
         itemMetaKillCheck.displayName(
-                Component.text("查询怪物击杀数").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
+                Component.text("查询怪物击杀数").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         itemMetaKillCheck.lore(
                 List.of(
-                        Component.text("查询你的怪物击杀数").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,false)
+                        Component.text("查询你的怪物击杀数").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, false)
                 )
         );
         kill.setItemMeta(itemMetaKillCheck);
-        MAIN_MENU.setItem(20,kill);
+        MAIN_MENU.setItem(20, kill);
 
     }
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         Player player = (Player) sender;
-        Scheduler.sync(()-> player.openInventory(MAIN_MENU));
+        Scheduler.sync(() -> player.openInventory(MAIN_MENU));
         return true;
     }
 }

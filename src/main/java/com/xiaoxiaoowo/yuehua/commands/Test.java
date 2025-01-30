@@ -39,6 +39,7 @@ import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
+import org.java_websocket.server.WebSocketServer;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -125,6 +126,7 @@ public final class Test implements CommandExecutor {
 //    private static final NamespacedKey NAMESPACED_KEY = DataContainer.attack;
 
 
+    @SuppressWarnings("unused")
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player player1) {
@@ -153,9 +155,22 @@ public final class Test implements CommandExecutor {
 
 
         switch (args[0]) {
+            case "server" -> {
+                WebSocketServer server = MySocket.server;
+                Bukkit.broadcastMessage(String.valueOf(server.getPort()));
+            }
+
             case "yanhua" -> {
                 player = Bukkit.getPlayer("xiaoxiaoOWO");
                 player.getInventory().addItem(Special.xianqianhuojian);
+                player.getInventory().addItem(Special.xianqianhuojian2);
+                player.getInventory().addItem(Special.xianqianhuojian3);
+                player.getInventory().addItem(Special.xianqianhuojian4);
+                player.getInventory().addItem(Special.xianqianhuojian5);
+                player.getInventory().addItem(Special.xianqianhuojian6);
+                player.getInventory().addItem(Special.xianqianhuojian7);
+                player.getInventory().addItem(Special.xianqianhuojian8);
+
             }
 
 
@@ -600,8 +615,11 @@ public final class Test implements CommandExecutor {
                 MoveEntity.moveEntityNoPassBlock(entity, player.getX(), player.getY(), player.getZ());
             }
 
-            case "getPer" -> testMspt(Test::perGet, BAIWAN);
+            case "getPer" -> {
+                testMspt(Test::perGet, BAIWAN);
 
+                Bukkit.broadcastMessage("触发");
+            }
             case "addr" -> testEntityAddr();
 
             case "monsper" -> {

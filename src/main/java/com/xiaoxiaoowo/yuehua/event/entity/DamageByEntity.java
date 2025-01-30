@@ -3,6 +3,7 @@ package com.xiaoxiaoowo.yuehua.event.entity;
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.data.*;
 import com.xiaoxiaoowo.yuehua.items.dz.YuanSu;
+import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.system.Team;
 import com.xiaoxiaoowo.yuehua.system.handleMonsters.DoMonsterAttack;
 import com.xiaoxiaoowo.yuehua.system.handleMonsters.DoMonsterAttacked;
@@ -20,6 +21,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.projectiles.ProjectileSource;
 
 import java.util.Random;
@@ -426,8 +428,18 @@ public final class DamageByEntity implements Listener {
 
             default -> 0;
         };
+        double damage = 0.1 * jingong;
 
-        double damage = 15 + 0.15 * jingong;
+        switch (damager.getPersistentDataContainer().get(DataContainer.id, PersistentDataType.STRING)) {
+            case "xianqianhuojian" -> damage += 10;
+            case "xianqianhuojian2" -> damage += 15;
+            case "xianqianhuojian3" -> damage += 20;
+            case "xianqianhuojian4" -> damage += 25;
+            case "xianqianhuojian5" -> damage += 30;
+            case "xianqianhuojian6" -> damage += 35;
+            case "xianqianhuojian7" -> damage += 40;
+            case "xianqianhuojian8" -> damage += 45;
+        }
         //判断是否暴击
         if (data.mustBaoji > 0) {
             data.mustBaoji--;
