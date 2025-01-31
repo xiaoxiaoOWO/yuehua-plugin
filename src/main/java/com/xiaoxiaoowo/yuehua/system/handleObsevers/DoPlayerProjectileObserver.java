@@ -76,13 +76,13 @@ public final class DoPlayerProjectileObserver {
     }
 
     public static void doFuRong(Player player) {
-        double amount = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.2 + 10;
+        double amount = player.getAttribute(Attribute.MAX_HEALTH).getValue() * 0.2 + 10;
         Cure.curePlayer(amount, player);
         ParticleUtils.atPlayer(player, Particle.CLOUD);
     }
 
     public static void doSheTian(Player player) {
-        double amount = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.2 + 270;
+        double amount = player.getAttribute(Attribute.MAX_HEALTH).getValue() * 0.2 + 270;
         Cure.curePlayer(amount, player);
         ParticleUtils.atPlayer(player, Particle.CLOUD);
 
@@ -202,7 +202,7 @@ public final class DoPlayerProjectileObserver {
     }
 
     public static void doTianQiong(Player player) {
-        double amount = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.2 + 90;
+        double amount = player.getAttribute(Attribute.MAX_HEALTH).getValue() * 0.2 + 90;
         Cure.curePlayer(amount, player);
         ParticleUtils.atPlayer(player, Particle.CLOUD);
         Data data = Yuehua.playerData.get(player.getUniqueId());
@@ -260,7 +260,7 @@ public final class DoPlayerProjectileObserver {
     }
 
     public static void doHongLuan(Player player, PersistentDataContainer persistentDataContainer) {
-        double amount = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.2 + 30;
+        double amount = player.getAttribute(Attribute.MAX_HEALTH).getValue() * 0.2 + 30;
         double attack = persistentDataContainer.get(DataContainer.attack, PersistentDataType.DOUBLE);
 
         Data data = Yuehua.playerData.get(player.getUniqueId());
@@ -332,7 +332,7 @@ public final class DoPlayerProjectileObserver {
         ParticleUtils.atMonster(mob, Particle.FLAME);
         Set<String> tags = mob.getScoreboardTags();
         if (tags.contains(YanTieGong.id)) {
-            double damage2 = mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.4;
+            double damage2 = mob.getAttribute(Attribute.MAX_HEALTH).getValue() * 0.4;
             damage2 = Math.min(1000, damage2);
             Damage.damageMonster(data, damage2, monsterData);
         } else {
@@ -389,7 +389,7 @@ public final class DoPlayerProjectileObserver {
 
         if (tags.contains("mieshen")) {
             tags.remove("mieshen");
-            double maxHp = mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+            double maxHp = mob.getAttribute(Attribute.MAX_HEALTH).getValue();
             double hp = mob.getHealth();
             double lostHp = maxHp - hp;
             double damage2 = Math.min(10000, 0.4 * lostHp);
@@ -403,7 +403,7 @@ public final class DoPlayerProjectileObserver {
             int id = Scheduler.syncLaterWithId(() -> {
                 if (tags.contains("mieshen")) {
                     if (timeNow == (long) monsterData.extraData.get("mieshen")) {
-                        double maxHp = mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+                        double maxHp = mob.getAttribute(Attribute.MAX_HEALTH).getValue();
                         double hp = mob.getHealth();
                         double lostHp = maxHp - hp;
                         double damage2 = Math.min(10000, 0.4 * lostHp);

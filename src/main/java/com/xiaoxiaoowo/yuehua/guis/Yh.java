@@ -10,12 +10,14 @@ import com.xiaoxiaoowo.yuehua.items.zhuangbei.YiQi;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import com.xiaoxiaoowo.yuehua.utils.ZeroAttributeModifier;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -51,7 +53,7 @@ public final class Yh implements CommandExecutor {
 
     static {
         ItemStack itemStack1 = new ItemStack(Material.BLUE_DYE);
-        itemStack1.setCustomModelData(1);
+        itemStack1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/1"));
         ItemMeta itemMeta1 = itemStack1.getItemMeta();
         itemMeta1.displayName(
                 Component
@@ -67,7 +69,7 @@ public final class Yh implements CommandExecutor {
         MAIN_MENU.setItem(0, itemStack1);
 
         ItemStack itemStack2 = new ItemStack(Material.BLUE_DYE);
-        itemStack2.setCustomModelData(2);
+        itemStack2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/2"));
         ItemMeta itemMeta2 = itemStack2.getItemMeta();
         itemMeta2.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 1);
         itemMeta2.displayName(
@@ -82,7 +84,7 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(0, itemStack2);
 
         ItemStack itemStack3 = new ItemStack(Material.BLUE_DYE);
-        itemStack3.setCustomModelData(3);
+        itemStack3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/3"));
         ItemMeta itemMeta3 = itemStack3.getItemMeta();
         itemMeta3.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 2);
         itemMeta3.displayName(
@@ -99,7 +101,7 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(1, itemStack3);
 
         ItemStack itemStack4 = new ItemStack(Material.BLUE_DYE);
-        itemStack4.setCustomModelData(4);
+        itemStack4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/4"));
         ItemMeta itemMeta4 = itemStack4.getItemMeta();
         itemMeta4.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 3);
         itemMeta4.displayName(
@@ -116,7 +118,7 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(2, itemStack4);
 
         ItemStack itemStack5 = new ItemStack(Material.BLUE_DYE);
-        itemStack5.setCustomModelData(5);
+        itemStack5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/5"));
         ItemMeta itemMeta5 = itemStack5.getItemMeta();
         itemMeta5.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 4);
         itemMeta5.displayName(
@@ -133,7 +135,7 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(3, itemStack5);
 
         ItemStack itemStack6 = new ItemStack(Material.BLUE_DYE);
-        itemStack6.setCustomModelData(6);
+        itemStack6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/6"));
         ItemMeta itemMeta6 = itemStack6.getItemMeta();
         itemMeta6.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 5);
         itemMeta6.displayName(
@@ -150,7 +152,7 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(4, itemStack6);
 
         ItemStack itemStack7 = new ItemStack(Material.BLUE_DYE);
-        itemStack7.setCustomModelData(7);
+        itemStack7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/7"));
         ItemMeta itemMeta7 = itemStack7.getItemMeta();
         itemMeta7.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 6);
         itemMeta7.displayName(
@@ -166,7 +168,7 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(5, itemStack7);
 
         ItemStack itemStack8 = new ItemStack(Material.BLUE_DYE);
-        itemStack8.setCustomModelData(8);
+        itemStack8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/8"));
         ItemMeta itemMeta8 = itemStack8.getItemMeta();
         itemMeta8.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 7);
         itemMeta8.displayName(
@@ -184,7 +186,7 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(6, itemStack8);
 
         ItemStack itemStack9 = new ItemStack(Material.BLUE_DYE);
-        itemStack9.setCustomModelData(9);
+        itemStack9.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/9"));
         ItemMeta itemMeta9 = itemStack9.getItemMeta();
         itemMeta9.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 8);
         itemMeta9.displayName(
@@ -201,7 +203,7 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(7, itemStack9);
 
         ItemStack itemStack10 = new ItemStack(Material.BLUE_DYE);
-        itemStack10.setCustomModelData(10);
+        itemStack10.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/10"));
         ItemMeta itemMeta10 = itemStack10.getItemMeta();
         itemMeta10.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 9);
         itemMeta10.displayName(
@@ -218,7 +220,7 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(8, itemStack10);
 
         ItemStack QINKUNHE10 = new ItemStack(Material.BLUE_DYE);
-        QINKUNHE10.setCustomModelData(11);
+        QINKUNHE10.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/11"));
         ItemMeta QINKUNHE10Meta = QINKUNHE10.getItemMeta();
         QINKUNHE10Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 10);
         QINKUNHE10Meta.displayName(
@@ -235,7 +237,7 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(9, QINKUNHE10);
 
         ItemStack QINKUNHE11 = new ItemStack(Material.BLUE_DYE);
-        QINKUNHE11.setCustomModelData(12);
+        QINKUNHE11.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/12"));
         ItemMeta QINKUNHE11Meta = QINKUNHE11.getItemMeta();
         QINKUNHE11Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 11);
         QINKUNHE11Meta.displayName(
@@ -252,7 +254,7 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(10, QINKUNHE11);
 
         ItemStack QINKUNHE12 = new ItemStack(Material.BLUE_DYE);
-        QINKUNHE12.setCustomModelData(13);
+        QINKUNHE12.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/13"));
         ItemMeta QINKUNHE12Meta = QINKUNHE12.getItemMeta();
         QINKUNHE12Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 12);
         QINKUNHE12Meta.displayName(
@@ -269,7 +271,7 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(11, QINKUNHE12);
 
         ItemStack QINKUNHE13 = new ItemStack(Material.BLUE_DYE);
-        QINKUNHE13.setCustomModelData(14);
+        QINKUNHE13.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/14"));
         ItemMeta QINKUNHE13Meta = QINKUNHE13.getItemMeta();
         QINKUNHE13Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 13);
         QINKUNHE13Meta.displayName(
@@ -286,7 +288,7 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(12, QINKUNHE13);
 
         ItemStack QINKUNHE14 = new ItemStack(Material.BLUE_DYE);
-        QINKUNHE14.setCustomModelData(15);
+        QINKUNHE14.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/15"));
         ItemMeta QINKUNHE14Meta = QINKUNHE14.getItemMeta();
         QINKUNHE14Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 14);
         QINKUNHE14Meta.displayName(
@@ -303,7 +305,7 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(13, QINKUNHE14);
 
         ItemStack QINKUNHE15 = new ItemStack(Material.BLUE_DYE);
-        QINKUNHE15.setCustomModelData(16);
+        QINKUNHE15.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/16"));
         ItemMeta QINKUNHE15Meta = QINKUNHE15.getItemMeta();
         QINKUNHE15Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 15);
         QINKUNHE15Meta.displayName(
@@ -320,7 +322,7 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(14, QINKUNHE15);
 
         ItemStack QINKUNHE16 = new ItemStack(Material.BLUE_DYE);
-        QINKUNHE16.setCustomModelData(17);
+        QINKUNHE16.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/17"));
         ItemMeta QINKUNHE16Meta = QINKUNHE16.getItemMeta();
         QINKUNHE16Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 16);
         QINKUNHE16Meta.displayName(
@@ -337,7 +339,7 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(15, QINKUNHE16);
 
         ItemStack QINKUNHE17 = new ItemStack(Material.BLUE_DYE);
-        QINKUNHE17.setCustomModelData(18);
+        QINKUNHE17.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/18"));
         ItemMeta QINKUNHE17Meta = QINKUNHE17.getItemMeta();
         QINKUNHE17Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 17);
         QINKUNHE17Meta.displayName(
@@ -354,7 +356,7 @@ public final class Yh implements CommandExecutor {
         QIAN_KUN_BAG.setItem(16, QINKUNHE17);
 
         ItemStack QINKUNHE18 = new ItemStack(Material.BLUE_DYE);
-        QINKUNHE18.setCustomModelData(19);
+        QINKUNHE18.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/19"));
         ItemMeta QINKUNHE18Meta = QINKUNHE18.getItemMeta();
         QINKUNHE18Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.INTEGER, 18);
         QINKUNHE18Meta.displayName(
@@ -372,16 +374,17 @@ public final class Yh implements CommandExecutor {
 
 
         ItemMeta itemMeta11 = BACK_BEFORE.getItemMeta();
-        itemMeta11.setCustomModelData(1);
         itemMeta11.displayName(
                 Component
                         .text("返回上一页").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
         BACK_BEFORE.setItemMeta(itemMeta11);
+        BACK_BEFORE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/1"));
         QIAN_KUN_BAG.setItem(26, BACK_BEFORE);
 
+
         ItemStack itemStack12 = new ItemStack(Material.YELLOW_DYE);
-        itemStack12.setCustomModelData(4);
+        itemStack12.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/4"));
         ItemMeta itemMeta12 = itemStack12.getItemMeta();
         itemMeta12.displayName(
                 Component
@@ -391,7 +394,7 @@ public final class Yh implements CommandExecutor {
         ZA_XIANG.setItem(0, itemStack12);
 
         ItemStack itemStack13 = new ItemStack(Material.YELLOW_DYE);
-        itemStack13.setCustomModelData(3);
+        itemStack13.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/3"));
         ItemMeta itemMeta13 = itemStack13.getItemMeta();
         itemMeta13.displayName(
                 Component
@@ -401,7 +404,7 @@ public final class Yh implements CommandExecutor {
         ZA_XIANG.setItem(1, itemStack13);
 
         ItemStack itemStack14 = new ItemStack(Material.YELLOW_DYE);
-        itemStack14.setCustomModelData(6);
+        itemStack14.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/6"));
         ItemMeta itemMeta14 = itemStack14.getItemMeta();
         itemMeta14.displayName(
                 Component
@@ -411,7 +414,7 @@ public final class Yh implements CommandExecutor {
         ZA_XIANG.setItem(2, itemStack14);
 
         ItemStack itemStack15 = new ItemStack(Material.YELLOW_DYE);
-        itemStack15.setCustomModelData(5);
+        itemStack15.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/5"));
         ItemMeta itemMeta15 = itemStack15.getItemMeta();
         itemMeta15.displayName(
                 Component
@@ -426,7 +429,7 @@ public final class Yh implements CommandExecutor {
         itemStack15.setItemMeta(itemMeta15);
         MAIN_MENU.setItem(2, itemStack15);
 
-        NO.setCustomModelData(2);
+        NO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/2"));
         ItemMeta itemMeta16 = NO.getItemMeta();
         itemMeta16.displayName(
                 Component
@@ -440,8 +443,9 @@ public final class Yh implements CommandExecutor {
         );
 
         NO.setItemMeta(itemMeta16);
+        NO.editMeta(meta -> meta.getPersistentDataContainer().set(DataContainer.id,PersistentDataType.STRING,"just_no"));
 
-        CHONG_HUA_JING.setCustomModelData(7);
+        CHONG_HUA_JING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta17 = CHONG_HUA_JING.getItemMeta();
         itemMeta17.displayName(
                 Component
@@ -460,7 +464,7 @@ public final class Yh implements CommandExecutor {
         MAIN_MENU.setItem(4, CHONG_HUA_JING);
 
         ItemStack checkChonghua = new ItemStack(Material.YELLOW_DYE);
-        checkChonghua.setCustomModelData(7);
+        checkChonghua.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta checkChonghuaMeta = checkChonghua.getItemMeta();
         checkChonghuaMeta.displayName(
                 Component
@@ -470,7 +474,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(27, checkChonghua);
 
         ItemStack itemStack18 = new ItemStack(Material.YELLOW_DYE);
-        itemStack18.setCustomModelData(7);
+        itemStack18.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta18 = itemStack18.getItemMeta();
         itemMeta18.displayName(
                 Component
@@ -480,7 +484,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(0, itemStack18);
 
         ItemStack itemStack19 = new ItemStack(Material.YELLOW_DYE);
-        itemStack19.setCustomModelData(7);
+        itemStack19.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta19 = itemStack19.getItemMeta();
         itemMeta19.displayName(
                 Component
@@ -490,7 +494,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(1, itemStack19);
 
         ItemStack itemStack20 = new ItemStack(Material.YELLOW_DYE);
-        itemStack20.setCustomModelData(7);
+        itemStack20.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta20 = itemStack20.getItemMeta();
         itemMeta20.displayName(
                 Component
@@ -500,7 +504,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(2, itemStack20);
 
         ItemStack itemStack21 = new ItemStack(Material.YELLOW_DYE);
-        itemStack21.setCustomModelData(7);
+        itemStack21.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta21 = itemStack21.getItemMeta();
         itemMeta21.displayName(
                 Component
@@ -511,7 +515,7 @@ public final class Yh implements CommandExecutor {
 
 
         ItemStack itemStack22 = new ItemStack(Material.YELLOW_DYE);
-        itemStack22.setCustomModelData(7);
+        itemStack22.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta22 = itemStack22.getItemMeta();
         itemMeta22.displayName(
                 Component
@@ -521,7 +525,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(4, itemStack22);
 
         ItemStack itemStack23 = new ItemStack(Material.YELLOW_DYE);
-        itemStack23.setCustomModelData(7);
+        itemStack23.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta23 = itemStack23.getItemMeta();
         itemMeta23.displayName(
                 Component
@@ -531,7 +535,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(5, itemStack23);
 
         ItemStack itemStack24 = new ItemStack(Material.YELLOW_DYE);
-        itemStack24.setCustomModelData(7);
+        itemStack24.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta24 = itemStack24.getItemMeta();
         itemMeta24.displayName(
                 Component
@@ -541,7 +545,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(6, itemStack24);
 
         ItemStack itemStack25 = new ItemStack(Material.YELLOW_DYE);
-        itemStack25.setCustomModelData(7);
+        itemStack25.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta25 = itemStack25.getItemMeta();
         itemMeta25.displayName(
                 Component
@@ -551,7 +555,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(7, itemStack25);
 
         ItemStack itemStack26 = new ItemStack(Material.YELLOW_DYE);
-        itemStack26.setCustomModelData(7);
+        itemStack26.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta26 = itemStack26.getItemMeta();
         itemMeta26.displayName(
                 Component
@@ -561,7 +565,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(8, itemStack26);
 
         ItemStack itemStack27 = new ItemStack(Material.YELLOW_DYE);
-        itemStack27.setCustomModelData(7);
+        itemStack27.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta27 = itemStack27.getItemMeta();
         itemMeta27.displayName(
                 Component
@@ -571,7 +575,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(9, itemStack27);
 
         ItemStack itemStack28 = new ItemStack(Material.YELLOW_DYE);
-        itemStack28.setCustomModelData(7);
+        itemStack28.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta28 = itemStack28.getItemMeta();
         itemMeta28.displayName(
                 Component
@@ -581,7 +585,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(10, itemStack28);
 
         ItemStack itemStack29 = new ItemStack(Material.YELLOW_DYE);
-        itemStack29.setCustomModelData(7);
+        itemStack29.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta29 = itemStack29.getItemMeta();
         itemMeta29.displayName(
                 Component
@@ -591,7 +595,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(11, itemStack29);
 
         ItemStack itemStack30 = new ItemStack(Material.YELLOW_DYE);
-        itemStack30.setCustomModelData(7);
+        itemStack30.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta30 = itemStack30.getItemMeta();
         itemMeta30.displayName(
                 Component
@@ -601,7 +605,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(12, itemStack30);
 
         ItemStack itemStack31 = new ItemStack(Material.YELLOW_DYE);
-        itemStack31.setCustomModelData(7);
+        itemStack31.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta31 = itemStack31.getItemMeta();
         itemMeta31.displayName(
                 Component
@@ -611,7 +615,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(13, itemStack31);
 
         ItemStack itemStack32 = new ItemStack(Material.YELLOW_DYE);
-        itemStack32.setCustomModelData(7);
+        itemStack32.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta32 = itemStack32.getItemMeta();
         itemMeta32.displayName(
                 Component
@@ -621,7 +625,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(14, itemStack32);
 
         ItemStack itemStack33 = new ItemStack(Material.YELLOW_DYE);
-        itemStack33.setCustomModelData(7);
+        itemStack33.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta33 = itemStack33.getItemMeta();
         itemMeta33.displayName(
                 Component
@@ -631,7 +635,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(15, itemStack33);
 
         ItemStack itemStack34 = new ItemStack(Material.YELLOW_DYE);
-        itemStack34.setCustomModelData(7);
+        itemStack34.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta34 = itemStack34.getItemMeta();
         itemMeta34.displayName(
                 Component
@@ -641,7 +645,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(16, itemStack34);
 
         ItemStack itemStack35 = new ItemStack(Material.YELLOW_DYE);
-        itemStack35.setCustomModelData(7);
+        itemStack35.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
         ItemMeta itemMeta35 = itemStack35.getItemMeta();
         itemMeta35.displayName(
                 Component
@@ -653,7 +657,7 @@ public final class Yh implements CommandExecutor {
         CHONG_HUA.setItem(35, BACK_BEFORE);
 
         ItemStack quanqiushichang = new ItemStack(Material.YELLOW_DYE);
-        quanqiushichang.setCustomModelData(8);
+        quanqiushichang.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/8"));
         ItemMeta itemMeta36 = quanqiushichang.getItemMeta();
         itemMeta36.displayName(
                 Component
@@ -673,7 +677,7 @@ public final class Yh implements CommandExecutor {
         MAIN_MENU.setItem(3, quanqiushichang);
 
         ItemStack playerInfo = new ItemStack(Material.YELLOW_DYE);
-        playerInfo.setCustomModelData(9);
+        playerInfo.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/9"));
         ItemMeta itemMeta37 = playerInfo.getItemMeta();
         itemMeta37.displayName(
                 Component
@@ -682,7 +686,7 @@ public final class Yh implements CommandExecutor {
         playerInfo.setItemMeta(itemMeta37);
         MAIN_MENU.setItem(15, playerInfo);
 
-        TO_NEXT.setCustomModelData(10);
+        TO_NEXT.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/10"));
         ItemMeta itemMeta38 = TO_NEXT.getItemMeta();
         itemMeta38.displayName(
                 Component
@@ -692,7 +696,7 @@ public final class Yh implements CommandExecutor {
 
 
         ItemStack zaxiang = new ItemStack(Material.YELLOW_DYE);
-        zaxiang.setCustomModelData(11);
+        zaxiang.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/11"));
         ItemMeta itemMeta139 = zaxiang.getItemMeta();
         itemMeta139.displayName(
                 Component
@@ -702,7 +706,7 @@ public final class Yh implements CommandExecutor {
         MAIN_MENU.setItem(53, zaxiang);
 
         ItemStack book_mainTask = new ItemStack(Material.YELLOW_DYE);
-        book_mainTask.setCustomModelData(12);
+        book_mainTask.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/12"));
         ItemMeta itemMeta141 = book_mainTask.getItemMeta();
         itemMeta141.displayName(
                 Component
@@ -724,7 +728,7 @@ public final class Yh implements CommandExecutor {
         MAIN_MENU.setItem(52, shiguang);
 
         ItemStack book_xuanShang = new ItemStack(Material.YELLOW_DYE);
-        book_xuanShang.setCustomModelData(12);
+        book_xuanShang.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/12"));
         ItemMeta itemMeta142 = book_xuanShang.getItemMeta();
         itemMeta142.displayName(
                 Component
@@ -740,7 +744,7 @@ public final class Yh implements CommandExecutor {
 
 
         ItemStack book_yuehua = new ItemStack(Material.YELLOW_DYE);
-        book_yuehua.setCustomModelData(12);
+        book_yuehua.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/12"));
         ItemMeta itemMeta40 = book_yuehua.getItemMeta();
         itemMeta40.displayName(
                 Component
@@ -750,7 +754,7 @@ public final class Yh implements CommandExecutor {
         ZA_XIANG.setItem(8, book_yuehua);
 
         ItemStack book_shuxing = new ItemStack(Material.YELLOW_DYE);
-        book_shuxing.setCustomModelData(12);
+        book_shuxing.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/12"));
         ItemMeta itemMetashuxing = book_shuxing.getItemMeta();
         itemMetashuxing.displayName(
                 Component
@@ -760,7 +764,7 @@ public final class Yh implements CommandExecutor {
         ZA_XIANG.setItem(9, book_shuxing);
 
         ItemStack book_neirong = new ItemStack(Material.YELLOW_DYE);
-        book_neirong.setCustomModelData(12);
+        book_neirong.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/12"));
         ItemMeta itemMetaneirong = book_neirong.getItemMeta();
         itemMetaneirong.displayName(
                 Component
@@ -770,7 +774,7 @@ public final class Yh implements CommandExecutor {
         ZA_XIANG.setItem(10, book_neirong);
 
         ItemStack book_wanfa = new ItemStack(Material.YELLOW_DYE);
-        book_wanfa.setCustomModelData(12);
+        book_wanfa.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/12"));
         ItemMeta itemMeta43 = book_wanfa.getItemMeta();
         itemMeta43.displayName(
                 Component
@@ -780,7 +784,7 @@ public final class Yh implements CommandExecutor {
         ZA_XIANG.setItem(11, book_wanfa);
 
         ItemStack book_jinji = new ItemStack(Material.YELLOW_DYE);
-        book_jinji.setCustomModelData(12);
+        book_jinji.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/12"));
         ItemMeta itemMeta44 = book_jinji.getItemMeta();
         itemMeta44.displayName(
                 Component
@@ -791,7 +795,7 @@ public final class Yh implements CommandExecutor {
 
 
         ItemStack paopao = new ItemStack(Material.YELLOW_DYE);
-        paopao.setCustomModelData(13);
+        paopao.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/13"));
         ItemMeta itemMeta41 = paopao.getItemMeta();
         itemMeta41.displayName(
                 Component
@@ -801,7 +805,7 @@ public final class Yh implements CommandExecutor {
         ZA_XIANG.setItem(6, paopao);
 
         ItemStack zhengming = new ItemStack(Material.YELLOW_DYE);
-        zhengming.setCustomModelData(14);
+        zhengming.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/14"));
         ItemMeta itemMeta42 = zhengming.getItemMeta();
         itemMeta42.displayName(
                 Component
@@ -812,7 +816,7 @@ public final class Yh implements CommandExecutor {
 
 //        ItemStack chonghuaOp = new ItemStack(Material.YELLOW_DYE);
 //        ItemMeta chonghuaOpMeta = chonghuaOp.getItemMeta();
-//        chonghuaOpMeta.setCustomModelData(7);
+//        chonghuaOpMeta.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
 //        chonghuaOpMeta.displayName(
 //                Component
 //                        .text("OP重华晶").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false).decoration(TextDecoration.BOLD,true)
@@ -883,7 +887,6 @@ public final class Yh implements CommandExecutor {
 
         ItemStack shardInventory = new ItemStack(Material.BLUE_DYE);
         ItemMeta itemMetaShard = shardInventory.getItemMeta();
-        itemMetaShard.setCustomModelData(20);
         itemMetaShard.displayName(
                 Component.text("混元袋☯无界").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
@@ -895,10 +898,10 @@ public final class Yh implements CommandExecutor {
                 )
         );
         shardInventory.setItemMeta(itemMetaShard);
+        shardInventory.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "blue_dye/20"));
 
         ItemStack chengjiuPoint = new ItemStack(Material.YELLOW_DYE);
         ItemMeta chengjiuMeta = chengjiuPoint.getItemMeta();
-        chengjiuMeta.setCustomModelData(19);
         chengjiuMeta.displayName(
                 Component.text("成就点数查询").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
@@ -908,6 +911,7 @@ public final class Yh implements CommandExecutor {
                 )
         );
         chengjiuPoint.setItemMeta(chengjiuMeta);
+        chengjiuPoint.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/19"));
         MAIN_MENU.setItem(16, chengjiuPoint);
 
         ItemStack fubenCount = FuBen.keyJin.clone();

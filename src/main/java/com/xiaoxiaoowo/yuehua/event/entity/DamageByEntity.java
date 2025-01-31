@@ -1147,7 +1147,7 @@ public final class DamageByEntity implements Listener {
 
         Player player = (Player) e.getEntity();
         Data data = Yuehua.playerData.get(player.getUniqueId());
-        double max_hp = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+        double max_hp = player.getAttribute(Attribute.MAX_HEALTH).getValue();
         double percent = 0.5;
 
         for (String observer : data.attackedObservers) {

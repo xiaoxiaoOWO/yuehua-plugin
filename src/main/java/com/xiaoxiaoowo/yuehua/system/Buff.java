@@ -234,7 +234,7 @@ public final class Buff {
         extraData.put(CANNOTJUMP, thisTimeEnd);
         Player player = data.player;
         if (timeEnd <= timeNow) {
-            player.getAttribute(Attribute.GENERIC_JUMP_STRENGTH).addModifier(cannotJump);
+            player.getAttribute(Attribute.JUMP_STRENGTH).addModifier(cannotJump);
         }
         Scheduler.syncLater(() -> {
             if ((!player.isConnected())) {
@@ -245,7 +245,7 @@ public final class Buff {
             if (timeEndInTask > timeNowInTask) {
                 return;
             }
-            player.getAttribute(Attribute.GENERIC_JUMP_STRENGTH).removeModifier(Jump.canNotJump);
+            player.getAttribute(Attribute.JUMP_STRENGTH).removeModifier(Jump.canNotJump);
         }, realTicks);
     }
 
@@ -261,7 +261,7 @@ public final class Buff {
         extraData.put(CANNOTMOVE, thisTimeEnd);
         Player player = data.player;
         if (timeEnd <= timeNow) {
-            player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).addModifier(cannotMove);
+            player.getAttribute(Attribute.MOVEMENT_SPEED).addModifier(cannotMove);
         }
         Scheduler.syncLater(() -> {
             if ((!player.isConnected())) {
@@ -272,7 +272,7 @@ public final class Buff {
             if (timeEndInTask > timeNowInTask) {
                 return;
             }
-            player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(Speed.canNotMove);
+            player.getAttribute(Attribute.MOVEMENT_SPEED).removeModifier(Speed.canNotMove);
         }, realTicks);
     }
 

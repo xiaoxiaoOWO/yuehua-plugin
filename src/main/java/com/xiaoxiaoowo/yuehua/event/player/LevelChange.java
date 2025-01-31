@@ -94,7 +94,7 @@ public final class LevelChange implements Listener {
                 components.add(
                         Component.text("§6[等级奖励]§e[神族祝福]§a最大生命增加了§b16§a点！")
                 );
-                AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+                AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
                 double baseValue = attributeInstance.getBaseValue();
                 attributeInstance.setBaseValue(baseValue + 16);
             }
@@ -184,7 +184,7 @@ public final class LevelChange implements Listener {
                 components.add(
                         Component.text("§6[等级奖励]§e[战士]§a最大生命增加了§b32§a点！")
                 );
-                AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+                AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
                 double baseValue4 = attributeInstance.getBaseValue();
                 attributeInstance.setBaseValue(baseValue4 + 32);
 
@@ -220,7 +220,7 @@ public final class LevelChange implements Listener {
                 components.add(
                         Component.text("§6[等级奖励]§e[弓箭手]§a最大生命增加了§b32§a点！")
                 );
-                AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+                AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
                 double baseValue4 = attributeInstance.getBaseValue();
                 attributeInstance.setBaseValue(baseValue4 + 32);
 
@@ -254,7 +254,7 @@ public final class LevelChange implements Listener {
                 components.add(
                         Component.text("§6[等级奖励]§e[炼丹师]§a最大生命增加了§b32§a点！")
                 );
-                AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+                AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
                 double baseValue4 = attributeInstance.getBaseValue();
                 attributeInstance.setBaseValue(baseValue4 + 32);
 

@@ -2,10 +2,12 @@ package com.xiaoxiaoowo.yuehua.items.liandan;
 
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
@@ -35,18 +37,7 @@ public final class Herb {
     public static final ItemStack QiCaiFuRongHua = new ItemStack(Material.FEATHER, 1);
 
     static {
-        RenShen.setCustomModelData(1);
-        LingZhi.setCustomModelData(2);
-        HeShouWu.setCustomModelData(3);
-        GouQi.setCustomModelData(4);
-        HeTun.setCustomModelData(5);
-        WangYouCao.setCustomModelData(6);
-        ZhenZhu.setCustomModelData(7);
-        LuRong.setCustomModelData(8);
-        PuTiZi.setCustomModelData(9);
-        BaJiaoXuanBinCao.setCustomModelData(10);
-        LieHuoXinJiaoShu.setCustomModelData(11);
-        QiCaiFuRongHua.setCustomModelData(12);
+
 
         ItemMeta itemMeta1 = RenShen.getItemMeta();
         ItemMeta itemMeta2 = LingZhi.getItemMeta();
@@ -74,18 +65,18 @@ public final class Herb {
         itemMeta11.setMaxStackSize(99);
         itemMeta12.setMaxStackSize(99);
 
-        itemMeta1.getPersistentDataContainer().set(DataContainer.id,PersistentDataType.STRING,"renshen");
-        itemMeta2.getPersistentDataContainer().set(DataContainer.id,PersistentDataType.STRING,"lingzhi");
-        itemMeta3.getPersistentDataContainer().set(DataContainer.id,PersistentDataType.STRING,"heshouwu");
-        itemMeta4.getPersistentDataContainer().set(DataContainer.id,PersistentDataType.STRING,"gouqi");
-        itemMeta5.getPersistentDataContainer().set(DataContainer.id,PersistentDataType.STRING,"hetun");
-        itemMeta6.getPersistentDataContainer().set(DataContainer.id,PersistentDataType.STRING,"wangyoucao");
-        itemMeta7.getPersistentDataContainer().set(DataContainer.id,PersistentDataType.STRING,"zhenzhu");
-        itemMeta8.getPersistentDataContainer().set(DataContainer.id,PersistentDataType.STRING,"lurong");
-        itemMeta9.getPersistentDataContainer().set(DataContainer.id,PersistentDataType.STRING,"putizi");
-        itemMeta10.getPersistentDataContainer().set(DataContainer.id,PersistentDataType.STRING,"bajiaoxuanbincao");
-        itemMeta11.getPersistentDataContainer().set(DataContainer.id,PersistentDataType.STRING,"liehuoxinjiaoshu");
-        itemMeta12.getPersistentDataContainer().set(DataContainer.id,PersistentDataType.STRING,"qicaifuronghua");
+        itemMeta1.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "renshen");
+        itemMeta2.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "lingzhi");
+        itemMeta3.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "heshouwu");
+        itemMeta4.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "gouqi");
+        itemMeta5.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "hetun");
+        itemMeta6.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "wangyoucao");
+        itemMeta7.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "zhenzhu");
+        itemMeta8.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "lurong");
+        itemMeta9.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "putizi");
+        itemMeta10.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "bajiaoxuanbincao");
+        itemMeta11.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "liehuoxinjiaoshu");
+        itemMeta12.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qicaifuronghua");
 
         itemMeta1.displayName(
                 Component
@@ -147,63 +138,63 @@ public final class Herb {
         itemMeta1.lore(
                 List.of(
                         ComponentSet.RARE3,
-                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,true)
+                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
 
         itemMeta2.lore(
                 List.of(ComponentSet.RARE3,
-                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,true)
+                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
         itemMeta3.lore(
                 List.of(ComponentSet.RARE3,
-                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,true)
+                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
         itemMeta4.lore(
                 List.of(ComponentSet.RARE4,
-                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,true)
+                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
         itemMeta5.lore(
                 List.of(ComponentSet.RARE4,
-                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,true)
+                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
         itemMeta6.lore(
                 List.of(ComponentSet.RARE4,
-                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,true)
+                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
         itemMeta7.lore(
                 List.of(ComponentSet.RARE5,
-                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,true)
+                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
         itemMeta8.lore(
                 List.of(ComponentSet.RARE5,
-                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,true)
+                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
         itemMeta9.lore(
                 List.of(ComponentSet.RARE5,
-                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,true)
+                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
         itemMeta10.lore(
                 List.of(ComponentSet.RARE6,
-                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,true)
+                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
         itemMeta11.lore(
                 List.of(ComponentSet.RARE6,
-                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,true)
+                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
         itemMeta12.lore(
                 List.of(ComponentSet.RARE6,
-                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC,true)
+                        Component.text("炼制丹药的材料").color(NamedTextColor.GRAY).decoration(TextDecoration.ITALIC, true)
                 )
         );
 
@@ -219,5 +210,17 @@ public final class Herb {
         BaJiaoXuanBinCao.setItemMeta(itemMeta10);
         LieHuoXinJiaoShu.setItemMeta(itemMeta11);
         QiCaiFuRongHua.setItemMeta(itemMeta12);
+        QiCaiFuRongHua.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "feather/12"));
+        LieHuoXinJiaoShu.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "feather/11"));
+        BaJiaoXuanBinCao.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "feather/10"));
+        PuTiZi.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "feather/9"));
+        LuRong.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "feather/8"));
+        ZhenZhu.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "feather/7"));
+        WangYouCao.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "feather/6"));
+        HeTun.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "feather/5"));
+        GouQi.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "feather/4"));
+        HeShouWu.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "feather/3"));
+        LingZhi.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "feather/2"));
+        RenShen.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "feather/1"));
     }
 }

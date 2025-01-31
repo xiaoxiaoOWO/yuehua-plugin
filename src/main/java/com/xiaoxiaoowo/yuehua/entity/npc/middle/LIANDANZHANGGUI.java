@@ -2,16 +2,13 @@ package com.xiaoxiaoowo.yuehua.entity.npc.middle;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.items.Book;
-import com.xiaoxiaoowo.yuehua.items.other.Money;
 import com.xiaoxiaoowo.yuehua.items.other.Other;
-import com.xiaoxiaoowo.yuehua.items.zhuangbei.ArmorHead;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Villager;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MerchantRecipe;
 
 import java.util.ArrayList;

@@ -4,7 +4,6 @@ import com.xiaoxiaoowo.yuehua.items.monsterzhuangbei.Boot;
 import com.xiaoxiaoowo.yuehua.items.monsterzhuangbei.Chest;
 import com.xiaoxiaoowo.yuehua.items.monsterzhuangbei.Leg;
 import com.xiaoxiaoowo.yuehua.items.monsterzhuangbei.Weapon;
-import com.xiaoxiaoowo.yuehua.items.other.Other;
 import com.xiaoxiaoowo.yuehua.items.other.Skull;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.system.Team;
@@ -76,7 +75,7 @@ public final class Renou3 {
                     equipment.setItemInOffHandDropChance(0);
 
                     //属性(护甲和韧性已经没有影响，可以不管)
-                    it.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(100000000);
+                    it.getAttribute(Attribute.MAX_HEALTH).setBaseValue(100000000);
 
                     //DLC数据
                     PersistentDataContainer pdc = it.getPersistentDataContainer();

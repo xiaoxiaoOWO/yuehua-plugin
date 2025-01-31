@@ -23,7 +23,7 @@ public final class ChiTongJian {
     public static void skill1(ZhanData zhanData, double multiplier) {
         zhanData.slot0.cd_active = GetEntity.world.getGameTime() + (long) (20 * 20 * zhanData.real_cool);
         Player player = zhanData.player;
-        double damage = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 1.25 * multiplier;
+        double damage = player.getAttribute(Attribute.MAX_HEALTH).getValue() * 1.25 * multiplier;
         for (Entity entity : GetEntity.getMonsters(player.getLocation(), 6, 6, 6)) {
             MonsterData monsterData = Yuehua.monsterData.get(entity.getUniqueId());
             Damage.damageMonster(zhanData, damage, monsterData);
@@ -31,7 +31,7 @@ public final class ChiTongJian {
             Set<String> tags = entity.getScoreboardTags();
             if (tags.contains(id)) {
                 Mob mob = (Mob) entity;
-                double damage2 = mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.4 * multiplier;
+                double damage2 = mob.getAttribute(Attribute.MAX_HEALTH).getValue() * 0.4 * multiplier;
                 damage2 = Math.min(1000, damage2);
                 Damage.damageMonster(zhanData, damage2, monsterData);
             } else {

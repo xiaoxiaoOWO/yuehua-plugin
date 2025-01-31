@@ -2,10 +2,13 @@ package com.xiaoxiaoowo.yuehua.items.other;
 
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
+import io.papermc.paper.datacomponent.DataComponentTypes;
+import io.papermc.paper.datacomponent.item.Consumable;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.components.FoodComponent;
@@ -100,26 +103,179 @@ public final class Food {
     static {
 
         //32 - 48
-        huixue_0.setCustomModelData(41);
-        huixue_1.setCustomModelData(41);
-        huixue_2.setCustomModelData(41);
-        huixue_3.setCustomModelData(41);
-        huixue_4.setCustomModelData(41);
-        SHANSHENZHUFU.setCustomModelData(41);
 
-        xinqitian.setCustomModelData(36);
-        jiedu_1.setCustomModelData(36);
-        jiedu_2.setCustomModelData(36);
-        jiedu_3.setCustomModelData(36);
-        jiedu_4.setCustomModelData(36);
 
-        SHENMULING.setCustomModelData(46);
+        // 蓬莱丹药 - 2.5f
+        Consumable.Builder consumablePenglai = Consumable.consumable().consumeSeconds(2.5f);
+        penglai.setData(DataComponentTypes.CONSUMABLE, consumablePenglai);
+
+// 白骨精丹药 - 2.5f
+        Consumable.Builder consumableBaigujin = Consumable.consumable().consumeSeconds(2.5f);
+        baigujin.setData(DataComponentTypes.CONSUMABLE, consumableBaigujin);
+
+// 陈大夫丹药 - 2.5f
+        Consumable.Builder consumableChendaifu = Consumable.consumable().consumeSeconds(2.5f);
+        chendaifu.setData(DataComponentTypes.CONSUMABLE, consumableChendaifu);
+
+// 长者神力 - 2.5f
+        Consumable.Builder consumableZhangzhe = Consumable.consumable().consumeSeconds(2.5f);
+        zhangzhe.setData(DataComponentTypes.CONSUMABLE, consumableZhangzhe);
+
+// 王员外丹药 - 2.5f
+        Consumable.Builder consumableWangyuanwai = Consumable.consumable().consumeSeconds(2.5f);
+        wangyuanwai.setData(DataComponentTypes.CONSUMABLE, consumableWangyuanwai);
+
+// 篆元真人丹药 - 2.5f
+        Consumable.Builder consumableZuanyaun = Consumable.consumable().consumeSeconds(2.5f);
+        zuanyaun.setData(DataComponentTypes.CONSUMABLE, consumableZuanyaun);
+
+// 炼心丹药 - 1.0f
+        Consumable.Builder consumableLianxin = Consumable.consumable().consumeSeconds(1.0f);
+        lianxin.setData(DataComponentTypes.CONSUMABLE, consumableLianxin);
+
+// 辛氏抗毒丹 - 1.0f
+        Consumable.Builder consumableXinqitian = Consumable.consumable().consumeSeconds(1.0f);
+        xinqitian.setData(DataComponentTypes.CONSUMABLE, consumableXinqitian);
+
+// 神木灵 - 2.5f
+        Consumable.Builder consumableShenmu = Consumable.consumable().consumeSeconds(2.5f);
+        SHENMULING.setData(DataComponentTypes.CONSUMABLE, consumableShenmu);
+
+// 山神祝福 - 2.5f
+        Consumable.Builder consumableShanshen = Consumable.consumable().consumeSeconds(2.5f);
+        SHANSHENZHUFU.setData(DataComponentTypes.CONSUMABLE, consumableShanshen);
+
+// 解毒丹系列
+// 清毒散 - 1.0f
+        Consumable.Builder consumableJiedu1 = Consumable.consumable().consumeSeconds(1.0f);
+        jiedu_1.setData(DataComponentTypes.CONSUMABLE, consumableJiedu1);
+
+// 解厄丹 - 1.0f
+        Consumable.Builder consumableJiedu2 = Consumable.consumable().consumeSeconds(1.0f);
+        jiedu_2.setData(DataComponentTypes.CONSUMABLE, consumableJiedu2);
+
+// 太清灵解丹 - 1.0f
+        Consumable.Builder consumableJiedu3 = Consumable.consumable().consumeSeconds(1.0f);
+        jiedu_3.setData(DataComponentTypes.CONSUMABLE, consumableJiedu3);
+
+// 百炼金元丹 - 1.0f
+        Consumable.Builder consumableJiedu4 = Consumable.consumable().consumeSeconds(1.0f);
+        jiedu_4.setData(DataComponentTypes.CONSUMABLE, consumableJiedu4);
+
+// 回血丹系列
+// 新手治疗丹 - 2.5f
+        Consumable.Builder consumableHuixue0 = Consumable.consumable().consumeSeconds(2.5f);
+        huixue_0.setData(DataComponentTypes.CONSUMABLE, consumableHuixue0);
+
+// 一般金创药 - 2.5f
+        Consumable.Builder consumableHuixue1 = Consumable.consumable().consumeSeconds(2.5f);
+        huixue_1.setData(DataComponentTypes.CONSUMABLE, consumableHuixue1);
+
+// 中级回元丹 - 2.5f
+        Consumable.Builder consumableHuixue2 = Consumable.consumable().consumeSeconds(2.5f);
+        huixue_2.setData(DataComponentTypes.CONSUMABLE, consumableHuixue2);
+
+// 高级痊愈丸 - 2.5f
+        Consumable.Builder consumableHuixue3 = Consumable.consumable().consumeSeconds(2.5f);
+        huixue_3.setData(DataComponentTypes.CONSUMABLE, consumableHuixue3);
+
+// 九转还魂丹 - 2.5f
+        Consumable.Builder consumableHuixue4 = Consumable.consumable().consumeSeconds(2.5f);
+        huixue_4.setData(DataComponentTypes.CONSUMABLE, consumableHuixue4);
+
+// 食物系列
+// 苹果 - 0.8f
+        Consumable.Builder consumablePinguo = Consumable.consumable().consumeSeconds(0.8f);
+        pinGuo.setData(DataComponentTypes.CONSUMABLE, consumablePinguo);
+
+// 蜂蜜 - 0.8f
+        Consumable.Builder consumableFengmi = Consumable.consumable().consumeSeconds(0.8f);
+        fengmi.setData(DataComponentTypes.CONSUMABLE, consumableFengmi);
+
+// 水狼捏面人 - 1.6f
+        Consumable.Builder consumableShuilang = Consumable.consumable().consumeSeconds(1.6f);
+        shuilangniemianren.setData(DataComponentTypes.CONSUMABLE, consumableShuilang);
+
+// 西瓜片 - 0.8f
+        Consumable.Builder consumableXigua = Consumable.consumable().consumeSeconds(0.8f);
+        xiguapian.setData(DataComponentTypes.CONSUMABLE, consumableXigua);
+
+// 茶系列 (all 0.8f)
+        Consumable.Builder consumableTea = Consumable.consumable().consumeSeconds(0.8f);
+        longjin.setData(DataComponentTypes.CONSUMABLE, consumableTea);
+        maojian.setData(DataComponentTypes.CONSUMABLE, consumableTea);
+        tieguanyin.setData(DataComponentTypes.CONSUMABLE, consumableTea);
+        puer.setData(DataComponentTypes.CONSUMABLE, consumableTea);
+
+// 其他食物
+// 包子 - 1.6f
+        Consumable.Builder consumableBaozi = Consumable.consumable().consumeSeconds(1.6f);
+        baoZi.setData(DataComponentTypes.CONSUMABLE, consumableBaozi);
+
+// 烤地瓜 - 1.6f
+        Consumable.Builder consumableKaodigua = Consumable.consumable().consumeSeconds(1.6f);
+        kaoDiGua.setData(DataComponentTypes.CONSUMABLE, consumableKaodigua);
+
+// 喜饼 - 1.6f
+        Consumable.Builder consumableXibing = Consumable.consumable().consumeSeconds(1.6f);
+        xiBing.setData(DataComponentTypes.CONSUMABLE, consumableXibing);
+
+// 佛跳墙 - 1.6f
+        Consumable.Builder consumableFotiaoqiang = Consumable.consumable().consumeSeconds(1.6f);
+        foTiaoQiang.setData(DataComponentTypes.CONSUMABLE, consumableFotiaoqiang);
+
+// 各种烤制食物 (all 1.6f)
+        Consumable.Builder consumableKao = Consumable.consumable().consumeSeconds(1.6f);
+        kaoYu.setData(DataComponentTypes.CONSUMABLE, consumableKao);
+        kaoGuiYu.setData(DataComponentTypes.CONSUMABLE, consumableKao);
+        kaoJi.setData(DataComponentTypes.CONSUMABLE, consumableKao);
+        kaoXueYu.setData(DataComponentTypes.CONSUMABLE, consumableKao);
+        kaoXia.setData(DataComponentTypes.CONSUMABLE, consumableKao);
+        kaoYouYu.setData(DataComponentTypes.CONSUMABLE, consumableKao);
+        DADADAJITUI.setData(DataComponentTypes.CONSUMABLE, consumableKao);
+
+// 肉类 (all 1.6f)
+        Consumable.Builder consumableRou = Consumable.consumable().consumeSeconds(1.6f);
+        zhuPai.setData(DataComponentTypes.CONSUMABLE, consumableRou);
+        niuPai.setData(DataComponentTypes.CONSUMABLE, consumableRou);
+        yangTui.setData(DataComponentTypes.CONSUMABLE, consumableRou);
+        tuRou.setData(DataComponentTypes.CONSUMABLE, consumableRou);
+
+// 节日食物 (all 1.6f)
+        Consumable.Builder consumableJieri = Consumable.consumable().consumeSeconds(1.6f);
+        zongZi.setData(DataComponentTypes.CONSUMABLE, consumableJieri);
+        yueBin.setData(DataComponentTypes.CONSUMABLE, consumableJieri);
+        ZhuangYuanYueBin.setData(DataComponentTypes.CONSUMABLE, consumableJieri);
+        DuiTangYueBin.setData(DataComponentTypes.CONSUMABLE, consumableJieri);
+        SanHongYueBin.setData(DataComponentTypes.CONSUMABLE, consumableJieri);
+
+// 海鲜
+        Consumable.Builder consumableHaixian = Consumable.consumable().consumeSeconds(1.6f);
+        xieQian.setData(DataComponentTypes.CONSUMABLE, consumableHaixian);
+
+// 水果类 (all 0.8f)
+        Consumable.Builder consumableFruit = Consumable.consumable().consumeSeconds(0.8f);
+        qinpinGuo.setData(DataComponentTypes.CONSUMABLE, consumableFruit);
+        putao.setData(DataComponentTypes.CONSUMABLE, consumableFruit);
+        li.setData(DataComponentTypes.CONSUMABLE, consumableFruit);
+        xiangjiao.setData(DataComponentTypes.CONSUMABLE, consumableFruit);
+        caomei.setData(DataComponentTypes.CONSUMABLE, consumableFruit);
+        bolo.setData(DataComponentTypes.CONSUMABLE, consumableFruit);
+
+// 仙桃 - 0.8f
+        Consumable.Builder consumableXiantao = Consumable.consumable().consumeSeconds(0.8f);
+        xianTao.setData(DataComponentTypes.CONSUMABLE, consumableXiantao);
+
+// 蔬菜 - 1.6f
+        Consumable.Builder consumableVegetable = Consumable.consumable().consumeSeconds(1.6f);
+        huluobo.setData(DataComponentTypes.CONSUMABLE, consumableVegetable);
 
         penglai.editMeta(meta -> {
-            meta.setCustomModelData(48);
+
+
             FoodComponent foodComponent = meta.getFood();
             foodComponent.setCanAlwaysEat(true);
-            foodComponent.setEatSeconds(2.5f);
+
             foodComponent.setNutrition(0);
             foodComponent.setSaturation(0.0f);
             meta.setFood(foodComponent);
@@ -134,11 +290,12 @@ public final class Food {
             );
         });
 
+
         baigujin.editMeta(meta -> {
-            meta.setCustomModelData(35);
+
             FoodComponent foodComponent = meta.getFood();
             foodComponent.setCanAlwaysEat(true);
-            foodComponent.setEatSeconds(2.5f);
+
             foodComponent.setNutrition(0);
             foodComponent.setSaturation(0.0f);
             meta.setFood(foodComponent);
@@ -153,11 +310,11 @@ public final class Food {
             );
         });
 
+
         chendaifu.editMeta(meta -> {
-            meta.setCustomModelData(33);
             FoodComponent foodComponent = meta.getFood();
             foodComponent.setCanAlwaysEat(true);
-            foodComponent.setEatSeconds(2.5f);
+
             foodComponent.setNutrition(0);
             foodComponent.setSaturation(0.0f);
             meta.setFood(foodComponent);
@@ -172,11 +329,11 @@ public final class Food {
             );
         });
 
+
         zhangzhe.editMeta(meta -> {
-            meta.setCustomModelData(44);
             FoodComponent foodComponent = meta.getFood();
             foodComponent.setCanAlwaysEat(true);
-            foodComponent.setEatSeconds(2.5f);
+
             foodComponent.setNutrition(0);
             foodComponent.setSaturation(0.0f);
             meta.setFood(foodComponent);
@@ -191,11 +348,11 @@ public final class Food {
             );
         });
 
+
         wangyuanwai.editMeta(meta -> {
-            meta.setCustomModelData(42);
             FoodComponent foodComponent = meta.getFood();
             foodComponent.setCanAlwaysEat(true);
-            foodComponent.setEatSeconds(2.5f);
+
             foodComponent.setNutrition(0);
             foodComponent.setSaturation(0.0f);
             meta.setFood(foodComponent);
@@ -210,11 +367,11 @@ public final class Food {
             );
         });
 
+
         zuanyaun.editMeta(meta -> {
-            meta.setCustomModelData(39);
             FoodComponent foodComponent = meta.getFood();
             foodComponent.setCanAlwaysEat(true);
-            foodComponent.setEatSeconds(2.5f);
+
             foodComponent.setNutrition(0);
             foodComponent.setSaturation(0.0f);
             meta.setFood(foodComponent);
@@ -229,11 +386,11 @@ public final class Food {
             );
         });
 
+
         lianxin.editMeta(meta -> {
-            meta.setCustomModelData(40);
             FoodComponent foodComponent = meta.getFood();
             foodComponent.setCanAlwaysEat(true);
-            foodComponent.setEatSeconds(1.0f);
+
             foodComponent.setNutrition(0);
             foodComponent.setSaturation(0.0f);
             meta.setFood(foodComponent);
@@ -248,10 +405,11 @@ public final class Food {
             );
         });
 
+
         ItemMeta xinqitianMeta = xinqitian.getItemMeta();
         FoodComponent foodComponentxinqitian = xinqitianMeta.getFood();
         foodComponentxinqitian.setCanAlwaysEat(true);
-        foodComponentxinqitian.setEatSeconds(1.0f);
+
         foodComponentxinqitian.setNutrition(0);
         foodComponentxinqitian.setSaturation(0.0f);
         xinqitianMeta.setFood(foodComponentxinqitian);
@@ -270,7 +428,7 @@ public final class Food {
         ItemMeta itemMetaSHENMU = SHENMULING.getItemMeta();
         FoodComponent foodComponentshenmu = itemMetaSHENMU.getFood();
         foodComponentshenmu.setCanAlwaysEat(true);
-        foodComponentshenmu.setEatSeconds(2.5f);
+
         foodComponentshenmu.setNutrition(0);
         foodComponentshenmu.setSaturation(0.0f);
         itemMetaSHENMU.setFood(foodComponentshenmu);
@@ -289,7 +447,7 @@ public final class Food {
         ItemMeta itemMetashanshen = SHANSHENZHUFU.getItemMeta();
         FoodComponent foodComponentshanshen = itemMetashanshen.getFood();
         foodComponentshanshen.setCanAlwaysEat(true);
-        foodComponentshanshen.setEatSeconds(2.5f);
+
         foodComponentshanshen.setNutrition(0);
         foodComponentshanshen.setSaturation(0.0f);
         itemMetashanshen.setFood(foodComponentshanshen);
@@ -309,7 +467,7 @@ public final class Food {
         ItemMeta itemMetaJiedu1 = jiedu_1.getItemMeta();
         FoodComponent foodComponentJieDu1 = itemMetaJiedu1.getFood();
         foodComponentJieDu1.setCanAlwaysEat(true);
-        foodComponentJieDu1.setEatSeconds(1.0f);
+
         foodComponentJieDu1.setNutrition(0);
         foodComponentJieDu1.setSaturation(0.0f);
         itemMetaJiedu1.setFood(foodComponentJieDu1);
@@ -329,7 +487,7 @@ public final class Food {
         ItemMeta itemMetaJiedu2 = jiedu_2.getItemMeta();
         FoodComponent foodComponentJieDu2 = itemMetaJiedu2.getFood();
         foodComponentJieDu2.setCanAlwaysEat(true);
-        foodComponentJieDu2.setEatSeconds(1.0f);
+
         foodComponentJieDu2.setNutrition(0);
         foodComponentJieDu2.setSaturation(0.0f);
         itemMetaJiedu2.setFood(foodComponentJieDu2);
@@ -349,7 +507,7 @@ public final class Food {
         ItemMeta itemMetaJiedu3 = jiedu_3.getItemMeta();
         FoodComponent foodComponentJieDu3 = itemMetaJiedu3.getFood();
         foodComponentJieDu3.setCanAlwaysEat(true);
-        foodComponentJieDu3.setEatSeconds(1.0f);
+
         foodComponentJieDu3.setNutrition(0);
         foodComponentJieDu3.setSaturation(0.0f);
         itemMetaJiedu3.setFood(foodComponentJieDu3);
@@ -369,7 +527,7 @@ public final class Food {
         ItemMeta itemMetaJiedu4 = jiedu_4.getItemMeta();
         FoodComponent foodComponentJieDu4 = itemMetaJiedu4.getFood();
         foodComponentJieDu4.setCanAlwaysEat(true);
-        foodComponentJieDu4.setEatSeconds(1.0f);
+
         foodComponentJieDu4.setNutrition(0);
         foodComponentJieDu4.setSaturation(0.0f);
         itemMetaJiedu4.setFood(foodComponentJieDu4);
@@ -389,7 +547,7 @@ public final class Food {
         ItemMeta itemMetaHuixue0 = huixue_0.getItemMeta();
         FoodComponent foodComponenthuixue0 = itemMetaHuixue0.getFood();
         foodComponenthuixue0.setCanAlwaysEat(true);
-        foodComponenthuixue0.setEatSeconds(2.5f);
+
         foodComponenthuixue0.setNutrition(0);
         foodComponenthuixue0.setSaturation(0.0f);
         itemMetaHuixue0.setFood(foodComponenthuixue0);
@@ -410,7 +568,7 @@ public final class Food {
         ItemMeta itemMetaHuixue1 = huixue_1.getItemMeta();
         FoodComponent foodComponenthuixue1 = itemMetaHuixue1.getFood();
         foodComponenthuixue1.setCanAlwaysEat(true);
-        foodComponenthuixue1.setEatSeconds(2.5f);
+
         foodComponenthuixue1.setNutrition(0);
         foodComponenthuixue1.setSaturation(0.0f);
         itemMetaHuixue1.setFood(foodComponenthuixue1);
@@ -430,7 +588,7 @@ public final class Food {
         ItemMeta itemMetaHuixue2 = huixue_2.getItemMeta();
         FoodComponent foodComponenthuixue2 = itemMetaHuixue2.getFood();
         foodComponenthuixue2.setCanAlwaysEat(true);
-        foodComponenthuixue2.setEatSeconds(2.5f);
+
         foodComponenthuixue2.setNutrition(0);
         foodComponenthuixue2.setSaturation(0.0f);
         itemMetaHuixue2.setFood(foodComponenthuixue2);
@@ -450,7 +608,7 @@ public final class Food {
         ItemMeta itemMetaHuixue3 = huixue_3.getItemMeta();
         FoodComponent foodComponenthuixue3 = itemMetaHuixue3.getFood();
         foodComponenthuixue3.setCanAlwaysEat(true);
-        foodComponenthuixue3.setEatSeconds(2.5f);
+
         foodComponenthuixue3.setNutrition(0);
         foodComponenthuixue3.setSaturation(0.0f);
         itemMetaHuixue3.setFood(foodComponenthuixue3);
@@ -471,7 +629,7 @@ public final class Food {
         ItemMeta itemMetaHuixue4 = huixue_4.getItemMeta();
         FoodComponent foodComponenthuixue4 = itemMetaHuixue4.getFood();
         foodComponenthuixue4.setCanAlwaysEat(true);
-        foodComponenthuixue4.setEatSeconds(2.5f);
+
         foodComponenthuixue4.setNutrition(0);
         foodComponenthuixue4.setSaturation(0.0f);
         itemMetaHuixue4.setFood(foodComponenthuixue4);
@@ -489,11 +647,10 @@ public final class Food {
         huixue_4.setItemMeta(itemMetaHuixue4);
 
 
-        pinGuo.setCustomModelData(1);
         ItemMeta itemMeta20 = pinGuo.getItemMeta();
         FoodComponent foodComponent20 = itemMeta20.getFood();
         foodComponent20.setCanAlwaysEat(true);
-        foodComponent20.setEatSeconds(0.8f);
+
         foodComponent20.setNutrition(2);
         foodComponent20.setSaturation(1.2f);
         itemMeta20.setFood(foodComponent20);
@@ -504,11 +661,11 @@ public final class Food {
         );
         pinGuo.setItemMeta(itemMeta20);
 
-        fengmi.setCustomModelData(2);
+
         ItemMeta itemMeta21 = fengmi.getItemMeta();
         FoodComponent foodComponent21 = itemMeta21.getFood();
         foodComponent21.setCanAlwaysEat(true);
-        foodComponent21.setEatSeconds(0.8f);
+
         foodComponent21.setNutrition(20);
         foodComponent21.setSaturation(12.0f);
         itemMeta21.setFood(foodComponent21);
@@ -519,11 +676,11 @@ public final class Food {
         );
         fengmi.setItemMeta(itemMeta21);
 
-        shuilangniemianren.setCustomModelData(3);
+
         ItemMeta itemMeta22 = shuilangniemianren.getItemMeta();
         FoodComponent foodComponent22 = itemMeta22.getFood();
         foodComponent22.setCanAlwaysEat(false);
-        foodComponent22.setEatSeconds(1.6f);
+
         foodComponent22.setNutrition(2);
         foodComponent22.setSaturation(1.2f);
         itemMeta22.setFood(foodComponent22);
@@ -534,11 +691,11 @@ public final class Food {
         );
         shuilangniemianren.setItemMeta(itemMeta22);
 
-        xiguapian.setCustomModelData(4);
+
         ItemMeta itemMeta23 = xiguapian.getItemMeta();
         FoodComponent foodComponent23 = itemMeta23.getFood();
         foodComponent23.setCanAlwaysEat(true);
-        foodComponent23.setEatSeconds(0.8f);
+
         foodComponent23.setNutrition(3);
         foodComponent23.setSaturation(1.8f);
         itemMeta23.setFood(foodComponent23);
@@ -549,11 +706,11 @@ public final class Food {
         );
         xiguapian.setItemMeta(itemMeta23);
 
-        longjin.setCustomModelData(5);
+
         ItemMeta itemMeta24 = longjin.getItemMeta();
         FoodComponent foodComponent24 = itemMeta24.getFood();
         foodComponent24.setCanAlwaysEat(true);
-        foodComponent24.setEatSeconds(0.8f);
+
         foodComponent24.setNutrition(0);
         foodComponent24.setSaturation(0.0f);
         itemMeta24.setFood(foodComponent24);
@@ -564,11 +721,11 @@ public final class Food {
         );
         longjin.setItemMeta(itemMeta24);
 
-        maojian.setCustomModelData(5);
+
         ItemMeta itemMeta25 = maojian.getItemMeta();
         FoodComponent foodComponent25 = itemMeta25.getFood();
         foodComponent25.setCanAlwaysEat(true);
-        foodComponent25.setEatSeconds(0.8f);
+
         foodComponent25.setNutrition(0);
         foodComponent25.setSaturation(0.0f);
         itemMeta25.setFood(foodComponent25);
@@ -579,11 +736,11 @@ public final class Food {
         );
         maojian.setItemMeta(itemMeta25);
 
-        tieguanyin.setCustomModelData(5);
+
         ItemMeta itemMeta26 = tieguanyin.getItemMeta();
         FoodComponent foodComponent26 = itemMeta26.getFood();
         foodComponent26.setCanAlwaysEat(true);
-        foodComponent26.setEatSeconds(0.8f);
+
         foodComponent26.setNutrition(0);
         foodComponent26.setSaturation(0.0f);
         itemMeta26.setFood(foodComponent26);
@@ -594,11 +751,11 @@ public final class Food {
         );
         tieguanyin.setItemMeta(itemMeta26);
 
-        puer.setCustomModelData(5);
+
         ItemMeta itemMeta27 = puer.getItemMeta();
         FoodComponent foodComponent27 = itemMeta27.getFood();
         foodComponent27.setCanAlwaysEat(true);
-        foodComponent27.setEatSeconds(0.8f);
+
         foodComponent27.setNutrition(0);
         foodComponent27.setSaturation(0.0f);
         itemMeta27.setFood(foodComponent27);
@@ -610,11 +767,10 @@ public final class Food {
         puer.setItemMeta(itemMeta27);
 
 
-        baoZi.setCustomModelData(1);
         ItemMeta itemMeta = baoZi.getItemMeta();
         FoodComponent foodComponent = itemMeta.getFood();
         foodComponent.setCanAlwaysEat(false);
-        foodComponent.setEatSeconds(1.6f);
+
         foodComponent.setNutrition(4);
         foodComponent.setSaturation(4.8f);
         itemMeta.setFood(foodComponent);
@@ -625,11 +781,11 @@ public final class Food {
         );
         baoZi.setItemMeta(itemMeta);
 
-        kaoDiGua.setCustomModelData(2);
+
         ItemMeta itemMeta2 = kaoDiGua.getItemMeta();
         FoodComponent foodComponent2 = itemMeta2.getFood();
         foodComponent2.setCanAlwaysEat(false);
-        foodComponent2.setEatSeconds(1.6f);
+
         foodComponent2.setNutrition(6);
         foodComponent2.setSaturation(7.2f);
         itemMeta2.setFood(foodComponent2);
@@ -640,11 +796,11 @@ public final class Food {
         );
         kaoDiGua.setItemMeta(itemMeta2);
 
-        xiBing.setCustomModelData(3);
+
         ItemMeta itemMeta3 = xiBing.getItemMeta();
         FoodComponent foodComponent3 = itemMeta3.getFood();
         foodComponent3.setCanAlwaysEat(false);
-        foodComponent3.setEatSeconds(1.6f);
+
         foodComponent3.setNutrition(8);
         foodComponent3.setSaturation(9.6f);
         itemMeta3.setFood(foodComponent3);
@@ -655,11 +811,11 @@ public final class Food {
         );
         xiBing.setItemMeta(itemMeta3);
 
-        foTiaoQiang.setCustomModelData(4);
+
         ItemMeta itemMeta4 = foTiaoQiang.getItemMeta();
         FoodComponent foodComponent4 = itemMeta4.getFood();
         foodComponent4.setCanAlwaysEat(false);
-        foodComponent4.setEatSeconds(1.6f);
+
         foodComponent4.setNutrition(10);
         foodComponent4.setSaturation(12f);
         itemMeta4.setFood(foodComponent4);
@@ -671,11 +827,11 @@ public final class Food {
         );
         foTiaoQiang.setItemMeta(itemMeta4);
 
-        kaoYu.setCustomModelData(5);
+
         ItemMeta itemMeta5 = kaoYu.getItemMeta();
         FoodComponent foodComponent5 = itemMeta5.getFood();
         foodComponent5.setCanAlwaysEat(false);
-        foodComponent5.setEatSeconds(1.6f);
+
         foodComponent5.setNutrition(2);
         foodComponent5.setSaturation(4.0f);
         itemMeta5.setFood(foodComponent5);
@@ -686,11 +842,11 @@ public final class Food {
         );
         kaoYu.setItemMeta(itemMeta5);
 
-        kaoGuiYu.setCustomModelData(6);
+
         ItemMeta itemMeta6 = kaoGuiYu.getItemMeta();
         FoodComponent foodComponent6 = itemMeta6.getFood();
         foodComponent6.setCanAlwaysEat(false);
-        foodComponent6.setEatSeconds(1.6f);
+
         foodComponent6.setNutrition(4);
         foodComponent6.setSaturation(8.0f);
         itemMeta6.setFood(foodComponent6);
@@ -701,11 +857,11 @@ public final class Food {
         );
         kaoGuiYu.setItemMeta(itemMeta6);
 
-        kaoJi.setCustomModelData(7);
+
         ItemMeta itemMeta7 = kaoJi.getItemMeta();
         FoodComponent foodComponent7 = itemMeta7.getFood();
         foodComponent7.setCanAlwaysEat(false);
-        foodComponent7.setEatSeconds(1.6f);
+
         foodComponent7.setNutrition(6);
         foodComponent7.setSaturation(9.6f);
         itemMeta7.setFood(foodComponent7);
@@ -716,11 +872,11 @@ public final class Food {
         );
         kaoJi.setItemMeta(itemMeta7);
 
-        zhuPai.setCustomModelData(8);
+
         ItemMeta itemMeta8 = zhuPai.getItemMeta();
         FoodComponent foodComponent8 = itemMeta8.getFood();
         foodComponent8.setCanAlwaysEat(false);
-        foodComponent8.setEatSeconds(1.6f);
+
         foodComponent8.setNutrition(11);
         foodComponent8.setSaturation(17.6f);
         itemMeta8.setFood(foodComponent8);
@@ -732,11 +888,11 @@ public final class Food {
 
         zhuPai.setItemMeta(itemMeta8);
 
-        niuPai.setCustomModelData(9);
+
         ItemMeta itemMeta9 = niuPai.getItemMeta();
         FoodComponent foodComponent9 = itemMeta9.getFood();
         foodComponent9.setCanAlwaysEat(false);
-        foodComponent9.setEatSeconds(1.6f);
+
         foodComponent9.setNutrition(12);
         foodComponent9.setSaturation(19.2f);
         itemMeta9.setFood(foodComponent9);
@@ -747,11 +903,11 @@ public final class Food {
         );
         niuPai.setItemMeta(itemMeta9);
 
-        yangTui.setCustomModelData(10);
+
         ItemMeta itemMeta10 = yangTui.getItemMeta();
         FoodComponent foodComponent10 = itemMeta10.getFood();
         foodComponent10.setCanAlwaysEat(false);
-        foodComponent10.setEatSeconds(1.6f);
+
         foodComponent10.setNutrition(10);
         foodComponent10.setSaturation(16.0f);
         itemMeta10.setFood(foodComponent10);
@@ -762,11 +918,11 @@ public final class Food {
         );
         yangTui.setItemMeta(itemMeta10);
 
-        tuRou.setCustomModelData(11);
+
         ItemMeta itemMeta11 = tuRou.getItemMeta();
         FoodComponent foodComponent11 = itemMeta11.getFood();
         foodComponent11.setCanAlwaysEat(false);
-        foodComponent11.setEatSeconds(1.6f);
+
         foodComponent11.setNutrition(8);
         foodComponent11.setSaturation(12.8f);
         itemMeta11.setFood(foodComponent11);
@@ -777,11 +933,11 @@ public final class Food {
         );
         tuRou.setItemMeta(itemMeta11);
 
-        zongZi.setCustomModelData(12);
+
         ItemMeta itemMeta12 = zongZi.getItemMeta();
         FoodComponent foodComponent12 = itemMeta12.getFood();
         foodComponent12.setCanAlwaysEat(false);
-        foodComponent12.setEatSeconds(1.6f);
+
         foodComponent12.setNutrition(2);
         foodComponent12.setSaturation(2.4f);
         itemMeta12.setFood(foodComponent12);
@@ -793,11 +949,10 @@ public final class Food {
         zongZi.setItemMeta(itemMeta12);
 
 
-        yueBin.setCustomModelData(13);
         ItemMeta itemMeta13 = yueBin.getItemMeta();
         FoodComponent foodComponent13 = itemMeta13.getFood();
         foodComponent13.setCanAlwaysEat(false);
-        foodComponent13.setEatSeconds(1.6f);
+
         foodComponent13.setNutrition(2);
         foodComponent13.setSaturation(2.4f);
         itemMeta13.setFood(foodComponent13);
@@ -813,11 +968,11 @@ public final class Food {
         );
         yueBin.setItemMeta(itemMeta13);
 
-        ZhuangYuanYueBin.setCustomModelData(14);
+
         ItemMeta itemMeta14 = ZhuangYuanYueBin.getItemMeta();
         FoodComponent foodComponent14 = itemMeta14.getFood();
         foodComponent14.setCanAlwaysEat(false);
-        foodComponent14.setEatSeconds(1.6f);
+
         foodComponent14.setNutrition(2);
         foodComponent14.setSaturation(2.4f);
         itemMeta14.setFood(foodComponent14);
@@ -834,11 +989,11 @@ public final class Food {
         );
         ZhuangYuanYueBin.setItemMeta(itemMeta14);
 
-        DuiTangYueBin.setCustomModelData(15);
+
         ItemMeta itemMeta15 = DuiTangYueBin.getItemMeta();
         FoodComponent foodComponent15 = itemMeta15.getFood();
         foodComponent15.setCanAlwaysEat(false);
-        foodComponent15.setEatSeconds(1.6f);
+
         foodComponent15.setNutrition(2);
         foodComponent15.setSaturation(2.4f);
         itemMeta15.setFood(foodComponent15);
@@ -855,11 +1010,11 @@ public final class Food {
         );
         DuiTangYueBin.setItemMeta(itemMeta15);
 
-        SanHongYueBin.setCustomModelData(16);
+
         ItemMeta itemMeta16 = SanHongYueBin.getItemMeta();
         FoodComponent foodComponent16 = itemMeta16.getFood();
         foodComponent16.setCanAlwaysEat(false);
-        foodComponent16.setEatSeconds(1.6f);
+
         foodComponent16.setNutrition(2);
         foodComponent16.setSaturation(2.4f);
         itemMeta16.setFood(foodComponent16);
@@ -877,11 +1032,10 @@ public final class Food {
         SanHongYueBin.setItemMeta(itemMeta16);
 
 
-        xianTao.setCustomModelData(19);
         ItemMeta itemMeta19 = xianTao.getItemMeta();
         FoodComponent foodComponent19 = itemMeta19.getFood();
         foodComponent19.setCanAlwaysEat(true);
-        foodComponent19.setEatSeconds(0.8f);
+
         foodComponent19.setNutrition(2);
         foodComponent19.setSaturation(1.2f);
         itemMeta19.setFood(foodComponent19);
@@ -898,11 +1052,11 @@ public final class Food {
         );
         xianTao.setItemMeta(itemMeta19);
 
-        kaoXueYu.setCustomModelData(20);
+
         ItemMeta kaoXueYuItemMeta = kaoXueYu.getItemMeta();
         FoodComponent kaoXueYuFoodComponent = kaoXueYuItemMeta.getFood();
         kaoXueYuFoodComponent.setCanAlwaysEat(false);
-        kaoXueYuFoodComponent.setEatSeconds(1.6f);
+
         kaoXueYuFoodComponent.setNutrition(6);
         kaoXueYuFoodComponent.setSaturation(12.0f);
         kaoXueYuItemMeta.setFood(kaoXueYuFoodComponent);
@@ -913,11 +1067,11 @@ public final class Food {
         );
         kaoXueYu.setItemMeta(kaoXueYuItemMeta);
 
-        kaoXia.setCustomModelData(21);
+
         ItemMeta kaoXiaItemMeta = kaoXia.getItemMeta();
         FoodComponent kaoXiaFoodComponent = kaoXiaItemMeta.getFood();
         kaoXiaFoodComponent.setCanAlwaysEat(false);
-        kaoXiaFoodComponent.setEatSeconds(1.6f);
+
         kaoXiaFoodComponent.setNutrition(9);
         kaoXiaFoodComponent.setSaturation(18.0f);
         kaoXiaItemMeta.setFood(kaoXiaFoodComponent);
@@ -928,11 +1082,11 @@ public final class Food {
         );
         kaoXia.setItemMeta(kaoXiaItemMeta);
 
-        xieQian.setCustomModelData(22);
+
         ItemMeta xieQianItemMeta = xieQian.getItemMeta();
         FoodComponent xieQianFoodComponent = xieQianItemMeta.getFood();
         xieQianFoodComponent.setCanAlwaysEat(false);
-        xieQianFoodComponent.setEatSeconds(1.6f);
+
         xieQianFoodComponent.setNutrition(10);
         xieQianFoodComponent.setSaturation(20.0f);
         xieQianItemMeta.setFood(xieQianFoodComponent);
@@ -943,11 +1097,11 @@ public final class Food {
         );
         xieQian.setItemMeta(xieQianItemMeta);
 
-        kaoYouYu.setCustomModelData(23);
+
         ItemMeta kaoYouYuItemMeta = kaoYouYu.getItemMeta();
         FoodComponent kaoYouYuFoodComponent = kaoYouYuItemMeta.getFood();
         kaoYouYuFoodComponent.setCanAlwaysEat(false);
-        kaoYouYuFoodComponent.setEatSeconds(1.6f);
+
         kaoYouYuFoodComponent.setNutrition(8);
         kaoYouYuFoodComponent.setSaturation(16.0f);
         kaoYouYuItemMeta.setFood(kaoYouYuFoodComponent);
@@ -958,11 +1112,11 @@ public final class Food {
         );
         kaoYouYu.setItemMeta(kaoYouYuItemMeta);
 
-        DADADAJITUI.setCustomModelData(24);
+
         ItemMeta DADADAJITUIItemMeta = DADADAJITUI.getItemMeta();
         FoodComponent DADADAJITUIFoodComponent = DADADAJITUIItemMeta.getFood();
         DADADAJITUIFoodComponent.setCanAlwaysEat(false);
-        DADADAJITUIFoodComponent.setEatSeconds(1.6f);
+
         DADADAJITUIFoodComponent.setNutrition(13);
         DADADAJITUIFoodComponent.setSaturation(20.8f);
         DADADAJITUIItemMeta.setFood(DADADAJITUIFoodComponent);
@@ -973,11 +1127,11 @@ public final class Food {
         );
         DADADAJITUI.setItemMeta(DADADAJITUIItemMeta);
 
-        huluobo.setCustomModelData(25);
+
         ItemMeta huluoboItemMeta = huluobo.getItemMeta();
         FoodComponent huluoboFoodComponent = huluoboItemMeta.getFood();
         huluoboFoodComponent.setCanAlwaysEat(false);
-        huluoboFoodComponent.setEatSeconds(1.6f);
+
         huluoboFoodComponent.setNutrition(2);
         huluoboFoodComponent.setSaturation(2.4f);
         huluoboItemMeta.setFood(huluoboFoodComponent);
@@ -988,11 +1142,11 @@ public final class Food {
         );
         huluobo.setItemMeta(huluoboItemMeta);
 
-        qinpinGuo.setCustomModelData(26);
+
         ItemMeta qinpinGuoItemMeta = qinpinGuo.getItemMeta();
         FoodComponent qinpinGuoFoodComponent = qinpinGuoItemMeta.getFood();
         qinpinGuoFoodComponent.setCanAlwaysEat(true);
-        qinpinGuoFoodComponent.setEatSeconds(0.8f);
+
         qinpinGuoFoodComponent.setNutrition(4);
         qinpinGuoFoodComponent.setSaturation(2.4f);
         qinpinGuoItemMeta.setFood(qinpinGuoFoodComponent);
@@ -1003,11 +1157,11 @@ public final class Food {
         );
         qinpinGuo.setItemMeta(qinpinGuoItemMeta);
 
-        putao.setCustomModelData(27);
+
         ItemMeta putaoItemMeta = putao.getItemMeta();
         FoodComponent putaoFoodComponent = putaoItemMeta.getFood();
         putaoFoodComponent.setCanAlwaysEat(true);
-        putaoFoodComponent.setEatSeconds(0.8f);
+
         putaoFoodComponent.setNutrition(5);
         putaoFoodComponent.setSaturation(3f);
         putaoItemMeta.setFood(putaoFoodComponent);
@@ -1018,11 +1172,11 @@ public final class Food {
         );
         putao.setItemMeta(putaoItemMeta);
 
-        li.setCustomModelData(28);
+
         ItemMeta liItemMeta = li.getItemMeta();
         FoodComponent liFoodComponent = liItemMeta.getFood();
         liFoodComponent.setCanAlwaysEat(true);
-        liFoodComponent.setEatSeconds(0.8f);
+
         liFoodComponent.setNutrition(6);
         liFoodComponent.setSaturation(3.6f);
         liItemMeta.setFood(liFoodComponent);
@@ -1033,11 +1187,11 @@ public final class Food {
         );
         li.setItemMeta(liItemMeta);
 
-        xiangjiao.setCustomModelData(29);
+
         ItemMeta xiangjiaoItemMeta = xiangjiao.getItemMeta();
         FoodComponent xiangjiaoFoodComponent = xiangjiaoItemMeta.getFood();
         xiangjiaoFoodComponent.setCanAlwaysEat(true);
-        xiangjiaoFoodComponent.setEatSeconds(0.8f);
+
         xiangjiaoFoodComponent.setNutrition(7);
         xiangjiaoFoodComponent.setSaturation(4.2f);
         xiangjiaoItemMeta.setFood(xiangjiaoFoodComponent);
@@ -1048,11 +1202,11 @@ public final class Food {
         );
         xiangjiao.setItemMeta(xiangjiaoItemMeta);
 
-        caomei.setCustomModelData(30);
+
         ItemMeta caomeiItemMeta = caomei.getItemMeta();
         FoodComponent caomeiFoodComponent = caomeiItemMeta.getFood();
         caomeiFoodComponent.setCanAlwaysEat(true);
-        caomeiFoodComponent.setEatSeconds(0.8f);
+
         caomeiFoodComponent.setNutrition(8);
         caomeiFoodComponent.setSaturation(4.8f);
         caomeiItemMeta.setFood(caomeiFoodComponent);
@@ -1063,11 +1217,11 @@ public final class Food {
         );
         caomei.setItemMeta(caomeiItemMeta);
 
-        bolo.setCustomModelData(31);
+
         ItemMeta boloItemMeta = bolo.getItemMeta();
         FoodComponent boloFoodComponent = boloItemMeta.getFood();
         boloFoodComponent.setCanAlwaysEat(true);
-        boloFoodComponent.setEatSeconds(0.8f);
+
         boloFoodComponent.setNutrition(9);
         boloFoodComponent.setSaturation(5.4f);
         boloItemMeta.setFood(boloFoodComponent);
@@ -1079,6 +1233,62 @@ public final class Food {
         bolo.setItemMeta(boloItemMeta);
 
 
+        bolo.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/31"));
+        caomei.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/30"));
+        xiangjiao.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/29"));
+        li.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/28"));
+        putao.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/27"));
+        qinpinGuo.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/26"));
+        huluobo.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/25"));
+        DADADAJITUI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/24"));
+        kaoYouYu.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/23"));
+        xieQian.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/22"));
+        kaoXia.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/21"));
+        kaoXueYu.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/20"));
+        xianTao.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/19"));
+        SanHongYueBin.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/16"));
+        DuiTangYueBin.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/15"));
+        ZhuangYuanYueBin.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/14"));
+        yueBin.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/13"));
+        zongZi.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/12"));
+        tuRou.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/11"));
+        yangTui.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/10"));
+        niuPai.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/9"));
+        zhuPai.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/8"));
+        kaoJi.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/7"));
+        kaoGuiYu.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/6"));
+        kaoYu.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/5"));
+        foTiaoQiang.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/4"));
+        xiBing.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/3"));
+        kaoDiGua.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/2"));
+        baoZi.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/1"));
+        puer.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "apple/5"));
+        tieguanyin.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "apple/5"));
+        maojian.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "apple/5"));
+        longjin.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "apple/5"));
+        xiguapian.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "apple/4"));
+        shuilangniemianren.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "apple/3"));
+        fengmi.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "apple/2"));
+        pinGuo.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "apple/1"));
+        lianxin.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/40"));
+        zuanyaun.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/39"));
+        wangyuanwai.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/42"));
+        zhangzhe.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/44"));
+        chendaifu.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/33"));
+        baigujin.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/35"));
+        penglai.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/48"));
+        SHENMULING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/46"));
+        jiedu_4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/36"));
+        jiedu_3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/36"));
+        jiedu_2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/36"));
+        jiedu_1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/36"));
+        xinqitian.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/36"));
+        SHANSHENZHUFU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/41"));
+        huixue_4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/41"));
+        huixue_3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/41"));
+        huixue_2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/41"));
+        huixue_1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/41"));
+        huixue_0.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bread/41"));
     }
 
 

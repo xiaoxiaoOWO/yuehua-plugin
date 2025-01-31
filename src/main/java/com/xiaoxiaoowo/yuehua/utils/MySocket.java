@@ -198,20 +198,20 @@ public final class MySocket {
                         //jar size
                         String sbString = playerName +
                                 day +
-                                23 +
-                                41235759 +
-                                9 +
-                                26836906;
+                                21 +
+                                23204789 +
+                                10 +
+                                28335587;
                         int serverHashCode = sbString.hashCode();
 
 
                         //不带钠
                         String sbString2 = playerName +
                                 day +
-                                18 +
-                                20172721  +
+                                17 +
+                                18778511   +
                                 9 +
-                                26836906;
+                                28335587;
                         int serverHashCode2 = sbString2.hashCode();
 
                         if (serverHashCode2 == hashCode || serverHashCode == hashCode) {

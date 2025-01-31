@@ -18,12 +18,15 @@ package com.xiaoxiaoowo.yuehua.items.dz;
 6-> 饰品
 * */
 
+import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -3769,339 +3772,6 @@ public final class Core {
         MODUOHUNFANMeta.displayName(Component.text("奈何引魂[锻核]").color(NamedTextColor.RED).decoration(TextDecoration.ITALIC, false));
 
 
-        core2Meta.setCustomModelData(52);
-        core3Meta.setCustomModelData(53);
-        core4Meta.setCustomModelData(54);
-        core5Meta.setCustomModelData(55);
-        core6Meta.setCustomModelData(56);
-        core7Meta.setCustomModelData(57);
-        core8Meta.setCustomModelData(58);
-
-        kaiShanDaoMeta.setCustomModelData(112);
-        chiTongJianMeta.setCustomModelData(113);
-        poKongFuMeta.setCustomModelData(114);
-        sanBaoYuRuYiMeta.setCustomModelData(115);
-        xuanYuanMeta.setCustomModelData(116);
-
-        qinTongJianMeta.setCustomModelData(112);
-        juTongZhanChuiMeta.setCustomModelData(113);
-        taiJiJianMeta.setCustomModelData(114);
-        kunLunFeiXianJianMeta.setCustomModelData(115);
-        taiEMeta.setCustomModelData(116);
-
-        yinYueQiangMeta.setCustomModelData(112);
-        hongYinQiangMeta.setCustomModelData(113);
-        youLongQiangMeta.setCustomModelData(114);
-        huTouZhanJinQiangMeta.setCustomModelData(115);
-        ruYiJinGuBangMeta.setCustomModelData(116);
-
-        qinTongGongMeta.setCustomModelData(212);
-        yanTieGongMeta.setCustomModelData(213);
-        zhongChuiGongMeta.setCustomModelData(214);
-        beiDouMieShenGongMeta.setCustomModelData(215);
-        zhuRiMeta.setCustomModelData(216);
-
-        heiTieNuMeta.setCustomModelData(212);
-        hongLinNuMeta.setCustomModelData(213);
-        jiaoLongNuMeta.setCustomModelData(214);
-        riYueLiuXingNuMeta.setCustomModelData(215);
-        liangYiMeta.setCustomModelData(216);
-
-        fuRongGongMeta.setCustomModelData(212);
-        hongLuanGongMeta.setCustomModelData(213);
-        tianQiongGongMeta.setCustomModelData(214);
-        sheTianZhuiYueGongMeta.setCustomModelData(215);
-        liuGuangMeta.setCustomModelData(216);
-
-        qinTongGuoMeta.setCustomModelData(312);
-        lianDanLuMeta.setCustomModelData(313);
-        suoHunLuMeta.setCustomModelData(314);
-        qiShaDingMeta.setCustomModelData(315);
-        hunYuanShenDingMeta.setCustomModelData(316);
-
-        touSp2Meta.setCustomModelData(422);
-        touSp3Meta.setCustomModelData(423);
-        touSp4Meta.setCustomModelData(424);
-        touSp5Meta.setCustomModelData(425);
-        touSp6Meta.setCustomModelData(426);
-        touSp7Meta.setCustomModelData(427);
-        touSp8Meta.setCustomModelData(428);
-
-        zhanTou2Meta.setCustomModelData(122);
-        zhanTou3Meta.setCustomModelData(123);
-        zhanTou4Meta.setCustomModelData(124);
-        zhanTou5Meta.setCustomModelData(125);
-        zhanTou6Meta.setCustomModelData(126);
-        zhanTou7Meta.setCustomModelData(127);
-        zhanTou8Meta.setCustomModelData(128);
-
-        gongTou2Meta.setCustomModelData(222);
-        gongTou3Meta.setCustomModelData(223);
-        gongTou4Meta.setCustomModelData(224);
-        gongTou5Meta.setCustomModelData(225);
-        gongTou6Meta.setCustomModelData(226);
-        gongTou7Meta.setCustomModelData(227);
-        gongTou8Meta.setCustomModelData(228);
-
-        danTou2Meta.setCustomModelData(322);
-        danTou3Meta.setCustomModelData(323);
-        danTou4Meta.setCustomModelData(324);
-        danTou5Meta.setCustomModelData(325);
-        danTou6Meta.setCustomModelData(326);
-        danTou7Meta.setCustomModelData(327);
-        danTou8Meta.setCustomModelData(328);
-
-        xiongSp2Meta.setCustomModelData(422);
-        xiongSp3Meta.setCustomModelData(423);
-        xiongSp4Meta.setCustomModelData(424);
-        xiongSp5Meta.setCustomModelData(425);
-        xiongSp6Meta.setCustomModelData(426);
-        xiongSp7Meta.setCustomModelData(427);
-        xiongSp8Meta.setCustomModelData(428);
-
-        zhanXiong2Meta.setCustomModelData(122);
-        zhanXiong3Meta.setCustomModelData(123);
-        zhanXiong4Meta.setCustomModelData(124);
-        zhanXiong5Meta.setCustomModelData(125);
-        zhanXiong6Meta.setCustomModelData(126);
-        zhanXiong7Meta.setCustomModelData(127);
-        zhanXiong8Meta.setCustomModelData(128);
-
-        gongXiong2Meta.setCustomModelData(222);
-        gongXiong3Meta.setCustomModelData(223);
-        gongXiong4Meta.setCustomModelData(224);
-        gongXiong5Meta.setCustomModelData(225);
-        gongXiong6Meta.setCustomModelData(226);
-        gongXiong7Meta.setCustomModelData(227);
-        gongXiong8Meta.setCustomModelData(228);
-
-        danXiong2Meta.setCustomModelData(322);
-        danXiong3Meta.setCustomModelData(323);
-        danXiong4Meta.setCustomModelData(324);
-        danXiong5Meta.setCustomModelData(325);
-        danXiong6Meta.setCustomModelData(326);
-        danXiong7Meta.setCustomModelData(327);
-        danXiong8Meta.setCustomModelData(328);
-
-        tuiSp2Meta.setCustomModelData(422);
-        tuiSp3Meta.setCustomModelData(423);
-        tuiSp4Meta.setCustomModelData(424);
-        tuiSp5Meta.setCustomModelData(425);
-        tuiSp6Meta.setCustomModelData(426);
-        tuiSp7Meta.setCustomModelData(427);
-        tuiSp8Meta.setCustomModelData(428);
-
-        zhanTui2Meta.setCustomModelData(122);
-        zhanTui3Meta.setCustomModelData(123);
-        zhanTui4Meta.setCustomModelData(124);
-        zhanTui5Meta.setCustomModelData(125);
-        zhanTui6Meta.setCustomModelData(126);
-        zhanTui7Meta.setCustomModelData(127);
-        zhanTui8Meta.setCustomModelData(128);
-
-        gongTui2Meta.setCustomModelData(222);
-        gongTui3Meta.setCustomModelData(223);
-        gongTui4Meta.setCustomModelData(224);
-        gongTui5Meta.setCustomModelData(225);
-        gongTui6Meta.setCustomModelData(226);
-        gongTui7Meta.setCustomModelData(227);
-        gongTui8Meta.setCustomModelData(228);
-
-        danTui2Meta.setCustomModelData(322);
-        danTui3Meta.setCustomModelData(323);
-        danTui4Meta.setCustomModelData(324);
-        danTui5Meta.setCustomModelData(325);
-        danTui6Meta.setCustomModelData(326);
-        danTui7Meta.setCustomModelData(327);
-        danTui8Meta.setCustomModelData(328);
-
-        xieSp2Meta.setCustomModelData(422);
-        xieSp3Meta.setCustomModelData(423);
-        xieSp4Meta.setCustomModelData(424);
-        xieSp5Meta.setCustomModelData(425);
-        xieSp6Meta.setCustomModelData(426);
-        xieSp7Meta.setCustomModelData(427);
-        xieSp8Meta.setCustomModelData(428);
-
-        zhanXie2Meta.setCustomModelData(122);
-        zhanXie3Meta.setCustomModelData(123);
-        zhanXie4Meta.setCustomModelData(124);
-        zhanXie5Meta.setCustomModelData(125);
-        zhanXie6Meta.setCustomModelData(126);
-        zhanXie7Meta.setCustomModelData(127);
-        zhanXie8Meta.setCustomModelData(128);
-
-        gongXie2Meta.setCustomModelData(222);
-        gongXie3Meta.setCustomModelData(223);
-        gongXie4Meta.setCustomModelData(224);
-        gongXie5Meta.setCustomModelData(225);
-        gongXie6Meta.setCustomModelData(226);
-        gongXie7Meta.setCustomModelData(227);
-        gongXie8Meta.setCustomModelData(228);
-
-        danXie2Meta.setCustomModelData(322);
-        danXie3Meta.setCustomModelData(323);
-        danXie4Meta.setCustomModelData(324);
-        danXie5Meta.setCustomModelData(325);
-        danXie6Meta.setCustomModelData(326);
-        danXie7Meta.setCustomModelData(327);
-        danXie8Meta.setCustomModelData(328);
-
-
-        JINRUIFEIRENMeta.setCustomModelData(132);
-        WUSHENGXIUJIANMeta.setCustomModelData(133);
-        HUIXUANTAJIMeta.setCustomModelData(134);
-        WUYINWUZONGMeta.setCustomModelData(135);
-        YANWANGTIEMeta.setCustomModelData(136);
-
-        HUANGTONGCHONGMeta.setCustomModelData(232);
-        MINGYUEMeta.setCustomModelData(233);
-        CANLANMeta.setCustomModelData(234);
-        JINJINGMeta.setCustomModelData(235);
-        XIAOTIANMeta.setCustomModelData(236);
-
-        QINFENGYINYINMeta.setCustomModelData(332);
-        LIUSHUICHANCHANMeta.setCustomModelData(333);
-        BUQICHUNYUMeta.setCustomModelData(334);
-        SANSHENGZHENHUNMeta.setCustomModelData(335);
-        JIUFENGLAIYIMeta.setCustomModelData(336);
-
-        XINBINDUNPAIMeta.setCustomModelData(152);
-        JINRUIDUNPAIMeta.setCustomModelData(153);
-        CHISEYUEHUOMeta.setCustomModelData(154);
-        JINGANGBUHUAIMeta.setCustomModelData(155);
-        CHENBINLUOXUEMeta.setCustomModelData(156);
-
-        XINBINJIANDAIMeta.setCustomModelData(252);
-        JINRUIJIANDAIMeta.setCustomModelData(253);
-        YINGYANJIANDAIMeta.setCustomModelData(254);
-        CANGGUNINGWANGMeta.setCustomModelData(255);
-        NIEPANYUNANGMeta.setCustomModelData(256);
-
-        TIEZHIDUANBIMeta.setCustomModelData(352);
-        HUIYIDAOMeta.setCustomModelData(353);
-        LONGYADAOMeta.setCustomModelData(354);
-        ZHANGQICUIZHUMeta.setCustomModelData(355);
-        MINGHONGMeta.setCustomModelData(356);
-
-        QING_LONG_SHENG_QI2Meta.setCustomModelData(462);
-        QING_LONG_SHENG_QI3Meta.setCustomModelData(463);
-        QING_LONG_SHENG_QI4Meta.setCustomModelData(464);
-        QING_LONG_SHENG_QI5Meta.setCustomModelData(465);
-        QING_LONG_SHENG_QI6Meta.setCustomModelData(466);
-
-        BAI_HU_SHENG_QI2Meta.setCustomModelData(462);
-        BAI_HU_SHENG_QI3Meta.setCustomModelData(463);
-        BAI_HU_SHENG_QI4Meta.setCustomModelData(464);
-        BAI_HU_SHENG_QI5Meta.setCustomModelData(465);
-        BAI_HU_SHENG_QI6Meta.setCustomModelData(466);
-
-        ZHU_QUE_SHENG_QI2Meta.setCustomModelData(462);
-        ZHU_QUE_SHENG_QI3Meta.setCustomModelData(463);
-        ZHU_QUE_SHENG_QI4Meta.setCustomModelData(464);
-        ZHU_QUE_SHENG_QI5Meta.setCustomModelData(465);
-        ZHU_QUE_SHENG_QI6Meta.setCustomModelData(466);
-
-        XUAN_WU_SHENG_QI2Meta.setCustomModelData(462);
-        XUAN_WU_SHENG_QI3Meta.setCustomModelData(463);
-        XUAN_WU_SHENG_QI4Meta.setCustomModelData(464);
-        XUAN_WU_SHENG_QI5Meta.setCustomModelData(465);
-        XUAN_WU_SHENG_QI6Meta.setCustomModelData(466);
-
-        TAN_YU_ZHI_JIEMeta.setCustomModelData(462);
-        TAN_LAN_DU_JIEMeta.setCustomModelData(463);
-        TAN_LAN_XIE_JIEMeta.setCustomModelData(464);
-        TAN_LAN_GUI_JIEMeta.setCustomModelData(465);
-        TAN_LAN_MO_JIEMeta.setCustomModelData(466);
-        TAN_LAN_MING_JIEMeta.setCustomModelData(467);
-
-        CHI_MI_ZHI_JIEMeta.setCustomModelData(462);
-        CHI_YU_DU_JIEMeta.setCustomModelData(463);
-        CHI_YU_XIE_JIEMeta.setCustomModelData(464);
-        CHI_YU_GUI_JIEMeta.setCustomModelData(465);
-        CHI_YU_MO_JIEMeta.setCustomModelData(466);
-        CHI_YU_MING_JIEMeta.setCustomModelData(467);
-
-        CHEN_NU_ZHI_JIEMeta.setCustomModelData(462);
-        CHEN_HEN_DU_JIEMeta.setCustomModelData(463);
-        CHEN_HEN_XIE_JIEMeta.setCustomModelData(464);
-        CHEN_HEN_GUI_JIEMeta.setCustomModelData(465);
-        CHEN_HEN_MO_JIEMeta.setCustomModelData(466);
-        CHEN_HEN_MING_JIEMeta.setCustomModelData(467);
-
-        CHAN_DING_FA_JIEMeta.setCustomModelData(463);
-        CHAN_DING_SHENG_JIEMeta.setCustomModelData(464);
-        CHAN_DING_FO_JIEMeta.setCustomModelData(465);
-        CHAN_DING_XIAN_JIEMeta.setCustomModelData(466);
-        CHAN_DING_SHEN_JIEMeta.setCustomModelData(467);
-
-        ZHI_HUI_FA_JIEMeta.setCustomModelData(463);
-        ZHI_HUI_SHENG_JIEMeta.setCustomModelData(464);
-        ZHI_HUI_FO_JIEMeta.setCustomModelData(465);
-        ZHI_HUI_XIAN_JIEMeta.setCustomModelData(466);
-        ZHI_HUI_SHEN_JIEMeta.setCustomModelData(467);
-
-        CHI_JIE_FA_JIEMeta.setCustomModelData(463);
-        CHI_JIE_SHENG_JIEMeta.setCustomModelData(464);
-        CHI_JIE_FO_JIEMeta.setCustomModelData(465);
-        CHI_JIE_XIAN_JIEMeta.setCustomModelData(466);
-        CHI_JIE_SHEN_JIEMeta.setCustomModelData(467);
-
-        ZHAOYAOJINMeta.setCustomModelData(443);
-        YUFUCHENMeta.setCustomModelData(444);
-        WUSEBUTIANSHIMeta.setCustomModelData(445);
-
-        YAOWANGHULUMeta.setCustomModelData(446);
-        CIXINMIAOLIANMeta.setCustomModelData(446);
-        SHENXINYUGUMeta.setCustomModelData(446);
-        YINYANGZHANLONGJIANMeta.setCustomModelData(446);
-        YUNLANGBANMeta.setCustomModelData(446);
-        ZHENHUNYUXIAOMeta.setCustomModelData(446);
-        DIKUIHUALANMeta.setCustomModelData(446);
-        XUANFENGZONGSHANMeta.setCustomModelData(446);
-        TAIJIBAGUAMeta.setCustomModelData(448);
-
-        JUEDOULINGMeta.setCustomModelData(143);
-        LEIMINGGUMeta.setCustomModelData(144);
-        HUANSILINMeta.setCustomModelData(145);
-        NIUMONUHOUMeta.setCustomModelData(146);
-
-        DOUQISHIMeta.setCustomModelData(143);
-        PANGUANBIMeta.setCustomModelData(144);
-        MINSHENGJIANMeta.setCustomModelData(145);
-        ZHENLEITIANCHUIMeta.setCustomModelData(146);
-
-        DIAOHUNGANMeta.setCustomModelData(243);
-        SHELINZHUMeta.setCustomModelData(244);
-        YUJINPINMeta.setCustomModelData(245);
-        TIANJISHENJINMeta.setCustomModelData(246);
-
-        RUIYINGYANMeta.setCustomModelData(243);
-        DUOHUNTANGMeta.setCustomModelData(244);
-        MOYUANFOZHUMeta.setCustomModelData(245);
-        FUXINRUYIMeta.setCustomModelData(246);
-
-        LVYEXIANZONGMeta.setCustomModelData(343);
-        QINGNVHANSHUANGMeta.setCustomModelData(344);
-        ZHURONGKUYANMeta.setCustomModelData(345);
-        ZHUDIANXUANJINGMeta.setCustomModelData(346);
-
-        BUHUNWANGMeta.setCustomModelData(343);
-        YANGSHOUJIANMeta.setCustomModelData(344);
-        WUMINGMOYINLUOMeta.setCustomModelData(345);
-        SHETIANHUAXUELINGMeta.setCustomModelData(346);
-
-        KUYELINGMeta.setCustomModelData(343);
-        LUOBEIJINPINMeta.setCustomModelData(344);
-        PINYUSHUIYUMeta.setCustomModelData(345);
-        DIKONGYUMOQUANMeta.setCustomModelData(346);
-
-        LUANSHENGUMeta.setCustomModelData(343);
-        JINGULIANMeta.setCustomModelData(344);
-        JIANCHANGULINMeta.setCustomModelData(345);
-        MODUOHUNFANMeta.setCustomModelData(346);
-
-
         CORE2.setItemMeta(core2Meta);
         CORE3.setItemMeta(core3Meta);
         CORE4.setItemMeta(core4Meta);
@@ -4443,6 +4113,623 @@ public final class Core {
         JIANCHANGULIN.setItemMeta(JIANCHANGULINMeta);
         MODUOHUNFAN.setItemMeta(MODUOHUNFANMeta);
 
+        MODUOHUNFAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/346"));
+        JIANCHANGULIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/345"));
+        JINGULIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/344"));
+        LUANSHENGU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/343"));
+        DIKONGYUMOQUAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/346"));
+        PINYUSHUIYU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/345"));
+        LUOBEIJINPIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/344"));
+        KUYELING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/343"));
+        SHETIANHUAXUELING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/346"));
+        WUMINGMOYINLUO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/345"));
+        YANGSHOUJIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/344"));
+        BUHUNWANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/343"));
+        ZHUDIANXUANJING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/346"));
+        ZHURONGKUYAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/345"));
+        QINGNVHANSHUANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/344"));
+        LVYEXIANZONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/343"));
+        FUXINRUYI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/246"));
+        MOYUANFOZHU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/245"));
+        DUOHUNTANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/244"));
+        RUIYINGYAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/243"));
+        TIANJISHENJIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/246"));
+        YUJINPIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/245"));
+        SHELINZHU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/244"));
+        DIAOHUNGAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/243"));
+        ZHENLEITIANCHUI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/146"));
+        MINSHENGJIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/145"));
+        PANGUANBI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/144"));
+        DOUQISHI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/143"));
+        NIUMONUHOU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/146"));
+        HUANSILIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/145"));
+        LEIMINGGU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/144"));
+        JUEDOULING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/143"));
+        TAIJIBAGUA.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/448"));
+        XUANFENGZONGSHAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/446"));
+        DIKUIHUALAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/446"));
+        ZHENHUNYUXIAO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/446"));
+        YUNLANGBAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/446"));
+        YINYANGZHANLONGJIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/446"));
+        SHENXINYUGU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/446"));
+        CIXINMIAOLIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/446"));
+        YAOWANGHULU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/446"));
+        WUSEBUTIANSHI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/445"));
+        YUFUCHEN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/444"));
+        ZHAOYAOJIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/443"));
+        CHI_JIE_SHEN_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/467"));
+        CHI_JIE_XIAN_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/466"));
+        CHI_JIE_FO_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/465"));
+        CHI_JIE_SHENG_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/464"));
+        CHI_JIE_FA_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/463"));
+        ZHI_HUI_SHEN_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/467"));
+        ZHI_HUI_XIAN_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/466"));
+        ZHI_HUI_FO_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/465"));
+        ZHI_HUI_SHENG_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/464"));
+        ZHI_HUI_FA_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/463"));
+        CHAN_DING_SHEN_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/467"));
+        CHAN_DING_XIAN_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/466"));
+        CHAN_DING_FO_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/465"));
+        CHAN_DING_SHENG_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/464"));
+        CHAN_DING_FA_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/463"));
+        CHEN_HEN_MING_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/467"));
+        CHEN_HEN_MO_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/466"));
+        CHEN_HEN_GUI_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/465"));
+        CHEN_HEN_XIE_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/464"));
+        CHEN_HEN_DU_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/463"));
+        CHEN_NU_ZHI_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/462"));
+        CHI_YU_MING_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/467"));
+        CHI_YU_MO_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/466"));
+        CHI_YU_GUI_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/465"));
+        CHI_YU_XIE_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/464"));
+        CHI_YU_DU_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/463"));
+        CHI_MI_ZHI_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/462"));
+        TAN_LAN_MING_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/467"));
+        TAN_LAN_MO_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/466"));
+        TAN_LAN_GUI_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/465"));
+        TAN_LAN_XIE_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/464"));
+        TAN_LAN_DU_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/463"));
+        TAN_YU_ZHI_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/462"));
+        XUAN_WU_SHENG_QI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/466"));
+        XUAN_WU_SHENG_QI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/465"));
+        XUAN_WU_SHENG_QI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/464"));
+        XUAN_WU_SHENG_QI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/463"));
+        XUAN_WU_SHENG_QI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/462"));
+        ZHU_QUE_SHENG_QI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/466"));
+        ZHU_QUE_SHENG_QI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/465"));
+        ZHU_QUE_SHENG_QI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/464"));
+        ZHU_QUE_SHENG_QI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/463"));
+        ZHU_QUE_SHENG_QI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/462"));
+        BAI_HU_SHENG_QI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/466"));
+        BAI_HU_SHENG_QI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/465"));
+        BAI_HU_SHENG_QI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/464"));
+        BAI_HU_SHENG_QI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/463"));
+        BAI_HU_SHENG_QI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/462"));
+        QING_LONG_SHENG_QI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/466"));
+        QING_LONG_SHENG_QI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/465"));
+        QING_LONG_SHENG_QI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/464"));
+        QING_LONG_SHENG_QI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/463"));
+        QING_LONG_SHENG_QI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/462"));
+        MINGHONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/356"));
+        ZHANGQICUIZHU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/355"));
+        LONGYADAO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/354"));
+        HUIYIDAO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/353"));
+        TIEZHIDUANBI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/352"));
+        NIEPANYUNANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/256"));
+        CANGGUNINGWANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/255"));
+        YINGYANJIANDAI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/254"));
+        JINRUIJIANDAI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/253"));
+        XINBINJIANDAI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/252"));
+        CHENBINLUOXUE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/156"));
+        JINGANGBUHUAI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/155"));
+        CHISEYUEHUO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/154"));
+        JINRUIDUNPAI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/153"));
+        XINBINDUNPAI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/152"));
+        JIUFENGLAIYI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/336"));
+        SANSHENGZHENHUN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/335"));
+        BUQICHUNYU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/334"));
+        LIUSHUICHANCHAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/333"));
+        QINFENGYINYIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/332"));
+        XIAOTIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/236"));
+        JINJING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/235"));
+        CANLAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/234"));
+        MINGYUE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/233"));
+        HUANGTONGCHONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/232"));
+        YANWANGTIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/136"));
+        WUYINWUZONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/135"));
+        HUIXUANTAJI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/134"));
+        WUSHENGXIUJIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/133"));
+        JINRUIFEIREN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/132"));
+        danXie8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/328"));
+        danXie7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/327"));
+        danXie6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/326"));
+        danXie5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/325"));
+        danXie4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/324"));
+        danXie3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/323"));
+        danXie2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/322"));
+        gongXie8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/228"));
+        gongXie7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/227"));
+        gongXie6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/226"));
+        gongXie5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/225"));
+        gongXie4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/224"));
+        gongXie3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/223"));
+        gongXie2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/222"));
+        zhanXie8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/128"));
+        zhanXie7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/127"));
+        zhanXie6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/126"));
+        zhanXie5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/125"));
+        zhanXie4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/124"));
+        zhanXie3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/123"));
+        zhanXie2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/122"));
+        xieSp8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/428"));
+        xieSp7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/427"));
+        xieSp6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/426"));
+        xieSp5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/425"));
+        xieSp4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/424"));
+        xieSp3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/423"));
+        xieSp2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/422"));
+        danTui8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/328"));
+        danTui7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/327"));
+        danTui6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/326"));
+        danTui5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/325"));
+        danTui4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/324"));
+        danTui3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/323"));
+        danTui2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/322"));
+        gongTui8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/228"));
+        gongTui7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/227"));
+        gongTui6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/226"));
+        gongTui5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/225"));
+        gongTui4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/224"));
+        gongTui3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/223"));
+        gongTui2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/222"));
+        zhanTui8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/128"));
+        zhanTui7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/127"));
+        zhanTui6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/126"));
+        zhanTui5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/125"));
+        zhanTui4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/124"));
+        zhanTui3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/123"));
+        zhanTui2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/122"));
+        tuiSp8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/428"));
+        tuiSp7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/427"));
+        tuiSp6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/426"));
+        tuiSp5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/425"));
+        tuiSp4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/424"));
+        tuiSp3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/423"));
+        tuiSp2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/422"));
+        danXiong8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/328"));
+        danXiong7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/327"));
+        danXiong6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/326"));
+        danXiong5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/325"));
+        danXiong4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/324"));
+        danXiong3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/323"));
+        danXiong2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/322"));
+        gongXiong8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/228"));
+        gongXiong7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/227"));
+        gongXiong6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/226"));
+        gongXiong5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/225"));
+        gongXiong4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/224"));
+        gongXiong3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/223"));
+        gongXiong2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/222"));
+        zhanXiong8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/128"));
+        zhanXiong7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/127"));
+        zhanXiong6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/126"));
+        zhanXiong5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/125"));
+        zhanXiong4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/124"));
+        zhanXiong3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/123"));
+        zhanXiong2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/122"));
+        xiongSp8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/428"));
+        xiongSp7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/427"));
+        xiongSp6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/426"));
+        xiongSp5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/425"));
+        xiongSp4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/424"));
+        xiongSp3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/423"));
+        xiongSp2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/422"));
+        danTou8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/328"));
+        danTou7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/327"));
+        danTou6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/326"));
+        danTou5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/325"));
+        danTou4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/324"));
+        danTou3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/323"));
+        danTou2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/322"));
+        gongTou8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/228"));
+        gongTou7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/227"));
+        gongTou6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/226"));
+        gongTou5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/225"));
+        gongTou4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/224"));
+        gongTou3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/223"));
+        gongTou2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/222"));
+        zhanTou8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/128"));
+        zhanTou7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/127"));
+        zhanTou6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/126"));
+        zhanTou5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/125"));
+        zhanTou4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/124"));
+        zhanTou3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/123"));
+        zhanTou2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/122"));
+        touSp8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/428"));
+        touSp7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/427"));
+        touSp6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/426"));
+        touSp5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/425"));
+        touSp4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/424"));
+        touSp3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/423"));
+        touSp2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/422"));
+        HUN_YUAN_SHEN_DING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/316"));
+        QI_SHA_DING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/315"));
+        SUO_HUN_LU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/314"));
+        LIAN_DAN_LU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/313"));
+        QIN_TONG_GUO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/312"));
+        LIU_GUANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/216"));
+        SHE_TIAN_ZHUI_YUE_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/215"));
+        TIAN_QIONG_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/214"));
+        HONG_LUAN_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/213"));
+        FU_RONG_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/212"));
+        LIANG_YI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/216"));
+        RI_YUE_LIU_XING_NU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/215"));
+        JIAO_LONG_NU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/214"));
+        HONG_LIN_NU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/213"));
+        HEI_TIE_NU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/212"));
+        ZHU_RI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/216"));
+        BEI_DOU_MIE_SHEN_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/215"));
+        ZHONG_CHUI_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/214"));
+        YAN_TIE_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/213"));
+        QIN_TONG_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/212"));
+        RU_YI_JIN_GU_BANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/116"));
+        HU_TOU_ZHAN_JIN_QIANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/115"));
+        YOU_LONG_QIANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/114"));
+        HONG_YIN_QIANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/113"));
+        YIN_YUE_QIANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/112"));
+        TAI_E.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/116"));
+        KUN_LUN_FEI_XIAN_JIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/115"));
+        TAI_JI_JIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/114"));
+        JU_TONG_ZHAN_CHUI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/113"));
+        QIN_TONG_JIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/112"));
+        XUAN_YUAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/116"));
+        SAN_BAO_YU_RU_YI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/115"));
+        PO_KONG_FU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/114"));
+        CHI_TONG_JIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/113"));
+        KAI_SHAN_DAO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/112"));
+        CORE8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/58"));
+        CORE7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/57"));
+        CORE6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/56"));
+        CORE5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/55"));
+        CORE4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/54"));
+        CORE3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/53"));
+        CORE2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "iron_ingot/52"));
     }
+
+    public static void putId() {
+        Recipe.idToItem.put("core2", CORE2);
+        Recipe.idToItem.put("core3", CORE3);
+        Recipe.idToItem.put("core4", CORE4);
+        Recipe.idToItem.put("core5", CORE5);
+        Recipe.idToItem.put("core6", CORE6);
+        Recipe.idToItem.put("core7", CORE7);
+        Recipe.idToItem.put("core8", CORE8);
+
+        Recipe.idToItem.put("corekaiShanDao", KAI_SHAN_DAO);
+        Recipe.idToItem.put("corechiTongJian", CHI_TONG_JIAN);
+        Recipe.idToItem.put("corepoKongFu", PO_KONG_FU);
+        Recipe.idToItem.put("coresanBaoYuRuYi", SAN_BAO_YU_RU_YI);
+        Recipe.idToItem.put("corexuanYuan", XUAN_YUAN);
+
+        Recipe.idToItem.put("coreqinTongJian", QIN_TONG_JIAN);
+        Recipe.idToItem.put("corejuTongZhanChui", JU_TONG_ZHAN_CHUI);
+        Recipe.idToItem.put("coretaiJiJian", TAI_JI_JIAN);
+        Recipe.idToItem.put("corekunLunFeiXianJian", KUN_LUN_FEI_XIAN_JIAN);
+        Recipe.idToItem.put("coretaiE", TAI_E);
+
+        Recipe.idToItem.put("coreyinYueQiang", YIN_YUE_QIANG);
+        Recipe.idToItem.put("corehongYinQiang", HONG_YIN_QIANG);
+        Recipe.idToItem.put("coreyouLongQiang", YOU_LONG_QIANG);
+        Recipe.idToItem.put("corehuTouZhanJinQiang", HU_TOU_ZHAN_JIN_QIANG);
+        Recipe.idToItem.put("coreruYiJinGuBang", RU_YI_JIN_GU_BANG);
+
+        Recipe.idToItem.put("coreqinTongGong", QIN_TONG_GONG);
+        Recipe.idToItem.put("coreyanTieGong", YAN_TIE_GONG);
+        Recipe.idToItem.put("corezhongChuiGong", ZHONG_CHUI_GONG);
+        Recipe.idToItem.put("corebeiDouMieShenGong", BEI_DOU_MIE_SHEN_GONG);
+        Recipe.idToItem.put("corezhuRi", ZHU_RI);
+
+        Recipe.idToItem.put("coreheiTieNu", HEI_TIE_NU);
+        Recipe.idToItem.put("corehongLinNu", HONG_LIN_NU);
+        Recipe.idToItem.put("corejiaoLongNu", JIAO_LONG_NU);
+        Recipe.idToItem.put("coreriYueLiuXingNu", RI_YUE_LIU_XING_NU);
+        Recipe.idToItem.put("coreliangYi", LIANG_YI);
+
+        Recipe.idToItem.put("corefuRongGong", FU_RONG_GONG);
+        Recipe.idToItem.put("corehongLuanGong", HONG_LUAN_GONG);
+        Recipe.idToItem.put("coretianQiongGong", TIAN_QIONG_GONG);
+        Recipe.idToItem.put("coresheTianZhuiYueGong", SHE_TIAN_ZHUI_YUE_GONG);
+        Recipe.idToItem.put("coreliuGuang", LIU_GUANG);
+
+        Recipe.idToItem.put("coreqinTongGuo", QIN_TONG_GUO);
+        Recipe.idToItem.put("corelianDanLu", LIAN_DAN_LU);
+        Recipe.idToItem.put("coresuoHunLu", SUO_HUN_LU);
+        Recipe.idToItem.put("coreqiShaDing", QI_SHA_DING);
+        Recipe.idToItem.put("corehunYuanShenDing", HUN_YUAN_SHEN_DING);
+
+        Recipe.idToItem.put("coretouSp2", touSp2);
+        Recipe.idToItem.put("coretouSp3", touSp3);
+        Recipe.idToItem.put("coretouSp4", touSp4);
+        Recipe.idToItem.put("coretouSp5", touSp5);
+        Recipe.idToItem.put("coretouSp6", touSp6);
+        Recipe.idToItem.put("coretouSp7", touSp7);
+        Recipe.idToItem.put("coretouSp8", touSp8);
+
+        Recipe.idToItem.put("corezhanTou2", zhanTou2);
+        Recipe.idToItem.put("corezhanTou3", zhanTou3);
+        Recipe.idToItem.put("corezhanTou4", zhanTou4);
+        Recipe.idToItem.put("corezhanTou5", zhanTou5);
+        Recipe.idToItem.put("corezhanTou6", zhanTou6);
+        Recipe.idToItem.put("corezhanTou7", zhanTou7);
+        Recipe.idToItem.put("corezhanTou8", zhanTou8);
+
+        Recipe.idToItem.put("coregongTou2", gongTou2);
+        Recipe.idToItem.put("coregongTou3", gongTou3);
+        Recipe.idToItem.put("coregongTou4", gongTou4);
+        Recipe.idToItem.put("coregongTou5", gongTou5);
+        Recipe.idToItem.put("coregongTou6", gongTou6);
+        Recipe.idToItem.put("coregongTou7", gongTou7);
+        Recipe.idToItem.put("coregongTou8", gongTou8);
+
+        Recipe.idToItem.put("coredanTou2", danTou2);
+        Recipe.idToItem.put("coredanTou3", danTou3);
+        Recipe.idToItem.put("coredanTou4", danTou4);
+        Recipe.idToItem.put("coredanTou5", danTou5);
+        Recipe.idToItem.put("coredanTou6", danTou6);
+        Recipe.idToItem.put("coredanTou7", danTou7);
+        Recipe.idToItem.put("coredanTou8", danTou8);
+
+        Recipe.idToItem.put("corexiongSp2", xiongSp2);
+        Recipe.idToItem.put("corexiongSp3", xiongSp3);
+        Recipe.idToItem.put("corexiongSp4", xiongSp4);
+        Recipe.idToItem.put("corexiongSp5", xiongSp5);
+        Recipe.idToItem.put("corexiongSp6", xiongSp6);
+        Recipe.idToItem.put("corexiongSp7", xiongSp7);
+        Recipe.idToItem.put("corexiongSp8", xiongSp8);
+
+        Recipe.idToItem.put("corezhanXiong2", zhanXiong2);
+        Recipe.idToItem.put("corezhanXiong3", zhanXiong3);
+        Recipe.idToItem.put("corezhanXiong4", zhanXiong4);
+        Recipe.idToItem.put("corezhanXiong5", zhanXiong5);
+        Recipe.idToItem.put("corezhanXiong6", zhanXiong6);
+        Recipe.idToItem.put("corezhanXiong7", zhanXiong7);
+        Recipe.idToItem.put("corezhanXiong8", zhanXiong8);
+
+        Recipe.idToItem.put("coregongXiong2", gongXiong2);
+        Recipe.idToItem.put("coregongXiong3", gongXiong3);
+        Recipe.idToItem.put("coregongXiong4", gongXiong4);
+        Recipe.idToItem.put("coregongXiong5", gongXiong5);
+        Recipe.idToItem.put("coregongXiong6", gongXiong6);
+        Recipe.idToItem.put("coregongXiong7", gongXiong7);
+        Recipe.idToItem.put("coregongXiong8", gongXiong8);
+
+        Recipe.idToItem.put("coredanXiong2", danXiong2);
+        Recipe.idToItem.put("coredanXiong3", danXiong3);
+        Recipe.idToItem.put("coredanXiong4", danXiong4);
+        Recipe.idToItem.put("coredanXiong5", danXiong5);
+        Recipe.idToItem.put("coredanXiong6", danXiong6);
+        Recipe.idToItem.put("coredanXiong7", danXiong7);
+        Recipe.idToItem.put("coredanXiong8", danXiong8);
+
+        Recipe.idToItem.put("coretuiSp2", tuiSp2);
+        Recipe.idToItem.put("coretuiSp3", tuiSp3);
+        Recipe.idToItem.put("coretuiSp4", tuiSp4);
+        Recipe.idToItem.put("coretuiSp5", tuiSp5);
+        Recipe.idToItem.put("coretuiSp6", tuiSp6);
+        Recipe.idToItem.put("coretuiSp7", tuiSp7);
+        Recipe.idToItem.put("coretuiSp8", tuiSp8);
+
+        Recipe.idToItem.put("corezhanTui2", zhanTui2);
+        Recipe.idToItem.put("corezhanTui3", zhanTui3);
+        Recipe.idToItem.put("corezhanTui4", zhanTui4);
+        Recipe.idToItem.put("corezhanTui5", zhanTui5);
+        Recipe.idToItem.put("corezhanTui6", zhanTui6);
+        Recipe.idToItem.put("corezhanTui7", zhanTui7);
+        Recipe.idToItem.put("corezhanTui8", zhanTui8);
+
+        Recipe.idToItem.put("coregongTui2", gongTui2);
+        Recipe.idToItem.put("coregongTui3", gongTui3);
+        Recipe.idToItem.put("coregongTui4", gongTui4);
+        Recipe.idToItem.put("coregongTui5", gongTui5);
+        Recipe.idToItem.put("coregongTui6", gongTui6);
+        Recipe.idToItem.put("coregongTui7", gongTui7);
+        Recipe.idToItem.put("coregongTui8", gongTui8);
+
+        Recipe.idToItem.put("coredanTui2", danTui2);
+        Recipe.idToItem.put("coredanTui3", danTui3);
+        Recipe.idToItem.put("coredanTui4", danTui4);
+        Recipe.idToItem.put("coredanTui5", danTui5);
+        Recipe.idToItem.put("coredanTui6", danTui6);
+        Recipe.idToItem.put("coredanTui7", danTui7);
+        Recipe.idToItem.put("coredanTui8", danTui8);
+
+        Recipe.idToItem.put("corexieSp2", xieSp2);
+        Recipe.idToItem.put("corexieSp3", xieSp3);
+        Recipe.idToItem.put("corexieSp4", xieSp4);
+        Recipe.idToItem.put("corexieSp5", xieSp5);
+        Recipe.idToItem.put("corexieSp6", xieSp6);
+        Recipe.idToItem.put("corexieSp7", xieSp7);
+        Recipe.idToItem.put("corexieSp8", xieSp8);
+
+        Recipe.idToItem.put("corezhanXie2", zhanXie2);
+        Recipe.idToItem.put("corezhanXie3", zhanXie3);
+        Recipe.idToItem.put("corezhanXie4", zhanXie4);
+        Recipe.idToItem.put("corezhanXie5", zhanXie5);
+        Recipe.idToItem.put("corezhanXie6", zhanXie6);
+        Recipe.idToItem.put("corezhanXie7", zhanXie7);
+        Recipe.idToItem.put("corezhanXie8", zhanXie8);
+
+        Recipe.idToItem.put("coregongXie2", gongXie2);
+        Recipe.idToItem.put("coregongXie3", gongXie3);
+        Recipe.idToItem.put("coregongXie4", gongXie4);
+        Recipe.idToItem.put("coregongXie5", gongXie5);
+        Recipe.idToItem.put("coregongXie6", gongXie6);
+        Recipe.idToItem.put("coregongXie7", gongXie7);
+        Recipe.idToItem.put("coregongXie8", gongXie8);
+
+        Recipe.idToItem.put("coredanXie2", danXie2);
+        Recipe.idToItem.put("coredanXie3", danXie3);
+        Recipe.idToItem.put("coredanXie4", danXie4);
+        Recipe.idToItem.put("coredanXie5", danXie5);
+        Recipe.idToItem.put("coredanXie6", danXie6);
+        Recipe.idToItem.put("coredanXie7", danXie7);
+        Recipe.idToItem.put("coredanXie8", danXie8);
+
+        Recipe.idToItem.put("corejinRuiFeiRen", JINRUIFEIREN);
+        Recipe.idToItem.put("corewuShengXiuJian", WUSHENGXIUJIAN);
+        Recipe.idToItem.put("corehuiXuanTaiJi", HUIXUANTAJI);
+        Recipe.idToItem.put("corewuYinWuZong", WUYINWUZONG);
+        Recipe.idToItem.put("coreyanWangTie", YANWANGTIE);
+
+        Recipe.idToItem.put("corehuangTongChong", HUANGTONGCHONG);
+        Recipe.idToItem.put("coremingYue", MINGYUE);
+        Recipe.idToItem.put("corecanLan", CANLAN);
+        Recipe.idToItem.put("corejinJing", JINJING);
+        Recipe.idToItem.put("corexiaoTian", XIAOTIAN);
+
+        Recipe.idToItem.put("coreqinFengYinYin", QINFENGYINYIN);
+        Recipe.idToItem.put("coreliuShuiChanChan", LIUSHUICHANCHAN);
+        Recipe.idToItem.put("corebuQiChunYu", BUQICHUNYU);
+        Recipe.idToItem.put("coresanShengZhenHun", SANSHENGZHENHUN);
+        Recipe.idToItem.put("corejiuFengLaiYi", JIUFENGLAIYI);
+
+        Recipe.idToItem.put("corexinBinDunPai", XINBINDUNPAI);
+        Recipe.idToItem.put("corejinRuiDunPai", JINRUIDUNPAI);
+        Recipe.idToItem.put("corechiSeYueHuo", CHISEYUEHUO);
+        Recipe.idToItem.put("corejinGangBuHuai", JINGANGBUHUAI);
+        Recipe.idToItem.put("corechenBinLuoXue", CHENBINLUOXUE);
+
+        Recipe.idToItem.put("corexinBinJianDai", XINBINJIANDAI);
+        Recipe.idToItem.put("corejinRuiJianDai", JINRUIJIANDAI);
+        Recipe.idToItem.put("coreyingYanJianDai", YINGYANJIANDAI);
+        Recipe.idToItem.put("corecangGuNingWang", CANGGUNINGWANG);
+        Recipe.idToItem.put("coreniePanYunAng", NIEPANYUNANG);
+
+        Recipe.idToItem.put("coretieZhiDuanBi", TIEZHIDUANBI);
+        Recipe.idToItem.put("corehuiYiDao", HUIYIDAO);
+        Recipe.idToItem.put("corelongYaDao", LONGYADAO);
+        Recipe.idToItem.put("corezhangQiCuiZhu", ZHANGQICUIZHU);
+        Recipe.idToItem.put("coremingHong", MINGHONG);
+
+        Recipe.idToItem.put("coreqingLongShengQi2", QING_LONG_SHENG_QI2);
+        Recipe.idToItem.put("coreqingLongShengQi3", QING_LONG_SHENG_QI3);
+        Recipe.idToItem.put("coreqingLongShengQi4", QING_LONG_SHENG_QI4);
+        Recipe.idToItem.put("coreqingLongShengQi5", QING_LONG_SHENG_QI5);
+        Recipe.idToItem.put("coreqingLongShengQi6", QING_LONG_SHENG_QI6);
+
+        Recipe.idToItem.put("corebaiHuShengQi2", BAI_HU_SHENG_QI2);
+        Recipe.idToItem.put("corebaiHuShengQi3", BAI_HU_SHENG_QI3);
+        Recipe.idToItem.put("corebaiHuShengQi4", BAI_HU_SHENG_QI4);
+        Recipe.idToItem.put("corebaiHuShengQi5", BAI_HU_SHENG_QI5);
+        Recipe.idToItem.put("corebaiHuShengQi6", BAI_HU_SHENG_QI6);
+
+        Recipe.idToItem.put("corezhuQueShengQi2", ZHU_QUE_SHENG_QI2);
+        Recipe.idToItem.put("corezhuQueShengQi3", ZHU_QUE_SHENG_QI3);
+        Recipe.idToItem.put("corezhuQueShengQi4", ZHU_QUE_SHENG_QI4);
+        Recipe.idToItem.put("corezhuQueShengQi5", ZHU_QUE_SHENG_QI5);
+        Recipe.idToItem.put("corezhuQueShengQi6", ZHU_QUE_SHENG_QI6);
+
+        Recipe.idToItem.put("corexuanWuShengQi2", XUAN_WU_SHENG_QI2);
+        Recipe.idToItem.put("corexuanWuShengQi3", XUAN_WU_SHENG_QI3);
+        Recipe.idToItem.put("corexuanWuShengQi4", XUAN_WU_SHENG_QI4);
+        Recipe.idToItem.put("corexuanWuShengQi5", XUAN_WU_SHENG_QI5);
+        Recipe.idToItem.put("corexuanWuShengQi6", XUAN_WU_SHENG_QI6);
+
+        Recipe.idToItem.put("coretanYuZhiJie", TAN_YU_ZHI_JIE);
+        Recipe.idToItem.put("coretanLanDuJie", TAN_LAN_DU_JIE);
+        Recipe.idToItem.put("coretanLanXieJie", TAN_LAN_XIE_JIE);
+        Recipe.idToItem.put("coretanLanGuiJie", TAN_LAN_GUI_JIE);
+        Recipe.idToItem.put("coretanLanMoJie", TAN_LAN_MO_JIE);
+        Recipe.idToItem.put("coretanLanMingJie", TAN_LAN_MING_JIE);
+
+        Recipe.idToItem.put("corechiMiZhiJie", CHI_MI_ZHI_JIE);
+        Recipe.idToItem.put("corechiYuDuJie", CHI_YU_DU_JIE);
+        Recipe.idToItem.put("corechiYuXieJie", CHI_YU_XIE_JIE);
+        Recipe.idToItem.put("corechiYuGuiJie", CHI_YU_GUI_JIE);
+        Recipe.idToItem.put("corechiYuMoJie", CHI_YU_MO_JIE);
+        Recipe.idToItem.put("corechiYuMingJie", CHI_YU_MING_JIE);
+
+        Recipe.idToItem.put("corechenNuZhiJie", CHEN_NU_ZHI_JIE);
+        Recipe.idToItem.put("corechenHenDuJie", CHEN_HEN_DU_JIE);
+        Recipe.idToItem.put("corechenHenXieJie", CHEN_HEN_XIE_JIE);
+        Recipe.idToItem.put("corechenHenGuiJie", CHEN_HEN_GUI_JIE);
+        Recipe.idToItem.put("corechenHenMoJie", CHEN_HEN_MO_JIE);
+        Recipe.idToItem.put("corechenHenMingJie", CHEN_HEN_MING_JIE);
+
+        Recipe.idToItem.put("corechanDingFaJie", CHAN_DING_FA_JIE);
+        Recipe.idToItem.put("corechanDingShengJie", CHAN_DING_SHENG_JIE);
+        Recipe.idToItem.put("corechanDingFoJie", CHAN_DING_FO_JIE);
+        Recipe.idToItem.put("corechanDingXianJie", CHAN_DING_XIAN_JIE);
+        Recipe.idToItem.put("corechanDingShenJie", CHAN_DING_SHEN_JIE);
+
+        Recipe.idToItem.put("corezhiHuiFaJie", ZHI_HUI_FA_JIE);
+        Recipe.idToItem.put("corezhiHuiShengJie", ZHI_HUI_SHENG_JIE);
+        Recipe.idToItem.put("corezhiHuiFoJie", ZHI_HUI_FO_JIE);
+        Recipe.idToItem.put("corezhiHuiXianJie", ZHI_HUI_XIAN_JIE);
+        Recipe.idToItem.put("corezhiHuiShenJie", ZHI_HUI_SHEN_JIE);
+
+        Recipe.idToItem.put("corechiJieFaJie", CHI_JIE_FA_JIE);
+        Recipe.idToItem.put("corechiJieShengJie", CHI_JIE_SHENG_JIE);
+        Recipe.idToItem.put("corechiJieFoJie", CHI_JIE_FO_JIE);
+        Recipe.idToItem.put("corechiJieXianJie", CHI_JIE_XIAN_JIE);
+        Recipe.idToItem.put("corechiJieShenJie", CHI_JIE_SHEN_JIE);
+
+        Recipe.idToItem.put("corezhaoYaoJin", ZHAOYAOJIN);
+        Recipe.idToItem.put("coreyuFuChen", YUFUCHEN);
+        Recipe.idToItem.put("corewuSeBuTianShi", WUSEBUTIANSHI);
+
+        Recipe.idToItem.put("coreyaoWangHuLu", YAOWANGHULU);
+        Recipe.idToItem.put("coreciXinMiaoLian", CIXINMIAOLIAN);
+        Recipe.idToItem.put("coreshenXinYuGu", SHENXINYUGU);
+        Recipe.idToItem.put("coreyinYangZhanLongJian", YINYANGZHANLONGJIAN);
+        Recipe.idToItem.put("coreyunLangBan", YUNLANGBAN);
+        Recipe.idToItem.put("corezhenHunYuXiao", ZHENHUNYUXIAO);
+        Recipe.idToItem.put("corediKuiHuaLan", DIKUIHUALAN);
+        Recipe.idToItem.put("corexuanFengZongShan", XUANFENGZONGSHAN);
+        Recipe.idToItem.put("coretaiJiBaGua", TAIJIBAGUA);
+
+        Recipe.idToItem.put("corejueDouLing", JUEDOULING);
+        Recipe.idToItem.put("coreleiMingU", LEIMINGGU);
+        Recipe.idToItem.put("corehuanSiLin", HUANSILIN);
+        Recipe.idToItem.put("coreniuMoNuHou", NIUMONUHOU);
+
+        Recipe.idToItem.put("coredouQiShi", DOUQISHI);
+        Recipe.idToItem.put("corepanGuanBi", PANGUANBI);
+        Recipe.idToItem.put("coreminShengJian", MINSHENGJIAN);
+        Recipe.idToItem.put("corezhenLeiTianChui", ZHENLEITIANCHUI);
+
+        Recipe.idToItem.put("corediaoHunGan", DIAOHUNGAN);
+        Recipe.idToItem.put("coresheLinZhu", SHELINZHU);
+        Recipe.idToItem.put("coreyuJinPin", YUJINPIN);
+        Recipe.idToItem.put("coretianJiShenJin", TIANJISHENJIN);
+
+        Recipe.idToItem.put("coreruiYingYan", RUIYINGYAN);
+        Recipe.idToItem.put("coreduoHunTang", DUOHUNTANG);
+        Recipe.idToItem.put("coremoYuanFoZhu", MOYUANFOZHU);
+        Recipe.idToItem.put("corefuXinRuYi", FUXINRUYI);
+
+        Recipe.idToItem.put("corelvYeXianZong", LVYEXIANZONG);
+        Recipe.idToItem.put("coreqingNvHanShuang", QINGNVHANSHUANG);
+        Recipe.idToItem.put("corezhuRongKuYan", ZHURONGKUYAN);
+        Recipe.idToItem.put("corezhuDianXuanJing", ZHUDIANXUANJING);
+
+        Recipe.idToItem.put("corebuHunWang", BUHUNWANG);
+        Recipe.idToItem.put("coreyangShouJian", YANGSHOUJIAN);
+        Recipe.idToItem.put("corewuMingMoYinLuo", WUMINGMOYINLUO);
+        Recipe.idToItem.put("coresheTianHuaXueLing", SHETIANHUAXUELING);
+
+        Recipe.idToItem.put("corekuYeLing", KUYELING);
+        Recipe.idToItem.put("coreluoBeiJinPin", LUOBEIJINPIN);
+        Recipe.idToItem.put("corepinYuShuiYu", PINYUSHUIYU);
+        Recipe.idToItem.put("corediKongYuMoQuan", DIKONGYUMOQUAN);
+
+        Recipe.idToItem.put("coreluanShenGu", LUANSHENGU);
+        Recipe.idToItem.put("corejinGuLian", JINGULIAN);
+        Recipe.idToItem.put("corejianChanGuLin", JIANCHANGULIN);
+        Recipe.idToItem.put("coremoDuoHunFan", MODUOHUNFAN);
+
+
+    }
+
 
 }

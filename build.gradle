@@ -22,10 +22,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.java-websocket:Java-WebSocket:1.5.7'
-    implementation 'org.xerial:sqlite-jdbc:3.47.0.0'
-    compileOnly("org.purpurmc.purpur:purpur-api:1.21.1-R0.1-SNAPSHOT")
-    compileOnly("de.tr7zw:item-nbt-api-plugin:2.13.2")
+    implementation 'org.java-websocket:Java-WebSocket:1.6.0'
+    implementation 'org.xerial:sqlite-jdbc:3.48.0.0'
+    compileOnly("org.purpurmc.purpur:purpur-api:1.21.4-R0.1-SNAPSHOT")
+    compileOnly("de.tr7zw:item-nbt-api-plugin:2.14.1")
 }
 
 

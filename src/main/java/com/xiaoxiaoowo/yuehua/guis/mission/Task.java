@@ -11,14 +11,15 @@ import com.xiaoxiaoowo.yuehua.items.other.Money;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.AdvancementSet;
 import com.xiaoxiaoowo.yuehua.utils.PlaySound;
-import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import com.xiaoxiaoowo.yuehua.utils.SendInformation;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import io.papermc.paper.persistence.PersistentDataContainerView;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -43,19 +44,18 @@ public final class Task {
 
     static {
         ItemStack mainCheck = new ItemStack(Material.YELLOW_DYE);
-        mainCheck.setCustomModelData(12);
         ItemMeta mainCheckItemMeta = mainCheck.getItemMeta();
         mainCheckItemMeta.displayName(Component.text("查询探索任务与完成度").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true));
         mainCheck.setItemMeta(mainCheckItemMeta);
+        mainCheck.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/12"));
         MAIN_TASK.setItem(0, mainCheck);
 
         ItemStack mainTijiao = new ItemStack(Material.YELLOW_DYE);
-        mainTijiao.setCustomModelData(12);
         ItemMeta mainTijiaoItemMeta = mainTijiao.getItemMeta();
         mainTijiaoItemMeta.displayName(Component.text("提交探索任务").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true));
         mainTijiao.setItemMeta(mainTijiaoItemMeta);
+        mainTijiao.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/12"));
         MAIN_TASK.setItem(1, mainTijiao);
-
         MAIN_TASK.setItem(8, Yh.BACK_BEFORE);
 
     }

@@ -23,8 +23,8 @@ public final class FeiXianJian {
             it.setCanPickupItems(false);
 
             //属性
-            double value = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 1.5;
-            it.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(value);
+            double value = player.getAttribute(Attribute.MAX_HEALTH).getValue() * 1.5;
+            it.getAttribute(Attribute.MAX_HEALTH).setBaseValue(value);
             it.setHealth(value);
 
 

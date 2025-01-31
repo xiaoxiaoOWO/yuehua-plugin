@@ -333,39 +333,39 @@ public class Data {
 
         //还原基础属性
         //攻击速度
-        player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(1);
+        player.getAttribute(Attribute.ATTACK_SPEED).setBaseValue(1);
         //攻击距离
-        player.getAttribute(Attribute.PLAYER_ENTITY_INTERACTION_RANGE).setBaseValue(3);
+        player.getAttribute(Attribute.ENTITY_INTERACTION_RANGE).setBaseValue(3);
         //移速
-        player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.1);
+        player.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0.1);
         //跳跃力
-        player.getAttribute(Attribute.GENERIC_JUMP_STRENGTH).setBaseValue(0.42);
+        player.getAttribute(Attribute.JUMP_STRENGTH).setBaseValue(0.42);
         //生命
-        player.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20);
+        player.getAttribute(Attribute.MAX_HEALTH).setBaseValue(20);
         //定力
-        player.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(0);
+        player.getAttribute(Attribute.ARMOR).setBaseValue(0);
 
         //清理修饰符
-        player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(Speed.touSpeed);
-        player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(Speed.xiongSpeed);
-        player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(Speed.tuiSpeed);
-        player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(Speed.xieSpeed);
-        player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(Speed.weaponSpeed);
-        player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(Speed.biweaponSpeed);
-        player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(Speed.yiqiSpeed);
-        player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(Speed.shipinSpeed);
-        player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(Speed.xiantianSpeed);
+        player.getAttribute(Attribute.MOVEMENT_SPEED).removeModifier(Speed.touSpeed);
+        player.getAttribute(Attribute.MOVEMENT_SPEED).removeModifier(Speed.xiongSpeed);
+        player.getAttribute(Attribute.MOVEMENT_SPEED).removeModifier(Speed.tuiSpeed);
+        player.getAttribute(Attribute.MOVEMENT_SPEED).removeModifier(Speed.xieSpeed);
+        player.getAttribute(Attribute.MOVEMENT_SPEED).removeModifier(Speed.weaponSpeed);
+        player.getAttribute(Attribute.MOVEMENT_SPEED).removeModifier(Speed.biweaponSpeed);
+        player.getAttribute(Attribute.MOVEMENT_SPEED).removeModifier(Speed.yiqiSpeed);
+        player.getAttribute(Attribute.MOVEMENT_SPEED).removeModifier(Speed.shipinSpeed);
+        player.getAttribute(Attribute.MOVEMENT_SPEED).removeModifier(Speed.xiantianSpeed);
 
 
-        player.getAttribute(Attribute.GENERIC_MAX_HEALTH).removeModifier(HpMul.touHp);
-        player.getAttribute(Attribute.GENERIC_MAX_HEALTH).removeModifier(HpMul.xiongHp);
-        player.getAttribute(Attribute.GENERIC_MAX_HEALTH).removeModifier(HpMul.tuiHp);
-        player.getAttribute(Attribute.GENERIC_MAX_HEALTH).removeModifier(HpMul.xieHp);
-        player.getAttribute(Attribute.GENERIC_MAX_HEALTH).removeModifier(HpMul.weaponHp);
-        player.getAttribute(Attribute.GENERIC_MAX_HEALTH).removeModifier(HpMul.biweaponHp);
-        player.getAttribute(Attribute.GENERIC_MAX_HEALTH).removeModifier(HpMul.yiqiHp);
-        player.getAttribute(Attribute.GENERIC_MAX_HEALTH).removeModifier(HpMul.shipinHp);
-        player.getAttribute(Attribute.GENERIC_MAX_HEALTH).removeModifier(HpMul.xiantainHp);
+        player.getAttribute(Attribute.MAX_HEALTH).removeModifier(HpMul.touHp);
+        player.getAttribute(Attribute.MAX_HEALTH).removeModifier(HpMul.xiongHp);
+        player.getAttribute(Attribute.MAX_HEALTH).removeModifier(HpMul.tuiHp);
+        player.getAttribute(Attribute.MAX_HEALTH).removeModifier(HpMul.xieHp);
+        player.getAttribute(Attribute.MAX_HEALTH).removeModifier(HpMul.weaponHp);
+        player.getAttribute(Attribute.MAX_HEALTH).removeModifier(HpMul.biweaponHp);
+        player.getAttribute(Attribute.MAX_HEALTH).removeModifier(HpMul.yiqiHp);
+        player.getAttribute(Attribute.MAX_HEALTH).removeModifier(HpMul.shipinHp);
+        player.getAttribute(Attribute.MAX_HEALTH).removeModifier(HpMul.xiantainHp);
 
         //特殊减伤
         pdc.set(DataContainer.dumian, PersistentDataType.DOUBLE, 0.0);
@@ -812,7 +812,7 @@ public class Data {
         //种族增益,神族为最大生命，仙族为破法，人族为格挡，战神族为进攻属性，妖族为生机
         switch (race) {
             case 1 -> {
-                AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+                AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
                 double baseValue = attributeInstance.getBaseValue();
                 attributeInstance.setBaseValue(baseValue + 16 * levelAward);
             }
@@ -867,7 +867,7 @@ public class Data {
                 double mulValue = pdc.get(DataContainer.attack_mul, PersistentDataType.DOUBLE);
                 double finalValue = mulValue * (baseValue3 + 12 * levelAward);
                 pdc.set(DataContainer.attack, PersistentDataType.DOUBLE, finalValue);
-                AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+                AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
                 double baseValue4 = attributeInstance.getBaseValue();
                 attributeInstance.setBaseValue(baseValue4 + 32 * levelAward);
                 double baseValue5 = pdc.get(DataContainer.shouhu, PersistentDataType.DOUBLE);
@@ -882,7 +882,7 @@ public class Data {
                 double mulValue = pdc.get(DataContainer.arrow_mul, PersistentDataType.DOUBLE);
                 double finalValue = mulValue * (baseValue2 + 4 * levelAward);
                 pdc.set(DataContainer.arrow, PersistentDataType.DOUBLE, finalValue);
-                AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+                AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
                 double baseValue4 = attributeInstance.getBaseValue();
                 attributeInstance.setBaseValue(baseValue4 + 32 * levelAward);
                 double baseValue5 = pdc.get(DataContainer.shouhu, PersistentDataType.DOUBLE);
@@ -897,7 +897,7 @@ public class Data {
                 double mulValue = pdc.get(DataContainer.zhenfa_mul, PersistentDataType.DOUBLE);
                 double finalValue = mulValue * (baseValue2 + 4 * levelAward);
                 pdc.set(DataContainer.zhenfa, PersistentDataType.DOUBLE, finalValue);
-                AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+                AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
                 double baseValue4 = attributeInstance.getBaseValue();
                 attributeInstance.setBaseValue(baseValue4 + 32 * levelAward);
                 double baseValue5 = pdc.get(DataContainer.shouhu, PersistentDataType.DOUBLE);
@@ -908,20 +908,20 @@ public class Data {
         //支线任务激活
         Set<String> tags = player.getScoreboardTags();
         if (tags.contains("jianyi")) {
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue + 32);
         }
 
         if (tags.contains("yuzhuzijue")) {
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue + 32);
         }
 
 
         if (tags.contains("racezhixian")) {
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue + 32);
         }

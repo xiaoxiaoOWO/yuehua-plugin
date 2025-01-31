@@ -2,10 +2,12 @@ package com.xiaoxiaoowo.yuehua.items;
 
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
@@ -78,8 +80,8 @@ public final class PINZHENG {
     public static final ItemStack finishZhanHide = new ItemStack(Material.INK_SAC);
 
     static {
+
         finishMain.editMeta(meta -> {
-            meta.setCustomModelData(1);
             meta.setMaxStackSize(1);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "finishMain");
             meta.displayName(Component.text("§b主线任务完结"));
@@ -90,8 +92,8 @@ public final class PINZHENG {
             );
         });
 
-        finishShenHide.editMeta(meta->{
-            meta.setCustomModelData(1);
+
+        finishShenHide.editMeta(meta -> {
             meta.setMaxStackSize(1);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "finishShenHide");
             meta.displayName(Component.text("§b神族隐藏任务完结"));
@@ -102,8 +104,8 @@ public final class PINZHENG {
             );
         });
 
-        finishXianHide.editMeta(meta->{
-            meta.setCustomModelData(1);
+
+        finishXianHide.editMeta(meta -> {
             meta.setMaxStackSize(1);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "finishXianHide");
             meta.displayName(Component.text("§b仙族隐藏任务完结"));
@@ -114,8 +116,8 @@ public final class PINZHENG {
             );
         });
 
-        finishRenHide.editMeta(meta->{
-            meta.setCustomModelData(1);
+
+        finishRenHide.editMeta(meta -> {
             meta.setMaxStackSize(1);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "finishRenHide");
             meta.displayName(Component.text("§b人族隐藏任务完结"));
@@ -126,8 +128,8 @@ public final class PINZHENG {
             );
         });
 
-        finishYaoHide.editMeta(meta->{
-            meta.setCustomModelData(1);
+
+        finishYaoHide.editMeta(meta -> {
             meta.setMaxStackSize(1);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "finishYaoHide");
             meta.displayName(Component.text("§b妖族隐藏任务完结"));
@@ -138,8 +140,8 @@ public final class PINZHENG {
             );
         });
 
-        finishZhanHide.editMeta(meta->{
-            meta.setCustomModelData(1);
+
+        finishZhanHide.editMeta(meta -> {
             meta.setMaxStackSize(1);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "finishZhanHide");
             meta.displayName(Component.text("§b战神族隐藏任务完结"));
@@ -152,7 +154,7 @@ public final class PINZHENG {
 
 
         ItemMeta yemingzhuMeta = yemingzhu.getItemMeta();
-        yemingzhuMeta.setCustomModelData(4);
+
         yemingzhuMeta.setMaxStackSize(1);
         yemingzhuMeta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yemingzhu");
         yemingzhuMeta.displayName(
@@ -166,7 +168,7 @@ public final class PINZHENG {
         yemingzhu.setItemMeta(yemingzhuMeta);
 
         ItemMeta yaoshiheMeta = yaoshihe.getItemMeta();
-        yaoshiheMeta.setCustomModelData(12);
+
         yaoshiheMeta.setMaxStackSize(1);
         yaoshiheMeta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yaoshihe");
         yaoshiheMeta.displayName(
@@ -182,7 +184,7 @@ public final class PINZHENG {
         yaoshihe.setItemMeta(yaoshiheMeta);
 
         ItemMeta yaoshihe2Meta = yaoshihe2.getItemMeta();
-        yaoshihe2Meta.setCustomModelData(12);
+
         yaoshihe2Meta.setMaxStackSize(1);
         yaoshihe2Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yaoshihe2");
         yaoshihe2Meta.displayName(
@@ -198,7 +200,7 @@ public final class PINZHENG {
         yaoshihe2.setItemMeta(yaoshihe2Meta);
 
         ItemMeta yaoshihe3Meta = yaoshihe3.getItemMeta();
-        yaoshihe3Meta.setCustomModelData(12);
+
         yaoshihe3Meta.setMaxStackSize(1);
         yaoshihe3Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yaoshihe3");
         yaoshihe3Meta.displayName(
@@ -215,7 +217,7 @@ public final class PINZHENG {
 
 
         ItemMeta yushi1Meta = yushi1.getItemMeta();
-        yushi1Meta.setCustomModelData(5);
+
         yushi1Meta.setMaxStackSize(1);
         yushi1Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yushibag1");
         yushi1Meta.displayName(
@@ -230,7 +232,7 @@ public final class PINZHENG {
         yushi1.setItemMeta(yushi1Meta);
 
         ItemMeta yushi2Meta = yushi2.getItemMeta();
-        yushi2Meta.setCustomModelData(5);
+
         yushi2Meta.setMaxStackSize(1);
         yushi2Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yushibag2");
         yushi2Meta.displayName(
@@ -245,7 +247,7 @@ public final class PINZHENG {
         yushi2.setItemMeta(yushi2Meta);
 
         ItemMeta yushi3Meta = yushi3.getItemMeta();
-        yushi3Meta.setCustomModelData(5);
+
         yushi3Meta.setMaxStackSize(1);
         yushi3Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yushibag3");
         yushi3Meta.displayName(
@@ -260,7 +262,7 @@ public final class PINZHENG {
         yushi3.setItemMeta(yushi3Meta);
 
         ItemMeta yushi4Meta = yushi4.getItemMeta();
-        yushi4Meta.setCustomModelData(5);
+
         yushi4Meta.setMaxStackSize(1);
         yushi4Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yushibag4");
         yushi4Meta.displayName(
@@ -275,7 +277,7 @@ public final class PINZHENG {
         yushi4.setItemMeta(yushi4Meta);
 
         ItemMeta yushi5Meta = yushi5.getItemMeta();
-        yushi5Meta.setCustomModelData(5);
+
         yushi5Meta.setMaxStackSize(1);
         yushi5Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yushibag5");
         yushi5Meta.displayName(
@@ -290,7 +292,7 @@ public final class PINZHENG {
         yushi5.setItemMeta(yushi5Meta);
 
         ItemMeta yushi6Meta = yushi6.getItemMeta();
-        yushi6Meta.setCustomModelData(18);
+
         yushi6Meta.setMaxStackSize(1);
         yushi6Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yushibag6");
         yushi6Meta.displayName(
@@ -305,7 +307,7 @@ public final class PINZHENG {
         yushi6.setItemMeta(yushi6Meta);
 
         ItemMeta yushi7Meta = yushi7.getItemMeta();
-        yushi7Meta.setCustomModelData(18);
+
         yushi7Meta.setMaxStackSize(1);
         yushi7Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yushibag7");
         yushi7Meta.displayName(
@@ -321,7 +323,7 @@ public final class PINZHENG {
 
 
         ItemMeta yushi8Meta = yushi8.getItemMeta();
-        yushi8Meta.setCustomModelData(18);
+
         yushi8Meta.setMaxStackSize(1);
         yushi8Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yushibag8");
         yushi8Meta.displayName(
@@ -336,7 +338,6 @@ public final class PINZHENG {
         yushi8.setItemMeta(yushi8Meta);
 
 
-        qkd1Unlock.setCustomModelData(1);
         ItemMeta itemMetaqkd1Unlock = qkd1Unlock.getItemMeta();
         itemMetaqkd1Unlock.setMaxStackSize(1);
         itemMetaqkd1Unlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qkd1unlock");
@@ -350,7 +351,7 @@ public final class PINZHENG {
         );
         qkd1Unlock.setItemMeta(itemMetaqkd1Unlock);
 
-        qkd2Unlock.setCustomModelData(1);
+
         ItemMeta itemMetaqkd2Unlock = qkd2Unlock.getItemMeta();
         itemMetaqkd2Unlock.setMaxStackSize(1);
         itemMetaqkd2Unlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qkd2unlock");
@@ -364,7 +365,7 @@ public final class PINZHENG {
         );
         qkd2Unlock.setItemMeta(itemMetaqkd2Unlock);
 
-        qkd3Unlock.setCustomModelData(1);
+
         ItemMeta itemMetaqkd3Unlock = qkd3Unlock.getItemMeta();
         itemMetaqkd3Unlock.setMaxStackSize(1);
         itemMetaqkd3Unlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qkd3unlock");
@@ -378,7 +379,7 @@ public final class PINZHENG {
         );
         qkd3Unlock.setItemMeta(itemMetaqkd3Unlock);
 
-        qkd4Unlock.setCustomModelData(1);
+
         ItemMeta itemMetaqkd4Unlock = qkd4Unlock.getItemMeta();
         itemMetaqkd4Unlock.setMaxStackSize(1);
         itemMetaqkd4Unlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qkd4unlock");
@@ -392,7 +393,7 @@ public final class PINZHENG {
         );
         qkd4Unlock.setItemMeta(itemMetaqkd4Unlock);
 
-        qkd6Unlock.setCustomModelData(1);
+
         ItemMeta itemMetaqkd6Unlock = qkd6Unlock.getItemMeta();
         itemMetaqkd6Unlock.setMaxStackSize(1);
         itemMetaqkd6Unlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qkd6unlock");
@@ -406,7 +407,7 @@ public final class PINZHENG {
         );
         qkd6Unlock.setItemMeta(itemMetaqkd6Unlock);
 
-        qkd7Unlock.setCustomModelData(1);
+
         ItemMeta itemMetaqkd7Unlock = qkd7Unlock.getItemMeta();
         itemMetaqkd7Unlock.setMaxStackSize(1);
         itemMetaqkd7Unlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qkd7unlock");
@@ -420,7 +421,7 @@ public final class PINZHENG {
         );
         qkd7Unlock.setItemMeta(itemMetaqkd7Unlock);
 
-        qkd8Unlock.setCustomModelData(1);
+
         ItemMeta itemMetaqkd8Unlock = qkd8Unlock.getItemMeta();
         itemMetaqkd8Unlock.setMaxStackSize(1);
         itemMetaqkd8Unlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qkd8unlock");
@@ -434,7 +435,7 @@ public final class PINZHENG {
         );
         qkd8Unlock.setItemMeta(itemMetaqkd8Unlock);
 
-        qkd9Unlock.setCustomModelData(1);
+
         ItemMeta itemMetaqkd9Unlock = qkd9Unlock.getItemMeta();
         itemMetaqkd9Unlock.setMaxStackSize(1);
         itemMetaqkd9Unlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qkd9unlock");
@@ -448,7 +449,7 @@ public final class PINZHENG {
         );
         qkd9Unlock.setItemMeta(itemMetaqkd9Unlock);
 
-        qkd10Unlock.setCustomModelData(1);
+
         ItemMeta itemMetaqkd10Unlock = qkd10Unlock.getItemMeta();
         itemMetaqkd10Unlock.setMaxStackSize(1);
         itemMetaqkd10Unlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qkd10unlock");
@@ -462,7 +463,7 @@ public final class PINZHENG {
         );
         qkd10Unlock.setItemMeta(itemMetaqkd10Unlock);
 
-        qkd11Unlock.setCustomModelData(1);
+
         ItemMeta itemMetaqkd11Unlock = qkd11Unlock.getItemMeta();
         itemMetaqkd11Unlock.setMaxStackSize(1);
         itemMetaqkd11Unlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qkd11unlock");
@@ -476,7 +477,7 @@ public final class PINZHENG {
         );
         qkd11Unlock.setItemMeta(itemMetaqkd11Unlock);
 
-        qkd12Unlock.setCustomModelData(1);
+
         ItemMeta itemMetaqkd12Unlock = qkd12Unlock.getItemMeta();
         itemMetaqkd12Unlock.setMaxStackSize(1);
         itemMetaqkd12Unlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qkd12unlock");
@@ -490,7 +491,7 @@ public final class PINZHENG {
         );
         qkd12Unlock.setItemMeta(itemMetaqkd12Unlock);
 
-        qkd13Unlock.setCustomModelData(1);
+
         ItemMeta itemMetaqkd13Unlock = qkd13Unlock.getItemMeta();
         itemMetaqkd13Unlock.setMaxStackSize(1);
         itemMetaqkd13Unlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qkd13unlock");
@@ -504,7 +505,7 @@ public final class PINZHENG {
         );
         qkd13Unlock.setItemMeta(itemMetaqkd13Unlock);
 
-        qkd14Unlock.setCustomModelData(1);
+
         ItemMeta itemMetaqkd14Unlock = qkd14Unlock.getItemMeta();
         itemMetaqkd14Unlock.setMaxStackSize(1);
         itemMetaqkd14Unlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qkd14unlock");
@@ -518,7 +519,7 @@ public final class PINZHENG {
         );
         qkd14Unlock.setItemMeta(itemMetaqkd14Unlock);
 
-        qkd15Unlock.setCustomModelData(1);
+
         ItemMeta itemMetaqkd15Unlock = qkd15Unlock.getItemMeta();
         itemMetaqkd15Unlock.setMaxStackSize(1);
         itemMetaqkd15Unlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qkd15unlock");
@@ -532,7 +533,7 @@ public final class PINZHENG {
         );
         qkd15Unlock.setItemMeta(itemMetaqkd15Unlock);
 
-        qkd16Unlock.setCustomModelData(1);
+
         ItemMeta itemMetaqkd16Unlock = qkd16Unlock.getItemMeta();
         itemMetaqkd16Unlock.setMaxStackSize(1);
         itemMetaqkd16Unlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qkd16unlock");
@@ -546,7 +547,7 @@ public final class PINZHENG {
         );
         qkd16Unlock.setItemMeta(itemMetaqkd16Unlock);
 
-        qkd17Unlock.setCustomModelData(1);
+
         ItemMeta itemMetaqkd17Unlock = qkd17Unlock.getItemMeta();
         itemMetaqkd17Unlock.setMaxStackSize(1);
         itemMetaqkd17Unlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qkd17unlock");
@@ -560,7 +561,7 @@ public final class PINZHENG {
         );
         qkd17Unlock.setItemMeta(itemMetaqkd17Unlock);
 
-        qkd18Unlock.setCustomModelData(1);
+
         ItemMeta itemMetaqkd18Unlock = qkd18Unlock.getItemMeta();
         itemMetaqkd18Unlock.setMaxStackSize(1);
         itemMetaqkd18Unlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qkd18unlock");
@@ -574,7 +575,7 @@ public final class PINZHENG {
         );
         qkd18Unlock.setItemMeta(itemMetaqkd18Unlock);
 
-        hunyuandaiUnlock.setCustomModelData(1);
+
         ItemMeta itemMetahunyuandaiUnlock = hunyuandaiUnlock.getItemMeta();
         itemMetahunyuandaiUnlock.setMaxStackSize(1);
         itemMetahunyuandaiUnlock.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "hunyuandaiunlock");
@@ -588,7 +589,7 @@ public final class PINZHENG {
         );
         hunyuandaiUnlock.setItemMeta(itemMetahunyuandaiUnlock);
 
-        shipincao1.setCustomModelData(1);
+
         ItemMeta itemMetashipincao1 = shipincao1.getItemMeta();
         itemMetashipincao1.setMaxStackSize(1);
         itemMetashipincao1.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shipincao1");
@@ -605,7 +606,6 @@ public final class PINZHENG {
         // 创建2-7的饰品槽钻孔器代码
 
 
-        shipincao2.setCustomModelData(1);
         ItemMeta itemMetashipincao2 = shipincao2.getItemMeta();
         itemMetashipincao2.setMaxStackSize(1);
         itemMetashipincao2.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shipincao2");
@@ -620,7 +620,6 @@ public final class PINZHENG {
         shipincao2.setItemMeta(itemMetashipincao2);
 
 
-        shipincao3.setCustomModelData(1);
         ItemMeta itemMetashipincao3 = shipincao3.getItemMeta();
         itemMetashipincao3.setMaxStackSize(1);
         itemMetashipincao3.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shipincao3");
@@ -634,7 +633,7 @@ public final class PINZHENG {
         );
         shipincao3.setItemMeta(itemMetashipincao3);
 
-        shipincao4.setCustomModelData(1);
+
         ItemMeta itemMetashipincao4 = shipincao4.getItemMeta();
         itemMetashipincao4.setMaxStackSize(1);
         itemMetashipincao4.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shipincao4");
@@ -649,7 +648,6 @@ public final class PINZHENG {
         shipincao4.setItemMeta(itemMetashipincao4);
 
 
-        shipincao5.setCustomModelData(1);
         ItemMeta itemMetashipincao5 = shipincao5.getItemMeta();
         itemMetashipincao5.setMaxStackSize(1);
         itemMetashipincao5.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shipincao5");
@@ -664,7 +662,6 @@ public final class PINZHENG {
         shipincao5.setItemMeta(itemMetashipincao5);
 
 
-        shipincao6.setCustomModelData(1);
         ItemMeta itemMetashipincao6 = shipincao6.getItemMeta();
         itemMetashipincao6.setMaxStackSize(1);
         itemMetashipincao6.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shipincao6");
@@ -679,7 +676,6 @@ public final class PINZHENG {
         shipincao6.setItemMeta(itemMetashipincao6);
 
 
-        shipincao7.setCustomModelData(1);
         ItemMeta itemMetashipincao7 = shipincao7.getItemMeta();
         itemMetashipincao7.setMaxStackSize(1);
         itemMetashipincao7.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shipincao7");
@@ -693,7 +689,7 @@ public final class PINZHENG {
         );
         shipincao7.setItemMeta(itemMetashipincao7);
 
-        shipincao8.setCustomModelData(1);
+
         ItemMeta itemMetashipincao8 = shipincao8.getItemMeta();
         itemMetashipincao8.setMaxStackSize(1);
         itemMetashipincao8.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shipincao8");
@@ -707,7 +703,7 @@ public final class PINZHENG {
         );
         shipincao8.setItemMeta(itemMetashipincao8);
 
-        chonghua2.setCustomModelData(1);
+
         ItemMeta itemMetachonghua2 = chonghua2.getItemMeta();
         itemMetachonghua2.setMaxStackSize(1);
         itemMetachonghua2.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "chonghua2");
@@ -723,7 +719,7 @@ public final class PINZHENG {
         chonghua2.setItemMeta(itemMetachonghua2);
 
         // 3阶重华晶
-        chonghua3.setCustomModelData(1);
+
         ItemMeta itemMetachonghua3 = chonghua3.getItemMeta();
         itemMetachonghua3.setMaxStackSize(1);
         itemMetachonghua3.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "chonghua3");
@@ -739,7 +735,7 @@ public final class PINZHENG {
         chonghua3.setItemMeta(itemMetachonghua3);
 
 // 4阶重华晶
-        chonghua4.setCustomModelData(1);
+
         ItemMeta itemMetachonghua4 = chonghua4.getItemMeta();
         itemMetachonghua4.setMaxStackSize(1);
         itemMetachonghua4.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "chonghua4");
@@ -755,7 +751,7 @@ public final class PINZHENG {
         chonghua4.setItemMeta(itemMetachonghua4);
 
 // 5阶重华晶
-        chonghua5.setCustomModelData(1);
+
         ItemMeta itemMetachonghua5 = chonghua5.getItemMeta();
         itemMetachonghua5.setMaxStackSize(1);
         itemMetachonghua5.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "chonghua5");
@@ -771,7 +767,7 @@ public final class PINZHENG {
         chonghua5.setItemMeta(itemMetachonghua5);
 
 // 6阶重华晶
-        chonghua6.setCustomModelData(1);
+
         ItemMeta itemMetachonghua6 = chonghua6.getItemMeta();
         itemMetachonghua6.setMaxStackSize(1);
         itemMetachonghua6.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "chonghua6");
@@ -787,7 +783,7 @@ public final class PINZHENG {
         chonghua6.setItemMeta(itemMetachonghua6);
 
 // 7阶重华晶
-        chonghua7.setCustomModelData(1);
+
         ItemMeta itemMetachonghua7 = chonghua7.getItemMeta();
         itemMetachonghua7.setMaxStackSize(1);
         itemMetachonghua7.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "chonghua7");
@@ -803,7 +799,7 @@ public final class PINZHENG {
         chonghua7.setItemMeta(itemMetachonghua7);
 
 // 8阶重华晶
-        chonghua8.setCustomModelData(1);
+
         ItemMeta itemMetachonghua8 = chonghua8.getItemMeta();
         itemMetachonghua8.setMaxStackSize(1);
         itemMetachonghua8.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "chonghua8");
@@ -819,7 +815,7 @@ public final class PINZHENG {
         chonghua8.setItemMeta(itemMetachonghua8);
 
 // 9阶重华晶
-        chonghua9.setCustomModelData(1);
+
         ItemMeta itemMetachonghua9 = chonghua9.getItemMeta();
         itemMetachonghua9.setMaxStackSize(1);
         itemMetachonghua9.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "chonghua9");
@@ -835,7 +831,7 @@ public final class PINZHENG {
         chonghua9.setItemMeta(itemMetachonghua9);
 
 // 10阶重华晶
-        chonghua10.setCustomModelData(1);
+
         ItemMeta itemMetachonghua10 = chonghua10.getItemMeta();
         itemMetachonghua10.setMaxStackSize(1);
         itemMetachonghua10.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "chonghua10");
@@ -851,7 +847,7 @@ public final class PINZHENG {
         chonghua10.setItemMeta(itemMetachonghua10);
 
 // 11阶重华晶
-        chonghua11.setCustomModelData(1);
+
         ItemMeta itemMetachonghua11 = chonghua11.getItemMeta();
         itemMetachonghua11.setMaxStackSize(1);
         itemMetachonghua11.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "chonghua11");
@@ -866,7 +862,7 @@ public final class PINZHENG {
         );
         chonghua11.setItemMeta(itemMetachonghua11);
 
-        BanHeYueBin.setCustomModelData(2);
+
         ItemMeta itemMeta17 = BanHeYueBin.getItemMeta();
         itemMeta17.setMaxStackSize(1);
         itemMeta17.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "banheyuebin");
@@ -881,7 +877,7 @@ public final class PINZHENG {
         );
         BanHeYueBin.setItemMeta(itemMeta17);
 
-        YiHeYueBin.setCustomModelData(3);
+
         ItemMeta itemMeta18 = YiHeYueBin.getItemMeta();
         itemMeta18.setMaxStackSize(1);
         itemMeta18.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yiheyuebin");
@@ -895,5 +891,61 @@ public final class PINZHENG {
                 )
         );
         YiHeYueBin.setItemMeta(itemMeta18);
+        YiHeYueBin.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/3"));
+        BanHeYueBin.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/2"));
+        chonghua11.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        chonghua10.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        chonghua9.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        chonghua8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        chonghua7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        chonghua6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        chonghua5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        chonghua4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        chonghua3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        chonghua2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        shipincao8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        shipincao7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        shipincao6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        shipincao5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        shipincao4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        shipincao3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        shipincao2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        shipincao1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        hunyuandaiUnlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        qkd18Unlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        qkd17Unlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        qkd16Unlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        qkd15Unlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        qkd14Unlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        qkd13Unlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        qkd12Unlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        qkd11Unlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        qkd10Unlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        qkd9Unlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        qkd8Unlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        qkd7Unlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        qkd6Unlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        qkd4Unlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        qkd3Unlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        qkd2Unlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        qkd1Unlock.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        yushi8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/18"));
+        yushi7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/18"));
+        yushi6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/18"));
+        yushi5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/5"));
+        yushi4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/5"));
+        yushi3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/5"));
+        yushi2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/5"));
+        yushi1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/5"));
+        yaoshihe3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/12"));
+        yaoshihe2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/12"));
+        yaoshihe.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/12"));
+        yemingzhu.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/4"));
+        finishZhanHide.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        finishYaoHide.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        finishRenHide.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        finishXianHide.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        finishShenHide.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
+        finishMain.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
     }
 }

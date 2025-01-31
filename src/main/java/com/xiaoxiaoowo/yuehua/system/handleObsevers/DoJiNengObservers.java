@@ -50,7 +50,7 @@ public final class DoJiNengObservers {
             String id = data.slot37.id;
             int level = Integer.parseInt(id.substring(id.length() - 1));
             int value = 4 * (1 << level);
-            double amount = value + player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.1;
+            double amount = value + player.getAttribute(Attribute.MAX_HEALTH).getValue() * 0.1;
             Cure.curePlayer(amount, data);
             double increase = 0.1 * level + 0.1;
 

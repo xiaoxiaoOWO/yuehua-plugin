@@ -468,12 +468,13 @@ public final class GetEntity {
         world.setGameRule(GameRule.TNT_EXPLOSION_DROP_DECAY, true);
         world.setGameRule(GameRule.UNIVERSAL_ANGER, true);
         world.setGameRule(GameRule.WATER_SOURCE_CONVERSION, true);
+        world.setGameRule(GameRule.DISABLE_PLAYER_MOVEMENT_CHECK, true);
     }
 
     public static void helpRayPlayer(Collection<Entity> entities, ArrayList<Player> players, double sizeAdder, Vector startLocation, Vector direction) {
         for (Entity entity : entities) {
             Player player = (Player) entity;
-            double scale = player.getAttribute(Attribute.GENERIC_SCALE).getValue();
+            double scale = player.getAttribute(Attribute.SCALE).getValue();
             //高度：2格
             //宽度：2格
             Vector eyeToEntityFeet = player.getLocation().toVector();
@@ -489,7 +490,7 @@ public final class GetEntity {
     public static void helpRay(Collection<Entity> monsters, ArrayList<Mob> filteredMonsters, double sizeAdder, Vector startLocation, Vector direction) {
         for (Entity entity : monsters) {
             Mob entity1 = (Mob) entity;
-            double scale = entity1.getAttribute(Attribute.GENERIC_SCALE).getValue();
+            double scale = entity1.getAttribute(Attribute.SCALE).getValue();
             switch (entity.getType()) {
                 //生物高度的一半加上去获得中心坐标向量，距离设置为高度宽度平均值一半的平方（避免一个过大造成的严重影响）,再稍微大一点
                 case SILVERFISH -> {

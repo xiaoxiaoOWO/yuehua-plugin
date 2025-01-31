@@ -6,12 +6,14 @@ import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.PlaySound;
 import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import com.xiaoxiaoowo.yuehua.utils.SendInformation;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import io.papermc.paper.persistence.PersistentDataContainerView;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -26,7 +28,6 @@ public class HuiShou {
     static {
         ItemStack QIANZI = new ItemStack(Material.YELLOW_DYE);
         ItemMeta itemMeta1 = QIANZI.getItemMeta();
-        itemMeta1.setCustomModelData(16);
         itemMeta1.displayName(
                 Component.text("拆解钳").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
@@ -37,6 +38,7 @@ public class HuiShou {
                 )
         );
         QIANZI.setItemMeta(itemMeta1);
+        QIANZI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/16"));
         huishou.setItem(8, QIANZI);
     }
 

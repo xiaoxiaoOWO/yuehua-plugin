@@ -2,8 +2,10 @@ package com.xiaoxiaoowo.yuehua.items.other;
 
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 
@@ -22,8 +24,8 @@ public final class Fish {
     public static final ItemStack canjin = new ItemStack(Material.COD);
 
     static {
+
         xueyu.editMeta(meta -> {
-            meta.setCustomModelData(1);
             meta.setMaxStackSize(99);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "xueyu");
             meta.displayName(Component.text("§f鳕鱼"));
@@ -32,8 +34,8 @@ public final class Fish {
             ));
         });
 
+
         guiyu.editMeta(meta -> {
-            meta.setCustomModelData(2);
             meta.setMaxStackSize(99);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "guiyu");
             meta.displayName(Component.text("§a鲑鱼"));
@@ -42,8 +44,8 @@ public final class Fish {
             ));
         });
 
+
         xiaochouyu.editMeta(meta -> {
-            meta.setCustomModelData(3);
             meta.setMaxStackSize(99);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "xiaochouyu");
             meta.displayName(Component.text("§9小丑鱼"));
@@ -52,8 +54,8 @@ public final class Fish {
             ));
         });
 
+
         lanlin.editMeta(meta -> {
-            meta.setCustomModelData(4);
             meta.setMaxStackSize(99);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "lanlinyu");
             meta.displayName(Component.text("§d蓝鳞"));
@@ -62,8 +64,8 @@ public final class Fish {
             ));
         });
 
+
         jinlin.editMeta(meta -> {
-            meta.setCustomModelData(5);
             meta.setMaxStackSize(99);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "jinlinyu");
             meta.displayName(Component.text("§e金鳞"));
@@ -72,8 +74,8 @@ public final class Fish {
             ));
         });
 
+
         miao.editMeta(meta -> {
-            meta.setCustomModelData(6);
             meta.setMaxStackSize(99);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "miaoyu");
             meta.displayName(Component.text("§c魦"));
@@ -82,8 +84,8 @@ public final class Fish {
             ));
         });
 
+
         bawangyu.editMeta(meta -> {
-            meta.setCustomModelData(7);
             meta.setMaxStackSize(99);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "bawangyu");
             meta.displayName(Component.text("§4霸王鱼"));
@@ -92,8 +94,8 @@ public final class Fish {
             ));
         });
 
+
         canjin.editMeta(meta -> {
-            meta.setCustomModelData(8);
             meta.setMaxStackSize(99);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "canjinyu");
             meta.displayName(Component.text("§6灿金"));
@@ -101,5 +103,13 @@ public final class Fish {
                     ComponentSet.RARE8
             ));
         });
+        canjin.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "cod/8"));
+        bawangyu.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "cod/7"));
+        miao.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "cod/6"));
+        jinlin.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "cod/5"));
+        lanlin.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "cod/4"));
+        xiaochouyu.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "cod/3"));
+        guiyu.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "cod/2"));
+        xueyu.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "cod/1"));
     }
 }

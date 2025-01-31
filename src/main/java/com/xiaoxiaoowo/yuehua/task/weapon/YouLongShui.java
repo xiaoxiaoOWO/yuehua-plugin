@@ -43,7 +43,7 @@ public final class YouLongShui extends BukkitRunnable {
 
         //如果x,z相差绝对值小于1.5,y相差绝对值小于0.5
         if (Math.abs(x - pX) < 1.5 && Math.abs(z - pZ) < 1.5 && Math.abs(y - pY) < 0.5) {
-            Cure.curePlayer(0.01 * player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() + 10, data);
+            Cure.curePlayer(0.01 * player.getAttribute(Attribute.MAX_HEALTH).getValue() + 10, data);
         }
 
 

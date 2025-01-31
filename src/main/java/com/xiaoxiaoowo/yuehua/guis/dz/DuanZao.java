@@ -7,12 +7,14 @@ import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import com.xiaoxiaoowo.yuehua.utils.PlaySound;
 import com.xiaoxiaoowo.yuehua.utils.SQL;
 import com.xiaoxiaoowo.yuehua.utils.Scheduler;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -248,7 +250,6 @@ public final class DuanZao implements CommandExecutor {
         recipeDan.setItem(8, Yh.BACK_BEFORE);
 
         ItemMeta itemMeta = CHUIZI.getItemMeta();
-        itemMeta.setCustomModelData(15);
         itemMeta.displayName(
                 Component.text("锻造锤").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
@@ -259,9 +260,9 @@ public final class DuanZao implements CommandExecutor {
                 )
         );
         CHUIZI.setItemMeta(itemMeta);
+        CHUIZI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/15"));
 
         ItemMeta itemMeta1 = QIANZI.getItemMeta();
-        itemMeta1.setCustomModelData(16);
         itemMeta1.displayName(
                 Component.text("镶嵌钳").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
@@ -272,9 +273,9 @@ public final class DuanZao implements CommandExecutor {
                 )
         );
         QIANZI.setItemMeta(itemMeta1);
+        QIANZI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/16"));
 
         ItemMeta itemMeta2 = HUOZHEZI.getItemMeta();
-        itemMeta2.setCustomModelData(17);
         itemMeta2.displayName(
                 Component.text("制丹火").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
@@ -285,9 +286,9 @@ public final class DuanZao implements CommandExecutor {
                 )
         );
         HUOZHEZI.setItemMeta(itemMeta2);
+        HUOZHEZI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/17"));
 
         ItemMeta itemMeta3 = FULINGSHA.getItemMeta();
-        itemMeta3.setCustomModelData(18);
         itemMeta3.displayName(
                 Component.text("附灵砂").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true)
         );
@@ -298,6 +299,7 @@ public final class DuanZao implements CommandExecutor {
                 )
         );
         FULINGSHA.setItemMeta(itemMeta3);
+        FULINGSHA.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/18"));
 
 
         duanzaotai1.setItem(17, CHUIZI);

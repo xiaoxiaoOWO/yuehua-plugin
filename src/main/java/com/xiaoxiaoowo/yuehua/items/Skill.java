@@ -1,6 +1,8 @@
 package com.xiaoxiaoowo.yuehua.items;
 
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 
 public final class Skill {
@@ -9,8 +11,10 @@ public final class Skill {
     public static final ItemStack STAR = new ItemStack(Material.BOWL);
 
     static {
-        MING_YUE.setCustomModelData(1);
-        CHUI_ZI.setCustomModelData(2);
-        STAR.setCustomModelData(3);
+
+
+        STAR.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bowl/3"));
+        CHUI_ZI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bowl/2"));
+        MING_YUE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bowl/1"));
     }
 }

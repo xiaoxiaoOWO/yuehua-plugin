@@ -5,11 +5,12 @@ import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
 import com.xiaoxiaoowo.yuehua.utils.ZeroAttributeModifier;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
-import org.bukkit.attribute.Attribute;
+import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -1564,46 +1565,25 @@ public final class Weapon {
                         .map(obj -> (Component) obj)
                         .collect(Collectors.toList())
         );
+// 战士（PRISMARINE_SHARD）
 
-        metaTaoMuJian.setCustomModelData(1);
-        metaKaiShanDao.setCustomModelData(1001);
-        metaChiTongJian.setCustomModelData(2002);
-        metaPoKongFu.setCustomModelData(1003);
-        metaSanBaoYuRuYi.setCustomModelData(1004);
-        metaXuanYuan.setCustomModelData(1005);
-        metaQinTongJian.setCustomModelData(2001);
-        metaJuTongZhanChui.setCustomModelData(1002);
-        metaTaiJiJian.setCustomModelData(2003);
-        metaKunLunFeiXianJian.setCustomModelData(2004);
-        metaTaiE.setCustomModelData(2005);
-        metaYinYueQiang.setCustomModelData(3001);
-        metaHongYinQiang.setCustomModelData(3002);
-        metaYouLongQiang.setCustomModelData(3003);
-        metaHuTouZhanJinQiang.setCustomModelData(3004);
-        metaRuYiJinGuBang.setCustomModelData(3005);
 
-        metaQinTongGong.setCustomModelData(2);
-        metaYanTieGong.setCustomModelData(3);
-        metaZhongChuiGong.setCustomModelData(4);
-        metaBeiDouMieShenGong.setCustomModelData(5);
-        metaZhuRi.setCustomModelData(6);
-        metaHeiTieNu.setCustomModelData(2);
-        metaHongLinNu.setCustomModelData(3);
-        metaJiaoLongNu.setCustomModelData(4);
-        metaRiYueLiuXingNu.setCustomModelData(5);
-        metaLiangYi.setCustomModelData(5);
-        metaFuRongGong.setCustomModelData(2);
-        metaHongLuanGong.setCustomModelData(3);
-        metaTianQiongGong.setCustomModelData(4);
-        metaSheTianZhuiYueGong.setCustomModelData(5);
-        metaLiuGuang.setCustomModelData(5);
+// 金钟（PRISMARINE_SHARD）
 
-        metaHeiTieGuo.setCustomModelData(1);
-        metaQinTongGuo.setCustomModelData(1);
-        metaLianDanLu.setCustomModelData(2);
-        metaSuoHunLu.setCustomModelData(3);
-        metaQiShaDing.setCustomModelData(4);
-        metaHunYuanShenDing.setCustomModelData(5);
+
+// 探云（PRISMARINE_SHARD）
+
+
+// 弓箭手（BOW）
+
+
+// 游侠（CROSSBOW）
+
+
+// 灵箭（BOW）
+
+
+// 炼丹师（RABBIT_HIDE）
 
 
         TAO_MU_JIAN.setItemMeta(metaTaoMuJian);
@@ -1648,7 +1628,46 @@ public final class Weapon {
         HUN_YUAN_SHEN_DING.setItemMeta(metaHunYuanShenDing);
 
 
+        HUN_YUAN_SHEN_DING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/5"));
+        QI_SHA_DING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/4"));
+        SUO_HUN_LU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/3"));
+        LIAN_DAN_LU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/2"));
+        QIN_TONG_GUO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/1"));
+        HEI_TIE_GUO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/1"));
+        LIU_GUANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/5"));
+        SHE_TIAN_ZHUI_YUE_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/5"));
+        TIAN_QIONG_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/4"));
+        HONG_LUAN_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/3"));
+        FU_RONG_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/2"));
+        LIANG_YI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "crossbow/6"));
+        RI_YUE_LIU_XING_NU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "crossbow/5"));
+        JIAO_LONG_NU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "crossbow/4"));
+        HONG_LIN_NU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "crossbow/3"));
+        HEI_TIE_NU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "crossbow/2"));
+        ZHU_RI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/6"));
+        BEI_DOU_MIE_SHEN_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/5"));
+        ZHONG_CHUI_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/4"));
+        YAN_TIE_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/3"));
+        QIN_TONG_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/2"));
+        TENG_MU_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/1"));
+        RU_YI_JIN_GU_BANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/3005"));
+        HU_TOU_ZHAN_JIN_QIANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/3004"));
+        YOU_LONG_QIANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/3003"));
+        HONG_YIN_QIANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/3002"));
+        YIN_YUE_QIANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/3001"));
+        TAI_E.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/2005"));
+        KUN_LUN_FEI_XIAN_JIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/2004"));
+        TAI_JI_JIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/2003"));
+        CHI_TONG_JIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/2002"));
+        QIN_TONG_JIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/2001"));
+        XUAN_YUAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/1005"));
+        SAN_BAO_YU_RU_YI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/1004"));
+        PO_KONG_FU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/1003"));
+        JU_TONG_ZHAN_CHUI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/1002"));
+        KAI_SHAN_DAO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/1001"));
+        TAO_MU_JIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/1"));
     }
+
 
     public static void putId() {
         Recipe.idToItem.put("taoMuJian", TAO_MU_JIAN);

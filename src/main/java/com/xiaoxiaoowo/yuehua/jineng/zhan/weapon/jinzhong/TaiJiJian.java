@@ -28,7 +28,7 @@ public final class TaiJiJian {
         boolean isDay = GetEntity.world.isDayTime();
 
         Player player = zhanData.player;
-        double damage = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 1.5 * multiplier;
+        double damage = player.getAttribute(Attribute.MAX_HEALTH).getValue() * 1.5 * multiplier;
         for (Entity entity : GetEntity.getMonsters(player.getLocation(), 7, 7, 7)) {
             MonsterData monsterData = Yuehua.monsterData.get(entity.getUniqueId());
             Damage.damageMonster(zhanData, damage, monsterData);
@@ -36,7 +36,7 @@ public final class TaiJiJian {
                 ParticleUtils.atMonsterDust(monsterData.monster, whiteDust);
                 Scheduler.syncLater(() -> {
                     if (entity.isDead()) {
-                        Cure.curePlayer(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.025 + 15, zhanData);
+                        Cure.curePlayer(player.getAttribute(Attribute.MAX_HEALTH).getValue() * 0.025 + 15, zhanData);
                     }
                 }, 2 * 20);
             } else {

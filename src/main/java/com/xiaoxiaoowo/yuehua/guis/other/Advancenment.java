@@ -11,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
+import java.util.Set;
 
 public final class Advancenment {
     public static final Inventory ADV1 = Bukkit.createInventory(null, 54, Component.text("忠烈祠藏品").color(NamedTextColor.AQUA));
@@ -45,6 +46,8 @@ public final class Advancenment {
     public static final List<Integer> points3 = List.of(
             10000, 14000, 18000, 22000, 26000, 30000, 34000, 38000, 42000
     );
+
+    public static final Set<String> keyIds = Set.of("yaoshihe", "yaoshihe2", "yaoshihe3");
 
 
     static {

@@ -4,12 +4,12 @@ import com.xiaoxiaoowo.yuehua.attribute.AttributeSet;
 import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
-import com.xiaoxiaoowo.yuehua.utils.ZeroAttributeModifier;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
-import org.bukkit.attribute.Attribute;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -349,7 +349,6 @@ public final class Fabao {
         pdcduohuntang.set(DataContainer.slot, PersistentDataType.INTEGER, 2);
         pdcmoyuanfozhu.set(DataContainer.slot, PersistentDataType.INTEGER, 2);
         pdcfuxinruyi.set(DataContainer.slot, PersistentDataType.INTEGER, 2);
-
 
 
         pdclvyexianzong.set(DataContainer.slot, PersistentDataType.INTEGER, 2);
@@ -1270,56 +1269,33 @@ public final class Fabao {
         );
 
 
-        zhaoyaojinMeta.setCustomModelData(1);
-        yufuchenMeta.setCustomModelData(2);
-        wusebutianshiMeta.setCustomModelData(3);
-        yaowanghuluMeta.setCustomModelData(4);
-        cixinmiaolianMeta.setCustomModelData(5);
-        shenxinyuguMeta.setCustomModelData(6);
-        yinyangzhanlongjianMeta.setCustomModelData(7);
-        yunlangbanMeta.setCustomModelData(8);
-        zhenhunyuxiaoMeta.setCustomModelData(9);
-        dikuihualanMeta.setCustomModelData(10);
-        xuanfengzongshanMeta.setCustomModelData(11);
-        taijibaguaMeta.setCustomModelData(12);
+        // PRISMARINE_CRYSTALS 系列
 
-        juedoulingMeta.setCustomModelData(7001);
-        leimingguMeta.setCustomModelData(7002);
-        huansilinMeta.setCustomModelData(7003);
-        niumonuhouMeta.setCustomModelData(7004);
-        douqishiMeta.setCustomModelData(7101);
-        panguanbiMeta.setCustomModelData(7102);
-        minshengjianMeta.setCustomModelData(7103);
-        zhenleitianchuiMeta.setCustomModelData(7104);
 
-        diohunganMeta.setCustomModelData(8001);
-        shelinzhuMeta.setCustomModelData(8002);
-        yujinpinMeta.setCustomModelData(8003);
-        tianjishenjinMeta.setCustomModelData(8004);
-        ruiyingyanMeta.setCustomModelData(8101);
-        duohuntangMeta.setCustomModelData(8102);
-        moyuanfozhuMeta.setCustomModelData(8103);
-        fuxinruyiMeta.setCustomModelData(8104);
+// PRISMARINE_SHARD 系列
+// 分支一，吸引仇恨
 
-        lvyexianzongMeta.setCustomModelData(9001);
-        qingnvhuanshuangMeta.setCustomModelData(9002);
-        zhurongkuyanMeta.setCustomModelData(9003);
-        zhudianxuanjingMeta.setCustomModelData(9004);
 
-        buhunwangMeta.setCustomModelData(9101);
-        yangshoujianMeta.setCustomModelData(9102);
-        wumingmoyinluoMeta.setCustomModelData(9103);
-        shetianhuaxuelingMeta.setCustomModelData(9104);
+// 分支二，增伤
 
-        kuyelingMeta.setCustomModelData(9201);
-        luobeijinpinMeta.setCustomModelData(9202);
-        pinyushuiyuMeta.setCustomModelData(9203);
-        dikongymoquanMeta.setCustomModelData(9204);
 
-        luanshenguMeta.setCustomModelData(9301);
-        jingulianMeta.setCustomModelData(9302);
-        jianchangulinMeta.setCustomModelData(9303);
-        moduohunfanMeta.setCustomModelData(9304);
+// 分支一，制造傀儡
+
+
+// 分支二，增伤
+
+
+// 分支一，单点（直线）伤害
+
+
+// 分支二，群体伤害
+
+
+// 分支三，辅助队友
+
+
+// 分支四，削弱敌人
+
 
         ZHAOYAOJIN.setItemMeta(zhaoyaojinMeta);
         YUFUCHEN.setItemMeta(yufuchenMeta);
@@ -1367,11 +1343,55 @@ public final class Fabao {
         MODUOHUNFAN.setItemMeta(moduohunfanMeta);
 
 
+        MODUOHUNFAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9304"));
+        JIANCHANGULIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9303"));
+        JINGULIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9302"));
+        LUANSHENGU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9301"));
+        DIKONGYUMOQUAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9204"));
+        PINYUSHUIYU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9203"));
+        LUOBEIJINPIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9202"));
+        KUYELING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9201"));
+        SHETIANHUAXUELING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9104"));
+        WUMINGMOYINLUO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9103"));
+        YANGSHOUJIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9102"));
+        BUHUNWANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9101"));
+        ZHUDIANXUANJING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9004"));
+        ZHURONGKUYAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9003"));
+        QINGNVHANSHUANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9002"));
+        LVYEXIANZONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9001"));
+        FUXINRUYI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/8104"));
+        MOYUANFOZHU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/8103"));
+        DUOHUNTANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/8102"));
+        RUIYINGYAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/8101"));
+        TIANJISHENJIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/8004"));
+        YUJINPIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/8003"));
+        SHELINZHU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/8002"));
+        DIAOHUNGAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/8001"));
+        ZHENLEITIANCHUI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/7104"));
+        MINSHENGJIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/7103"));
+        PANGUANBI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/7102"));
+        DOUQISHI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/7101"));
+        NIUMONUHOU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/7004"));
+        HUANSILIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/7003"));
+        LEIMINGGU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/7002"));
+        JUEDOULING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/7001"));
+        TAIJIBAGUA.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/12"));
+        XUANFENGZONGSHAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/11"));
+        DIKUIHUALAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/10"));
+        ZHENHUNYUXIAO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/9"));
+        YUNLANGBAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/8"));
+        YINYANGZHANLONGJIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/7"));
+        SHENXINYUGU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/6"));
+        CIXINMIAOLIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/5"));
+        YAOWANGHULU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/4"));
+        WUSEBUTIANSHI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/3"));
+        YUFUCHEN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/2"));
+        ZHAOYAOJIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/1"));
     }
 
-    public static void putId(){
-        Recipe.idToItem.put("zhaoYaoJin",ZHAOYAOJIN);
-        Recipe.idToItem.put("yuFuChen",YUFUCHEN);
+    public static void putId() {
+        Recipe.idToItem.put("zhaoYaoJin", ZHAOYAOJIN);
+        Recipe.idToItem.put("yuFuChen", YUFUCHEN);
         Recipe.idToItem.put("wuSeBuTianShi", WUSEBUTIANSHI);
 
         Recipe.idToItem.put("yaoWangHuLu", YAOWANGHULU);

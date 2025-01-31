@@ -2,10 +2,12 @@ package com.xiaoxiaoowo.yuehua.items.dz;
 
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
@@ -145,122 +147,7 @@ public final class YuShi {
 
 
     static {
-        XUE_SE_SHI1.setCustomModelData(1);
-        XUE_SE_SHI2.setCustomModelData(2);
-        XUE_SE_SHI3.setCustomModelData(3);
-        XUE_SE_SHI4.setCustomModelData(4);
-        XUE_SE_SHI5.setCustomModelData(5);
-        XUE_SE_SHI6.setCustomModelData(6);
-        XUE_SE_SHI7.setCustomModelData(7);
-        XUE_SE_SHI8.setCustomModelData(8);
 
-        CUI_LV_SHI1.setCustomModelData(9);
-        CUI_LV_SHI2.setCustomModelData(10);
-        CUI_LV_SHI3.setCustomModelData(11);
-        CUI_LV_SHI4.setCustomModelData(12);
-        CUI_LV_SHI5.setCustomModelData(13);
-        CUI_LV_SHI6.setCustomModelData(14);
-        CUI_LV_SHI7.setCustomModelData(15);
-        CUI_LV_SHI8.setCustomModelData(16);
-
-        DIAN_LAN_SHI1.setCustomModelData(17);
-        DIAN_LAN_SHI2.setCustomModelData(18);
-        DIAN_LAN_SHI3.setCustomModelData(19);
-        DIAN_LAN_SHI4.setCustomModelData(20);
-        DIAN_LAN_SHI5.setCustomModelData(21);
-        DIAN_LAN_SHI6.setCustomModelData(22);
-        DIAN_LAN_SHI7.setCustomModelData(23);
-        DIAN_LAN_SHI8.setCustomModelData(24);
-
-        JIN_HUANG_SHI1.setCustomModelData(25);
-        JIN_HUANG_SHI2.setCustomModelData(26);
-        JIN_HUANG_SHI3.setCustomModelData(27);
-        JIN_HUANG_SHI4.setCustomModelData(28);
-        JIN_HUANG_SHI5.setCustomModelData(29);
-        JIN_HUANG_SHI6.setCustomModelData(30);
-        JIN_HUANG_SHI7.setCustomModelData(31);
-        JIN_HUANG_SHI8.setCustomModelData(32);
-
-        HOU_TU_SHI1.setCustomModelData(33);
-        HOU_TU_SHI2.setCustomModelData(34);
-        HOU_TU_SHI3.setCustomModelData(35);
-        HOU_TU_SHI4.setCustomModelData(36);
-        HOU_TU_SHI5.setCustomModelData(37);
-        HOU_TU_SHI6.setCustomModelData(38);
-        HOU_TU_SHI7.setCustomModelData(39);
-        HOU_TU_SHI8.setCustomModelData(40);
-
-        ZI_JING_SHI1.setCustomModelData(41);
-        ZI_JING_SHI2.setCustomModelData(42);
-        ZI_JING_SHI3.setCustomModelData(43);
-        ZI_JING_SHI4.setCustomModelData(44);
-        ZI_JING_SHI5.setCustomModelData(45);
-        ZI_JING_SHI6.setCustomModelData(46);
-        ZI_JING_SHI7.setCustomModelData(47);
-        ZI_JING_SHI8.setCustomModelData(48);
-
-        TU_LU_SHI1.setCustomModelData(49);
-        TU_LU_SHI2.setCustomModelData(50);
-        TU_LU_SHI3.setCustomModelData(51);
-        TU_LU_SHI4.setCustomModelData(52);
-        TU_LU_SHI5.setCustomModelData(53);
-        TU_LU_SHI6.setCustomModelData(54);
-        TU_LU_SHI7.setCustomModelData(55);
-        TU_LU_SHI8.setCustomModelData(56);
-
-        HONG_YUE_SHI1.setCustomModelData(57);
-        HONG_YUE_SHI2.setCustomModelData(58);
-        HONG_YUE_SHI3.setCustomModelData(59);
-        HONG_YUE_SHI4.setCustomModelData(60);
-        HONG_YUE_SHI5.setCustomModelData(61);
-        HONG_YUE_SHI6.setCustomModelData(62);
-        HONG_YUE_SHI7.setCustomModelData(63);
-        HONG_YUE_SHI8.setCustomModelData(64);
-
-        MI_YIN_SHI1.setCustomModelData(65);
-        MI_YIN_SHI2.setCustomModelData(66);
-        MI_YIN_SHI3.setCustomModelData(67);
-        MI_YIN_SHI4.setCustomModelData(68);
-        MI_YIN_SHI5.setCustomModelData(69);
-        MI_YIN_SHI6.setCustomModelData(70);
-        MI_YIN_SHI7.setCustomModelData(71);
-        MI_YIN_SHI8.setCustomModelData(72);
-
-        YU_LU_SHI1.setCustomModelData(73);
-        YU_LU_SHI2.setCustomModelData(74);
-        YU_LU_SHI3.setCustomModelData(75);
-        YU_LU_SHI4.setCustomModelData(76);
-        YU_LU_SHI5.setCustomModelData(77);
-        YU_LU_SHI6.setCustomModelData(78);
-        YU_LU_SHI7.setCustomModelData(79);
-        YU_LU_SHI8.setCustomModelData(80);
-
-        BING_SHUANG_SHI1.setCustomModelData(81);
-        BING_SHUANG_SHI2.setCustomModelData(82);
-        BING_SHUANG_SHI3.setCustomModelData(83);
-        BING_SHUANG_SHI4.setCustomModelData(84);
-        BING_SHUANG_SHI5.setCustomModelData(85);
-        BING_SHUANG_SHI6.setCustomModelData(86);
-        BING_SHUANG_SHI7.setCustomModelData(87);
-        BING_SHUANG_SHI8.setCustomModelData(88);
-
-        YAN_YANG_SHI1.setCustomModelData(89);
-        YAN_YANG_SHI2.setCustomModelData(90);
-        YAN_YANG_SHI3.setCustomModelData(91);
-        YAN_YANG_SHI4.setCustomModelData(92);
-        YAN_YANG_SHI5.setCustomModelData(93);
-        YAN_YANG_SHI6.setCustomModelData(94);
-        YAN_YANG_SHI7.setCustomModelData(95);
-        YAN_YANG_SHI8.setCustomModelData(96);
-
-        SUI_YAN_SHI1.setCustomModelData(97);
-        SUI_YAN_SHI2.setCustomModelData(98);
-        SUI_YAN_SHI3.setCustomModelData(99);
-        SUI_YAN_SHI4.setCustomModelData(100);
-        SUI_YAN_SHI5.setCustomModelData(101);
-        SUI_YAN_SHI6.setCustomModelData(102);
-        SUI_YAN_SHI7.setCustomModelData(103);
-        SUI_YAN_SHI8.setCustomModelData(104);
 
         ItemMeta xueseshi1 = XUE_SE_SHI1.getItemMeta();
         xueseshi1.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "xueseshi1");
@@ -1750,6 +1637,110 @@ public final class YuShi {
         SUI_YAN_SHI8.setItemMeta(suiyanshi8);
 
 
+        SUI_YAN_SHI8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/104"));
+        SUI_YAN_SHI7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/103"));
+        SUI_YAN_SHI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/102"));
+        SUI_YAN_SHI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/101"));
+        SUI_YAN_SHI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/100"));
+        SUI_YAN_SHI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/99"));
+        SUI_YAN_SHI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/98"));
+        SUI_YAN_SHI1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/97"));
+        YAN_YANG_SHI8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/96"));
+        YAN_YANG_SHI7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/95"));
+        YAN_YANG_SHI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/94"));
+        YAN_YANG_SHI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/93"));
+        YAN_YANG_SHI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/92"));
+        YAN_YANG_SHI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/91"));
+        YAN_YANG_SHI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/90"));
+        YAN_YANG_SHI1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/89"));
+        BING_SHUANG_SHI8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/88"));
+        BING_SHUANG_SHI7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/87"));
+        BING_SHUANG_SHI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/86"));
+        BING_SHUANG_SHI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/85"));
+        BING_SHUANG_SHI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/84"));
+        BING_SHUANG_SHI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/83"));
+        BING_SHUANG_SHI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/82"));
+        BING_SHUANG_SHI1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/81"));
+        YU_LU_SHI8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/80"));
+        YU_LU_SHI7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/79"));
+        YU_LU_SHI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/78"));
+        YU_LU_SHI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/77"));
+        YU_LU_SHI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/76"));
+        YU_LU_SHI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/75"));
+        YU_LU_SHI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/74"));
+        YU_LU_SHI1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/73"));
+        MI_YIN_SHI8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/72"));
+        MI_YIN_SHI7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/71"));
+        MI_YIN_SHI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/70"));
+        MI_YIN_SHI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/69"));
+        MI_YIN_SHI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/68"));
+        MI_YIN_SHI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/67"));
+        MI_YIN_SHI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/66"));
+        MI_YIN_SHI1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/65"));
+        HONG_YUE_SHI8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/64"));
+        HONG_YUE_SHI7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/63"));
+        HONG_YUE_SHI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/62"));
+        HONG_YUE_SHI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/61"));
+        HONG_YUE_SHI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/60"));
+        HONG_YUE_SHI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/59"));
+        HONG_YUE_SHI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/58"));
+        HONG_YUE_SHI1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/57"));
+        TU_LU_SHI8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/56"));
+        TU_LU_SHI7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/55"));
+        TU_LU_SHI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/54"));
+        TU_LU_SHI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/53"));
+        TU_LU_SHI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/52"));
+        TU_LU_SHI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/51"));
+        TU_LU_SHI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/50"));
+        TU_LU_SHI1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/49"));
+        ZI_JING_SHI8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/48"));
+        ZI_JING_SHI7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/47"));
+        ZI_JING_SHI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/46"));
+        ZI_JING_SHI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/45"));
+        ZI_JING_SHI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/44"));
+        ZI_JING_SHI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/43"));
+        ZI_JING_SHI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/42"));
+        ZI_JING_SHI1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/41"));
+        HOU_TU_SHI8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/40"));
+        HOU_TU_SHI7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/39"));
+        HOU_TU_SHI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/38"));
+        HOU_TU_SHI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/37"));
+        HOU_TU_SHI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/36"));
+        HOU_TU_SHI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/35"));
+        HOU_TU_SHI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/34"));
+        HOU_TU_SHI1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/33"));
+        JIN_HUANG_SHI8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/32"));
+        JIN_HUANG_SHI7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/31"));
+        JIN_HUANG_SHI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/30"));
+        JIN_HUANG_SHI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/29"));
+        JIN_HUANG_SHI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/28"));
+        JIN_HUANG_SHI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/27"));
+        JIN_HUANG_SHI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/26"));
+        JIN_HUANG_SHI1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/25"));
+        DIAN_LAN_SHI8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/24"));
+        DIAN_LAN_SHI7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/23"));
+        DIAN_LAN_SHI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/22"));
+        DIAN_LAN_SHI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/21"));
+        DIAN_LAN_SHI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/20"));
+        DIAN_LAN_SHI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/19"));
+        DIAN_LAN_SHI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/18"));
+        DIAN_LAN_SHI1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/17"));
+        CUI_LV_SHI8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/16"));
+        CUI_LV_SHI7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/15"));
+        CUI_LV_SHI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/14"));
+        CUI_LV_SHI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/13"));
+        CUI_LV_SHI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/12"));
+        CUI_LV_SHI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/11"));
+        CUI_LV_SHI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/10"));
+        CUI_LV_SHI1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/9"));
+        XUE_SE_SHI8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/8"));
+        XUE_SE_SHI7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/7"));
+        XUE_SE_SHI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/6"));
+        XUE_SE_SHI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/5"));
+        XUE_SE_SHI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/4"));
+        XUE_SE_SHI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/3"));
+        XUE_SE_SHI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/2"));
+        XUE_SE_SHI1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "emerald/1"));
     }
 
 

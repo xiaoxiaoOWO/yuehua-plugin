@@ -62,16 +62,16 @@ public final class TemplateShooter {
                     equipment.setItemInOffHandDropChance(0);
 
                     //属性
-                    it.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(20);
-                    it.getAttribute(Attribute.GENERIC_ARMOR).setBaseValue(0);
-                    it.getAttribute(Attribute.GENERIC_ARMOR_TOUGHNESS).setBaseValue(0);
+                    it.getAttribute(Attribute.MAX_HEALTH).setBaseValue(20);
+                    it.getAttribute(Attribute.ARMOR).setBaseValue(0);
+                    it.getAttribute(Attribute.ARMOR_TOUGHNESS).setBaseValue(0);
 
                     //DLC数据
                     PersistentDataContainer pdc = it.getPersistentDataContainer();
                     pdc.set(DataContainer.id, PersistentDataType.STRING, "shooter");
 
                     //生命,一百万
-                    it.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(1000000);
+                    it.getAttribute(Attribute.MAX_HEALTH).setBaseValue(1000000);
                     it.setHealth(20000);
 
                 }

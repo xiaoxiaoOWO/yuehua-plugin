@@ -66,7 +66,7 @@ public final class HuTouZhanJinQiang {
                         }
 
                         huyiCount = Math.min(huyiCount, 8);
-                        Cure.curePlayer((0.0125 * player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() + 15) * huyiCount, zhanData);
+                        Cure.curePlayer((0.0125 * player.getAttribute(Attribute.MAX_HEALTH).getValue() + 15) * huyiCount, zhanData);
 
                         double damageHuYi = zhanData.attack * 3 * huyiCount;
                         double deAttack = 50 * huyiCount;

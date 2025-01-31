@@ -84,22 +84,22 @@ public final class Collection {
         shengshan.setMaxStackSize(99);
         kugu.setMaxStackSize(99);
 
-        shanshenmiao.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING,"shanshenmiaohuowu");
-        shenmuyaojing.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING,"shenmuyaojinghuowu");
-        wangyuanwai.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING,"wangyuanwaihuowu");
-        wenquankezhan.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING,"wenquankezhanhuowu");
-        shamoushibei.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING,"shamoushibeihuowu");
-        chendafu.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING,"chendafuhuowu");
-        shenshanzhangzhe.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING,"shenshanzhangzhehuowu");
-        yuzhu.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING,"yuzhuhuowu");
-        baigujing.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING,"baigujinghuowu");
-        penglai.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING,"penglaihuowu");
-        shihuang.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING,"shihuanghuowu");
-        huoMo.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING,"huomohuowu");
-        chiyou.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING,"chiyouhuowu");
-        guiou.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING,"guiouhuowu");
-        shengshan.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING,"shengshanhuowu");
-        kugu.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING,"kuguhuowu");
+        shanshenmiao.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shanshenmiaohuowu");
+        shenmuyaojing.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shenmuyaojinghuowu");
+        wangyuanwai.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "wangyuanwaihuowu");
+        wenquankezhan.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "wenquankezhanhuowu");
+        shamoushibei.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shamoushibeihuowu");
+        chendafu.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "chendafuhuowu");
+        shenshanzhangzhe.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shenshanzhangzhehuowu");
+        yuzhu.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yuzhuhuowu");
+        baigujing.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "baigujinghuowu");
+        penglai.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "penglaihuowu");
+        shihuang.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shihuanghuowu");
+        huoMo.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "huomohuowu");
+        chiyou.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "chiyouhuowu");
+        guiou.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "guiouhuowu");
+        shengshan.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shengshanhuowu");
+        kugu.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "kuguhuowu");
 
         shanshenmiao.displayName(
                 Component.text("被抢走的山神庙贡品").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)

@@ -1,11 +1,13 @@
 package com.xiaoxiaoowo.yuehua.guis.op;
 
 import com.xiaoxiaoowo.yuehua.guis.Yh;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -19,7 +21,6 @@ public final class OpTp {
 
         for (int i = 0; i < 23; i++) {
             ItemStack itemStack = new ItemStack(Material.YELLOW_DYE);
-            itemStack.setCustomModelData(7);
             ItemMeta itemMeta = itemStack.getItemMeta();
             itemMeta.displayName(Component
                     .text("物品管理")
@@ -28,6 +29,7 @@ public final class OpTp {
                     .decoration(TextDecoration.BOLD, true)
             );
             itemStack.setItemMeta(itemMeta);
+            itemStack.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/7"));
             OPTP.setItem(i, itemStack);
         }
 

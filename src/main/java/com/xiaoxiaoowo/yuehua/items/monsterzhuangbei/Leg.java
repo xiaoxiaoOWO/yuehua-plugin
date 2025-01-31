@@ -41,26 +41,26 @@ public final class Leg {
         diamondLeggings.setUnbreakable(true);
         netheriteLeggings.setUnbreakable(true);
 
-        leatherLeggings.addAttributeModifier(Attribute.GENERIC_ARMOR, ZeroAttributeModifier.TUI_ARMOR);
-        chainmailLeggings.addAttributeModifier(Attribute.GENERIC_ARMOR, ZeroAttributeModifier.TUI_ARMOR);
-        ironLeggings.addAttributeModifier(Attribute.GENERIC_ARMOR, ZeroAttributeModifier.TUI_ARMOR);
-        goldenLeggings.addAttributeModifier(Attribute.GENERIC_ARMOR, ZeroAttributeModifier.TUI_ARMOR);
-        diamondLeggings.addAttributeModifier(Attribute.GENERIC_ARMOR, ZeroAttributeModifier.TUI_ARMOR);
-        netheriteLeggings.addAttributeModifier(Attribute.GENERIC_ARMOR, ZeroAttributeModifier.TUI_ARMOR);
+        leatherLeggings.addAttributeModifier(Attribute.ARMOR, ZeroAttributeModifier.TUI_ARMOR);
+        chainmailLeggings.addAttributeModifier(Attribute.ARMOR, ZeroAttributeModifier.TUI_ARMOR);
+        ironLeggings.addAttributeModifier(Attribute.ARMOR, ZeroAttributeModifier.TUI_ARMOR);
+        goldenLeggings.addAttributeModifier(Attribute.ARMOR, ZeroAttributeModifier.TUI_ARMOR);
+        diamondLeggings.addAttributeModifier(Attribute.ARMOR, ZeroAttributeModifier.TUI_ARMOR);
+        netheriteLeggings.addAttributeModifier(Attribute.ARMOR, ZeroAttributeModifier.TUI_ARMOR);
 
-        leatherLeggings.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, ZeroAttributeModifier.TUI_ARMOR_TOUGHNESS);
-        chainmailLeggings.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, ZeroAttributeModifier.TUI_ARMOR_TOUGHNESS);
-        ironLeggings.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, ZeroAttributeModifier.TUI_ARMOR_TOUGHNESS);
-        goldenLeggings.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, ZeroAttributeModifier.TUI_ARMOR_TOUGHNESS);
-        diamondLeggings.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, ZeroAttributeModifier.TUI_ARMOR_TOUGHNESS);
-        netheriteLeggings.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, ZeroAttributeModifier.TUI_ARMOR_TOUGHNESS);
+        leatherLeggings.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, ZeroAttributeModifier.TUI_ARMOR_TOUGHNESS);
+        chainmailLeggings.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, ZeroAttributeModifier.TUI_ARMOR_TOUGHNESS);
+        ironLeggings.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, ZeroAttributeModifier.TUI_ARMOR_TOUGHNESS);
+        goldenLeggings.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, ZeroAttributeModifier.TUI_ARMOR_TOUGHNESS);
+        diamondLeggings.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, ZeroAttributeModifier.TUI_ARMOR_TOUGHNESS);
+        netheriteLeggings.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, ZeroAttributeModifier.TUI_ARMOR_TOUGHNESS);
 
-        leatherLeggings.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TUI_KNOCKBACK_RESISTANCE);
-        chainmailLeggings.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TUI_KNOCKBACK_RESISTANCE);
-        ironLeggings.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TUI_KNOCKBACK_RESISTANCE);
-        goldenLeggings.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TUI_KNOCKBACK_RESISTANCE);
-        diamondLeggings.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TUI_KNOCKBACK_RESISTANCE);
-        netheriteLeggings.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TUI_KNOCKBACK_RESISTANCE);
+        leatherLeggings.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TUI_KNOCKBACK_RESISTANCE);
+        chainmailLeggings.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TUI_KNOCKBACK_RESISTANCE);
+        ironLeggings.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TUI_KNOCKBACK_RESISTANCE);
+        goldenLeggings.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TUI_KNOCKBACK_RESISTANCE);
+        diamondLeggings.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TUI_KNOCKBACK_RESISTANCE);
+        netheriteLeggings.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TUI_KNOCKBACK_RESISTANCE);
 
         LeatherArmorMeta baseMeta = (LeatherArmorMeta) leatherLeggings.getItemMeta().clone();
 

@@ -185,7 +185,7 @@ public final class DoAttackedObserver {
     public static double doXiong2345(Data data, int level, Mob monster, double damage) {
         double decrease = 0.02 * level + 0.06;
         Player player = data.player;
-        double maxHp = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+        double maxHp = player.getAttribute(Attribute.MAX_HEALTH).getValue();
         if (damage > (0.1 * maxHp)) {
             double cd_decrease_s = 0.1 * level + 0.3;
             long cd_decrease = (long) (cd_decrease_s * 20);

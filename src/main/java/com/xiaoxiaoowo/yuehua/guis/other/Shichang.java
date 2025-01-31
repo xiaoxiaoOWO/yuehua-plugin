@@ -3,11 +3,13 @@ package com.xiaoxiaoowo.yuehua.guis.other;
 import com.xiaoxiaoowo.yuehua.guis.Yh;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.SQL;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -27,7 +29,7 @@ public final class Shichang {
 
     static {
         ItemStack shichangindex = new ItemStack(Material.YELLOW_DYE);
-        shichangindex.setCustomModelData(8);
+        shichangindex.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/8"));
         ItemMeta itemMeta36 = shichangindex.getItemMeta();
         itemMeta36.displayName(
                 Component
@@ -45,7 +47,7 @@ public final class Shichang {
 
         // 创建 20 的 ItemStack
         ItemStack shichangindex20 = new ItemStack(Material.YELLOW_DYE);
-        shichangindex20.setCustomModelData(8);
+        shichangindex20.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/8"));
         ItemMeta itemMeta20 = shichangindex20.getItemMeta();
         itemMeta20.displayName(
                 Component

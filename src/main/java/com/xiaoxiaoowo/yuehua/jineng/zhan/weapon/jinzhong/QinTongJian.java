@@ -21,7 +21,7 @@ public final class QinTongJian {
     public static void skill1(ZhanData zhanData, double multiplier) {
         zhanData.slot0.cd_active = GetEntity.world.getGameTime() + (long) (20 * 20 * zhanData.real_cool);
         Player player = zhanData.player;
-        double damage = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * multiplier;
+        double damage = player.getAttribute(Attribute.MAX_HEALTH).getValue() * multiplier;
         for (Entity entity : GetEntity.getMonsters(player.getLocation(), 5, 5, 5)) {
             MonsterData monsterData = Yuehua.monsterData.get(entity.getUniqueId());
             Damage.damageMonster(zhanData, damage, monsterData);

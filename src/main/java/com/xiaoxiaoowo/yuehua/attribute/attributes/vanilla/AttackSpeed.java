@@ -17,7 +17,7 @@ public final class AttackSpeed implements MyAttribute {
     @Override
     public void act(Data data, PersistentDataContainer pdc) {
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.ATTACK_SPEED);
         double base = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(base + attackSpeed);
     }
@@ -25,7 +25,7 @@ public final class AttackSpeed implements MyAttribute {
     @Override
     public void deAct(Data data, PersistentDataContainer pdc) {
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.ATTACK_SPEED);
         double base = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(base - attackSpeed);
     }

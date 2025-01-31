@@ -36,7 +36,7 @@ public final class DisplayHp extends BukkitRunnable {
 
                 String mname = player1.getName();
                 double monsterHp = player1.getHealth();
-                double monsterMaxHp = player1.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+                double monsterMaxHp = player1.getAttribute(Attribute.MAX_HEALTH).getValue();
                 double mattack = 0;
                 switch (playerData.job){
                     case 1 -> mattack = playerData.attack;
@@ -74,7 +74,7 @@ public final class DisplayHp extends BukkitRunnable {
 
                 String petName = pet.getName();
                 double petHp = pet.getHealth();
-                double petMaxHp = pet.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+                double petMaxHp = pet.getAttribute(Attribute.MAX_HEALTH).getValue();
                 double mattack = petData.attack;
                 double mhujia = petData.hujia;
                 double mfakang = 0;
@@ -103,7 +103,7 @@ public final class DisplayHp extends BukkitRunnable {
 
         String mname = monsterData.monster.getName();
         double monsterHp = mob.getHealth();
-        double monsterMaxHp = mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+        double monsterMaxHp = mob.getAttribute(Attribute.MAX_HEALTH).getValue();
         double mattack = monsterData.attack;
         double mhujia = monsterData.hujia;
         double mfakang = monsterData.fakang;

@@ -3,8 +3,10 @@ package com.xiaoxiaoowo.yuehua.items.zhuangbei;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
 import com.xiaoxiaoowo.yuehua.utils.ZeroAttributeModifier;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
 
@@ -37,8 +39,8 @@ public final class Special {
 
         });
 
+
         xianqianhuojian.editMeta(meta -> {
-            meta.setCustomModelData(1);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "xianqianhuojian");
             meta.setMaxStackSize(1);
             meta.displayName(Component.text("§f先遣纪念烟花"));
@@ -50,7 +52,6 @@ public final class Special {
         });
 
         xianqianhuojian2.editMeta(meta -> {
-            meta.setCustomModelData(1);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "xianqianhuojian2");
             meta.setMaxStackSize(1);
             meta.displayName(Component.text("§a先遣纪念烟花"));
@@ -62,7 +63,6 @@ public final class Special {
         });
 
         xianqianhuojian3.editMeta(meta -> {
-            meta.setCustomModelData(1);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "xianqianhuojian3");
             meta.setMaxStackSize(1);
             meta.displayName(Component.text("§9先遣纪念烟花"));
@@ -74,7 +74,6 @@ public final class Special {
         });
 
         xianqianhuojian4.editMeta(meta -> {
-            meta.setCustomModelData(1);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "xianqianhuojian4");
             meta.setMaxStackSize(1);
             meta.displayName(Component.text("§d先遣纪念烟花"));
@@ -86,7 +85,6 @@ public final class Special {
         });
 
         xianqianhuojian5.editMeta(meta -> {
-            meta.setCustomModelData(1);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "xianqianhuojian5");
             meta.setMaxStackSize(1);
             meta.displayName(Component.text("§e先遣纪念烟花"));
@@ -98,7 +96,6 @@ public final class Special {
         });
 
         xianqianhuojian6.editMeta(meta -> {
-            meta.setCustomModelData(1);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "xianqianhuojian6");
             meta.setMaxStackSize(1);
             meta.displayName(Component.text("§c先遣纪念烟花"));
@@ -110,7 +107,6 @@ public final class Special {
         });
 
         xianqianhuojian7.editMeta(meta -> {
-            meta.setCustomModelData(1);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "xianqianhuojian7");
             meta.setMaxStackSize(1);
             meta.displayName(Component.text("§4先遣纪念烟花"));
@@ -122,7 +118,6 @@ public final class Special {
         });
 
         xianqianhuojian8.editMeta(meta -> {
-            meta.setCustomModelData(1);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "xianqianhuojian8");
             meta.setMaxStackSize(1);
             meta.displayName(Component.text("§6先遣纪念烟花"));
@@ -135,7 +130,6 @@ public final class Special {
 
 
         bifengfu.editMeta(meta -> {
-            meta.setCustomModelData(2);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "bifengfu");
             meta.setMaxStackSize(99);
             meta.displayName(Component.text("§b驱蜂符"));
@@ -143,5 +137,14 @@ public final class Special {
                     Component.text("§f右键使用可以驱赶周围§b4§f格的蜜蜂，造成至多§b6§f格的击退")
             ));
         });
+        bifengfu.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heartbreak_pottery_sherd/2"));
+        xianqianhuojian8.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heartbreak_pottery_sherd/1"));
+        xianqianhuojian7.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heartbreak_pottery_sherd/1"));
+        xianqianhuojian6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heartbreak_pottery_sherd/1"));
+        xianqianhuojian5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heartbreak_pottery_sherd/1"));
+        xianqianhuojian4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heartbreak_pottery_sherd/1"));
+        xianqianhuojian3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heartbreak_pottery_sherd/1"));
+        xianqianhuojian2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heartbreak_pottery_sherd/1"));
+        xianqianhuojian.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heartbreak_pottery_sherd/1"));
     }
 }

@@ -17,7 +17,7 @@ public final class Hp implements MyAttribute {
     @Override
     public void act(Data data, PersistentDataContainer pdc) {
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double base = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(base + hp);
     }
@@ -25,7 +25,7 @@ public final class Hp implements MyAttribute {
     @Override
     public void deAct(Data data, PersistentDataContainer pdc) {
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double base = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(base - hp);
     }

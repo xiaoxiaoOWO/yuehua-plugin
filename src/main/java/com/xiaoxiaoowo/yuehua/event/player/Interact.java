@@ -1410,8 +1410,9 @@ public final class Interact implements Listener {
     }
 
     public static void doSpeical(Player player, ItemStack item) {
-        switch (item.getCustomModelData()) {
-            case 2 -> {
+        String id = item.getPersistentDataContainer().get(DataContainer.id,PersistentDataType.STRING);
+        switch (id) {
+            case "bifengfu" -> {
                 item.setAmount(item.getAmount() - 1);
 
                 for (Entity entity : GetEntity.getMonsters(player.getLocation(), 4, 4, 4)) {
@@ -1425,7 +1426,7 @@ public final class Interact implements Listener {
             }
 
 
-            case 1 -> {
+            case "xianqianhuojian", "xianqianhuojian2", "xianqianhuojian3", "xianqianhuojian4", "xianqianhuojian5", "xianqianhuojian6", "xianqianhuojian7", "xianqianhuojian8" -> {
                 int cool = player.getCooldown(Material.HEARTBREAK_POTTERY_SHERD);
                 if (cool > 0) {
                     SendInformation.sendActionBar(player, Component.text("§e[游戏机制]§4烟花火箭冷却中,剩余§b" + cool / 20.0 + "§4秒"));
@@ -1441,7 +1442,7 @@ public final class Interact implements Listener {
                     it.setVelocity(speed);
                     it.setShooter(player);
 
-                    it.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, item.getPersistentDataContainer().get(DataContainer.id, PersistentDataType.STRING));
+                    it.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, id);
 
                     FireworkMeta meta = it.getFireworkMeta();
                     meta.setPower(1);

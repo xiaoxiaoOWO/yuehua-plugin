@@ -118,19 +118,19 @@ public final class ConsumeItem implements Listener {
 
 
             case "huixue1" -> {
-                double amount = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.1 + 40;
+                double amount = player.getAttribute(Attribute.MAX_HEALTH).getValue() * 0.1 + 40;
                 Cure.curePlayer(amount, player);
             }
             case "huixue2" -> {
-                double amount = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.1 + 120;
+                double amount = player.getAttribute(Attribute.MAX_HEALTH).getValue() * 0.1 + 120;
                 Cure.curePlayer(amount, player);
             }
             case "huixue3" -> {
-                double amount = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.1 + 360;
+                double amount = player.getAttribute(Attribute.MAX_HEALTH).getValue() * 0.1 + 360;
                 Cure.curePlayer(amount, player);
             }
             case "huixue4" -> {
-                double amount = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.1 + 1080;
+                double amount = player.getAttribute(Attribute.MAX_HEALTH).getValue() * 0.1 + 1080;
                 Cure.curePlayer(amount, player);
             }
 

@@ -107,7 +107,7 @@ public final class Mission implements CommandExecutor {
                     player.getInventory().setItemInMainHand(null);
 
                     player.addScoreboardTag("racezhixian");
-                    AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+                    AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
                     double baseValue = attributeInstance.getBaseValue();
                     attributeInstance.setBaseValue(baseValue + 32);
                     PlaySound.success(player);
@@ -189,7 +189,7 @@ public final class Mission implements CommandExecutor {
                     player.getInventory().setItemInMainHand(null);
 
                     player.addScoreboardTag("racezhixian");
-                    AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+                    AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
                     double baseValue = attributeInstance.getBaseValue();
                     attributeInstance.setBaseValue(baseValue + 32);
                     PlaySound.success(player);

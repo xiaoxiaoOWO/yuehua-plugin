@@ -5,12 +5,13 @@ import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
 import com.xiaoxiaoowo.yuehua.utils.ZeroAttributeModifier;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
-import org.bukkit.attribute.Attribute;
+import org.bukkit.NamespacedKey;
 import org.bukkit.block.Banner;
 import org.bukkit.block.banner.Pattern;
 import org.bukkit.block.banner.PatternType;
@@ -52,7 +53,7 @@ public final class YiQi {
 
 
     static {
-        BlockStateMeta laozhanshidunpaiItemMeta =  (BlockStateMeta) LAOZHANSHIDUNPAI.getItemMeta();
+        BlockStateMeta laozhanshidunpaiItemMeta = (BlockStateMeta) LAOZHANSHIDUNPAI.getItemMeta();
         BlockStateMeta xinbindunpaiItemMeta = (BlockStateMeta) XINBINDUNPAI.getItemMeta();
         BlockStateMeta jinruidunpaiItemMeta = (BlockStateMeta) JINRUIDUNPAI.getItemMeta();
         BlockStateMeta chiseyuehuoItemMeta = (BlockStateMeta) CHISEYUEHUO.getItemMeta();
@@ -141,7 +142,6 @@ public final class YiQi {
         pdclongyadaoItemMeta.set(DataContainer.id, PersistentDataType.STRING, "longYaDao");
         pdczhangqicuizhuItemMeta.set(DataContainer.id, PersistentDataType.STRING, "zhangQiCuiZhu");
         pdcminghongItemMeta.set(DataContainer.id, PersistentDataType.STRING, "mingHong");
-
 
 
         pdclaozhanshidunpaiItemMeta.set(DataContainer.job, PersistentDataType.INTEGER, 1);
@@ -658,19 +658,6 @@ public final class YiQi {
         chenbinluoxueBanner.addPattern(new Pattern(DyeColor.LIGHT_GRAY, PatternType.BORDER));
         chenbinluoxueItemMeta.setBlockState(chenbinluoxueBanner);
 
-        laoliehujiandaiItemMeta.setCustomModelData(101);
-        xinbinjiandaiItemMeta.setCustomModelData(102);
-        jinruijiandaiItemMeta.setCustomModelData(103);
-        yingyanjiandaiItemMeta.setCustomModelData(104);
-        cangguningwangItemMeta.setCustomModelData(105);
-        niepanyunangItemMeta.setCustomModelData(106);
-
-        fangshenduanbiItemMeta.setCustomModelData(1);
-        tongzhiduanbiItemMeta.setCustomModelData(2);
-        huiyidaoItemMeta.setCustomModelData(3);
-        longyadaoItemMeta.setCustomModelData(4);
-        zhangqicuizhuItemMeta.setCustomModelData(5);
-        minghongItemMeta.setCustomModelData(6);
 
         LAOZHANSHIDUNPAI.setItemMeta(laozhanshidunpaiItemMeta);
         XINBINDUNPAI.setItemMeta(xinbindunpaiItemMeta);
@@ -693,9 +680,21 @@ public final class YiQi {
         ZHANGQICUIZHU.setItemMeta(zhangqicuizhuItemMeta);
         MINGHONG.setItemMeta(minghongItemMeta);
 
+        MINGHONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "angler_pottery_sherd/6"));
+        ZHANGQICUIZHU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "angler_pottery_sherd/5"));
+        LONGYADAO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "angler_pottery_sherd/4"));
+        HUIYIDAO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "angler_pottery_sherd/3"));
+        TIEZHIDUANBI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "angler_pottery_sherd/2"));
+        FANGSHENDUANBI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "angler_pottery_sherd/1"));
+        NIEPANYUNANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/106"));
+        CANGGUNINGWANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/105"));
+        YINGYANJIANDAI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/104"));
+        JINRUIJIANDAI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/103"));
+        XINBINJIANDAI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/102"));
+        LAOLIEHUJIANDAI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/101"));
     }
 
-    public static void putId(){
+    public static void putId() {
         Recipe.idToItem.put("laoZhanShiDunPai", LAOZHANSHIDUNPAI);
         Recipe.idToItem.put("xinBinDunPai", XINBINDUNPAI);
         Recipe.idToItem.put("jinRuiDunPai", JINRUIDUNPAI);

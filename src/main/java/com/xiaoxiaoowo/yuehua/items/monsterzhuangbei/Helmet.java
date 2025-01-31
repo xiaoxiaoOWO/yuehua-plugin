@@ -41,26 +41,26 @@ public final class Helmet {
         diamondHelmet.setUnbreakable(true);
         netheriteHelmet.setUnbreakable(true);
 
-        leatherHelmet.addAttributeModifier(Attribute.GENERIC_ARMOR, ZeroAttributeModifier.TOU_ARMOR);
-        chainmailHelmet.addAttributeModifier(Attribute.GENERIC_ARMOR, ZeroAttributeModifier.TOU_ARMOR);
-        ironHelmet.addAttributeModifier(Attribute.GENERIC_ARMOR, ZeroAttributeModifier.TOU_ARMOR);
-        goldenHelmet.addAttributeModifier(Attribute.GENERIC_ARMOR, ZeroAttributeModifier.TOU_ARMOR);
-        diamondHelmet.addAttributeModifier(Attribute.GENERIC_ARMOR, ZeroAttributeModifier.TOU_ARMOR);
-        netheriteHelmet.addAttributeModifier(Attribute.GENERIC_ARMOR, ZeroAttributeModifier.TOU_ARMOR);
+        leatherHelmet.addAttributeModifier(Attribute.ARMOR, ZeroAttributeModifier.TOU_ARMOR);
+        chainmailHelmet.addAttributeModifier(Attribute.ARMOR, ZeroAttributeModifier.TOU_ARMOR);
+        ironHelmet.addAttributeModifier(Attribute.ARMOR, ZeroAttributeModifier.TOU_ARMOR);
+        goldenHelmet.addAttributeModifier(Attribute.ARMOR, ZeroAttributeModifier.TOU_ARMOR);
+        diamondHelmet.addAttributeModifier(Attribute.ARMOR, ZeroAttributeModifier.TOU_ARMOR);
+        netheriteHelmet.addAttributeModifier(Attribute.ARMOR, ZeroAttributeModifier.TOU_ARMOR);
 
-        leatherHelmet.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, ZeroAttributeModifier.TOU_ARMOR_TOUGHNESS);
-        chainmailHelmet.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, ZeroAttributeModifier.TOU_ARMOR_TOUGHNESS);
-        ironHelmet.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, ZeroAttributeModifier.TOU_ARMOR_TOUGHNESS);
-        goldenHelmet.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, ZeroAttributeModifier.TOU_ARMOR_TOUGHNESS);
-        diamondHelmet.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, ZeroAttributeModifier.TOU_ARMOR_TOUGHNESS);
-        netheriteHelmet.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, ZeroAttributeModifier.TOU_ARMOR_TOUGHNESS);
+        leatherHelmet.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, ZeroAttributeModifier.TOU_ARMOR_TOUGHNESS);
+        chainmailHelmet.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, ZeroAttributeModifier.TOU_ARMOR_TOUGHNESS);
+        ironHelmet.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, ZeroAttributeModifier.TOU_ARMOR_TOUGHNESS);
+        goldenHelmet.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, ZeroAttributeModifier.TOU_ARMOR_TOUGHNESS);
+        diamondHelmet.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, ZeroAttributeModifier.TOU_ARMOR_TOUGHNESS);
+        netheriteHelmet.addAttributeModifier(Attribute.ARMOR_TOUGHNESS, ZeroAttributeModifier.TOU_ARMOR_TOUGHNESS);
 
-        leatherHelmet.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TOU_KNOCKBACK_RESISTANCE);
-        chainmailHelmet.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TOU_KNOCKBACK_RESISTANCE);
-        ironHelmet.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TOU_KNOCKBACK_RESISTANCE);
-        goldenHelmet.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TOU_KNOCKBACK_RESISTANCE);
-        diamondHelmet.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TOU_KNOCKBACK_RESISTANCE);
-        netheriteHelmet.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TOU_KNOCKBACK_RESISTANCE);
+        leatherHelmet.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TOU_KNOCKBACK_RESISTANCE);
+        chainmailHelmet.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TOU_KNOCKBACK_RESISTANCE);
+        ironHelmet.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TOU_KNOCKBACK_RESISTANCE);
+        goldenHelmet.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TOU_KNOCKBACK_RESISTANCE);
+        diamondHelmet.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TOU_KNOCKBACK_RESISTANCE);
+        netheriteHelmet.addAttributeModifier(Attribute.KNOCKBACK_RESISTANCE, ZeroAttributeModifier.TOU_KNOCKBACK_RESISTANCE);
 
         LeatherArmorMeta whiteHelmetMeta = (LeatherArmorMeta) leatherHelmet.getItemMeta().clone();
         whiteHelmetMeta.setColor(Color.WHITE);

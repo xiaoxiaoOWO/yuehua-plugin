@@ -1,7 +1,6 @@
 package com.xiaoxiaoowo.yuehua.entity.npc.chat.middle;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.items.other.RaceProvince;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;

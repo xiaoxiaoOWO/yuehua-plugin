@@ -1,7 +1,6 @@
 package com.xiaoxiaoowo.yuehua.entity.npc.east;
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.items.Book;
 import com.xiaoxiaoowo.yuehua.items.other.Money;
 import com.xiaoxiaoowo.yuehua.items.other.Other;
 import com.xiaoxiaoowo.yuehua.items.zhuangbei.YiQi;

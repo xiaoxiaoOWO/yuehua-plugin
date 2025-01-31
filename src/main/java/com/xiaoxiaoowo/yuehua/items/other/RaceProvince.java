@@ -1,10 +1,12 @@
 package com.xiaoxiaoowo.yuehua.items.other;
 
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
@@ -20,11 +22,7 @@ public final class RaceProvince {
     public final static ItemStack zhanShen = new ItemStack(Material.PUMPKIN_SEEDS, 1);
 
     static {
-        shen.setCustomModelData(1);
-        xian.setCustomModelData(2);
-        ren.setCustomModelData(3);
-        yao.setCustomModelData(4);
-        zhanShen.setCustomModelData(5);
+
 
         ItemMeta itemMetaShen = shen.getItemMeta();
         ItemMeta itemMetaXian = xian.getItemMeta();
@@ -46,24 +44,24 @@ public final class RaceProvince {
 
 
         itemMetaShen.displayName(
-                Component.text("神族证明").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false)
+                Component.text("神族证明").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
         );
 
         itemMetaXian.displayName(
-                Component.text("仙族证明").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false)
+                Component.text("仙族证明").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
         );
 
         itemMetaRen.displayName(
-                Component.text("人族证明").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false)
+                Component.text("人族证明").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
 
         );
 
         itemMetaYao.displayName(
-                Component.text("妖族证明").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false)
+                Component.text("妖族证明").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
         );
 
         itemMetaZhanShen.displayName(
-                Component.text("战神族证明").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false)
+                Component.text("战神族证明").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
         );
 
 
@@ -104,6 +102,11 @@ public final class RaceProvince {
         zhanShen.setItemMeta(itemMetaZhanShen);
 
 
+        zhanShen.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "pumpkin_seeds/5"));
+        yao.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "pumpkin_seeds/4"));
+        ren.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "pumpkin_seeds/3"));
+        xian.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "pumpkin_seeds/2"));
+        shen.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "pumpkin_seeds/1"));
     }
 
 }

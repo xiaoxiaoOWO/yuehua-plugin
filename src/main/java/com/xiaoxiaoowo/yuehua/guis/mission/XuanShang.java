@@ -4,11 +4,13 @@ import com.xiaoxiaoowo.yuehua.guis.Yh;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import com.xiaoxiaoowo.yuehua.utils.SendInformation;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -22,33 +24,32 @@ public class XuanShang {
 
     static {
         ItemStack xuanshangcheck = new ItemStack(Material.YELLOW_DYE);
-        xuanshangcheck.setCustomModelData(12);
         ItemMeta xuanshangcheckItemMeta = xuanshangcheck.getItemMeta();
         xuanshangcheckItemMeta.displayName(Component.text("查询悬赏任务与完成度").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true));
         xuanshangcheck.setItemMeta(xuanshangcheckItemMeta);
+        xuanshangcheck.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/12"));
         XUAN_SHANG.setItem(0, xuanshangcheck);
 
         ItemStack xuanshangTijiao = new ItemStack(Material.YELLOW_DYE);
-        xuanshangTijiao.setCustomModelData(12);
         ItemMeta xuanshangTijiaoItemMeta = xuanshangTijiao.getItemMeta();
         xuanshangTijiaoItemMeta.displayName(Component.text("提交悬赏任务").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true));
         xuanshangTijiao.setItemMeta(xuanshangTijiaoItemMeta);
+        xuanshangTijiao.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/12"));
         XUAN_SHANG.setItem(1, xuanshangTijiao);
 
         ItemStack xuanshanglevelCheck = new ItemStack(Material.YELLOW_DYE);
-        xuanshanglevelCheck.setCustomModelData(12);
         ItemMeta xuanshanglevelCheckItemMeta = xuanshanglevelCheck.getItemMeta();
         xuanshanglevelCheckItemMeta.displayName(Component.text("查询悬赏任务冷却").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true));
         xuanshanglevelCheck.setItemMeta(xuanshanglevelCheckItemMeta);
+        xuanshanglevelCheck.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/12"));
         XUAN_SHANG.setItem(2, xuanshanglevelCheck);
 
         ItemStack xuanshanglevelRealCheck = new ItemStack(Material.YELLOW_DYE);
-        xuanshanglevelRealCheck.setCustomModelData(12);
         ItemMeta xuanshanglevelRealCheckItemMeta = xuanshanglevelRealCheck.getItemMeta();
         xuanshanglevelRealCheckItemMeta.displayName(Component.text("查看悬赏等级").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false).decoration(TextDecoration.BOLD, true));
         xuanshanglevelRealCheck.setItemMeta(xuanshanglevelRealCheckItemMeta);
+        xuanshanglevelRealCheck.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "yellow_dye/12"));
         XUAN_SHANG.setItem(3, xuanshanglevelRealCheck);
-
         XUAN_SHANG.setItem(8, Yh.BACK_BEFORE);
     }
 

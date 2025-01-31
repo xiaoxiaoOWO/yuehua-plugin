@@ -2,10 +2,12 @@ package com.xiaoxiaoowo.yuehua.items.dz;
 
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -18,6 +20,7 @@ public final class TehuaShui {
     public static final ItemStack wuqi3 = new ItemStack(Material.HEART_OF_THE_SEA);
     public static final ItemStack wuqi4 = new ItemStack(Material.HEART_OF_THE_SEA);
     public static final ItemStack wuqi5 = new ItemStack(Material.HEART_OF_THE_SEA);
+
 
     public static final ItemStack fangju2 = new ItemStack(Material.HEART_OF_THE_SEA);
     public static final ItemStack fangju3 = new ItemStack(Material.HEART_OF_THE_SEA);
@@ -91,30 +94,6 @@ public final class TehuaShui {
         shipin4Meta.setMaxStackSize(99);
         shipin5Meta.setMaxStackSize(99);
 
-        wuqi2Meta.setCustomModelData(1);
-        wuqi3Meta.setCustomModelData(1);
-        wuqi4Meta.setCustomModelData(1);
-        wuqi5Meta.setCustomModelData(1);
-
-        fangju2Meta.setCustomModelData(1);
-        fangju3Meta.setCustomModelData(1);
-        fangju4Meta.setCustomModelData(1);
-        fangju5Meta.setCustomModelData(1);
-
-        qiyi2Meta.setCustomModelData(1);
-        qiyi3Meta.setCustomModelData(1);
-        qiyi4Meta.setCustomModelData(1);
-        qiyi5Meta.setCustomModelData(1);
-
-        fabao2Meta.setCustomModelData(1);
-        fabao3Meta.setCustomModelData(1);
-        fabao4Meta.setCustomModelData(1);
-        fabao5Meta.setCustomModelData(1);
-
-        shipin2Meta.setCustomModelData(1);
-        shipin3Meta.setCustomModelData(1);
-        shipin4Meta.setCustomModelData(1);
-        shipin5Meta.setCustomModelData(1);
 
         PersistentDataContainer pdcwuqi2 = wuqi2Meta.getPersistentDataContainer();
         PersistentDataContainer pdcwuqi3 = wuqi3Meta.getPersistentDataContainer();
@@ -137,30 +116,30 @@ public final class TehuaShui {
         PersistentDataContainer pdcshipin4 = shipin4Meta.getPersistentDataContainer();
         PersistentDataContainer pdcshipin5 = shipin5Meta.getPersistentDataContainer();
 
-        pdcwuqi2.set(DataContainer.id, PersistentDataType.STRING,"tehuashuiwuqi2");
-        pdcwuqi3.set(DataContainer.id, PersistentDataType.STRING,"tehuashuiwuqi3");
-        pdcwuqi4.set(DataContainer.id, PersistentDataType.STRING,"tehuashuiwuqi4");
-        pdcwuqi5.set(DataContainer.id, PersistentDataType.STRING,"tehuashuiwuqi5");
+        pdcwuqi2.set(DataContainer.id, PersistentDataType.STRING, "tehuashuiwuqi2");
+        pdcwuqi3.set(DataContainer.id, PersistentDataType.STRING, "tehuashuiwuqi3");
+        pdcwuqi4.set(DataContainer.id, PersistentDataType.STRING, "tehuashuiwuqi4");
+        pdcwuqi5.set(DataContainer.id, PersistentDataType.STRING, "tehuashuiwuqi5");
 
-        pdcfangju2.set(DataContainer.id, PersistentDataType.STRING,"tehuashuifangju2");
-        pdcfangju3.set(DataContainer.id, PersistentDataType.STRING,"tehuashuifangju3");
-        pdcfangju4.set(DataContainer.id, PersistentDataType.STRING,"tehuashuifangju4");
-        pdcfangju5.set(DataContainer.id, PersistentDataType.STRING,"tehuashuifangju5");
+        pdcfangju2.set(DataContainer.id, PersistentDataType.STRING, "tehuashuifangju2");
+        pdcfangju3.set(DataContainer.id, PersistentDataType.STRING, "tehuashuifangju3");
+        pdcfangju4.set(DataContainer.id, PersistentDataType.STRING, "tehuashuifangju4");
+        pdcfangju5.set(DataContainer.id, PersistentDataType.STRING, "tehuashuifangju5");
 
-        pdcqiyi2.set(DataContainer.id, PersistentDataType.STRING,"tehuashuiquiyi2");
-        pdcqiyi3.set(DataContainer.id, PersistentDataType.STRING,"tehuashuiquiyi3");
-        pdcqiyi4.set(DataContainer.id, PersistentDataType.STRING,"tehuashuiquiyi4");
-        pdcqiyi5.set(DataContainer.id, PersistentDataType.STRING,"tehuashuiquiyi5");
+        pdcqiyi2.set(DataContainer.id, PersistentDataType.STRING, "tehuashuiquiyi2");
+        pdcqiyi3.set(DataContainer.id, PersistentDataType.STRING, "tehuashuiquiyi3");
+        pdcqiyi4.set(DataContainer.id, PersistentDataType.STRING, "tehuashuiquiyi4");
+        pdcqiyi5.set(DataContainer.id, PersistentDataType.STRING, "tehuashuiquiyi5");
 
-        pdcfabao2.set(DataContainer.id, PersistentDataType.STRING,"tehuashuifabao2");
-        pdcfabao3.set(DataContainer.id, PersistentDataType.STRING,"tehuashuifabao3");
-        pdcfabao4.set(DataContainer.id, PersistentDataType.STRING,"tehuashuifabao4");
-        pdcfabao5.set(DataContainer.id, PersistentDataType.STRING,"tehuashuifabao5");
+        pdcfabao2.set(DataContainer.id, PersistentDataType.STRING, "tehuashuifabao2");
+        pdcfabao3.set(DataContainer.id, PersistentDataType.STRING, "tehuashuifabao3");
+        pdcfabao4.set(DataContainer.id, PersistentDataType.STRING, "tehuashuifabao4");
+        pdcfabao5.set(DataContainer.id, PersistentDataType.STRING, "tehuashuifabao5");
 
-        pdcshipin2.set(DataContainer.id, PersistentDataType.STRING,"tehuashuishipin2");
-        pdcshipin3.set(DataContainer.id, PersistentDataType.STRING,"tehuashuishipin3");
-        pdcshipin4.set(DataContainer.id, PersistentDataType.STRING,"tehuashuishipin4");
-        pdcshipin5.set(DataContainer.id, PersistentDataType.STRING,"tehuashuishipin5");
+        pdcshipin2.set(DataContainer.id, PersistentDataType.STRING, "tehuashuishipin2");
+        pdcshipin3.set(DataContainer.id, PersistentDataType.STRING, "tehuashuishipin3");
+        pdcshipin4.set(DataContainer.id, PersistentDataType.STRING, "tehuashuishipin4");
+        pdcshipin5.set(DataContainer.id, PersistentDataType.STRING, "tehuashuishipin5");
 
         wuqi2Meta.displayName(
                 Component.text("核心特化露[二阶武器]").color(NamedTextColor.GREEN).decoration(TextDecoration.ITALIC, false)
@@ -388,10 +367,26 @@ public final class TehuaShui {
         shipin5.setItemMeta(shipin5Meta);
 
 
-
-
-
-
+        shipin5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        shipin4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        shipin3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        shipin2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        fabao5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        fabao4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        fabao3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        fabao2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        qiyi5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        qiyi4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        qiyi3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        qiyi2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        fangju5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        fangju4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        fangju3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        fangju2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        wuqi5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        wuqi4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        wuqi3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
+        wuqi2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "heart_of_the_sea/1"));
     }
 
 }

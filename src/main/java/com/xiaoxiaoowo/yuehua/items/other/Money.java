@@ -1,10 +1,12 @@
 package com.xiaoxiaoowo.yuehua.items.other;
 
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
@@ -22,15 +24,6 @@ public final class Money {
 
 
     static {
-        tongQian.setCustomModelData(1);
-        jinYuanBao.setCustomModelData(2);
-        yinPiao.setCustomModelData(3);
-        zuanShi.setCustomModelData(4);
-        MONEY_SHEN.setCustomModelData(5);
-        MONEY_XIAN.setCustomModelData(6);
-        MONEY_REN.setCustomModelData(7);
-        MONEY_YAO.setCustomModelData(8);
-        MONEY_ZHANSHEN.setCustomModelData(9);
 
 
         ItemMeta itemMetaTongQian = tongQian.getItemMeta();
@@ -65,45 +58,45 @@ public final class Money {
         itemMetaMONEY_ZHANSHEN.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "MONEY_ZHANSHEN");
 
         itemMetaTongQian.displayName(
-                Component.text("铜钱").color(NamedTextColor.WHITE).decoration(TextDecoration.ITALIC,false)
+                Component.text("铜钱").color(NamedTextColor.WHITE).decoration(TextDecoration.ITALIC, false)
         );
 
         itemMetaJinYuanBao.displayName(
-                Component.text("银元宝").color(NamedTextColor.GREEN).decoration(TextDecoration.ITALIC,false)
+                Component.text("银元宝").color(NamedTextColor.GREEN).decoration(TextDecoration.ITALIC, false)
         );
 
         itemMetaYinPiao.displayName(
-                Component.text("金元宝").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC,false)
+                Component.text("金元宝").color(NamedTextColor.BLUE).decoration(TextDecoration.ITALIC, false)
         );
 
         itemMetaZuanShi.displayName(
-                Component.text("银票").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC,false)
+                Component.text("银票").color(NamedTextColor.LIGHT_PURPLE).decoration(TextDecoration.ITALIC, false)
         );
 
         itemMetaMONEY_SHEN.displayName(
-                Component.text("神性").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false)
+                Component.text("神性").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
         );
 
         itemMetaMONEY_XIAN.displayName(
-                Component.text("飞仙璧").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false)
+                Component.text("飞仙璧").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
         );
 
         itemMetaMONEY_REN.displayName(
-                Component.text("银元").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false)
+                Component.text("银元").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
         );
 
         itemMetaMONEY_YAO.displayName(
-                Component.text("灵木枝").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false)
+                Component.text("灵木枝").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
         );
 
         itemMetaMONEY_ZHANSHEN.displayName(
-                Component.text("战神令").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC,false)
+                Component.text("战神令").color(NamedTextColor.AQUA).decoration(TextDecoration.ITALIC, false)
         );
 
         tongQian.setItemMeta(itemMetaTongQian);
         jinYuanBao.setItemMeta(itemMetaJinYuanBao);
         yinPiao.setItemMeta(itemMetaYinPiao);
-        zuanShi.setItemMeta( itemMetaZuanShi);
+        zuanShi.setItemMeta(itemMetaZuanShi);
         MONEY_SHEN.setItemMeta(itemMetaMONEY_SHEN);
         MONEY_XIAN.setItemMeta(itemMetaMONEY_XIAN);
         MONEY_REN.setItemMeta(itemMetaMONEY_REN);
@@ -111,5 +104,14 @@ public final class Money {
         MONEY_ZHANSHEN.setItemMeta(itemMetaMONEY_ZHANSHEN);
 
 
+        MONEY_ZHANSHEN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "brick/9"));
+        MONEY_YAO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "brick/8"));
+        MONEY_REN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "brick/7"));
+        MONEY_XIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "brick/6"));
+        MONEY_SHEN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "brick/5"));
+        zuanShi.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "brick/4"));
+        yinPiao.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "brick/3"));
+        jinYuanBao.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "brick/2"));
+        tongQian.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "brick/1"));
     }
 }

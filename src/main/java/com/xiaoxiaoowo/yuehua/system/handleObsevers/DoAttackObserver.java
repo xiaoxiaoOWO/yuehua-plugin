@@ -187,7 +187,7 @@ public final class DoAttackObserver {
                     extraData.put("sanBaoYuRuYi-fa", 0L);
                     monsterData.wuliAttackedObservers.remove("sanBaoYuRuYi-fa");
                     SendInformation.sendMes(data.player, Component.text("§e[三宝]§6[法]§a消除"));
-                    Cure.curePlayer(0.1 * player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() + 200, data);
+                    Cure.curePlayer(0.1 * player.getAttribute(Attribute.MAX_HEALTH).getValue() + 200, data);
                     return 1.0d;
                 }
                 extraData.put("sanBaoYuRuYi-fa", timeNow - 1 + 20 * 20L);

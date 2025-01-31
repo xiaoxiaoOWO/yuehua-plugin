@@ -2,10 +2,12 @@ package com.xiaoxiaoowo.yuehua.items.other;
 
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -47,14 +49,6 @@ public final class FuBen {
         keyXinYun20Meta.setMaxStackSize(99);
         keyXinYun100Meta.setMaxStackSize(99);
 
-        keyTongMeta.setCustomModelData(1);
-        keyYinMeta.setCustomModelData(2);
-        keyJinMeta.setCustomModelData(3);
-        keyYuMeta.setCustomModelData(4);
-        keyXinYun5Meta.setCustomModelData(5);
-        keyXinYun10Meta.setCustomModelData(6);
-        keyXinYun20Meta.setCustomModelData(7);
-        keyXinYun100Meta.setCustomModelData(8);
 
         PersistentDataContainer keyTongData = keyTongMeta.getPersistentDataContainer();
         PersistentDataContainer keyYinData = keyYinMeta.getPersistentDataContainer();
@@ -157,6 +151,14 @@ public final class FuBen {
         keyXinYun10.setItemMeta(keyXinYun10Meta);
         keyXinYun20.setItemMeta(keyXinYun20Meta);
         keyXinYun100.setItemMeta(keyXinYun100Meta);
+        keyXinYun100.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "nautilus_shell/8"));
+        keyXinYun20.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "nautilus_shell/7"));
+        keyXinYun10.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "nautilus_shell/6"));
+        keyXinYun5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "nautilus_shell/5"));
+        keyYu.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "nautilus_shell/4"));
+        keyJin.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "nautilus_shell/3"));
+        keyYin.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "nautilus_shell/2"));
+        keyTong.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "nautilus_shell/1"));
     }
 
 }

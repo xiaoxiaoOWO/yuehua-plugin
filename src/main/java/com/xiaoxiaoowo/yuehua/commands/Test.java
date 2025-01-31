@@ -149,12 +149,18 @@ public final class Test implements CommandExecutor {
         final int QIANWAN = 10000000;
 
 
+
+
         if (args.length != 1) {
             return true;
         }
 
 
         switch (args[0]) {
+            case "justTest" -> {
+                Bukkit.broadcastMessage("test");
+            }
+
             case "server" -> {
                 WebSocketServer server = MySocket.server;
                 Bukkit.broadcastMessage(String.valueOf(server.getPort()));
@@ -1633,7 +1639,7 @@ public final class Test implements CommandExecutor {
         new BukkitRunnable() {
             @Override
             public void run() {
-                player1.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(100);
+                player1.getAttribute(Attribute.MAX_HEALTH).setBaseValue(100);
             }
         }.runTaskLater(Yuehua.instance, 100);
     }

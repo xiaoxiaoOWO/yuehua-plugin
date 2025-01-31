@@ -2,10 +2,12 @@ package com.xiaoxiaoowo.yuehua.items.other;
 
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
@@ -22,12 +24,7 @@ public final class XP {
     public static final ItemStack XP_500 = new ItemStack(Material.RAW_GOLD, 1);
 
     static {
-        XP_10.setCustomModelData(1);
-        XP_20.setCustomModelData(1);
-        XP_50.setCustomModelData(1);
-        XP_100.setCustomModelData(1);
-        XP_200.setCustomModelData(1);
-        XP_500.setCustomModelData(1);
+
 
         ItemMeta itemMeta1 = XP_10.getItemMeta();
         ItemMeta itemMeta2 = XP_20.getItemMeta();
@@ -122,5 +119,11 @@ public final class XP {
         XP_100.setItemMeta(itemMeta10);
         XP_200.setItemMeta(itemMeta20);
         XP_500.setItemMeta(itemMeta50);
+        XP_500.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "raw_gold/1"));
+        XP_200.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "raw_gold/1"));
+        XP_100.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "raw_gold/1"));
+        XP_50.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "raw_gold/1"));
+        XP_20.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "raw_gold/1"));
+        XP_10.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "raw_gold/1"));
     }
 }

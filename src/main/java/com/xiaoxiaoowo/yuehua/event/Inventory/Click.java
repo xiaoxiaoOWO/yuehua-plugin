@@ -23,7 +23,6 @@ import com.xiaoxiaoowo.yuehua.items.dz.YuShi;
 import com.xiaoxiaoowo.yuehua.items.other.Food;
 import com.xiaoxiaoowo.yuehua.items.other.Other;
 import com.xiaoxiaoowo.yuehua.items.other.RaceProvince;
-import com.xiaoxiaoowo.yuehua.items.zhuangbei.Special;
 import com.xiaoxiaoowo.yuehua.items.zhuangbei.Weapon;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.system.dz.*;
@@ -266,8 +265,8 @@ public final class Click implements Listener {
                         messages.add(Component.text("§6[个人数据]§a毒伤免疫：§b" + String.format("%.1f", data.dumian * 100) + "   §a火伤免疫：§b" + String.format("%.1f", data.huomian * 100) + "   §a冰伤免疫：§b" + String.format("%.1f", data.bingmian * 100)));
                         messages.add(Component.text("§6[个人数据]§a箭伤免疫：§b" + String.format("%.1f", data.jianmian * 100) + "   §a三叉戟伤免疫：§b" + String.format("%.1f", data.sanchajimian * 100) + "   §a摔落减免：§b" + String.format("%.1f", data.shuailuomian * 100)));
                         messages.add(Component.text("§6[个人数据]§a破甲：§b" + String.format("%.1f", data.pojia * 100) + "   §a破法：§b" + String.format("%.1f", data.pofa * 100) + "   §a守护：§b" + String.format("%.1f", data.shouhu)));
-                        messages.add(Component.text("§6[个人数据]§a攻击速度：§b" + String.format("%.1f", whoClicked.getAttribute(Attribute.GENERIC_ATTACK_SPEED).getValue()) + "   §a移动速度：§b" + String.format("%.2f", whoClicked.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).getValue()) + "   §a定力：§b" + String.format("%.1f", whoClicked.getAttribute(Attribute.GENERIC_KNOCKBACK_RESISTANCE).getValue() * 100)));
-                        messages.add(Component.text("§6[个人数据]§a攻击距离：§b" + String.format("%.1f", whoClicked.getAttribute(Attribute.PLAYER_ENTITY_INTERACTION_RANGE).getValue()) + "   §a跳跃力：§b" + String.format("%.2f", whoClicked.getAttribute(Attribute.GENERIC_JUMP_STRENGTH).getValue() * 100) + "   §a最大生命：§b" + String.format("%.1f", whoClicked.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue())));
+                        messages.add(Component.text("§6[个人数据]§a攻击速度：§b" + String.format("%.1f", whoClicked.getAttribute(Attribute.ATTACK_SPEED).getValue()) + "   §a移动速度：§b" + String.format("%.2f", whoClicked.getAttribute(Attribute.MOVEMENT_SPEED).getValue()) + "   §a定力：§b" + String.format("%.1f", whoClicked.getAttribute(Attribute.KNOCKBACK_RESISTANCE).getValue() * 100)));
+                        messages.add(Component.text("§6[个人数据]§a攻击距离：§b" + String.format("%.1f", whoClicked.getAttribute(Attribute.ENTITY_INTERACTION_RANGE).getValue()) + "   §a跳跃力：§b" + String.format("%.2f", whoClicked.getAttribute(Attribute.JUMP_STRENGTH).getValue() * 100) + "   §a最大生命：§b" + String.format("%.1f", whoClicked.getAttribute(Attribute.MAX_HEALTH).getValue())));
 
 
                         switch (data.job) {
@@ -364,8 +363,16 @@ public final class Click implements Listener {
 
                         tags.add("getxianqianaward");
                         String name = whoClicked.getName();
-                        ItemStack award = xianqianAward.get(name).clone();
-                        whoClicked.getInventory().addItem(award);
+                        ItemStack award = xianqianAward.get(name);
+
+                        if (award == null) {
+                            Scheduler.async(() -> whoClicked.sendMessage(Component.text("§6[时光之礼]§4你没有在先遣服游玩过！")));
+                            Scheduler.sync(() -> whoClicked.closeInventory());
+                            return;
+                        }
+
+                        ItemStack clone = award.clone();
+                        whoClicked.getInventory().addItem(clone);
 
 
                         PlaySound.success(whoClicked);
@@ -527,14 +534,14 @@ public final class Click implements Listener {
                             Scheduler.sync(() -> player.closeInventory());
                             return;
                         }
-                        if (player.getStatistic(Statistic.PLAY_ONE_MINUTE) < 20 * 60 * 60 * 18) {
+                        if (player.getStatistic(Statistic.PLAY_ONE_MINUTE) < 20 * 60 * 60 * 24) {
                             SendInformation.sendMes(player, Component.text("§6[成就奖励]§4由于你可能是刷成就奖励的小号，暂时无法领取，继续游戏之后会解锁！"));
                             PlaySound.closeInventory(player);
                             Scheduler.sync(() -> player.closeInventory());
                             return;
                         }
 
-                        if (player.getStatistic(Statistic.DAMAGE_TAKEN) < 16000) {
+                        if (player.getStatistic(Statistic.DAMAGE_TAKEN) < 20000) {
                             SendInformation.sendMes(player, Component.text("§6[成就奖励]§4由于你可能是刷成就奖励的小号，暂时无法领取，继续游戏之后会解锁！"));
                             PlaySound.closeInventory(player);
                             Scheduler.sync(() -> player.closeInventory());
@@ -559,7 +566,7 @@ public final class Click implements Listener {
                         pdc.set(DataContainer.zhonglie2, PersistentDataType.LIST.integers(), already);
                         SendInformation.sendMes(player, Component.text("§6[成就奖励]§a成功领取：" + item.getDisplayName()));
 
-                        if (item.getCustomModelData() == 12) {
+                        if (Advancenment.keyIds.contains(item.getPersistentDataContainer().get(DataContainer.id, PersistentDataType.STRING))) {
                             //锁定幸运钥匙盒子
                             item.editMeta(meta -> {
                                 meta.getPersistentDataContainer().set(DataContainer.owner, PersistentDataType.STRING, player.getUniqueId().toString());
@@ -595,20 +602,20 @@ public final class Click implements Listener {
                         ItemStack item = itemStack.clone();
                         //判断是否领取过
                         Player player = (Player) event.getWhoClicked();
-                        if ((player.getStatistic(Statistic.SPRINT_ONE_CM) + player.getStatistic(Statistic.WALK_ONE_CM)) < 160 * 1000) {
+                        if ((player.getStatistic(Statistic.SPRINT_ONE_CM) + player.getStatistic(Statistic.WALK_ONE_CM)) < 250 * 1000) {
                             SendInformation.sendMes(player, Component.text("§6[成就奖励]§4由于你可能是刷成就奖励的小号，暂时无法领取，继续游戏之后会解锁！"));
                             PlaySound.closeInventory(player);
                             Scheduler.sync(() -> player.closeInventory());
                             return;
                         }
-                        if (player.getStatistic(Statistic.PLAY_ONE_MINUTE) < 20 * 60 * 60 * 36) {
+                        if (player.getStatistic(Statistic.PLAY_ONE_MINUTE) < 20 * 60 * 60 * 72) {
                             SendInformation.sendMes(player, Component.text("§6[成就奖励]§4由于你可能是刷成就奖励的小号，暂时无法领取，继续游戏之后会解锁！"));
                             PlaySound.closeInventory(player);
                             Scheduler.sync(() -> player.closeInventory());
                             return;
                         }
 
-                        if (player.getStatistic(Statistic.DAMAGE_TAKEN) < 36000) {
+                        if (player.getStatistic(Statistic.DAMAGE_TAKEN) < 64000) {
                             SendInformation.sendMes(player, Component.text("§6[成就奖励]§4由于你可能是刷成就奖励的小号，暂时无法领取，继续游戏之后会解锁！"));
                             PlaySound.closeInventory(player);
                             Scheduler.sync(() -> player.closeInventory());
@@ -1849,7 +1856,7 @@ public final class Click implements Listener {
                 }
                 switch (item.getType()) {
                     case YELLOW_DYE -> {
-                        if (item.getCustomModelData() == 2) {
+                        if (item.getPersistentDataContainer().has(DataContainer.id)) {
                             event.setCancelled(true);
                             Player whoClicked = (Player) event.getWhoClicked();
                             whoClicked.sendMessage(Component.text("§6[菜单系统]§4此槽位还未开启"));
@@ -2861,10 +2868,10 @@ public final class Click implements Listener {
                         PlaySound.openInventory(whoClicked);
                         Scheduler.sync(() -> whoClicked.openInventory(Yuehua.shichang.get(id)));
                     } else {
-                        if (id == 1) {
+                        if (id % 10 == 1) {
                             Player whoClicked = (Player) event.getWhoClicked();
                             PlaySound.openInventory(whoClicked);
-                            Scheduler.sync(() -> whoClicked.openInventory(Yh.MAIN_MENU));
+                            Scheduler.sync(() -> whoClicked.openInventory(Shichang.shichangIndex));
                             return;
                         }
 

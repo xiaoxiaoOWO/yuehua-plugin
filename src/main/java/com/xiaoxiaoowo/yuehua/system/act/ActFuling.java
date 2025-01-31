@@ -351,7 +351,7 @@ public final class ActFuling {
     public static void actliren1(Data data) {
         if (data instanceof ZhanData zhanData) {
             Player player = data.player;
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.ATTACK_SPEED);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue + 0.25);
         }
@@ -360,7 +360,7 @@ public final class ActFuling {
     public static void deActliren1(Data data) {
         if (data instanceof ZhanData zhanData) {
             Player player = data.player;
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.ATTACK_SPEED);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue - 0.25);
         }
@@ -369,7 +369,7 @@ public final class ActFuling {
     public static void actliren2(Data data) {
         if (data instanceof ZhanData zhanData) {
             Player player = data.player;
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.ATTACK_SPEED);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue + 0.5);
         }
@@ -378,7 +378,7 @@ public final class ActFuling {
     public static void deActliren2(Data data) {
         if (data instanceof ZhanData zhanData) {
             Player player = data.player;
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.ATTACK_SPEED);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue - 0.5);
         }
@@ -387,7 +387,7 @@ public final class ActFuling {
     public static void actliren3(Data data) {
         if (data instanceof ZhanData zhanData) {
             Player player = data.player;
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.ATTACK_SPEED);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue + 0.75);
         }
@@ -396,7 +396,7 @@ public final class ActFuling {
     public static void deActliren3(Data data) {
         if (data instanceof ZhanData zhanData) {
             Player player = data.player;
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.ATTACK_SPEED);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue - 0.75);
         }
@@ -405,7 +405,7 @@ public final class ActFuling {
     public static void actliren4(Data data) {
         if (data instanceof ZhanData zhanData) {
             Player player = data.player;
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.ATTACK_SPEED);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue + 1.0);
         }
@@ -414,7 +414,7 @@ public final class ActFuling {
     public static void deActliren4(Data data) {
         if (data instanceof ZhanData zhanData) {
             Player player = data.player;
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.ATTACK_SPEED);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue - 1.0);
         }
@@ -791,7 +791,7 @@ public final class ActFuling {
     public static void actjuli1(Data data) {
         if (data instanceof ZhanData zhanData) {
             Player player = data.player;
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.PLAYER_ENTITY_INTERACTION_RANGE);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.ENTITY_INTERACTION_RANGE);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue + 0.5);
         }
@@ -800,7 +800,7 @@ public final class ActFuling {
     public static void deActjuli1(Data data) {
         if (data instanceof ZhanData zhanData) {
             Player player = data.player;
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.PLAYER_ENTITY_INTERACTION_RANGE);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.ENTITY_INTERACTION_RANGE);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue - 0.5);
         }
@@ -809,7 +809,7 @@ public final class ActFuling {
     public static void actjuli2(Data data) {
         if (data instanceof ZhanData zhanData) {
             Player player = data.player;
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.PLAYER_ENTITY_INTERACTION_RANGE);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.ENTITY_INTERACTION_RANGE);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue + 1.0);
         }
@@ -818,7 +818,7 @@ public final class ActFuling {
     public static void deActjuli2(Data data) {
         if (data instanceof ZhanData zhanData) {
             Player player = data.player;
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.PLAYER_ENTITY_INTERACTION_RANGE);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.ENTITY_INTERACTION_RANGE);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue - 1.0);
         }
@@ -827,7 +827,7 @@ public final class ActFuling {
     public static void actjuli3(Data data) {
         if (data instanceof ZhanData zhanData) {
             Player player = data.player;
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.PLAYER_ENTITY_INTERACTION_RANGE);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.ENTITY_INTERACTION_RANGE);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue + 1.5);
         }
@@ -836,7 +836,7 @@ public final class ActFuling {
     public static void deActjuli3(Data data) {
         if (data instanceof ZhanData zhanData) {
             Player player = data.player;
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.PLAYER_ENTITY_INTERACTION_RANGE);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.ENTITY_INTERACTION_RANGE);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue - 1.5);
         }
@@ -845,7 +845,7 @@ public final class ActFuling {
     public static void actjuli4(Data data) {
         if (data instanceof ZhanData zhanData) {
             Player player = data.player;
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.PLAYER_ENTITY_INTERACTION_RANGE);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.ENTITY_INTERACTION_RANGE);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue + 2.0);
         }
@@ -854,7 +854,7 @@ public final class ActFuling {
     public static void deActjuli4(Data data) {
         if (data instanceof ZhanData zhanData) {
             Player player = data.player;
-            AttributeInstance attributeInstance = player.getAttribute(Attribute.PLAYER_ENTITY_INTERACTION_RANGE);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.ENTITY_INTERACTION_RANGE);
             double baseValue = attributeInstance.getBaseValue();
             attributeInstance.setBaseValue(baseValue - 2.0);
         }

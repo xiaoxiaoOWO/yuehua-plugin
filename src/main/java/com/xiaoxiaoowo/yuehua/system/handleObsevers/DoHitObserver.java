@@ -158,7 +158,7 @@ public final class DoHitObserver {
             return 1.0d;
         }
 
-        double amount = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.01 + 10;
+        double amount = player.getAttribute(Attribute.MAX_HEALTH).getValue() * 0.01 + 10;
         Cure.curePlayer(amount, data);
 
         return 1.0d;

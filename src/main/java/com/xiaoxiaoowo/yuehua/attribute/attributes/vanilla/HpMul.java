@@ -34,7 +34,7 @@ public final class HpMul implements MyAttribute {
     @Override
     public void act(Data data, PersistentDataContainer pdc) {
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         attributeInstance.addModifier(
                 new AttributeModifier(
                         namespacedKey,
@@ -49,7 +49,7 @@ public final class HpMul implements MyAttribute {
     @Override
     public void deAct(Data data, PersistentDataContainer pdc) {
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         attributeInstance.removeModifier(namespacedKey);
     }
 

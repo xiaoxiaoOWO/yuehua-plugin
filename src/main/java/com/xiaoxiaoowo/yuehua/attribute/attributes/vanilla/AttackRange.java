@@ -17,7 +17,7 @@ public final class AttackRange implements MyAttribute {
     @Override
     public void act(Data data, PersistentDataContainer pdc) {
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.PLAYER_ENTITY_INTERACTION_RANGE);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.ENTITY_INTERACTION_RANGE);
         double base = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(base + attackrange);
     }
@@ -25,7 +25,7 @@ public final class AttackRange implements MyAttribute {
     @Override
     public void deAct(Data data, PersistentDataContainer pdc) {
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.PLAYER_ENTITY_INTERACTION_RANGE);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.ENTITY_INTERACTION_RANGE);
         double base = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(base - attackrange);
     }

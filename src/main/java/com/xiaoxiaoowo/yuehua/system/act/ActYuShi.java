@@ -877,112 +877,112 @@ public final class ActYuShi {
 
     public static void actZiJingShi1(Data data){
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(baseValue + 4);
     }
 
     public static void deActZiJingShi1(Data data){
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(baseValue - 4);
     }
 
     public static void actZiJingShi2(Data data){
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(baseValue + 8);
     }
 
     public static void deActZiJingShi2(Data data){
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(baseValue - 8);
     }
 
     public static void actZiJingShi3(Data data){
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(baseValue + 16);
     }
 
     public static void deActZiJingShi3(Data data){
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(baseValue - 16);
     }
 
     public static void actZiJingShi4(Data data){
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(baseValue + 32);
     }
 
     public static void deActZiJingShi4(Data data){
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(baseValue - 32);
     }
 
     public static void actZiJingShi5(Data data){
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(baseValue + 64);
     }
 
     public static void deActZiJingShi5(Data data){
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(baseValue - 64);
     }
 
     public static void actZiJingShi6(Data data){
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(baseValue + 128);
     }
 
     public static void deActZiJingShi6(Data data){
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(baseValue - 128);
     }
 
     public static void actZiJingShi7(Data data){
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(baseValue + 256);
     }
 
     public static void deActZiJingShi7(Data data){
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(baseValue - 256);
     }
 
     public static void actZiJingShi8(Data data){
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(baseValue + 512);
     }
 
     public static void deActZiJingShi8(Data data) {
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
         double baseValue = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(baseValue - 512);
     }

@@ -2,10 +2,12 @@ package com.xiaoxiaoowo.yuehua.items.dz;
 
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
@@ -99,7 +101,7 @@ public final class FuLing {
 
 
     static {
-        zhusha.setCustomModelData(1);
+
         ItemMeta zhushaMeta = zhusha.getItemMeta();
         zhushaMeta.setMaxStackSize(99);
         zhushaMeta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "zhusha");
@@ -115,7 +117,6 @@ public final class FuLing {
         zhusha.setItemMeta(zhushaMeta);
 
 
-        shouhu1.setCustomModelData(2);
         ItemMeta shouhu1Meta = shouhu1.getItemMeta();
         shouhu1Meta.setMaxStackSize(99);
         shouhu1Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shouhu1");
@@ -131,7 +132,7 @@ public final class FuLing {
         );
         shouhu1.setItemMeta(shouhu1Meta);
 
-        shouhu2.setCustomModelData(2);
+
         ItemMeta shouhu2Meta = shouhu2.getItemMeta();
         shouhu2Meta.setMaxStackSize(99);
         shouhu2Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shouhu2");
@@ -147,7 +148,7 @@ public final class FuLing {
         );
         shouhu2.setItemMeta(shouhu2Meta);
 
-        shouhu3.setCustomModelData(2);
+
         ItemMeta shouhu3Meta = shouhu3.getItemMeta();
         shouhu3Meta.setMaxStackSize(99);
         shouhu3Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shouhu3");
@@ -163,7 +164,7 @@ public final class FuLing {
         );
         shouhu3.setItemMeta(shouhu3Meta);
 
-        jiabin.setCustomModelData(2);
+
         ItemMeta jiabinMeta = jiabin.getItemMeta();
         jiabinMeta.setMaxStackSize(99);
         jiabinMeta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shouhu4");
@@ -179,7 +180,7 @@ public final class FuLing {
         );
         jiabin.setItemMeta(jiabinMeta);
 
-        yankai1.setCustomModelData(3);
+
         ItemMeta yankai1Meta = yankai1.getItemMeta();
         yankai1Meta.setMaxStackSize(99);
         yankai1Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yankai1");
@@ -196,7 +197,6 @@ public final class FuLing {
         yankai1.setItemMeta(yankai1Meta);
 
 
-        yankai2.setCustomModelData(3);
         ItemMeta yankai2Meta = yankai2.getItemMeta();
         yankai2Meta.setMaxStackSize(99);
         yankai2Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yankai2");
@@ -213,7 +213,6 @@ public final class FuLing {
         yankai2.setItemMeta(yankai2Meta);
 
 
-        yankai3.setCustomModelData(3);
         ItemMeta yankai3Meta = yankai3.getItemMeta();
         yankai3Meta.setMaxStackSize(99);
         yankai3Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yankai3");
@@ -230,7 +229,6 @@ public final class FuLing {
         yankai3.setItemMeta(yankai3Meta);
 
 
-        yanmo.setCustomModelData(3);
         ItemMeta yanmoMeta = yanmo.getItemMeta();
         yanmoMeta.setMaxStackSize(99);
         yanmoMeta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yankai4");
@@ -246,7 +244,7 @@ public final class FuLing {
         );
         yanmo.setItemMeta(yanmoMeta);
 
-        luoshi1.setCustomModelData(4);
+
         ItemMeta luoshi1Meta = luoshi1.getItemMeta();
         luoshi1Meta.setMaxStackSize(99);
         luoshi1Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "luoshi1");
@@ -262,7 +260,7 @@ public final class FuLing {
         );
         luoshi1.setItemMeta(luoshi1Meta);
 
-        luoshi2.setCustomModelData(4);
+
         ItemMeta luoshi2Meta = luoshi2.getItemMeta();
         luoshi2Meta.setMaxStackSize(99);
         luoshi2Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "luoshi2");
@@ -278,7 +276,7 @@ public final class FuLing {
         );
         luoshi2.setItemMeta(luoshi2Meta);
 
-        luoshi3.setCustomModelData(4);
+
         ItemMeta luoshi3Meta = luoshi3.getItemMeta();
         luoshi3Meta.setMaxStackSize(99);
         luoshi3Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "luoshi3");
@@ -294,7 +292,7 @@ public final class FuLing {
         );
         luoshi3.setItemMeta(luoshi3Meta);
 
-        wuxie.setCustomModelData(4);
+
         ItemMeta wuxieMeta = wuxie.getItemMeta();
         wuxieMeta.setMaxStackSize(99);
         wuxieMeta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "luoshi4");
@@ -311,7 +309,6 @@ public final class FuLing {
         wuxie.setItemMeta(wuxieMeta);
 
 
-        wanfa1.setCustomModelData(5);
         ItemMeta wanfa1Meta = wanfa1.getItemMeta();
         wanfa1Meta.setMaxStackSize(99);
         wanfa1Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "wanfa1");
@@ -327,7 +324,7 @@ public final class FuLing {
         );
         wanfa1.setItemMeta(wanfa1Meta);
 
-        wanfa2.setCustomModelData(5);
+
         ItemMeta wanfa2Meta = wanfa2.getItemMeta();
         wanfa2Meta.setMaxStackSize(99);
         wanfa2Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "wanfa2");
@@ -343,7 +340,7 @@ public final class FuLing {
         );
         wanfa2.setItemMeta(wanfa2Meta);
 
-        wanfa3.setCustomModelData(5);
+
         ItemMeta wanfa3Meta = wanfa3.getItemMeta();
         wanfa3Meta.setMaxStackSize(99);
         wanfa3Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "wanfa3");
@@ -359,7 +356,7 @@ public final class FuLing {
         );
         wanfa3.setItemMeta(wanfa3Meta);
 
-        shengfa.setCustomModelData(5);
+
         ItemMeta shengfaMeta = shengfa.getItemMeta();
         shengfaMeta.setMaxStackSize(99);
         shengfaMeta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "wanfa4");
@@ -376,7 +373,6 @@ public final class FuLing {
         shengfa.setItemMeta(shengfaMeta);
 
 
-        yuti1.setCustomModelData(6);
         ItemMeta yuti1Meta = yuti1.getItemMeta();
         yuti1Meta.setMaxStackSize(99);
         yuti1Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yuti1");
@@ -393,7 +389,6 @@ public final class FuLing {
         yuti1.setItemMeta(yuti1Meta);
 
 
-        yuti2.setCustomModelData(6);
         ItemMeta yuti2Meta = yuti2.getItemMeta();
         yuti2Meta.setMaxStackSize(99);
         yuti2Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yuti2");
@@ -409,7 +404,7 @@ public final class FuLing {
         );
         yuti2.setItemMeta(yuti2Meta);
 
-        yuti3.setCustomModelData(6);
+
         ItemMeta yuti3Meta = yuti3.getItemMeta();
         yuti3Meta.setMaxStackSize(99);
         yuti3Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yuti3");
@@ -425,7 +420,7 @@ public final class FuLing {
         );
         yuti3.setItemMeta(yuti3Meta);
 
-        xianti.setCustomModelData(6);
+
         ItemMeta xiantiMeta = xianti.getItemMeta();
         xiantiMeta.setMaxStackSize(99);
         xiantiMeta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "yuti4");
@@ -442,7 +437,6 @@ public final class FuLing {
         xianti.setItemMeta(xiantiMeta);
 
 
-        liren1.setCustomModelData(7);
         ItemMeta liren1Meta = liren1.getItemMeta();
         liren1Meta.setMaxStackSize(99);
         liren1Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "liren1");
@@ -458,7 +452,7 @@ public final class FuLing {
         );
         liren1.setItemMeta(liren1Meta);
 
-        liren2.setCustomModelData(7);
+
         ItemMeta liren2Meta = liren2.getItemMeta();
         liren2Meta.setMaxStackSize(99);
         liren2Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "liren2");
@@ -474,7 +468,7 @@ public final class FuLing {
         );
         liren2.setItemMeta(liren2Meta);
 
-        liren3.setCustomModelData(7);
+
         ItemMeta liren3Meta = liren3.getItemMeta();
         liren3Meta.setMaxStackSize(99);
         liren3Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "liren3");
@@ -491,7 +485,6 @@ public final class FuLing {
         liren3.setItemMeta(liren3Meta);
 
 
-        duanzui.setCustomModelData(7);
         ItemMeta duanzuiMeta = duanzui.getItemMeta();
         duanzuiMeta.setMaxStackSize(99);
         duanzuiMeta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "liren4");
@@ -507,7 +500,7 @@ public final class FuLing {
         );
         duanzui.setItemMeta(duanzuiMeta);
 
-        qiangong1.setCustomModelData(8);
+
         ItemMeta qiangong1Meta = qiangong1.getItemMeta();
         qiangong1Meta.setMaxStackSize(99);
         qiangong1Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qiangong1");
@@ -523,7 +516,7 @@ public final class FuLing {
         );
         qiangong1.setItemMeta(qiangong1Meta);
 
-        qiangong2.setCustomModelData(8);
+
         ItemMeta qiangong2Meta = qiangong2.getItemMeta();
         qiangong2Meta.setMaxStackSize(99);
         qiangong2Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qiangong2");
@@ -539,7 +532,7 @@ public final class FuLing {
         );
         qiangong2.setItemMeta(qiangong2Meta);
 
-        qiangong3.setCustomModelData(8);
+
         ItemMeta qiangong3Meta = qiangong3.getItemMeta();
         qiangong3Meta.setMaxStackSize(99);
         qiangong3Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qiangong3");
@@ -555,7 +548,7 @@ public final class FuLing {
         );
         qiangong3.setItemMeta(qiangong3Meta);
 
-        yuanri.setCustomModelData(8);
+
         ItemMeta yuanriMeta = yuanri.getItemMeta();
         yuanriMeta.setMaxStackSize(99);
         yuanriMeta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qiangong4");
@@ -572,7 +565,6 @@ public final class FuLing {
         yuanri.setItemMeta(yuanriMeta);
 
 
-        qiangren1.setCustomModelData(9);
         ItemMeta qiangren1Meta = qiangren1.getItemMeta();
         qiangren1Meta.setMaxStackSize(99);
         qiangren1Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qiangren1");
@@ -588,7 +580,7 @@ public final class FuLing {
         );
         qiangren1.setItemMeta(qiangren1Meta);
 
-        qiangren2.setCustomModelData(9);
+
         ItemMeta qiangren2Meta = qiangren2.getItemMeta();
         qiangren2Meta.setMaxStackSize(99);
         qiangren2Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qiangren2");
@@ -604,7 +596,7 @@ public final class FuLing {
         );
         qiangren2.setItemMeta(qiangren2Meta);
 
-        qiangren3.setCustomModelData(9);
+
         ItemMeta qiangren3Meta = qiangren3.getItemMeta();
         qiangren3Meta.setMaxStackSize(99);
         qiangren3Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qiangren3");
@@ -620,7 +612,7 @@ public final class FuLing {
         );
         qiangren3.setItemMeta(qiangren3Meta);
 
-        bucui.setCustomModelData(9);
+
         ItemMeta bucuiMeta = bucui.getItemMeta();
         bucuiMeta.setMaxStackSize(99);
         bucuiMeta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "qiangren4");
@@ -636,7 +628,7 @@ public final class FuLing {
         );
         bucui.setItemMeta(bucuiMeta);
 
-        shuangjia1.setCustomModelData(10);
+
         ItemMeta shuangjia1Meta = shuangjia1.getItemMeta();
         shuangjia1Meta.setMaxStackSize(99);
         shuangjia1Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shuangjia1");
@@ -652,7 +644,7 @@ public final class FuLing {
         );
         shuangjia1.setItemMeta(shuangjia1Meta);
 
-        shuangjia2.setCustomModelData(10);
+
         ItemMeta shuangjia2Meta = shuangjia2.getItemMeta();
         shuangjia2Meta.setMaxStackSize(99);
         shuangjia2Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shuangjia2");
@@ -668,7 +660,7 @@ public final class FuLing {
         );
         shuangjia2.setItemMeta(shuangjia2Meta);
 
-        shuangjia3.setCustomModelData(10);
+
         ItemMeta shuangjia3Meta = shuangjia3.getItemMeta();
         shuangjia3Meta.setMaxStackSize(99);
         shuangjia3Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shuangjia3");
@@ -684,7 +676,7 @@ public final class FuLing {
         );
         shuangjia3.setItemMeta(shuangjia3Meta);
 
-        aohan.setCustomModelData(10);
+
         ItemMeta aohanMeta = aohan.getItemMeta();
         aohanMeta.setMaxStackSize(99);
         aohanMeta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "shuangjia4");
@@ -700,7 +692,7 @@ public final class FuLing {
         );
         aohan.setItemMeta(aohanMeta);
 
-        huixin1.setCustomModelData(11);
+
         ItemMeta huixin1Meta = huixin1.getItemMeta();
         huixin1Meta.setMaxStackSize(99);
         huixin1Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "huixin1");
@@ -716,7 +708,7 @@ public final class FuLing {
         );
         huixin1.setItemMeta(huixin1Meta);
 
-        huixin2.setCustomModelData(11);
+
         ItemMeta huixin2Meta = huixin2.getItemMeta();
         huixin2Meta.setMaxStackSize(99);
         huixin2Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "huixin2");
@@ -732,7 +724,7 @@ public final class FuLing {
         );
         huixin2.setItemMeta(huixin2Meta);
 
-        huixin3.setCustomModelData(11);
+
         ItemMeta huixin3Meta = huixin3.getItemMeta();
         huixin3Meta.setMaxStackSize(99);
         huixin3Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "huixin3");
@@ -748,7 +740,7 @@ public final class FuLing {
         );
         huixin3.setItemMeta(huixin3Meta);
 
-        xianfa.setCustomModelData(11);
+
         ItemMeta xianfaMeta = xianfa.getItemMeta();
         xianfaMeta.setMaxStackSize(99);
         xianfaMeta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "huixin4");
@@ -764,7 +756,7 @@ public final class FuLing {
         );
         xianfa.setItemMeta(xianfaMeta);
 
-        guantong1.setCustomModelData(12);
+
         ItemMeta guantong1Meta = guantong1.getItemMeta();
         guantong1Meta.setMaxStackSize(99);
         guantong1Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "guantong1");
@@ -780,7 +772,7 @@ public final class FuLing {
         );
         guantong1.setItemMeta(guantong1Meta);
 
-        guantong2.setCustomModelData(12);
+
         ItemMeta guantong2Meta = guantong2.getItemMeta();
         guantong2Meta.setMaxStackSize(99);
         guantong2Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "guantong2");
@@ -796,7 +788,7 @@ public final class FuLing {
         );
         guantong2.setItemMeta(guantong2Meta);
 
-        guantong3.setCustomModelData(12);
+
         ItemMeta guantong3Meta = guantong3.getItemMeta();
         guantong3Meta.setMaxStackSize(99);
         guantong3Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "guantong3");
@@ -812,7 +804,7 @@ public final class FuLing {
         );
         guantong3.setItemMeta(guantong3Meta);
 
-        shenfa.setCustomModelData(12);
+
         ItemMeta shenfaMeta = shenfa.getItemMeta();
         shenfaMeta.setMaxStackSize(99);
         shenfaMeta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "guantong4");
@@ -828,7 +820,7 @@ public final class FuLing {
         );
         shenfa.setItemMeta(shenfaMeta);
 
-        juli1.setCustomModelData(13);
+
         ItemMeta juli1Meta = juli1.getItemMeta();
         juli1Meta.setMaxStackSize(99);
         juli1Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "juli1");
@@ -844,7 +836,7 @@ public final class FuLing {
         );
         juli1.setItemMeta(juli1Meta);
 
-        juli2.setCustomModelData(13);
+
         ItemMeta juli2Meta = juli2.getItemMeta();
         juli2Meta.setMaxStackSize(99);
         juli2Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "juli2");
@@ -860,7 +852,7 @@ public final class FuLing {
         );
         juli2.setItemMeta(juli2Meta);
 
-        juli3.setCustomModelData(13);
+
         ItemMeta juli3Meta = juli3.getItemMeta();
         juli3Meta.setMaxStackSize(99);
         juli3Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "juli3");
@@ -876,7 +868,7 @@ public final class FuLing {
         );
         juli3.setItemMeta(juli3Meta);
 
-        wangyue.setCustomModelData(13);
+
         ItemMeta wangyueMeta = wangyue.getItemMeta();
         wangyueMeta.setMaxStackSize(99);
         wangyueMeta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "juli4");
@@ -893,7 +885,6 @@ public final class FuLing {
         wangyue.setItemMeta(wangyueMeta);
 
 
-        bujin1.setCustomModelData(14);
         ItemMeta bujin1Meta = bujin1.getItemMeta();
         bujin1Meta.setMaxStackSize(99);
         bujin1Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "bujin1");
@@ -909,7 +900,7 @@ public final class FuLing {
         );
         bujin1.setItemMeta(bujin1Meta);
 
-        bujin2.setCustomModelData(14);
+
         ItemMeta bujin2Meta = bujin2.getItemMeta();
         bujin2Meta.setMaxStackSize(99);
         bujin2Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "bujin2");
@@ -925,7 +916,7 @@ public final class FuLing {
         );
         bujin2.setItemMeta(bujin2Meta);
 
-        bujin3.setCustomModelData(14);
+
         ItemMeta bujin3Meta = bujin3.getItemMeta();
         bujin3Meta.setMaxStackSize(99);
         bujin3Meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "bujin3");
@@ -941,7 +932,7 @@ public final class FuLing {
         );
         bujin3.setItemMeta(bujin3Meta);
 
-        wuxian.setCustomModelData(14);
+
         ItemMeta wuxianMeta = wuxian.getItemMeta();
         wuxianMeta.setMaxStackSize(99);
         wuxianMeta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "bujin4");
@@ -958,6 +949,59 @@ public final class FuLing {
         wuxian.setItemMeta(wuxianMeta);
 
 
+        wuxian.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/14"));
+        bujin3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/14"));
+        bujin2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/14"));
+        bujin1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/14"));
+        wangyue.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/13"));
+        juli3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/13"));
+        juli2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/13"));
+        juli1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/13"));
+        shenfa.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/12"));
+        guantong3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/12"));
+        guantong2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/12"));
+        guantong1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/12"));
+        xianfa.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/11"));
+        huixin3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/11"));
+        huixin2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/11"));
+        huixin1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/11"));
+        aohan.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/10"));
+        shuangjia3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/10"));
+        shuangjia2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/10"));
+        shuangjia1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/10"));
+        bucui.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/9"));
+        qiangren3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/9"));
+        qiangren2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/9"));
+        qiangren1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/9"));
+        yuanri.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/8"));
+        qiangong3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/8"));
+        qiangong2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/8"));
+        qiangong1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/8"));
+        duanzui.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/7"));
+        liren3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/7"));
+        liren2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/7"));
+        liren1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/7"));
+        xianti.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/6"));
+        yuti3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/6"));
+        yuti2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/6"));
+        yuti1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/6"));
+        shengfa.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/5"));
+        wanfa3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/5"));
+        wanfa2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/5"));
+        wanfa1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/5"));
+        wuxie.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/4"));
+        luoshi3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/4"));
+        luoshi2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/4"));
+        luoshi1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/4"));
+        yanmo.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/3"));
+        yankai3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/3"));
+        yankai2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/3"));
+        yankai1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/3"));
+        jiabin.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/2"));
+        shouhu3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/2"));
+        shouhu2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/2"));
+        shouhu1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/2"));
+        zhusha.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "paper/1"));
     }
 
 

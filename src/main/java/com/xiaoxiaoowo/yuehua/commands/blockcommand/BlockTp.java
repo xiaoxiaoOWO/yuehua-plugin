@@ -99,7 +99,7 @@ public final class BlockTp implements CommandExecutor {
 
                 player.addScoreboardTag("jianyi");
 
-                AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+                AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
                 double baseValue = attributeInstance.getBaseValue();
                 attributeInstance.setBaseValue(baseValue + 32);
 
@@ -117,7 +117,7 @@ public final class BlockTp implements CommandExecutor {
 
                 player.addScoreboardTag("yuzhuzijue");
 
-                AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+                AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
                 double baseValue = attributeInstance.getBaseValue();
                 attributeInstance.setBaseValue(baseValue + 32);
 
@@ -135,7 +135,7 @@ public final class BlockTp implements CommandExecutor {
 
                 player.addScoreboardTag("racezhixian");
 
-                AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+                AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
                 double baseValue = attributeInstance.getBaseValue();
                 attributeInstance.setBaseValue(baseValue + 32);
 
@@ -153,7 +153,7 @@ public final class BlockTp implements CommandExecutor {
 
                 player.addScoreboardTag("racezhixian");
 
-                AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+                AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
                 double baseValue = attributeInstance.getBaseValue();
                 attributeInstance.setBaseValue(baseValue + 32);
 
@@ -171,7 +171,7 @@ public final class BlockTp implements CommandExecutor {
 
                 player.addScoreboardTag("racezhixian");
 
-                AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+                AttributeInstance attributeInstance = player.getAttribute(Attribute.MAX_HEALTH);
                 double baseValue = attributeInstance.getBaseValue();
                 attributeInstance.setBaseValue(baseValue + 32);
 

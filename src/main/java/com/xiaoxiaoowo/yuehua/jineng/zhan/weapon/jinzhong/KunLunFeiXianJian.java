@@ -17,7 +17,6 @@ import com.xiaoxiaoowo.yuehua.utils.SendInformation;
 import net.kyori.adventure.text.Component;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
-import org.bukkit.block.data.BlockData;
 import org.bukkit.entity.*;
 import org.joml.Vector3f;
 
@@ -28,7 +27,7 @@ public final class KunLunFeiXianJian {
     public static void skill1(ZhanData zhanData, double multiplier){
         zhanData.slot0.cd_active = GetEntity.world.getGameTime() + (long) (60 * 20 * zhanData.real_cool);
         Player player = zhanData.player;
-        double damage = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 6 * multiplier;
+        double damage = player.getAttribute(Attribute.MAX_HEALTH).getValue() * 6 * multiplier;
         for (Entity entity : GetEntity.getMonsters(player.getLocation(), 8, 8, 8)) {
             MonsterData monsterData = Yuehua.monsterData.get(entity.getUniqueId());
             Damage.damageMonster(zhanData, damage, monsterData);
@@ -49,7 +48,7 @@ public final class KunLunFeiXianJian {
         int cureTaskId = Scheduler.syncTimerWithId(() -> {
             for (Entity entity : GetEntity.getPlayers(wolf.getLocation(), 8, 8, 8)) {
                 Player player1 = (Player) entity;
-                double amount = player1.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.0125 + 15;
+                double amount = player1.getAttribute(Attribute.MAX_HEALTH).getValue() * 0.0125 + 15;
                 Cure.curePlayer(amount, player1);
             }
 

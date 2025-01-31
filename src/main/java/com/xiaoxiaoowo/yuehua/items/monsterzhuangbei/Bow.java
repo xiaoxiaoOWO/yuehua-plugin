@@ -1,7 +1,9 @@
 package com.xiaoxiaoowo.yuehua.items.monsterzhuangbei;
 
 import com.xiaoxiaoowo.yuehua.utils.ZeroAttributeModifier;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -54,18 +56,11 @@ public final class Bow {
         ItemMeta crossbow4Meta = crossbow4.getItemMeta();
         ItemMeta crossbow5Meta = crossbow5.getItemMeta();
 
-        bow1Meta.setCustomModelData(1);
-        bow2Meta.setCustomModelData(2);
-        bow3Meta.setCustomModelData(3);
-        bow4Meta.setCustomModelData(4);
-        bow5Meta.setCustomModelData(5);
-        bow6Meta.setCustomModelData(6);
+// 弓箭手（BOW）
 
-        crossbow1Meta.setCustomModelData(1);
-        crossbow2Meta.setCustomModelData(2);
-        crossbow3Meta.setCustomModelData(3);
-        crossbow4Meta.setCustomModelData(4);
-        crossbow5Meta.setCustomModelData(5);
+
+// 游侠（CROSSBOW）
+
 
         bow1.setItemMeta(bow1Meta);
         bow2.setItemMeta(bow2Meta);
@@ -80,10 +75,21 @@ public final class Bow {
         crossbow4.setItemMeta(crossbow4Meta);
         crossbow5.setItemMeta(crossbow5Meta);
 
-        sanchajiMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
-        sanchajiMeta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
+        sanchajiMeta.addAttributeModifier(Attribute.ATTACK_DAMAGE, ZeroAttributeModifier.ATTACK_DAMAGE);
+        sanchajiMeta.addAttributeModifier(Attribute.ATTACK_SPEED, ZeroAttributeModifier.ATTACK_SPEED);
 
         sanchaji.setItemMeta(sanchajiMeta);
 
+        crossbow5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "crossbow/6"));
+        crossbow4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "crossbow/5"));
+        crossbow3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "crossbow/4"));
+        crossbow2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "crossbow/3"));
+        crossbow1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "crossbow/2"));
+        bow6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/6"));
+        bow5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/5"));
+        bow4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/4"));
+        bow3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/3"));
+        bow2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/2"));
+        bow1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/1"));
     }
 }

@@ -3,6 +3,7 @@ package com.xiaoxiaoowo.yuehua.items.other;
 import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -36,16 +37,6 @@ public final class Feather {
     static {
 
 
-        XIN_YA_ZHI_YU.setCustomModelData(1);
-        QING_YING_ZHI_YU.setCustomModelData(2);
-        SHEN_SU_ZHI_YU.setCustomModelData(3);
-        JIN_PENG_ZHI_YU.setCustomModelData(4);
-        JIN_PENG_ZHI_YU_SUI_PIAN.setCustomModelData(5);
-        QING_LUAN_ZHI_YU.setCustomModelData(6);
-        QING_LUAN_ZHI_YU_SUI_PIAN.setCustomModelData(7);
-        TONG_HE_ZHI_YU.setCustomModelData(8);
-        TONG_HE_ZHI_YU_SUI_PIAN.setCustomModelData(9);
-
         ItemMeta xinyazhiyu = XIN_YA_ZHI_YU.getItemMeta();
         xinyazhiyu.setMaxStackSize(99);
         xinyazhiyu.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "xinyazhiyu");
@@ -61,7 +52,7 @@ public final class Feather {
         );
 
 
-        xinyazhiyu.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
+        xinyazhiyu.addAttributeModifier(Attribute.MOVEMENT_SPEED,
                 new AttributeModifier(
                         yumaoSpeed,
                         0.3,
@@ -86,8 +77,7 @@ public final class Feather {
         );
 
 
-
-        qingyingzhiyu.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
+        qingyingzhiyu.addAttributeModifier(Attribute.MOVEMENT_SPEED,
                 new AttributeModifier(
                         yumaoSpeed,
                         0.5,
@@ -109,7 +99,7 @@ public final class Feather {
                 )
         );
 
-        shensuzhiyu.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
+        shensuzhiyu.addAttributeModifier(Attribute.MOVEMENT_SPEED,
                 new AttributeModifier(
                         yumaoSpeed,
                         0.8,
@@ -131,7 +121,7 @@ public final class Feather {
                 )
         );
 
-        jinpengzhiyu.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
+        jinpengzhiyu.addAttributeModifier(Attribute.MOVEMENT_SPEED,
                 new AttributeModifier(
                         yumaoSpeed,
                         1.2,
@@ -153,7 +143,7 @@ public final class Feather {
                 )
         );
 
-        qingluanzhiyu.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
+        qingluanzhiyu.addAttributeModifier(Attribute.MOVEMENT_SPEED,
                 new AttributeModifier(
                         yumaoSpeed,
                         1.7,
@@ -176,7 +166,7 @@ public final class Feather {
                 )
         );
 
-        tonghezhiyu.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
+        tonghezhiyu.addAttributeModifier(Attribute.MOVEMENT_SPEED,
                 new AttributeModifier(
                         yumaoSpeed,
                         2.3,
@@ -223,14 +213,23 @@ public final class Feather {
                 )
         );
         TONG_HE_ZHI_YU_SUI_PIAN.setItemMeta(tonghezhiyusuipian);
+        TONG_HE_ZHI_YU_SUI_PIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "raw_iron/9"));
+        TONG_HE_ZHI_YU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "raw_iron/8"));
+        QING_LUAN_ZHI_YU_SUI_PIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "raw_iron/7"));
+        QING_LUAN_ZHI_YU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "raw_iron/6"));
+        JIN_PENG_ZHI_YU_SUI_PIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "raw_iron/5"));
+        JIN_PENG_ZHI_YU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "raw_iron/4"));
+        SHEN_SU_ZHI_YU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "raw_iron/3"));
+        QING_YING_ZHI_YU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "raw_iron/2"));
+        XIN_YA_ZHI_YU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "raw_iron/1"));
     }
 
-    public static void putId(){
-        Recipe.idToItem.put("xinyazhiyu",XIN_YA_ZHI_YU);
-        Recipe.idToItem.put("qingyingzhiyu",QING_YING_ZHI_YU);
-        Recipe.idToItem.put("shensuzhiyu",SHEN_SU_ZHI_YU);
-        Recipe.idToItem.put("jinpengzhiyu",JIN_PENG_ZHI_YU);
-        Recipe.idToItem.put("qingluanzhiyu",QING_LUAN_ZHI_YU);
-        Recipe.idToItem.put("tonghezhiyu",TONG_HE_ZHI_YU);
+    public static void putId() {
+        Recipe.idToItem.put("xinyazhiyu", XIN_YA_ZHI_YU);
+        Recipe.idToItem.put("qingyingzhiyu", QING_YING_ZHI_YU);
+        Recipe.idToItem.put("shensuzhiyu", SHEN_SU_ZHI_YU);
+        Recipe.idToItem.put("jinpengzhiyu", JIN_PENG_ZHI_YU);
+        Recipe.idToItem.put("qingluanzhiyu", QING_LUAN_ZHI_YU);
+        Recipe.idToItem.put("tonghezhiyu", TONG_HE_ZHI_YU);
     }
 }

@@ -35,7 +35,7 @@ public final class Speed implements MyAttribute {
     @Override
     public void act(Data data, PersistentDataContainer pdc) {
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MOVEMENT_SPEED);
         attributeInstance.addModifier(
                 new AttributeModifier(
                         namespacedKey,
@@ -47,7 +47,7 @@ public final class Speed implements MyAttribute {
     @Override
     public void deAct(Data data, PersistentDataContainer pdc) {
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.MOVEMENT_SPEED);
         attributeInstance.removeModifier(namespacedKey);
     }
 

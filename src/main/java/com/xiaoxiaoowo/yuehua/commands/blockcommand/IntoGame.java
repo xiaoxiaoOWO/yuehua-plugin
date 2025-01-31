@@ -232,7 +232,7 @@ public final class IntoGame implements CommandExecutor {
         player.setBedSpawnLocation(SPAWN, true);
 
         //回满血回满饱和度
-        player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+        player.setHealth(player.getAttribute(Attribute.MAX_HEALTH).getValue());
         player.setFoodLevel(20);
         player.setSaturation(20);
         player.setTitleTimes(15, 80, 20);

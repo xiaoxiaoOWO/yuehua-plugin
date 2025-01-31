@@ -1,6 +1,9 @@
 package com.xiaoxiaoowo.yuehua.guis.dz;
 
 import com.xiaoxiaoowo.yuehua.guis.Yh;
+import com.xiaoxiaoowo.yuehua.items.dz.Core;
+import com.xiaoxiaoowo.yuehua.items.dz.Ingredient;
+import com.xiaoxiaoowo.yuehua.items.dz.YuanSu;
 import com.xiaoxiaoowo.yuehua.items.other.Feather;
 import com.xiaoxiaoowo.yuehua.items.zhuangbei.*;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
@@ -104,6 +107,8 @@ public final class Recipe {
     static {
 
 
+        SQL.initialRecipe();
+
         zhanArmor.setItem(0, Yh.TO_NEXT);
         gongArmor.setItem(0, Yh.TO_NEXT);
         danArmor.setItem(0, Yh.TO_NEXT);
@@ -178,9 +183,6 @@ public final class Recipe {
         recipeAllDan2.setItem(53, Yh.BACK_BEFORE);
         recipeDanDan2.setItem(53, Yh.BACK_BEFORE);
 
-
-        SQL.initialRecipe();
-
         ArmorChest.putId();
         ArmorFeet.putId();
         ArmorHead.putId();
@@ -192,6 +194,9 @@ public final class Recipe {
         Shipin.putId();
         YiQi.putId();
         Feather.putId();
+        Core.putId();
+        Ingredient.putId();
+        YuanSu.putId();
 
     }
 
@@ -284,11 +289,16 @@ public final class Recipe {
             if (itemStack == null) {
                 continue;
             }
+            if (itemStack.getDisplayName().contains("返回上一页")) {
+                inventory.setItem(i, Yh.BACK_BEFORE);
+            }
+
             ItemMeta itemMeta = itemStack.getItemMeta();
             PersistentDataContainer pdc = itemMeta.getPersistentDataContainer();
             String id = pdc.getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
             ItemStack itemNew = Recipe.idToItem.get(id);
             if (itemNew != null) {
+                itemNew.setAmount(itemStack.getAmount());
                 inventory.setItem(i, itemNew);
             }
         }

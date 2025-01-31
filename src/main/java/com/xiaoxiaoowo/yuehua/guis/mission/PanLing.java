@@ -5,12 +5,14 @@ import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import com.xiaoxiaoowo.yuehua.utils.PlaySound;
 import com.xiaoxiaoowo.yuehua.utils.Scheduler;
 import com.xiaoxiaoowo.yuehua.utils.SendInformation;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import io.papermc.paper.persistence.PersistentDataContainerView;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -27,16 +29,15 @@ public class PanLing {
 
     static {
         tijiao.editMeta(itemMeta -> {
-            itemMeta.setCustomModelData(1);
             itemMeta.displayName(Component.text("§b将天地人剑意按顺序放于一二三格后，点我提交任务"));
         });
+        tijiao.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
         jianyi.setItem(8, tijiao);
 
         tijiaoxuanwu.editMeta(itemMeta -> {
-            itemMeta.setCustomModelData(1);
             itemMeta.displayName(Component.text("§b将金木水火土元素按顺序放于一二三四五格后，点我提交任务"));
         });
-
+        tijiaoxuanwu.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "ink_sac/1"));
         xuanwu.setItem(8, tijiaoxuanwu);
 
     }

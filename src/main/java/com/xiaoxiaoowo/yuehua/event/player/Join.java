@@ -83,8 +83,8 @@ public final class Join implements Listener {
                         if (data.job != 0 && (persistentDataContainer.get(DataContainer.mainTask, PersistentDataType.INTEGER) != 5)) {
                             Task.checkMain(player);
                         }
-                        player.getAttribute(Attribute.GENERIC_JUMP_STRENGTH).removeModifier(Jump.canNotJump);
-                        player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).removeModifier(Speed.canNotMove);
+                        player.getAttribute(Attribute.JUMP_STRENGTH).removeModifier(Jump.canNotJump);
+                        player.getAttribute(Attribute.MOVEMENT_SPEED).removeModifier(Speed.canNotMove);
 
                         Scheduler.asyncLater(() -> Transfer.transferAttribute(data), 2 * 20);
                         Yuehua.timeLastIn.put(uuid, System.currentTimeMillis());
@@ -197,10 +197,10 @@ public final class Join implements Listener {
             SQL.storeShiPin(player.getUniqueId().toString(), shipinBar);
 
             //初始攻击速度,移动速度，最大伤害吸收
-            player.getAttribute(Attribute.GENERIC_ATTACK_SPEED).setBaseValue(1);
-            player.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.1);
-            player.getAttribute(Attribute.GENERIC_JUMP_STRENGTH).setBaseValue(0.42);
-            player.getAttribute(Attribute.GENERIC_MAX_ABSORPTION).setBaseValue(1000000000);
+            player.getAttribute(Attribute.ATTACK_SPEED).setBaseValue(1);
+            player.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0.1);
+            player.getAttribute(Attribute.JUMP_STRENGTH).setBaseValue(0.42);
+            player.getAttribute(Attribute.MAX_ABSORPTION).setBaseValue(1000000000);
 
             //初始化
             persistentDataContainer.set(DataContainer.levelAward, PersistentDataType.INTEGER, 0);

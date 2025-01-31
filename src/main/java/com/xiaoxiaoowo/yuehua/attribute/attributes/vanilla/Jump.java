@@ -21,7 +21,7 @@ public final class Jump implements MyAttribute {
     @Override
     public void act(Data data, PersistentDataContainer pdc) {
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_JUMP_STRENGTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.JUMP_STRENGTH);
         double base = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(base + jump);
     }
@@ -29,7 +29,7 @@ public final class Jump implements MyAttribute {
     @Override
     public void deAct(Data data, PersistentDataContainer pdc) {
         Player player = data.player;
-        AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_JUMP_STRENGTH);
+        AttributeInstance attributeInstance = player.getAttribute(Attribute.JUMP_STRENGTH);
         double base = attributeInstance.getBaseValue();
         attributeInstance.setBaseValue(base - jump);
     }

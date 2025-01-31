@@ -79,7 +79,7 @@ public final class DoMonsterWuLiAttacked {
             return 1.0d;
         }
         Player player = data.player;
-        Cure.curePlayer(0.0025 * player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() + 5, data);
+        Cure.curePlayer(0.0025 * player.getAttribute(Attribute.MAX_HEALTH).getValue() + 5, data);
         return 1.0d;
     }
 

@@ -23,7 +23,7 @@ public final class RegainHealth implements Listener {
                         return;
                     }
                     double shengji = data.shengji;
-                    double amount = 1 + player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() * 0.005;
+                    double amount = 1 + player.getAttribute(Attribute.MAX_HEALTH).getValue() * 0.005;
                     for (String observer : data.curedObservers) {
                         amount = amount * DoCuredObserver.doCured(observer, data);
                     }

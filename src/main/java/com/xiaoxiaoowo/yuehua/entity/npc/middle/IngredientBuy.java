@@ -4,7 +4,6 @@ import com.xiaoxiaoowo.yuehua.Yuehua;
 import com.xiaoxiaoowo.yuehua.items.dz.Core;
 import com.xiaoxiaoowo.yuehua.items.dz.Ingredient;
 import com.xiaoxiaoowo.yuehua.items.other.Money;
-import com.xiaoxiaoowo.yuehua.items.other.MoneyLoot;
 import com.xiaoxiaoowo.yuehua.items.other.Other;
 import com.xiaoxiaoowo.yuehua.utils.GetEntity;
 import net.kyori.adventure.text.Component;

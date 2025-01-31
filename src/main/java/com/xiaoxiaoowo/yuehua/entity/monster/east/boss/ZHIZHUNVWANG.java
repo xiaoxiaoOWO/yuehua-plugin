@@ -29,9 +29,9 @@ public final class ZHIZHUNVWANG {
                     it.setCanPickupItems(false);
 
                     //属性
-                    it.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(400);
-                    it.getAttribute(Attribute.GENERIC_FOLLOW_RANGE).setBaseValue(48);
-                    it.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(0.45);
+                    it.getAttribute(Attribute.MAX_HEALTH).setBaseValue(400);
+                    it.getAttribute(Attribute.FOLLOW_RANGE).setBaseValue(48);
+                    it.getAttribute(Attribute.MOVEMENT_SPEED).setBaseValue(0.45);
 
 
                     //DLC数据

@@ -5,6 +5,7 @@ import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
 import com.xiaoxiaoowo.yuehua.utils.ZeroAttributeModifier;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -97,7 +98,7 @@ public final class BiWeapon {
         xiaotianMeta.addItemFlags(ZeroAttributeModifier.itemFlags);
 
 
-        heitiechongMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
+        heitiechongMeta.addAttributeModifier(Attribute.MOVEMENT_SPEED,
                 new AttributeModifier(
                         chongSpeed,
                         -99,
@@ -107,7 +108,7 @@ public final class BiWeapon {
         );
 
 
-        huangtongchongMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
+        huangtongchongMeta.addAttributeModifier(Attribute.MOVEMENT_SPEED,
                 new AttributeModifier(
                         chongSpeed,
                         -99,
@@ -116,7 +117,7 @@ public final class BiWeapon {
                 )
         );
 
-        jinjingMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
+        jinjingMeta.addAttributeModifier(Attribute.MOVEMENT_SPEED,
                 new AttributeModifier(
                         chongSpeed,
                         -99,
@@ -125,7 +126,7 @@ public final class BiWeapon {
                 )
         );
 
-        canlanMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
+        canlanMeta.addAttributeModifier(Attribute.MOVEMENT_SPEED,
                 new AttributeModifier(
                         chongSpeed,
                         -99,
@@ -134,7 +135,7 @@ public final class BiWeapon {
                 )
         );
 
-        mingyueMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
+        mingyueMeta.addAttributeModifier(Attribute.MOVEMENT_SPEED,
                 new AttributeModifier(
                         chongSpeed,
                         -99,
@@ -143,7 +144,7 @@ public final class BiWeapon {
                 )
         );
 
-        xiaotianMeta.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED,
+        xiaotianMeta.addAttributeModifier(Attribute.MOVEMENT_SPEED,
                 new AttributeModifier(
                         chongSpeed,
                         -99,
@@ -152,7 +153,7 @@ public final class BiWeapon {
                 )
         );
 
-        heitiechongMeta.addAttributeModifier(Attribute.GENERIC_JUMP_STRENGTH,
+        heitiechongMeta.addAttributeModifier(Attribute.JUMP_STRENGTH,
                 new AttributeModifier(
                         chongJump,
                         -99,
@@ -160,7 +161,7 @@ public final class BiWeapon {
                         EquipmentSlotGroup.HAND
                 ));
 
-        huangtongchongMeta.addAttributeModifier(Attribute.GENERIC_JUMP_STRENGTH,
+        huangtongchongMeta.addAttributeModifier(Attribute.JUMP_STRENGTH,
                 new AttributeModifier(
                         chongJump,
                         -99,
@@ -169,7 +170,7 @@ public final class BiWeapon {
                 )
         );
 
-        jinjingMeta.addAttributeModifier(Attribute.GENERIC_JUMP_STRENGTH,
+        jinjingMeta.addAttributeModifier(Attribute.JUMP_STRENGTH,
                 new AttributeModifier(
                         chongJump,
                         -99,
@@ -178,7 +179,7 @@ public final class BiWeapon {
                 )
         );
 
-        canlanMeta.addAttributeModifier(Attribute.GENERIC_JUMP_STRENGTH,
+        canlanMeta.addAttributeModifier(Attribute.JUMP_STRENGTH,
                 new AttributeModifier(
                         chongJump,
                         -99,
@@ -187,7 +188,7 @@ public final class BiWeapon {
                 )
         );
 
-        mingyueMeta.addAttributeModifier(Attribute.GENERIC_JUMP_STRENGTH,
+        mingyueMeta.addAttributeModifier(Attribute.JUMP_STRENGTH,
                 new AttributeModifier(
                         chongJump,
                         -99,
@@ -196,7 +197,7 @@ public final class BiWeapon {
                 )
         );
 
-        xiaotianMeta.addAttributeModifier(Attribute.GENERIC_JUMP_STRENGTH,
+        xiaotianMeta.addAttributeModifier(Attribute.JUMP_STRENGTH,
                 new AttributeModifier(
                         chongJump,
                         -99,
@@ -204,7 +205,6 @@ public final class BiWeapon {
                         EquipmentSlotGroup.HAND
                 )
         );
-
 
 
         PersistentDataContainer pdcfeiren = feirenMeta.getPersistentDataContainer();
@@ -309,26 +309,14 @@ public final class BiWeapon {
         pdcjiufenglaiyi.set(DataContainer.slot, PersistentDataType.INTEGER, 1);
 
 
-        feirenMeta.setCustomModelData(4001);
-        jinruifeirenMeta.setCustomModelData(4002);
-        wushengxiujianMeta.setCustomModelData(4003);
-        huixuantajiMeta.setCustomModelData(4004);
-        wuyinwuzongMeta.setCustomModelData(4005);
-        yanwangtieMeta.setCustomModelData(4006);
+        // 战士，暗器
 
-        heitiechongMeta.setCustomModelData(5001);
-        huangtongchongMeta.setCustomModelData(5002);
-        mingyueMeta.setCustomModelData(5003);
-        canlanMeta.setCustomModelData(5004);
-        jinjingMeta.setCustomModelData(5005);
-        xiaotianMeta.setCustomModelData(5006);
 
-        xiaoMeta.setCustomModelData(6001);
-        qinfengyinyinMeta.setCustomModelData(6002);
-        liushuichanchanMeta.setCustomModelData(6003);
-        buqichunyuMeta.setCustomModelData(6004);
-        sanshengzhenhunMeta.setCustomModelData(6005);
-        jiufenglaiyiMeta.setCustomModelData(6006);
+// 弓箭手，火铳
+
+
+// 炼丹师，灵乐
+
 
         feirenMeta.displayName(Component.text("飞刃[副武器]").color(NamedTextColor.WHITE).decoration(TextDecoration.ITALIC, false));
         jinruifeirenMeta.displayName(Component.text("精锐飞刃[副武器]").color(NamedTextColor.GREEN).decoration(TextDecoration.ITALIC, false));
@@ -974,6 +962,24 @@ public final class BiWeapon {
         SANSHENGZHENHUN.setItemMeta(sanshengzhenhunMeta);
         JIUFENGLAIYI.setItemMeta(jiufenglaiyiMeta);
 
+        JIUFENGLAIYI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/6006"));
+        SANSHENGZHENHUN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/6005"));
+        BUQICHUNYU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/6004"));
+        LIUSHUICHANCHAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/6003"));
+        QINFENGYINYIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/6002"));
+        XIAO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/6001"));
+        XIAOTIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/5006"));
+        JINJING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/5005"));
+        CANLAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/5004"));
+        MINGYUE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/5003"));
+        HUANGTONGCHONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/5002"));
+        HEITIECHONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/5001"));
+        YANWANGTIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/4006"));
+        WUYINWUZONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/4005"));
+        HUIXUANTAJI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/4004"));
+        WUSHENGXIUJIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/4003"));
+        JINRUIFEIREN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/4002"));
+        FEIREN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/4001"));
     }
 
     public static void putId() {

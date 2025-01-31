@@ -4,12 +4,12 @@ import com.xiaoxiaoowo.yuehua.attribute.AttributeSet;
 import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import com.xiaoxiaoowo.yuehua.utils.ComponentSet;
-import com.xiaoxiaoowo.yuehua.utils.ZeroAttributeModifier;
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Material;
-import org.bukkit.attribute.Attribute;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
@@ -233,85 +233,38 @@ public final class Shipin {
         chi_jie_shen_jie_meta.setMaxStackSize(1);
 
 
-        qing_long_sheng_qi1_meta.setCustomModelData(1);
-        qing_long_sheng_qi2_meta.setCustomModelData(1);
-        qing_long_sheng_qi3_meta.setCustomModelData(1);
-        qing_long_sheng_qi4_meta.setCustomModelData(1);
-        qing_long_sheng_qi5_meta.setCustomModelData(1);
-        qing_long_sheng_qi6_meta.setCustomModelData(1);
+        // 青龙生气系列
 
-        zhu_que_sheng_qi1_meta.setCustomModelData(2);
-        zhu_que_sheng_qi2_meta.setCustomModelData(2);
-        zhu_que_sheng_qi3_meta.setCustomModelData(2);
-        zhu_que_sheng_qi4_meta.setCustomModelData(2);
-        zhu_que_sheng_qi5_meta.setCustomModelData(2);
-        zhu_que_sheng_qi6_meta.setCustomModelData(2);
 
-        bai_hu_sheng_qi1_meta.setCustomModelData(3);
-        bai_hu_sheng_qi2_meta.setCustomModelData(3);
-        bai_hu_sheng_qi3_meta.setCustomModelData(3);
-        bai_hu_sheng_qi4_meta.setCustomModelData(3);
-        bai_hu_sheng_qi5_meta.setCustomModelData(3);
-        bai_hu_sheng_qi6_meta.setCustomModelData(3);
+// 朱雀生气系列
 
-        xuan_wu_sheng_qi1_meta.setCustomModelData(4);
-        xuan_wu_sheng_qi2_meta.setCustomModelData(4);
-        xuan_wu_sheng_qi3_meta.setCustomModelData(4);
-        xuan_wu_sheng_qi4_meta.setCustomModelData(4);
-        xuan_wu_sheng_qi5_meta.setCustomModelData(4);
-        xuan_wu_sheng_qi6_meta.setCustomModelData(4);
 
-        hun_tian_lin_meta.setCustomModelData(5);
+// 白虎生气系列
 
-        tai_chu_shen_jia_meta.setCustomModelData(6);
 
-        zi_sha_chan_meta.setCustomModelData(7);
+// 玄武生气系列
 
-        feng_huo_lun_meta.setCustomModelData(8);
-        jiu_tian_xuan_yu_meta.setCustomModelData(8);
-        wei_tuo_tian_meta.setCustomModelData(8);
 
-        po_sun_tan_zhi_jie_meta.setCustomModelData(9);
-        tan_yu_zhi_jie_meta.setCustomModelData(10);
-        tan_lan_du_jie_meta.setCustomModelData(11);
-        tan_lan_xie_jie_meta.setCustomModelData(12);
-        tan_lan_gui_jie_meta.setCustomModelData(13);
-        tan_lan_mo_jie_meta.setCustomModelData(14);
-        tan_lan_ming_jie_meta.setCustomModelData(15);
+// 其他物品
 
-        po_sun_chi_zhi_jie_meta.setCustomModelData(16);
-        chi_mi_zhi_jie_meta.setCustomModelData(17);
-        chi_yu_du_jie_meta.setCustomModelData(18);
-        chi_yu_xie_jie_meta.setCustomModelData(19);
-        chi_yu_gui_jie_meta.setCustomModelData(20);
-        chi_yu_mo_jie_meta.setCustomModelData(21);
-        chi_yu_ming_jie_meta.setCustomModelData(22);
 
-        po_sun_chen_zhi_jie_meta.setCustomModelData(23);
-        chen_nu_zhi_jie_meta.setCustomModelData(24);
-        chen_hen_du_jie_meta.setCustomModelData(25);
-        chen_hen_xie_jie_meta.setCustomModelData(26);
-        chen_hen_gui_jie_meta.setCustomModelData(27);
-        chen_hen_mo_jie_meta.setCustomModelData(28);
-        chen_hen_ming_jie_meta.setCustomModelData(29);
+// 贪系列
 
-        chan_ding_fa_jie_meta.setCustomModelData(30);
-        chan_ding_sheng_jie_meta.setCustomModelData(31);
-        chan_ding_fo_jie_meta.setCustomModelData(32);
-        chan_ding_xian_jie_meta.setCustomModelData(33);
-        chan_ding_shen_jie_meta.setCustomModelData(34);
 
-        zhi_hui_fa_jie_meta.setCustomModelData(35);
-        zhi_hui_sheng_jie_meta.setCustomModelData(36);
-        zhi_hui_fo_jie_meta.setCustomModelData(37);
-        zhi_hui_xian_jie_meta.setCustomModelData(38);
-        zhi_hui_shen_jie_meta.setCustomModelData(39);
+// 痴系列
 
-        chi_jie_fa_jie_meta.setCustomModelData(40);
-        chi_jie_sheng_jie_meta.setCustomModelData(41);
-        chi_jie_fo_jie_meta.setCustomModelData(42);
-        chi_jie_xian_jie_meta.setCustomModelData(43);
-        chi_jie_shen_jie_meta.setCustomModelData(44);
+
+// 嗔系列
+
+
+// 禅定系列
+
+
+// 智慧系列
+
+
+// 持戒系列
+
 
         PersistentDataContainer pdc_qing_long_sheng_qi1 = qing_long_sheng_qi1_meta.getPersistentDataContainer();
         PersistentDataContainer pdc_qing_long_sheng_qi2 = qing_long_sheng_qi2_meta.getPersistentDataContainer();
@@ -380,82 +333,82 @@ public final class Shipin {
         PersistentDataContainer pdc_chi_jie_xian_jie = chi_jie_xian_jie_meta.getPersistentDataContainer();
         PersistentDataContainer pdc_chi_jie_shen_jie = chi_jie_shen_jie_meta.getPersistentDataContainer();
 
-        pdc_qing_long_sheng_qi1.set(DataContainer.slot,PersistentDataType.INTEGER,0);
-        pdc_qing_long_sheng_qi2.set(DataContainer.slot,PersistentDataType.INTEGER,0);
-        pdc_qing_long_sheng_qi3.set(DataContainer.slot,PersistentDataType.INTEGER,0);
-        pdc_qing_long_sheng_qi4.set(DataContainer.slot,PersistentDataType.INTEGER,0);
-        pdc_qing_long_sheng_qi5.set(DataContainer.slot,PersistentDataType.INTEGER,0);
-        pdc_qing_long_sheng_qi6.set(DataContainer.slot,PersistentDataType.INTEGER,0);
+        pdc_qing_long_sheng_qi1.set(DataContainer.slot, PersistentDataType.INTEGER, 0);
+        pdc_qing_long_sheng_qi2.set(DataContainer.slot, PersistentDataType.INTEGER, 0);
+        pdc_qing_long_sheng_qi3.set(DataContainer.slot, PersistentDataType.INTEGER, 0);
+        pdc_qing_long_sheng_qi4.set(DataContainer.slot, PersistentDataType.INTEGER, 0);
+        pdc_qing_long_sheng_qi5.set(DataContainer.slot, PersistentDataType.INTEGER, 0);
+        pdc_qing_long_sheng_qi6.set(DataContainer.slot, PersistentDataType.INTEGER, 0);
 
-        pdc_zhu_que_sheng_qi1.set(DataContainer.slot,PersistentDataType.INTEGER,1);
-        pdc_zhu_que_sheng_qi2.set(DataContainer.slot,PersistentDataType.INTEGER,1);
-        pdc_zhu_que_sheng_qi3.set(DataContainer.slot,PersistentDataType.INTEGER,1);
-        pdc_zhu_que_sheng_qi4.set(DataContainer.slot,PersistentDataType.INTEGER,1);
-        pdc_zhu_que_sheng_qi5.set(DataContainer.slot,PersistentDataType.INTEGER,1);
-        pdc_zhu_que_sheng_qi6.set(DataContainer.slot,PersistentDataType.INTEGER,1);
+        pdc_zhu_que_sheng_qi1.set(DataContainer.slot, PersistentDataType.INTEGER, 1);
+        pdc_zhu_que_sheng_qi2.set(DataContainer.slot, PersistentDataType.INTEGER, 1);
+        pdc_zhu_que_sheng_qi3.set(DataContainer.slot, PersistentDataType.INTEGER, 1);
+        pdc_zhu_que_sheng_qi4.set(DataContainer.slot, PersistentDataType.INTEGER, 1);
+        pdc_zhu_que_sheng_qi5.set(DataContainer.slot, PersistentDataType.INTEGER, 1);
+        pdc_zhu_que_sheng_qi6.set(DataContainer.slot, PersistentDataType.INTEGER, 1);
 
-        pdc_bai_hu_sheng_qi1.set(DataContainer.slot,PersistentDataType.INTEGER,2);
-        pdc_bai_hu_sheng_qi2.set(DataContainer.slot,PersistentDataType.INTEGER,2);
-        pdc_bai_hu_sheng_qi3.set(DataContainer.slot,PersistentDataType.INTEGER,2);
-        pdc_bai_hu_sheng_qi4.set(DataContainer.slot,PersistentDataType.INTEGER,2);
-        pdc_bai_hu_sheng_qi5.set(DataContainer.slot,PersistentDataType.INTEGER,2);
-        pdc_bai_hu_sheng_qi6.set(DataContainer.slot,PersistentDataType.INTEGER,2);
+        pdc_bai_hu_sheng_qi1.set(DataContainer.slot, PersistentDataType.INTEGER, 2);
+        pdc_bai_hu_sheng_qi2.set(DataContainer.slot, PersistentDataType.INTEGER, 2);
+        pdc_bai_hu_sheng_qi3.set(DataContainer.slot, PersistentDataType.INTEGER, 2);
+        pdc_bai_hu_sheng_qi4.set(DataContainer.slot, PersistentDataType.INTEGER, 2);
+        pdc_bai_hu_sheng_qi5.set(DataContainer.slot, PersistentDataType.INTEGER, 2);
+        pdc_bai_hu_sheng_qi6.set(DataContainer.slot, PersistentDataType.INTEGER, 2);
 
-        pdc_xuan_wu_sheng_qi1.set(DataContainer.slot,PersistentDataType.INTEGER,3);
-        pdc_xuan_wu_sheng_qi2.set(DataContainer.slot,PersistentDataType.INTEGER,3);
-        pdc_xuan_wu_sheng_qi3.set(DataContainer.slot,PersistentDataType.INTEGER,3);
-        pdc_xuan_wu_sheng_qi4.set(DataContainer.slot,PersistentDataType.INTEGER,3);
-        pdc_xuan_wu_sheng_qi5.set(DataContainer.slot,PersistentDataType.INTEGER,3);
-        pdc_xuan_wu_sheng_qi6.set(DataContainer.slot,PersistentDataType.INTEGER,3);
+        pdc_xuan_wu_sheng_qi1.set(DataContainer.slot, PersistentDataType.INTEGER, 3);
+        pdc_xuan_wu_sheng_qi2.set(DataContainer.slot, PersistentDataType.INTEGER, 3);
+        pdc_xuan_wu_sheng_qi3.set(DataContainer.slot, PersistentDataType.INTEGER, 3);
+        pdc_xuan_wu_sheng_qi4.set(DataContainer.slot, PersistentDataType.INTEGER, 3);
+        pdc_xuan_wu_sheng_qi5.set(DataContainer.slot, PersistentDataType.INTEGER, 3);
+        pdc_xuan_wu_sheng_qi6.set(DataContainer.slot, PersistentDataType.INTEGER, 3);
 
-        pdc_hun_tian_lin.set(DataContainer.slot,PersistentDataType.INTEGER,7);
-        pdc_tai_chu_shen_jia.set(DataContainer.slot,PersistentDataType.INTEGER,7);
-        pdc_zi_sha_chan.set(DataContainer.slot,PersistentDataType.INTEGER,7);
-        pdc_feng_huo_lun.set(DataContainer.slot,PersistentDataType.INTEGER,7);
-        pdc_jiu_tian_xuan_yu.set(DataContainer.slot,PersistentDataType.INTEGER,7);
-        pdc_wei_tuo_tian.set(DataContainer.slot,PersistentDataType.INTEGER,7);
+        pdc_hun_tian_lin.set(DataContainer.slot, PersistentDataType.INTEGER, 7);
+        pdc_tai_chu_shen_jia.set(DataContainer.slot, PersistentDataType.INTEGER, 7);
+        pdc_zi_sha_chan.set(DataContainer.slot, PersistentDataType.INTEGER, 7);
+        pdc_feng_huo_lun.set(DataContainer.slot, PersistentDataType.INTEGER, 7);
+        pdc_jiu_tian_xuan_yu.set(DataContainer.slot, PersistentDataType.INTEGER, 7);
+        pdc_wei_tuo_tian.set(DataContainer.slot, PersistentDataType.INTEGER, 7);
 
-        pdc_po_sun_tan_zhi_jie.set(DataContainer.slot,PersistentDataType.INTEGER,4);
-        pdc_tan_yu_zhi_jie.set(DataContainer.slot,PersistentDataType.INTEGER,4);
-        pdc_tan_lan_du_jie.set(DataContainer.slot,PersistentDataType.INTEGER,4);
-        pdc_tan_lan_xie_jie.set(DataContainer.slot,PersistentDataType.INTEGER,4);
-        pdc_tan_lan_gui_jie.set(DataContainer.slot,PersistentDataType.INTEGER,4);
-        pdc_tan_lan_mo_jie.set(DataContainer.slot,PersistentDataType.INTEGER,4);
-        pdc_tan_lan_ming_jie.set(DataContainer.slot,PersistentDataType.INTEGER,4);
+        pdc_po_sun_tan_zhi_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 4);
+        pdc_tan_yu_zhi_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 4);
+        pdc_tan_lan_du_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 4);
+        pdc_tan_lan_xie_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 4);
+        pdc_tan_lan_gui_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 4);
+        pdc_tan_lan_mo_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 4);
+        pdc_tan_lan_ming_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 4);
 
-        pdc_po_sun_chi_zhi_jie.set(DataContainer.slot,PersistentDataType.INTEGER,5);
-        pdc_chi_mi_zhi_jie.set(DataContainer.slot,PersistentDataType.INTEGER,5);
-        pdc_chi_yu_du_jie.set(DataContainer.slot,PersistentDataType.INTEGER,5);
-        pdc_chi_yu_xie_jie.set(DataContainer.slot,PersistentDataType.INTEGER,5);
-        pdc_chi_yu_gui_jie.set(DataContainer.slot,PersistentDataType.INTEGER,5);
-        pdc_chi_yu_mo_jie.set(DataContainer.slot,PersistentDataType.INTEGER,5);
-        pdc_chi_yu_ming_jie.set(DataContainer.slot,PersistentDataType.INTEGER,5);
+        pdc_po_sun_chi_zhi_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 5);
+        pdc_chi_mi_zhi_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 5);
+        pdc_chi_yu_du_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 5);
+        pdc_chi_yu_xie_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 5);
+        pdc_chi_yu_gui_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 5);
+        pdc_chi_yu_mo_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 5);
+        pdc_chi_yu_ming_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 5);
 
-        pdc_po_sun_chen_zhi_jie.set(DataContainer.slot,PersistentDataType.INTEGER,6);
-        pdc_chen_nu_zhi_jie.set(DataContainer.slot,PersistentDataType.INTEGER,6);
-        pdc_chen_hen_du_jie.set(DataContainer.slot,PersistentDataType.INTEGER,6);
-        pdc_chen_hen_xie_jie.set(DataContainer.slot,PersistentDataType.INTEGER,6);
-        pdc_chen_hen_gui_jie.set(DataContainer.slot,PersistentDataType.INTEGER,6);
-        pdc_chen_hen_mo_jie.set(DataContainer.slot,PersistentDataType.INTEGER,6);
-        pdc_chen_hen_ming_jie.set(DataContainer.slot,PersistentDataType.INTEGER,6);
+        pdc_po_sun_chen_zhi_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 6);
+        pdc_chen_nu_zhi_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 6);
+        pdc_chen_hen_du_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 6);
+        pdc_chen_hen_xie_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 6);
+        pdc_chen_hen_gui_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 6);
+        pdc_chen_hen_mo_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 6);
+        pdc_chen_hen_ming_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 6);
 
-        pdc_chan_ding_fa_jie.set(DataContainer.slot,PersistentDataType.INTEGER,4);
-        pdc_chan_ding_sheng_jie.set(DataContainer.slot,PersistentDataType.INTEGER,4);
-        pdc_chan_ding_fo_jie.set(DataContainer.slot,PersistentDataType.INTEGER,4);
-        pdc_chan_ding_xian_jie.set(DataContainer.slot,PersistentDataType.INTEGER,4);
-        pdc_chan_ding_shen_jie.set(DataContainer.slot,PersistentDataType.INTEGER,4);
+        pdc_chan_ding_fa_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 4);
+        pdc_chan_ding_sheng_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 4);
+        pdc_chan_ding_fo_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 4);
+        pdc_chan_ding_xian_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 4);
+        pdc_chan_ding_shen_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 4);
 
-        pdc_zhi_hui_fa_jie.set(DataContainer.slot,PersistentDataType.INTEGER,5);
-        pdc_zhi_hui_sheng_jie.set(DataContainer.slot,PersistentDataType.INTEGER,5);
-        pdc_zhi_hui_fo_jie.set(DataContainer.slot,PersistentDataType.INTEGER,5);
-        pdc_zhi_hui_xian_jie.set(DataContainer.slot,PersistentDataType.INTEGER,5);
-        pdc_zhi_hui_shen_jie.set(DataContainer.slot,PersistentDataType.INTEGER,5);
+        pdc_zhi_hui_fa_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 5);
+        pdc_zhi_hui_sheng_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 5);
+        pdc_zhi_hui_fo_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 5);
+        pdc_zhi_hui_xian_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 5);
+        pdc_zhi_hui_shen_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 5);
 
-        pdc_chi_jie_fa_jie.set(DataContainer.slot,PersistentDataType.INTEGER,6);
-        pdc_chi_jie_sheng_jie.set(DataContainer.slot,PersistentDataType.INTEGER,6);
-        pdc_chi_jie_fo_jie.set(DataContainer.slot,PersistentDataType.INTEGER,6);
-        pdc_chi_jie_xian_jie.set(DataContainer.slot,PersistentDataType.INTEGER,6);
-        pdc_chi_jie_shen_jie.set(DataContainer.slot,PersistentDataType.INTEGER,6);
+        pdc_chi_jie_fa_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 6);
+        pdc_chi_jie_sheng_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 6);
+        pdc_chi_jie_fo_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 6);
+        pdc_chi_jie_xian_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 6);
+        pdc_chi_jie_shen_jie.set(DataContainer.slot, PersistentDataType.INTEGER, 6);
 
 
         pdc_qing_long_sheng_qi1.set(DataContainer.id, PersistentDataType.STRING, "qingLongShengQi1");
@@ -524,8 +477,6 @@ public final class Shipin {
         pdc_chi_jie_fo_jie.set(DataContainer.id, PersistentDataType.STRING, "chiJieFoJie");
         pdc_chi_jie_xian_jie.set(DataContainer.id, PersistentDataType.STRING, "chiJieXianJie");
         pdc_chi_jie_shen_jie.set(DataContainer.id, PersistentDataType.STRING, "chiJieShenJie");
-
-
 
 
         qing_long_sheng_qi1_meta.displayName(
@@ -2196,10 +2147,76 @@ public final class Shipin {
         CHI_JIE_SHEN_JIE.setItemMeta(chi_jie_shen_jie_meta);
 
 
+        CHI_JIE_SHEN_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/44"));
+        CHI_JIE_XIAN_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/43"));
+        CHI_JIE_FO_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/42"));
+        CHI_JIE_SHENG_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/41"));
+        CHI_JIE_FA_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/40"));
+        ZHI_HUI_SHEN_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/39"));
+        ZHI_HUI_XIAN_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/38"));
+        ZHI_HUI_FO_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/37"));
+        ZHI_HUI_SHENG_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/36"));
+        ZHI_HUI_FA_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/35"));
+        CHAN_DING_SHEN_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/34"));
+        CHAN_DING_XIAN_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/33"));
+        CHAN_DING_FO_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/32"));
+        CHAN_DING_SHENG_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/31"));
+        CHAN_DING_FA_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/30"));
+        CHEN_HEN_MING_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/29"));
+        CHEN_HEN_MO_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/28"));
+        CHEN_HEN_GUI_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/27"));
+        CHEN_HEN_XIE_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/26"));
+        CHEN_HEN_DU_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/25"));
+        CHEN_NU_ZHI_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/24"));
+        PO_SUN_CHEN_ZHI_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/23"));
+        CHI_YU_MING_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/22"));
+        CHI_YU_MO_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/21"));
+        CHI_YU_GUI_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/20"));
+        CHI_YU_XIE_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/19"));
+        CHI_YU_DU_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/18"));
+        CHI_MI_ZHI_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/17"));
+        PO_SUN_CHI_ZHI_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/16"));
+        TAN_LAN_MING_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/15"));
+        TAN_LAN_MO_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/14"));
+        TAN_LAN_GUI_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/13"));
+        TAN_LAN_XIE_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/12"));
+        TAN_LAN_DU_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/11"));
+        TAN_YU_ZHI_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/10"));
+        PO_SUN_TAN_ZHI_JIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/9"));
+        WEI_TUO_TIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/8"));
+        JIU_TIAN_XUAN_YU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/8"));
+        FENG_HUO_LUN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/8"));
+        ZI_SHA_CHAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/7"));
+        TAI_CHU_SHEN_JIA.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/6"));
+        HUN_TIAN_LIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/5"));
+        XUAN_WU_SHENG_QI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/4"));
+        XUAN_WU_SHENG_QI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/4"));
+        XUAN_WU_SHENG_QI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/4"));
+        XUAN_WU_SHENG_QI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/4"));
+        XUAN_WU_SHENG_QI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/4"));
+        XUAN_WU_SHENG_QI1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/4"));
+        BAI_HU_SHENG_QI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/3"));
+        BAI_HU_SHENG_QI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/3"));
+        BAI_HU_SHENG_QI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/3"));
+        BAI_HU_SHENG_QI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/3"));
+        BAI_HU_SHENG_QI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/3"));
+        BAI_HU_SHENG_QI1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/3"));
+        ZHU_QUE_SHENG_QI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/2"));
+        ZHU_QUE_SHENG_QI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/2"));
+        ZHU_QUE_SHENG_QI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/2"));
+        ZHU_QUE_SHENG_QI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/2"));
+        ZHU_QUE_SHENG_QI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/2"));
+        ZHU_QUE_SHENG_QI1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/2"));
+        QING_LONG_SHENG_QI6.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/1"));
+        QING_LONG_SHENG_QI5.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/1"));
+        QING_LONG_SHENG_QI4.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/1"));
+        QING_LONG_SHENG_QI3.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/1"));
+        QING_LONG_SHENG_QI2.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/1"));
+        QING_LONG_SHENG_QI1.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "arms_up_pottery_sherd/1"));
     }
 
-    public static void putId(){
-        Recipe.idToItem.put("qingLongShengQi1",QING_LONG_SHENG_QI1);
+    public static void putId() {
+        Recipe.idToItem.put("qingLongShengQi1", QING_LONG_SHENG_QI1);
         Recipe.idToItem.put("qingLongShengQi2", QING_LONG_SHENG_QI2);
         Recipe.idToItem.put("qingLongShengQi3", QING_LONG_SHENG_QI3);
         Recipe.idToItem.put("qingLongShengQi4", QING_LONG_SHENG_QI4);

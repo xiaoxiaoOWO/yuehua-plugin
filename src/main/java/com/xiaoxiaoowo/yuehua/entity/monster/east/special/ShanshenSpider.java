@@ -44,8 +44,8 @@ public final class ShanshenSpider {
                     ------------------------------------重要部分----------------------------------------------
                     * */
                     //属性
-                    it.getAttribute(Attribute.GENERIC_MAX_HEALTH).setBaseValue(120);
-                    it.getAttribute(Attribute.GENERIC_FOLLOW_RANGE).setBaseValue(48);
+                    it.getAttribute(Attribute.MAX_HEALTH).setBaseValue(120);
+                    it.getAttribute(Attribute.FOLLOW_RANGE).setBaseValue(48);
 
                     //DLC数据
                     PersistentDataContainer pdc = it.getPersistentDataContainer();

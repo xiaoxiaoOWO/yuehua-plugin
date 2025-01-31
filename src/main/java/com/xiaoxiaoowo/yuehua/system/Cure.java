@@ -21,7 +21,7 @@ public final class Cure {
         }
         double hp = player.getHealth();
         amout += hp;
-        double max_hp = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+        double max_hp = player.getAttribute(Attribute.MAX_HEALTH).getValue();
         amout = Math.min(max_hp, amout);
         player.setHealth(amout);
     }
@@ -36,7 +36,7 @@ public final class Cure {
         }
         double hp = player.getHealth();
         amout += hp;
-        double max_hp = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+        double max_hp = player.getAttribute(Attribute.MAX_HEALTH).getValue();
         amout = Math.min(max_hp, amout);
         player.setHealth(amout);
     }
@@ -51,7 +51,7 @@ public final class Cure {
             }
             double hp = player.getHealth();
             amout += hp;
-            double max_hp = player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+            double max_hp = player.getAttribute(Attribute.MAX_HEALTH).getValue();
             amout = Math.min(max_hp, amout);
             player.setHealth(amout);
         }
@@ -104,7 +104,7 @@ public final class Cure {
             double shengji = Yuehua.monsterData.get(mob.getUniqueId()).shengji;
             double hp = mob.getHealth();
             amout = amout * shengji + hp;
-            double max_hp = mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+            double max_hp = mob.getAttribute(Attribute.MAX_HEALTH).getValue();
             amout = Math.min(max_hp, amout);
             mob.setHealth(amout);
         }
@@ -116,7 +116,7 @@ public final class Cure {
         double shengji = Yuehua.monsterData.get(mob.getUniqueId()).shengji;
         double hp = mob.getHealth();
         amout = amout * shengji + hp;
-        double max_hp = mob.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
+        double max_hp = mob.getAttribute(Attribute.MAX_HEALTH).getValue();
         amout = Math.min(max_hp, amout);
         mob.setHealth(amout);
     }

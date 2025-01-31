@@ -30,7 +30,7 @@ public final class YouLong extends BukkitRunnable {
         }
 
         if (player.isInWater()) {
-            Cure.curePlayer(0.01 * player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() + 10,data);
+            Cure.curePlayer(0.01 * player.getAttribute(Attribute.MAX_HEALTH).getValue() + 10,data);
         }
 
         num--;

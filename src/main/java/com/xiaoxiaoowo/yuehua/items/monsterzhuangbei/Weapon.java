@@ -1,7 +1,9 @@
 package com.xiaoxiaoowo.yuehua.items.monsterzhuangbei;
 
+import io.papermc.paper.datacomponent.DataComponentTypes;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.block.Banner;
 import org.bukkit.block.banner.Pattern;
 import org.bukkit.block.banner.PatternType;
@@ -178,388 +180,292 @@ public final class Weapon {
 
 
         ItemMeta taomujianMeta = diamond_pickaxeMeta.clone();
-        taomujianMeta.setCustomModelData(1);
         TAO_MU_JIAN.setItemMeta(taomujianMeta);
 
         ItemMeta kaishandaoMeta = diamond_pickaxeMeta.clone();
-        kaishandaoMeta.setCustomModelData(1001);
         KAI_SHAN_DAO.setItemMeta(kaishandaoMeta);
 
         ItemMeta chitongjianMeta = diamond_pickaxeMeta.clone();
-        chitongjianMeta.setCustomModelData(1002);
         CHI_TONG_JIAN.setItemMeta(chitongjianMeta);
 
         ItemMeta pokongfuMeta = diamond_pickaxeMeta.clone();
-        pokongfuMeta.setCustomModelData(1003);
         PO_KONG_FU.setItemMeta(pokongfuMeta);
 
         ItemMeta sanbaoyuruyiMeta = diamond_pickaxeMeta.clone();
-        sanbaoyuruyiMeta.setCustomModelData(1004);
         SAN_BAO_YU_RU_YI.setItemMeta(sanbaoyuruyiMeta);
 
         ItemMeta xuanyuanMeta = diamond_pickaxeMeta.clone();
-        xuanyuanMeta.setCustomModelData(1005);
         XUAN_YUAN.setItemMeta(xuanyuanMeta);
 
         ItemMeta qintongjianMeta = diamond_pickaxeMeta.clone();
-        qintongjianMeta.setCustomModelData(2001);
         QIN_TONG_JIAN.setItemMeta(qintongjianMeta);
 
         ItemMeta jutongzhanchuiMeta = diamond_pickaxeMeta.clone();
-        jutongzhanchuiMeta.setCustomModelData(2002);
         JU_TONG_ZHAN_CHUI.setItemMeta(jutongzhanchuiMeta);
 
         ItemMeta taiJiJianMeta = diamond_pickaxeMeta.clone();
-        taiJiJianMeta.setCustomModelData(2003);
         TAI_JI_JIAN.setItemMeta(taiJiJianMeta);
 
         ItemMeta kunlunfeixianjianMeta = diamond_pickaxeMeta.clone();
-        kunlunfeixianjianMeta.setCustomModelData(2004);
         KUN_LUN_FEI_XIAN_JIAN.setItemMeta(kunlunfeixianjianMeta);
 
         ItemMeta taiEMeta = diamond_pickaxeMeta.clone();
-        taiEMeta.setCustomModelData(2005);
         TAI_E.setItemMeta(taiEMeta);
 
         ItemMeta yinyueqiangMeta = diamond_pickaxeMeta.clone();
-        yinyueqiangMeta.setCustomModelData(3001);
         YIN_YUE_QIANG.setItemMeta(yinyueqiangMeta);
 
         ItemMeta hongyinqiangMeta = diamond_pickaxeMeta.clone();
-        hongyinqiangMeta.setCustomModelData(3002);
         HONG_YIN_QIANG.setItemMeta(hongyinqiangMeta);
 
         ItemMeta youlongqiangMeta = diamond_pickaxeMeta.clone();
-        youlongqiangMeta.setCustomModelData(3003);
         YOU_LONG_QIANG.setItemMeta(youlongqiangMeta);
 
         ItemMeta hutouzhanjinqiangMeta = diamond_pickaxeMeta.clone();
-        hutouzhanjinqiangMeta.setCustomModelData(3004);
         HU_TOU_ZHAN_JIN_QIANG.setItemMeta(hutouzhanjinqiangMeta);
 
         ItemMeta ruyijingubangMeta = diamond_pickaxeMeta.clone();
-        ruyijingubangMeta.setCustomModelData(3005);
         RU_YI_JIN_GU_BANG.setItemMeta(ruyijingubangMeta);
 
         ItemMeta feirenMeta = diamond_pickaxeMeta.clone();
-        feirenMeta.setCustomModelData(4001);
         FEIREN.setItemMeta(feirenMeta);
 
         ItemMeta jinruifeirenMeta = diamond_pickaxeMeta.clone();
-        jinruifeirenMeta.setCustomModelData(4002);
         JINRUIFEIREN.setItemMeta(jinruifeirenMeta);
 
         ItemMeta wushengxiujianMeta = diamond_pickaxeMeta.clone();
-        wushengxiujianMeta.setCustomModelData(4003);
         WUSHENGXIUJIAN.setItemMeta(wushengxiujianMeta);
 
         ItemMeta huixuantajiMeta = diamond_pickaxeMeta.clone();
-        huixuantajiMeta.setCustomModelData(4004);
         HUIXUANTAJI.setItemMeta(huixuantajiMeta);
 
         ItemMeta wuyinwuzongMeta = diamond_pickaxeMeta.clone();
-        wuyinwuzongMeta.setCustomModelData(4005);
         WUYINWUZONG.setItemMeta(wuyinwuzongMeta);
 
         ItemMeta yanwangtieMeta = diamond_pickaxeMeta.clone();
-        yanwangtieMeta.setCustomModelData(4006);
         YANWANGTIE.setItemMeta(yanwangtieMeta);
 
         ItemMeta heitiechongMeta = diamond_pickaxeMeta.clone();
-        heitiechongMeta.setCustomModelData(5001);
         HEITIECHONG.setItemMeta(heitiechongMeta);
 
         ItemMeta huangtongchongMeta = diamond_pickaxeMeta.clone();
-        huangtongchongMeta.setCustomModelData(5002);
         HUANGTONGCHONG.setItemMeta(huangtongchongMeta);
 
         ItemMeta mingyueMeta = diamond_pickaxeMeta.clone();
-        mingyueMeta.setCustomModelData(5003);
         MINGYUE.setItemMeta(mingyueMeta);
 
         ItemMeta canlanMeta = diamond_pickaxeMeta.clone();
-        canlanMeta.setCustomModelData(5004);
         CANLAN.setItemMeta(canlanMeta);
 
         ItemMeta jinjingMeta = diamond_pickaxeMeta.clone();
-        jinjingMeta.setCustomModelData(5005);
         JINJING.setItemMeta(jinjingMeta);
 
         ItemMeta xiaotianMeta = diamond_pickaxeMeta.clone();
-        xiaotianMeta.setCustomModelData(5006);
         XIAOTIAN.setItemMeta(xiaotianMeta);
 
         ItemMeta xiaoMeta = diamond_pickaxeMeta.clone();
-        xiaoMeta.setCustomModelData(6001);
         XIAO.setItemMeta(xiaoMeta);
 
         ItemMeta qinfengyinyinMeta = diamond_pickaxeMeta.clone();
-        qinfengyinyinMeta.setCustomModelData(6002);
         QINFENGYINYIN.setItemMeta(qinfengyinyinMeta);
 
         ItemMeta liushuichanchanMeta = diamond_pickaxeMeta.clone();
-        liushuichanchanMeta.setCustomModelData(6003);
         LIUSHUICHANCHAN.setItemMeta(liushuichanchanMeta);
 
         ItemMeta buqichunyuMeta = diamond_pickaxeMeta.clone();
-        buqichunyuMeta.setCustomModelData(6004);
         BUQICHUNYU.setItemMeta(buqichunyuMeta);
 
         ItemMeta sanzhenghenghunMeta = diamond_pickaxeMeta.clone();
-        sanzhenghenghunMeta.setCustomModelData(6005);
         SANSHENGZHENHUN.setItemMeta(sanzhenghenghunMeta);
 
         ItemMeta jiufenglaiyiMeta = diamond_pickaxeMeta.clone();
-        jiufenglaiyiMeta.setCustomModelData(6004);
         JIUFENGLAIYI.setItemMeta(jiufenglaiyiMeta);
 
 
         ItemMeta juedoulingMeta = diamond_pickaxeMeta.clone();
-        juedoulingMeta.setCustomModelData(7001);
         JUEDOULING.setItemMeta(juedoulingMeta);
 
         ItemMeta leimingguMeta = diamond_pickaxeMeta.clone();
-        leimingguMeta.setCustomModelData(7002);
         LEIMINGGU.setItemMeta(leimingguMeta);
 
         ItemMeta huansilinMeta = diamond_pickaxeMeta.clone();
-        huansilinMeta.setCustomModelData(7003);
         HUANSILIN.setItemMeta(huansilinMeta);
 
         ItemMeta niumonuhouMeta = diamond_pickaxeMeta.clone();
-        niumonuhouMeta.setCustomModelData(7004);
         NIUMONUHOU.setItemMeta(niumonuhouMeta);
 
         ItemMeta douqishiMeta = diamond_pickaxeMeta.clone();
-        douqishiMeta.setCustomModelData(7101);
         DOUQISHI.setItemMeta(douqishiMeta);
 
         ItemMeta panguanbiMeta = diamond_pickaxeMeta.clone();
-        panguanbiMeta.setCustomModelData(7102);
         PANGUANBI.setItemMeta(panguanbiMeta);
 
         ItemMeta minshengjianMeta = diamond_pickaxeMeta.clone();
-        minshengjianMeta.setCustomModelData(7103);
         MINSHENGJIAN.setItemMeta(minshengjianMeta);
 
         ItemMeta zhenleitianchuiMeta = diamond_pickaxeMeta.clone();
-        zhenleitianchuiMeta.setCustomModelData(7104);
         ZHENLEITIANCHUI.setItemMeta(zhenleitianchuiMeta);
 
         ItemMeta diaohunganMeta = diamond_pickaxeMeta.clone();
-        diaohunganMeta.setCustomModelData(8001);
         DIAOHUNGAN.setItemMeta(diaohunganMeta);
 
         ItemMeta shelinzhuMeta = diamond_pickaxeMeta.clone();
-        shelinzhuMeta.setCustomModelData(8002);
         SHELINZHU.setItemMeta(shelinzhuMeta);
 
         ItemMeta yujinpinMeta = diamond_pickaxeMeta.clone();
-        yujinpinMeta.setCustomModelData(8003);
         YUJINPIN.setItemMeta(yujinpinMeta);
 
         ItemMeta tianjishenjinMeta = diamond_pickaxeMeta.clone();
-        tianjishenjinMeta.setCustomModelData(8004);
         TIANJISHENJIN.setItemMeta(tianjishenjinMeta);
 
         ItemMeta ruiyingyanMeta = diamond_pickaxeMeta.clone();
-        ruiyingyanMeta.setCustomModelData(8101);
         RUIYINGYAN.setItemMeta(ruiyingyanMeta);
 
         ItemMeta duohuntangMeta = diamond_pickaxeMeta.clone();
-        duohuntangMeta.setCustomModelData(8102);
         DUOHUNTANG.setItemMeta(duohuntangMeta);
 
         ItemMeta moyuanfozhuMeta = diamond_pickaxeMeta.clone();
-        moyuanfozhuMeta.setCustomModelData(8103);
         MOYUANFOZHU.setItemMeta(moyuanfozhuMeta);
 
         ItemMeta fuxinruyiMeta = diamond_pickaxeMeta.clone();
-        fuxinruyiMeta.setCustomModelData(8104);
         FUXINRUYI.setItemMeta(fuxinruyiMeta);
 
         ItemMeta lvyezianzongMeta = diamond_pickaxeMeta.clone();
-        lvyezianzongMeta.setCustomModelData(9001);
         LVYEXIANZONG.setItemMeta(lvyezianzongMeta);
 
         ItemMeta qingnvhanshuangMeta = diamond_pickaxeMeta.clone();
-        qingnvhanshuangMeta.setCustomModelData(9002);
         QINGNVHANSHUANG.setItemMeta(qingnvhanshuangMeta);
 
         ItemMeta zhurongkuyanMeta = diamond_pickaxeMeta.clone();
-        zhurongkuyanMeta.setCustomModelData(9003);
         ZHURONGKUYAN.setItemMeta(zhurongkuyanMeta);
 
         ItemMeta zhudianxuanjingMeta = diamond_pickaxeMeta.clone();
-        zhudianxuanjingMeta.setCustomModelData(9004);
         ZHUDIANXUANJING.setItemMeta(zhudianxuanjingMeta);
 
         ItemMeta buhunwangMeta = diamond_pickaxeMeta.clone();
-        buhunwangMeta.setCustomModelData(9101);
         BUHUNWANG.setItemMeta(buhunwangMeta);
 
         ItemMeta zhongyuangongMeta = diamond_pickaxeMeta.clone();
-        zhongyuangongMeta.setCustomModelData(9102);
         YANGSHOUJIAN.setItemMeta(zhongyuangongMeta);
 
         ItemMeta wumingmoyinluoMeta = diamond_pickaxeMeta.clone();
-        wumingmoyinluoMeta.setCustomModelData(9103);
         WUMINGMOYINLUO.setItemMeta(wumingmoyinluoMeta);
 
         ItemMeta shetianhuaxuelingMeta = diamond_pickaxeMeta.clone();
-        shetianhuaxuelingMeta.setCustomModelData(9104);
         SHETIANHUAXUELING.setItemMeta(shetianhuaxuelingMeta);
 
         ItemMeta kuyelingMeta = diamond_pickaxeMeta.clone();
-        kuyelingMeta.setCustomModelData(9201);
         KUYELING.setItemMeta(kuyelingMeta);
 
         ItemMeta luobeijinpinMeta = diamond_pickaxeMeta.clone();
-        luobeijinpinMeta.setCustomModelData(9202);
         LUOBEIJINPIN.setItemMeta(luobeijinpinMeta);
 
         ItemMeta pinyushuiyuMeta = diamond_pickaxeMeta.clone();
-        pinyushuiyuMeta.setCustomModelData(9203);
         PINYUSHUIYU.setItemMeta(pinyushuiyuMeta);
 
         ItemMeta dikongyumuquanMeta = diamond_pickaxeMeta.clone();
-        dikongyumuquanMeta.setCustomModelData(9204);
         DIKONGYUMOQUAN.setItemMeta(dikongyumuquanMeta);
 
         ItemMeta luanshenguMeta = diamond_pickaxeMeta.clone();
-        luanshenguMeta.setCustomModelData(9301);
         LUANSHENGU.setItemMeta(luanshenguMeta);
 
         ItemMeta jingulianMeta = diamond_pickaxeMeta.clone();
-        jingulianMeta.setCustomModelData(9302);
         JINGULIAN.setItemMeta(jingulianMeta);
 
         ItemMeta jianchangulinMeta = diamond_pickaxeMeta.clone();
-        jianchangulinMeta.setCustomModelData(9303);
         JIANCHANGULIN.setItemMeta(jianchangulinMeta);
 
         ItemMeta moduohunfanMeta = diamond_pickaxeMeta.clone();
-        moduohunfanMeta.setCustomModelData(9304);
         MODUOHUNFAN.setItemMeta(moduohunfanMeta);
 
         ItemMeta heitieguoMeta = golden_pickaxeMeta.clone();
-        heitieguoMeta.setCustomModelData(1);
         HEI_TIE_GUO.setItemMeta(heitieguoMeta);
 
         ItemMeta qintongguoMeta = golden_pickaxeMeta.clone();
-        qintongguoMeta.setCustomModelData(1);
         QIN_TONG_GUO.setItemMeta(qintongguoMeta);
 
         ItemMeta liandanluMeta = golden_pickaxeMeta.clone();
-        liandanluMeta.setCustomModelData(2);
         LIAN_DAN_LU.setItemMeta(liandanluMeta);
 
         ItemMeta suohunluMeta = golden_pickaxeMeta.clone();
-        suohunluMeta.setCustomModelData(3);
         SUO_HUN_LU.setItemMeta(suohunluMeta);
 
         ItemMeta qishadingMeta = golden_pickaxeMeta.clone();
-        qishadingMeta.setCustomModelData(4);
         QI_SHA_DING.setItemMeta(qishadingMeta);
 
         ItemMeta hunyuanshendingMeta = golden_pickaxeMeta.clone();
-        hunyuanshendingMeta.setCustomModelData(5);
         HUN_YUAN_SHEN_DING.setItemMeta(hunyuanshendingMeta);
 
         ItemMeta laoliehujiandaiMeta = golden_pickaxeMeta.clone();
-        laoliehujiandaiMeta.setCustomModelData(101);
         LAOLIEHUJIANDAI.setItemMeta(laoliehujiandaiMeta);
 
         ItemMeta xinbinjiandaiMeta = golden_pickaxeMeta.clone();
-        xinbinjiandaiMeta.setCustomModelData(101);
         XINBINJIANDAI.setItemMeta(xinbinjiandaiMeta);
 
         ItemMeta jinruijiandaiMeta = golden_pickaxeMeta.clone();
-        jinruijiandaiMeta.setCustomModelData(102);
         JINRUIJIANDAI.setItemMeta(jinruijiandaiMeta);
 
         ItemMeta yingyanjiandaiMeta = golden_pickaxeMeta.clone();
-        yingyanjiandaiMeta.setCustomModelData(103);
         YINGYANJIANDAI.setItemMeta(yingyanjiandaiMeta);
 
         ItemMeta cangguningwangMeta = golden_pickaxeMeta.clone();
-        cangguningwangMeta.setCustomModelData(104);
         CANGGUNINGWANG.setItemMeta(cangguningwangMeta);
 
         ItemMeta niepanyunangMeta = golden_pickaxeMeta.clone();
-        niepanyunangMeta.setCustomModelData(105);
         NIEPANYUNANG.setItemMeta(niepanyunangMeta);
 
         ItemMeta fangshenduanbiMeta = netherite_pickaxeMeta.clone();
-        fangshenduanbiMeta.setCustomModelData(1);
         FANGSHENDUANBI.setItemMeta(fangshenduanbiMeta);
 
         ItemMeta tiezhiduanbiMeta = netherite_pickaxeMeta.clone();
-        tiezhiduanbiMeta.setCustomModelData(2);
         TIEZHIDUANBI.setItemMeta(tiezhiduanbiMeta);
 
         ItemMeta huiyidaoMeta = netherite_pickaxeMeta.clone();
-        huiyidaoMeta.setCustomModelData(3);
         HUIYIDAO.setItemMeta(huiyidaoMeta);
 
         ItemMeta longyadaoMeta = netherite_pickaxeMeta.clone();
-        longyadaoMeta.setCustomModelData(4);
         LONGYADAO.setItemMeta(longyadaoMeta);
 
         ItemMeta zhangqicuizhuMeta = netherite_pickaxeMeta.clone();
-        zhangqicuizhuMeta.setCustomModelData(5);
         ZHANGQICUIZHU.setItemMeta(zhangqicuizhuMeta);
 
         ItemMeta minghongMeta = netherite_pickaxeMeta.clone();
-        minghongMeta.setCustomModelData(6);
         MINGHONG.setItemMeta(minghongMeta);
 
         ItemMeta zhaoyaojinMeta = iron_pickaxeMeta.clone();
-        zhaoyaojinMeta.setCustomModelData(1);
         ZHAOYAOJIN.setItemMeta(zhaoyaojinMeta);
 
         ItemMeta yufuchenMeta = iron_pickaxeMeta.clone();
-        yufuchenMeta.setCustomModelData(2);
         YUFUCHEN.setItemMeta(yufuchenMeta);
 
         ItemMeta wusebutianshiMeta = iron_pickaxeMeta.clone();
-        wusebutianshiMeta.setCustomModelData(3);
         WUSEBUTIANSHI.setItemMeta(wusebutianshiMeta);
 
         ItemMeta yaowanghuluMeta = iron_pickaxeMeta.clone();
-        yaowanghuluMeta.setCustomModelData(4);
         YAOWANGHULU.setItemMeta(yaowanghuluMeta);
 
         ItemMeta cixinmiaolianMeta = iron_pickaxeMeta.clone();
-        cixinmiaolianMeta.setCustomModelData(5);
         CIXINMIAOLIAN.setItemMeta(cixinmiaolianMeta);
 
         ItemMeta shenxinyuguMeta = iron_pickaxeMeta.clone();
-        shenxinyuguMeta.setCustomModelData(6);
         SHENXINYUGU.setItemMeta(shenxinyuguMeta);
 
         ItemMeta yinyangzhanlongjianMeta = iron_pickaxeMeta.clone();
-        yinyangzhanlongjianMeta.setCustomModelData(7);
         YINYANGZHANLONGJIAN.setItemMeta(yinyangzhanlongjianMeta);
 
         ItemMeta yunlangbanMeta = iron_pickaxeMeta.clone();
-        yunlangbanMeta.setCustomModelData(8);
         YUNLANGBAN.setItemMeta(yunlangbanMeta);
 
         ItemMeta zhenhunyuxiaoMeta = iron_pickaxeMeta.clone();
-        zhenhunyuxiaoMeta.setCustomModelData(9);
         ZHENHUNYUXIAO.setItemMeta(zhenhunyuxiaoMeta);
 
         ItemMeta dikuihualanMeta = iron_pickaxeMeta.clone();
-        dikuihualanMeta.setCustomModelData(10);
         DIKUIHUALAN.setItemMeta(dikuihualanMeta);
 
         ItemMeta xuanfengzongshanMeta = iron_pickaxeMeta.clone();
-        xuanfengzongshanMeta.setCustomModelData(11);
         XUANFENGZONGSHAN.setItemMeta(xuanfengzongshanMeta);
 
         ItemMeta taijibaguaMeta = iron_pickaxeMeta.clone();
-        taijibaguaMeta.setCustomModelData(12);
         TAIJIBAGUA.setItemMeta(taijibaguaMeta);
 
         LAOZHANSHIDUNPAI.setItemMeta(shieldMeta);
@@ -611,7 +517,101 @@ public final class Weapon {
 
 
 
-
-
+        TAIJIBAGUA.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/12"));
+        XUANFENGZONGSHAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/11"));
+        DIKUIHUALAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/10"));
+        ZHENHUNYUXIAO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/9"));
+        YUNLANGBAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/8"));
+        YINYANGZHANLONGJIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/7"));
+        SHENXINYUGU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/6"));
+        CIXINMIAOLIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/5"));
+        YAOWANGHULU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/4"));
+        WUSEBUTIANSHI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/3"));
+        YUFUCHEN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/2"));
+        ZHAOYAOJIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_crystals/1"));
+        MINGHONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "angler_pottery_sherd/6"));
+        ZHANGQICUIZHU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "angler_pottery_sherd/5"));
+        LONGYADAO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "angler_pottery_sherd/4"));
+        HUIYIDAO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "angler_pottery_sherd/3"));
+        TIEZHIDUANBI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "angler_pottery_sherd/2"));
+        FANGSHENDUANBI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "angler_pottery_sherd/1"));
+        NIEPANYUNANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/105"));
+        CANGGUNINGWANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/104"));
+        YINGYANJIANDAI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/103"));
+        JINRUIJIANDAI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/102"));
+        XINBINJIANDAI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/101"));
+        LAOLIEHUJIANDAI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/101"));
+        HUN_YUAN_SHEN_DING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/5"));
+        QI_SHA_DING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/4"));
+        SUO_HUN_LU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/3"));
+        LIAN_DAN_LU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/2"));
+        QIN_TONG_GUO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/1"));
+        HEI_TIE_GUO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/1"));
+        MODUOHUNFAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9304"));
+        JIANCHANGULIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9303"));
+        JINGULIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9302"));
+        LUANSHENGU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9301"));
+        DIKONGYUMOQUAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9204"));
+        PINYUSHUIYU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9203"));
+        LUOBEIJINPIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9202"));
+        KUYELING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9201"));
+        SHETIANHUAXUELING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9104"));
+        WUMINGMOYINLUO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9103"));
+        YANGSHOUJIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9102"));
+        BUHUNWANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9101"));
+        ZHUDIANXUANJING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9004"));
+        ZHURONGKUYAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9003"));
+        QINGNVHANSHUANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9002"));
+        LVYEXIANZONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/9001"));
+        FUXINRUYI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/8104"));
+        MOYUANFOZHU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/8103"));
+        DUOHUNTANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/8102"));
+        RUIYINGYAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/8101"));
+        TIANJISHENJIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/8004"));
+        YUJINPIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/8003"));
+        SHELINZHU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/8002"));
+        DIAOHUNGAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/8001"));
+        ZHENLEITIANCHUI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/7104"));
+        MINSHENGJIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/7103"));
+        PANGUANBI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/7102"));
+        DOUQISHI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/7101"));
+        NIUMONUHOU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/7004"));
+        HUANSILIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/7003"));
+        LEIMINGGU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/7002"));
+        JUEDOULING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/7001"));
+        JIUFENGLAIYI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/6006"));
+        SANSHENGZHENHUN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/6005"));
+        BUQICHUNYU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/6004"));
+        LIUSHUICHANCHAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/6003"));
+        QINFENGYINYIN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/6002"));
+        XIAO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/6001"));
+        XIAOTIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/5006"));
+        JINJING.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/5005"));
+        CANLAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/5004"));
+        MINGYUE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/5003"));
+        HUANGTONGCHONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/5002"));
+        HEITIECHONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/5001"));
+        YANWANGTIE.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/4006"));
+        WUYINWUZONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/4005"));
+        HUIXUANTAJI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/4004"));
+        WUSHENGXIUJIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/4003"));
+        JINRUIFEIREN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/4002"));
+        FEIREN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/4001"));
+        RU_YI_JIN_GU_BANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/3005"));
+        HU_TOU_ZHAN_JIN_QIANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/3004"));
+        YOU_LONG_QIANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/3003"));
+        HONG_YIN_QIANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/3002"));
+        YIN_YUE_QIANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/3001"));
+        TAI_E.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/2005"));
+        KUN_LUN_FEI_XIAN_JIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/2004"));
+        TAI_JI_JIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/2003"));
+        JU_TONG_ZHAN_CHUI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/1002"));
+        QIN_TONG_JIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/2001"));
+        XUAN_YUAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/1005"));
+        SAN_BAO_YU_RU_YI.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/1004"));
+        PO_KONG_FU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/1003"));
+        CHI_TONG_JIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/2002"));
+        KAI_SHAN_DAO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/1001"));
+        TAO_MU_JIAN.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "prismarine_shard/1"));
     }
 }
