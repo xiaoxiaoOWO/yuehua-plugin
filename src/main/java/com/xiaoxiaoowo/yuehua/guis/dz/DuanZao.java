@@ -245,6 +245,8 @@ public final class DuanZao implements CommandExecutor {
         cuiren.setItemMeta(cuirenMeta);
         recipeDan.setItem(5, cuiren);
 
+        ItemStack diaoyu;
+
         recipeZhan.setItem(8, Yh.BACK_BEFORE);
         recipeGong.setItem(8, Yh.BACK_BEFORE);
         recipeDan.setItem(8, Yh.BACK_BEFORE);

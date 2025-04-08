@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Sell implements CommandExecutor {
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年MM月dd日 HH时mm分ss秒");
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年MM月dd日 HH时mm分ss秒SSS毫秒");
 
 
     @Override

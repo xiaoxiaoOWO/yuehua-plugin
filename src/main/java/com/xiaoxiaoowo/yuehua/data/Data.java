@@ -204,6 +204,22 @@ public class Data {
     public int killEastWaterGhostMountainCount;
     public int killEastPoisonSpiderMountainCount;
 
+    public String skill1;
+    public String skill2;
+    public String skill3;
+    public String skill4;
+    public String skill5;
+    public String skill6;
+    public String skill7;
+
+    public String skill1Shift;
+    public String skill2Shift;
+    public String skill3Shift;
+    public String skill4Shift;
+    public String skill5Shift;
+    public String skill6Shift;
+    public String skill7Shift;
+
     public int fuben;
 
     public SlotWithOneActiveSkill slot0;
@@ -984,6 +1000,22 @@ public class Data {
         jianmian_add = 0.0;
         shuailuomian_add = 0.0;
         sanchajimian_add = 0.0;
+
+        skill1Shift = "null";
+        skill2Shift = "null";
+        skill3Shift = "null";
+        skill4Shift = "null";
+        skill5Shift = "null";
+        skill6Shift = "null";
+        skill7Shift = "null";
+
+        skill1 = "null";
+        skill2 = "null";
+        skill3 = "null";
+        skill4 = "null";
+        skill5 = "null";
+        skill6 = "null";
+        skill7 = "null";
 
         //更新属性
         updateAttack();

@@ -1245,7 +1245,7 @@ public final class AttributeSet {
                 new CoolReduce(0.01),
                 new Hp(1),
                 new HpMul(0.01, HpMul.xiantainHp),
-                new Jump(0.01),
+                new Jump(0.01,Jump.xiantianJump),
                 new Speed(0.01, Speed.xiantianSpeed),
                 new SlotWithId("hunTianLin", 107)
         ));
@@ -1266,7 +1266,7 @@ public final class AttributeSet {
                 new CoolReduce(0.01),
                 new Hp(1),
                 new HpMul(0.01, HpMul.xiantainHp),
-                new Jump(0.01),
+                new Jump(0.01,Jump.xiantianJump),
                 new Speed(0.01, Speed.xiantianSpeed),
                 new SlotWithId("taiChuShenJia", 107)
         ));
@@ -1287,7 +1287,7 @@ public final class AttributeSet {
                 new CoolReduce(0.01),
                 new Hp(1),
                 new HpMul(0.01, HpMul.xiantainHp),
-                new Jump(0.01),
+                new Jump(0.01,Jump.xiantianJump),
                 new Speed(0.01, Speed.xiantianSpeed),
                 new SlotWithId("ziShaChan", 107)
         ));
@@ -1308,7 +1308,7 @@ public final class AttributeSet {
                 new CoolReduce(0.01),
                 new Hp(1),
                 new HpMul(0.01, HpMul.xiantainHp),
-                new Jump(0.01),
+                new Jump(0.01,Jump.xiantianJump),
                 new Speed(0.01, Speed.xiantianSpeed),
                 new SlotWithId("fengHuoLun", 107)
         ));
@@ -1329,7 +1329,7 @@ public final class AttributeSet {
                 new CoolReduce(0.01),
                 new Hp(1),
                 new HpMul(0.01, HpMul.xiantainHp),
-                new Jump(0.01),
+                new Jump(0.01,Jump.xiantianJump),
                 new Speed(0.01, Speed.xiantianSpeed),
                 new SlotWithId("jiuTianXuanYu", 107)
         ));
@@ -1350,7 +1350,7 @@ public final class AttributeSet {
                 new CoolReduce(0.01),
                 new Hp(1),
                 new HpMul(0.01, HpMul.xiantainHp),
-                new Jump(0.01),
+                new Jump(0.01,Jump.xiantianJump),
                 new Speed(0.01, Speed.xiantianSpeed),
                 new SlotWithId("weiTuoTian", 107)
         ));
@@ -1361,7 +1361,7 @@ public final class AttributeSet {
                 new Hp(4),
                 new Hujia(0.05),
                 new Speed(0.01, Speed.touSpeed),
-                new Jump(0.01),
+                new Jump(0.01,Jump.touJump),
                 new SlotWithId("tou1", 39)
         ));
 
@@ -1369,7 +1369,7 @@ public final class AttributeSet {
                 new Hp(4),
                 new Hujia(0.05),
                 new Speed(0.01, Speed.xiongSpeed),
-                new Jump(0.01),
+                new Jump(0.01,Jump.xiongJump),
                 new SlotWithId("xiong1", 38)
         ));
 
@@ -1377,7 +1377,7 @@ public final class AttributeSet {
                 new Hp(4),
                 new Hujia(0.05),
                 new Speed(0.01, Speed.tuiSpeed),
-                new Jump(0.01),
+                new Jump(0.01,Jump.tuiJump),
                 new SlotWithId("tui1", 37)
         ));
 
@@ -1385,7 +1385,7 @@ public final class AttributeSet {
                 new Hp(4),
                 new Hujia(0.05),
                 new Speed(0.01, Speed.xieSpeed),
-                new Jump(0.01),
+                new Jump(0.01,Jump.xieJump),
                 new SlotWithId("xie1", 36)
         ));
 
@@ -1513,7 +1513,7 @@ public final class AttributeSet {
                 new Hp(8),
                 new Hujia(0.1),
                 new Speed(0.04, Speed.touSpeed),
-                new Jump(0.02),
+                new Jump(0.02,Jump.touJump),
                 new SlotWithId("gongTou2", 39)
         ));
 
@@ -1521,7 +1521,7 @@ public final class AttributeSet {
                 new Hp(8),
                 new Hujia(0.1),
                 new Speed(0.04, Speed.xiongSpeed),
-                new Jump(0.02),
+                new Jump(0.02,Jump.xiongJump),
                 new SlotWithId("gongXiong2", 38)
         ));
 
@@ -1529,7 +1529,7 @@ public final class AttributeSet {
                 new Hp(8),
                 new Hujia(0.1),
                 new Speed(0.04, Speed.tuiSpeed),
-                new Jump(0.02),
+                new Jump(0.02,Jump.tuiJump),
                 new SlotWithId("gongTui2", 37)
         ));
 
@@ -1537,7 +1537,7 @@ public final class AttributeSet {
                 new Hp(8),
                 new Hujia(0.1),
                 new Speed(0.04, Speed.xieSpeed),
-                new Jump(0.02),
+                new Jump(0.02,Jump.xieJump),
                 new SlotWithId("gongXie2", 36)
         ));
 
@@ -1545,7 +1545,7 @@ public final class AttributeSet {
                 new Hp(16),
                 new Hujia(0.15),
                 new Speed(0.06, Speed.touSpeed),
-                new Jump(0.03),
+                new Jump(0.03,Jump.touJump),
                 new SlotWithId("gongTou3", 39)
         ));
 
@@ -1553,7 +1553,7 @@ public final class AttributeSet {
                 new Hp(16),
                 new Hujia(0.15),
                 new Speed(0.06, Speed.xiongSpeed),
-                new Jump(0.03),
+                new Jump(0.03,Jump.xiongJump),
                 new SlotWithId("gongXiong3", 38)
         ));
 
@@ -1561,7 +1561,7 @@ public final class AttributeSet {
                 new Hp(16),
                 new Hujia(0.15),
                 new Speed(0.06, Speed.tuiSpeed),
-                new Jump(0.03),
+                new Jump(0.03,Jump.tuiJump),
                 new SlotWithId("gongTui3", 37)
         ));
 
@@ -1569,7 +1569,7 @@ public final class AttributeSet {
                 new Hp(16),
                 new Hujia(0.15),
                 new Speed(0.06, Speed.xieSpeed),
-                new Jump(0.03),
+                new Jump(0.03,Jump.xieJump),
                 new SlotWithId("gongXie3", 36)
         ));
 
@@ -1579,7 +1579,7 @@ public final class AttributeSet {
                 new Hujia(0.2),
                 new ArrowAdd(2),
                 new Speed(0.08, Speed.touSpeed),
-                new Jump(0.04),
+                new Jump(0.04,Jump.touJump),
                 new SlotWithId("gongTou4", 39)
         ));
 
@@ -1589,7 +1589,7 @@ public final class AttributeSet {
                 new Hujia(0.2),
                 new ArrowAdd(2),
                 new Speed(0.08, Speed.xiongSpeed),
-                new Jump(0.04),
+                new Jump(0.04,Jump.xiongJump),
                 new SlotWithId("gongXiong4", 38)
         ));
 
@@ -1599,7 +1599,7 @@ public final class AttributeSet {
                 new Hujia(0.2),
                 new ArrowAdd(2),
                 new Speed(0.08, Speed.tuiSpeed),
-                new Jump(0.04),
+                new Jump(0.04,Jump.tuiJump),
                 new SlotWithId("gongTui4", 37)
         ));
 
@@ -1609,7 +1609,7 @@ public final class AttributeSet {
                 new Hujia(0.2),
                 new ArrowAdd(2),
                 new Speed(0.08, Speed.xieSpeed),
-                new Jump(0.04),
+                new Jump(0.04,Jump.xieJump),
                 new SlotWithId("gongXie4", 36)
         ));
 
@@ -1620,7 +1620,7 @@ public final class AttributeSet {
                 new Hujia(0.25),
                 new ArrowAdd(4),
                 new Speed(0.1, Speed.touSpeed),
-                new Jump(0.05),
+                new Jump(0.05,Jump.touJump),
                 new SlotWithId("gongTou5", 39)
         ));
 
@@ -1630,7 +1630,7 @@ public final class AttributeSet {
                 new Hujia(0.25),
                 new ArrowAdd(4),
                 new Speed(0.1, Speed.xiongSpeed),
-                new Jump(0.05),
+                new Jump(0.05,Jump.xiongJump),
                 new SlotWithId("gongXiong5", 38)
         ));
 
@@ -1640,7 +1640,7 @@ public final class AttributeSet {
                 new Hujia(0.25),
                 new ArrowAdd(4),
                 new Speed(0.1, Speed.tuiSpeed),
-                new Jump(0.05),
+                new Jump(0.05,Jump.tuiJump),
                 new SlotWithId("gongTui5", 37)
         ));
 
@@ -1650,7 +1650,7 @@ public final class AttributeSet {
                 new Hujia(0.25),
                 new ArrowAdd(4),
                 new Speed(0.1, Speed.xieSpeed),
-                new Jump(0.05),
+                new Jump(0.05,Jump.xieJump),
                 new SlotWithId("gongXie5", 36)
         ));
 
@@ -1662,7 +1662,7 @@ public final class AttributeSet {
                 new ArrowAdd(8),
                 new ArrowMul(0.1),
                 new Speed(0.12, Speed.touSpeed),
-                new Jump(0.06),
+                new Jump(0.06,Jump.touJump),
                 new SlotWithId("gongTou6", 39)
         ));
 
@@ -1674,7 +1674,7 @@ public final class AttributeSet {
                 new ArrowAdd(8),
                 new ArrowMul(0.1),
                 new Speed(0.12, Speed.xiongSpeed),
-                new Jump(0.06),
+                new Jump(0.06,Jump.xiongJump),
                 new SlotWithId("gongXiong6", 38)
         ));
 
@@ -1686,7 +1686,7 @@ public final class AttributeSet {
                 new ArrowAdd(8),
                 new ArrowMul(0.1),
                 new Speed(0.12, Speed.tuiSpeed),
-                new Jump(0.06),
+                new Jump(0.06,Jump.tuiJump),
                 new SlotWithId("gongTui6", 37)
         ));
 
@@ -1698,7 +1698,7 @@ public final class AttributeSet {
                 new ArrowAdd(8),
                 new ArrowMul(0.1),
                 new Speed(0.12, Speed.xieSpeed),
-                new Jump(0.06),
+                new Jump(0.06,Jump.xieJump),
                 new SlotWithId("gongXie6", 36)
         ));
     }
@@ -1710,7 +1710,7 @@ public final class AttributeSet {
                 new Fakang(0.1),
                 new Gedang(4),
                 new Speed(0.02, Speed.touSpeed),
-                new Jump(0.02),
+                new Jump(0.02,Jump.touJump),
                 new SlotWithId("zhanTou2", 39)
         ));
 
@@ -1720,7 +1720,7 @@ public final class AttributeSet {
                 new Fakang(0.1),
                 new Gedang(4),
                 new Speed(0.02, Speed.xiongSpeed),
-                new Jump(0.02),
+                new Jump(0.02,Jump.xiongJump),
                 new SlotWithId("zhanXiong2", 38)
         ));
 
@@ -1730,7 +1730,7 @@ public final class AttributeSet {
                 new Fakang(0.1),
                 new Gedang(4),
                 new Speed(0.02, Speed.tuiSpeed),
-                new Jump(0.02),
+                new Jump(0.02,Jump.tuiJump),
                 new SlotWithId("zhanTui2", 37)
         ));
 
@@ -1740,7 +1740,7 @@ public final class AttributeSet {
                 new Fakang(0.1),
                 new Gedang(4),
                 new Speed(0.02, Speed.xieSpeed),
-                new Jump(0.02),
+                new Jump(0.02,Jump.xieJump),
                 new SlotWithId("zhanXie2", 36)
         ));
 
@@ -1750,7 +1750,7 @@ public final class AttributeSet {
                 new Fakang(0.15),
                 new Gedang(6),
                 new Speed(0.03, Speed.touSpeed),
-                new Jump(0.03),
+                new Jump(0.03,Jump.touJump),
                 new SlotWithId("zhanTou3", 39)
         ));
 
@@ -1760,7 +1760,7 @@ public final class AttributeSet {
                 new Fakang(0.15),
                 new Gedang(6),
                 new Speed(0.03, Speed.xiongSpeed),
-                new Jump(0.03),
+                new Jump(0.03,Jump.xiongJump),
                 new SlotWithId("zhanXiong3", 38)
         ));
 
@@ -1770,7 +1770,7 @@ public final class AttributeSet {
                 new Fakang(0.15),
                 new Gedang(6),
                 new Speed(0.03, Speed.tuiSpeed),
-                new Jump(0.03),
+                new Jump(0.03,Jump.tuiJump),
                 new SlotWithId("zhanTui3", 37)
         ));
 
@@ -1780,7 +1780,7 @@ public final class AttributeSet {
                 new Fakang(0.15),
                 new Gedang(6),
                 new Speed(0.03, Speed.xieSpeed),
-                new Jump(0.03),
+                new Jump(0.03,Jump.xieJump),
                 new SlotWithId("zhanXie3", 36)
         ));
 
@@ -1792,7 +1792,7 @@ public final class AttributeSet {
                 new Gedang(9),
                 new AttackAdd(6),
                 new Speed(0.04, Speed.touSpeed),
-                new Jump(0.04),
+                new Jump(0.04,Jump.touJump),
                 new SlotWithId("zhanTou4", 39)
         ));
 
@@ -1804,7 +1804,7 @@ public final class AttributeSet {
                 new Gedang(9),
                 new AttackAdd(6),
                 new Speed(0.04, Speed.xiongSpeed),
-                new Jump(0.04),
+                new Jump(0.04,Jump.xiongJump),
                 new SlotWithId("zhanXiong4", 38)
         ));
 
@@ -1816,7 +1816,7 @@ public final class AttributeSet {
                 new Gedang(9),
                 new AttackAdd(6),
                 new Speed(0.04, Speed.tuiSpeed),
-                new Jump(0.04),
+                new Jump(0.04,Jump.tuiJump),
                 new SlotWithId("zhanTui4", 37)
         ));
 
@@ -1828,7 +1828,7 @@ public final class AttributeSet {
                 new Gedang(9),
                 new AttackAdd(6),
                 new Speed(0.04, Speed.xieSpeed),
-                new Jump(0.04),
+                new Jump(0.04,Jump.xieJump),
                 new SlotWithId("zhanXie4", 36)
         ));
 
@@ -1840,7 +1840,7 @@ public final class AttributeSet {
                 new Gedang(13.5),
                 new AttackAdd(12),
                 new Speed(0.05, Speed.touSpeed),
-                new Jump(0.05),
+                new Jump(0.05,Jump.touJump),
                 new SlotWithId("zhanTou5", 39)
         ));
 
@@ -1852,7 +1852,7 @@ public final class AttributeSet {
                 new Gedang(13.5),
                 new AttackAdd(12),
                 new Speed(0.05, Speed.xiongSpeed),
-                new Jump(0.05),
+                new Jump(0.05,Jump.xiongJump),
                 new SlotWithId("zhanXiong5", 38)
         ));
 
@@ -1864,7 +1864,7 @@ public final class AttributeSet {
                 new Gedang(13.5),
                 new AttackAdd(12),
                 new Speed(0.05, Speed.tuiSpeed),
-                new Jump(0.05),
+                new Jump(0.05,Jump.tuiJump),
                 new SlotWithId("zhanTui5", 37)
         ));
 
@@ -1876,7 +1876,7 @@ public final class AttributeSet {
                 new Gedang(13.5),
                 new AttackAdd(12),
                 new Speed(0.05, Speed.xieSpeed),
-                new Jump(0.05),
+                new Jump(0.05,Jump.xieJump),
                 new SlotWithId("zhanXie5", 36)
         ));
 
@@ -1890,7 +1890,7 @@ public final class AttributeSet {
                 new AttackAdd(24),
                 new AttackMul(0.1),
                 new Speed(0.06, Speed.touSpeed),
-                new Jump(0.06),
+                new Jump(0.06,Jump.touJump),
                 new SlotWithId("zhanTou6", 39)
         ));
 
@@ -1904,7 +1904,7 @@ public final class AttributeSet {
                 new AttackAdd(24),
                 new AttackMul(0.1),
                 new Speed(0.06, Speed.xiongSpeed),
-                new Jump(0.06),
+                new Jump(0.06,Jump.xiongJump),
                 new SlotWithId("zhanXiong6", 38)
         ));
 
@@ -1918,7 +1918,7 @@ public final class AttributeSet {
                 new AttackAdd(24),
                 new AttackMul(0.1),
                 new Speed(0.06, Speed.tuiSpeed),
-                new Jump(0.06),
+                new Jump(0.06,Jump.tuiJump),
                 new SlotWithId("zhanTui6", 37)
         ));
 
@@ -1932,7 +1932,7 @@ public final class AttributeSet {
                 new AttackAdd(24),
                 new AttackMul(0.1),
                 new Speed(0.06, Speed.xieSpeed),
-                new Jump(0.06),
+                new Jump(0.06,Jump.xieJump),
                 new SlotWithId("zhanXie6", 36)
         ));
     }
@@ -1944,7 +1944,7 @@ public final class AttributeSet {
                 new CoolReduce(0.01),
                 new Shengji(0.02),
                 new Speed(0.02, Speed.touSpeed),
-                new Jump(0.02),
+                new Jump(0.02,Jump.touJump),
                 new SlotWithId("danTou2", 39)
         ));
 
@@ -1954,7 +1954,7 @@ public final class AttributeSet {
                 new CoolReduce(0.01),
                 new Shengji(0.02),
                 new Speed(0.02, Speed.xiongSpeed),
-                new Jump(0.02),
+                new Jump(0.02,Jump.xiongJump),
                 new SlotWithId("danXiong2", 38)
         ));
 
@@ -1964,7 +1964,7 @@ public final class AttributeSet {
                 new CoolReduce(0.01),
                 new Shengji(0.02),
                 new Speed(0.02, Speed.tuiSpeed),
-                new Jump(0.02),
+                new Jump(0.02,Jump.tuiJump),
                 new SlotWithId("danTui2", 37)
         ));
 
@@ -1974,7 +1974,7 @@ public final class AttributeSet {
                 new CoolReduce(0.01),
                 new Shengji(0.02),
                 new Speed(0.02, Speed.xieSpeed),
-                new Jump(0.02),
+                new Jump(0.02,Jump.xieJump),
                 new SlotWithId("danXie2", 36)
         ));
 
@@ -1984,7 +1984,7 @@ public final class AttributeSet {
                 new CoolReduce(0.02),
                 new Shengji(0.04),
                 new Speed(0.03, Speed.touSpeed),
-                new Jump(0.03),
+                new Jump(0.03,Jump.touJump),
                 new SlotWithId("danTou3", 39)
         ));
 
@@ -1994,7 +1994,7 @@ public final class AttributeSet {
                 new CoolReduce(0.02),
                 new Shengji(0.04),
                 new Speed(0.03, Speed.xiongSpeed),
-                new Jump(0.03),
+                new Jump(0.03,Jump.xiongJump),
                 new SlotWithId("danXiong3", 38)
         ));
 
@@ -2004,7 +2004,7 @@ public final class AttributeSet {
                 new CoolReduce(0.02),
                 new Shengji(0.04),
                 new Speed(0.03, Speed.tuiSpeed),
-                new Jump(0.03),
+                new Jump(0.03,Jump.tuiJump),
                 new SlotWithId("danTui3", 37)
         ));
 
@@ -2014,7 +2014,7 @@ public final class AttributeSet {
                 new CoolReduce(0.02),
                 new Shengji(0.04),
                 new Speed(0.03, Speed.xieSpeed),
-                new Jump(0.03),
+                new Jump(0.03,Jump.xieJump),
                 new SlotWithId("danXie3", 36)
         ));
 
@@ -2026,7 +2026,7 @@ public final class AttributeSet {
                 new Shengji(0.06),
                 new ZhenfaAdd(2),
                 new Speed(0.04, Speed.touSpeed),
-                new Jump(0.04),
+                new Jump(0.04,Jump.touJump),
                 new SlotWithId("danTou4", 39)
         ));
 
@@ -2038,7 +2038,7 @@ public final class AttributeSet {
                 new Shengji(0.06),
                 new ZhenfaAdd(2),
                 new Speed(0.04, Speed.xiongSpeed),
-                new Jump(0.04),
+                new Jump(0.04,Jump.xiongJump),
                 new SlotWithId("danXiong4", 38)
         ));
 
@@ -2050,7 +2050,7 @@ public final class AttributeSet {
                 new Shengji(0.06),
                 new ZhenfaAdd(2),
                 new Speed(0.04, Speed.tuiSpeed),
-                new Jump(0.04),
+                new Jump(0.04,Jump.tuiJump),
                 new SlotWithId("danTui4", 37)
         ));
 
@@ -2062,7 +2062,7 @@ public final class AttributeSet {
                 new Shengji(0.06),
                 new ZhenfaAdd(2),
                 new Speed(0.04, Speed.xieSpeed),
-                new Jump(0.04),
+                new Jump(0.04,Jump.xieJump),
                 new SlotWithId("danXie4", 36)
         ));
 
@@ -2074,7 +2074,7 @@ public final class AttributeSet {
                 new Shengji(0.08),
                 new ZhenfaAdd(4),
                 new Speed(0.05, Speed.touSpeed),
-                new Jump(0.05),
+                new Jump(0.05,Jump.touJump),
                 new SlotWithId("danTou5", 39)
         ));
 
@@ -2086,7 +2086,7 @@ public final class AttributeSet {
                 new Shengji(0.08),
                 new ZhenfaAdd(4),
                 new Speed(0.05, Speed.xiongSpeed),
-                new Jump(0.05),
+                new Jump(0.05,Jump.xiongJump),
                 new SlotWithId("danXiong5", 38)
         ));
 
@@ -2098,7 +2098,7 @@ public final class AttributeSet {
                 new Shengji(0.08),
                 new ZhenfaAdd(4),
                 new Speed(0.05, Speed.tuiSpeed),
-                new Jump(0.05),
+                new Jump(0.05,Jump.tuiJump),
                 new SlotWithId("danTui5", 37)
         ));
 
@@ -2110,7 +2110,7 @@ public final class AttributeSet {
                 new Shengji(0.08),
                 new ZhenfaAdd(4),
                 new Speed(0.05, Speed.xieSpeed),
-                new Jump(0.05),
+                new Jump(0.05,Jump.xieJump),
                 new SlotWithId("danXie5", 36)
         ));
 
@@ -2124,7 +2124,7 @@ public final class AttributeSet {
                 new ZhenfaAdd(8),
                 new ZhenfaMul(0.1),
                 new Speed(0.06, Speed.touSpeed),
-                new Jump(0.06),
+                new Jump(0.06,Jump.touJump),
                 new SlotWithId("danTou6", 39)
         ));
 
@@ -2138,7 +2138,7 @@ public final class AttributeSet {
                 new ZhenfaAdd(8),
                 new ZhenfaMul(0.1),
                 new Speed(0.06, Speed.xiongSpeed),
-                new Jump(0.06),
+                new Jump(0.06,Jump.xiongJump),
                 new SlotWithId("danXiong6", 38)
         ));
 
@@ -2152,7 +2152,7 @@ public final class AttributeSet {
                 new ZhenfaAdd(8),
                 new ZhenfaMul(0.1),
                 new Speed(0.06, Speed.tuiSpeed),
-                new Jump(0.06),
+                new Jump(0.06,Jump.tuiJump),
                 new SlotWithId("danTui6", 37)
         ));
 
@@ -2166,7 +2166,7 @@ public final class AttributeSet {
                 new ZhenfaAdd(8),
                 new ZhenfaMul(0.1),
                 new Speed(0.06, Speed.xieSpeed),
-                new Jump(0.06),
+                new Jump(0.06,Jump.xieJump),
                 new SlotWithId("danXie6", 36)
         ));
     }

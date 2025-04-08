@@ -2450,335 +2450,335 @@ public final class Core {
         core7Meta.setMaxStackSize(99);
         core8Meta.setMaxStackSize(99);
 
-        kaiShanDaoMeta.setMaxStackSize(99);
-        chiTongJianMeta.setMaxStackSize(99);
-        poKongFuMeta.setMaxStackSize(99);
-        sanBaoYuRuYiMeta.setMaxStackSize(99);
-        xuanYuanMeta.setMaxStackSize(99);
+        kaiShanDaoMeta.setMaxStackSize(1);
+        chiTongJianMeta.setMaxStackSize(1);
+        poKongFuMeta.setMaxStackSize(1);
+        sanBaoYuRuYiMeta.setMaxStackSize(1);
+        xuanYuanMeta.setMaxStackSize(1);
 
-        qinTongJianMeta.setMaxStackSize(99);
-        juTongZhanChuiMeta.setMaxStackSize(99);
-        taiJiJianMeta.setMaxStackSize(99);
-        kunLunFeiXianJianMeta.setMaxStackSize(99);
-        taiEMeta.setMaxStackSize(99);
+        qinTongJianMeta.setMaxStackSize(1);
+        juTongZhanChuiMeta.setMaxStackSize(1);
+        taiJiJianMeta.setMaxStackSize(1);
+        kunLunFeiXianJianMeta.setMaxStackSize(1);
+        taiEMeta.setMaxStackSize(1);
 
-        yinYueQiangMeta.setMaxStackSize(99);
-        hongYinQiangMeta.setMaxStackSize(99);
-        youLongQiangMeta.setMaxStackSize(99);
-        huTouZhanJinQiangMeta.setMaxStackSize(99);
-        ruYiJinGuBangMeta.setMaxStackSize(99);
+        yinYueQiangMeta.setMaxStackSize(1);
+        hongYinQiangMeta.setMaxStackSize(1);
+        youLongQiangMeta.setMaxStackSize(1);
+        huTouZhanJinQiangMeta.setMaxStackSize(1);
+        ruYiJinGuBangMeta.setMaxStackSize(1);
 
-        qinTongGongMeta.setMaxStackSize(99);
-        yanTieGongMeta.setMaxStackSize(99);
-        zhongChuiGongMeta.setMaxStackSize(99);
-        beiDouMieShenGongMeta.setMaxStackSize(99);
-        zhuRiMeta.setMaxStackSize(99);
+        qinTongGongMeta.setMaxStackSize(1);
+        yanTieGongMeta.setMaxStackSize(1);
+        zhongChuiGongMeta.setMaxStackSize(1);
+        beiDouMieShenGongMeta.setMaxStackSize(1);
+        zhuRiMeta.setMaxStackSize(1);
 
-        heiTieNuMeta.setMaxStackSize(99);
-        hongLinNuMeta.setMaxStackSize(99);
-        jiaoLongNuMeta.setMaxStackSize(99);
-        riYueLiuXingNuMeta.setMaxStackSize(99);
-        liangYiMeta.setMaxStackSize(99);
+        heiTieNuMeta.setMaxStackSize(1);
+        hongLinNuMeta.setMaxStackSize(1);
+        jiaoLongNuMeta.setMaxStackSize(1);
+        riYueLiuXingNuMeta.setMaxStackSize(1);
+        liangYiMeta.setMaxStackSize(1);
 
-        fuRongGongMeta.setMaxStackSize(99);
-        hongLuanGongMeta.setMaxStackSize(99);
-        tianQiongGongMeta.setMaxStackSize(99);
-        sheTianZhuiYueGongMeta.setMaxStackSize(99);
-        liuGuangMeta.setMaxStackSize(99);
+        fuRongGongMeta.setMaxStackSize(1);
+        hongLuanGongMeta.setMaxStackSize(1);
+        tianQiongGongMeta.setMaxStackSize(1);
+        sheTianZhuiYueGongMeta.setMaxStackSize(1);
+        liuGuangMeta.setMaxStackSize(1);
 
-        qinTongGuoMeta.setMaxStackSize(99);
-        lianDanLuMeta.setMaxStackSize(99);
-        suoHunLuMeta.setMaxStackSize(99);
-        qiShaDingMeta.setMaxStackSize(99);
-        hunYuanShenDingMeta.setMaxStackSize(99);
+        qinTongGuoMeta.setMaxStackSize(1);
+        lianDanLuMeta.setMaxStackSize(1);
+        suoHunLuMeta.setMaxStackSize(1);
+        qiShaDingMeta.setMaxStackSize(1);
+        hunYuanShenDingMeta.setMaxStackSize(1);
 
-        touSp2Meta.setMaxStackSize(99);
-        touSp3Meta.setMaxStackSize(99);
-        touSp4Meta.setMaxStackSize(99);
-        touSp5Meta.setMaxStackSize(99);
-        touSp6Meta.setMaxStackSize(99);
-        touSp7Meta.setMaxStackSize(99);
-        touSp8Meta.setMaxStackSize(99);
-
-
-        zhanTou2Meta.setMaxStackSize(99);
-        zhanTou3Meta.setMaxStackSize(99);
-        zhanTou4Meta.setMaxStackSize(99);
-        zhanTou5Meta.setMaxStackSize(99);
-        zhanTou6Meta.setMaxStackSize(99);
-        zhanTou7Meta.setMaxStackSize(99);
-        zhanTou8Meta.setMaxStackSize(99);
-
-        gongTou2Meta.setMaxStackSize(99);
-        gongTou3Meta.setMaxStackSize(99);
-        gongTou4Meta.setMaxStackSize(99);
-        gongTou5Meta.setMaxStackSize(99);
-        gongTou6Meta.setMaxStackSize(99);
-        gongTou7Meta.setMaxStackSize(99);
-        gongTou8Meta.setMaxStackSize(99);
-
-        danTou2Meta.setMaxStackSize(99);
-        danTou3Meta.setMaxStackSize(99);
-        danTou4Meta.setMaxStackSize(99);
-        danTou5Meta.setMaxStackSize(99);
-        danTou6Meta.setMaxStackSize(99);
-        danTou7Meta.setMaxStackSize(99);
-        danTou8Meta.setMaxStackSize(99);
-
-        xiongSp2Meta.setMaxStackSize(99);
-        xiongSp3Meta.setMaxStackSize(99);
-        xiongSp4Meta.setMaxStackSize(99);
-        xiongSp5Meta.setMaxStackSize(99);
-        xiongSp6Meta.setMaxStackSize(99);
-        xiongSp7Meta.setMaxStackSize(99);
-        xiongSp8Meta.setMaxStackSize(99);
-
-        zhanXiong2Meta.setMaxStackSize(99);
-        zhanXiong3Meta.setMaxStackSize(99);
-        zhanXiong4Meta.setMaxStackSize(99);
-        zhanXiong5Meta.setMaxStackSize(99);
-        zhanXiong6Meta.setMaxStackSize(99);
-        zhanXiong7Meta.setMaxStackSize(99);
-        zhanXiong8Meta.setMaxStackSize(99);
-
-        gongXiong2Meta.setMaxStackSize(99);
-        gongXiong3Meta.setMaxStackSize(99);
-        gongXiong4Meta.setMaxStackSize(99);
-        gongXiong5Meta.setMaxStackSize(99);
-        gongXiong6Meta.setMaxStackSize(99);
-        gongXiong7Meta.setMaxStackSize(99);
-        gongXiong8Meta.setMaxStackSize(99);
-
-        danXiong2Meta.setMaxStackSize(99);
-        danXiong3Meta.setMaxStackSize(99);
-        danXiong4Meta.setMaxStackSize(99);
-        danXiong5Meta.setMaxStackSize(99);
-        danXiong6Meta.setMaxStackSize(99);
-        danXiong7Meta.setMaxStackSize(99);
-        danXiong8Meta.setMaxStackSize(99);
-
-        tuiSp2Meta.setMaxStackSize(99);
-        tuiSp3Meta.setMaxStackSize(99);
-        tuiSp4Meta.setMaxStackSize(99);
-        tuiSp5Meta.setMaxStackSize(99);
-        tuiSp6Meta.setMaxStackSize(99);
-        tuiSp7Meta.setMaxStackSize(99);
-        tuiSp8Meta.setMaxStackSize(99);
-
-        zhanTui2Meta.setMaxStackSize(99);
-        zhanTui3Meta.setMaxStackSize(99);
-        zhanTui4Meta.setMaxStackSize(99);
-        zhanTui5Meta.setMaxStackSize(99);
-        zhanTui6Meta.setMaxStackSize(99);
-        zhanTui7Meta.setMaxStackSize(99);
-        zhanTui8Meta.setMaxStackSize(99);
-
-        gongTui2Meta.setMaxStackSize(99);
-        gongTui3Meta.setMaxStackSize(99);
-        gongTui4Meta.setMaxStackSize(99);
-        gongTui5Meta.setMaxStackSize(99);
-        gongTui6Meta.setMaxStackSize(99);
-        gongTui7Meta.setMaxStackSize(99);
-        gongTui8Meta.setMaxStackSize(99);
-
-        danTui2Meta.setMaxStackSize(99);
-        danTui3Meta.setMaxStackSize(99);
-        danTui4Meta.setMaxStackSize(99);
-        danTui5Meta.setMaxStackSize(99);
-        danTui6Meta.setMaxStackSize(99);
-        danTui7Meta.setMaxStackSize(99);
-        danTui8Meta.setMaxStackSize(99);
-
-        xieSp2Meta.setMaxStackSize(99);
-        xieSp3Meta.setMaxStackSize(99);
-        xieSp4Meta.setMaxStackSize(99);
-        xieSp5Meta.setMaxStackSize(99);
-        xieSp6Meta.setMaxStackSize(99);
-        xieSp7Meta.setMaxStackSize(99);
-        xieSp8Meta.setMaxStackSize(99);
-
-        zhanXie2Meta.setMaxStackSize(99);
-        zhanXie3Meta.setMaxStackSize(99);
-        zhanXie4Meta.setMaxStackSize(99);
-        zhanXie5Meta.setMaxStackSize(99);
-        zhanXie6Meta.setMaxStackSize(99);
-        zhanXie7Meta.setMaxStackSize(99);
-        zhanXie8Meta.setMaxStackSize(99);
-
-        gongXie2Meta.setMaxStackSize(99);
-        gongXie3Meta.setMaxStackSize(99);
-        gongXie4Meta.setMaxStackSize(99);
-        gongXie5Meta.setMaxStackSize(99);
-        gongXie6Meta.setMaxStackSize(99);
-        gongXie7Meta.setMaxStackSize(99);
-        gongXie8Meta.setMaxStackSize(99);
-
-        danXie2Meta.setMaxStackSize(99);
-        danXie3Meta.setMaxStackSize(99);
-        danXie4Meta.setMaxStackSize(99);
-        danXie5Meta.setMaxStackSize(99);
-        danXie6Meta.setMaxStackSize(99);
-        danXie7Meta.setMaxStackSize(99);
-        danXie8Meta.setMaxStackSize(99);
+        touSp2Meta.setMaxStackSize(1);
+        touSp3Meta.setMaxStackSize(1);
+        touSp4Meta.setMaxStackSize(1);
+        touSp5Meta.setMaxStackSize(1);
+        touSp6Meta.setMaxStackSize(1);
+        touSp7Meta.setMaxStackSize(1);
+        touSp8Meta.setMaxStackSize(1);
 
 
-        JINRUIFEIRENMeta.setMaxStackSize(99);
-        WUSHENGXIUJIANMeta.setMaxStackSize(99);
-        HUIXUANTAJIMeta.setMaxStackSize(99);
-        WUYINWUZONGMeta.setMaxStackSize(99);
-        YANWANGTIEMeta.setMaxStackSize(99);
+        zhanTou2Meta.setMaxStackSize(1);
+        zhanTou3Meta.setMaxStackSize(1);
+        zhanTou4Meta.setMaxStackSize(1);
+        zhanTou5Meta.setMaxStackSize(1);
+        zhanTou6Meta.setMaxStackSize(1);
+        zhanTou7Meta.setMaxStackSize(1);
+        zhanTou8Meta.setMaxStackSize(1);
+
+        gongTou2Meta.setMaxStackSize(1);
+        gongTou3Meta.setMaxStackSize(1);
+        gongTou4Meta.setMaxStackSize(1);
+        gongTou5Meta.setMaxStackSize(1);
+        gongTou6Meta.setMaxStackSize(1);
+        gongTou7Meta.setMaxStackSize(1);
+        gongTou8Meta.setMaxStackSize(1);
+
+        danTou2Meta.setMaxStackSize(1);
+        danTou3Meta.setMaxStackSize(1);
+        danTou4Meta.setMaxStackSize(1);
+        danTou5Meta.setMaxStackSize(1);
+        danTou6Meta.setMaxStackSize(1);
+        danTou7Meta.setMaxStackSize(1);
+        danTou8Meta.setMaxStackSize(1);
+
+        xiongSp2Meta.setMaxStackSize(1);
+        xiongSp3Meta.setMaxStackSize(1);
+        xiongSp4Meta.setMaxStackSize(1);
+        xiongSp5Meta.setMaxStackSize(1);
+        xiongSp6Meta.setMaxStackSize(1);
+        xiongSp7Meta.setMaxStackSize(1);
+        xiongSp8Meta.setMaxStackSize(1);
+
+        zhanXiong2Meta.setMaxStackSize(1);
+        zhanXiong3Meta.setMaxStackSize(1);
+        zhanXiong4Meta.setMaxStackSize(1);
+        zhanXiong5Meta.setMaxStackSize(1);
+        zhanXiong6Meta.setMaxStackSize(1);
+        zhanXiong7Meta.setMaxStackSize(1);
+        zhanXiong8Meta.setMaxStackSize(1);
+
+        gongXiong2Meta.setMaxStackSize(1);
+        gongXiong3Meta.setMaxStackSize(1);
+        gongXiong4Meta.setMaxStackSize(1);
+        gongXiong5Meta.setMaxStackSize(1);
+        gongXiong6Meta.setMaxStackSize(1);
+        gongXiong7Meta.setMaxStackSize(1);
+        gongXiong8Meta.setMaxStackSize(1);
+
+        danXiong2Meta.setMaxStackSize(1);
+        danXiong3Meta.setMaxStackSize(1);
+        danXiong4Meta.setMaxStackSize(1);
+        danXiong5Meta.setMaxStackSize(1);
+        danXiong6Meta.setMaxStackSize(1);
+        danXiong7Meta.setMaxStackSize(1);
+        danXiong8Meta.setMaxStackSize(1);
+
+        tuiSp2Meta.setMaxStackSize(1);
+        tuiSp3Meta.setMaxStackSize(1);
+        tuiSp4Meta.setMaxStackSize(1);
+        tuiSp5Meta.setMaxStackSize(1);
+        tuiSp6Meta.setMaxStackSize(1);
+        tuiSp7Meta.setMaxStackSize(1);
+        tuiSp8Meta.setMaxStackSize(1);
+
+        zhanTui2Meta.setMaxStackSize(1);
+        zhanTui3Meta.setMaxStackSize(1);
+        zhanTui4Meta.setMaxStackSize(1);
+        zhanTui5Meta.setMaxStackSize(1);
+        zhanTui6Meta.setMaxStackSize(1);
+        zhanTui7Meta.setMaxStackSize(1);
+        zhanTui8Meta.setMaxStackSize(1);
+
+        gongTui2Meta.setMaxStackSize(1);
+        gongTui3Meta.setMaxStackSize(1);
+        gongTui4Meta.setMaxStackSize(1);
+        gongTui5Meta.setMaxStackSize(1);
+        gongTui6Meta.setMaxStackSize(1);
+        gongTui7Meta.setMaxStackSize(1);
+        gongTui8Meta.setMaxStackSize(1);
+
+        danTui2Meta.setMaxStackSize(1);
+        danTui3Meta.setMaxStackSize(1);
+        danTui4Meta.setMaxStackSize(1);
+        danTui5Meta.setMaxStackSize(1);
+        danTui6Meta.setMaxStackSize(1);
+        danTui7Meta.setMaxStackSize(1);
+        danTui8Meta.setMaxStackSize(1);
+
+        xieSp2Meta.setMaxStackSize(1);
+        xieSp3Meta.setMaxStackSize(1);
+        xieSp4Meta.setMaxStackSize(1);
+        xieSp5Meta.setMaxStackSize(1);
+        xieSp6Meta.setMaxStackSize(1);
+        xieSp7Meta.setMaxStackSize(1);
+        xieSp8Meta.setMaxStackSize(1);
+
+        zhanXie2Meta.setMaxStackSize(1);
+        zhanXie3Meta.setMaxStackSize(1);
+        zhanXie4Meta.setMaxStackSize(1);
+        zhanXie5Meta.setMaxStackSize(1);
+        zhanXie6Meta.setMaxStackSize(1);
+        zhanXie7Meta.setMaxStackSize(1);
+        zhanXie8Meta.setMaxStackSize(1);
+
+        gongXie2Meta.setMaxStackSize(1);
+        gongXie3Meta.setMaxStackSize(1);
+        gongXie4Meta.setMaxStackSize(1);
+        gongXie5Meta.setMaxStackSize(1);
+        gongXie6Meta.setMaxStackSize(1);
+        gongXie7Meta.setMaxStackSize(1);
+        gongXie8Meta.setMaxStackSize(1);
+
+        danXie2Meta.setMaxStackSize(1);
+        danXie3Meta.setMaxStackSize(1);
+        danXie4Meta.setMaxStackSize(1);
+        danXie5Meta.setMaxStackSize(1);
+        danXie6Meta.setMaxStackSize(1);
+        danXie7Meta.setMaxStackSize(1);
+        danXie8Meta.setMaxStackSize(1);
 
 
-        HUANGTONGCHONGMeta.setMaxStackSize(99);
-        MINGYUEMeta.setMaxStackSize(99);
-        CANLANMeta.setMaxStackSize(99);
-        JINJINGMeta.setMaxStackSize(99);
-        XIAOTIANMeta.setMaxStackSize(99);
+        JINRUIFEIRENMeta.setMaxStackSize(1);
+        WUSHENGXIUJIANMeta.setMaxStackSize(1);
+        HUIXUANTAJIMeta.setMaxStackSize(1);
+        WUYINWUZONGMeta.setMaxStackSize(1);
+        YANWANGTIEMeta.setMaxStackSize(1);
 
 
-        QINFENGYINYINMeta.setMaxStackSize(99);
-        LIUSHUICHANCHANMeta.setMaxStackSize(99);
-        BUQICHUNYUMeta.setMaxStackSize(99);
-        SANSHENGZHENHUNMeta.setMaxStackSize(99);
-        JIUFENGLAIYIMeta.setMaxStackSize(99);
+        HUANGTONGCHONGMeta.setMaxStackSize(1);
+        MINGYUEMeta.setMaxStackSize(1);
+        CANLANMeta.setMaxStackSize(1);
+        JINJINGMeta.setMaxStackSize(1);
+        XIAOTIANMeta.setMaxStackSize(1);
 
 
-        XINBINDUNPAIMeta.setMaxStackSize(99);
-        JINRUIDUNPAIMeta.setMaxStackSize(99);
-        CHISEYUEHUOMeta.setMaxStackSize(99);
-        JINGANGBUHUAIMeta.setMaxStackSize(99);
-        CHENBINLUOXUEMeta.setMaxStackSize(99);
+        QINFENGYINYINMeta.setMaxStackSize(1);
+        LIUSHUICHANCHANMeta.setMaxStackSize(1);
+        BUQICHUNYUMeta.setMaxStackSize(1);
+        SANSHENGZHENHUNMeta.setMaxStackSize(1);
+        JIUFENGLAIYIMeta.setMaxStackSize(1);
 
 
-        XINBINJIANDAIMeta.setMaxStackSize(99);
-        JINRUIJIANDAIMeta.setMaxStackSize(99);
-        YINGYANJIANDAIMeta.setMaxStackSize(99);
-        CANGGUNINGWANGMeta.setMaxStackSize(99);
-        NIEPANYUNANGMeta.setMaxStackSize(99);
+        XINBINDUNPAIMeta.setMaxStackSize(1);
+        JINRUIDUNPAIMeta.setMaxStackSize(1);
+        CHISEYUEHUOMeta.setMaxStackSize(1);
+        JINGANGBUHUAIMeta.setMaxStackSize(1);
+        CHENBINLUOXUEMeta.setMaxStackSize(1);
 
 
-        TIEZHIDUANBIMeta.setMaxStackSize(99);
-        HUIYIDAOMeta.setMaxStackSize(99);
-        LONGYADAOMeta.setMaxStackSize(99);
-        ZHANGQICUIZHUMeta.setMaxStackSize(99);
-        MINGHONGMeta.setMaxStackSize(99);
+        XINBINJIANDAIMeta.setMaxStackSize(1);
+        JINRUIJIANDAIMeta.setMaxStackSize(1);
+        YINGYANJIANDAIMeta.setMaxStackSize(1);
+        CANGGUNINGWANGMeta.setMaxStackSize(1);
+        NIEPANYUNANGMeta.setMaxStackSize(1);
 
-        QING_LONG_SHENG_QI2Meta.setMaxStackSize(99);
-        QING_LONG_SHENG_QI3Meta.setMaxStackSize(99);
-        QING_LONG_SHENG_QI4Meta.setMaxStackSize(99);
-        QING_LONG_SHENG_QI5Meta.setMaxStackSize(99);
-        QING_LONG_SHENG_QI6Meta.setMaxStackSize(99);
 
-        BAI_HU_SHENG_QI2Meta.setMaxStackSize(99);
-        BAI_HU_SHENG_QI3Meta.setMaxStackSize(99);
-        BAI_HU_SHENG_QI4Meta.setMaxStackSize(99);
-        BAI_HU_SHENG_QI5Meta.setMaxStackSize(99);
-        BAI_HU_SHENG_QI6Meta.setMaxStackSize(99);
+        TIEZHIDUANBIMeta.setMaxStackSize(1);
+        HUIYIDAOMeta.setMaxStackSize(1);
+        LONGYADAOMeta.setMaxStackSize(1);
+        ZHANGQICUIZHUMeta.setMaxStackSize(1);
+        MINGHONGMeta.setMaxStackSize(1);
 
-        ZHU_QUE_SHENG_QI2Meta.setMaxStackSize(99);
-        ZHU_QUE_SHENG_QI3Meta.setMaxStackSize(99);
-        ZHU_QUE_SHENG_QI4Meta.setMaxStackSize(99);
-        ZHU_QUE_SHENG_QI5Meta.setMaxStackSize(99);
-        ZHU_QUE_SHENG_QI6Meta.setMaxStackSize(99);
+        QING_LONG_SHENG_QI2Meta.setMaxStackSize(1);
+        QING_LONG_SHENG_QI3Meta.setMaxStackSize(1);
+        QING_LONG_SHENG_QI4Meta.setMaxStackSize(1);
+        QING_LONG_SHENG_QI5Meta.setMaxStackSize(1);
+        QING_LONG_SHENG_QI6Meta.setMaxStackSize(1);
 
-        XUAN_WU_SHENG_QI2Meta.setMaxStackSize(99);
-        XUAN_WU_SHENG_QI3Meta.setMaxStackSize(99);
-        XUAN_WU_SHENG_QI4Meta.setMaxStackSize(99);
-        XUAN_WU_SHENG_QI5Meta.setMaxStackSize(99);
-        XUAN_WU_SHENG_QI6Meta.setMaxStackSize(99);
+        BAI_HU_SHENG_QI2Meta.setMaxStackSize(1);
+        BAI_HU_SHENG_QI3Meta.setMaxStackSize(1);
+        BAI_HU_SHENG_QI4Meta.setMaxStackSize(1);
+        BAI_HU_SHENG_QI5Meta.setMaxStackSize(1);
+        BAI_HU_SHENG_QI6Meta.setMaxStackSize(1);
 
-        TAN_YU_ZHI_JIEMeta.setMaxStackSize(99);
-        TAN_LAN_DU_JIEMeta.setMaxStackSize(99);
-        TAN_LAN_XIE_JIEMeta.setMaxStackSize(99);
-        TAN_LAN_GUI_JIEMeta.setMaxStackSize(99);
-        TAN_LAN_MO_JIEMeta.setMaxStackSize(99);
-        TAN_LAN_MING_JIEMeta.setMaxStackSize(99);
+        ZHU_QUE_SHENG_QI2Meta.setMaxStackSize(1);
+        ZHU_QUE_SHENG_QI3Meta.setMaxStackSize(1);
+        ZHU_QUE_SHENG_QI4Meta.setMaxStackSize(1);
+        ZHU_QUE_SHENG_QI5Meta.setMaxStackSize(1);
+        ZHU_QUE_SHENG_QI6Meta.setMaxStackSize(1);
 
-        CHI_MI_ZHI_JIEMeta.setMaxStackSize(99);
-        CHI_YU_DU_JIEMeta.setMaxStackSize(99);
-        CHI_YU_XIE_JIEMeta.setMaxStackSize(99);
-        CHI_YU_GUI_JIEMeta.setMaxStackSize(99);
-        CHI_YU_MO_JIEMeta.setMaxStackSize(99);
-        CHI_YU_MING_JIEMeta.setMaxStackSize(99);
+        XUAN_WU_SHENG_QI2Meta.setMaxStackSize(1);
+        XUAN_WU_SHENG_QI3Meta.setMaxStackSize(1);
+        XUAN_WU_SHENG_QI4Meta.setMaxStackSize(1);
+        XUAN_WU_SHENG_QI5Meta.setMaxStackSize(1);
+        XUAN_WU_SHENG_QI6Meta.setMaxStackSize(1);
 
-        CHEN_NU_ZHI_JIEMeta.setMaxStackSize(99);
-        CHEN_HEN_DU_JIEMeta.setMaxStackSize(99);
-        CHEN_HEN_XIE_JIEMeta.setMaxStackSize(99);
-        CHEN_HEN_GUI_JIEMeta.setMaxStackSize(99);
-        CHEN_HEN_MO_JIEMeta.setMaxStackSize(99);
-        CHEN_HEN_MING_JIEMeta.setMaxStackSize(99);
+        TAN_YU_ZHI_JIEMeta.setMaxStackSize(1);
+        TAN_LAN_DU_JIEMeta.setMaxStackSize(1);
+        TAN_LAN_XIE_JIEMeta.setMaxStackSize(1);
+        TAN_LAN_GUI_JIEMeta.setMaxStackSize(1);
+        TAN_LAN_MO_JIEMeta.setMaxStackSize(1);
+        TAN_LAN_MING_JIEMeta.setMaxStackSize(1);
 
-        CHAN_DING_FA_JIEMeta.setMaxStackSize(99);
-        CHAN_DING_SHENG_JIEMeta.setMaxStackSize(99);
-        CHAN_DING_FO_JIEMeta.setMaxStackSize(99);
-        CHAN_DING_XIAN_JIEMeta.setMaxStackSize(99);
-        CHAN_DING_SHEN_JIEMeta.setMaxStackSize(99);
+        CHI_MI_ZHI_JIEMeta.setMaxStackSize(1);
+        CHI_YU_DU_JIEMeta.setMaxStackSize(1);
+        CHI_YU_XIE_JIEMeta.setMaxStackSize(1);
+        CHI_YU_GUI_JIEMeta.setMaxStackSize(1);
+        CHI_YU_MO_JIEMeta.setMaxStackSize(1);
+        CHI_YU_MING_JIEMeta.setMaxStackSize(1);
 
-        ZHI_HUI_FA_JIEMeta.setMaxStackSize(99);
-        ZHI_HUI_SHENG_JIEMeta.setMaxStackSize(99);
-        ZHI_HUI_FO_JIEMeta.setMaxStackSize(99);
-        ZHI_HUI_XIAN_JIEMeta.setMaxStackSize(99);
-        ZHI_HUI_SHEN_JIEMeta.setMaxStackSize(99);
+        CHEN_NU_ZHI_JIEMeta.setMaxStackSize(1);
+        CHEN_HEN_DU_JIEMeta.setMaxStackSize(1);
+        CHEN_HEN_XIE_JIEMeta.setMaxStackSize(1);
+        CHEN_HEN_GUI_JIEMeta.setMaxStackSize(1);
+        CHEN_HEN_MO_JIEMeta.setMaxStackSize(1);
+        CHEN_HEN_MING_JIEMeta.setMaxStackSize(1);
 
-        CHI_JIE_FA_JIEMeta.setMaxStackSize(99);
-        CHI_JIE_SHENG_JIEMeta.setMaxStackSize(99);
-        CHI_JIE_FO_JIEMeta.setMaxStackSize(99);
-        CHI_JIE_XIAN_JIEMeta.setMaxStackSize(99);
-        CHI_JIE_SHEN_JIEMeta.setMaxStackSize(99);
+        CHAN_DING_FA_JIEMeta.setMaxStackSize(1);
+        CHAN_DING_SHENG_JIEMeta.setMaxStackSize(1);
+        CHAN_DING_FO_JIEMeta.setMaxStackSize(1);
+        CHAN_DING_XIAN_JIEMeta.setMaxStackSize(1);
+        CHAN_DING_SHEN_JIEMeta.setMaxStackSize(1);
 
-        ZHAOYAOJINMeta.setMaxStackSize(99);
-        YUFUCHENMeta.setMaxStackSize(99);
-        WUSEBUTIANSHIMeta.setMaxStackSize(99);
+        ZHI_HUI_FA_JIEMeta.setMaxStackSize(1);
+        ZHI_HUI_SHENG_JIEMeta.setMaxStackSize(1);
+        ZHI_HUI_FO_JIEMeta.setMaxStackSize(1);
+        ZHI_HUI_XIAN_JIEMeta.setMaxStackSize(1);
+        ZHI_HUI_SHEN_JIEMeta.setMaxStackSize(1);
 
-        YAOWANGHULUMeta.setMaxStackSize(99);
-        CIXINMIAOLIANMeta.setMaxStackSize(99);
-        SHENXINYUGUMeta.setMaxStackSize(99);
-        YINYANGZHANLONGJIANMeta.setMaxStackSize(99);
-        YUNLANGBANMeta.setMaxStackSize(99);
-        ZHENHUNYUXIAOMeta.setMaxStackSize(99);
-        DIKUIHUALANMeta.setMaxStackSize(99);
-        XUANFENGZONGSHANMeta.setMaxStackSize(99);
-        TAIJIBAGUAMeta.setMaxStackSize(99);
+        CHI_JIE_FA_JIEMeta.setMaxStackSize(1);
+        CHI_JIE_SHENG_JIEMeta.setMaxStackSize(1);
+        CHI_JIE_FO_JIEMeta.setMaxStackSize(1);
+        CHI_JIE_XIAN_JIEMeta.setMaxStackSize(1);
+        CHI_JIE_SHEN_JIEMeta.setMaxStackSize(1);
 
-        JUEDOULINGMeta.setMaxStackSize(99);
-        LEIMINGGUMeta.setMaxStackSize(99);
-        HUANSILINMeta.setMaxStackSize(99);
-        NIUMONUHOUMeta.setMaxStackSize(99);
+        ZHAOYAOJINMeta.setMaxStackSize(1);
+        YUFUCHENMeta.setMaxStackSize(1);
+        WUSEBUTIANSHIMeta.setMaxStackSize(1);
 
-        DOUQISHIMeta.setMaxStackSize(99);
-        PANGUANBIMeta.setMaxStackSize(99);
-        MINSHENGJIANMeta.setMaxStackSize(99);
-        ZHENLEITIANCHUIMeta.setMaxStackSize(99);
+        YAOWANGHULUMeta.setMaxStackSize(1);
+        CIXINMIAOLIANMeta.setMaxStackSize(1);
+        SHENXINYUGUMeta.setMaxStackSize(1);
+        YINYANGZHANLONGJIANMeta.setMaxStackSize(1);
+        YUNLANGBANMeta.setMaxStackSize(1);
+        ZHENHUNYUXIAOMeta.setMaxStackSize(1);
+        DIKUIHUALANMeta.setMaxStackSize(1);
+        XUANFENGZONGSHANMeta.setMaxStackSize(1);
+        TAIJIBAGUAMeta.setMaxStackSize(1);
 
-        DIAOHUNGANMeta.setMaxStackSize(99);
-        SHELINZHUMeta.setMaxStackSize(99);
-        YUJINPINMeta.setMaxStackSize(99);
-        TIANJISHENJINMeta.setMaxStackSize(99);
+        JUEDOULINGMeta.setMaxStackSize(1);
+        LEIMINGGUMeta.setMaxStackSize(1);
+        HUANSILINMeta.setMaxStackSize(1);
+        NIUMONUHOUMeta.setMaxStackSize(1);
 
-        RUIYINGYANMeta.setMaxStackSize(99);
-        DUOHUNTANGMeta.setMaxStackSize(99);
-        MOYUANFOZHUMeta.setMaxStackSize(99);
-        FUXINRUYIMeta.setMaxStackSize(99);
+        DOUQISHIMeta.setMaxStackSize(1);
+        PANGUANBIMeta.setMaxStackSize(1);
+        MINSHENGJIANMeta.setMaxStackSize(1);
+        ZHENLEITIANCHUIMeta.setMaxStackSize(1);
 
-        LVYEXIANZONGMeta.setMaxStackSize(99);
-        QINGNVHANSHUANGMeta.setMaxStackSize(99);
-        ZHURONGKUYANMeta.setMaxStackSize(99);
-        ZHUDIANXUANJINGMeta.setMaxStackSize(99);
+        DIAOHUNGANMeta.setMaxStackSize(1);
+        SHELINZHUMeta.setMaxStackSize(1);
+        YUJINPINMeta.setMaxStackSize(1);
+        TIANJISHENJINMeta.setMaxStackSize(1);
 
-        BUHUNWANGMeta.setMaxStackSize(99);
-        YANGSHOUJIANMeta.setMaxStackSize(99);
-        WUMINGMOYINLUOMeta.setMaxStackSize(99);
-        SHETIANHUAXUELINGMeta.setMaxStackSize(99);
+        RUIYINGYANMeta.setMaxStackSize(1);
+        DUOHUNTANGMeta.setMaxStackSize(1);
+        MOYUANFOZHUMeta.setMaxStackSize(1);
+        FUXINRUYIMeta.setMaxStackSize(1);
 
-        KUYELINGMeta.setMaxStackSize(99);
-        LUOBEIJINPINMeta.setMaxStackSize(99);
-        PINYUSHUIYUMeta.setMaxStackSize(99);
-        DIKONGYUMOQUANMeta.setMaxStackSize(99);
+        LVYEXIANZONGMeta.setMaxStackSize(1);
+        QINGNVHANSHUANGMeta.setMaxStackSize(1);
+        ZHURONGKUYANMeta.setMaxStackSize(1);
+        ZHUDIANXUANJINGMeta.setMaxStackSize(1);
 
-        LUANSHENGUMeta.setMaxStackSize(99);
-        JINGULIANMeta.setMaxStackSize(99);
-        JIANCHANGULINMeta.setMaxStackSize(99);
-        MODUOHUNFANMeta.setMaxStackSize(99);
+        BUHUNWANGMeta.setMaxStackSize(1);
+        YANGSHOUJIANMeta.setMaxStackSize(1);
+        WUMINGMOYINLUOMeta.setMaxStackSize(1);
+        SHETIANHUAXUELINGMeta.setMaxStackSize(1);
+
+        KUYELINGMeta.setMaxStackSize(1);
+        LUOBEIJINPINMeta.setMaxStackSize(1);
+        PINYUSHUIYUMeta.setMaxStackSize(1);
+        DIKONGYUMOQUANMeta.setMaxStackSize(1);
+
+        LUANSHENGUMeta.setMaxStackSize(1);
+        JINGULIANMeta.setMaxStackSize(1);
+        JIANCHANGULINMeta.setMaxStackSize(1);
+        MODUOHUNFANMeta.setMaxStackSize(1);
 
         PersistentDataContainer pdcCore2 = core2Meta.getPersistentDataContainer();
         PersistentDataContainer pdcCore3 = core3Meta.getPersistentDataContainer();

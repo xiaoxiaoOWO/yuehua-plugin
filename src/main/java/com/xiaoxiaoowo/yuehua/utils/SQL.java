@@ -2,8 +2,8 @@ package com.xiaoxiaoowo.yuehua.utils;
 
 
 import com.xiaoxiaoowo.yuehua.Yuehua;
-import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.guis.Yh;
+import com.xiaoxiaoowo.yuehua.guis.dz.Recipe;
 import com.xiaoxiaoowo.yuehua.system.DataContainer;
 import de.tr7zw.nbtapi.NBT;
 import de.tr7zw.nbtapi.NBTCompound;
@@ -111,6 +111,11 @@ public final class SQL {
             SELECT * FROM iditem;
             """;
 
+    private static final String getOther = """
+            SELECT data
+            FROM other
+            WHERE name = ?;
+            """;
 
     private static final String getZhanArmor = """
             SELECT data
@@ -233,6 +238,11 @@ public final class SQL {
 
     private static final String storeRecipe = """
             INSERT OR REPLACE INTO recipe (name, data)
+            VALUES (?, ?);
+            """;
+
+    private static final String storeOther = """
+            INSERT OR REPLACE INTO other (name, data)
             VALUES (?, ?);
             """;
 
@@ -1008,6 +1018,13 @@ public final class SQL {
                     data TEXT NOT NULL
                 );""";
 
+        String CREATE_TABLE48 = """
+                CREATE TABLE IF NOT EXISTS other (
+                    id INTEGER PRIMARY KEY,
+                    name TEXT NOT NULL UNIQUE,
+                    data TEXT NOT NULL
+                );""";
+
 
         try (Statement statement = connection.createStatement()) {
             // 执行创建表的 SQL 语句
@@ -1381,6 +1398,14 @@ public final class SQL {
         try (Statement statement = connection.createStatement()) {
             // 执行创建表的 SQL 语句
             statement.execute(CREATE_TABLE47);
+        } catch (SQLException e) {
+            Bukkit.shutdown();
+            throw new RuntimeException(e);
+        }
+
+        try (Statement statement = recipeConnection.createStatement()) {
+            // 执行创建表的 SQL 语句
+            statement.execute(CREATE_TABLE48);
         } catch (SQLException e) {
             Bukkit.shutdown();
             throw new RuntimeException(e);
@@ -2384,11 +2409,13 @@ public final class SQL {
 
                     case "§b丹药配方[仅炼丹][第二页]" -> Recipe.recipeDanDan2;
 
+                    case "§b其它配方[第一页]" -> Recipe.recipeOther;
+
+                    case "§b其它配方[第二页]" -> Recipe.recipeOther2;
 
                     default -> null;
                 };
                 inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
-
 
 
             }
@@ -3278,6 +3305,55 @@ public final class SQL {
         }
 
 
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.recipeOther.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getOther)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b其它配方[第一页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.otherContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+        for (int i = 0; i < 53; i++) {
+            ItemStack itemStack = Recipe.recipeOther2.getItem(i);
+            if (itemStack == null) {
+                continue;
+            }
+            String id = itemStack.getPersistentDataContainer().getOrDefault(DataContainer.id, PersistentDataType.STRING, "null");
+            if (id.equals("null")) {
+                continue;
+            }
+            try (PreparedStatement pstmt = recipeConnection.prepareStatement(getOther)) {
+                pstmt.setString(1, id);
+                ResultSet resultSet = pstmt.executeQuery();
+                while (resultSet.next()) {
+                    String data = resultSet.getString("data");
+                    Inventory inventory = Bukkit.createInventory(null, 18, Component.text("§b其它配方[第二页][详情]"));
+                    inventory.setContents(NBTItem.convertNBTtoItemArray((NBTCompound) NBT.parseNBT(data)));
+                    Recipe.otherContents.put(id, inventory);
+                }
+            } catch (SQLException e) {
+                Bukkit.shutdown();
+                throw new RuntimeException(e);
+            }
+        }
+
+
     }
 
     public static void storeOneInv(Inventory inventory, String name, String sql) {
@@ -3337,6 +3413,9 @@ public final class SQL {
         storeOneInv(Recipe.recipeAllDan2, "§b丹药配方[第二页]", storeRecipe);
         storeOneInv(Recipe.recipeDanDan, "§b丹药配方[仅炼丹][第一页]", storeRecipe);
         storeOneInv(Recipe.recipeDanDan2, "§b丹药配方[仅炼丹][第二页]", storeRecipe);
+
+        storeOneInv(Recipe.recipeOther, "§b其它配方[第一页]", storeRecipe);
+        storeOneInv(Recipe.recipeOther2, "§b其它配方[第二页]", storeRecipe);
 
         Recipe.zhanarmorContents.forEach((key, value) -> {
             storeOneInv(value, key, storeZhanArmor);
@@ -3408,6 +3487,10 @@ public final class SQL {
 
         Recipe.dandanContents.forEach((key, value) -> {
             storeOneInv(value, key, storeDanDan);
+        });
+
+        Recipe.otherContents.forEach((key, value) -> {
+            storeOneInv(value, key, storeOther);
         });
 
 //        Recipe.idToItem.forEach((key, value) -> {

@@ -1634,7 +1634,7 @@ public final class Weapon {
         LIAN_DAN_LU.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/2"));
         QIN_TONG_GUO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/1"));
         HEI_TIE_GUO.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "rabbit_hide/1"));
-        LIU_GUANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/5"));
+        LIU_GUANG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/7"));
         SHE_TIAN_ZHUI_YUE_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/5"));
         TIAN_QIONG_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/4"));
         HONG_LUAN_GONG.setData(DataComponentTypes.ITEM_MODEL, new NamespacedKey("yuehua", "bow/3"));

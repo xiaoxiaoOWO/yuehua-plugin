@@ -76,33 +76,37 @@ public final class Recipe {
     public static final Inventory recipeDanDan = Bukkit.createInventory(null, 54, Component.text("丹药配方[仅炼丹][第一页]").color(NamedTextColor.AQUA));
     public static final Inventory recipeDanDan2 = Bukkit.createInventory(null, 54, Component.text("丹药配方[仅炼丹][第二页]").color(NamedTextColor.AQUA));
 
+    public static final Inventory recipeOther = Bukkit.createInventory(null, 54, Component.text("其它配方[第一页]").color(NamedTextColor.AQUA));
+    public static final Inventory recipeOther2 = Bukkit.createInventory(null, 54, Component.text("其它配方[第二页]").color(NamedTextColor.AQUA));
 
-    public static final HashMap<String, Inventory> zhanarmorContents = new HashMap<>(100);
-    public static final HashMap<String, Inventory> gongarmorContents = new HashMap<>(100);
-    public static final HashMap<String, Inventory> danarmorContents = new HashMap<>(100);
+    public static final HashMap<String, Inventory> zhanarmorContents = new HashMap<>(300);
+    public static final HashMap<String, Inventory> gongarmorContents = new HashMap<>(300);
+    public static final HashMap<String, Inventory> danarmorContents = new HashMap<>(300);
 
-    public static final HashMap<String, Inventory> zhanweaponContents = new HashMap<>(100);
-    public static final HashMap<String, Inventory> gongweaponContents = new HashMap<>(100);
-    public static final HashMap<String, Inventory> danweaponContents = new HashMap<>(100);
+    public static final HashMap<String, Inventory> zhanweaponContents = new HashMap<>(300);
+    public static final HashMap<String, Inventory> gongweaponContents = new HashMap<>(300);
+    public static final HashMap<String, Inventory> danweaponContents = new HashMap<>(300);
 
-    public static final HashMap<String, Inventory> zhanbiweaponContents = new HashMap<>(100);
-    public static final HashMap<String, Inventory> gongbiweaponContents = new HashMap<>(100);
-    public static final HashMap<String, Inventory> danbiweaponContents = new HashMap<>(100);
+    public static final HashMap<String, Inventory> zhanbiweaponContents = new HashMap<>(300);
+    public static final HashMap<String, Inventory> gongbiweaponContents = new HashMap<>(300);
+    public static final HashMap<String, Inventory> danbiweaponContents = new HashMap<>(300);
 
-    public static final HashMap<String, Inventory> zhanfabaoContents = new HashMap<>(100);
-    public static final HashMap<String, Inventory> gongfabaoContents = new HashMap<>(100);
-    public static final HashMap<String, Inventory> danfabaoContents = new HashMap<>(100);
+    public static final HashMap<String, Inventory> zhanfabaoContents = new HashMap<>(300);
+    public static final HashMap<String, Inventory> gongfabaoContents = new HashMap<>(300);
+    public static final HashMap<String, Inventory> danfabaoContents = new HashMap<>(300);
 
-    public static final HashMap<String, Inventory> zhanyiqiContents = new HashMap<>(100);
-    public static final HashMap<String, Inventory> gongyiqiContents = new HashMap<>(100);
-    public static final HashMap<String, Inventory> danyiqiContents = new HashMap<>(100);
+    public static final HashMap<String, Inventory> zhanyiqiContents = new HashMap<>(300);
+    public static final HashMap<String, Inventory> gongyiqiContents = new HashMap<>(300);
+    public static final HashMap<String, Inventory> danyiqiContents = new HashMap<>(300);
 
-    public static final HashMap<String, Inventory> shipinContents = new HashMap<>(400);
+    public static final HashMap<String, Inventory> shipinContents = new HashMap<>(300);
 
-    public static final HashMap<String, Inventory> danContents = new HashMap<>(200);
-    public static final HashMap<String, Inventory> dandanContents = new HashMap<>(200);
+    public static final HashMap<String, Inventory> danContents = new HashMap<>(300);
+    public static final HashMap<String, Inventory> dandanContents = new HashMap<>(300);
 
-    public static final HashMap<String, ItemStack> idToItem = new HashMap<>(1000);
+    public static final HashMap<String, Inventory> otherContents = new HashMap<>(300);
+
+    public static final HashMap<String, ItemStack> idToItem = new HashMap<>(4000);
 
     static {
 
@@ -183,6 +187,10 @@ public final class Recipe {
         recipeAllDan2.setItem(53, Yh.BACK_BEFORE);
         recipeDanDan2.setItem(53, Yh.BACK_BEFORE);
 
+        recipeOther.setItem(0,Yh.TO_NEXT);
+        recipeOther.setItem(53,Yh.BACK_BEFORE);
+        recipeOther2.setItem(53,Yh.BACK_BEFORE);
+
         ArmorChest.putId();
         ArmorFeet.putId();
         ArmorHead.putId();
@@ -251,6 +259,9 @@ public final class Recipe {
         newItemLore(recipeAllDan2);
         newItemLore(recipeDanDan2);
 
+        newItemLore(recipeOther);
+        newItemLore(recipeOther2);
+
         // Update inventories in HashMaps
         zhanarmorContents.values().forEach(Recipe::newItemLore);
         gongarmorContents.values().forEach(Recipe::newItemLore);
@@ -276,6 +287,8 @@ public final class Recipe {
 
         danContents.values().forEach(Recipe::newItemLore);
         dandanContents.values().forEach(Recipe::newItemLore);
+
+        otherContents.values().forEach(Recipe::newItemLore);
 
         Player player = Bukkit.getPlayer("xiaoxiaoOWO");
         SendInformation.sendMes(player, Component.text("§e[描述修复]§b结束"));

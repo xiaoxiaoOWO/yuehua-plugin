@@ -110,7 +110,7 @@ public final class Join implements Listener {
                 if (!Yuehua.checkSet.remove(uuid)) {
                     if (player.isOnline()) {
                         Scheduler.sync(
-                                () -> player.kick(Component.text("§c疑似使用非官方客户端"))
+                                () -> player.kick(Component.text("§c请使用官方最新客户端"))
                         );
                     }
                 }

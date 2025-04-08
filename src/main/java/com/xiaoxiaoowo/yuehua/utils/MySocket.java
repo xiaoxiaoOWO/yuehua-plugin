@@ -63,7 +63,16 @@ public final class MySocket {
                         } else {
                             return;
                         }
+
+                        if (player.isSneaking()) {
+                            if (doSkill1Shift(data, player)) {
+                                return;
+                            }
+                        }
+
                         switch (data.job) {
+                            case 1, 2 -> Scheduler.sync(() -> doSkill1(data, player));
+
                             case 3 -> {
                                 DanData danData = (DanData) data;
                                 int level = danData.zhenfa_level;
@@ -80,7 +89,16 @@ public final class MySocket {
                         } else {
                             return;
                         }
+
+                        if (player.isSneaking()) {
+                            if (doSkill2Shift(data, player)) {
+                                return;
+                            }
+                        }
+
                         switch (data.job) {
+                            case 1, 2 -> Scheduler.sync(() -> doSkill2(data, player));
+
                             case 3 -> {
                                 DanData danData = (DanData) data;
                                 int level = danData.zhenfa_level;
@@ -97,7 +115,16 @@ public final class MySocket {
                         } else {
                             return;
                         }
+
+                        if (player.isSneaking()) {
+                            if (doSkill3Shift(data, player)) {
+                                return;
+                            }
+                        }
+
                         switch (data.job) {
+                            case 1, 2 -> Scheduler.sync(() -> doSkill3(data, player));
+
                             case 3 -> {
                                 DanData danData = (DanData) data;
                                 int level = danData.zhenfa_level;
@@ -114,7 +141,16 @@ public final class MySocket {
                         } else {
                             return;
                         }
+
+                        if (player.isSneaking()) {
+                            if (doSkill4Shift(data, player)) {
+                                return;
+                            }
+                        }
+
                         switch (data.job) {
+                            case 1, 2 -> Scheduler.sync(() -> doSkill4(data, player));
+
                             case 3 -> {
                                 DanData danData = (DanData) data;
                                 int level = danData.zhenfa_level;
@@ -131,7 +167,16 @@ public final class MySocket {
                         } else {
                             return;
                         }
+
+                        if (player.isSneaking()) {
+                            if (doSkill5Shift(data, player)) {
+                                return;
+                            }
+                        }
+
                         switch (data.job) {
+                            case 1, 2 -> Scheduler.sync(() -> doSkill5(data, player));
+
                             case 3 -> {
                                 DanData danData = (DanData) data;
                                 int level = danData.zhenfa_level;
@@ -139,6 +184,40 @@ public final class MySocket {
                                 Scheduler.sync(() -> Interact.zhenfa(id, danData, player));
                             }
                         }
+                    }
+
+                    case "skill6" -> {
+                        Data data = Yuehua.playerData.get(player.getUniqueId());
+                        if (data != null) {
+                            data.webSocket = conn;
+                        } else {
+                            return;
+                        }
+
+                        if (player.isSneaking()) {
+                            if (doSkill6Shift(data, player)) {
+                                return;
+                            }
+                        }
+
+                        Scheduler.sync(() -> doSkill6(data, player));
+                    }
+
+                    case "skill7" -> {
+                        Data data = Yuehua.playerData.get(player.getUniqueId());
+                        if (data != null) {
+                            data.webSocket = conn;
+                        } else {
+                            return;
+                        }
+
+                        if (player.isSneaking()) {
+                            if (doSkill7Shift(data, player)) {
+                                return;
+                            }
+                        }
+
+                        Scheduler.sync(() -> doSkill7(data, player));
                     }
 
                     case "ld" -> {
@@ -194,12 +273,12 @@ public final class MySocket {
 
                         //mod count
                         //mod total size
-                        //directory count(不含.开头，不含crash-reports，不含screenshots,debug,地平线)
+                        //directory count(不含.开头，不含crash-reports，不含screenshots,debug,地平线,不含replay_recordings)
                         //jar size
                         String sbString = playerName +
                                 day +
-                                21 +
-                                23204789 +
+                                28 +
+                                62527998  +
                                 10 +
                                 28335587;
                         int serverHashCode = sbString.hashCode();
@@ -208,34 +287,37 @@ public final class MySocket {
                         //不带钠
                         String sbString2 = playerName +
                                 day +
-                                17 +
-                                18778511   +
-                                9 +
+                                24 +
+                                60675956 +
+                                10 +
                                 28335587;
                         int serverHashCode2 = sbString2.hashCode();
 
                         if (serverHashCode2 == hashCode || serverHashCode == hashCode) {
                             Yuehua.checkSet.add(player.getUniqueId());
                         } else {
-                            //OP无视规则
-                            if (player.isOp()) {
-                                Yuehua.checkSet.add(player.getUniqueId());
-                            }
+//                            //OP无视规则
+//                            if (player.isOp()) {
+//                                Yuehua.checkSet.add(player.getUniqueId());
+//                            }
                         }
 
 
                     }
 
-                    case "hp" -> {
+                    case "res" -> {
                         Data data = Yuehua.playerData.get(player.getUniqueId());
                         if (data != null) {
                             data.webSocket = conn;
                         }
+                        long size = Long.parseLong(parts[2]);
+                        if (size != 90728108 ) {
+                            Scheduler.sync(() -> player.kick(Component.text("§c请使用最新官方材质包")));
+                        }
                     }
 
-                    case "f" -> {
-                        SendInformation.sendActionBar(player, Component.text("§e[游戏机制]§4你的手持装备尚未拥有第二形态"));
-                    }
+                    case "f" ->
+                            SendInformation.sendActionBar(player, Component.text("§e[游戏机制]§4你的手持装备尚未拥有第二形态"));
 
                     default -> {
                     }
@@ -270,6 +352,111 @@ public final class MySocket {
         }
 
         webSocket.send(value);
+    }
+
+    public static boolean doSkill1Shift(Data data, Player player) {
+        switch (data.skill1Shift) {
+            default -> {
+                return false;
+            }
+        }
+    }
+
+    public static boolean doSkill2Shift(Data data, Player player) {
+        switch (data.skill2Shift) {
+            default -> {
+                return false;
+            }
+        }
+    }
+
+    public static boolean doSkill3Shift(Data data, Player player) {
+        switch (data.skill3Shift) {
+            default -> {
+                return false;
+            }
+        }
+    }
+
+    public static boolean doSkill4Shift(Data data, Player player) {
+        switch (data.skill4Shift) {
+            default -> {
+                return false;
+            }
+        }
+    }
+
+    public static boolean doSkill5Shift(Data data, Player player) {
+        switch (data.skill5Shift) {
+            default -> {
+                return false;
+            }
+        }
+    }
+
+    public static boolean doSkill6Shift(Data data, Player player) {
+        switch (data.skill6Shift) {
+            default -> {
+                return false;
+            }
+        }
+    }
+
+    public static boolean doSkill7Shift(Data data, Player player) {
+        switch (data.skill7Shift) {
+            default -> {
+                return false;
+            }
+        }
+    }
+
+    public static void doSkill1(Data data, Player player) {
+        switch (data.skill1) {
+            default -> {
+            }
+        }
+    }
+
+    public static void doSkill2(Data data, Player player) {
+        switch (data.skill2) {
+            default -> {
+            }
+        }
+    }
+
+    public static void doSkill3(Data data, Player player) {
+        switch (data.skill3) {
+            default -> {
+            }
+        }
+    }
+
+    public static void doSkill4(Data data, Player player) {
+        switch (data.skill4) {
+            default -> {
+            }
+        }
+    }
+
+    public static void doSkill5(Data data, Player player) {
+        switch (data.skill5) {
+            default -> {
+            }
+        }
+    }
+
+    public static void doSkill6(Data data, Player player) {
+        switch (data.skill6) {
+            default -> {
+            }
+        }
+    }
+
+    public static void doSkill7(Data data, Player player) {
+        switch (data.skill7) {
+            default -> {
+            }
+        }
     }
 
 

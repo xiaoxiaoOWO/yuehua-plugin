@@ -81,7 +81,6 @@ public final class MyBossSpawn implements CommandExecutor {
             commandBlock.update();
         }
 
-
         return true;
     }
 

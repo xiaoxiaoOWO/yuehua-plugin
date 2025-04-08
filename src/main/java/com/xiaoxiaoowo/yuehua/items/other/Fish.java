@@ -78,7 +78,7 @@ public final class Fish {
         miao.editMeta(meta -> {
             meta.setMaxStackSize(99);
             meta.getPersistentDataContainer().set(DataContainer.id, PersistentDataType.STRING, "miaoyu");
-            meta.displayName(Component.text("§c魦"));
+            meta.displayName(Component.text("§c虹"));
             meta.lore(List.of(
                     ComponentSet.RARE6
             ));

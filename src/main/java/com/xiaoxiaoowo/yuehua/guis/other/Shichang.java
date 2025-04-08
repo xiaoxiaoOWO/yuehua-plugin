@@ -23,7 +23,7 @@ import java.util.Map;
 import static com.xiaoxiaoowo.yuehua.Yuehua.shichang;
 
 public final class Shichang {
-    public static boolean canUse = true;
+    public volatile static boolean canUse = true;
 
     public static final Inventory shichangIndex = Bukkit.createInventory(null, 18, Component.text("月华市场索引").color(NamedTextColor.AQUA));
 
