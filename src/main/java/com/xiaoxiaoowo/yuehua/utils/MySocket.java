@@ -278,7 +278,7 @@ public final class MySocket {
                         String sbString = playerName +
                                 day +
                                 28 +
-                                62527998  +
+                                62527965 +
                                 10 +
                                 28335587;
                         int serverHashCode = sbString.hashCode();
@@ -311,7 +311,7 @@ public final class MySocket {
                             data.webSocket = conn;
                         }
                         long size = Long.parseLong(parts[2]);
-                        if (size != 90728108 ) {
+                        if (size != 90728108) {
                             Scheduler.sync(() -> player.kick(Component.text("§c请使用最新官方材质包")));
                         }
                     }
